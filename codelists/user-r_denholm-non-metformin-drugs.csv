@@ -1,0 +1,384 @@
+code,term
+060102,Antidiabetic drugs
+0601021,Sulfonylureas
+0601021A0,Glimepiride
+0601021A0AA,Glimepiride
+0601021A0AAAAAA,Glimepiride 2mg tablets
+0601021A0AAABAB,Glimepiride 1mg tablets
+0601021A0AAACAC,Glimepiride 3mg tablets
+0601021A0AAADAD,Glimepiride 4mg tablets
+0601021A0AAAGAG,Glimepiride 2mg/5ml oral liquid
+0601021A0AAAHAH,Glimepiride 6mg/5ml oral suspension
+0601021A0BB,Amaryl
+0601021A0BBAAAA,Amaryl 2mg tablets
+0601021A0BBABAB,Amaryl 1mg tablets
+0601021A0BBACAC,Amaryl 3mg tablets
+0601021A0BBADAD,Amaryl 4mg tablets
+0601021A0BC,Niddaryl
+0601021A0BCAAAB,Niddaryl 1mg tablets
+0601021A0BCABAA,Niddaryl 2mg tablets
+0601021A0BCACAC,Niddaryl 3mg tablets
+0601021A0BCADAD,Niddaryl 4mg tablets
+0601021E0,Chlorpropamide
+0601021E0AA,Chlorpropamide
+0601021E0AAAAAA,Chlorpropamide 100mg tablets
+0601021E0AAABAB,Chlorpropamide 250mg tablets
+0601021E0AAADAD,Chlorpropamide 250mg/5ml oral suspension
+0601021H0,Glibenclamide
+0601021H0AA,Glibenclamide
+0601021H0AAAAAA,Glibenclamide 2.5mg tablets
+0601021H0AAABAB,Glibenclamide 5mg tablets
+0601021H0AAAIAI,Glibenclamide 625micrograms/5ml oral liquid
+0601021H0AAAJAJ,Glibenclamide 5mg/5ml oral liquid
+0601021H0AAAKAK,Glibenclamide 2.5mg/5ml oral liquid
+0601021H0AAAMAM,Glibenclamide 15mg/5ml oral liquid
+0601021H0AAANAN,Glibenclamide 7.5mg/5ml oral liquid
+0601021H0AAAPAP,Glibenclamide 600micrograms/ml oral suspension sugar free
+0601021H0AAAQAQ,Glibenclamide 6mg/ml oral suspension sugar free
+0601021H0BB,Daonil
+0601021H0BBAAAB,Daonil 5mg tablets
+0601021H0BBACAA,Semi-Daonil 2.5mg tablets
+0601021H0BD,Euglucon
+0601021H0BDAAAA,Euglucon 2.5mg tablets
+0601021H0BDABAB,Euglucon 5mg tablets
+0601021H0BK,Diabetamide
+0601021H0BKAAAA,Diabetamide 2.5mg tablets
+0601021H0BKABAB,Diabetamide 5mg tablets
+0601021H0BN,Amglidia
+0601021H0BNAAAP,Amglidia 0.6mg/ml oral suspension with 1ml oral syringe
+0601021H0BNABAP,Amglidia 0.6mg/ml oral suspension with 5ml oral syringe
+0601021H0BNACAQ,Amglidia 6mg/ml oral suspension with 1ml oral syringe
+0601021H0BNADAQ,Amglidia 6mg/ml oral suspension with 5ml oral syringe
+0601021M0,Gliclazide
+0601021M0AA,Gliclazide
+0601021M0AAAAAA,Gliclazide 80mg tablets
+0601021M0AAAGAG,Gliclazide 60mg/5ml oral suspension
+0601021M0AAAHAH,Gliclazide 50mg/5ml oral suspension
+0601021M0AAAIAI,Gliclazide 120mg/5ml oral suspension
+0601021M0AAAJAJ,Gliclazide 160mg/5ml oral suspension
+0601021M0AAALAL,Gliclazide 100mg/5ml oral suspension
+0601021M0AAAMAM,Gliclazide 30mg modified-release tablets
+0601021M0AAANAN,Gliclazide 20mg/5ml oral suspension
+0601021M0AAAPAP,Gliclazide 30mg/5ml oral suspension
+0601021M0AAARAR,Gliclazide 40mg tablets
+0601021M0AAASAS,Gliclazide 80mg/5ml oral suspension
+0601021M0AAATAT,Gliclazide 60mg modified-release tablets
+0601021M0AAAUAU,Gliclazide 40mg/5ml oral suspension
+0601021M0AAAVAV,Gliclazide 160mg tablets
+0601021M0BB,Diamicron
+0601021M0BBAAAA,Diamicron 80mg tablets
+0601021M0BBABAM,Diamicron 30mg MR tablets
+0601021M0BC,Diaglyk
+0601021M0BCAAAA,Diaglyk 80mg tablets
+0601021M0BD,Vivazide
+0601021M0BDAAAA,Vivazide 80mg tablets
+0601021M0BE,Glimil
+0601021M0BEAAAA,Glimil 80mg tablets
+0601021M0BF,Nazdol
+0601021M0BFAAAM,Nazdol MR 30mg tablets (Consilient Health)
+0601021M0BFABAM,Nazdol MR 30mg tablets (Mylan)
+0601021M0BFACAM,Nazdol MR 30mg tablets (Teva)
+0601021M0BG,Edicil
+0601021M0BGAAAM,Edicil MR 30mg tablets
+0601021M0BH,Dacadis
+0601021M0BHAAAM,Dacadis MR 30mg tablets
+0601021M0BI,Zicron
+0601021M0BIAAAR,Zicron 40mg tablets
+0601021M0BIABAM,Zicron PR 30mg tablets
+0601021M0BJ,Vitile
+0601021M0BJAAAM,Vitile XL 30mg tablets
+0601021M0BK,Laaglyda M/R
+0601021M0BKAAAT,Laaglyda MR 60mg tablets
+0601021M0BL,Ziclaseg
+0601021M0BLAAAM,Ziclaseg 30mg modified-release tablets
+0601021M0BM,Vamju
+0601021M0BMAAAM,Vamju 30mg modified-release tablets
+0601021M0BMABAT,Vamju 60mg modified-release tablets
+0601021M0BN,Bilxona
+0601021M0BNAAAM,Bilxona 30mg modified-release tablets
+0601021M0BNABAT,Bilxona 60mg modified-release tablets (Actavis)
+0601021M0BNACAT,Bilxona 60mg modified-release tablets (Accord)
+0601021M0BP,Glydex
+0601021M0BPAAAV,Glydex 160mg tablets
+0601021M0BQ,Lamzarin
+0601021M0BQAAAM,Lamzarin 30mg modified-release tablets
+0601021M0BQABAT,Lamzarin 60mg modified-release tablets
+0601021P0,Glipizide
+0601021P0AA,Glipizide
+0601021P0AAAAAA,Glipizide 2.5mg tablets
+0601021P0AAABAB,Glipizide 5mg tablets
+0601021P0BB,Glibenese
+0601021P0BBAAAB,Glibenese 5mg tablets
+0601021P0BC,Minodiab
+0601021P0BCACAA,Minodiab 2.5mg tablets
+0601021P0BCADAB,Minodiab 5mg tablets
+0601021R0,Gliquidone
+0601021R0AA,Gliquidone
+0601021R0AAAAAA,Gliquidone 30mg tablets
+0601021R0BB,Glurenorm
+0601021R0BBAAAA,Glurenorm 30mg tablets
+0601021X0,Tolbutamide
+0601021X0AA,Tolbutamide
+0601021X0AAADAD,Tolbutamide 500mg tablets
+0601021X0AAAJAJ,Tolbutamide 500mg/5ml oral suspension
+0601021X0AAAKAK,Tolbutamide 250mg/5ml oral suspension
+0601021X0AAALAL,Tolbutamide 1g/5ml oral suspension
+0601023,Other antidiabetic drugs
+0601023A0,Acarbose
+0601023A0AA,Acarbose
+0601023A0AAAAAA,Acarbose 50mg tablets
+0601023A0AAABAB,Acarbose 100mg tablets
+0601023A0BB,Glucobay
+0601023A0BBACAA,Glucobay 50mg tablets
+0601023A0BBADAB,Glucobay 100mg tablets
+0601023AA,Vildagliptin
+0601023AAAA,Vildagliptin
+0601023AAAAAAAA,Vildagliptin 50mg tablets
+0601023AABB,Galvus
+0601023AABBAAAA,Galvus 50mg tablets
+0601023AB,Liraglutide
+0601023ABAA,Liraglutide
+0601023ABAAAAAA,Liraglutide 6mg/1ml inj 3ml pre-filled disposable devices
+0601023ABBB,Victoza
+0601023ABBBAAAA,Victoza 6mg/ml solution for injection 3ml pre-filled pens
+0601023ABBC,Saxenda
+0601023ABBCAAAA,Saxenda 6mg/ml solution for injection 3ml pre-filled pens
+0601023AC,Saxagliptin
+0601023ACAA,Saxagliptin
+0601023ACAAAAAA,Saxagliptin 5mg tablets
+0601023ACAAABAB,Saxagliptin 2.5mg tablets
+0601023ACBB,Onglyza
+0601023ACBBAAAA,Onglyza 5mg tablets
+0601023ACBBABAB,Onglyza 2.5mg tablets
+0601023AE,Linagliptin
+0601023AEAA,Linagliptin
+0601023AEAAAAAA,Linagliptin 5mg tablets
+0601023AEBB,Trajenta
+0601023AEBBAAAA,Trajenta 5mg tablets
+0601023AF,Linagliptin/metformin
+0601023AFAA,Linagliptin/metformin
+0601023AFAAAAAA,Linagliptin 2.5mg / Metformin 850mg tablets
+0601023AFAAABAB,Linagliptin 2.5mg / Metformin 1g tablets
+0601023AFBB,Jentadueto
+0601023AFBBAAAA,Jentadueto 2.5mg/850mg tablets
+0601023AFBBABAB,Jentadueto 2.5mg/1000mg tablets
+0601023AG,Dapagliflozin
+0601023AGAA,Dapagliflozin
+0601023AGAAAAAA,Dapagliflozin 5mg tablets
+0601023AGAAABAB,Dapagliflozin 10mg tablets
+0601023AGBB,Forxiga
+0601023AGBBAAAA,Forxiga 5mg tablets
+0601023AGBBABAB,Forxiga 10mg tablets
+0601023AH,Saxagliptin/metformin
+0601023AHAA,Saxagliptin/metformin
+0601023AHAAAAAA,Saxagliptin 2.5mg / Metformin 850mg tablets
+0601023AHAAABAB,Saxagliptin 2.5mg / Metformin 1g tablets
+0601023AHBB,Komboglyze
+0601023AHBBAAAA,Komboglyze 2.5mg/850mg tablets
+0601023AHBBABAB,Komboglyze 2.5mg/1000mg tablets
+0601023AI,Lixisenatide
+0601023AIAA,Lixisenatide
+0601023AIAAAAAA,Lixisenatide 20micrograms/0.2ml inj 3ml pf dispos dev
+0601023AIAAABAB,Lixisenatide 10micrograms/0.2ml inj 3ml pf dispos dev
+0601023AIAAACAC,Lixisenatide 10microg/0.2ml and 20microg/0.2ml inj
+0601023AIBB,Lyxumia
+0601023AIBBAAAA,Lyxumia 20micrograms/0.2ml inj 3ml pre-filled pens
+0601023AIBBABAB,Lyxumia 10micrograms/0.2ml inj 3ml pre-filled pens
+0601023AIBBACAC,Lyxumia 10micrograms/20micrograms treatment initiation pack
+0601023AJ,Alogliptin/metformin
+0601023AJAA,Alogliptin/metformin
+0601023AJAAAAAA,Alogliptin 12.5mg / Metformin 1g tablets
+0601023AJBB,Vipdomet
+0601023AJBBAAAA,Vipdomet 12.5mg/1000mg tablets
+0601023AK,Alogliptin
+0601023AKAA,Alogliptin
+0601023AKAAAAAA,Alogliptin 6.25mg tablets
+0601023AKAAABAB,Alogliptin 12.5mg tablets
+0601023AKAAACAC,Alogliptin 25mg tablets
+0601023AKBB,Vipidia
+0601023AKBBAAAA,Vipidia 6.25mg tablets
+0601023AKBBABAB,Vipidia 12.5mg tablets
+0601023AKBBACAC,Vipidia 25mg tablets
+0601023AL,Dapagliflozin/metformin
+0601023ALAA,Dapagliflozin/metformin
+0601023ALAAAAAA,Dapagliflozin 5mg / Metformin 850mg tablets
+0601023ALAAABAB,Dapagliflozin 5mg / Metformin 1g tablets
+0601023ALBB,Xigduo
+0601023ALBBAAAA,Xigduo 5mg/850mg tablets
+0601023ALBBABAB,Xigduo 5mg/1000mg tablets
+0601023AM,Canagliflozin
+0601023AMAA,Canagliflozin
+0601023AMAAAAAA,Canagliflozin 100mg tablets
+0601023AMAAABAB,Canagliflozin 300mg tablets
+0601023AMBB,Invokana
+0601023AMBBAAAA,Invokana 100mg tablets
+0601023AMBBABAB,Invokana 300mg tablets
+0601023AN,Empagliflozin
+0601023ANAA,Empagliflozin
+0601023ANAAAAAA,Empagliflozin 10mg tablets
+0601023ANAAABAB,Empagliflozin 25mg tablets
+0601023ANBB,Jardiance
+0601023ANBBAAAA,Jardiance 10mg tablets
+0601023ANBBABAB,Jardiance 25mg tablets
+0601023AP,Canagliflozin/metformin
+0601023APAA,Canagliflozin/metformin
+0601023APAAAAAA,Canagliflozin 50mg / Metformin 850mg tablets
+0601023APAAABAB,Canagliflozin 50mg / Metformin 1g tablets
+0601023APBB,Vokanamet
+0601023APBBAAAA,Vokanamet 50mg/850mg tablets
+0601023APBBABAB,Vokanamet 50mg/1000mg tablets
+0601023AQ,Dulaglutide
+0601023AQAA,Dulaglutide
+0601023AQAAAAAA,Dulaglutide 0.75mg/0.5ml inj pre-filled disposable devices
+0601023AQAAABAB,Dulaglutide 1.5mg/0.5ml inj pre-filled disposable devices
+0601023AQBB,Trulicity
+0601023AQBBAAAA,Trulicity 0.75mg/0.5ml inj pre-filled pens
+0601023AQBBABAB,Trulicity 1.5mg/0.5ml solution for injection pre-filled pens
+0601023AR,Empagliflozin/metformin
+0601023ARAA,Empagliflozin/metformin
+0601023ARAAAAAA,Empagliflozin 5mg / Metformin 850mg tablets
+0601023ARAAABAB,Empagliflozin 5mg / Metformin 1g tablets
+0601023ARAAACAC,Empagliflozin 12.5mg / Metformin 850mg tablets
+0601023ARAAADAD,Empagliflozin 12.5mg / Metformin 1g tablets
+0601023ARBB,Synjardy
+0601023ARBBAAAA,Synjardy 5mg/850mg tablets
+0601023ARBBABAB,Synjardy 5mg/1000mg tablets
+0601023ARBBACAC,Synjardy 12.5mg/850mg tablets
+0601023ARBBADAD,Synjardy 12.5mg/1000mg tablets
+0601023AS,Albiglutide
+0601023ASAA,Albiglutide
+0601023ASAAAAAA,Albiglutide 30mg inj pre-filled disposable devices
+0601023ASAAABAB,Albiglutide 50mg inj pre-filled disposable devices
+0601023ASBB,Eperzan
+0601023ASBBAAAA,Eperzan 30mg inj pre-filled pens
+0601023ASBBABAB,Eperzan 50mg inj pre-filled pens
+0601023AU,Ins degludec/liraglutide
+0601023AUAA,Ins degludec/liraglutide
+0601023AUAAAAAA,Insulin degludec 100u/ml/Lirag 3.6mg/ml inj3ml pf dispos dev
+0601023AUBB,Xultophy
+0601023AUBBAAAA,Xultophy 100units/ml / 3.6mg/ml inj 3ml pre-filled pens
+0601023AV,Saxagliptin/dapagliflozin
+0601023AVAA,Saxagliptin/dapagliflozin
+0601023AVAAAAAA,Saxagliptin 5mg / Dapagliflozin 10mg tablets
+0601023AVBB,Qtern
+0601023AVBBAAAA,Qtern 5mg/10mg tablets
+0601023AW,Semaglutide
+0601023AWAA,Semaglutide
+0601023AWAAAAAA,Semaglutide 0.25mg/0.19ml inj 1.5ml pf dispos dev
+0601023AWAAABAB,Semaglutide 0.5mg/0.37ml inj 1.5ml pf dispos dev
+0601023AWAAACAC,Semaglutide 1mg/0.74ml inj 3ml pre-filled disposable device
+0601023AWAAADAD,Semaglutide 14mg tablets
+0601023AWAAAEAE,Semaglutide 3mg tablets
+0601023AWAAAFAF,Semaglutide 7mg tablets
+0601023AWBB,Ozempic
+0601023AWBBAAAA,Ozempic 0.25mg/0.19ml inj 1.5ml pre-filled pens
+0601023AWBBABAB,Ozempic 0.5mg/0.37ml inj 1.5ml pre-filled pens
+0601023AWBBACAC,Ozempic 1mg/0.74ml inj 3ml pre-filled pens
+0601023AWBC,Rybelsus
+0601023AWBCAAAD,Rybelsus 14mg tablets
+0601023AWBCABAE,Rybelsus 3mg tablets
+0601023AWBCACAF,Rybelsus 7mg tablets
+0601023AX,Ertugliflozin
+0601023AXAA,Ertugliflozin
+0601023AXAAAAAA,Ertugliflozin 5mg tablets
+0601023AXAAABAB,Ertugliflozin 15mg tablets
+0601023AXBB,Steglatro
+0601023AXBBAAAA,Steglatro 5mg tablets
+0601023AXBBABAB,Steglatro 15mg tablets
+0601023AY,Empagliflozin/linagliptin
+0601023AYAA,Empagliflozin/linagliptin
+0601023AYAAAAAA,Empagliflozin 10mg / Linagliptin 5mg tablets
+0601023AYAAABAB,Empagliflozin 25mg / Linagliptin 5mg tablets
+0601023AYBB,Glyxambi
+0601023AYBBAAAA,Glyxambi 10mg/5mg tablets
+0601023AYBBABAB,Glyxambi 25mg/5mg tablets
+0601023B0,Pioglitazone hydrochloride
+0601023B0AA,Pioglitazone hydrochloride
+0601023B0AAAAAA,Pioglitazone 15mg tablets
+0601023B0AAABAB,Pioglitazone 30mg tablets
+0601023B0AAACAC,Pioglitazone 45mg tablets
+0601023B0AAADAD,Pioglitazone 30mg/5ml oral suspension
+0601023B0AAAEAE,Pioglitazone 15mg/5ml oral suspension
+0601023B0AAAFAF,Pioglitazone 45mg/5ml oral suspension
+0601023B0BB,Actos
+0601023B0BBAAAA,Actos 15mg tablets
+0601023B0BBABAB,Actos 30mg tablets
+0601023B0BBACAC,Actos 45mg tablets
+0601023B0BC,Glizofar
+0601023B0BCAAAA,Glizofar 15mg tablets (Teva)
+0601023B0BCABAB,Glizofar 30mg tablets (Teva)
+0601023B0BCACAC,Glizofar 45mg tablets (Teva)
+0601023B0BCADAA,Glizofar 15mg tablets (Arrow)
+0601023B0BCAEAB,Glizofar 30mg tablets (Arrow)
+0601023B0BCAFAC,Glizofar 45mg tablets (Arrow)
+0601023B0BD,Glidipion
+0601023B0BDAAAB,Glidipion 30mg tablets
+0601023B0BDABAC,Glidipion 45mg tablets
+0601023B0BDACAA,Glidipion 15mg tablets
+0601023B0BE,Diabiom
+0601023B0BEAAAA,Diabiom 15mg tablets
+0601023B0BEABAB,Diabiom 30mg tablets
+0601023B0BEACAC,Diabiom 45mg tablets
+0601023I0,Guar gum
+0601023I0AA,Guar gum
+0601023I0AAADAD,Guar gum 5g granules sachets sugar free
+0601023I0BC,Guarem
+0601023I0BCAAAD,Guarem 5g granules sachets
+0601023R0,Repaglinide
+0601023R0AA,Repaglinide
+0601023R0AAAAAA,Repaglinide 500microgram tablets
+0601023R0AAABAB,Repaglinide 1mg tablets
+0601023R0AAACAC,Repaglinide 2mg tablets
+0601023R0BB,NovoNorm
+0601023R0BBAAAA,NovoNorm 500microgram tablets
+0601023R0BBABAB,NovoNorm 1mg tablets
+0601023R0BBACAC,NovoNorm 2mg tablets
+0601023R0BC,Prandin
+0601023R0BCAAAA,Prandin 0.5mg tablets
+0601023R0BCABAB,Prandin 1mg tablets
+0601023R0BCACAC,Prandin 2mg tablets
+0601023R0BD,Enyglid
+0601023R0BDAAAA,Enyglid 0.5mg tablets
+0601023R0BDABAB,Enyglid 1mg tablets
+0601023R0BDACAC,Enyglid 2mg tablets
+0601023S0,Rosiglitazone
+0601023S0AA,Rosiglitazone
+0601023S0AAAAAA,Rosiglitazone 4mg tablets
+0601023S0AAABAB,Rosiglitazone 8mg tablets
+0601023S0BB,Avandia
+0601023S0BBAAAA,Avandia 4mg tablets
+0601023S0BBABAB,Avandia 8mg tablets
+0601023U0,Nateglinide
+0601023U0AA,Nateglinide
+0601023U0AAAAAA,Nateglinide 60mg tablets
+0601023U0AAABAB,Nateglinide 120mg tablets
+0601023U0AAACAC,Nateglinide 180mg tablets
+0601023U0BB,Starlix
+0601023U0BBAAAA,Starlix 60mg tablets
+0601023U0BBABAB,Starlix 120mg tablets
+0601023U0BBACAC,Starlix 180mg tablets
+0601023X0,Sitagliptin
+0601023X0AA,Sitagliptin
+0601023X0AAAAAA,Sitagliptin 100mg tablets
+0601023X0AAABAB,Sitagliptin 50mg tablets
+0601023X0AAACAC,Sitagliptin 25mg tablets
+0601023X0AAADAD,Sitagliptin 50mg/5ml oral solution
+0601023X0AAAEAE,Sitagliptin 50mg/5ml oral suspension
+0601023X0BB,Januvia
+0601023X0BBAAAA,Januvia 100mg tablets
+0601023X0BBABAB,Januvia 50mg tablets
+0601023X0BBACAC,Januvia 25mg tablets
+0601023Y0,Exenatide
+0601023Y0AA,Exenatide
+0601023Y0AAAAAA,Exenatide 5micrograms/0.02ml inj 1.2ml pf dispos dev
+0601023Y0AAABAB,Exenatide 10micrograms/0.04ml inj 2.4ml pf dispos dev
+0601023Y0AAACAC,Exenatide 2mg inj vials
+0601023Y0AAADAD,Exenatide 2mg inj pre-filled disposable devices
+0601023Y0AAAEAE,Exenatide 2mg/0.85ml prolonged-release inj pf dispos dev
+0601023Y0BB,Byetta
+0601023Y0BBAAAA,Byetta 5micrograms/0.02ml inj 1.2ml pre-filled pens
+0601023Y0BBABAB,Byetta 10micrograms/0.04ml inj 2.4ml pre-filled pens
+0601023Y0BC,Bydureon
+0601023Y0BCAAAC,Bydureon 2mg inj vials
+0601023Y0BCABAD,Bydureon 2mg inj pre-filled pens
+0601023Y0BCACAE,Bydureon BCise 2mg/0.85ml prolonged-release inj pf pens

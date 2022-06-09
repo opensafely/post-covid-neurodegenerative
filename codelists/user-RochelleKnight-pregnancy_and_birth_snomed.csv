@@ -1,0 +1,192 @@
+code,term
+10231000132102,In-vitro fertilization pregnancy
+102872000,Pregnancy on oral contraceptive
+102875003,Surrogate pregnancy
+102876002,Multigravida
+102955006,Contraception failure
+10562009,Malignant hypertension complicating AND/OR reason for care during childbirth
+106281000119103,Pre-existing diabetes mellitus in mother complicating childbirth
+10742121000119104,Asthma in mother complicating childbirth
+10745291000119103,Malignant neoplastic disease in mother complicating childbirth
+10746341000119109,Acquired immune deficiency syndrome complicating childbirth
+10749871000119100,Malignant neoplastic disease in pregnancy
+10752641000119102,Eclampsia with pre-existing hypertension in childbirth
+10753491000119101,Gestational diabetes mellitus in childbirth
+10754881000119104,Diabetes mellitus in mother complicating childbirth
+10755671000119100,Human immunodeficiency virus in mother complicating childbirth
+10757401000119104,Pre-existing hypertensive heart and chronic kidney disease in mother complicating childbirth
+10757441000119102,Pre-existing hypertensive heart disease in mother complicating childbirth
+10757481000119107,Pre-existing hypertensive heart and chronic kidney disease in mother complicating pregnancy
+10759031000119106,Pre-existing hypertensive heart disease in mother complicating pregnancy
+10759351000119103,Sickle cell anemia in mother complicating childbirth
+10809101000119109,Hypothyroidism in childbirth
+1109951000000101,Pregnancy insufficiently advanced for reliable antenatal screening
+1109971000000105,Pregnancy too advanced for reliable antenatal screening
+1148801000000108,Monochorionic monoamniotic triplet pregnancy
+1148811000000105,Trichorionic triamniotic triplet pregnancy
+1148821000000104,Dichorionic triamniotic triplet pregnancy
+1148841000000106,Dichorionic diamniotic triplet pregnancy
+1149411000000103,Monochorionic diamniotic triplet pregnancy
+1149421000000109,Monochorionic triamniotic triplet pregnancy
+11687002,Gestational diabetes mellitus
+118781000119108,Pre-existing hypertensive chronic kidney disease in mother complicating pregnancy
+12275071000119109,Conjoined twin pregnancy
+127363001,"Number of pregnancies, currently pregnant"
+127365008,Gravida 2
+127366009,Gravida 3
+127367000,Gravida 4
+127368005,Gravida 5
+127369002,Gravida 6
+127370001,Gravida 7
+127371002,Gravida 8
+127372009,Gravida 9
+127373004,Gravida 10
+127374005,Gravida more than 10
+134781000119106,High risk pregnancy due to recurrent miscarriage
+14418008,Precocious pregnancy
+1474004,Hypertensive heart AND renal disease complicating AND/OR reason for care during childbirth
+16356006,Multiple pregnancy
+169470007,Combined oral contraceptive pill failure
+169471006,Progestogen-only pill failure
+169488004,Contraceptive intrauterine device failure - pregnant
+169501005,"Pregnant, diaphragm failure"
+169508004,"Pregnant, sheath failure"
+169524003,Depot contraceptive failure
+169533001,Contraceptive sponge failure
+169539002,Symptothermal contraception failure
+169544009,Postcoital oral contraceptive pill failure
+169545005,Postcoital intrauterine contraceptive device failure
+169548007,Vasectomy failure
+169550004,Female sterilization failure
+169560008,Pregnant - urine test confirms
+169561007,Pregnant - blood test confirms
+169562000,Pregnant - vaginal examination confirms
+169563005,Pregnant - on history
+169564004,Pregnant - on abdominal palpation
+169565003,Pregnant - planned
+169566002,Pregnancy unplanned but wanted
+169567006,Pregnancy unplanned and unwanted
+169568001,Unplanned pregnancy unknown if child is wanted
+171054004,Pregnancy diet education
+171055003,Pregnancy smoking education
+171057006,Pregnancy alcohol education
+17618008,Previous pregnancies 9
+18416000,Essential hypertension complicating AND/OR reason for care during childbirth
+198942000,"Benign essential hypertension complicating pregnancy, childbirth and the puerperium"
+198944004,"Benign essential hypertension complicating pregnancy, childbirth and the puerperium - delivered"
+198945003,"Benign essential hypertension complicating pregnancy, childbirth and the puerperium - delivered with postnatal complication"
+198946002,"Benign essential hypertension complicating pregnancy, childbirth and the puerperium - not delivered"
+198947006,"Benign essential hypertension complicating pregnancy, childbirth and the puerperium with postnatal complication"
+198949009,"Renal hypertension complicating pregnancy, childbirth and the puerperium"
+198951008,"Renal hypertension complicating pregnancy, childbirth and the puerperium - delivered"
+198952001,"Renal hypertension complicating pregnancy, childbirth and the puerperium - delivered with postnatal complication"
+198953006,"Renal hypertension complicating pregnancy, childbirth and the puerperium - not delivered"
+198954000,"Renal hypertension complicating pregnancy, childbirth and the puerperium with postnatal complication"
+199005000,"Pre-existing hypertension complicating pregnancy, childbirth and puerperium"
+199006004,"Pre-existing hypertensive heart disease complicating pregnancy, childbirth and the puerperium"
+199007008,"Pre-existing hypertensive heart and renal disease complicating pregnancy, childbirth and the puerperium"
+199008003,"Pre-existing secondary hypertension complicating pregnancy, childbirth and puerperium"
+199223000,"Diabetes mellitus during pregnancy, childbirth and the puerperium"
+199225007,Diabetes mellitus during pregnancy - baby delivered
+199226008,Diabetes mellitus in the puerperium - baby delivered during current episode of care
+199227004,Diabetes mellitus during pregnancy - baby not yet delivered
+199228009,Diabetes mellitus in the puerperium - baby delivered during previous episode of care
+199306007,Continuing pregnancy after abortion of one fetus or more
+199307003,Continuing pregnancy after intrauterine death of one or more fetuses
+199318003,Twin pregnancy with antenatal problem
+199322008,Triplet pregnancy with antenatal problem
+199326006,Quadruplet pregnancy with antenatal problem
+199378009,Multiple pregnancy with malpresentation
+199380003,Multiple pregnancy with malpresentation - delivered
+199381004,Multiple pregnancy with malpresentation with antenatal problem
+20753005,Hypertensive heart disease complicating AND/OR reason for care during pregnancy
+22966008,Hypertensive heart AND renal disease complicating AND/OR reason for care during pregnancy
+23717007,Benign essential hypertension complicating AND/OR reason for care during pregnancy
+237227006,Congenital heart disease in pregnancy
+237236005,Undiagnosed multiple pregnancy
+237237001,Undiagnosed twin
+237238006,Pregnancy with uncertain dates
+237239003,Low risk pregnancy
+237247003,Continuing pregnancy after abortion of sibling fetus
+237627000,Pregnancy and type 2 diabetes mellitus
+240154002,Idiopathic osteoporosis in pregnancy
+26078007,Hypertension secondary to renal disease complicating AND/OR reason for care during childbirth
+276367008,Wanted pregnancy
+288259000,Born after multiple pregnancy
+29259002,Malignant hypertension complicating AND/OR reason for care during pregnancy
+314204000,Early stage of pregnancy
+31601007,Combined pregnancy
+34694006,Pre-existing hypertension complicating AND/OR reason for care during childbirth
+35381000119101,Quadruplet pregnancy with loss of one or more fetuses
+36801000119105,Continuing triplet pregnancy after spontaneous abortion of one or more fetuses
+37618003,Chronic hypertension complicating AND/OR reason for care during pregnancy
+38720006,Septuplet pregnancy
+40791000119105,Postpartum gestational diabetes mellitus
+40801000119106,Gestational diabetes mellitus complicating pregnancy
+413567003,Aplastic anemia associated with pregnancy
+417570003,Gestational choriocarcinoma
+428165003,Hypothyroidism in pregnancy
+428511009,Multiple pregnancy with one fetal loss
+429187001,Continuing pregnancy after intrauterine death of twin fetus
+439311009,Intends to continue pregnancy
+43990006,Sextuplet pregnancy
+441839001,Education about folic acid in first trimester
+442478007,Multiple pregnancy involving intrauterine pregnancy and tubal pregnancy
+443460007,Multigravida of advanced maternal age
+444661007,High risk pregnancy due to history of preterm labor
+449345000,Smoked before confirmation of pregnancy
+449368009,Stopped smoking during pregnancy
+449369001,Stopped smoking before pregnancy
+45307008,Extrachorial pregnancy
+459166009,Dichorionic diamniotic twin pregnancy
+459167000,Monochorionic twin pregnancy
+459168005,Monochorionic diamniotic twin pregnancy
+459169002,Monochorionic diamniotic twin pregnancy with similar amniotic fluid volumes
+459170001,Monochorionic diamniotic twin pregnancy with dissimilar amniotic fluid volumes
+459171002,Monochorionic monoamniotic twin pregnancy
+46894009,"Gestational diabetes mellitus, class A>2<"
+47200007,High risk pregnancy
+472321009,Continuing pregnancy after intrauterine death of one twin with intrauterine retention of dead twin
+4783006,Maternal diabetes mellitus with hypoglycemia affecting fetus OR newborn
+48552006,Hypertension secondary to renal disease complicating AND/OR reason for care during pregnancy
+526961000000105,Pregnancy advice for patients with epilepsy
+527041000000108,Pregnancy advice for patients with epilepsy not indicated
+527131000000100,Pregnancy advice for patients with epilepsy declined
+58532003,Unwanted pregnancy
+59733002,Hypertensive heart disease complicating AND/OR reason for care during childbirth
+60810003,Quadruplet pregnancy
+609515005,Epithelioid trophoblastic tumor
+609563008,Pre-existing diabetes mellitus in pregnancy
+609564002,Pre-existing type 1 diabetes mellitus in pregnancy
+609566000,Pregnancy and type 1 diabetes mellitus
+609567009,Pre-existing type 2 diabetes mellitus in pregnancy
+64254006,Triplet pregnancy
+65147003,Twin pregnancy
+65402008,Pre-existing hypertension complicating AND/OR reason for care during pregnancy
+65727000,Intrauterine pregnancy
+6867004,Previous pregnancies more than 10
+699240001,Combined intrauterine and ovarian pregnancy
+713575004,Dizygotic twin pregnancy
+713576003,Monozygotic twin pregnancy
+71874008,Benign essential hypertension complicating AND/OR reason for care during childbirth
+721166000,Human immunodeficiency virus complicating pregnancy childbirth and the puerperium
+72301000119103,Asthma in pregnancy
+72892002,Normal pregnancy
+75022004,"Gestational diabetes mellitus, class A>1<"
+76751001,"Diabetes mellitus in mother complicating pregnancy, childbirth AND/OR puerperium"
+77386006,Pregnant
+78808002,Essential hypertension complicating AND/OR reason for care during pregnancy
+80224003,Multiple gestation with one OR more fetal malpresentations
+80856001,Previous pregnancies 8
+80997009,Quintuplet pregnancy
+8218002,Chronic hypertension complicating AND/OR reason for care during childbirth
+82634006,Previous pregnancies 10
+83074005,Unplanned pregnancy
+866641000000105,Pertussis vaccination in pregnancy declined
+88144003,Removal of ectopic interstitial uterine pregnancy requiring total hysterectomy
+890096007,Pregnancy with implant contraceptive
+91923005,Acquired immunodeficiency syndrome virus infection associated with pregnancy
+91948008,Asymptomatic human immunodeficiency virus infection in pregnancy
+9279009,Extra-amniotic pregnancy
+956951000000104,Pertussis vaccination in pregnancy
+956971000000108,Pertussis vaccination in pregnancy given by other healthcare provider

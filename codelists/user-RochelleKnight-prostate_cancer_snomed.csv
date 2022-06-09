@@ -1,0 +1,70 @@
+code,term
+1098981000119101,Recurrent malignant neoplasm of prostate
+126906006,Neoplasm of prostate
+16294321000119104,Atypical small acinar proliferation of prostate
+176106009,Radical cystoprostatourethrectomy
+176261008,Radical prostatectomy without pelvic node excision
+176262001,Radical prostatectomy with pelvic node sampling
+176263006,Radical prostatectomy with pelvic lymphadenectomy
+18430005,Gleason grade score 4 out of 10
+21173002,Benign adenoma of prostate
+236209003,Salvage cystoprostatourethrectomy
+236211007,Salvage cystoprostatectomy
+24514009,Gleason grade score 10 out of 10
+254900004,Carcinoma of prostate
+254901000,Prostatic intraepithelial neoplasia
+255149000,Carcinoma in situ of prostatic ducts
+278060005,Endometrioid carcinoma of prostate
+314969001,Local recurrence of malignant tumor of prostate
+33013007,Gleason grade score 8 out of 10
+369485004,Malignant tumor involving prostate by direct extension from bladder
+369486003,Malignant tumor involving prostate by separate metastasis from bladder
+369770006,Gleason Pattern 1
+369771005,Gleason Pattern 2
+369772003,Gleason Pattern 3
+369773008,Gleason Pattern 4
+369774002,Gleason Pattern 5
+369775001,Gleason Score 2-4: Well differentiated
+369776000,Gleason Score 5-6: Moderately differentiated
+369777009,Gleason Score 8-10: Poorly differentiated
+385377005,Gleason grade finding for prostatic cancer
+385412008,Gleason Score 7-10: Poorly differentiated
+394932008,Gleason prostate grade 5-7 (medium)
+396198006,Small cell carcinoma of prostate
+399068003,Malignant tumor of prostate
+399490008,Adenocarcinoma of prostate
+399590005,Squamous cell carcinoma of prostate
+427492003,Hormone refractory prostate cancer
+428262008,History of malignant neoplasm of prostate
+446710005,Low grade prostatic intraepithelial neoplasia
+446711009,High grade prostatic intraepithelial neoplasia
+448213004,Diffuse non-Hodgkin's lymphoma of prostate
+448217003,Follicular non-Hodgkin's lymphoma of prostate
+449318001,Non-Hodgkin's lymphoma of prostate
+46677009,Gleason grade score 3 out of 10
+47014000,Fibroma of prostate
+49878003,Gleason grade score 2 out of 10
+57403001,Gleason grade score 7 out of 10
+58925000,Gleason grade score 9 out of 10
+712849003,Primary malignant neoplasm of prostate metastatic to bone
+715412008,Familial malignant neoplasm of prostate
+722103009,Hormone sensitive prostate cancer
+74013009,Gleason grade score 5 out of 10
+74411000119100,Prostatic intraepithelial neoplasia and adjacent atypia
+81021006,Myoma of prostate
+81232004,Radical cystoprostatectomy
+81555000,Fibroadenoma of prostate
+822970008,Acinar cell cystadenocarcinoma of prostate
+823017009,Infiltrating duct carcinoma of prostate
+84556003,Gleason grade score 6 out of 10
+860741001,Gleason score X
+860742008,Gleason grade group 1
+860743003,Gleason grade group 2
+860744009,Gleason grade group 3
+860745005,Gleason grade group 4
+860746006,Gleason grade group 5
+92308005,Benign neoplasm of prostate
+92691004,Carcinoma in situ of prostate
+93974005,Primary malignant neoplasm of prostate
+94503003,Secondary malignant neoplasm of prostate
+95014000,Neoplasm of uncertain behavior of prostate

@@ -1,0 +1,188 @@
+type,id,bnf_code,nm
+amp,3280711000001103,0601011A0BBAAAA,NovoRapid 100units/ml solution for injection 10ml vials (Novo Nordisk Ltd)
+amp,3279211000001105,0601011A0BBABAB,NovoRapid Penfill 100units/ml solution for injection 3ml cartridges (Novo Nordisk Ltd)
+amp,3281611000001102,0601011A0BBACAC,NovoRapid Novolet 100units/ml solution for injection (Novo Nordisk Ltd)
+amp,3282211000001106,0601011A0BBADAC,NovoRapid FlexPen 100units/ml solution for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+amp,19570211000001106,0601011A0BBAEAC,NovoRapid FlexTouch 100units/ml solution for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+amp,26209611000001109,0601011A0BBAFAD,NovoRapid PumpCart 100units/ml solution for injection 1.6ml cartridges (Novo Nordisk Ltd)
+amp,34043011000001106,0601011A0BCAAAC,Fiasp FlexTouch 100units/ml solution for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+amp,34043211000001101,0601011A0BCABAB,Fiasp Penfill 100units/ml solution for injection 3ml cartridges (Novo Nordisk Ltd)
+amp,34043411000001102,0601011A0BCACAA,Fiasp 100units/ml solution for injection 10ml vials (Novo Nordisk Ltd)
+amp,3282711000001104,0601011L0BBAAAA,Humalog 100units/ml solution for injection 1.5ml cartridges (Eli Lilly and Company Ltd)
+amp,3280111000001104,0601011L0BBABAB,Humalog 100units/ml solution for injection 10ml vials (Eli Lilly and Company Ltd)
+amp,3284311000001105,0601011L0BBACAC,Humalog 100units/ml solution for injection 3ml cartridges (Eli Lilly and Company Ltd)
+amp,3278511000001102,0601011L0BBAFAF,Humalog Pen 100units/ml solution for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,13877811000001105,0601011L0BBAGAF,Humalog KwikPen 100units/ml solution for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,28926811000001100,0601011L0BBAHAG,Humalog KwikPen 200units/ml solution for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,35216811000001101,0601011L0BBAIAF,Humalog Junior KwikPen 100units/ml solution for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,35776411000001102,0601011L0BCAAAB,Insulin lispro Sanofi 100units/ml solution for injection 10ml vials (Sanofi)
+amp,35776511000001103,0601011L0BCABAC,Insulin lispro Sanofi 100units/ml solution for injection 3ml cartridges (Sanofi)
+amp,35776811000001100,0601011L0BCACAF,Insulin lispro Sanofi 100units/ml solution for injection 3ml pre-filled pens (Sanofi)
+amp,3271311000001101,0601011N0BCAAAA,Hypurin Bovine Neutral 100units/ml solution for injection 10ml vials (Wockhardt UK Ltd)
+amp,3274011000001101,0601011N0BCADAT,Hypurin Bovine Neutral 100units/ml solution for injection 1.5ml cartridges (C P Pharmaceuticals Ltd)
+amp,3285011000001106,0601011N0BCAEAC,Hypurin Porcine Neutral 100units/ml solution for injection 10ml vials (Wockhardt UK Ltd)
+amp,4028811000001105,0601011N0BCAGAY,Hypurin Bovine Neutral 100units/ml solution for injection 3ml cartridges (Wockhardt UK Ltd)
+amp,4034911000001109,0601011N0BCAHAZ,Hypurin Porcine Neutral 100units/ml solution for injection 3ml cartridges (Wockhardt UK Ltd)
+amp,3312111000001108,0601011N0BFAEAL,Actrapid 100units/ml solution for injection 10ml vials (Novo Nordisk Ltd)
+amp,3309511000001105,0601011N0BFAJAD,Human Actrapid Penfill 100units/ml solution for injection 1.5ml cartridges (Novo Nordisk Ltd)
+amp,3310711000001105,0601011N0BFAQAP,Actrapid Penfill 100units/ml solution for injection 3ml cartridges (Novo Nordisk Ltd)
+amp,3312611000001100,0601011N0BHAAAL,Humulin S 100units/ml solution for injection 10ml vials (Eli Lilly and Company Ltd)
+amp,3311311000001101,0601011N0BHADAP,Humulin S 100units/ml solution for injection 3ml cartridges (Eli Lilly and Company Ltd)
+amp,3311611000001106,0601011N0BKABAP,Insuman Rapid 100units/ml solution for injection 3ml cartridges (Sanofi)
+amp,3291711000001105,0601011N0BKACAM,Insuman Rapid 100units/ml solution for injection 3ml pre-filled OptiSet pens (Sanofi)
+amp,9528811000001107,0601011P0BBAAAA,Apidra 100units/ml solution for injection 10ml vials (Sanofi)
+amp,9528311000001103,0601011P0BBABAB,Apidra 100units/ml solution for injection 3ml cartridges (Sanofi)
+amp,10093311000001103,0601011P0BBACAC,Apidra 100units/ml solution for injection 3ml pre-filled OptiSet pens (Sanofi)
+amp,10898411000001103,0601011P0BBADAB,Apidra 100units/ml solution for injection 3ml OptiClik cartridges (Sanofi)
+amp,12144611000001100,0601011P0BBAEAC,Apidra 100units/ml solution for injection 3ml pre-filled SoloStar pens (Sanofi)
+amp,28044911000001109,0601011R0AAABAB,Insulin human 500units/ml solution for injection 20ml vials (Special Order)
+amp,15871011000001104,0601011R0AAADAD,Insulin human 100units/ml solution for injection 10ml vials (Special Order)
+amp,13850511000001105,0601011R0BBAAAD,Humulin R 100units/ml solution for injection 10ml vials (Imported (United States))
+amp,15603111000001104,0601011R0BBABAB,Humulin R 500units/ml solution for injection 20ml vials (Imported (United States))
+amp,18030311000001100,0601011R0BCAAAD,Insuman Infusat 100units/ml solution for injection 10ml vials (Sanofi)
+amp,18046311000001103,0601011R0BDAAAC,Insuman Infusat 100units/ml solution for injection 3.15ml cartridges (Sanofi)
+amp,35214311000001104,0601011R0BEAAAE,Humulin R KwikPen 500units/ml solution for injection 3ml pre-filled pens (Imported (United States))
+amp,36620611000001107,0601012ABBBAAAA,Suliqua 100units/ml / 33micrograms/ml solution for injection 3ml pre-filled SoloStar pens (Sanofi)
+amp,36618311000001109,0601012ABBBABAB,Suliqua 100units/ml / 50micrograms/ml solution for injection 3ml pre-filled SoloStar pens (Sanofi)
+amp,3274811000001107,0601012D0BBACAG,Humulin M3 100units/ml suspension for injection 10ml vials (Eli Lilly and Company Ltd)
+amp,3271011000001104,0601012D0BBAIA4,Humulin M5 100units/ml suspension for injection 10ml vials (Eli Lilly and Company Ltd)
+amp,3273611000001105,0601012D0BBASBA,Humulin M3 100units/ml suspension for injection 3ml cartridges (Eli Lilly and Company Ltd)
+amp,9437511000001101,0601012D0BBAUBZ,Humulin M3 Pen 100units/ml suspension for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,17609511000001109,0601012D0BBAVBZ,Humulin M3 KwikPen 100units/ml suspension for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,3275311000001104,0601012D0BCALAJ,Human Mixtard 30 Penfill 100units/ml suspension for injection 1.5ml cartridges (Novo Nordisk Ltd)
+amp,3268711000001103,0601012D0BCAMBJ,Human Mixtard 10 Penfill 100units/ml suspension for injection 1.5ml cartridges (Novo Nordisk Ltd)
+amp,3267811000001107,0601012D0BCANBE,Human Mixtard 20 Penfill 100units/ml suspension for injection 1.5ml cartridges (Novo Nordisk Ltd)
+amp,3275011000001102,0601012D0BCAWAG,Mixtard 30 100units/ml suspension for injection 10ml vials (Novo Nordisk Ltd)
+amp,3270611000001101,0601012D0BCAXA4,Human Mixtard 50 100units/ml suspension for injection 10ml vials (Novo Nordisk Ltd)
+amp,3273111000001102,0601012D0BCBABA,Mixtard 30 Penfill 100units/ml suspension for injection 3ml cartridges (Novo Nordisk Ltd)
+amp,3281211000001104,0601012D0BCBBBK,Mixtard 40 Penfill 100units/ml suspension for injection 3ml cartridges (Novo Nordisk Ltd)
+amp,3266811000001105,0601012D0BEAGAI,Hypurin Porcine 30/70 Mix 100units/ml suspension for injection 10ml vials (Wockhardt UK Ltd)
+amp,3277711000001106,0601012D0BEAHBD,Hypurin Porcine 30/70 Mix 100units/ml suspension for injection 1.5ml cartridges (C P Pharmaceuticals Ltd)
+amp,4029411000001100,0601012D0BEAIBY,Hypurin Porcine 30/70 Mix 100units/ml suspension for injection 3ml cartridges (Wockhardt UK Ltd)
+amp,3263011000001107,0601012D0BGAABM,Insuman Comb 25 100units/ml suspension for injection 5ml vials (Sanofi)
+amp,3264111000001105,0601012D0BGABBN,Insuman Comb 25 100units/ml suspension for injection 3ml cartridges (Sanofi)
+amp,3273911000001104,0601012D0BGADBS,Insuman Comb 15 100units/ml suspension for injection 3ml cartridges (Sanofi)
+amp,3274511000001109,0601012D0BGAEBT,Insuman Comb 50 100units/ml suspension for injection 5ml vials (Aventis Pharma)
+amp,3272411000001103,0601012D0BGAFBU,Insuman Comb 50 100units/ml suspension for injection 3ml cartridges (Sanofi)
+amp,3270211000001103,0601012D0BGAGBV,Insuman Comb 15 100units/ml suspension for injection 3ml pre-filled OptiSet pens (Sanofi)
+amp,3259811000001109,0601012D0BGAHBW,Insuman Comb 25 100units/ml suspension for injection 3ml pre-filled OptiSet pens (Sanofi)
+amp,3278611000001103,0601012D0BGAIBX,Insuman Comb 50 100units/ml suspension for injection 3ml pre-filled OptiSet pens (Sanofi)
+amp,18150311000001109,0601012D0BGAJBW,Insuman Comb 25 100units/ml suspension for injection 3ml pre-filled SoloStar pens (Sanofi)
+amp,3276011000001106,0601012F0BBAAAA,Humalog Mix25 Pen 100units/ml suspension for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,3275711000001100,0601012F0BBABAB,Humalog Mix25 100units/ml suspension for injection 3ml cartridges (Eli Lilly and Company Ltd)
+amp,3276911000001105,0601012F0BBACAC,Humalog Mix50 Pen 100units/ml suspension for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,10344911000001108,0601012F0BBADAD,Humalog Mix50 100units/ml suspension for injection 3ml cartridges (Eli Lilly and Company Ltd)
+amp,13884711000001104,0601012F0BBAEAA,Humalog Mix25 KwikPen 100units/ml suspension for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,13884911000001102,0601012F0BBAFAC,Humalog Mix50 KwikPen 100units/ml suspension for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,16530311000001107,0601012F0BBAGAE,Humalog Mix25 100units/ml suspension for injection 10ml vials (Eli Lilly and Company Ltd)
+amp,3280611000001107,0601012G0BCAAAH,Hypurin Bovine Lente 100units/ml suspension for injection 10ml vials (Wockhardt UK Ltd)
+amp,3284111000001108,0601012G0BDABAH,Monotard 100units/ml suspension for injection 10ml vials (Novo Nordisk Ltd)
+amp,3282311000001103,0601012N0BBAAAC,Ultratard 100units/ml suspension for injection 10ml vials (Novo Nordisk Ltd)
+amp,3280011000001100,0601012S0BCAAAD,Hypurin Bovine Isophane 100units/ml suspension for injection 10ml vials (Wockhardt UK Ltd)
+amp,3279311000001102,0601012S0BCADAN,Hypurin Bovine Isophane 100units/ml suspension for injection 1.5ml cartridges (C P Pharmaceuticals Ltd)
+amp,3284011000001107,0601012S0BCAEAB,Hypurin Porcine Isophane 100units/ml suspension for injection 10ml vials (Wockhardt UK Ltd)
+amp,4028311000001101,0601012S0BCAGAS,Hypurin Bovine Isophane 100units/ml suspension for injection 3ml cartridges (Wockhardt UK Ltd)
+amp,4034311000001108,0601012S0BCAHAT,Hypurin Porcine Isophane 100units/ml suspension for injection 3ml cartridges (Wockhardt UK Ltd)
+amp,3256111000001105,0601012S0BDAJAE,Insulatard 100units/ml suspension for injection 10ml vials (Novo Nordisk Ltd)
+amp,3259411000001107,0601012S0BDAKAM,Human Insulatard Penfill 100units/ml suspension for injection 1.5ml cartridges (Novo Nordisk Ltd)
+amp,3263711000001109,0601012S0BDALAL,Insulatard Penfill 100units/ml suspension for injection 3ml cartridges (Novo Nordisk Ltd)
+amp,3261411000001102,0601012S0BDAMAI,Insulatard InnoLet 100units/ml suspension for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+amp,3262011000001103,0601012S0BDANAI,Insulatard FlexPen 100units/ml suspension for injection (Novo Nordisk Ltd)
+amp,3255911000001101,0601012S0BGAAAE,Humulin I 100units/ml suspension for injection 10ml vials (Eli Lilly and Company Ltd)
+amp,3264211000001104,0601012S0BGADAL,Humulin I 100units/ml suspension for injection 3ml cartridges (Eli Lilly and Company Ltd)
+amp,3260811000001108,0601012S0BGAEAI,Humulin I Pen 100units/ml suspension for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,17608511000001103,0601012S0BGAFAI,Humulin I KwikPen 100units/ml suspension for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,3258411000001104,0601012S0BIAAAQ,Insuman Basal 100units/ml suspension for injection 5ml vials (Sanofi)
+amp,3265011000001108,0601012S0BIABAL,Insuman Basal 100units/ml suspension for injection 3ml cartridges (Sanofi)
+amp,3260611000001109,0601012S0BIACAI,Insuman Basal 100units/ml suspension for injection 3ml pre-filled OptiSet pens (Sanofi)
+amp,19354411000001104,0601012S0BIADAI,Insuman Basal 100units/ml suspension for injection 3ml pre-filled SoloStar pens (Sanofi)
+amp,3269911000001109,0601012U0BBAAAA,Hypurin Bovine Protamine Zinc 100units/ml suspension for injection 10ml vials (Wockhardt UK Ltd)
+amp,3284211000001102,0601012V0BBAAAA,Lantus 100units/ml solution for injection 3ml cartridges (Sanofi)
+amp,3287911000001100,0601012V0BBABAB,Lantus 100units/ml solution for injection 10ml vials (Sanofi)
+amp,3283211000001100,0601012V0BBACAD,Lantus 100units/ml solution for injection 3ml pre-filled OptiSet pens (Sanofi)
+amp,10250211000001101,0601012V0BBADAA,Lantus 100units/ml solution for injection 3ml OptiClik cartridges (Sanofi)
+amp,11933011000001106,0601012V0BBAEAD,Lantus 100units/ml solution for injection 3ml pre-filled SoloStar pens (Sanofi)
+amp,29866811000001104,0601012V0BCAAAE,Toujeo 300units/ml solution for injection 1.5ml pre-filled SoloStar pens (Sanofi)
+amp,36911311000001101,0601012V0BCABAF,Toujeo 300units/ml solution for injection 3ml pre-filled DoubleStar pens (Sanofi)
+amp,30172211000001102,0601012V0BDABAA,Abasaglar 100units/ml solution for injection 3ml cartridges (Eli Lilly and Company Ltd)
+amp,30171811000001105,0601012V0BDACAD,Abasaglar KwikPen 100units/ml solution for injection 3ml pre-filled pens (Eli Lilly and Company Ltd)
+amp,36082811000001107,0601012V0BEAAAD,Semglee 100units/ml solution for injection 3ml pre-filled pens (Mylan)
+amp,3277811000001103,0601012W0BBAAAA,NovoMix 30 Penfill 100units/ml suspension for injection 3ml cartridges (Novo Nordisk Ltd)
+amp,3277211000001104,0601012W0BBABAB,NovoMix 30 FlexPen 100units/ml suspension for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+amp,7589911000001108,0601012X0BBAAAA,Levemir Penfill 100units/ml solution for injection 3ml cartridges (Novo Nordisk Ltd)
+amp,7589411000001100,0601012X0BBABAB,Levemir FlexPen 100units/ml solution for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+amp,11148111000001101,0601012X0BBACAB,Levemir InnoLet 100units/ml solution for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+amp,21928511000001109,0601012Z0BBAAAA,Tresiba Penfill 100units/ml solution for injection 3ml cartridges (Novo Nordisk Ltd)
+amp,21930011000001100,0601012Z0BBABAB,Tresiba FlexTouch 100units/ml solution for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+amp,21931911000001108,0601012Z0BBACAC,Tresiba FlexTouch 200units/ml solution for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+vmp,36047011000001105,0601011A0AAAAAA,Insulin aspart 100units/ml solution for injection 10ml vials
+vmp,3468611000001108,0601011A0AAABAB,Insulin aspart 100units/ml solution for injection 3ml cartridges
+vmp,3468711000001104,0601011A0AAACAC,Insulin aspart 100units/ml solution for injection 3ml pre-filled disposable devices
+vmp,26655811000001102,0601011A0AAADAD,Insulin aspart 100units/ml solution for injection 1.6ml cartridges
+vmp,36047511000001102,0601011L0AAAAAA,Insulin lispro 100units/ml solution for injection 1.5ml cartridges
+vmp,36047611000001103,0601011L0AAABAB,Insulin lispro 100units/ml solution for injection 10ml vials
+vmp,36047711000001107,0601011L0AAACAC,Insulin lispro 100units/ml solution for injection 3ml cartridges
+vmp,36047811000001104,0601011L0AAAFAF,Insulin lispro 100units/ml solution for injection 3ml pre-filled disposable devices
+vmp,28989711000001106,0601011L0AAAGAG,Insulin lispro 200units/ml solution for injection 3ml pre-filled disposable devices
+vmp,36048111000001107,0601011N0AAAAAA,Insulin soluble bovine 100units/ml solution for injection 10ml vials
+vmp,36048711000001108,0601011N0AAACAC,Insulin soluble porcine 100units/ml solution for injection 10ml vials
+vmp,36048211000001101,0601011N0AAADAD,Insulin soluble human 100units/ml solution for injection 1.5ml cartridges
+vmp,36048311000001109,0601011N0AAALAL,Insulin soluble human 100units/ml solution for injection 10ml vials
+vmp,36048511000001103,0601011N0AAAMAM,Insulin soluble human 100units/ml solution for injection 3ml pre-filled disposable devices
+vmp,36048411000001102,0601011N0AAAPAP,Insulin soluble human 100units/ml solution for injection 3ml cartridges
+vmp,4033311000001106,0601011N0AAAYAY,Insulin soluble bovine 100units/ml solution for injection 3ml cartridges
+vmp,4053711000001109,0601011N0AAAZAZ,Insulin soluble porcine 100units/ml solution for injection 3ml cartridges
+vmp,36047211000001100,0601011P0AAAAAA,Insulin glulisine 100units/ml solution for injection 10ml vials
+vmp,9532111000001100,0601011P0AAABAB,Insulin glulisine 100units/ml solution for injection 3ml cartridges
+vmp,10097211000001102,0601011P0AAACAC,Insulin glulisine 100units/ml solution for injection 3ml pre-filled disposable devices
+vmp,15611411000001108,0601011R0AAABAB,Insulin human 500units/ml solution for injection 20ml vials
+vmp,18083911000001104,0601011R0AAACAC,Insulin human 100units/ml solution for injection 3.15ml cartridges
+vmp,13859411000001101,0601011R0AAADAD,Insulin human 100units/ml solution for injection 10ml vials
+vmp,35215111000001102,0601011R0AAAEAE,Insulin human 500units/ml solution for injection 3ml pre-filled disposable devices
+vmp,36630511000001105,0601012ABAAAAAA,Insulin glargine 100units/ml / Lixisenatide 33micrograms/ml solution for injection 3ml pre-filled disposable devices
+vmp,36630611000001109,0601012ABAAABAB,Insulin glargine 100units/ml / Lixisenatide 50micrograms/ml solution for injection 3ml pre-filled disposable devices
+vmp,3470711000001106,0601012D0AAAGAG,Insulin isophane biphasic human 30/70 100units/ml suspension for injection 10ml vials
+vmp,3472011000001108,0601012D0AAAIAI,Insulin isophane biphasic porcine 30/70 100units/ml suspension for injection 10ml vials
+vmp,3470511000001101,0601012D0AAAJAJ,Insulin isophane biphasic human 30/70 100units/ml suspension for injection 1.5ml cartridges
+vmp,3470011000001109,0601012D0AAAZAZ,Insulin isophane biphasic human 20/80 100units/ml suspension for injection 3ml cartridges
+vmp,3470911000001108,0601012D0AABABA,Insulin isophane biphasic human 30/70 100units/ml suspension for injection 3ml cartridges
+vmp,3469911000001105,0601012D0AABEBE,Insulin isophane biphasic human 20/80 100units/ml suspension for injection 1.5ml cartridges
+vmp,3469411000001102,0601012D0AABIBI,Insulin isophane biphasic human 10/90 100units/ml suspension for injection 3ml cartridges
+vmp,3469311000001109,0601012D0AABJBJ,Insulin isophane biphasic human 10/90 100units/ml suspension for injection 1.5ml cartridges
+vmp,3470411000001100,0601012D0AABMBM,Insulin isophane biphasic human 25/75 100units/ml suspension for injection 5ml vials
+vmp,3470211000001104,0601012D0AABNBN,Insulin isophane biphasic human 25/75 100units/ml suspension for injection 3ml cartridges
+vmp,3469611000001104,0601012D0AABSBS,Insulin isophane biphasic human 15/85 100units/ml suspension for injection 3ml cartridges
+vmp,3471611000001107,0601012D0AABUBU,Insulin isophane biphasic human 50/50 100units/ml suspension for injection 3ml cartridges
+vmp,3470311000001107,0601012D0AABWBW,Insulin isophane biphasic human 25/75 100units/ml suspension for injection 3ml pre-filled disposable devices
+vmp,4033111000001109,0601012D0AABYBY,Insulin isophane biphasic porcine 30/70 100units/ml suspension for injection 3ml cartridges
+vmp,3471011000001100,0601012D0AABZBZ,Insulin isophane biphasic human 30/70 100units/ml suspension for injection 3ml pre-filled disposable devices
+vmp,3473511000001107,0601012F0AAAAAA,Insulin lispro biphasic 25/75 100units/ml suspension for injection 3ml pre-filled disposable devices
+vmp,3473711000001102,0601012F0AAABAB,Insulin lispro biphasic 25/75 100units/ml suspension for injection 3ml cartridges
+vmp,3473611000001106,0601012F0AAACAC,Insulin lispro biphasic 50/50 100units/ml suspension for injection 3ml pre-filled disposable devices
+vmp,10352711000001104,0601012F0AAADAD,Insulin lispro biphasic 50/50 100units/ml suspension for injection 3ml cartridges
+vmp,16548811000001104,0601012F0AAAEAE,Insulin lispro biphasic 25/75 100units/ml suspension for injection 10ml vials
+vmp,3474911000001103,0601012G0AAAHAH,Insulin zinc mixed bovine 100units/ml suspension for injection 10ml vials
+vmp,36048911000001105,0601012G0AAAHAH,Insulin zinc mixed human 100units/ml suspension for injection 10ml vials
+vmp,36048811000001100,0601012N0AAACAC,Insulin zinc crystalline human 100units/ml suspension for injection 10ml vials
+vmp,3473011000001104,0601012S0AAABAB,Insulin isophane porcine 100units/ml suspension for injection 10ml vials
+vmp,3472311000001106,0601012S0AAADAD,Insulin isophane bovine 100units/ml suspension for injection 10ml vials
+vmp,3472511000001100,0601012S0AAAEAE,Insulin isophane human 100units/ml suspension for injection 10ml vials
+vmp,36047411000001101,0601012S0AAAIAI,Insulin isophane human 100units/ml suspension for injection 3ml pre-filled disposable devices
+vmp,36047311000001108,0601012S0AAALAL,Insulin isophane human 100units/ml suspension for injection 3ml cartridges
+vmp,3472411000001104,0601012S0AAAMAM,Insulin isophane human 100units/ml suspension for injection 1.5ml cartridges
+vmp,3472811000001102,0601012S0AAAQAQ,Insulin isophane human 100units/ml suspension for injection 5ml vials
+vmp,4033211000001103,0601012S0AAASAS,Insulin isophane bovine 100units/ml suspension for injection 3ml cartridges
+vmp,4053611000001100,0601012S0AAATAT,Insulin isophane porcine 100units/ml suspension for injection 3ml cartridges
+vmp,36047911000001109,0601012U0AAAAAA,Insulin protamine zinc bovine 100units/ml suspension for injection 10ml vials
+vmp,400780006,0601012V0AAAAAA,Insulin glargine 100units/ml solution for injection 3ml cartridges
+vmp,36047111000001106,0601012V0AAABAB,Insulin glargine 100units/ml solution for injection 10ml vials
+vmp,400877001,0601012V0AAADAD,Insulin glargine 100units/ml solution for injection 3ml pre-filled disposable devices
+vmp,29903611000001103,0601012V0AAAEAE,Insulin glargine 300units/ml solution for injection 1.5ml pre-filled disposable devices
+vmp,36931811000001104,0601012V0AAAFAF,Insulin glargine 300units/ml solution for injection 3ml pre-filled disposable devices
+vmp,3468811000001107,0601012W0AAAAAA,Insulin aspart biphasic 30/70 100units/ml suspension for injection 3ml cartridges
+vmp,3468911000001102,0601012W0AAABAB,Insulin aspart biphasic 30/70 100units/ml suspension for injection 3ml pre-filled disposable devices
+vmp,7597611000001106,0601012X0AAAAAA,Insulin detemir 100units/ml solution for injection 3ml cartridges
+vmp,7594211000001102,0601012X0AAABAB,Insulin detemir 100units/ml solution for injection 3ml pre-filled disposable devices
+vmp,21939511000001100,0601012Z0AAAAAA,Insulin degludec 100units/ml solution for injection 3ml cartridges
+vmp,21939611000001101,0601012Z0AAABAB,Insulin degludec 100units/ml solution for injection 3ml pre-filled disposable devices
+vmp,21939711000001105,0601012Z0AAACAC,Insulin degludec 200units/ml solution for injection 3ml pre-filled disposable devices

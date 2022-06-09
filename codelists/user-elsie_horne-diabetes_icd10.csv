@@ -1,0 +1,16 @@
+code,term
+E10,Type 1 diabetes mellitus
+E11,Type 2 diabetes mellitus
+E12,Malnutrition-related diabetes mellitus
+E13,Other specified diabetes mellitus
+E14,Unspecified diabetes mellitus
+G590,Diabetic mononeuropathy E10-E14 with common fourth character .4
+G632,Diabetic polyneuropathy E10-E14 with common fourth character .4
+H280,Diabetic cataract E10-E14 with common fourth character .3
+H360,Diabetic retinopathy E10-E14 with common fourth character .3
+M142,Diabetic arthropathy E10-E14 with common fourth character .6
+N083,Glomerular disorders in diabetes mellitus E10-E14 with common fourth character .2
+O240,"Diabetes mellitus in pregnancy: Pre-existing diabetes mellitus, insulin-dependent"
+O241,"Diabetes mellitus in pregnancy: Pre-existing diabetes mellitus, non-insulin-dependent"
+O242,Diabetes mellitus in pregnancy: Pre-existing malnutrition-related diabetes mellitus
+O243,"Diabetes mellitus in pregnancy: Pre-existing diabetes mellitus, unspecified"

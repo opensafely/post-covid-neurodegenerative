@@ -1,0 +1,468 @@
+code,term
+F00,Dementia in Alzheimer disease G30.-
+F000,Dementia in Alzheimer disease with early onset G30.0
+F001,Dementia in Alzheimer disease with late onset G30.1
+F002,"Dementia in Alzheimer disease, atypical or mixed type G30.8"
+F009,"Dementia in Alzheimer disease, unspecified G30.9"
+F01,Vascular dementia
+F010,Vascular dementia of acute onset
+F011,Multi-infarct dementia
+F012,Subcortical vascular dementia
+F013,Mixed cortical and subcortical vascular dementia
+F018,Other vascular dementia
+F019,"Vascular dementia, unspecified"
+F02,Dementia in other diseases classified elsewhere
+F020,Dementia in Pick disease G31.0
+F021,Dementia in Creutzfeldt-Jakob disease A81.0
+F022,Dementia in Huntington disease G10
+F023,Dementia in Parkinson disease G20
+F024,Dementia in human immunodeficiency virus [HIV] disease B22.0
+F028,Dementia in other specified diseases classified elsewhere
+F03,Unspecified dementia
+F04,"Organic amnesic syndrome, not induced by alcohol and other psychoactive substances"
+F05,"Delirium, not induced by alcohol and other psychoactive substances"
+F050,"Delirium not superimposed on dementia, so described"
+F051,Delirium superimposed on dementia
+F058,Other delirium
+F059,"Delirium, unspecified"
+F06,Other mental disorders due to brain damage and dysfunction and to physical disease
+F060,Organic hallucinosis
+F061,Organic catatonic disorder
+F062,Organic delusional [schizophrenia-like] disorder
+F063,Organic mood [affective] disorders
+F064,Organic anxiety disorder
+F065,Organic dissociative disorder
+F066,Organic emotionally labile [asthenic] disorder
+F067,Mild cognitive disorder
+F068,Other specified mental disorders due to brain damage and dysfunction and to physical disease
+F069,Unspecified mental disorder due to brain damage and dysfunction and to physical disease
+F07,"Personality and behavioural disorders due to brain disease, damage and dysfunction"
+F070,Organic personality disorder
+F071,Postencephalitic syndrome
+F072,Postconcussional syndrome
+F078,"Other organic personality and behavioural disorders due to brain disease, damage and dysfunction"
+F079,"Unspecified organic personality and behavioural disorder due to brain disease, damage and dysfunction"
+F09,Unspecified organic or symptomatic mental disorder
+F10,Mental and behavioural disorders due to use of alcohol
+F100,Mental and behavioural disorders due to use of alcohol : Acute intoxication
+F101,Mental and behavioural disorders due to use of alcohol : Harmful use
+F102,Mental and behavioural disorders due to use of alcohol : Dependence syndrome
+F103,Mental and behavioural disorders due to use of alcohol : Withdrawal state
+F104,Mental and behavioural disorders due to use of alcohol : Withdrawal state with delirium
+F105,Mental and behavioural disorders due to use of alcohol : Psychotic disorder
+F106,Mental and behavioural disorders due to use of alcohol : Amnesic syndrome
+F107,Mental and behavioural disorders due to use of alcohol : Residual and late-onset psychotic disorder
+F108,Mental and behavioural disorders due to use of alcohol : Other mental and behavioural disorders
+F109,Mental and behavioural disorders due to use of alcohol : Unspecified mental and behavioural disorder
+F11,Mental and behavioural disorders due to use of opioids
+F110,Mental and behavioural disorders due to use of opioids : Acute intoxication
+F111,Mental and behavioural disorders due to use of opioids : Harmful use
+F112,Mental and behavioural disorders due to use of opioids : Dependence syndrome
+F113,Mental and behavioural disorders due to use of opioids : Withdrawal state
+F114,Mental and behavioural disorders due to use of opioids : Withdrawal state with delirium
+F115,Mental and behavioural disorders due to use of opioids : Psychotic disorder
+F116,Mental and behavioural disorders due to use of opioids : Amnesic syndrome
+F117,Mental and behavioural disorders due to use of opioids : Residual and late-onset psychotic disorder
+F118,Mental and behavioural disorders due to use of opioids : Other mental and behavioural disorders
+F119,Mental and behavioural disorders due to use of opioids : Unspecified mental and behavioural disorder
+F12,Mental and behavioural disorders due to use of cannabinoids
+F120,Mental and behavioural disorders due to use of cannabinoids : Acute intoxication
+F121,Mental and behavioural disorders due to use of cannabinoids : Harmful use
+F122,Mental and behavioural disorders due to use of cannabinoids : Dependence syndrome
+F123,Mental and behavioural disorders due to use of cannabinoids : Withdrawal state
+F124,Mental and behavioural disorders due to use of cannabinoids : Withdrawal state with delirium
+F125,Mental and behavioural disorders due to use of cannabinoids : Psychotic disorder
+F126,Mental and behavioural disorders due to use of cannabinoids : Amnesic syndrome
+F127,Mental and behavioural disorders due to use of cannabinoids : Residual and late-onset psychotic disorder
+F128,Mental and behavioural disorders due to use of cannabinoids : Other mental and behavioural disorders
+F129,Mental and behavioural disorders due to use of cannabinoids : Unspecified mental and behavioural disorder
+F13,Mental and behavioural disorders due to use of sedatives or hypnotics
+F130,Mental and behavioural disorders due to use of sedatives or hypnotics : Acute intoxication
+F131,Mental and behavioural disorders due to use of sedatives or hypnotics : Harmful use
+F132,Mental and behavioural disorders due to use of sedatives or hypnotics : Dependence syndrome
+F133,Mental and behavioural disorders due to use of sedatives or hypnotics : Withdrawal state
+F134,Mental and behavioural disorders due to use of sedatives or hypnotics : Withdrawal state with delirium
+F135,Mental and behavioural disorders due to use of sedatives or hypnotics : Psychotic disorder
+F136,Mental and behavioural disorders due to use of sedatives or hypnotics : Amnesic syndrome
+F137,Mental and behavioural disorders due to use of sedatives or hypnotics : Residual and late-onset psychotic disorder
+F138,Mental and behavioural disorders due to use of sedatives or hypnotics : Other mental and behavioural disorders
+F139,Mental and behavioural disorders due to use of sedatives or hypnotics : Unspecified mental and behavioural disorder
+F14,Mental and behavioural disorders due to use of cocaine
+F140,Mental and behavioural disorders due to use of cocaine : Acute intoxication
+F141,Mental and behavioural disorders due to use of cocaine : Harmful use
+F142,Mental and behavioural disorders due to use of cocaine : Dependence syndrome
+F143,Mental and behavioural disorders due to use of cocaine : Withdrawal state
+F144,Mental and behavioural disorders due to use of cocaine : Withdrawal state with delirium
+F145,Mental and behavioural disorders due to use of cocaine : Psychotic disorder
+F146,Mental and behavioural disorders due to use of cocaine : Amnesic syndrome
+F147,Mental and behavioural disorders due to use of cocaine : Residual and late-onset psychotic disorder
+F148,Mental and behavioural disorders due to use of cocaine : Other mental and behavioural disorders
+F149,Mental and behavioural disorders due to use of cocaine : Unspecified mental and behavioural disorder
+F15,"Mental and behavioural disorders due to use of other stimulants, including caffeine"
+F150,"Mental and behavioural disorders due to use of other stimulants, including caffeine : Acute intoxication"
+F151,"Mental and behavioural disorders due to use of other stimulants, including caffeine : Harmful use"
+F152,"Mental and behavioural disorders due to use of other stimulants, including caffeine : Dependence syndrome"
+F153,"Mental and behavioural disorders due to use of other stimulants, including caffeine : Withdrawal state"
+F154,"Mental and behavioural disorders due to use of other stimulants, including caffeine : Withdrawal state with delirium"
+F155,"Mental and behavioural disorders due to use of other stimulants, including caffeine : Psychotic disorder"
+F156,"Mental and behavioural disorders due to use of other stimulants, including caffeine : Amnesic syndrome"
+F157,"Mental and behavioural disorders due to use of other stimulants, including caffeine : Residual and late-onset psychotic disorder"
+F158,"Mental and behavioural disorders due to use of other stimulants, including caffeine : Other mental and behavioural disorders"
+F159,"Mental and behavioural disorders due to use of other stimulants, including caffeine : Unspecified mental and behavioural disorder"
+F16,Mental and behavioural disorders due to use of hallucinogens
+F160,Mental and behavioural disorders due to use of hallucinogens : Acute intoxication
+F161,Mental and behavioural disorders due to use of hallucinogens : Harmful use
+F162,Mental and behavioural disorders due to use of hallucinogens : Dependence syndrome
+F163,Mental and behavioural disorders due to use of hallucinogens : Withdrawal state
+F164,Mental and behavioural disorders due to use of hallucinogens : Withdrawal state with delirium
+F165,Mental and behavioural disorders due to use of hallucinogens : Psychotic disorder
+F166,Mental and behavioural disorders due to use of hallucinogens : Amnesic syndrome
+F167,Mental and behavioural disorders due to use of hallucinogens : Residual and late-onset psychotic disorder
+F168,Mental and behavioural disorders due to use of hallucinogens : Other mental and behavioural disorders
+F169,Mental and behavioural disorders due to use of hallucinogens : Unspecified mental and behavioural disorder
+F17,Mental and behavioural disorders due to use of tobacco
+F170,Mental and behavioural disorders due to use of tobacco : Acute intoxication
+F171,Mental and behavioural disorders due to use of tobacco : Harmful use
+F172,Mental and behavioural disorders due to use of tobacco : Dependence syndrome
+F173,Mental and behavioural disorders due to use of tobacco : Withdrawal state
+F174,Mental and behavioural disorders due to use of tobacco : Withdrawal state with delirium
+F175,Mental and behavioural disorders due to use of tobacco : Psychotic disorder
+F176,Mental and behavioural disorders due to use of tobacco : Amnesic syndrome
+F177,Mental and behavioural disorders due to use of tobacco : Residual and late-onset psychotic disorder
+F178,Mental and behavioural disorders due to use of tobacco : Other mental and behavioural disorders
+F179,Mental and behavioural disorders due to use of tobacco : Unspecified mental and behavioural disorder
+F18,Mental and behavioural disorders due to use of volatile solvents
+F180,Mental and behavioural disorders due to use of volatile solvents : Acute intoxication
+F181,Mental and behavioural disorders due to use of volatile solvents : Harmful use
+F182,Mental and behavioural disorders due to use of volatile solvents : Dependence syndrome
+F183,Mental and behavioural disorders due to use of volatile solvents : Withdrawal state
+F184,Mental and behavioural disorders due to use of volatile solvents : Withdrawal state with delirium
+F185,Mental and behavioural disorders due to use of volatile solvents : Psychotic disorder
+F186,Mental and behavioural disorders due to use of volatile solvents : Amnesic syndrome
+F187,Mental and behavioural disorders due to use of volatile solvents : Residual and late-onset psychotic disorder
+F188,Mental and behavioural disorders due to use of volatile solvents : Other mental and behavioural disorders
+F189,Mental and behavioural disorders due to use of volatile solvents : Unspecified mental and behavioural disorder
+F19,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances
+F190,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances : Acute intoxication
+F191,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances : Harmful use
+F192,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances : Dependence syndrome
+F193,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances : Withdrawal state
+F194,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances : Withdrawal state with delirium
+F195,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances : Psychotic disorder
+F196,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances : Amnesic syndrome
+F197,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances : Residual and late-onset psychotic disorder
+F198,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances : Other mental and behavioural disorders
+F199,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances : Unspecified mental and behavioural disorder
+F20,Schizophrenia
+F200,Paranoid schizophrenia
+F201,Hebephrenic schizophrenia
+F202,Catatonic schizophrenia
+F203,Undifferentiated schizophrenia
+F204,Post-schizophrenic depression
+F205,Residual schizophrenia
+F206,Simple schizophrenia
+F208,Other schizophrenia
+F209,"Schizophrenia, unspecified"
+F21,Schizotypal disorder
+F22,Persistent delusional disorders
+F220,Delusional disorder
+F228,Other persistent delusional disorders
+F229,"Persistent delusional disorder, unspecified"
+F23,Acute and transient psychotic disorders
+F230,Acute polymorphic psychotic disorder without symptoms of schizophrenia
+F231,Acute polymorphic psychotic disorder with symptoms of schizophrenia
+F232,Acute schizophrenia-like psychotic disorder
+F233,Other acute predominantly delusional psychotic disorders
+F238,Other acute and transient psychotic disorders
+F239,"Acute and transient psychotic disorder, unspecified"
+F24,Induced delusional disorder
+F25,Schizoaffective disorders
+F250,"Schizoaffective disorder, manic type"
+F251,"Schizoaffective disorder, depressive type"
+F252,"Schizoaffective disorder, mixed type"
+F258,Other schizoaffective disorders
+F259,"Schizoaffective disorder, unspecified"
+F28,Other nonorganic psychotic disorders
+F29,Unspecified nonorganic psychosis
+F30,Manic episode
+F300,Hypomania
+F301,Mania without psychotic symptoms
+F302,Mania with psychotic symptoms
+F308,Other manic episodes
+F309,"Manic episode, unspecified"
+F31,Bipolar affective disorder
+F310,"Bipolar affective disorder, current episode hypomanic"
+F311,"Bipolar affective disorder, current episode manic without psychotic symptoms"
+F312,"Bipolar affective disorder, current episode manic with psychotic symptoms"
+F313,"Bipolar affective disorder, current episode mild or moderate depression"
+F314,"Bipolar affective disorder, current episode severe depression without psychotic symptoms"
+F315,"Bipolar affective disorder, current episode severe depression with psychotic symptoms"
+F316,"Bipolar affective disorder, current episode mixed"
+F317,"Bipolar affective disorder, currently in remission"
+F318,Other bipolar affective disorders
+F319,"Bipolar affective disorder, unspecified"
+F32,Depressive episode
+F320,Mild depressive episode
+F321,Moderate depressive episode
+F322,Severe depressive episode without psychotic symptoms
+F323,Severe depressive episode with psychotic symptoms
+F328,Other depressive episodes
+F329,"Depressive episode, unspecified"
+F33,Recurrent depressive disorder
+F330,"Recurrent depressive disorder, current episode mild"
+F331,"Recurrent depressive disorder, current episode moderate"
+F332,"Recurrent depressive disorder, current episode severe without psychotic symptoms"
+F333,"Recurrent depressive disorder, current episode severe with psychotic symptoms"
+F334,"Recurrent depressive disorder, currently in remission"
+F338,Other recurrent depressive disorders
+F339,"Recurrent depressive disorder, unspecified"
+F34,Persistent mood [affective] disorders
+F340,Cyclothymia
+F341,Dysthymia
+F348,Other persistent mood [affective] disorders
+F349,"Persistent mood [affective] disorder, unspecified"
+F38,Other mood [affective] disorders
+F380,Other single mood [affective] disorders
+F381,Other recurrent mood [affective] disorders
+F388,Other specified mood [affective] disorders
+F39,Unspecified mood [affective] disorder
+F40,Phobic anxiety disorders
+F400,Agoraphobia
+F401,Social phobias
+F402,Specific (isolated) phobias
+F408,Other phobic anxiety disorders
+F409,"Phobic anxiety disorder, unspecified"
+F41,Other anxiety disorders
+F410,Panic disorder [episodic paroxysmal anxiety]
+F411,Generalized anxiety disorder
+F412,Mixed anxiety and depressive disorder
+F413,Other mixed anxiety disorders
+F418,Other specified anxiety disorders
+F419,"Anxiety disorder, unspecified"
+F42,Obsessive-compulsive disorder
+F420,Predominantly obsessional thoughts or ruminations
+F421,Predominantly compulsive acts [obsessional rituals]
+F422,Mixed obsessional thoughts and acts
+F428,Other obsessive-compulsive disorders
+F429,"Obsessive-compulsive disorder, unspecified"
+F43,"Reaction to severe stress, and adjustment disorders"
+F430,Acute stress reaction
+F431,Post-traumatic stress disorder
+F432,Adjustment disorders
+F438,Other reactions to severe stress
+F439,"Reaction to severe stress, unspecified"
+F44,Dissociative [conversion] disorders
+F440,Dissociative amnesia
+F441,Dissociative fugue
+F442,Dissociative stupor
+F443,Trance and possession disorders
+F444,Dissociative motor disorders
+F445,Dissociative convulsions
+F446,Dissociative anaesthesia and sensory loss
+F447,Mixed dissociative [conversion] disorders
+F448,Other dissociative [conversion] disorders
+F449,"Dissociative [conversion] disorder, unspecified"
+F45,Somatoform disorders
+F450,Somatization disorder
+F451,Undifferentiated somatoform disorder
+F452,Hypochondriacal disorder
+F453,Somatoform autonomic dysfunction
+F454,Persistent somatoform pain disorder
+F458,Other somatoform disorders
+F459,"Somatoform disorder, unspecified"
+F48,Other neurotic disorders
+F480,Neurasthenia
+F481,Depersonalization-derealization syndrome
+F488,Other specified neurotic disorders
+F489,"Neurotic disorder, unspecified"
+F50,Eating disorders
+F500,Anorexia nervosa
+F501,Atypical anorexia nervosa
+F502,Bulimia nervosa
+F503,Atypical bulimia nervosa
+F504,Overeating associated with other psychological disturbances
+F505,Vomiting associated with other psychological disturbances
+F508,Other eating disorders
+F509,"Eating disorder, unspecified"
+F51,Nonorganic sleep disorders
+F510,Nonorganic insomnia
+F511,Nonorganic hypersomnia
+F512,Nonorganic disorder of the sleep-wake schedule
+F513,Sleepwalking [somnambulism]
+F514,Sleep terrors [night terrors]
+F515,Nightmares
+F518,Other nonorganic sleep disorders
+F519,"Nonorganic sleep disorder, unspecified"
+F52,"Sexual dysfunction, not caused by organic disorder or disease"
+F520,Lack or loss of sexual desire
+F521,Sexual aversion and lack of sexual enjoyment
+F522,Failure of genital response
+F523,Orgasmic dysfunction
+F524,Premature ejaculation
+F525,Nonorganic vaginismus
+F526,Nonorganic dyspareunia
+F527,Excessive sexual drive
+F528,"Other sexual dysfunction, not caused by organic disorder or disease"
+F529,"Unspecified sexual dysfunction, not caused by organic disorder or disease"
+F53,"Mental and behavioural disorders associated with the puerperium, not elsewhere classified"
+F530,"Mild mental and behavioural disorders associated with the puerperium, not elsewhere classified"
+F531,"Severe mental and behavioural disorders associated with the puerperium, not elsewhere classified"
+F538,"Other mental and behavioural disorders associated with the puerperium, not elsewhere classified"
+F539,"Puerperal mental disorder, unspecified"
+F54,Psychological and behavioural factors associated with disorders or diseases classified elsewhere
+F55,Abuse of non-dependence-producing substances
+F59,Unspecified behavioural syndromes associated with physiological disturbances and physical factors
+F60,Specific personality disorders
+F600,Paranoid personality disorder
+F601,Schizoid personality disorder
+F602,Dissocial personality disorder
+F603,Emotionally unstable personality disorder
+F604,Histrionic personality disorder
+F605,Anankastic personality disorder
+F606,Anxious [avoidant] personality disorder
+F607,Dependent personality disorder
+F608,Other specific personality disorders
+F609,"Personality disorder, unspecified"
+F61,Mixed and other personality disorders
+F62,"Enduring personality changes, not attributable to brain damage and disease"
+F620,Enduring personality change after catastrophic experience
+F621,Enduring personality change after psychiatric illness
+F628,Other enduring personality changes
+F629,"Enduring personality change, unspecified"
+F63,Habit and impulse disorders
+F630,Pathological gambling
+F631,Pathological fire-setting [pyromania]
+F632,Pathological stealing [kleptomania]
+F633,Trichotillomania
+F638,Other habit and impulse disorders
+F639,"Habit and impulse disorder, unspecified"
+F64,Gender identity disorders
+F640,Transsexualism
+F641,Dual-role transvestism
+F642,Gender identity disorder of childhood
+F648,Other gender identity disorders
+F649,"Gender identity disorder, unspecified"
+F65,Disorders of sexual preference
+F650,Fetishism
+F651,Fetishistic transvestism
+F652,Exhibitionism
+F653,Voyeurism
+F654,Paedophilia
+F655,Sadomasochism
+F656,Multiple disorders of sexual preference
+F658,Other disorders of sexual preference
+F659,"Disorder of sexual preference, unspecified"
+F66,Psychological and behavioural disorders associated with sexual development and orientation
+F660,Sexual maturation disorder
+F661,Egodystonic sexual orientation
+F662,Sexual relationship disorder
+F668,Other psychosexual development disorders
+F669,"Psychosexual development disorder, unspecified"
+F68,Other disorders of adult personality and behaviour
+F680,Elaboration of physical symptoms for psychological reasons
+F681,"Intentional production or feigning of symptoms or disabilities, either physical or psychological [factitious disorder]"
+F688,Other specified disorders of adult personality and behaviour
+F69,Unspecified disorder of adult personality and behaviour
+F70,Mild mental retardation
+F700,"Mild mental retardation : With the statement of no, or minimal, impairment of behaviour"
+F701,Mild mental retardation : Significant impairment of behaviour requiring attention or treatment
+F708,Mild mental retardation : Other impairments of behaviour
+F709,Mild mental retardation : Without mention of impairment of behaviour
+F71,Moderate mental retardation
+F710,"Moderate mental retardation : With the statement of no, or minimal, impairment of behaviour"
+F711,Moderate mental retardation : Significant impairment of behaviour requiring attention or treatment
+F718,Moderate mental retardation : Other impairments of behaviour
+F719,Moderate mental retardation : Without mention of impairment of behaviour
+F72,Severe mental retardation
+F720,"Severe mental retardation : With the statement of no, or minimal, impairment of behaviour"
+F721,Severe mental retardation : Significant impairment of behaviour requiring attention or treatment
+F728,Severe mental retardation : Other impairments of behaviour
+F729,Severe mental retardation : Without mention of impairment of behaviour
+F73,Profound mental retardation
+F730,"Profound mental retardation : With the statement of no, or minimal, impairment of behaviour"
+F731,Profound mental retardation : Significant impairment of behaviour requiring attention or treatment
+F738,Profound mental retardation : Other impairments of behaviour
+F739,Profound mental retardation : Without mention of impairment of behaviour
+F78,Other mental retardation
+F780,"Other mental retardation : With the statement of no, or minimal, impairment of behaviour"
+F781,Other mental retardation : Significant impairment of behaviour requiring attention or treatment
+F788,Other mental retardation : Other impairments of behaviour
+F789,Other mental retardation : Without mention of impairment of behaviour
+F79,Unspecified mental retardation
+F790,"Unspecified mental retardation : With the statement of no, or minimal, impairment of behaviour"
+F791,Unspecified mental retardation : Significant impairment of behaviour requiring attention or treatment
+F798,Unspecified mental retardation : Other impairments of behaviour
+F799,Unspecified mental retardation : Without mention of impairment of behaviour
+F80,Specific developmental disorders of speech and language
+F800,Specific speech articulation disorder
+F801,Expressive language disorder
+F802,Receptive language disorder
+F803,Acquired aphasia with epilepsy [Landau-Kleffner]
+F808,Other developmental disorders of speech and language
+F809,"Developmental disorder of speech and language, unspecified"
+F81,Specific developmental disorders of scholastic skills
+F810,Specific reading disorder
+F811,Specific spelling disorder
+F812,Specific disorder of arithmetical skills
+F813,Mixed disorder of scholastic skills
+F818,Other developmental disorders of scholastic skills
+F819,"Developmental disorder of scholastic skills, unspecified"
+F82,Specific developmental disorder of motor function
+F83,Mixed specific developmental disorders
+F84,Pervasive developmental disorders
+F840,Childhood autism
+F841,Atypical autism
+F842,Rett syndrome
+F843,Other childhood disintegrative disorder
+F844,Overactive disorder associated with mental retardation and stereotyped movements
+F845,Asperger syndrome
+F848,Other pervasive developmental disorders
+F849,"Pervasive developmental disorder, unspecified"
+F88,Other disorders of psychological development
+F89,Unspecified disorder of psychological development
+F90,Hyperkinetic disorders
+F900,Disturbance of activity and attention
+F901,Hyperkinetic conduct disorder
+F908,Other hyperkinetic disorders
+F909,"Hyperkinetic disorder, unspecified"
+F91,Conduct disorders
+F910,Conduct disorder confined to the family context
+F911,Unsocialized conduct disorder
+F912,Socialized conduct disorder
+F913,Oppositional defiant disorder
+F918,Other conduct disorders
+F919,"Conduct disorder, unspecified"
+F92,Mixed disorders of conduct and emotions
+F920,Depressive conduct disorder
+F928,Other mixed disorders of conduct and emotions
+F929,"Mixed disorder of conduct and emotions, unspecified"
+F93,Emotional disorders with onset specific to childhood
+F930,Separation anxiety disorder of childhood
+F931,Phobic anxiety disorder of childhood
+F932,Social anxiety disorder of childhood
+F933,Sibling rivalry disorder
+F938,Other childhood emotional disorders
+F939,"Childhood emotional disorder, unspecified"
+F94,Disorders of social functioning with onset specific to childhood and adolescence
+F940,Elective mutism
+F941,Reactive attachment disorder of childhood
+F942,Disinhibited attachment disorder of childhood
+F948,Other childhood disorders of social functioning
+F949,"Childhood disorder of social functioning, unspecified"
+F95,Tic disorders
+F950,Transient tic disorder
+F951,Chronic motor or vocal tic disorder
+F952,Combined vocal and multiple motor tic disorder [de la Tourette]
+F958,Other tic disorders
+F959,"Tic disorder, unspecified"
+F98,Other behavioural and emotional disorders with onset usually occurring in childhood and adolescence
+F980,Nonorganic enuresis
+F981,Nonorganic encopresis
+F982,Feeding disorder of infancy and childhood
+F983,Pica of infancy and childhood
+F984,Stereotyped movement disorders
+F985,Stuttering [stammering]
+F986,Cluttering
+F988,Other specified behavioural and emotional disorders with onset usually occurring in childhood and adolescence
+F989,Unspecified behavioural and emotional disorders with onset usually occurring in childhood and adolescence
+F99,"Mental disorder, not otherwise specified"

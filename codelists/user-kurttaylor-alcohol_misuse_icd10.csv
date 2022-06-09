@@ -1,0 +1,50 @@
+code,term
+E244,Alcohol-induced pseudo-Cushing syndrome
+E512,Wernicke encephalopathy
+F10,Mental and behavioural disorders due to use of alcohol
+F100,Mental and behavioural disorders due to use of alcohol : Acute intoxication
+F101,Mental and behavioural disorders due to use of alcohol : Harmful use
+F102,Mental and behavioural disorders due to use of alcohol : Dependence syndrome
+F103,Mental and behavioural disorders due to use of alcohol : Withdrawal state
+F104,Mental and behavioural disorders due to use of alcohol : Withdrawal state with delirium
+F105,Mental and behavioural disorders due to use of alcohol : Psychotic disorder
+F106,Mental and behavioural disorders due to use of alcohol : Amnesic syndrome
+F107,Mental and behavioural disorders due to use of alcohol : Residual and late-onset psychotic disorder
+F108,Mental and behavioural disorders due to use of alcohol : Other mental and behavioural disorders
+F109,Mental and behavioural disorders due to use of alcohol : Unspecified mental and behavioural disorder
+G312,Degeneration of nervous system due to alcohol
+G621,Alcoholic polyneuropathy
+G721,Alcoholic myopathy
+I426,Alcoholic cardiomyopathy
+K292,Alcoholic gastritis
+K70,Alcoholic liver disease
+K700,Alcoholic fatty liver
+K701,Alcoholic hepatitis
+K702,Alcoholic fibrosis and sclerosis of liver
+K703,Alcoholic cirrhosis of liver
+K704,Alcoholic hepatic failure
+K709,"Alcoholic liver disease, unspecified"
+K852,Alcohol-induced acute pancreatitis
+K860,Alcohol-induced chronic pancreatitis
+O354,Maternal care for (suspected) damage to fetus from alcohol
+T51,Toxic effect of alcohol
+T510,Toxic effect: Ethanol
+T511,Toxic effect: Methanol
+T512,Toxic effect: 2-Propanol
+T513,Toxic effect: Fusel oil
+T518,Toxic effect: Other alcohols
+T519,"Toxic effect: Alcohol, unspecified"
+X45,Accidental poisoning by and exposure to alcohol
+X65,Intentional self-poisoning by and exposure to alcohol
+Y15,"Poisoning by and exposure to alcohol, undetermined intent"
+Y573,Alcohol deterrents
+Y904,Blood alcohol level of 80-99 mg/100 ml
+Y905,Blood alcohol level of 100-119 mg/100 ml
+Y906,Blood alcohol level of 120-199 mg/100 ml
+Y907,Blood alcohol level of 200-239 mg/100 ml
+Y908,Blood alcohol level of 240 mg/100 ml or more
+Y912,Severe alcohol intoxication
+Y913,Very severe alcohol intoxication
+Z502,Alcohol rehabilitation
+Z714,Alcohol abuse counselling and surveillance
+Z721,Alcohol use

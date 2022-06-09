@@ -1,0 +1,74 @@
+code,term
+1089411000000104,Cerebral infarction due to occlusion of cerebral artery
+1089421000000105,Cerebral infarction due to stenosis of cerebral artery
+125081000119106,Cerebral infarction due to occlusion of precerebral artery
+140921000119102,Ischemic stroke without coma
+16000511000119103,Cerebrovascular accident due to occlusion of left middle cerebral artery
+16002031000119102,Cerebrovascular accident due to thrombus of right middle cerebral artery
+16002111000119106,Cerebrovascular accident due to thrombus of left middle cerebral artery
+16371781000119100,Cerebellar stroke
+195185009,Cerebral infarct due to thrombosis of precerebral arteries
+195186005,Cerebral infarction due to embolism of precerebral arteries
+195189003,Cerebral infarction due to thrombosis of cerebral arteries
+195190007,Cerebral infarction due to embolism of cerebral arteries
+195200006,Carotid artery syndrome hemispheric
+195201005,Multiple and bilateral precerebral artery syndromes
+195209007,Middle cerebral artery syndrome
+195210002,Anterior cerebral artery syndrome
+195211003,Posterior cerebral artery syndrome
+195212005,Brainstem stroke syndrome
+195213000,Cerebellar stroke syndrome
+195216008,Left sided cerebral hemisphere cerebrovascular accident
+195217004,Right sided cerebral hemisphere cerebrovascular accident
+195230003,"Cerebral infarction due to cerebral venous thrombosis, non-pyogenic"
+20059004,Occlusion of cerebral artery
+230690007,Cerebrovascular accident
+230691006,Cerebrovascular accident due to occlusion of cerebral artery
+230692004,Infarction - precerebral
+230693009,Anterior cerebral circulation infarction
+230694003,Total anterior cerebral circulation infarction
+230695002,Partial anterior cerebral circulation infarction
+230696001,Posterior cerebral circulation infarction
+230698000,Lacunar infarction
+230699008,Pure motor lacunar infarction
+230700009,Pure sensory lacunar infarction
+230701008,Pure sensorimotor lacunar infarction
+230702001,Lacunar ataxic hemiparesis
+230703006,Dysarthria-clumsy hand syndrome
+230704000,Multi-infarct state
+230706003,Hemorrhagic cerebral infarction
+230707007,Anterior cerebral circulation hemorrhagic infarction
+230708002,Posterior cerebral circulation hemorrhagic infarction
+230713003,Stroke of uncertain pathology
+230714009,Anterior circulation stroke of uncertain pathology
+230715005,Posterior circulation stroke of uncertain pathology
+24654003,Weber-Gubler syndrome
+25133001,Completed stroke
+275434003,Stroke in the puerperium
+276219001,Occipital cerebral infarction
+276220007,Foville syndrome
+276221006,Millard-Gubler syndrome
+276222004,Top of basilar syndrome
+281240008,Extension of cerebrovascular accident
+297138001,Embolus of circle of Willis
+307363008,Multiple lacunar infarcts
+307766002,Left sided cerebral infarction
+307767006,Right sided cerebral infarction
+329641000119104,Cerebrovascular accident due to thrombus of basilar artery
+371041009,Embolic stroke
+373606000,Occlusive stroke
+413102000,Infarction of basal ganglia
+413758000,Cardioembolic stroke
+426107000,Acute lacunar infarction
+432504007,Cerebral infarction
+444172003,Recurrent transient cerebral ischemic attack
+71444005,Cerebral arterial thrombosis
+724424009,Cerebral ischemic stroke due to small artery occlusion
+734383005,Thrombosis of left middle cerebral artery
+734384004,Thrombosis of right middle cerebral artery
+75543006,Cerebral embolism
+78569004,Posterior inferior cerebellar artery syndrome
+87555007,Claude's syndrome
+90099008,Subcortical leukoencephalopathy
+95457000,Brain stem infarction
+95460007,Cerebellar infarction

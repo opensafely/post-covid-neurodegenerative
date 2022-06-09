@@ -1,0 +1,10 @@
+code,term
+I255,Ischaemic cardiomyopathy
+I420,Dilated cardiomyopathy
+I423,Endomyocardial (eosinophilic) disease
+I425,Other restrictive cardiomyopathy
+I427,Cardiomyopathy due to drugs and other external agents
+I428,Other cardiomyopathies
+I429,"Cardiomyopathy, unspecified"
+I43,Cardiomyopathy in diseases classified elsewhere
+O903,Cardiomyopathy in the puerperium

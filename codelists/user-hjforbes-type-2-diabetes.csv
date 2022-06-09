@@ -1,0 +1,39 @@
+code,term
+66A3.,Diabetic on diet only
+66A4.,Diabetic on oral treatment
+C1001,"Diab mell: [adult ons, no ment comp][mat onset][non-ins dep]"
+C1011,Type 2 diabetes mellitus with ketoacidosis
+C1031,Type II diabetes mellitus with ketoacidotic coma
+C1074,NIDDM with peripheral circulatory disorder
+C109.,Type II diabetes mellitus
+C1090,Type II diabetes mellitus with renal complications
+C1091,Type II diabetes mellitus with ophthalmic complications
+C1092,Type II diabetes mellitus with neurological complications
+C1093,Type II diabetes mellitus with multiple complications
+C1094,Type II diabetes mellitus with ulcer
+C1095,Type II diabetes mellitus with gangrene
+C1096,Type II diabetes mellitus with retinopathy
+C1097,Type II diabetes mellitus - poor control
+L1806,"Pre-existing diabetes mellitus, non-insulin-dependent"
+X40J5,Type II diabetes mellitus
+X40J6,Insulin treated Type 2 diabetes mellitus
+XE12A,Diabetes mellitus: [adult onset] or [noninsulin dependent]
+XM19j,[EDTA] Diabetes Type II associated with renal failure
+XaELQ,Type II diabetes mellitus without complication
+XaEnp,Type II diabetes mellitus with mononeuropathy
+XaEnq,Type II diabetes mellitus with polyneuropathy
+XaF05,Type II diabetes mellitus with nephropathy
+XaFWI,Type II diabetes mellitus with hypoglycaemic coma
+XaFmA,Type II diabetes mellitus with diabetic cataract
+XaFn7,Type II diabetes mellitus with peripheral angiopathy
+XaFn8,Type II diabetes mellitus with arthropathy
+XaFn9,Type II diabetes mellitus with neuropathic arthropathy
+XaIfG,Type II diabetes on insulin
+XaIfI,Type II diabetes on diet only
+XaIrf,Hyperosmolar non-ketotic state in type II diabetes mellitus
+XaIzQ,Type II diabetes mellitus with persistent proteinuria
+XaIzR,Type II diabetes mellitus with persistent microalbuminuria
+XaJQp,Type II diabetes mellitus with exudative maculopathy
+XaKyX,Type II diabetes mellitus with gastroparesis
+XaXZR,H/O: diabetes mellitus type 2
+XacsX,Diabetic on oral treatment and glucagon-like peptide 1
