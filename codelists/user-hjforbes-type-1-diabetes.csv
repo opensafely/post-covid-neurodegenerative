@@ -1,0 +1,42 @@
+code,term
+C1000,"Diabetes mellit: [juv type, no mention compl] or [insul dep]"
+C1010,Type 1 diabetes mellitus with ketoacidosis
+C1020,"Diabetes mellitus, juvenile type, with hyperosmolar coma"
+C1030,Type 1 diabetes mellitus with ketoacidotic coma
+C1040,"Diabetes mellitus, juvenile type, with renal manifestation"
+C1050,"Diabetes mellitus, juvenile type, + ophthalmic manifestation"
+C1060,"Diabetes mellitus, juvenile, + neurological manifestation"
+C1070,"Diabetes mellitus, juvenile +peripheral circulatory disorder"
+C1080,Type I diabetes mellitus with renal complications
+C1081,Type I diabetes mellitus with ophthalmic complications
+C1082,Type I diabetes mellitus with neurological complications
+C1083,Type I diabetes mellitus with multiple complications
+C1085,Type I diabetes mellitus with ulcer
+C1086,Type I diabetes mellitus with gangrene
+C1087,Type I diabetes mellitus with retinopathy
+C1088,Type I diabetes mellitus - poor control
+C1089,Type I diabetes mellitus maturity onset
+C10y0,"Diabetes mellitus, juvenile, + other specified manifestation"
+C10z0,"Diabetes mellitus, juvenile type, + unspecified complication"
+X40J4,Type I diabetes mellitus
+XE10E,"Diabetes mellitus, juvenile type, no mention of complication"
+XE12C,Diabetes mellitus: [juvenile] or [insulin dependent]
+XM19i,[EDTA]Diabetes Type I associated with renal failure
+Xa4g7,Unstable type I diabetes mellitus
+XaELP,Type I diabetes mellitus without complication
+XaEnn,Type I diabetes mellitus with mononeuropathy
+XaEno,Type I diabetes mellitus with polyneuropathy
+XaF04,Type I diabetes mellitus with nephropathy
+XaFWG,Type I diabetes mellitus with hypoglycaemic coma
+XaFm8,Type I diabetes mellitus with diabetic cataract
+XaFmK,Type I diabetes mellitus with peripheral angiopathy
+XaFmL,Type I diabetes mellitus with arthropathy
+XaFmM,Type I diabetes mellitus with neuropathic arthropathy
+XaIzM,Type 1 diabetes mellitus with persistent proteinuria
+XaIzN,Type 1 diabetes mellitus with persistent microalbuminuria
+XaJSr,Type 1 diabetes mellitus with exudative maculopathy
+XaKyW,Type 1 diabetes mellitus with gastroparesis
+XaX3p,Type I diabetic dietary review
+XaXZv,H/O: diabetes mellitus type 1
+Xaage,Type I diabetes mellitus in remission
+XafjT,Eating disorder co-occurrent with diabetes mellitus type 1
