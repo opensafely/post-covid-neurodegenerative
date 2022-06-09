@@ -1,12 +1,31 @@
 version: '3.0'
 
 expectations:
-  population_size: 1000
+
+  population_size: 100000
 
 actions:
 
-  generate_study_population:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition
+  ## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+  ## DO NOT EDIT project.yaml DIRECTLY 
+  ## This file is created by create_project_actions.R 
+  ## Edit and run create_project_actions.R to update the project.yaml 
+  ## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+  vax_eligibility_inputs:
+    run: r:latest analysis/vax_eligibility_inputs.R
     outputs:
       highly_sensitive:
-        cohort: output/input.csv
+        vax_study_dates_json: output/vax_study_dates.json
+        vax_jcvi_groups: output/vax_jcvi_groups.csv
+        vax_eligible_dates: output/vax_eligible_dates.csv
+
+  generate_study_population:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition
+      --output-format feather
+    needs:
+    - vax_eligibility_inputs
+    outputs:
+      highly_sensitive:
+        cohort: output/input.feather
+
