@@ -1,12 +1,70 @@
 version: '3.0'
 
 expectations:
+
   population_size: 1000
 
 actions:
 
-  generate_study_population:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition
+  ## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+  ## DO NOT EDIT project.yaml DIRECTLY 
+  ## This file is created by create_project_actions.R 
+  ## Edit and run create_project_actions.R to update the project.yaml 
+  ## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+  vax_eligibility_inputs:
+    run: r:latest analysis/metadates.R
     outputs:
       highly_sensitive:
-        cohort: output/input.csv
+        study_dates_json: output/study_dates.json
+        vax_jcvi_groups: output/vax_jcvi_groups.csv
+        vax_eligible_dates: output/vax_eligible_dates.csv
+
+  generate_study_population_prelim:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_prelim
+      --output-format feather
+    needs:
+    - vax_eligibility_inputs
+    outputs:
+      highly_sensitive:
+        cohort: output/input_prelim.feather
+
+  generate_index_dates:
+    run: r:latest analysis/prelim.R
+    needs:
+    - vax_eligibility_inputs
+    - generate_study_population_prelim
+    outputs:
+      highly_sensitive:
+        index_dates: output/index_dates.csv
+
+  generate_study_population_unvaccinated:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_unvaccinated
+      --output-format feather
+    needs:
+    - vax_eligibility_inputs
+    - generate_index_dates
+    outputs:
+      highly_sensitive:
+        cohort: output/input_unvaccinated.feather
+
+  generate_study_population_prevax:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_prevax
+      --output-format feather
+    needs:
+    - vax_eligibility_inputs
+    - generate_index_dates
+    outputs:
+      highly_sensitive:
+        cohort: output/input_prevax.feather
+
+  generate_study_population_vaccinated:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_vaccinated
+      --output-format feather
+    needs:
+    - generate_index_dates
+    - vax_eligibility_inputs
+    outputs:
+      highly_sensitive:
+        cohort: output/input_vaccinated.feather
+
