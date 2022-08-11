@@ -6,11 +6,12 @@ fs::dir_create(here::here("lib"))
 
 df <- data.frame(active = logical(),
                  outcome = character(),
-                 outcome_group = character(),
                  outcome_variable = character(),
                  covariates = character(),
                  model = character(),
+                 cohort	= character(),
                  main = character(),
+                 covid_history = character(),
                  covid_pheno_hospitalised = character(),
                  covid_pheno_non_hospitalised = character(),
                  agegp_18_39 = character(),
@@ -27,7 +28,8 @@ df <- data.frame(active = logical(),
                  ethnicity_Missing = character(),
                  prior_history_TRUE = character(),
                  prior_history_FALSE = character(),
-                 prior_history_var = character(),
+                 prior_history_var = character(), 
+                 outcome_group = character(),
                  venn = character(),
                  stringsAsFactors = FALSE)
 
@@ -69,8 +71,9 @@ for (i in 1:length(outcomes)) {
                        "cov_num_age;cov_cat_sex;cov_cat_ethnicity;cov_cat_deprivation;cov_cat_region;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch",
                        rep("all",1),
                        rep(TRUE,3),
-                       rep(FALSE,14),
+                       rep(FALSE,15),
                        "",
+                       "neurodegenerative_diseases",
                        out_venn[i])
 }
 
