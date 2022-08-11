@@ -141,6 +141,23 @@ def generate_common_variables(index_date_variable,end_date_variable):
         "tmp_sub_bin_covid19_confirmed_history_sgss","tmp_sub_bin_covid19_confirmed_history_snomed","tmp_sub_bin_covid19_confirmed_history_hes"
     ),
 
+############################
+# NEUROGENERATIVE OUTCOMES #
+############################
+
+
+##############################
+# NEUROGENERATIVE COVARIATES #
+##############################
+
+# Hypercholesterolaemia
+
+# History of cognitive impairment
+
+# History of restless leg syndrome
+
+# History of REM sleep disorder
+
 # DEFINE COVARIATES ------------------------------------------------------
 
     ## Age
@@ -153,7 +170,280 @@ def generate_common_variables(index_date_variable,end_date_variable):
         },
     ),
 
+# -----------------------------------------------------------------------
+    ## Dementia
+    ### Primary care
+    tmp_cov_bin_dementia_snomed=patients.with_these_clinical_events(
+        dementia_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### HES APC (Hospital Episode Statistics Admitted Patient Care)
+    tmp_cov_bin_dementia_hes=patients.admitted_to_hospital(
+        returning='binary_flag',
+        with_these_diagnoses=dementia_icd10,
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### Primary care - vascular
+    tmp_cov_bin_dementia_vascular_snomed=patients.with_these_clinical_events(
+        dementia_vascular_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### HES APC - vascular
+    tmp_cov_bin_dementia_vascular_hes=patients.admitted_to_hospital(
+        returning='binary_flag',
+        with_these_diagnoses=dementia_vascular_icd10,
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### Combined
+    cov_bin_dementia=patients.maximum_of(
+        "tmp_cov_bin_dementia_snomed", "tmp_cov_bin_dementia_hes", "tmp_cov_bin_dementia_vascular_snomed", "tmp_cov_bin_dementia_vascular_hes",
+    ),    
 
+    ## Liver disease
+     ### Primary care
+    tmp_cov_bin_liver_disease_snomed=patients.with_these_clinical_events(
+        liver_disease_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### HES APC
+    tmp_cov_bin_liver_disease_hes=patients.admitted_to_hospital(
+        returning='binary_flag',
+        with_these_diagnoses=liver_disease_icd10,
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### Combined
+    cov_bin_liver_disease=patients.maximum_of(
+        "tmp_cov_bin_liver_disease_snomed", "tmp_cov_bin_liver_disease_hes",
+    ),
+
+    ## Chronic kidney disease
+    ### Primary care
+    tmp_cov_bin_chronic_kidney_disease_snomed=patients.with_these_clinical_events(
+        ckd_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### HES APC
+    tmp_cov_bin_chronic_kidney_disease_hes=patients.admitted_to_hospital(
+        returning='binary_flag',
+        with_these_diagnoses=ckd_icd10,
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### Combined
+    cov_bin_chronic_kidney_disease=patients.maximum_of(
+        "tmp_cov_bin_chronic_kidney_disease_snomed", "tmp_cov_bin_chronic_kidney_disease_hes",
+    ),
+
+    ## Cancer
+    ### Primary care
+    tmp_cov_bin_cancer_snomed=patients.with_these_clinical_events(
+        cancer_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### HES APC
+    tmp_cov_bin_cancer_hes=patients.admitted_to_hospital(
+        returning='binary_flag',
+        with_these_diagnoses=cancer_icd10,
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### Combined
+    cov_bin_cancer=patients.maximum_of(
+        "tmp_cov_bin_cancer_snomed", "tmp_cov_bin_cancer_hes",
+    ),
+
+    ## Hypertension
+    ### Primary care
+    tmp_cov_bin_hypertension_snomed=patients.with_these_clinical_events(
+        hypertension_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### HES APC
+    tmp_cov_bin_hypertension_hes=patients.admitted_to_hospital(
+       returning='binary_flag',
+       with_these_diagnoses=hypertension_icd10,
+       on_or_before=f"{index_date_variable} - 1 day",
+       return_expectations={"incidence": 0.1},
+    ),
+    ### DMD
+    tmp_cov_bin_hypertension_drugs_dmd=patients.with_these_medications(
+        hypertension_drugs_dmd,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### Combined
+    cov_bin_hypertension=patients.maximum_of(
+        "tmp_cov_bin_hypertension_snomed", "tmp_cov_bin_hypertension_hes", "tmp_cov_bin_hypertension_drugs_dmd",
+    ),
+
+    ## Type 1 diabetes primary care
+    cov_bin_diabetes_type1_snomed=patients.with_these_clinical_events(
+        diabetes_type1_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ## Type 1 diabetes HES
+    cov_bin_diabetes_type1_hes=patients.admitted_to_hospital(
+       returning='binary_flag',
+       with_these_diagnoses=diabetes_type1_icd10,
+       on_or_before=f"{index_date_variable} - 1 day",
+       return_expectations={"incidence": 0.1},
+    ),
+    ## Type 2 diabetes primary care
+    cov_bin_diabetes_type2_snomed=patients.with_these_clinical_events(
+        diabetes_type2_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ## Type 2 diabetes HES
+    cov_bin_diabetes_type2_hes=patients.admitted_to_hospital(
+       returning='binary_flag',
+       with_these_diagnoses=diabetes_type2_icd10,
+       on_or_before=f"{index_date_variable} - 1 day",
+       return_expectations={"incidence": 0.1},
+    ),
+    ## Other or non-specific diabetes
+    cov_bin_diabetes_other=patients.with_these_clinical_events(
+        diabetes_other_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ## Gestational diabetes
+    cov_bin_diabetes_gestational=patients.with_these_clinical_events(
+        diabetes_gestational_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ## Diabetes medication
+    tmp_cov_bin_insulin_snomed=patients.with_these_medications(
+        insulin_snomed_clinical,
+        returning="binary_flag",
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.05},
+    ),
+
+    tmp_cov_bin_antidiabetic_drugs_snomed=patients.with_these_medications(
+        antidiabetic_drugs_snomed_clinical,
+        returning="binary_flag",
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.05},
+    ),
+
+    ## Any diabetes covariate
+    cov_bin_diabetes=patients.maximum_of(
+        "cov_bin_diabetes_type1_snomed", "cov_bin_diabetes_type1_hes", 
+        "cov_bin_diabetes_type2_snomed", "cov_bin_diabetes_type2_hes",
+        "cov_bin_diabetes_other", "cov_bin_diabetes_gestational",
+        "tmp_cov_bin_insulin_snomed", "tmp_cov_bin_antidiabetic_drugs_snomed",
+    ),
+
+        ## Prediabetes
+    cov_bin_prediabetes=patients.with_these_clinical_events(
+        prediabetes_snomed,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+
+    ## Chronic obstructive pulmonary disease
+    ### Primary care
+    tmp_cov_bin_chronic_obstructive_pulmonary_disease_snomed=patients.with_these_clinical_events(
+        copd_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### HES APC
+    tmp_cov_bin_chronic_obstructive_pulmonary_disease_hes=patients.admitted_to_hospital(
+        returning='binary_flag',
+        with_these_diagnoses= copd_icd10,
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### Combined
+    cov_bin_chronic_obstructive_pulmonary_disease=patients.maximum_of(
+        "tmp_cov_bin_chronic_obstructive_pulmonary_disease_snomed", "tmp_cov_bin_chronic_obstructive_pulmonary_disease_hes",
+    ),
+
+    ## Acute myocardial infarction
+    ### Primary care
+    tmp_cov_bin_ami_snomed=patients.with_these_clinical_events(
+        ami_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### HES APC
+    tmp_cov_bin_ami_prior_hes=patients.admitted_to_hospital(
+        returning='binary_flag',
+        with_these_diagnoses=ami_prior_icd10,
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    tmp_cov_bin_ami_hes=patients.admitted_to_hospital(
+        returning='binary_flag',
+        with_these_diagnoses=ami_icd10,
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### Combined
+    cov_bin_ami=patients.maximum_of(
+        "tmp_cov_bin_ami_snomed", "tmp_cov_bin_ami_prior_hes", "tmp_cov_bin_ami_hes",
+    ),
+
+    ## All stroke
+    ### Primary care
+    tmp_cov_bin_stroke_isch_snomed=patients.with_these_clinical_events(
+        stroke_isch_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    tmp_cov_bin_stroke_sah_hs_snomed=patients.with_these_clinical_events(
+        stroke_sah_hs_snomed_clinical,
+        returning='binary_flag',
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    ### HES APC
+    tmp_cov_bin_stroke_isch_hes=patients.admitted_to_hospital(
+        returning='binary_flag',
+        with_these_diagnoses=stroke_isch_icd10,
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+    tmp_cov_bin_stroke_sah_hs_hes=patients.admitted_to_hospital(
+        returning='binary_flag',
+        with_these_diagnoses=stroke_sah_hs_icd10,
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1},
+    ),
+        ### Combined
+    cov_bin_all_stroke=patients.maximum_of(
+        "tmp_cov_bin_stroke_isch_hes", "tmp_cov_bin_stroke_isch_snomed", "tmp_cov_bin_stroke_sah_hs_hes", "tmp_cov_bin_stroke_sah_hs_snomed",
+    ),
+
+# -----------------------------------------------------------------------
 
     ## Ethnicity 
     cov_cat_ethnicity=patients.categorised_as(

@@ -1,0 +1,17 @@
+code,term
+G951,Vascular myelopathies
+H34,Retinal vascular occlusions
+H340,Transient retinal artery occlusion
+H341,Central retinal artery occlusion
+H342,Other retinal artery occlusions
+H348,Other retinal vascular occlusions
+H349,"Retinal vascular occlusion, unspecified"
+I630,Cerebral infarction due to thrombosis of precerebral arteries
+I631,Cerebral infarction due to embolism of precerebral arteries
+I632,Cerebral infarction due to unspecified occlusion or stenosis of precerebral arteries
+I633,Cerebral infarction due to thrombosis of cerebral arteries
+I634,Cerebral infarction due to embolism of cerebral arteries
+I635,Cerebral infarction due to unspecified occlusion or stenosis of cerebral arteries
+I638,Other cerebral infarction
+I639,"Cerebral infarction, unspecified"
+I64,"Stroke, not specified as haemorrhage or infarction"
