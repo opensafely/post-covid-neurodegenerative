@@ -19,7 +19,7 @@ defaults_list <- list(
 # active_analyses <- read_rds("lib/active_analyses.rds")
 # active_analyses_table <- subset(active_analyses, active_analyses$active =="TRUE")
 # outcomes_model <- active_analyses_table$outcome_variable %>% str_replace("out_date_", "")
-# cohort_to_run <- c("vaccinated", "electively_unvaccinated")
+# cohort_to_run <- c("prevax", "vax", "unvax")
 # analyses <- c("main", "subgroups")
 
 # create action functions ----
