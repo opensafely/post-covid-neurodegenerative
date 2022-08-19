@@ -140,8 +140,18 @@ def generate_common_variables(index_date_variable,end_date_variable):
     sub_bin_covid19_confirmed_history=patients.maximum_of(
         "tmp_sub_bin_covid19_confirmed_history_sgss","tmp_sub_bin_covid19_confirmed_history_snomed","tmp_sub_bin_covid19_confirmed_history_hes"
     ),
+    
+#######################################
+####  NEURODEGENERETATIVE OUTCOMES ####
+#######################################
 
-# DEFINE COVARIATES ------------------------------------------------------
+################################
+# Neurodegenerative Covariates # 
+################################
+
+#####################
+# DEFINE COVARIATES #
+#####################
 
     ## Age
     cov_num_age = patients.age_as_of(
