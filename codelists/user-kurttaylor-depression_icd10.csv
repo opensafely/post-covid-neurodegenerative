@@ -1,0 +1,15 @@
+code,term
+F32,Depressive episode
+F320,Mild depressive episode
+F321,Moderate depressive episode
+F322,Severe depressive episode without psychotic symptoms
+F328,Other depressive episodes
+F329,"Depressive episode, unspecified"
+F33,Recurrent depressive disorder
+F330,"Recurrent depressive disorder, current episode mild"
+F331,"Recurrent depressive disorder, current episode moderate"
+F332,"Recurrent depressive disorder, current episode severe without psychotic symptoms"
+F334,"Recurrent depressive disorder, currently in remission"
+F338,Other recurrent depressive disorders
+F339,"Recurrent depressive disorder, unspecified"
+F341,Dysthymia

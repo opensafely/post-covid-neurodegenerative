@@ -1,0 +1,727 @@
+type,id,bnf_code,nm
+amp,8093711000001103,0601021A0AAAAAA,Glimepiride 2mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,10155111000001101,0601021A0AAAAAA,Glimepiride 2mg tablets (Actavis UK Ltd)
+amp,10274011000001101,0601021A0AAAAAA,Glimepiride 2mg tablets (A A H Pharmaceuticals Ltd)
+amp,10445311000001101,0601021A0AAAAAA,Glimepiride 2mg tablets (Niche Generics Ltd)
+amp,10517911000001105,0601021A0AAAAAA,Glimepiride 2mg tablets (Zentiva)
+amp,10617511000001108,0601021A0AAAAAA,Glimepiride 2mg tablets (Somex Pharma)
+amp,10689011000001106,0601021A0AAAAAA,Glimepiride 2mg tablets (PLIVA Pharma Ltd)
+amp,11018911000001102,0601021A0AAAAAA,Glimepiride 2mg tablets (Dr Reddy's Laboratories (UK) Ltd)
+amp,11149411000001103,0601021A0AAAAAA,Glimepiride 2mg tablets (Teva UK Ltd)
+amp,11343211000001108,0601021A0AAAAAA,Glimepiride 2mg tablets (Sandoz Ltd)
+amp,12147311000001101,0601021A0AAAAAA,Glimepiride 2mg tablets (Kent Pharmaceuticals Ltd)
+amp,13720511000001107,0601021A0AAAAAA,Glimepiride 2mg tablets (Ranbaxy (UK) Ltd)
+amp,14122311000001108,0601021A0AAAAAA,Glimepiride 2mg tablets (Consilient Health Ltd)
+amp,15091211000001102,0601021A0AAAAAA,Glimepiride 2mg tablets (Sigma Pharmaceuticals Plc)
+amp,16053711000001101,0601021A0AAAAAA,Glimepiride 2mg tablets (Bristol Laboratories Ltd)
+amp,17916711000001106,0601021A0AAAAAA,Glimepiride 2mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,20166811000001106,0601021A0AAAAAA,Glimepiride 2mg tablets (Accord Healthcare Ltd)
+amp,22027411000001104,0601021A0AAAAAA,Glimepiride 2mg tablets (Waymade Healthcare Plc)
+amp,24106511000001109,0601021A0AAAAAA,Glimepiride 2mg tablets (DE Pharmaceuticals)
+amp,30137811000001100,0601021A0AAAAAA,Glimepiride 2mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,32493611000001106,0601021A0AAAAAA,Glimepiride 2mg tablets (Brown & Burk UK Ltd)
+amp,10154911000001102,0601021A0AAABAB,Glimepiride 1mg tablets (Actavis UK Ltd)
+amp,10272611000001100,0601021A0AAABAB,Glimepiride 1mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,10273811000001109,0601021A0AAABAB,Glimepiride 1mg tablets (A A H Pharmaceuticals Ltd)
+amp,10445111000001103,0601021A0AAABAB,Glimepiride 1mg tablets (Niche Generics Ltd)
+amp,10517711000001108,0601021A0AAABAB,Glimepiride 1mg tablets (Zentiva)
+amp,10617311000001102,0601021A0AAABAB,Glimepiride 1mg tablets (Somex Pharma)
+amp,10688811000001107,0601021A0AAABAB,Glimepiride 1mg tablets (PLIVA Pharma Ltd)
+amp,11019211000001101,0601021A0AAABAB,Glimepiride 1mg tablets (Dr Reddy's Laboratories (UK) Ltd)
+amp,11149211000001102,0601021A0AAABAB,Glimepiride 1mg tablets (Teva UK Ltd)
+amp,11342811000001101,0601021A0AAABAB,Glimepiride 1mg tablets (Sandoz Ltd)
+amp,12147111000001103,0601021A0AAABAB,Glimepiride 1mg tablets (Kent Pharmaceuticals Ltd)
+amp,14122111000001106,0601021A0AAABAB,Glimepiride 1mg tablets (Consilient Health Ltd)
+amp,15091011000001107,0601021A0AAABAB,Glimepiride 1mg tablets (Sigma Pharmaceuticals Plc)
+amp,16053511000001106,0601021A0AAABAB,Glimepiride 1mg tablets (Bristol Laboratories Ltd)
+amp,17916311000001107,0601021A0AAABAB,Glimepiride 1mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,18462411000001106,0601021A0AAABAB,Glimepiride 1mg tablets (Accord Healthcare Ltd)
+amp,22027111000001109,0601021A0AAABAB,Glimepiride 1mg tablets (Waymade Healthcare Plc)
+amp,24106311000001103,0601021A0AAABAB,Glimepiride 1mg tablets (DE Pharmaceuticals)
+amp,32493411000001108,0601021A0AAABAB,Glimepiride 1mg tablets (Brown & Burk UK Ltd)
+amp,37069611000001104,0601021A0AAABAB,Glimepiride 1mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,8093911000001101,0601021A0AAACAC,Glimepiride 3mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,10155311000001104,0601021A0AAACAC,Glimepiride 3mg tablets (Actavis UK Ltd)
+amp,10274311000001103,0601021A0AAACAC,Glimepiride 3mg tablets (A A H Pharmaceuticals Ltd)
+amp,10445511000001107,0601021A0AAACAC,Glimepiride 3mg tablets (Niche Generics Ltd)
+amp,10518111000001108,0601021A0AAACAC,Glimepiride 3mg tablets (Zentiva)
+amp,10617811000001106,0601021A0AAACAC,Glimepiride 3mg tablets (Somex Pharma)
+amp,10689211000001101,0601021A0AAACAC,Glimepiride 3mg tablets (PLIVA Pharma Ltd)
+amp,11018611000001108,0601021A0AAACAC,Glimepiride 3mg tablets (Dr Reddy's Laboratories (UK) Ltd)
+amp,11149611000001100,0601021A0AAACAC,Glimepiride 3mg tablets (Teva UK Ltd)
+amp,11343511000001106,0601021A0AAACAC,Glimepiride 3mg tablets (Sandoz Ltd)
+amp,12147511000001107,0601021A0AAACAC,Glimepiride 3mg tablets (Kent Pharmaceuticals Ltd)
+amp,13720911000001100,0601021A0AAACAC,Glimepiride 3mg tablets (Ranbaxy (UK) Ltd)
+amp,14122511000001102,0601021A0AAACAC,Glimepiride 3mg tablets (Consilient Health Ltd)
+amp,15091411000001103,0601021A0AAACAC,Glimepiride 3mg tablets (Sigma Pharmaceuticals Plc)
+amp,16053911000001104,0601021A0AAACAC,Glimepiride 3mg tablets (Bristol Laboratories Ltd)
+amp,17917111000001108,0601021A0AAACAC,Glimepiride 3mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,18462611000001109,0601021A0AAACAC,Glimepiride 3mg tablets (Accord Healthcare Ltd)
+amp,22027911000001107,0601021A0AAACAC,Glimepiride 3mg tablets (Waymade Healthcare Plc)
+amp,24106711000001104,0601021A0AAACAC,Glimepiride 3mg tablets (DE Pharmaceuticals)
+amp,30138311000001105,0601021A0AAACAC,Glimepiride 3mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,32493811000001105,0601021A0AAACAC,Glimepiride 3mg tablets (Brown & Burk UK Ltd)
+amp,10155511000001105,0601021A0AAADAD,Glimepiride 4mg tablets (Actavis UK Ltd)
+amp,10272911000001106,0601021A0AAADAD,Glimepiride 4mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,10274511000001109,0601021A0AAADAD,Glimepiride 4mg tablets (A A H Pharmaceuticals Ltd)
+amp,10437311000001105,0601021A0AAADAD,Glimepiride 4mg tablets (Niche Generics Ltd)
+amp,10518311000001105,0601021A0AAADAD,Glimepiride 4mg tablets (Zentiva)
+amp,10618111000001103,0601021A0AAADAD,Glimepiride 4mg tablets (Somex Pharma)
+amp,11018411000001105,0601021A0AAADAD,Glimepiride 4mg tablets (Dr Reddy's Laboratories (UK) Ltd)
+amp,11149811000001101,0601021A0AAADAD,Glimepiride 4mg tablets (Teva UK Ltd)
+amp,11344011000001101,0601021A0AAADAD,Glimepiride 4mg tablets (Sandoz Ltd)
+amp,12147711000001102,0601021A0AAADAD,Glimepiride 4mg tablets (Kent Pharmaceuticals Ltd)
+amp,13721211000001103,0601021A0AAADAD,Glimepiride 4mg tablets (Ranbaxy (UK) Ltd)
+amp,14122711000001107,0601021A0AAADAD,Glimepiride 4mg tablets (Consilient Health Ltd)
+amp,15091611000001100,0601021A0AAADAD,Glimepiride 4mg tablets (Sigma Pharmaceuticals Plc)
+amp,16054111000001100,0601021A0AAADAD,Glimepiride 4mg tablets (Bristol Laboratories Ltd)
+amp,17917511000001104,0601021A0AAADAD,Glimepiride 4mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,18462811000001108,0601021A0AAADAD,Glimepiride 4mg tablets (Accord Healthcare Ltd)
+amp,22028211000001104,0601021A0AAADAD,Glimepiride 4mg tablets (Waymade Healthcare Plc)
+amp,24106911000001102,0601021A0AAADAD,Glimepiride 4mg tablets (DE Pharmaceuticals)
+amp,30138511000001104,0601021A0AAADAD,Glimepiride 4mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,32494011000001102,0601021A0AAADAD,Glimepiride 4mg tablets (Brown & Burk UK Ltd)
+amp,16125411000001100,0601021A0AAAGAG,Glimepiride 2mg/5ml oral solution (Special Order)
+amp,16125711000001106,0601021A0AAAGAG,Glimepiride 2mg/5ml oral suspension (Special Order)
+amp,21324011000001103,0601021A0AAAHAH,Glimepiride 6mg/5ml oral suspension (Special Order)
+amp,938211000001105,0601021A0BBAAAA,Amaryl 2mg tablets (Zentiva)
+amp,228111000001101,0601021A0BBABAB,Amaryl 1mg tablets (Zentiva)
+amp,164511000001108,0601021A0BBACAC,Amaryl 3mg tablets (Zentiva)
+amp,259611000001101,0601021A0BBADAD,Amaryl 4mg tablets (Zentiva)
+amp,13626011000001107,0601021A0BCAAAB,Niddaryl 1mg tablets (Dee Pharmaceuticals Ltd)
+amp,13626511000001104,0601021A0BCABAA,Niddaryl 2mg tablets (Dee Pharmaceuticals Ltd)
+amp,13626911000001106,0601021A0BCACAC,Niddaryl 3mg tablets (Dee Pharmaceuticals Ltd)
+amp,13627211000001100,0601021A0BCADAD,Niddaryl 4mg tablets (Dee Pharmaceuticals Ltd)
+amp,3949611000001107,0601021E0AAAAAA,Chlorpropamide 100mg tablets (The Boots Company Plc)
+amp,27692911000001108,0601021E0AAAAAA,Chlorpropamide 100mg tablets (Special Order)
+amp,3950411000001101,0601021E0AAABAB,Chlorpropamide 250mg tablets (The Boots Company Plc)
+amp,11982811000001104,0601021E0AAADAD,Chlorpropamide 250mg/5ml oral suspension (Special Order)
+amp,107311000001107,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (Kent Pharmaceuticals Ltd)
+amp,386011000001102,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (Mylan)
+amp,648011000001102,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (A A H Pharmaceuticals Ltd)
+amp,656211000001109,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,700011000001100,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (Actavis UK Ltd)
+amp,894411000001104,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (Wockhardt UK Ltd)
+amp,918011000001106,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (Teva UK Ltd)
+amp,923911000001109,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (IVAX Pharmaceuticals UK Ltd)
+amp,10377311000001104,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (Arrow Generics Ltd)
+amp,17914711000001102,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,17972811000001108,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (Almus Pharmaceuticals Ltd)
+amp,22026011000001105,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (Waymade Healthcare Plc)
+amp,23943211000001106,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (DE Pharmaceuticals)
+amp,29869311000001101,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (Sigma Pharmaceuticals Plc)
+amp,30134511000001106,0601021H0AAAAAA,Glibenclamide 2.5mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,120811000001108,0601021H0AAABAB,Glibenclamide 5mg tablets (Wockhardt UK Ltd)
+amp,535811000001108,0601021H0AAABAB,Glibenclamide 5mg tablets (Teva UK Ltd)
+amp,695711000001101,0601021H0AAABAB,Glibenclamide 5mg tablets (Actavis UK Ltd)
+amp,718311000001102,0601021H0AAABAB,Glibenclamide 5mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,745211000001107,0601021H0AAABAB,Glibenclamide 5mg tablets (A A H Pharmaceuticals Ltd)
+amp,822911000001107,0601021H0AAABAB,Glibenclamide 5mg tablets (Kent Pharmaceuticals Ltd)
+amp,887211000001106,0601021H0AAABAB,Glibenclamide 5mg tablets (Mylan)
+amp,903011000001101,0601021H0AAABAB,Glibenclamide 5mg tablets (IVAX Pharmaceuticals UK Ltd)
+amp,10377711000001100,0601021H0AAABAB,Glibenclamide 5mg tablets (Arrow Generics Ltd)
+amp,17915111000001104,0601021H0AAABAB,Glibenclamide 5mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,17973211000001101,0601021H0AAABAB,Glibenclamide 5mg tablets (Almus Pharmaceuticals Ltd)
+amp,22026311000001108,0601021H0AAABAB,Glibenclamide 5mg tablets (Waymade Healthcare Plc)
+amp,23943411000001105,0601021H0AAABAB,Glibenclamide 5mg tablets (DE Pharmaceuticals)
+amp,29869511000001107,0601021H0AAABAB,Glibenclamide 5mg tablets (Sigma Pharmaceuticals Plc)
+amp,30134711000001101,0601021H0AAABAB,Glibenclamide 5mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,12107211000001104,0601021H0AAAIAI,Glibenclamide 625micrograms/5ml oral suspension (Special Order)
+amp,12107511000001101,0601021H0AAAIAI,Glibenclamide 625micrograms/5ml oral solution (Special Order)
+amp,8494911000001105,0601021H0AAAJAJ,Glibenclamide 5mg/5ml oral solution (Special Order)
+amp,8495611000001103,0601021H0AAAJAJ,Glibenclamide 5mg/5ml oral suspension (Special Order)
+amp,12108411000001101,0601021H0AAAKAK,Glibenclamide 2.5mg/5ml oral suspension (Special Order)
+amp,12108711000001107,0601021H0AAAKAK,Glibenclamide 2.5mg/5ml oral solution (Special Order)
+amp,12107811000001103,0601021H0AAAMAM,Glibenclamide 15mg/5ml oral suspension (Special Order)
+amp,12108111000001106,0601021H0AAAMAM,Glibenclamide 15mg/5ml oral solution (Special Order)
+amp,8495311000001108,0601021H0AAANAN,Glibenclamide 7.5mg/5ml oral solution (Special Order)
+amp,8495911000001109,0601021H0AAANAN,Glibenclamide 7.5mg/5ml oral suspension (Special Order)
+amp,234011000001108,0601021H0BBAAAB,Daonil 5mg tablets (Sanofi)
+amp,140711000001103,0601021H0BBACAA,Semi-Daonil 2.5mg tablets (Sanofi)
+amp,233411000001102,0601021H0BDAAAA,Euglucon 2.5mg tablets (Aventis Pharma)
+amp,322511000001103,0601021H0BDABAB,Euglucon 5mg tablets (Sanofi)
+amp,13511000001103,0601021H0BKAAAA,Diabetamide 2.5mg tablets (Ashbourne Pharmaceuticals Ltd)
+amp,287811000001101,0601021H0BKABAB,Diabetamide 5mg tablets (Ashbourne Pharmaceuticals Ltd)
+amp,37337011000001106,0601021H0BNAAAP,Amglidia 0.6mg/ml oral suspension with 1ml oral syringe (Amring Pharmaceuticals Ltd)
+amp,37337211000001101,0601021H0BNABAP,Amglidia 0.6mg/ml oral suspension with 5ml oral syringe (Amring Pharmaceuticals Ltd)
+amp,37337511000001103,0601021H0BNACAQ,Amglidia 6mg/ml oral suspension with 1ml oral syringe (Amring Pharmaceuticals Ltd)
+amp,37337711000001108,0601021H0BNADAQ,Amglidia 6mg/ml oral suspension with 5ml oral syringe (Amring Pharmaceuticals Ltd)
+amp,11411000001101,0601021M0AAAAAA,Gliclazide 80mg tablets (Kent Pharmaceuticals Ltd)
+amp,184711000001100,0601021M0AAAAAA,Gliclazide 80mg tablets (Sterwin Medicines)
+amp,378911000001109,0601021M0AAAAAA,Gliclazide 80mg tablets (A A H Pharmaceuticals Ltd)
+amp,498911000001107,0601021M0AAAAAA,Gliclazide 80mg tablets (Actavis UK Ltd)
+amp,533211000001108,0601021M0AAAAAA,Gliclazide 80mg tablets (Mylan)
+amp,551111000001104,0601021M0AAAAAA,Gliclazide 80mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,622811000001108,0601021M0AAAAAA,Gliclazide 80mg tablets (Wockhardt UK Ltd)
+amp,860011000001104,0601021M0AAAAAA,Gliclazide 80mg tablets (IVAX Pharmaceuticals UK Ltd)
+amp,892811000001108,0601021M0AAAAAA,Gliclazide 80mg tablets (Teva UK Ltd)
+amp,925311000001109,0601021M0AAAAAA,Gliclazide 80mg tablets (Genus Pharmaceuticals Ltd)
+amp,929811000001102,0601021M0AAAAAA,Gliclazide 80mg tablets (Sandoz Ltd)
+amp,9752811000001105,0601021M0AAAAAA,Gliclazide 80mg tablets (Milpharm Ltd)
+amp,9801911000001102,0601021M0AAAAAA,Gliclazide 80mg tablets (Almus Pharmaceuticals Ltd)
+amp,10378111000001100,0601021M0AAAAAA,Gliclazide 80mg tablets (Arrow Generics Ltd)
+amp,11406411000001102,0601021M0AAAAAA,Gliclazide 80mg tablets (PLIVA Pharma Ltd)
+amp,11492211000001104,0601021M0AAAAAA,Gliclazide 80mg tablets (Zentiva)
+amp,16053211000001108,0601021M0AAAAAA,Gliclazide 80mg tablets (Bristol Laboratories Ltd)
+amp,17199311000001101,0601021M0AAAAAA,Gliclazide 80mg tablets (Sovereign Medical Ltd)
+amp,17915611000001107,0601021M0AAAAAA,Gliclazide 80mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,18462111000001101,0601021M0AAAAAA,Gliclazide 80mg tablets (Accord Healthcare Ltd)
+amp,21409211000001109,0601021M0AAAAAA,Gliclazide 80mg tablets (Medreich Plc)
+amp,22026711000001107,0601021M0AAAAAA,Gliclazide 80mg tablets (Waymade Healthcare Plc)
+amp,23943611000001108,0601021M0AAAAAA,Gliclazide 80mg tablets (DE Pharmaceuticals)
+amp,29869711000001102,0601021M0AAAAAA,Gliclazide 80mg tablets (Sigma Pharmaceuticals Plc)
+amp,30134911000001104,0601021M0AAAAAA,Gliclazide 80mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,32413911000001101,0601021M0AAAAAA,Gliclazide 80mg tablets (Genesis Pharmaceuticals Ltd)
+amp,36925911000001109,0601021M0AAAAAA,Gliclazide 80mg tablets (Relonchem Ltd)
+amp,12110211000001101,0601021M0AAAGAG,Gliclazide 60mg/5ml oral suspension (Special Order)
+amp,12109911000001101,0601021M0AAAHAH,Gliclazide 50mg/5ml oral suspension (Special Order)
+amp,12109311000001102,0601021M0AAAIAI,Gliclazide 120mg/5ml oral suspension (Special Order)
+amp,8496611000001108,0601021M0AAAJAJ,Gliclazide 160mg/5ml oral suspension (Special Order)
+amp,12109011000001100,0601021M0AAALAL,Gliclazide 100mg/5ml oral suspension (Special Order)
+amp,13549911000001105,0601021M0AAAMAM,Gliclazide 30mg modified-release tablets (Kent Pharmaceuticals Ltd)
+amp,12109611000001107,0601021M0AAANAN,Gliclazide 20mg/5ml oral suspension (Special Order)
+amp,13462811000001109,0601021M0AAAPAP,Gliclazide 30mg/5ml oral suspension (Special Order)
+amp,17880511000001107,0601021M0AAARAR,Gliclazide 40mg tablets (A A H Pharmaceuticals Ltd)
+amp,22026511000001102,0601021M0AAARAR,Gliclazide 40mg tablets (Waymade Healthcare Plc)
+amp,32498311000001109,0601021M0AAARAR,Gliclazide 40mg tablets (Accord Healthcare Ltd)
+amp,33428211000001102,0601021M0AAARAR,Gliclazide 40mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,34823611000001100,0601021M0AAARAR,Gliclazide 40mg tablets (Teva UK Ltd)
+amp,34956911000001107,0601021M0AAARAR,Gliclazide 40mg tablets (Almus Pharmaceuticals Ltd)
+amp,35316811000001107,0601021M0AAARAR,Gliclazide 40mg tablets (NorthStar Healthcare Unlimited Company)
+amp,36739111000001104,0601021M0AAARAR,Gliclazide 40mg tablets (Flamingo Pharma (UK) Ltd)
+amp,37387311000001101,0601021M0AAARAR,Gliclazide 40mg tablets (DE Pharmaceuticals)
+amp,8496711000001104,0601021M0AAASAS,Gliclazide 80mg/5ml oral suspension (Drug Tariff Special Order)
+amp,8497111000001102,0601021M0AAAUAU,Gliclazide 40mg/5ml oral suspension (Drug Tariff Special Order)
+amp,745911000001103,0601021M0BBAAAA,Diamicron 80mg tablets (Servier Laboratories Ltd)
+amp,3661311000001107,0601021M0BBABAM,Diamicron 30mg MR tablets (Servier Laboratories Ltd)
+amp,49111000001103,0601021M0BCAAAA,Diaglyk 80mg tablets (Ashbourne Pharmaceuticals Ltd)
+amp,868111000001101,0601021M0BDAAAA,Vivazide 80mg tablets (Lexon (UK) Ltd)
+amp,61911000001108,0601021M0BEAAAA,Glimil 80mg tablets (Milpharm Ltd)
+amp,13456711000001106,0601021M0BFAAAM,Nazdol MR 30mg tablets (Consilient Health Ltd)
+amp,15100511000001103,0601021M0BFABAM,Nazdol MR 30mg tablets (Mylan)
+amp,15100211000001101,0601021M0BFACAM,Nazdol MR 30mg tablets (Teva UK Ltd)
+amp,15334511000001109,0601021M0BGAAAM,Edicil MR 30mg tablets (Teva UK Ltd)
+amp,16536211000001102,0601021M0BHAAAM,Dacadis MR 30mg tablets (Mylan)
+amp,16677511000001108,0601021M0BIAAAR,Zicron 40mg tablets (Bristol Laboratories Ltd)
+amp,33766211000001100,0601021M0BIABAM,Zicron PR 30mg tablets (Bristol Laboratories Ltd)
+amp,18678711000001108,0601021M0BJAAAM,Vitile XL 30mg tablets (Actavis UK Ltd)
+amp,22225011000001109,0601021M0BKAAAT,Laaglyda MR 60mg tablets (Consilient Health Ltd)
+amp,27957011000001101,0601021M0BLAAAM,Ziclaseg 30mg modified-release tablets (Lupin Healthcare (UK) Ltd)
+amp,28420711000001107,0601021M0BMAAAM,Vamju 30mg modified-release tablets (Advanz Pharma)
+amp,28420911000001109,0601021M0BMABAT,Vamju 60mg modified-release tablets (Advanz Pharma)
+amp,30982411000001107,0601021M0BNAAAM,Bilxona 30mg modified-release tablets (Accord Healthcare Ltd)
+amp,30983711000001109,0601021M0BNABAT,Bilxona 60mg modified-release tablets (Actavis UK Ltd)
+amp,37618711000001109,0601021M0BNACAT,Bilxona 60mg modified-release tablets (Accord Healthcare Ltd)
+amp,36910511000001100,0601021M0BPAAAV,Glydex 160mg tablets (Medreich Plc)
+amp,38018211000001100,0601021M0BQAAAM,Lamzarin 30mg modified-release tablets (Key Pharmaceuticals Ltd)
+amp,38018511000001102,0601021M0BQABAT,Lamzarin 60mg modified-release tablets (Key Pharmaceuticals Ltd)
+amp,129411000001101,0601021P0AAABAB,Glipizide 5mg tablets (Pfizer Ltd)
+amp,464111000001100,0601021P0AAABAB,Glipizide 5mg tablets (Mylan)
+amp,697811000001104,0601021P0AAABAB,Glipizide 5mg tablets (IVAX Pharmaceuticals UK Ltd)
+amp,698511000001103,0601021P0AAABAB,Glipizide 5mg tablets (Sandoz Ltd)
+amp,731211000001105,0601021P0AAABAB,Glipizide 5mg tablets (A A H Pharmaceuticals Ltd)
+amp,756411000001104,0601021P0AAABAB,Glipizide 5mg tablets (Actavis UK Ltd)
+amp,788811000001108,0601021P0AAABAB,Glipizide 5mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,811811000001103,0601021P0AAABAB,Glipizide 5mg tablets (Kent Pharmaceuticals Ltd)
+amp,9745811000001100,0601021P0AAABAB,Glipizide 5mg tablets (Teva UK Ltd)
+amp,13578511000001105,0601021P0AAABAB,Glipizide 5mg tablets (DE Pharmaceuticals)
+amp,17918011000001108,0601021P0AAABAB,Glipizide 5mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,19818611000001102,0601021P0AAABAB,Glipizide 5mg tablets (Almus Pharmaceuticals Ltd)
+amp,22028411000001100,0601021P0AAABAB,Glipizide 5mg tablets (Waymade Healthcare Plc)
+amp,29870011000001101,0601021P0AAABAB,Glipizide 5mg tablets (Sigma Pharmaceuticals Plc)
+amp,30204011000001106,0601021P0AAABAB,Glipizide 5mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,515111000001108,0601021P0BBAAAB,Glibenese 5mg tablets (Pfizer Ltd)
+amp,808711000001104,0601021P0BCACAA,Minodiab 2.5mg tablets (Pfizer Ltd)
+amp,652411000001107,0601021P0BCADAB,Minodiab 5mg tablets (Pfizer Ltd)
+amp,3763311000001102,0601021R0BBAAAA,Glurenorm 30mg tablets (Sanofi)
+amp,147811000001105,0601021X0AAADAD,Tolbutamide 500mg tablets (Kent Pharmaceuticals Ltd)
+amp,393311000001107,0601021X0AAADAD,Tolbutamide 500mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,450011000001104,0601021X0AAADAD,Tolbutamide 500mg tablets (A A H Pharmaceuticals Ltd)
+amp,639511000001103,0601021X0AAADAD,Tolbutamide 500mg tablets (Teva UK Ltd)
+amp,864711000001108,0601021X0AAADAD,Tolbutamide 500mg tablets (Actavis UK Ltd)
+amp,4470711000001109,0601021X0AAADAD,Tolbutamide 500mg tablets (Mylan)
+amp,9801011000001101,0601021X0AAADAD,Tolbutamide 500mg tablets (Almus Pharmaceuticals Ltd)
+amp,17205711000001104,0601021X0AAADAD,Tolbutamide 500mg tablets (Sovereign Medical Ltd)
+amp,17821311000001104,0601021X0AAADAD,Tolbutamide 500mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,21884111000001108,0601021X0AAADAD,Tolbutamide 500mg tablets (Waymade Healthcare Plc)
+amp,27117211000001103,0601021X0AAADAD,Tolbutamide 500mg tablets (Genesis Pharmaceuticals Ltd)
+amp,30100711000001104,0601021X0AAADAD,Tolbutamide 500mg tablets (DE Pharmaceuticals)
+amp,8712011000001107,0601021X0AAAJAJ,Tolbutamide 500mg/5ml oral suspension (Special Order)
+amp,13318011000001109,0601021X0AAAKAK,Tolbutamide 250mg/5ml oral suspension (Special Order)
+amp,13317511000001100,0601021X0AAALAL,Tolbutamide 1g/5ml oral suspension (Special Order)
+amp,197511000001103,0601022B0AAABAB,Metformin 500mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,202611000001102,0601022B0AAABAB,Metformin 500mg tablets (A A H Pharmaceuticals Ltd)
+amp,257011000001104,0601022B0AAABAB,Metformin 500mg tablets (Mylan)
+amp,593911000001106,0601022B0AAABAB,Metformin 500mg tablets (Sandoz Ltd)
+amp,690811000001103,0601022B0AAABAB,Metformin 500mg tablets (Kent Pharmaceuticals Ltd)
+amp,785311000001108,0601022B0AAABAB,Metformin 500mg tablets (Zentiva)
+amp,882811000001109,0601022B0AAABAB,Metformin 500mg tablets (Actavis UK Ltd)
+amp,889611000001103,0601022B0AAABAB,Metformin 500mg tablets (Teva UK Ltd)
+amp,7016011000001104,0601022B0AAABAB,Metformin 500mg tablets (IVAX Pharmaceuticals UK Ltd)
+amp,7461611000001109,0601022B0AAABAB,Metformin 500mg tablets (Ranbaxy (UK) Ltd)
+amp,9555911000001109,0601022B0AAABAB,Metformin 500mg tablets (Wockhardt UK Ltd)
+amp,9797311000001109,0601022B0AAABAB,Metformin 500mg tablets (Almus Pharmaceuticals Ltd)
+amp,10292611000001107,0601022B0AAABAB,Metformin 500mg tablets (Relonchem Ltd)
+amp,10390211000001102,0601022B0AAABAB,Metformin 500mg tablets (Arrow Generics Ltd)
+amp,13756411000001106,0601022B0AAABAB,Metformin 500mg tablets (Tillomed Laboratories Ltd)
+amp,14773811000001100,0601022B0AAABAB,Metformin 500mg tablets (Boston Healthcare Ltd)
+amp,15973311000001105,0601022B0AAABAB,Metformin 500mg tablets (Zanza Specials International Ltd)
+amp,16061411000001104,0601022B0AAABAB,Metformin 500mg tablets (Bristol Laboratories Ltd)
+amp,16701111000001106,0601022B0AAABAB,Metformin 500mg tablets (Pfizer Ltd)
+amp,17940011000001100,0601022B0AAABAB,Metformin 500mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,21793711000001108,0601022B0AAABAB,Metformin 500mg tablets (Waymade Healthcare Plc)
+amp,22349811000001106,0601022B0AAABAB,Metformin 500mg tablets (Milpharm Ltd)
+amp,24380011000001107,0601022B0AAABAB,Metformin 500mg tablets (DE Pharmaceuticals)
+amp,29906011000001102,0601022B0AAABAB,Metformin 500mg tablets (Sigma Pharmaceuticals Plc)
+amp,34347311000001103,0601022B0AAABAB,Metformin 500mg tablets (Crescent Pharma Ltd)
+amp,35593311000001106,0601022B0AAABAB,Metformin 500mg tablets (RX Farma)
+amp,37120411000001106,0601022B0AAABAB,Metformin 500mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,85711000001106,0601022B0AAADAD,Metformin 850mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,115811000001106,0601022B0AAADAD,Metformin 850mg tablets (Actavis UK Ltd)
+amp,157911000001103,0601022B0AAADAD,Metformin 850mg tablets (Teva UK Ltd)
+amp,325011000001101,0601022B0AAADAD,Metformin 850mg tablets (A A H Pharmaceuticals Ltd)
+amp,637811000001108,0601022B0AAADAD,Metformin 850mg tablets (Zentiva)
+amp,795311000001107,0601022B0AAADAD,Metformin 850mg tablets (Mylan)
+amp,859811000001106,0601022B0AAADAD,Metformin 850mg tablets (Kent Pharmaceuticals Ltd)
+amp,909311000001100,0601022B0AAADAD,Metformin 850mg tablets (Sandoz Ltd)
+amp,7034411000001106,0601022B0AAADAD,Metformin 850mg tablets (IVAX Pharmaceuticals UK Ltd)
+amp,7463711000001104,0601022B0AAADAD,Metformin 850mg tablets (Ranbaxy (UK) Ltd)
+amp,9556111000001100,0601022B0AAADAD,Metformin 850mg tablets (Wockhardt UK Ltd)
+amp,9763311000001104,0601022B0AAADAD,Metformin 850mg tablets (The Boots Company Plc)
+amp,9798211000001102,0601022B0AAADAD,Metformin 850mg tablets (Almus Pharmaceuticals Ltd)
+amp,10293511000001101,0601022B0AAADAD,Metformin 850mg tablets (Relonchem Ltd)
+amp,10390811000001101,0601022B0AAADAD,Metformin 850mg tablets (Arrow Generics Ltd)
+amp,13757811000001105,0601022B0AAADAD,Metformin 850mg tablets (Tillomed Laboratories Ltd)
+amp,14774311000001106,0601022B0AAADAD,Metformin 850mg tablets (Boston Healthcare Ltd)
+amp,15973711000001109,0601022B0AAADAD,Metformin 850mg tablets (Zanza Specials International Ltd)
+amp,16061711000001105,0601022B0AAADAD,Metformin 850mg tablets (Bristol Laboratories Ltd)
+amp,16701411000001101,0601022B0AAADAD,Metformin 850mg tablets (Pfizer Ltd)
+amp,17940411000001109,0601022B0AAADAD,Metformin 850mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,21794511000001100,0601022B0AAADAD,Metformin 850mg tablets (Waymade Healthcare Plc)
+amp,22350011000001105,0601022B0AAADAD,Metformin 850mg tablets (Milpharm Ltd)
+amp,24380511000001104,0601022B0AAADAD,Metformin 850mg tablets (DE Pharmaceuticals)
+amp,29906411000001106,0601022B0AAADAD,Metformin 850mg tablets (Sigma Pharmaceuticals Plc)
+amp,34346811000001105,0601022B0AAADAD,Metformin 850mg tablets (Crescent Pharma Ltd)
+amp,35593611000001101,0601022B0AAADAD,Metformin 850mg tablets (RX Farma)
+amp,37120611000001109,0601022B0AAADAD,Metformin 850mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,8615911000001105,0601022B0AAAIAI,Metformin 500mg/5ml oral solution (Special Order)
+amp,8616711000001100,0601022B0AAAIAI,Metformin 500mg/5ml oral suspension (Special Order)
+amp,8617611000001106,0601022B0AAAJAJ,Metformin 850mg/5ml oral solution (Special Order)
+amp,8618911000001104,0601022B0AAAJAJ,Metformin 850mg/5ml oral suspension (Special Order)
+amp,8614411000001103,0601022B0AAAKAK,Metformin 250mg/5ml oral solution (Special Order)
+amp,8615611000001104,0601022B0AAAKAK,Metformin 250mg/5ml oral suspension (Special Order)
+amp,8614211000001102,0601022B0AAALAL,Metformin 425mg/5ml oral solution (Special Order)
+amp,8614811000001101,0601022B0AAALAL,Metformin 425mg/5ml oral suspension (Special Order)
+amp,12792711000001102,0601022B0AAAMAM,Metformin 1g/5ml oral solution (Special Order)
+amp,12793011000001108,0601022B0AAANAN,Metformin 5mg/5ml oral solution (Special Order)
+amp,8759611000001101,0601022B0AAAQAQ,Metformin 850mg capsules (Special Order)
+amp,10832711000001103,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free (Alliance Healthcare (Distribution) Ltd)
+amp,10963611000001104,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free (A A H Pharmaceuticals Ltd)
+amp,11599411000001100,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free (Rosemont Pharmaceuticals Ltd)
+amp,15984111000001102,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free (Actavis UK Ltd)
+amp,17970111000001100,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free (Almus Pharmaceuticals Ltd)
+amp,22105211000001106,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free (Zentiva)
+amp,22393411000001104,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free (Waymade Healthcare Plc)
+amp,27879911000001104,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free (Pinewood Healthcare)
+amp,28415811000001101,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free (Advanz Pharma)
+amp,29918411000001109,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free (Sigma Pharmaceuticals Plc)
+amp,33548911000001100,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free (Colonis Pharma Ltd)
+amp,37449011000001109,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free (DE Pharmaceuticals)
+amp,15019811000001104,0601022B0AAASAS,Metformin 500mg modified-release tablets (Kent Pharmaceuticals Ltd)
+amp,30763311000001100,0601022B0AAASAS,Metformin 500mg modified-release tablets (Almus Pharmaceuticals Ltd)
+amp,33425611000001106,0601022B0AAATAT,Metformin 750mg modified-release tablets (A A H Pharmaceuticals Ltd)
+amp,32423011000001106,0601022B0AAAVAV,Metformin 1g modified-release tablets (Kent Pharmaceuticals Ltd)
+amp,33548011000001104,0601022B0AAAYAY,Metformin 1g/5ml oral solution sugar free (Colonis Pharma Ltd)
+amp,33769211000001109,0601022B0AAAYAY,Metformin 1g/5ml oral solution sugar free (Alliance Healthcare (Distribution) Ltd)
+amp,34188211000001105,0601022B0AAAYAY,Metformin 1g/5ml oral solution sugar free (A A H Pharmaceuticals Ltd)
+amp,33547711000001103,0601022B0AAAZAZ,Metformin 850mg/5ml oral solution sugar free (Colonis Pharma Ltd)
+amp,33769011000001104,0601022B0AAAZAZ,Metformin 850mg/5ml oral solution sugar free (Alliance Healthcare (Distribution) Ltd)
+amp,34188011000001100,0601022B0AAAZAZ,Metformin 850mg/5ml oral solution sugar free (A A H Pharmaceuticals Ltd)
+amp,363211000001102,0601022B0BBAAAB,Glucophage 500mg tablets (Merck Serono Ltd)
+amp,365111000001109,0601022B0BBABAD,Glucophage 850mg tablets (Merck Serono Ltd)
+amp,8990711000001100,0601022B0BBACAS,Glucophage SR 500mg tablets (Merck Serono Ltd)
+amp,13748611000001107,0601022B0BBADAT,Glucophage SR 750mg tablets (Merck Serono Ltd)
+amp,15367811000001105,0601022B0BBAEAV,Glucophage SR 1000mg tablets (Merck Serono Ltd)
+amp,15373711000001104,0601022B0BBAFAW,Glucophage 500mg oral powder sachets (Merck Serono Ltd)
+amp,15374311000001101,0601022B0BBAGAX,Glucophage 1000mg oral powder sachets (Merck Serono Ltd)
+amp,543011000001102,0601022B0BDAAAB,Glyformin 500mg tablets (Dr Reddy's Laboratories (UK) Ltd)
+amp,10741611000001100,0601022B0BHAAAR,Metsol 500mg/5ml oral solution (Kappin Ltd)
+amp,14183911000001108,0601022B0BIAAAS,Bolamyn SR 500mg tablets (Teva UK Ltd)
+amp,22308811000001109,0601022B0BIABAV,Bolamyn SR 1000mg tablets (Teva UK Ltd)
+amp,18141911000001101,0601022B0BJAAAS,Metabet SR 500mg tablets (Morningside Healthcare Ltd)
+amp,18885611000001108,0601022B0BJABAV,Metabet SR 1000mg tablets (Morningside Healthcare Ltd)
+amp,19301211000001107,0601022B0BJACAV,Metabet SR 1000mg tablets (Actavis UK Ltd)
+amp,21409811000001105,0601022B0BJADAS,Metabet SR 500mg tablets (Actavis UK Ltd)
+amp,19308111000001109,0601022B0BKAAAS,Glucient SR 500mg tablets (Consilient Health Ltd)
+amp,30012111000001105,0601022B0BKABAT,Glucient SR 750mg tablets (Consilient Health Ltd)
+amp,30012311000001107,0601022B0BKACAV,Glucient SR 1000mg tablets (Consilient Health Ltd)
+amp,20552511000001105,0601022B0BLAAAS,Diagemet XL 500mg tablets (Genus Pharmaceuticals Ltd)
+amp,24568211000001104,0601022B0BMAAAV,Sukkarto SR 1000mg tablets (Morningside Healthcare Ltd)
+amp,24568411000001100,0601022B0BMABAS,Sukkarto SR 500mg tablets (Morningside Healthcare Ltd)
+amp,38238111000001109,0601022B0BMACAT,Sukkarto SR 750mg tablets (Morningside Healthcare Ltd)
+amp,34552411000001107,0601022B0BNAAAS,Meijumet 500mg modified-release tablets (Medreich Plc)
+amp,34552811000001109,0601022B0BNABAT,Meijumet 750mg modified-release tablets (Medreich Plc)
+amp,34553311000001105,0601022B0BNACAV,Meijumet 1000mg modified-release tablets (Medreich Plc)
+amp,35547511000001101,0601022B0BPAAAS,Yaltormin SR 500mg tablets (Wockhardt UK Ltd)
+amp,35548011000001105,0601022B0BPABAT,Yaltormin SR 750mg tablets (Wockhardt UK Ltd)
+amp,35548311000001108,0601022B0BPACAV,Yaltormin SR 1000mg tablets (Wockhardt UK Ltd)
+amp,35849011000001104,0601022B0BQAAAS,Metuxtan SR 500mg tablets (Accord Healthcare Ltd)
+amp,18309611000001107,0601023A0AAAAAA,Acarbose 50mg tablets (A A H Pharmaceuticals Ltd)
+amp,18624811000001107,0601023A0AAAAAA,Acarbose 50mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,19489311000001108,0601023A0AAAAAA,Acarbose 50mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,19700511000001104,0601023A0AAAAAA,Acarbose 50mg tablets (DE Pharmaceuticals)
+amp,21027911000001106,0601023A0AAAAAA,Acarbose 50mg tablets (Arrow Generics Ltd)
+amp,21111411000001109,0601023A0AAAAAA,Acarbose 50mg tablets (Actavis UK Ltd)
+amp,21734711000001103,0601023A0AAAAAA,Acarbose 50mg tablets (Waymade Healthcare Plc)
+amp,24130611000001101,0601023A0AAAAAA,Acarbose 50mg tablets (Morningside Healthcare Ltd)
+amp,29754711000001105,0601023A0AAAAAA,Acarbose 50mg tablets (Sigma Pharmaceuticals Plc)
+amp,29988711000001100,0601023A0AAAAAA,Acarbose 50mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,33549511000001101,0601023A0AAAAAA,Acarbose 50mg tablets (Mylan)
+amp,38292411000001105,0601023A0AAAAAA,Acarbose 50mg tablets (Rivopharm (UK) Ltd)
+amp,18309811000001106,0601023A0AAABAB,Acarbose 100mg tablets (A A H Pharmaceuticals Ltd)
+amp,18624411000001105,0601023A0AAABAB,Acarbose 100mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,19489511000001102,0601023A0AAABAB,Acarbose 100mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,19700011000001107,0601023A0AAABAB,Acarbose 100mg tablets (DE Pharmaceuticals)
+amp,21028111000001109,0601023A0AAABAB,Acarbose 100mg tablets (Arrow Generics Ltd)
+amp,21112511000001100,0601023A0AAABAB,Acarbose 100mg tablets (Actavis UK Ltd)
+amp,21735211000001106,0601023A0AAABAB,Acarbose 100mg tablets (Waymade Healthcare Plc)
+amp,24130811000001102,0601023A0AAABAB,Acarbose 100mg tablets (Morningside Healthcare Ltd)
+amp,29754211000001103,0601023A0AAABAB,Acarbose 100mg tablets (Sigma Pharmaceuticals Plc)
+amp,29988911000001103,0601023A0AAABAB,Acarbose 100mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,33549711000001106,0601023A0AAABAB,Acarbose 100mg tablets (Mylan)
+amp,38293311000001108,0601023A0AAABAB,Acarbose 100mg tablets (Rivopharm (UK) Ltd)
+amp,781411000001104,0601023A0BBACAA,Glucobay 50mg tablets (Bayer Plc)
+amp,444311000001106,0601023A0BBADAB,Glucobay 100mg tablets (Bayer Plc)
+amp,13411611000001100,0601023AABBAAAA,Galvus 50mg tablets (Novartis Pharmaceuticals UK Ltd)
+amp,15858611000001101,0601023ABBBAAAA,Victoza 6mg/ml solution for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+amp,33747711000001102,0601023ABBCAAAA,Saxenda 6mg/ml solution for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+amp,15993011000001101,0601023ACBBAAAA,Onglyza 5mg tablets (AstraZeneca UK Ltd)
+amp,18596311000001108,0601023ACBBABAB,Onglyza 2.5mg tablets (AstraZeneca UK Ltd)
+amp,17060511000001108,0601023ADBBAAAA,Janumet 50mg/1000mg tablets (Merck Sharp & Dohme Ltd)
+amp,19492811000001108,0601023AEBBAAAA,Trajenta 5mg tablets (Boehringer Ingelheim Ltd)
+amp,21208211000001100,0601023AFBBAAAA,Jentadueto 2.5mg/850mg tablets (Boehringer Ingelheim Ltd)
+amp,21208511000001102,0601023AFBBABAB,Jentadueto 2.5mg/1000mg tablets (Boehringer Ingelheim Ltd)
+amp,21609511000001105,0601023AGBBAAAA,Forxiga 5mg tablets (AstraZeneca UK Ltd)
+amp,21609811000001108,0601023AGBBABAB,Forxiga 10mg tablets (AstraZeneca UK Ltd)
+amp,21705311000001107,0601023AHBBAAAA,Komboglyze 2.5mg/850mg tablets (AstraZeneca UK Ltd)
+amp,21705611000001102,0601023AHBBABAB,Komboglyze 2.5mg/1000mg tablets (AstraZeneca UK Ltd)
+amp,21941011000001105,0601023AIBBAAAA,Lyxumia 20micrograms/0.2ml solution for injection 3ml pre-filled pens (Sanofi)
+amp,21941511000001102,0601023AIBBABAB,Lyxumia 10micrograms/0.2ml solution for injection 3ml pre-filled pens (Sanofi)
+amp,21953711000001106,0601023AIBBACAC,Lyxumia 10micrograms/20micrograms treatment initiation pack (Sanofi)
+amp,23632611000001103,0601023AJBBAAAA,Vipdomet 12.5mg/1000mg tablets (Takeda UK Ltd)
+amp,23634111000001103,0601023AKBBAAAA,Vipidia 6.25mg tablets (Takeda UK Ltd)
+amp,23636011000001109,0601023AKBBABAB,Vipidia 12.5mg tablets (Takeda UK Ltd)
+amp,23636311000001107,0601023AKBBACAC,Vipidia 25mg tablets (Takeda UK Ltd)
+amp,24018111000001106,0601023ALBBAAAA,Xigduo 5mg/850mg tablets (AstraZeneca UK Ltd)
+amp,24018511000001102,0601023ALBBABAB,Xigduo 5mg/1000mg tablets (AstraZeneca UK Ltd)
+amp,24088611000001101,0601023AMBBAAAA,Invokana 100mg tablets (Napp Pharmaceuticals Ltd)
+amp,24088311000001106,0601023AMBBABAB,Invokana 300mg tablets (Napp Pharmaceuticals Ltd)
+amp,25238811000001107,0601023ANBBAAAA,Jardiance 10mg tablets (Boehringer Ingelheim Ltd)
+amp,25239711000001108,0601023ANBBABAB,Jardiance 25mg tablets (Boehringer Ingelheim Ltd)
+amp,28022511000001109,0601023APBBAAAA,Vokanamet 50mg/850mg tablets (Napp Pharmaceuticals Ltd)
+amp,28024411000001103,0601023APBBABAB,Vokanamet 50mg/1000mg tablets (Napp Pharmaceuticals Ltd)
+amp,28461011000001109,0601023AQBBAAAA,Trulicity 0.75mg/0.5ml solution for injection pre-filled pens (Eli Lilly and Company Ltd)
+amp,28462311000001103,0601023AQBBABAB,Trulicity 1.5mg/0.5ml solution for injection pre-filled pens (Eli Lilly and Company Ltd)
+amp,30173411000001107,0601023ARBBAAAA,Synjardy 5mg/850mg tablets (Boehringer Ingelheim Ltd)
+amp,30174111000001100,0601023ARBBABAB,Synjardy 5mg/1000mg tablets (Boehringer Ingelheim Ltd)
+amp,30175011000001102,0601023ARBBACAC,Synjardy 12.5mg/850mg tablets (Boehringer Ingelheim Ltd)
+amp,30175711000001100,0601023ARBBADAD,Synjardy 12.5mg/1000mg tablets (Boehringer Ingelheim Ltd)
+amp,31014311000001106,0601023ASBBAAAA,Eperzan 30mg powder and solvent for solution for injection pre-filled pens (GlaxoSmithKline UK Ltd)
+amp,31014611000001101,0601023ASBBABAB,Eperzan 50mg powder and solvent for solution for injection pre-filled pens (GlaxoSmithKline UK Ltd)
+amp,28054311000001106,0601023AUBBAAAA,Xultophy 100units/ml / 3.6mg/ml solution for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+amp,33682311000001103,0601023AVBBAAAA,Qtern 5mg/10mg tablets (AstraZeneca UK Ltd)
+amp,36470811000001107,0601023AWBBAAAA,Ozempic 0.25mg/0.19ml solution for injection 1.5ml pre-filled pens (Novo Nordisk Ltd)
+amp,36471111000001106,0601023AWBBABAB,Ozempic 0.5mg/0.37ml solution for injection 1.5ml pre-filled pens (Novo Nordisk Ltd)
+amp,36471411000001101,0601023AWBBACAC,Ozempic 1mg/0.74ml solution for injection 3ml pre-filled pens (Novo Nordisk Ltd)
+amp,36514811000001101,0601023AXBBAAAA,Steglatro 5mg tablets (Merck Sharp & Dohme Ltd)
+amp,36515111000001107,0601023AXBBABAB,Steglatro 15mg tablets (Merck Sharp & Dohme Ltd)
+amp,37225211000001100,0601023AYBBAAAA,Glyxambi 10mg/5mg tablets (Boehringer Ingelheim Ltd)
+amp,37225511000001102,0601023AYBBABAB,Glyxambi 25mg/5mg tablets (Boehringer Ingelheim Ltd)
+amp,19361311000001103,0601023B0AAAAAA,Pioglitazone 15mg tablets (A A H Pharmaceuticals Ltd)
+amp,19469211000001102,0601023B0AAAAAA,Pioglitazone 15mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,19476211000001103,0601023B0AAAAAA,Pioglitazone 15mg tablets (Consilient Health Ltd)
+amp,19592911000001108,0601023B0AAAAAA,Pioglitazone 15mg tablets (Dr Reddy's Laboratories (UK) Ltd)
+amp,20319611000001106,0601023B0AAAAAA,Pioglitazone 15mg tablets (Sandoz Ltd)
+amp,20357411000001107,0601023B0AAAAAA,Pioglitazone 15mg tablets (Actavis UK Ltd)
+amp,20916911000001104,0601023B0AAAAAA,Pioglitazone 15mg tablets (Zentiva)
+amp,21763311000001107,0601023B0AAAAAA,Pioglitazone 15mg tablets (Teva UK Ltd)
+amp,21848111000001107,0601023B0AAAAAA,Pioglitazone 15mg tablets (Waymade Healthcare Plc)
+amp,22949011000001105,0601023B0AAAAAA,Pioglitazone 15mg tablets (Ranbaxy (UK) Ltd)
+amp,23487411000001107,0601023B0AAAAAA,Pioglitazone 15mg tablets (Accord Healthcare Ltd)
+amp,24137211000001104,0601023B0AAAAAA,Pioglitazone 15mg tablets (Morningside Healthcare Ltd)
+amp,29985811000001104,0601023B0AAAAAA,Pioglitazone 15mg tablets (Sigma Pharmaceuticals Plc)
+amp,30077211000001109,0601023B0AAAAAA,Pioglitazone 15mg tablets (DE Pharmaceuticals)
+amp,30857011000001100,0601023B0AAAAAA,Pioglitazone 15mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,32492811000001102,0601023B0AAAAAA,Pioglitazone 15mg tablets (Brown & Burk UK Ltd)
+amp,33599111000001102,0601023B0AAAAAA,Pioglitazone 15mg tablets (Mylan)
+amp,36856611000001103,0601023B0AAAAAA,Pioglitazone 15mg tablets (Torrent Pharma (UK) Ltd)
+amp,19361511000001109,0601023B0AAABAB,Pioglitazone 30mg tablets (A A H Pharmaceuticals Ltd)
+amp,19469411000001103,0601023B0AAABAB,Pioglitazone 30mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,19476411000001104,0601023B0AAABAB,Pioglitazone 30mg tablets (Consilient Health Ltd)
+amp,19593111000001104,0601023B0AAABAB,Pioglitazone 30mg tablets (Dr Reddy's Laboratories (UK) Ltd)
+amp,20320211000001108,0601023B0AAABAB,Pioglitazone 30mg tablets (Sandoz Ltd)
+amp,20357611000001105,0601023B0AAABAB,Pioglitazone 30mg tablets (Actavis UK Ltd)
+amp,20917111000001104,0601023B0AAABAB,Pioglitazone 30mg tablets (Zentiva)
+amp,21764211000001101,0601023B0AAABAB,Pioglitazone 30mg tablets (Teva UK Ltd)
+amp,21848311000001109,0601023B0AAABAB,Pioglitazone 30mg tablets (Waymade Healthcare Plc)
+amp,22949311000001108,0601023B0AAABAB,Pioglitazone 30mg tablets (Ranbaxy (UK) Ltd)
+amp,23487611000001105,0601023B0AAABAB,Pioglitazone 30mg tablets (Accord Healthcare Ltd)
+amp,24134911000001102,0601023B0AAABAB,Pioglitazone 30mg tablets (Morningside Healthcare Ltd)
+amp,29986011000001101,0601023B0AAABAB,Pioglitazone 30mg tablets (Sigma Pharmaceuticals Plc)
+amp,30112111000001103,0601023B0AAABAB,Pioglitazone 30mg tablets (DE Pharmaceuticals)
+amp,30857211000001105,0601023B0AAABAB,Pioglitazone 30mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,32493011000001104,0601023B0AAABAB,Pioglitazone 30mg tablets (Brown & Burk UK Ltd)
+amp,33598911000001107,0601023B0AAABAB,Pioglitazone 30mg tablets (Mylan)
+amp,36857111000001109,0601023B0AAABAB,Pioglitazone 30mg tablets (Torrent Pharma (UK) Ltd)
+amp,19469611000001100,0601023B0AAACAC,Pioglitazone 45mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,19473511000001108,0601023B0AAACAC,Pioglitazone 45mg tablets (A A H Pharmaceuticals Ltd)
+amp,19476611000001101,0601023B0AAACAC,Pioglitazone 45mg tablets (Consilient Health Ltd)
+amp,19593311000001102,0601023B0AAACAC,Pioglitazone 45mg tablets (Dr Reddy's Laboratories (UK) Ltd)
+amp,20320611000001105,0601023B0AAACAC,Pioglitazone 45mg tablets (Sandoz Ltd)
+amp,20357811000001109,0601023B0AAACAC,Pioglitazone 45mg tablets (Actavis UK Ltd)
+amp,20917311000001102,0601023B0AAACAC,Pioglitazone 45mg tablets (Zentiva)
+amp,21764511000001103,0601023B0AAACAC,Pioglitazone 45mg tablets (Teva UK Ltd)
+amp,21848511000001103,0601023B0AAACAC,Pioglitazone 45mg tablets (Waymade Healthcare Plc)
+amp,22949511000001102,0601023B0AAACAC,Pioglitazone 45mg tablets (Ranbaxy (UK) Ltd)
+amp,23487811000001109,0601023B0AAACAC,Pioglitazone 45mg tablets (Accord Healthcare Ltd)
+amp,24135111000001101,0601023B0AAACAC,Pioglitazone 45mg tablets (Morningside Healthcare Ltd)
+amp,29986211000001106,0601023B0AAACAC,Pioglitazone 45mg tablets (Sigma Pharmaceuticals Plc)
+amp,30112311000001101,0601023B0AAACAC,Pioglitazone 45mg tablets (DE Pharmaceuticals)
+amp,30857411000001109,0601023B0AAACAC,Pioglitazone 45mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,32493211000001109,0601023B0AAACAC,Pioglitazone 45mg tablets (Brown & Burk UK Ltd)
+amp,33598711000001105,0601023B0AAACAC,Pioglitazone 45mg tablets (Mylan)
+amp,36857411000001104,0601023B0AAACAC,Pioglitazone 45mg tablets (Torrent Pharma (UK) Ltd)
+amp,13435011000001104,0601023B0AAADAD,Pioglitazone 30mg/5ml oral suspension (Special Order)
+amp,16007611000001109,0601023B0AAAEAE,Pioglitazone 15mg/5ml oral suspension (Special Order)
+amp,18567011000001105,0601023B0AAAFAF,Pioglitazone 45mg/5ml oral suspension (Special Order)
+amp,58011000001106,0601023B0BBAAAA,Actos 15mg tablets (Takeda UK Ltd)
+amp,446711000001101,0601023B0BBABAB,Actos 30mg tablets (Takeda UK Ltd)
+amp,5199411000001105,0601023B0BBACAC,Actos 45mg tablets (Takeda UK Ltd)
+amp,19957811000001101,0601023B0BCAAAA,Glizofar 15mg tablets (Teva UK Ltd)
+amp,19958011000001108,0601023B0BCABAB,Glizofar 30mg tablets (Teva UK Ltd)
+amp,19958211000001103,0601023B0BCACAC,Glizofar 45mg tablets (Teva UK Ltd)
+amp,20022911000001104,0601023B0BCADAA,Glizofar 15mg tablets (Arrow Generics Ltd)
+amp,20023111000001108,0601023B0BCAEAB,Glizofar 30mg tablets (Arrow Generics Ltd)
+amp,20023411000001103,0601023B0BCAFAC,Glizofar 45mg tablets (Arrow Generics Ltd)
+amp,23369611000001106,0601023B0BDAAAB,Glidipion 30mg tablets (Actavis UK Ltd)
+amp,23372211000001107,0601023B0BDABAC,Glidipion 45mg tablets (Actavis UK Ltd)
+amp,28940811000001104,0601023B0BDACAA,Glidipion 15mg tablets (Actavis UK Ltd)
+amp,29742811000001105,0601023B0BEAAAA,Diabiom 15mg tablets (Tillomed Laboratories Ltd)
+amp,29743011000001108,0601023B0BEABAB,Diabiom 30mg tablets (Tillomed Laboratories Ltd)
+amp,29743211000001103,0601023B0BEACAC,Diabiom 45mg tablets (Tillomed Laboratories Ltd)
+amp,4667411000001106,0601023I0BCAAAD,Guarem 5g granules sachets (Shire Pharmaceuticals Ltd)
+amp,19179211000001108,0601023R0AAAAAA,Repaglinide 500microgram tablets (Teva UK Ltd)
+amp,19277111000001106,0601023R0AAAAAA,Repaglinide 500microgram tablets (Aspire Pharma Ltd)
+amp,19299911000001107,0601023R0AAAAAA,Repaglinide 500microgram tablets (Actavis UK Ltd)
+amp,19360311000001108,0601023R0AAAAAA,Repaglinide 500microgram tablets (Alliance Healthcare (Distribution) Ltd)
+amp,19361711000001104,0601023R0AAAAAA,Repaglinide 500microgram tablets (A A H Pharmaceuticals Ltd)
+amp,20566211000001103,0601023R0AAAAAA,Repaglinide 500microgram tablets (Creo Pharma Ltd)
+amp,20773611000001101,0601023R0AAAAAA,Repaglinide 500microgram tablets (Accord Healthcare Ltd)
+amp,21880011000001100,0601023R0AAAAAA,Repaglinide 500microgram tablets (Waymade Healthcare Plc)
+amp,30829111000001109,0601023R0AAAAAA,Repaglinide 500microgram tablets (DE Pharmaceuticals)
+amp,30875411000001101,0601023R0AAAAAA,Repaglinide 500microgram tablets (Mawdsley-Brooks & Company Ltd)
+amp,33613711000001105,0601023R0AAAAAA,Repaglinide 500microgram tablets (Mylan)
+amp,19179511000001106,0601023R0AAABAB,Repaglinide 1mg tablets (Teva UK Ltd)
+amp,19276911000001106,0601023R0AAABAB,Repaglinide 1mg tablets (Aspire Pharma Ltd)
+amp,19300511000001103,0601023R0AAABAB,Repaglinide 1mg tablets (Actavis UK Ltd)
+amp,19360811000001104,0601023R0AAABAB,Repaglinide 1mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,19362011000001109,0601023R0AAABAB,Repaglinide 1mg tablets (A A H Pharmaceuticals Ltd)
+amp,20566511000001100,0601023R0AAABAB,Repaglinide 1mg tablets (Creo Pharma Ltd)
+amp,20777611000001109,0601023R0AAABAB,Repaglinide 1mg tablets (Accord Healthcare Ltd)
+amp,21880311000001102,0601023R0AAABAB,Repaglinide 1mg tablets (Waymade Healthcare Plc)
+amp,30088811000001104,0601023R0AAABAB,Repaglinide 1mg tablets (DE Pharmaceuticals)
+amp,30875711000001107,0601023R0AAABAB,Repaglinide 1mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,33614311000001108,0601023R0AAABAB,Repaglinide 1mg tablets (Mylan)
+amp,38190911000001103,0601023R0AAABAB,Repaglinide 1mg tablets (Rivopharm (UK) Ltd)
+amp,19179811000001109,0601023R0AAACAC,Repaglinide 2mg tablets (Teva UK Ltd)
+amp,19276711000001109,0601023R0AAACAC,Repaglinide 2mg tablets (Aspire Pharma Ltd)
+amp,19300811000001100,0601023R0AAACAC,Repaglinide 2mg tablets (Actavis UK Ltd)
+amp,19361111000001100,0601023R0AAACAC,Repaglinide 2mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,19362311000001107,0601023R0AAACAC,Repaglinide 2mg tablets (A A H Pharmaceuticals Ltd)
+amp,20566811000001102,0601023R0AAACAC,Repaglinide 2mg tablets (Creo Pharma Ltd)
+amp,20778911000001102,0601023R0AAACAC,Repaglinide 2mg tablets (Accord Healthcare Ltd)
+amp,21880611000001107,0601023R0AAACAC,Repaglinide 2mg tablets (Waymade Healthcare Plc)
+amp,30089311000001102,0601023R0AAACAC,Repaglinide 2mg tablets (DE Pharmaceuticals)
+amp,30876011000001101,0601023R0AAACAC,Repaglinide 2mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,33619611000001104,0601023R0AAACAC,Repaglinide 2mg tablets (Mylan)
+amp,38191211000001101,0601023R0AAACAC,Repaglinide 2mg tablets (Rivopharm (UK) Ltd)
+amp,152311000001101,0601023R0BBAAAA,NovoNorm 500microgram tablets (Novo Nordisk Ltd)
+amp,494111000001103,0601023R0BBABAB,NovoNorm 1mg tablets (Novo Nordisk Ltd)
+amp,840811000001100,0601023R0BBACAC,NovoNorm 2mg tablets (Novo Nordisk Ltd)
+amp,10952411000001100,0601023R0BCAAAA,Prandin 0.5mg tablets (Novo Nordisk Ltd)
+amp,10956911000001107,0601023R0BCABAB,Prandin 1mg tablets (Novo Nordisk Ltd)
+amp,10957811000001100,0601023R0BCACAC,Prandin 2mg tablets (Novo Nordisk Ltd)
+amp,19306711000001106,0601023R0BDAAAA,Enyglid 0.5mg tablets (Consilient Health Ltd)
+amp,19306911000001108,0601023R0BDABAB,Enyglid 1mg tablets (Consilient Health Ltd)
+amp,19307311000001105,0601023R0BDACAC,Enyglid 2mg tablets (Consilient Health Ltd)
+amp,922211000001106,0601023S0BBAAAA,Avandia 4mg tablets (GlaxoSmithKline UK Ltd)
+amp,270611000001105,0601023S0BBABAB,Avandia 8mg tablets (GlaxoSmithKline UK Ltd)
+amp,3650611000001102,0601023U0BBAAAA,Starlix 60mg tablets (Novartis Pharmaceuticals UK Ltd)
+amp,3651211000001105,0601023U0BBABAB,Starlix 120mg tablets (Novartis Pharmaceuticals UK Ltd)
+amp,3883511000001107,0601023U0BBACAC,Starlix 180mg tablets (Novartis Pharmaceuticals UK Ltd)
+amp,5302911000001102,0601023V0BBAAAA,Avandamet 1mg/500mg tablets (GlaxoSmithKline UK Ltd)
+amp,5303611000001103,0601023V0BBABAB,Avandamet 2mg/500mg tablets (GlaxoSmithKline UK Ltd)
+amp,8174611000001109,0601023V0BBACAC,Avandamet 4mg/1000mg tablets (GlaxoSmithKline UK Ltd)
+amp,8176311000001105,0601023V0BBADAD,Avandamet 2mg/1000mg tablets (GlaxoSmithKline UK Ltd)
+amp,35653211000001103,0601023W0AAAAAA,Pioglitazone 15mg / Metformin 850mg tablets (Teva UK Ltd)
+amp,35672911000001103,0601023W0AAAAAA,Pioglitazone 15mg / Metformin 850mg tablets (A A H Pharmaceuticals Ltd)
+amp,36468511000001101,0601023W0AAAAAA,Pioglitazone 15mg / Metformin 850mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,36832811000001104,0601023W0AAAAAA,Pioglitazone 15mg / Metformin 850mg tablets (Torrent Pharma (UK) Ltd)
+amp,37775311000001103,0601023W0AAAAAA,Pioglitazone 15mg / Metformin 850mg tablets (DE Pharmaceuticals)
+amp,10922311000001108,0601023W0BBAAAA,Competact 15mg/850mg tablets (Takeda UK Ltd)
+amp,32625911000001109,0601023X0AAADAD,Sitagliptin 50mg/5ml oral solution (Special Order)
+amp,32857511000001104,0601023X0AAAEAE,Sitagliptin 50mg/5ml oral suspension (Special Order)
+amp,11473711000001108,0601023X0BBAAAA,Januvia 100mg tablets (Merck Sharp & Dohme Ltd)
+amp,20114811000001100,0601023X0BBABAB,Januvia 50mg tablets (Merck Sharp & Dohme Ltd)
+amp,20115111000001106,0601023X0BBACAC,Januvia 25mg tablets (Merck Sharp & Dohme Ltd)
+amp,11494811000001109,0601023Y0BBAAAA,Byetta 5micrograms/0.02ml solution for injection 1.2ml pre-filled pens (AstraZeneca UK Ltd)
+amp,11494611000001105,0601023Y0BBABAB,Byetta 10micrograms/0.04ml solution for injection 2.4ml pre-filled pens (AstraZeneca UK Ltd)
+amp,19274811000001108,0601023Y0BCAAAC,Bydureon 2mg powder and solvent for prolonged-release suspension for injection vials (AstraZeneca UK Ltd)
+amp,28426011000001108,0601023Y0BCABAD,Bydureon 2mg powder and solvent for prolonged-release suspension for injection pre-filled pens (AstraZeneca UK Ltd)
+amp,38060511000001101,0601023Y0BCACAE,Bydureon BCise 2mg/0.85ml prolonged-release suspension for injection pre-filled pens (AstraZeneca UK Ltd)
+amp,13412311000001101,0601023Z0BBAAAA,Eucreas 50mg/1000mg tablets (Novartis Pharmaceuticals UK Ltd)
+amp,13412611000001106,0601023Z0BBABAB,Eucreas 50mg/850mg tablets (Novartis Pharmaceuticals UK Ltd)
+vmp,325259007,0601021A0AAAAAA,Glimepiride 2mg tablets
+vmp,325261003,0601021A0AAABAB,Glimepiride 1mg tablets
+vmp,325262005,0601021A0AAACAC,Glimepiride 3mg tablets
+vmp,325263000,0601021A0AAADAD,Glimepiride 4mg tablets
+vmp,16130611000001107,0601021A0AAAGAG,Glimepiride 2mg/5ml oral solution
+vmp,16130711000001103,0601021A0AAAGAG,Glimepiride 2mg/5ml oral suspension
+vmp,21366911000001103,0601021A0AAAHAH,Glimepiride 6mg/5ml oral suspension
+vmp,325213005,0601021E0AAAAAA,Chlorpropamide 100mg tablets
+vmp,325214004,0601021E0AAABAB,Chlorpropamide 250mg tablets
+vmp,12019111000001108,0601021E0AAADAD,Chlorpropamide 250mg/5ml oral suspension
+vmp,325218001,0601021H0AAAAAA,Glibenclamide 2.5mg tablets
+vmp,325219009,0601021H0AAABAB,Glibenclamide 5mg tablets
+vmp,12135711000001107,0601021H0AAAIAI,Glibenclamide 625micrograms/5ml oral solution
+vmp,12135811000001104,0601021H0AAAIAI,Glibenclamide 625micrograms/5ml oral suspension
+vmp,8523711000001107,0601021H0AAAJAJ,Glibenclamide 5mg/5ml oral solution
+vmp,8523811000001104,0601021H0AAAJAJ,Glibenclamide 5mg/5ml oral suspension
+vmp,12135511000001102,0601021H0AAAKAK,Glibenclamide 2.5mg/5ml oral solution
+vmp,12135611000001103,0601021H0AAAKAK,Glibenclamide 2.5mg/5ml oral suspension
+vmp,12135311000001108,0601021H0AAAMAM,Glibenclamide 15mg/5ml oral solution
+vmp,12135411000001101,0601021H0AAAMAM,Glibenclamide 15mg/5ml oral suspension
+vmp,8523911000001109,0601021H0AAANAN,Glibenclamide 7.5mg/5ml oral solution
+vmp,8524011000001107,0601021H0AAANAN,Glibenclamide 7.5mg/5ml oral suspension
+vmp,37405911000001104,0601021H0AAAPAP,Glibenclamide 600micrograms/ml oral suspension sugar free
+vmp,37406011000001107,0601021H0AAAQAQ,Glibenclamide 6mg/ml oral suspension sugar free
+vmp,325242002,0601021M0AAAAAA,Gliclazide 80mg tablets
+vmp,12136411000001105,0601021M0AAAGAG,Gliclazide 60mg/5ml oral suspension
+vmp,12136211000001106,0601021M0AAAHAH,Gliclazide 50mg/5ml oral suspension
+vmp,12136011000001101,0601021M0AAAIAI,Gliclazide 120mg/5ml oral suspension
+vmp,8524111000001108,0601021M0AAAJAJ,Gliclazide 160mg/5ml oral suspension
+vmp,12135911000001109,0601021M0AAALAL,Gliclazide 100mg/5ml oral suspension
+vmp,134587001,0601021M0AAAMAM,Gliclazide 30mg modified-release tablets
+vmp,12136111000001100,0601021M0AAANAN,Gliclazide 20mg/5ml oral suspension
+vmp,13466811000001105,0601021M0AAAPAP,Gliclazide 30mg/5ml oral suspension
+vmp,16702011000001102,0601021M0AAARAR,Gliclazide 40mg tablets
+vmp,8524311000001105,0601021M0AAASAS,Gliclazide 80mg/5ml oral suspension
+vmp,22226111000001104,0601021M0AAATAT,Gliclazide 60mg modified-release tablets
+vmp,8524211000001102,0601021M0AAAUAU,Gliclazide 40mg/5ml oral suspension
+vmp,36914911000001102,0601021M0AAAVAV,Gliclazide 160mg tablets
+vmp,325248003,0601021P0AAAAAA,Glipizide 2.5mg tablets
+vmp,325243007,0601021P0AAABAB,Glipizide 5mg tablets
+vmp,325251005,0601021R0AAAAAA,Gliquidone 30mg tablets
+vmp,325267004,0601021X0AAADAD,Tolbutamide 500mg tablets
+vmp,8724011000001106,0601021X0AAAJAJ,Tolbutamide 500mg/5ml oral suspension
+vmp,13324411000001101,0601021X0AAAKAK,Tolbutamide 250mg/5ml oral suspension
+vmp,13324311000001108,0601021X0AAALAL,Tolbutamide 1g/5ml oral suspension
+vmp,325278007,0601022B0AAABAB,Metformin 500mg tablets
+vmp,325279004,0601022B0AAADAD,Metformin 850mg tablets
+vmp,409197000,0601022B0AAAIAI,Metformin 500mg/5ml oral solution
+vmp,8664411000001102,0601022B0AAAIAI,Metformin 500mg/5ml oral suspension
+vmp,8664611000001104,0601022B0AAAJAJ,Metformin 850mg/5ml oral solution
+vmp,8664711000001108,0601022B0AAAJAJ,Metformin 850mg/5ml oral suspension
+vmp,8663911000001108,0601022B0AAAKAK,Metformin 250mg/5ml oral solution
+vmp,8664011000001106,0601022B0AAAKAK,Metformin 250mg/5ml oral suspension
+vmp,8664111000001107,0601022B0AAALAL,Metformin 425mg/5ml oral solution
+vmp,8664211000001101,0601022B0AAALAL,Metformin 425mg/5ml oral suspension
+vmp,12798011000001101,0601022B0AAAMAM,Metformin 1g/5ml oral solution
+vmp,12813711000001107,0601022B0AAANAN,Metformin 5mg/5ml oral solution
+vmp,8796711000001107,0601022B0AAAQAQ,Metformin 850mg capsules
+vmp,10750111000001100,0601022B0AAARAR,Metformin 500mg/5ml oral solution sugar free
+vmp,386047000,0601022B0AAASAS,Metformin 500mg modified-release tablets
+vmp,409361001,0601022B0AAATAT,Metformin 750mg modified-release tablets
+vmp,411533003,0601022B0AAAVAV,Metformin 1g modified-release tablets
+vmp,15411311000001103,0601022B0AAAWAW,Metformin 500mg oral powder sachets sugar free
+vmp,15411211000001106,0601022B0AAAXAX,Metformin 1g oral powder sachets sugar free
+vmp,33550811000001105,0601022B0AAAYAY,Metformin 1g/5ml oral solution sugar free
+vmp,33550911000001100,0601022B0AAAZAZ,Metformin 850mg/5ml oral solution sugar free
+vmp,326037007,0601023A0AAAAAA,Acarbose 50mg tablets
+vmp,326038002,0601023A0AAABAB,Acarbose 100mg tablets
+vmp,13412911000001100,0601023AAAAAAAA,Vildagliptin 50mg tablets
+vmp,15859111000001102,0601023ABAAAAAA,Liraglutide 6mg/ml solution for injection 3ml pre-filled disposable devices
+vmp,443713000,0601023ACAAAAAA,Saxagliptin 5mg tablets
+vmp,443067000,0601023ACAAABAB,Saxagliptin 2.5mg tablets
+vmp,17071811000001108,0601023ADAAAAAA,Metformin 1g / Sitagliptin 50mg tablets
+vmp,19525211000001103,0601023AEAAAAAA,Linagliptin 5mg tablets
+vmp,21245111000001107,0601023AFAAAAAA,Linagliptin 2.5mg / Metformin 850mg tablets
+vmp,21245011000001106,0601023AFAAABAB,Linagliptin 2.5mg / Metformin 1g tablets
+vmp,703679006,0601023AGAAAAAA,Dapagliflozin 5mg tablets
+vmp,703680009,0601023AGAAABAB,Dapagliflozin 10mg tablets
+vmp,21711511000001101,0601023AHAAAAAA,Saxagliptin 2.5mg / Metformin 850mg tablets
+vmp,21711411000001100,0601023AHAAABAB,Saxagliptin 2.5mg / Metformin 1g tablets
+vmp,21994811000001105,0601023AIAAAAAA,Lixisenatide 20micrograms/0.2ml solution for injection 3ml pre-filled disposable devices
+vmp,21994611000001106,0601023AIAAABAB,Lixisenatide 10micrograms/0.2ml solution for injection 3ml pre-filled disposable devices
+vmp,21994711000001102,0601023AIAAACAC,Lixisenatide 10micrograms/0.2ml solution for injection 3ml pre-filled disposable devices and Lixisenatide 20micrograms/0.2ml solution for injection 3ml pre-filled disposable devices
+vmp,23637211000001102,0601023AJAAAAAA,Alogliptin 12.5mg / Metformin 1g tablets
+vmp,23637511000001104,0601023AKAAAAAA,Alogliptin 6.25mg tablets
+vmp,23637311000001105,0601023AKAAABAB,Alogliptin 12.5mg tablets
+vmp,23637411000001103,0601023AKAAACAC,Alogliptin 25mg tablets
+vmp,24054711000001109,0601023ALAAAAAA,Dapagliflozin 5mg / Metformin 850mg tablets
+vmp,24054611000001100,0601023ALAAABAB,Dapagliflozin 5mg / Metformin 1g tablets
+vmp,703682001,0601023AMAAAAAA,Canagliflozin 100mg tablets
+vmp,24104511000001103,0601023AMAAABAB,Canagliflozin 300mg tablets
+vmp,25290511000001101,0601023ANAAAAAA,Empagliflozin 10mg tablets
+vmp,25290611000001102,0601023ANAAABAB,Empagliflozin 25mg tablets
+vmp,28049311000001109,0601023APAAAAAA,Canagliflozin 50mg / Metformin 850mg tablets
+vmp,28049211000001101,0601023APAAABAB,Canagliflozin 50mg / Metformin 1g tablets
+vmp,28789611000001108,0601023AQAAAAAA,Dulaglutide 0.75mg/0.5ml solution for injection pre-filled disposable devices
+vmp,28789711000001104,0601023AQAAABAB,Dulaglutide 1.5mg/0.5ml solution for injection pre-filled disposable devices
+vmp,30318411000001104,0601023ARAAAAAA,Empagliflozin 5mg / Metformin 850mg tablets
+vmp,30318311000001106,0601023ARAAABAB,Empagliflozin 5mg / Metformin 1g tablets
+vmp,30318211000001103,0601023ARAAACAC,Empagliflozin 12.5mg / Metformin 850mg tablets
+vmp,30318111000001109,0601023ARAAADAD,Empagliflozin 12.5mg / Metformin 1g tablets
+vmp,31015711000001109,0601023ASAAAAAA,Albiglutide 30mg powder and solvent for solution for injection pre-filled disposable devices
+vmp,31015811000001101,0601023ASAAABAB,Albiglutide 50mg powder and solvent for solution for injection pre-filled disposable devices
+vmp,28279611000001109,0601023AUAAAAAA,Insulin degludec 100units/ml / Liraglutide 3.6mg/ml solution for injection 3ml pre-filled disposable devices
+vmp,33745311000001109,0601023AVAAAAAA,Saxagliptin 5mg / Dapagliflozin 10mg tablets
+vmp,36490911000001109,0601023AWAAAAAA,Semaglutide 0.25mg/0.19ml solution for injection 1.5ml pre-filled disposable device
+vmp,36491011000001101,0601023AWAAABAB,Semaglutide 0.5mg/0.37ml solution for injection 1.5ml pre-filled disposable device
+vmp,36491111000001100,0601023AWAAACAC,Semaglutide 1mg/0.74ml solution for injection 3ml pre-filled disposable device
+vmp,36529511000001109,0601023AXAAAAAA,Ertugliflozin 5mg tablets
+vmp,36529411000001105,0601023AXAAABAB,Ertugliflozin 15mg tablets
+vmp,37280311000001109,0601023AYAAAAAA,Empagliflozin 10mg / Linagliptin 5mg tablets
+vmp,37280511000001103,0601023AYAAABAB,Empagliflozin 25mg / Linagliptin 5mg tablets
+vmp,326062007,0601023B0AAAAAA,Pioglitazone 15mg tablets
+vmp,326061000,0601023B0AAABAB,Pioglitazone 30mg tablets
+vmp,374897009,0601023B0AAACAC,Pioglitazone 45mg tablets
+vmp,13440011000001109,0601023B0AAADAD,Pioglitazone 30mg/5ml oral suspension
+vmp,16036811000001104,0601023B0AAAEAE,Pioglitazone 15mg/5ml oral suspension
+vmp,18595311000001103,0601023B0AAAFAF,Pioglitazone 45mg/5ml oral suspension
+vmp,325287003,0601023I0AAADAD,Guar gum 5g granules sachets sugar free
+vmp,326047005,0601023R0AAAAAA,Repaglinide 500microgram tablets
+vmp,326048000,0601023R0AAABAB,Repaglinide 1mg tablets
+vmp,326049008,0601023R0AAACAC,Repaglinide 2mg tablets
+vmp,326057006,0601023S0AAAAAA,Rosiglitazone 4mg tablets
+vmp,326056002,0601023S0AAABAB,Rosiglitazone 8mg tablets
+vmp,134610002,0601023U0AAAAAA,Nateglinide 60mg tablets
+vmp,134609007,0601023U0AAABAB,Nateglinide 120mg tablets
+vmp,134608004,0601023U0AAACAC,Nateglinide 180mg tablets
+vmp,409121008,0601023V0AAAAAA,Rosiglitazone 1mg / Metformin 500mg tablets
+vmp,409122001,0601023V0AAABAB,Rosiglitazone 2mg / Metformin 500mg tablets
+vmp,409125004,0601023V0AAACAC,Rosiglitazone 4mg / Metformin 1g tablets
+vmp,409124000,0601023V0AAADAD,Rosiglitazone 2mg / Metformin 1g tablets
+vmp,419873003,0601023W0AAAAAA,Pioglitazone 15mg / Metformin 850mg tablets
+vmp,424345005,0601023X0AAAAAA,Sitagliptin 100mg tablets
+vmp,424513004,0601023X0AAABAB,Sitagliptin 50mg tablets
+vmp,423962004,0601023X0AAACAC,Sitagliptin 25mg tablets
+vmp,32638311000001101,0601023X0AAADAD,Sitagliptin 50mg/5ml oral solution
+vmp,32879911000001101,0601023X0AAAEAE,Sitagliptin 50mg/5ml oral suspension
+vmp,11494211000001108,0601023Y0AAAAAA,Exenatide 5micrograms/0.02ml solution for injection 1.2ml pre-filled disposable devices
+vmp,11494111000001102,0601023Y0AAABAB,Exenatide 10micrograms/0.04ml solution for injection 2.4ml pre-filled disposable devices
+vmp,19275411000001107,0601023Y0AAACAC,Exenatide 2mg powder and solvent for prolonged-release suspension for injection vials
+vmp,28440211000001102,0601023Y0AAADAD,Exenatide 2mg powder and solvent for prolonged-release suspension for injection pre-filled disposable devices
+vmp,38082811000001104,0601023Y0AAAEAE,Exenatide 2mg/0.85ml prolonged-release suspension for injection pre-filled disposable devices
+vmp,13413011000001108,0601023Z0AAAAAA,Vildagliptin 50mg / Metformin 1g tablets
+vmp,13413111000001109,0601023Z0AAABAB,Vildagliptin 50mg / Metformin 850mg tablets
