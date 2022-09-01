@@ -65,31 +65,9 @@ study = StudyDefinition(
 
     # Define the study population 
     # NB: not all inclusions and exclusions are written into study definition
-    population = patients.satisfying(
-        """
-            NOT has_died
-            AND
-            registered        
-            AND
-            has_follow_up_previous_6months
-            """,
-        
-        has_died = patients.died_from_any_cause(
-        on_or_before = "index_date_prevax",
-        returning="binary_flag",
-        ),
-        
-        registered = patients.satisfying(
-        "registered_at_start",
-        registered_at_start = patients.registered_as_of("index_date_prevax"),
-        ),
-        
-        has_follow_up_previous_6months = patients.registered_with_one_practice_between(
-        start_date = "index_date_prevax - 6 months",
-        end_date = "index_date_prevax",
-        return_expectations = {"incidence": 0.95},
-        ),
-    ),
+        # NB: all inclusions and exclusions are performed in stage 1
+    population = patients.all(),
+
 # Define sex 
     # NB: this is required for JCVI variables hence is defined here
     cov_cat_sex = patients.with_value_from_file(
@@ -97,13 +75,13 @@ study = StudyDefinition(
         returning = 'cov_cat_sex',
         returning_type = 'str',  
         ),
-        # Death date
-    death_date = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
-        returning = 'death_date',
-        returning_type = 'date', 
+    # Death date
+    # death_date = patients.with_value_from_file(
+    #     f_path = 'output/index_dates.csv',
+    #     returning = 'death_date',
+    #     returning_type = 'date', 
 
-    ),
+    # ),
     # Define vaccine eligibility variables
 
         **jcvi_variables, 
