@@ -38,7 +38,6 @@ from grouping_variables import (
     pandemic_start
 )
 
-
 study = StudyDefinition(
 
     # Specify index date for study
@@ -64,8 +63,7 @@ study = StudyDefinition(
     },
 
     # Define the study population 
-    # NB: not all inclusions and exclusions are written into study definition
-        # NB: all inclusions and exclusions are performed in stage 1
+    # NB: all inclusions and exclusions are performed in stage 1
     population = patients.all(),
 
 # Define sex 
@@ -74,14 +72,21 @@ study = StudyDefinition(
         f_path = 'output/index_dates.csv',
         returning = 'cov_cat_sex',
         returning_type = 'str',  
-        ),
-    # Death date
+    ),
+    # # Death date
     # death_date = patients.with_value_from_file(
     #     f_path = 'output/index_dates.csv',
     #     returning = 'death_date',
     #     returning_type = 'date', 
-
     # ),
+
+    ## Any covid vaccination, identified by target disease
+    vax_date_covid_1 = patients.with_value_from_file(
+        f_path = 'output/index_dates.csv',
+        returning = 'vax_date_covid_1',
+        returning_type = 'date'          
+    ),
+
     # Define vaccine eligibility variables
 
         **jcvi_variables, 

@@ -529,7 +529,6 @@ stroke_sah_hs_snomed_clinical = codelist_from_csv(
     column="code",
 )
 
-
 # BMI
 bmi_obesity_snomed_clinical = codelist_from_csv(
     "codelists/user-elsie_horne-bmi_obesity_snomed.csv",
@@ -548,7 +547,6 @@ bmi_primis = codelist_from_csv(
     system="snomed",
     column="code",
 )
-
 
 # Total Cholesterol
 cholesterol_snomed = codelist_from_csv(
@@ -843,7 +841,6 @@ prediabetes_snomed = codelist_from_csv(
     column="code",
 )
 
-
 ##Quality assurance codes 
 
 prostate_cancer_snomed_clinical = codelist_from_csv(
@@ -865,6 +862,16 @@ pregnancy_snomed_clinical = codelist_from_csv(
 ###########################
 # Neurodegenerative codes #
 ###########################
+
+# # Cognitive impairment
+# # HES
+# cognitive_impairment_snomed = codelist(
+#     [386805003], system = "snomed"
+# )
+# # ONS
+# cognitive_impairment_icd10 = codelist(
+#     ["F067", "G318", "G3184"], system = "icd10"
+# )
 
 # # Dementia
 # ## Probable Alzheimer's disease

@@ -62,8 +62,7 @@ study = StudyDefinition(
     },
 
     # Define the study population 
-    # NB: not all inclusions and exclusions are written into study definition
-        # NB: not all inclusions and exclusions are written into study definition
+    # NB: all inclusions and exclusions are performed in stage 1
     population = patients.all(),
 
   # Define sex 
@@ -72,8 +71,8 @@ study = StudyDefinition(
         f_path = 'output/index_dates.csv',
         returning = 'cov_cat_sex',
         returning_type = 'str',  
-        ),
-    
+    ),
+
     ## Any covid vaccination, identified by target disease
     vax_date_covid_1 = patients.with_value_from_file(
         f_path = 'output/index_dates.csv',

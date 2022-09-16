@@ -38,13 +38,6 @@ from common_variables import generate_common_variables
     dynamic_variables
 ) = generate_common_variables(index_date_variable="index_date_vax", end_date_variable="end_date_vax")
 
-## Variables for deriving JCVI groups
-from grouping_variables import (
-    jcvi_variables, 
-    start_date,
-    end_date,
-    study_dates
-)
 
 study = StudyDefinition(
 
@@ -63,7 +56,6 @@ study = StudyDefinition(
         date_format = 'YYYY-MM-DD',
     ),
     
- 
     # Configure the expectations framework
     default_expectations={
         "date": {"earliest": study_dates["earliest_expec"], "latest": "today"},
@@ -71,10 +63,10 @@ study = StudyDefinition(
         "incidence": 0.5,
     },
    
-    # # Define the study population 
-    # # NB: not all inclusions and exclusions are written into study definition
+    # Define the study population 
+    # NB: all inclusions and exclusions are performed in stage 1
     population = patients.all(),
-    
+   
     # Define sex 
     cov_cat_sex = patients.with_value_from_file(
         f_path = 'output/index_dates.csv',
@@ -82,15 +74,14 @@ study = StudyDefinition(
         returning_type = 'str',  
         ),
 
-    # ),
-    # # eligibility date
+    # eligibility date
     # vax_date_eligible = patients.with_value_from_file(
     #     f_path = 'output/index_dates.csv',
     #     returning = 'vax_date_eligible',
     #     returning_type = 'date',
     # ),
 
-    # Bring COVID-19 Vaccinations vars from index_dates file
+# Bring COVID-19 Vaccinations vars from index_dates file
 
     ## Any covid vaccination, identified by target disease
     vax_date_covid_1 = patients.with_value_from_file(
@@ -163,7 +154,7 @@ study = StudyDefinition(
         returning = 'vax_date_Moderna_3',
         returning_type = 'date'
     ),
-    
+
     # Define vaccine eligibility variables
 
         **jcvi_variables, 
