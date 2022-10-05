@@ -1,0 +1,439 @@
+code,term
+102940002,Schizophrenic reaction
+105916003,Phenothiazine derivative antipsychotic
+10784006,Medicinal product acting as antipsychotic agent
+108385001,Benzisoxazole derivative antipsychotic agent
+108439000,Phenylbutylpiperadine derivative antipsychotic agent
+10981006,Severe mixed bipolar I disorder with psychotic features
+111482003,Subchronic schizophrenia with acute exacerbations
+111483008,Catatonic schizophrenia in remission
+111484002,Undifferentiated schizophrenia
+121331001,Antipsychotic identification
+12939007,Chronic disorganized schizophrenia
+133091000119105,Rapid cycling bipolar I disorder
+13313007,Mild bipolar disorder
+13601005,Paranoid personality disorder
+13746004,Bipolar disorder
+14291003,Subchronic disorganized schizophrenia with acute exacerbations
+14495005,"Severe bipolar I disorder, single manic episode without psychotic features"
+154844001,Organic psychotic condition
+154865007,Schizophrenic psychoses (& [paranoid schizophrenia])
+154866008,Simple schizophrenia
+154867004,Hebephrenic schizophrenia
+154868009,Catatonic schizophrenia
+154869001,(Paranoid schizophrenia) or (paraphrenia)
+154870000,Schizophrenia NOS
+154871001,Affective psychoses: [manic depressive] or [involutional melancholia]
+162004,Severe manic bipolar I disorder without psychotic features
+16506000,Mixed bipolar I disorder
+16990005,Subchronic schizophrenia
+17435002,Chronic paranoid schizophrenia with acute exacerbations
+191447007,Organic psychotic condition
+191502008,"Acute confusional state, of infective origin"
+191525009,Non-organic psychosis
+191526005,Schizophrenic disorders
+191527001,Simple schizophrenia
+191528006,Unspecified schizophrenia
+191529003,Subchronic schizophrenia
+191530008,Acute exacerbation of subchronic schizophrenia
+191531007,Acute exacerbation of chronic schizophrenia
+191534004,Simple schizophrenia NOS
+191535003,Unspecified hebephrenic schizophrenia
+191536002,Subchronic hebephrenic schizophrenia
+191537006,Chronic hebephrenic schizophrenia
+191538001,Acute exacerbation of subchronic hebephrenic schizophrenia
+191539009,Acute exacerbation of chronic hebephrenic schizophrenia
+191540006,Hebephrenic schizophrenia in remission
+191541005,Hebephrenic schizophrenia NOS
+191542003,Catatonic schizophrenia
+191543008,Unspecified catatonic schizophrenia
+191544002,Subchronic catatonic schizophrenia
+191545001,Chronic catatonic schizophrenia
+191547009,Acute exacerbation of subchronic catatonic schizophrenia
+191548004,Acute exacerbation of chronic catatonic schizophrenia
+191550007,Catatonic schizophrenia NOS
+191551006,Unspecified paranoid schizophrenia
+191552004,Subchronic paranoid schizophrenia
+191553009,Chronic paranoid schizophrenia
+191554003,Acute exacerbation of subchronic paranoid schizophrenia
+191555002,Acute exacerbation of chronic paranoid schizophrenia
+191557005,Paranoid schizophrenia NOS
+191558000,Acute schizophrenic episode (& [oneirophrenia])
+191559008,Latent schizophrenia
+191560003,Unspecified latent schizophrenia
+191561004,Subchronic latent schizophrenia
+191562006,Chronic latent schizophrenia
+191563001,Acute exacerbation of subchronic latent schizophrenia
+191564007,Acute exacerbation of chronic latent schizophrenia
+191566009,Latent schizophrenia NOS
+191567000,Schizoaffective schizophrenia
+191568005,Unspecified schizoaffective schizophrenia
+191569002,Subchronic schizoaffective schizophrenia
+191570001,Chronic schizoaffective schizophrenia
+191571002,Acute exacerbation of subchronic schizoaffective schizophrenia
+191572009,Acute exacerbation of chronic schizoaffective schizophrenia
+191575006,Schizoaffective schizophrenia NOS
+191576007,Schizophrenia: [other] or [cenesthopathic]
+191577003,Cenesthopathic schizophrenia
+191578008,Other schizophrenia NOS
+191579000,Schizophrenia NOS
+191580002,Affective psychoses (& [bipolar] or [depressive] or [manic])
+191583000,"Single manic episode, mild"
+191584006,"Single manic episode, moderate"
+191586008,"Single manic episode, severe, with psychosis"
+191590005,Recurrent manic episodes
+191592002,"Recurrent manic episodes, mild"
+191593007,"Recurrent manic episodes, moderate"
+191595000,"Recurrent manic episodes, severe, with psychosis"
+191618007,"Bipolar affective disorder, current episode manic"
+191619004,"Bipolar affective disorder, currently manic, unspecified"
+191620005,"Bipolar affective disorder, currently manic, mild"
+191621009,"Bipolar affective disorder, currently manic, moderate"
+191622002,"Bipolar affective disorder, currently manic, severe, without mention of psychosis"
+191623007,"Bipolar affective disorder, currently manic, severe, with psychosis"
+191625000,"Bipolar affective disorder, currently manic, in full remission"
+191626004,"Bipolar affective disorder, currently manic, NOS"
+191627008,"Bipolar affective disorder, current episode depression"
+191628003,"Bipolar affective disorder, currently depressed, unspecified"
+191629006,"Bipolar affective disorder, currently depressed, mild"
+191630001,"Bipolar affective disorder, currently depressed, moderate"
+191631002,"Bipolar affective disorder, currently depressed, severe, without mention of psychosis"
+191632009,"Bipolar affective disorder, currently depressed, severe, with psychosis"
+191634005,"Bipolar affective disorder, currently depressed, in full remission"
+191635006,"Bipolar affective disorder, currently depressed, NOS"
+191636007,Mixed bipolar affective disorder
+191637003,"Mixed bipolar affective disorder, unspecified"
+191638008,"Mixed bipolar affective disorder, mild"
+191639000,"Mixed bipolar affective disorder, moderate"
+191640003,"Mixed bipolar affective disorder, severe, without mention of psychosis"
+191641004,"Mixed bipolar affective disorder, severe, with psychosis"
+191644007,"Mixed bipolar affective disorder, NOS"
+191646009,Unspecified bipolar affective disorder
+191647000,"Unspecified bipolar affective disorder, unspecified"
+191648005,"Unspecified bipolar affective disorder, mild"
+191649002,"Unspecified bipolar affective disorder, moderate"
+191650002,"Unspecified bipolar affective disorder, severe, without mention of psychosis"
+191651003,"Unspecified bipolar affective disorder, severe, with psychosis"
+191654006,"Unspecified bipolar affective disorder, NOS"
+191658009,Atypical manic disorder
+191659001,Atypical depressive disorder
+191664002,Rebound mood swings
+191667009,Paranoid disorder
+191668004,Simple paranoid state
+191670008,Shared paranoid disorder
+191672000,Paranoia querulans
+191676002,Reactive depressive psychosis
+191677006,Acute hysterical psychosis
+191678001,Reactive confusion
+191680007,Psychogenic paranoid psychosis
+191683009,Psychogenic stupor
+191686001,Psychosis: [nonorganic NOS] or [episode NOS]
+191687005,Psychosis with origin in childhood
+191692007,Active disintegrative psychoses
+191693002,Residual disintegrative psychoses
+192190003,[X] (Organic delusional (schizophrenia-like) disorder) or (paranoid organic state) or (schizophrenia-like psychosis in epilepsy)
+192318004,"[X]Schizophrenia, schizotypal and delusional disorders"
+192319007,Paranoid schizophrenia
+192320001,Hebephrenic schizophrenia
+192321002,[X] (Catatonic schizophrenia) or (catatonic stupor) or (schizophrenic catalepsy) or (schizophrenic catatonia) or (schizophrenic flexibilatis cerea)
+192322009,[X]Undifferentiated schizophrenia
+192323004,Post-schizophrenic depression
+192324005,Residual schizophrenia
+192325006,Simple schizophrenia
+192326007,[X] (Schizophrenia: [cenesthopathic] or [other]) or (schizophreniform disorder [including psychosis] NOS)
+192327003,"[X]Schizophrenia, unspecified"
+192328008,[X] Schizotypal disorder (& [latent] or [latent schizophrenic reaction] or [borderline] or [prepsychotic] or [prodromal] or [pseudoneurotic] or [pseudopsychopathic]
+192333007,Acute transient psychotic disorder
+192334001,[X] Acute polymorphic psychotic disorder without symptoms of schizophrenia (& [bouffee delirante] or [cycloid psychosis])
+192335000,[X]Acute polymorphic psychotic disorder with symptoms of schizophrenia
+192336004,[X] Acute schizophrenia-like psychotic disorder (& [brief schizophreniform disorder] or [brief schizophrenifrm psych] or [oneirophrenia] or [schizophrenic reaction])
+192338003,[X] (Other acute predominantly delusional psychotic disorders) or (psychogenic paranoid psychosis)
+192339006,[X]Other acute and transient psychotic disorders
+192340008,"[X]Acute and transient psychotic disorder, unspecified (& [reactive psychosis (including brief NOS)])"
+192343005,"[X](Schizoaffective disorder, mixed type) or (cyclic schizophrenia) or (mixed schizophrenic and affective psychosis)"
+192346002,[X] (Other nonorganic psychotic disorders) or
+192349009,"[X] Manic episode (& [bipolar disorder, single manic episode])"
+192351008,[X]Mania without psychotic symptoms
+192352001,[X] (Mania with psychotic symptoms (& mood [congruent] or [incongruent])) or (manic stupor)
+192355004,Bipolar disorder
+192356003,"[X]Bipolar affective disorder, current episode manic without psychotic symptoms"
+192357007,"[X]Bipolar affective disorder, current episode manic with psychotic symptoms"
+192358002,"[X]Bipolar affective disorder, current episode mild or moderate depression"
+192359005,"[X]Bipolar affective disorder, current episode severe depression without psychotic symptoms"
+192361001,"Bipolar affective disorder, currently depressed, severe, with psychosis"
+192362008,"Bipolar affective disorder, current episode mixed"
+192364009,[X] (Bipolar affective disorders: [bipolar II] or [other]) or (recurrent manic episodes)
+192365005,"[X]Bipolar affective disorder, unspecified"
+192370003,[X] Severe depressive episode with psychotic symptoms: (& single episode of [major depression] or [psychogenic depressive psychosis] or [psychotic depression] or [reactive depressive psychosis])
+192377000,"[X]Depression without psychotic symptoms: [recurrent: [major] or [manic-depressive psychosis, depressed type] or [vital] or [current severe episode]] or [endogenous]"
+192378005,"[X] Depression with psychotic symptoms: [recurrent: (current episode severe) or (manic-depressive, depressed type) or (severe major episodes) or (severe episodes)] or [endogenous]"
+2073000,Delusions
+21071000119101,Mood disorder of manic type
+216004,Delusion of persecution
+21894002,Chronic catatonic schizophrenia with acute exacerbations
+223043001,[X]Phenothiazine antipsychotics and neuroleptics causing adverse effects in therapeutic use
+223045008,[X]Other antipsychotics and neuroleptics causing adverse effects in therapeutic use
+225452001,Paranoid delusion
+231436002,Psychotic episode NOS
+231437006,Reactive psychoses
+231483000,Psychotic disorder
+231485007,Post-schizophrenic depression
+231487004,Persistent delusional disorder
+231489001,Acute transient psychotic disorder
+231494001,Mania
+231495000,Manic stupor
+231496004,Hypomania
+231497008,Bipolar II disorder
+231500002,Masked depression
+247667002,Grandiose delusions
+247804008,Schizophrenic prodrome
+26025008,Residual schizophrenia
+26472000,Paraphrenia
+26516009,Severe mood disorder with psychotic features
+26530004,"Severe bipolar disorder with psychotic features, mood-incongruent"
+26847009,Chronic schizophrenia with acute exacerbations
+268514004,On lithium
+268617001,Acute schizophrenic episode
+268618006,Other schizophrenia
+268619003,"Manic disorder, single episode"
+268622001,Chronic paranoid psychosis
+268624000,Acute paranoid reaction
+268691004,[X]Other schizophrenia
+268694007,[X]Acute polymorphic psychotic disorder without symptoms of schizophrenia
+268695008,[X]Other acute predominantly delusional psychotic disorders
+268696009,"[X]Acute and transient psychotic disorder, unspecified"
+268697000,[X]Other non-organic psychotic disorders
+268699002,[X]Mania with psychotic symptoms
+268701002,[X]Other bipolar affective disorders
+268704005,[X]Severe depressive episode with psychotic symptoms
+268708008,"[X]Recurrent depressive disorder, current episode severe without psychotic symptoms"
+268709000,"[X]Recurrent depressive disorder, current episode severe with psychotic symptoms"
+268747005,Schizophrenic psychoses (& [paranoid schizophrenia])
+268748000,(Paranoid schizophrenia) or (paraphrenia)
+268749008,Affective psychoses: [manic depressive] or [involutional melancholia]
+268958005,Poor insight into neurotic condition
+270901009,"Schizoaffective disorder, mixed type"
+271428004,"Schizoaffective disorder, manic type"
+27387000,Subchronic disorganized schizophrenia
+274952002,Borderline schizophrenia
+275917000,Lithium monitoring
+278853003,Acute schizophrenia-like psychotic disorder
+280427006,Psychotic symptom present
+28663008,Severe manic bipolar I disorder with psychotic features
+286682001,Psychotic denial - mental defense mechanism
+304757008,"Profile of mood states, bipolar"
+30520009,"Severe bipolar II disorder, most recent episode major depressive with psychotic features"
+307417003,Cycloid psychosis
+307504004,Oneirophrenia
+31025003,Dibenzoxazepine derivative antipsychotic agent
+31027006,Schizotypal personality disorder
+310462009,"[X] Manic-depressive psychosis, depressed type without psychotic symptoms"
+31373002,Disorganized schizophrenia in remission
+31446002,"Bipolar I disorder, most recent episode hypomanic"
+31658008,Chronic paranoid schizophrenia
+321415008,Haloperidol [antipsychotic]
+321537004,Trifluoperazine [antipsychotic]
+321648000,Antipsychotic depot injections
+3298001,Amnestic disorder
+345021000000108,Enabling patient to integrate psychotic symptoms into holistic self
+349871006,Antipsychotic drug
+35252006,Disorganized schizophrenia
+35489007,Depressive disorder
+357705009,Cotard's syndrome
+358924003,Atypical antipsychotic
+35919005,Pervasive developmental disorder
+363895008,Psychotic symptom
+36474008,Severe recurrent major depression without psychotic features
+365431009,Finding of level of psychoticism
+36940000,Thioxanthene derivative antipsychotic agent
+371596008,Bipolar I disorder
+371600003,Severe bipolar disorder
+372482001,Anti-psychotic agent
+372483006,Benzisoxazole derivative antipsychotic agent
+372492009,Phenylbutylpiperadine derivative antipsychotic agent
+372648004,Atypical antipsychotic
+372696004,Dibenzoxazepine derivative antipsychotic agent
+372808009,Butyrophenone derivative antipsychotic agent
+373207000,Phenothiazine derivative antipsychotic agent
+373255000,Thioxanthene derivative antipsychotic agent
+373257008,Diphenylbutylpiperidine derivative antipsychotic agent
+373264005,Dihydroindolone derivative antipsychotic agent
+37773009,Diphenylbutylpiperidine derivative antipsychotic agent
+38295006,Involutional paraphrenia
+38368003,"Schizoaffective disorder, bipolar type"
+386256003,Delusion management
+387095003,Lithium carbonate
+387098001,Lithium citrate
+395771006,Lithium succinate
+397711000000100,[X]Severe depressive episode with psychotic symptoms
+401681000000101,[X]Mania with psychotic symptoms
+401761000000100,[X] Severe depressive episode with psychotic symptoms: (& single episode of [major depression] or [psychogenic depressive psychosis] or [psychotic depression] or [reactive depressive psychosis])
+402441000000102,"[X]Recurrent depressive disorder, current episode severe without psychotic symptoms"
+405273008,Manic mood
+406782009,Dihydrocarbostyril derivative antipsychotic
+406783004,Dihydrocarbostyril derivative antipsychotic agent
+408490001,Antipsychotic drug therapy
+40926005,Moderate mixed bipolar I disorder
+409380004,Benzimidazolinone derivative antipsychotic preparation
+409381000,Benzimidazolinone derivative antipsychotic agent
+41189006,Ideas of reference
+413991000000106,[X] (Other acute predominantly delusional psychotic disorders) or (psychogenic paranoid psychosis)
+41521002,Subchronic paranoid schizophrenia with acute exacerbations
+416340002,Late onset schizophrenia
+416611006,On examination - paranoid delusions
+416890005,On examination - delusion of persecution
+417233008,Paranoid ideation
+417601000000102,"[X]Schizophrenia, schizotypal and delusional disorders"
+417731000000103,"[X]Bipolar affective disorder, unspecified"
+41832009,"Severe bipolar I disorder, single manic episode with psychotic features"
+418931000000101,[X] Acute polymorphic psychotic disorder without symptoms of schizophrenia (& [bouffee delirante] or [cycloid psychosis])
+419271000000100,[X] (Bipolar affective disorders: [bipolar II] or [other]) or (recurrent manic episodes)
+426091000000108,[X]Other bipolar affective disorders
+426321000000107,[X]Other schizophrenia
+427834006,Benzamide derivative antipsychotic agent
+428091000000109,[X]Mania without psychotic symptoms
+428096005,Benzamide derivative antipsychotic agent
+42868002,Subchronic catatonic schizophrenia
+431661000000104,"[X]Bipolar affective disorder, current episode manic with psychotic symptoms"
+435581000000109,[X]Phenothiazine antipsychotics and neuroleptics causing adverse effects in therapeutic use
+43769008,Mild mixed bipolar I disorder
+4390004,Lithium nephropathy
+440701009,Injection of depot antipsychotic agent
+441704009,Affective psychosis
+442251000000107,[X]Undifferentiated schizophrenia
+442891000000100,[X]Acute polymorphic psychotic disorder with symptoms of schizophrenia
+443561000000100,"[X]Bipolar affective disorder, current episode manic without psychotic symptoms"
+443791000000100,[X] Schizotypal disorder (& [latent] or [latent schizophrenic reaction] or [borderline] or [prepsychotic] or [prodromal] or [pseudoneurotic] or [pseudopsychopathic]
+444051000000108,"[X]Recurrent depressive disorder, current episode severe with psychotic symptoms"
+4441000,Severe bipolar disorder with psychotic features
+446471000000103,[X]Other antipsychotics and neuroleptics causing adverse effects in therapeutic use
+44906001,Capgras' syndrome
+452061000000102,[X]Acute polymorphic psychotic disorder without symptoms of schizophrenia
+455161000000109,[X]Other non-organic psychotic disorders
+46206005,Mood disorder
+46229002,Severe mixed bipolar I disorder without psychotic features
+465911000000102,"[X]Bipolar affective disorder, current episode severe depression without psychotic symptoms"
+466791000000100,"[X]Acute and transient psychotic disorder, unspecified"
+467121000000100,"[X]Bipolar affective disorder, current episode mild or moderate depression"
+467361000000105,"[X] Manic-depressive psychosis, depressed type without psychotic symptoms"
+467591000000109,[X] (Mania with psychotic symptoms (& mood [congruent] or [incongruent])) or (manic stupor)
+470301000000100,"[X]Schizophrenia, unspecified"
+470311000000103,[X]Other acute and transient psychotic disorders
+470741000000103,[X] (Schizophrenia: [cenesthopathic] or [other]) or (schizophreniform disorder [including psychosis] NOS)
+473452003,Atypical psychosis
+479991000000101,[X]Other acute predominantly delusional psychotic disorders
+480111000000107,[X] (Other nonorganic psychotic disorders) or
+48500005,Delusional disorder
+48937005,"Bipolar II disorder, most recent episode hypomanic"
+49468007,Depressed bipolar I disorder
+507861000000107,Severe major depression with psychotic features
+509791000000101,Severe major depression with psychotic features
+52451004,Dihydroindolone derivative antipsychotic agent
+52954000,Schizoid personality disorder
+529851000000108,"Mixed bipolar affective disorder, severe, without mention of psychosis"
+530301000000105,"Bipolar affective disorder, currently manic, severe, without mention of psychosis"
+530311000000107,"Bipolar affective disorder, currently depressed, severe, without mention of psychosis"
+53049002,Severe bipolar disorder without psychotic features
+5464005,Brief reactive psychosis
+5510009,Organic delusional disorder
+551591000000100,Unspecified puerperal psychosis
+558801000000101,Other schizophrenia
+579811000000105,Paranoid schizophrenia NOS
+579821000000104,Unspecified latent schizophrenia
+58214004,Schizophrenia
+58647003,"Severe mood disorder with psychotic features, mood-congruent"
+589301000000108,Other transient organic psychoses
+589311000000105,Other chronic organic psychoses
+589331000000102,Unspecified schizophrenia
+589341000000106,Simple schizophrenia NOS
+589351000000109,Hebephrenic schizophrenia NOS
+589361000000107,Unspecified catatonic schizophrenia
+589371000000100,Latent schizophrenia NOS
+589381000000103,Unspecified schizoaffective schizophrenia
+59617007,Severe depressed bipolar I disorder with psychotic features
+602481000000108,"Mixed bipolar affective disorder, NOS"
+602491000000105,Unspecified bipolar affective disorder
+602511000000102,"Unspecified bipolar affective disorder, unspecified"
+602521000000108,"Unspecified bipolar affective disorder, mild"
+602531000000105,"Unspecified bipolar affective disorder, moderate"
+602541000000101,"Unspecified bipolar affective disorder, severe, with psychosis"
+613511000000109,"Bipolar affective disorder, currently depressed, NOS"
+613581000000102,"Mixed bipolar affective disorder, unspecified"
+613611000000108,"Unspecified bipolar affective disorder, severe, without mention of psychosis"
+61403008,Severe depressed bipolar I disorder without psychotic features
+615931000000107,"Bipolar affective disorder, currently manic, NOS"
+615941000000103,"Bipolar affective disorder, currently depressed, unspecified"
+61771000119106,"Bipolar II disorder, most recent episode rapid cycling"
+61831009,Induced psychotic disorder
+623971000000101,"Unspecified bipolar affective disorder, NOS"
+63181006,Paranoid schizophrenia in remission
+632271000000100,Psychotic episode NOS
+633351000000106,Unspecified hebephrenic schizophrenia
+633391000000103,Catatonic schizophrenia NOS
+633401000000100,Unspecified paranoid schizophrenia
+633731000000103,"Bipolar affective disorder, currently manic, unspecified"
+645431000000108,Schizoaffective schizophrenia NOS
+645441000000104,Other schizophrenia NOS
+645451000000101,Schizophrenia NOS
+64905009,Paranoid schizophrenia
+6517004,Butyrophenone derivative antipsychotic agent
+67002003,"Severe bipolar II disorder, most recent episode major depressive, in partial remission"
+68569003,Manic bipolar I disorder
+68890003,Schizoaffective disorder
+68995007,Chronic catatonic schizophrenia
+69322001,Psychotic disorder
+69482004,Korsakoff's psychosis
+703257008,Assessment of cause of psychotic and behavioral symptoms
+70546001,"Severe bipolar disorder with psychotic features, mood-congruent"
+712824002,Acute polymorphic psychotic disorder without symptoms of schizophrenia
+712850003,Acute polymorphic psychotic disorder co-occurrent with symptoms of schizophrenia
+718024008,Oral antipsychotic therapy
+718026005,Cognitive behavioral therapy for psychosis
+71961003,Childhood disintegrative disorder
+719788008,On combination antipsychotic drug therapy
+720409006,High dose antipsychotic drug therapy
+724755002,Positive symptoms co-occurrent and due to primary psychotic disorder
+724756001,Negative symptoms co-occurrent and due to primary psychotic disorder
+724757005,Depressive symptoms due to primary psychotic disorder
+724758000,Manic symptoms co-occurrent and due to primary psychotic disorder
+724759008,Psychomotor symptom co-occurrent and due to psychotic disorder
+724760003,Cognitive impairment co-occurrent and due to primary psychotic disorder
+755361000000103,Lithium level checked at 3 monthly intervals
+756471000000108,Lithium therapy record book completed
+760721000000109,"Mixed bipolar affective disorder, in partial remission"
+76105009,Cyclothymia
+764591000000108,"Mixed bipolar affective disorder, severe"
+764621000000106,"Recurrent manic episodes, severe"
+764641000000104,"Single manic episode, severe"
+764731000000103,Single manic episode in partial remission
+765176007,Psychosis and severe depression co-occurrent and due to bipolar affective disorder
+767631007,"Bipolar disorder, most recent episode depression"
+767632000,"Bipolar disorder, most recent episode manic"
+767633005,"Bipolar affective disorder, most recent episode mixed"
+76839006,Catatonic schizophrenia
+769063007,Antipsychotic medication review
+773883000,Antipsychotic therapeutic role
+782461000000107,Antipsychotic medication review
+782471000000100,Antipsychotic medication review 
+789061003,Rapid cycling bipolar II disorder
+790711000000100,Bipolar I disorder
+79584002,Moderate bipolar disorder
+79866005,Subchronic paranoid schizophrenia
+808681000000102,Bipolar I disorder
+808691000000100,Bipolar II disorder
+81319007,"Severe bipolar II disorder, most recent episode major depressive without psychotic features"
+83225003,Bipolar II disorder
+83746006,Chronic schizophrenia
+84760002,"Schizoaffective disorder, depressive type"
+86817004,Subchronic catatonic schizophrenia with acute exacerbations
+87950005,"Bipolar I disorder, single manic episode with catatonic features"
+885271000000107,Antipsychotic medication physical health check
+885281000000109,Antipsychotic medication physical health check 
+886451000000108,Assessment of cause of psychotic and behavioural symptoms
+886461000000106,Assessment of cause of psychotic behavioural symptoms 
+88939009,Severe mood disorder without psychotic features
+88975006,Schizophreniform disorder
+9340000,"Bipolar I disorder, single manic episode"
+984401000000108,Oral antipsychotic therapy
+984411000000105,Oral antipsychotic therapy 
+998601000000104,Urine lithium concentration

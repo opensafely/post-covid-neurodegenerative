@@ -1,0 +1,27 @@
+code,term
+N00,Acute nephritic syndrome
+N01,Rapidly progressive nephritic syndrome
+N03,Chronic nephritic syndrome
+N052,Unspecified nephritic syndrome : Diffuse membranous glomerulonephritis
+N053,Unspecified nephritic syndrome : Diffuse mesangial proliferative glomerulonephritis
+N054,Unspecified nephritic syndrome : Diffuse endocapillary proliferative glomerulonephritis
+N055,Unspecified nephritic syndrome : Diffuse mesangiocapillary glomerulonephritis
+N056,Unspecified nephritic syndrome : Dense deposit disease
+N072,"Hereditary nephropathy, not elsewhere classified : Diffuse membranous glomerulonephritis"
+N073,"Hereditary nephropathy, not elsewhere classified : Diffuse mesangial proliferative glomerulonephritis"
+N074,"Hereditary nephropathy, not elsewhere classified : Diffuse endocapillary proliferative glomerulonephritis"
+N10,Acute tubulo-interstitial nephritis
+N17,Acute renal failure
+N181,"Chronic kidney disease, stage 1"
+N182,"Chronic kidney disease, stage 2"
+N183,"Chronic kidney disease, stage 3"
+N184,"Chronic kidney disease, stage 4"
+N185,"Chronic kidney disease, stage 5"
+N189,"Chronic kidney disease, unspecified"
+N19,Unspecified kidney failure
+N25,Disorders resulting from impaired renal tubular function
+T861,Kidney transplant failure and rejection
+Y841,Kidney dialysis
+Z49,Care involving dialysis
+Z940,Kidney transplant status
+Z992,Dependence on renal dialysis

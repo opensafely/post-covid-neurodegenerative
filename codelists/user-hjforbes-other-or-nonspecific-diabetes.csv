@@ -1,0 +1,114 @@
+code,term
+1434.,H/O: diabetes mellitus
+44V3.,Glucose tol. test diabetic
+66A5.,Diabetic on insulin
+66AJ1,[Brittle] and/or [labile diabetes]
+C10..,Diabetes mellitus
+C100.,Diabetes mellitus with no mention of complication
+C100z,Diabetes mellitus NOS with no mention of complication
+C101y,Other specified diabetes mellitus with ketoacidosis
+C101z,Diabetes mellitus NOS with ketoacidosis
+C102.,Diabetes mellitus with hyperosmolar coma
+C1021,"Diabetes mellitus, adult onset, with hyperosmolar coma"
+C102z,Diabetes mellitus NOS with hyperosmolar coma
+C103.,Diabetes mellitus with ketoacidotic coma
+C103y,Other specified diabetes mellitus with coma
+C103z,Diabetes mellitus NOS with ketoacidotic coma
+C104.,Diabetes mellitus: [with renal manifestatn] or [nephropathy]
+C1041,"Diabetes mellitus, adult onset, with renal manifestation"
+C104y,Other specified diabetes mellitus with renal complications
+C104z,Diabetes mellitus with nephropathy NOS
+C105.,Diabetes mellitus with ophthalmic manifestation
+C1051,"Diabetes mellitus, adult onset, + ophthalmic manifestation"
+C105y,Other specified diabetes mellitus with ophthalmic complicatn
+C105z,Diabetes mellitus NOS with ophthalmic manifestation
+C106.,Diab mell + neuro manif: (& [amyotroph][neurop][polyneurop])
+C1061,"Diabetes mellitus, adult onset, + neurological manifestation"
+C106y,Other specified diabetes mellitus with neurological comps
+C106z,Diabetes mellitus NOS with neurological manifestation
+C107.,Diabetes mellitus with: [gangrene] or [periph circul disord]
+C1071,"Diabetes mellitus, adult, + peripheral circulatory disorder"
+C1072,"Diabetes mellitus, adult with gangrene"
+C1073,IDDM with peripheral circulatory disorder
+C107y,Other specified diabetes mellitus with periph circ comps
+C107z,Diabetes mellitus NOS with peripheral circulatory disorder
+C108y,Other specified diabetes mellitus with multiple comps
+C108z,Unspecified diabetes mellitus with multiple complications
+C10A0,Malnutrition-related diabetes mellitus with coma
+C10A1,Malnutrition-related diabetes mellitus with ketoacidosis
+C10A2,Malnutrition-related diabetes mellitus with renal complicatn
+C10A3,Malnutrit-related diabetes melitus wth ophthalmic complicatn
+C10A4,Malnutrition-related diabetes mellitus wth neuro complicatns
+C10A5,Malnutritn-relat diabetes melitus wth periph circul complctn
+C10A6,Malnutrition-related diabetes mellitus with multiple comps
+C10A7,Malnutrition-related diabetes mellitus without complications
+C10B0,Steroid-induced diabetes mellitus without complication
+C10y.,Diabetes mellitus with other specified manifestation
+C10y1,"Diabetes mellitus, adult, + other specified manifestation"
+C10yy,Other specified diabetes mellitus with other spec comps
+C10yz,Diabetes mellitus NOS with other specified manifestation
+C10z.,Diabetes mellitus with unspecified complication
+C10z1,"Diabetes mellitus, adult onset, + unspecified complication"
+C10zy,Other specified diabetes mellitus with unspecified comps
+C10zz,Diabetes mellitus NOS with unspecified complication
+C11y0,Steroid-induced diabetes
+Cyu20,[X]Other specified diabetes mellitus
+Cyu21,[X]Malnutrit-relat diabetes mellitus with other spec comps
+Cyu22,[X]Malnutrit-related diabetes mellitus with unspec complics
+Cyu23,[X]Unspecified diabetes mellitus with renal complications
+L1805,"Pre-existing diabetes mellitus, insulin-dependent"
+L1807,Pre-existing malnutrition-related diabetes mellitus
+Lyu29,"[X]Pre-existing diabetes mellitus, unspecified"
+Q441.,Neonatal diabetes mellitus
+X008t,"Diab insipidus,diab mell,optic atrophy and deafness"
+X30Hd,Renal diabetes
+X40J7,Malnutrition-related diabetes mellitus
+X40J8,Malnutrition-related diabetes mellitus - fibrocalculous
+X40J9,Malnutrition-related diabetes mellitus - protein-deficient
+X40JA,Secondary diabetes mellitus
+X40JB,Secondary pancreatic diabetes mellitus
+X40JC,Secondary endocrine diabetes mellitus
+X40JG,Genetic syndromes of diabetes mellitus
+X40JI,Diabetes mellitus autosomal dominant
+X40JJ,Diabetes mellitus autosomal dominant type 2
+X40JV,"Hypogonadism,diab mell,alopec,ment retar electro abnorm"
+X40JW,"Megaloblastic anaemia,diab mell and sensorineural deafness"
+X40JX,"Pineal hyperplasia,ins res diab mell and somatic abnorm"
+X40JY,Insulin-dependent diabetes mellitus secretory diarrhoea synd
+X40JZ,Diabetes-deafness syndrome maternally transmitted
+X40Jj,Pregnancy and insulin-dependent diabetes mellitus
+X40Jk,Pregnancy and non-insulin-dependent diabetes mellitus
+XE101,Simple goitre
+XE10F,"Diabetes mellitus, adult onset, no mention of complication"
+XE10G,Diabetes mellitus with renal manifestation
+XE10H,Diabetes mellitus with neurological manifestation
+XE10I,Diabetes mellitus with peripheral circulatory disorder
+XE128,Diabetes mellitus (& [ketoacidosis])
+XE12E,Diabetes + nephropathy (& [Kimmelstiel-Wilson syndrome])
+XE12G,Diabetes + eye manifestation (& [cataract] or [retinopathy])
+XE12K,Diabetes: [peripheral circulatory disease] or [gangrene]
+XE12M,Diabetes with other complications
+XM1Qx,Diabetes mellitus with gangrene
+XM1Xk,Unstable diabetes
+XSETH,Maturity onset diabetes mellitus in young
+XSETI,Fibrocalculous pancreatic diabetes
+XSETK,Drug-induced diabetes mellitus
+XSETe,Lipoatrophic diabetes
+XSETp,Diabetes mellitus due to insulin receptor antibodies
+Xa1c6,Diabetic child
+Xa3ee,Diabetes with ketoacidosis - no coma
+XaEgI,Diabetic on insulin and oral treatment
+XaJUI,Diabetes mellitus induced by non-steroid drugs
+XaJlL,Secondary pancreatic diabetes mellitus without complication
+XaJlM,DM induced by non-steroid drugs without complication
+XaJlQ,Lipoatrophic diabetes mellitus without complication
+XaJlR,Secondary diabetes mellitus without complication
+XaMzI,Cystic fibrosis related diabetes mellitus
+XaOPt,Maternally inherited diabetes mellitus
+XaOPu,Latent autoimmune diabetes mellitus in adult
+XaRGt,Diabetic on subcutaneous treatment
+XaXZB,H/O: autosomal dominant diabetes mellitus
+XaXZG,H/O: secondary diabetes mellitus
+XacXh,Diabetic on non-insulin injectable medication
+XacoB,Maturity onset diabetes of the young type 5
+XacsY,Diabetic on insulin and glucagon-like peptide 1
