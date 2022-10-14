@@ -169,16 +169,6 @@ actions_list <- splice(
     )
   ),
 
-
-  #comment("Generate dummy data for study_definition - unvax"),
-  action(
-    name = "generate_study_population_unvax",
-    run = "cohortextractor:latest generate_cohort --study-definition study_definition_unvax --output-format feather",
-    needs = list("vax_eligibility_inputs","generate_index_dates"),
-    highly_sensitive = list(
-      cohort = glue("output/input_unvax.feather")
-    )
-  ),
   #comment("Generate dummy data for study_definition - prevax"),
   action(
     name = "generate_study_population_prevax",
@@ -188,7 +178,6 @@ actions_list <- splice(
       cohort = glue("output/input_prevax.feather")
     )
   ),
-  
   #comment("Generate dummy data for study_definition - vax"),
   action(
     name = "generate_study_population_vax",
@@ -196,6 +185,15 @@ actions_list <- splice(
     needs = list("generate_index_dates","vax_eligibility_inputs"),
     highly_sensitive = list(
       cohort = glue("output/input_vax.feather")
+    )
+  ),
+  #comment("Generate dummy data for study_definition - unvax"),
+  action(
+    name = "generate_study_population_unvax",
+    run = "cohortextractor:latest generate_cohort --study-definition study_definition_unvax --output-format feather",
+    needs = list("vax_eligibility_inputs","generate_index_dates"),
+    highly_sensitive = list(
+      cohort = glue("output/input_unvax.feather")
     )
   # ),
   # 
