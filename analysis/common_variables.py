@@ -189,18 +189,18 @@ def generate_common_variables(index_date_variable,end_date_variable):
         },
     ),
     # HES
-    # tmp_out_date_alzheimer_hes=patients.admitted_to_hospital(
-    #     returning="date_admitted",
-    #     with_these_diagnoses=alzheimer_icd10,
-    #     on_or_after=f"{index_date_variable}",
-    #     date_format="YYYY-MM-DD",
-    #     find_first_match_in_period=True,
-    #     return_expectations={
-    #         "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),
+    tmp_out_date_alzheimer_hes=patients.admitted_to_hospital(
+        returning="date_admitted",
+        with_these_diagnoses=alzheimer_icd10,
+        on_or_after=f"{index_date_variable}",
+        date_format="YYYY-MM-DD",
+        find_first_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
     # ONS
     tmp_out_date_alzheimer_death=patients.with_these_codes_on_death_certificate(
         alzheimer_icd10,
@@ -216,7 +216,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
     ),
     # Combined alzheimer disease
     out_date_alzheimer_disease = patients.minimum_of(
-        "tmp_out_date_alzheimer_snomed", #"tmp_out_date_alzheimer_hes", "tmp_out_date_alzheimer_death",
+        "tmp_out_date_alzheimer_snomed", "tmp_out_date_alzheimer_hes", "tmp_out_date_alzheimer_death",
     ),
 
     # Vascular dementia
@@ -234,18 +234,18 @@ def generate_common_variables(index_date_variable,end_date_variable):
         },
     ),
     # HES
-    # tmp_out_date_vascular_dementia_hes=patients.admitted_to_hospital(
-    #     returning="date_admitted",
-    #     with_these_diagnoses=vascular_dementia_icd10,
-    #     on_or_after=f"{index_date_variable}",
-    #     date_format="YYYY-MM-DD",
-    #     find_first_match_in_period=True,
-    #     return_expectations={
-    #         "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),
+    tmp_out_date_vascular_dementia_hes=patients.admitted_to_hospital(
+        returning="date_admitted",
+        with_these_diagnoses=vascular_dementia_icd10,
+        on_or_after=f"{index_date_variable}",
+        date_format="YYYY-MM-DD",
+        find_first_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
     # ONS
     tmp_out_date_vascular_dementia_death=patients.with_these_codes_on_death_certificate(
         vascular_dementia_icd10,
@@ -261,7 +261,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
     ),
     # Combined alzheimer disease
     out_date_vascular_dementia = patients.minimum_of(
-        "tmp_out_date_vascular_dementia_snomed", #"tmp_out_date_vascular_dementia_hes", "tmp_out_date_vascular_dementia_death",
+        "tmp_out_date_vascular_dementia_snomed", "tmp_out_date_vascular_dementia_hes", "tmp_out_date_vascular_dementia_death",
     ),
 
     # Other dementias
@@ -279,18 +279,18 @@ def generate_common_variables(index_date_variable,end_date_variable):
         },
     ),
     # HES
-    # tmp_out_date_other_dementias_hes=patients.admitted_to_hospital(
-    #     returning="date_admitted",
-    #     with_these_diagnoses=other_dementias_icd10,
-    #     on_or_after=f"{index_date_variable}",
-    #     date_format="YYYY-MM-DD",
-    #     find_first_match_in_period=True,
-    #     return_expectations={
-    #         "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),
+    tmp_out_date_other_dementias_hes=patients.admitted_to_hospital(
+        returning="date_admitted",
+        with_these_diagnoses=other_dementias_icd10,
+        on_or_after=f"{index_date_variable}",
+        date_format="YYYY-MM-DD",
+        find_first_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
     # ONS
     tmp_out_date_other_dementias_death=patients.with_these_codes_on_death_certificate(
         other_dementias_icd10,
@@ -306,7 +306,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
     ),
     # Combined other dementias
     out_date_other_dementias = patients.minimum_of(
-        "tmp_out_date_other_dementias_snomed", #"tmp_out_date_other_dementias_hes", "tmp_out_date_other_dementias_death",
+        "tmp_out_date_other_dementias_snomed", "tmp_out_date_other_dementias_hes", "tmp_out_date_other_dementias_death",
     ),
 
     # Unspecified_dementias
@@ -324,18 +324,18 @@ def generate_common_variables(index_date_variable,end_date_variable):
         },
     ),
     # HES
-    # tmp_out_date_unspecified_dementias_hes=patients.admitted_to_hospital(
-    #     returning="date_admitted",
-    #     with_these_diagnoses=unspecified_dementias_icd10,
-    #     on_or_after=f"{index_date_variable}",
-    #     date_format="YYYY-MM-DD",
-    #     find_first_match_in_period=True,
-    #     return_expectations={
-    #         "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),
+    tmp_out_date_unspecified_dementias_hes=patients.admitted_to_hospital(
+        returning="date_admitted",
+        with_these_diagnoses=unspecified_dementias_icd10,
+        on_or_after=f"{index_date_variable}",
+        date_format="YYYY-MM-DD",
+        find_first_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
     # ONS
     tmp_out_date_unspecified_dementias_death=patients.with_these_codes_on_death_certificate(
         unspecified_dementias_icd10,
@@ -351,12 +351,12 @@ def generate_common_variables(index_date_variable,end_date_variable):
     ),
     # Combined unspecified dementias
     out_date_unspecified_dementias = patients.minimum_of(
-        "tmp_out_date_unspecified_dementias_snomed", #"tmp_out_date_unspecified_dementias_hes", "tmp_out_date_unspecified_dementias_death",
+        "tmp_out_date_unspecified_dementias_snomed", "tmp_out_date_unspecified_dementias_hes", "tmp_out_date_unspecified_dementias_death",
     ),
 
     # Any dementia
     out_date_any_dementia = patients.minimum_of(
-        "out_date_alzheimer_disease", #"tmp_out_date_vascular_dementia", "tmp_out_date_other_dementias", "tmp_out_date_unspecified_dementias",
+        "out_date_alzheimer_disease", "out_date_vascular_dementia", "out_date_other_dementias", "out_date_unspecified_dementias",
     ),
 
     # Cognitive impairment
@@ -374,18 +374,18 @@ def generate_common_variables(index_date_variable,end_date_variable):
         },
     ),
     # HES
-    # tmp_out_date_cognitive_impairment_hes=patients.admitted_to_hospital(
-    #     returning="date_admitted",
-    #     with_these_diagnoses=cognitive_impairment_icd10,
-    #     on_or_after=f"{index_date_variable}",
-    #     date_format="YYYY-MM-DD",
-    #     find_first_match_in_period=True,
-    #     return_expectations={
-    #         "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),
+    tmp_out_date_cognitive_impairment_hes=patients.admitted_to_hospital(
+        returning="date_admitted",
+        with_these_diagnoses=cognitive_impairment_icd10,
+        on_or_after=f"{index_date_variable}",
+        date_format="YYYY-MM-DD",
+        find_first_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
     # ONS
     tmp_out_date_cognitive_impairment_death=patients.with_these_codes_on_death_certificate(
         cognitive_impairment_icd10,
@@ -401,7 +401,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
     ),
     # Combined cognitive impairment
     out_date_cognitive_impairment = patients.minimum_of(
-        "tmp_out_date_cognitive_impairment_snomed", #"tmp_out_date_cognitive_impairment_hes", "tmp_out_date_cognitive_impairment_death",
+        "tmp_out_date_cognitive_impairment_snomed", "tmp_out_date_cognitive_impairment_hes", "tmp_out_date_cognitive_impairment_death",
     ),
 
     # Parkinson's disease
@@ -420,18 +420,18 @@ def generate_common_variables(index_date_variable,end_date_variable):
         },
     ),
     # HES
-    # tmp_out_date_parkinson_hes=patients.admitted_to_hospital(
-    #     returning="date_admitted",
-    #     with_these_diagnoses=parkinson_icd10,
-    #     on_or_after=f"{index_date_variable}",
-    #     date_format="YYYY-MM-DD",
-    #     find_first_match_in_period=True,
-    #     return_expectations={
-    #         "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),
+    tmp_out_date_parkinson_hes=patients.admitted_to_hospital(
+        returning="date_admitted",
+        with_these_diagnoses=parkinson_icd10,
+        on_or_after=f"{index_date_variable}",
+        date_format="YYYY-MM-DD",
+        find_first_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
             # ONS
     tmp_out_date_parkinson_death=patients.with_these_codes_on_death_certificate(
         parkinson_icd10,
@@ -447,7 +447,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
     ),
     # Combined parkinson
     out_date_parkinson_disease = patients.minimum_of(
-        "tmp_out_date_parkinson_snomed", #"tmp_out_date_parkinson_hes", "tmp_out_date_parkinson_death",
+        "tmp_out_date_parkinson_snomed", "tmp_out_date_parkinson_hes", "tmp_out_date_parkinson_death",
     ),
 
     ## Restless leg syndrome (Condition on the clinical pathway to outcome of interest)
@@ -464,35 +464,12 @@ def generate_common_variables(index_date_variable,end_date_variable):
             "incidence": 0.1,
         },
     ),
-    # HES
-    # tmp_out_date_restless_leg_syndrome_hes=patients.admitted_to_hospital(
-    #     returning="date_admitted",
-    #     with_these_diagnoses=restless_leg_syndrome_icd10,
-    #     on_or_after=f"{index_date_variable}",
-    #     date_format="YYYY-MM-DD",
-    #     find_first_match_in_period=True,
-    #     return_expectations={
-    #         "date": {"earliest": "index_date", "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),        
-    # # ONS
-    # tmp_out_date_restless_leg_syndrome_death=patients.with_these_codes_on_death_certificate(
-    #     restless_leg_syndrome_icd10,
-    #     returning="date_of_death",
-    #     on_or_after=f"{index_date_variable}",
-    #     match_only_underlying_cause=True,
-    #     date_format="YYYY-MM-DD",
-    #     return_expectations={
-    #         "date": {"earliest": "index_date", "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),
+    # HES - No ICD10 
+    # ONS - No ICD10
+    
     # Combined restless leg syndrome
     out_date_restless_leg_syndrome = patients.minimum_of(
-        "tmp_out_date_restless_leg_syndrome_snomed",#, "tmp_out_date_restless_leg_syndrome_hes", "tmp_out_date_restless_leg_syndrome_death",
+        "tmp_out_date_restless_leg_syndrome_snomed", 
     ),
 
     ## REM sleep disorder (Condition on the clinical pathway to outcome of interest)
@@ -510,18 +487,18 @@ def generate_common_variables(index_date_variable,end_date_variable):
         },
     ),
     # HES
-    # tmp_out_date_rem_sleep_disorder_hes=patients.admitted_to_hospital(
-    #     returning="date_admitted",
-    #     with_these_diagnoses=rem_sleep_disorder_icd10,
-    #     on_or_after=f"{index_date_variable}",
-    #     date_format="YYYY-MM-DD",
-    #     find_first_match_in_period=True,
-    #     return_expectations={
-    #         "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),
+    tmp_out_date_rem_sleep_disorder_hes=patients.admitted_to_hospital(
+        returning="date_admitted",
+        with_these_diagnoses=rem_sleep_disorder_icd10,
+        on_or_after=f"{index_date_variable}",
+        date_format="YYYY-MM-DD",
+        find_first_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
     # ONS
     tmp_out_date_rem_sleep_disorder_death=patients.with_these_codes_on_death_certificate(
         rem_sleep_disorder_icd10,
@@ -537,7 +514,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
     ),
     # Combined rem sleep disorder
     out_date_rem_sleep_disorder = patients.minimum_of(
-        "tmp_out_date_rem_sleep_disorder_snomed", #"tmp_out_date_rem_sleep_disorder_hes", "tmp_out_date_rem_sleep_disorder_death",
+        "tmp_out_date_rem_sleep_disorder_snomed", "tmp_out_date_rem_sleep_disorder_hes", #"tmp_out_date_rem_sleep_disorder_death",
     ),
 
     # Other Neurodegenerative conditions
@@ -583,7 +560,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
     # ),
     # Combined motor neurone disease
     out_date_motor_neurone_disease = patients.minimum_of(
-        "tmp_out_date_motor_neurone_disease_snomed"#, "tmp_out_date_motor_neurone_disease_hes", "tmp_out_date_motor_neurone_disease_death",
+        "tmp_out_date_motor_neurone_disease_snomed", #"tmp_out_date_motor_neurone_disease_hes", "tmp_out_date_motor_neurone_disease_death",
     ),
 
     # Multiple sclerosis
@@ -601,18 +578,18 @@ def generate_common_variables(index_date_variable,end_date_variable):
         },
     ),
     # HES
-    # tmp_out_date_multiple_sclerosis_hes=patients.admitted_to_hospital(
-    #     returning="date_admitted",
-    #     with_these_diagnoses=multiple_sclerosis_icd10,
-    #     on_or_after=f"{index_date_variable}",
-    #     date_format="YYYY-MM-DD",
-    #     find_first_match_in_period=True,
-    #     return_expectations={
-    #         "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),
+    tmp_out_date_multiple_sclerosis_hes=patients.admitted_to_hospital(
+        returning="date_admitted",
+        with_these_diagnoses=multiple_sclerosis_icd10,
+        on_or_after=f"{index_date_variable}",
+        date_format="YYYY-MM-DD",
+        find_first_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
     # ONS
     tmp_out_date_multiple_sclerosis_death=patients.with_these_codes_on_death_certificate(
         multiple_sclerosis_icd10,
@@ -628,7 +605,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
     ),
     # Combined multiple sclerosis
     out_date_multiple_sclerosis = patients.minimum_of(
-        "tmp_out_date_multiple_sclerosis_snomed", #"tmp_out_date_multiple_sclerosis_hes", "tmp_out_date_multiple_sclerosis_death",
+        "tmp_out_date_multiple_sclerosis_snomed", "tmp_out_date_multiple_sclerosis_hes", #"tmp_out_date_multiple_sclerosis_death",
     ),
 
     # Migraine
@@ -646,18 +623,18 @@ def generate_common_variables(index_date_variable,end_date_variable):
         },
     ),
     # HES
-    # tmp_out_date_migraine_hes=patients.admitted_to_hospital(
-    #     returning="date_admitted",
-    #     with_these_diagnoses=migraine_icd10,
-    #     on_or_after=f"{index_date_variable}",
-    #     date_format="YYYY-MM-DD",
-    #     find_first_match_in_period=True,
-    #     return_expectations={
-    #         "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),
+    tmp_out_date_migraine_hes=patients.admitted_to_hospital(
+        returning="date_admitted",
+        with_these_diagnoses=migraine_icd10,
+        on_or_after=f"{index_date_variable}",
+        date_format="YYYY-MM-DD",
+        find_first_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
     # ONS
     # tmp_out_date_migraine_death=patients.with_these_codes_on_death_certificate(
     #     migraine_icd10,
@@ -673,7 +650,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
     # ),
     # Combined mmigraine
     out_date_migraine = patients.minimum_of(
-        "tmp_out_date_migraine_snomed", #"tmp_out_date_migraine_hes" #"tmp_out_date_migraine_death",
+        "tmp_out_date_migraine_snomed", "tmp_out_date_migraine_hes", #"tmp_out_date_migraine_death",
     ),
 
     # # Antispychotics - prescriptions (BNF)
@@ -713,18 +690,18 @@ def generate_common_variables(index_date_variable,end_date_variable):
         },
     ),
     # HES
-    # tmp_out_date_hypercholesterolaemia_hes=patients.admitted_to_hospital(
-    #     returning="date_admitted",
-    #     with_these_diagnoses=hypercholesterolaemia_icd10,
-    #     on_or_after=f"{index_date_variable}",
-    #     date_format="YYYY-MM-DD",
-    #     find_first_match_in_period=True,
-    #     return_expectations={
-    #         "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),
+    tmp_out_date_hypercholesterolaemia_hes=patients.admitted_to_hospital(
+        returning="date_admitted",
+        with_these_diagnoses=hypercholesterolaemia_icd10,
+        on_or_after=f"{index_date_variable}",
+        date_format="YYYY-MM-DD",
+        find_first_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
     #ONS
     # tmp_out_date_hypercholesterolaemia_death=patients.with_these_codes_on_death_certificate(
     #     hypercholesterolaemia_icd10,
@@ -733,14 +710,14 @@ def generate_common_variables(index_date_variable,end_date_variable):
     #     match_only_underlying_cause=True,
     #     date_format="YYYY-MM-DD",
     #     return_expectations={
-    #         "date": {"earliest": "index_date", "latest" : "today"}, 
+    #         "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
     #         "rate": "uniform",
     #         "incidence": 0.1,
     #     },
     # ),
     #Combined Hypercholesterolaemia 
     out_date_hypercholesterolaemia=patients.minimum_of(
-        "tmp_out_date_hypercholesterolaemia_snomed",#"tmp_out_date_hypercholesterolaemia_hes",#tmp_out_date_hypercholesterolaemia_death
+        "tmp_out_date_hypercholesterolaemia_snomed", "tmp_out_date_hypercholesterolaemia_hes",#tmp_out_date_hypercholesterolaemia_death
     ),
     # History of cognitive impairment
     # History of restless leg

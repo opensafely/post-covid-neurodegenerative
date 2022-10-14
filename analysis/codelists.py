@@ -1043,6 +1043,6 @@ hypercholesterolaemia_snomed = codelist_from_csv(
 
 hypercholesterolaemia_icd10 = codelist_from_csv(
     "codelists/bristol-hypercholesterolaemia.csv",
-    system = "snomed",
+    system = "icd10",
     column = "code"
 )
