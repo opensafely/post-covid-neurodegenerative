@@ -41,7 +41,7 @@ outcomes <- c("Alzheimer disease",
               "Unspecified dementias",
               "Any dementia",
               "Cognitive impairment",
-              "Parkinson",
+              "Parkinson disease",
               "Restless leg syndrome",
               "REM sleep disorder",
               "Motor neurone disease",
@@ -56,28 +56,30 @@ outcomes_short <- c("alzheimer_disease",
                     "unspecified_dementias",
                     "any_dementia",
                     "cognitive_impairment",
-                    "parkinson",
+                    "parkinson_disease",
                     "restless_leg_syndrome",
                     "rem_sleep_disorder",
                     "motor_neurone_disease",
                     "multiple_sclerosis",
                     "migraine")
 
-out_venn <- c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
+outcome_venn <- c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
 
 for (i in 1:length(outcomes)) {
   df[nrow(df)+1,] <- c(TRUE,
                        outcomes[i],
-                       outcome_group,
                        paste0("out_date_",outcomes_short[i]),
                        "cov_num_age;cov_cat_sex;cov_cat_ethnicity;cov_cat_deprivation;cov_cat_region;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch;cov_bin_hypercholesterolaemia",
                        rep("all",2),
                        rep(TRUE,16),
                        rep(FALSE,2),
                        "",
-                       "neurodegenerative_diseases",
-                       out_venn[i])
+                       "Neurodegenerative_diseases",
+                       outcome_venn[i])
 }
+
+#Remove column covid_history
+df[,8] <- FALSE
 
 # df[6,1] <- TRUE
 

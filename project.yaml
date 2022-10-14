@@ -123,3 +123,39 @@ actions:
       highly_sensitive:
         cohort: output/input_*.rds
 
+  stage1_end_date_table_prevax:
+    run: r:latest analysis/preprocess/create_follow_up_end_date.R prevax
+    needs:
+    - preprocess_data_prevax
+    - preprocess_data_vax
+    - preprocess_data_unvax
+    - stage1_data_cleaning_all
+    - vax_eligibility_inputs
+    outputs:
+      highly_sensitive:
+        end_date_table: output/follow_up_end_dates_prevax.rds
+
+  stage1_end_date_table_vax:
+    run: r:latest analysis/preprocess/create_follow_up_end_date.R vax
+    needs:
+    - preprocess_data_prevax
+    - preprocess_data_vax
+    - preprocess_data_unvax
+    - stage1_data_cleaning_all
+    - vax_eligibility_inputs
+    outputs:
+      highly_sensitive:
+        end_date_table: output/follow_up_end_dates_vax.rds
+
+  stage1_end_date_table_unvax:
+    run: r:latest analysis/preprocess/create_follow_up_end_date.R unvax
+    needs:
+    - preprocess_data_prevax
+    - preprocess_data_vax
+    - preprocess_data_unvax
+    - stage1_data_cleaning_all
+    - vax_eligibility_inputs
+    outputs:
+      highly_sensitive:
+        end_date_table: output/follow_up_end_dates_unvax.rds
+
