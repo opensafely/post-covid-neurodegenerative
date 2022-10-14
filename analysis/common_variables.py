@@ -677,7 +677,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
 
     # Hypercholesterolaemia 
     # Primary
-    tmp_out_date_hypercholesterolaemia_snomed=patients.with_these_clinical_events(
+    tmp_cov_bin_hypercholesterolaemia_snomed=patients.with_these_clinical_events(
         hypercholesterolaemia_snomed,
         returning="date",
         on_or_after=f"{index_date_variable}",
@@ -690,7 +690,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
         },
     ),
     # HES
-    tmp_out_date_hypercholesterolaemia_hes=patients.admitted_to_hospital(
+    tmp_cov_bin_hypercholesterolaemia_hes=patients.admitted_to_hospital(
         returning="date_admitted",
         with_these_diagnoses=hypercholesterolaemia_icd10,
         on_or_after=f"{index_date_variable}",
@@ -716,8 +716,8 @@ def generate_common_variables(index_date_variable,end_date_variable):
     #     },
     # ),
     #Combined Hypercholesterolaemia 
-    out_date_hypercholesterolaemia=patients.minimum_of(
-        "tmp_out_date_hypercholesterolaemia_snomed", "tmp_out_date_hypercholesterolaemia_hes",#tmp_out_date_hypercholesterolaemia_death
+    cov_bin_hypercholesterolaemia=patients.minimum_of(
+        "tmp_cov_bin_hypercholesterolaemia_snomed", "tmp_cov_bin_hypercholesterolaemia_hes",#tmp_out_date_hypercholesterolaemia_death
     ),
     # History of cognitive impairment
     # History of restless leg
