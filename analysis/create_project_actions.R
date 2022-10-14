@@ -282,20 +282,20 @@ actions_list <- splice(
     highly_sensitive = list(
       end_date_table = glue("output/follow_up_end_dates_unvax.rds")#_*
     )
+  ),
+  
+  #comment("Stage 2 - Missing - Table 1 - all cohorts"),
+  action(
+    name = "stage2_missing_table1_all",
+    run = "r:latest analysis/descriptives/Stage2_missing_table1.R all",
+    needs = list("stage1_data_cleaning_all"),
+    moderately_sensitive = list(
+      Missing_RangeChecks = glue("output/not-for-review/Check_missing_range_*.csv"),
+      DateChecks = glue("output/not-for-review/Check_dates_range_*.csv"),
+      Descriptive_Table = glue("output/review/descriptives/Table1_*.csv")
+    )
   )
 )
-
-  # #comment("Stage 2 - Missing - Table 1"),
-  # action(
-  #   name = "stage2_missing_table1_both",
-  #   run = "r:latest analysis/descriptives/Stage2_missing_table1.R both",
-  #   needs = list("stage1_data_cleaning_both"),
-  #   moderately_sensitive = list(
-  #     Missing_RangeChecks = glue("output/not-for-review/Check_missing_range_*.csv"),
-  #     DateChecks = glue("output/not-for-review/Check_dates_range_*.csv"),
-  #     Descriptive_Table = glue("output/review/descriptives/Table1_*.csv")
-  #   )
-  # ),
 
   # #comment("Stage 3 - No action there for CVD outcomes"),  
 
