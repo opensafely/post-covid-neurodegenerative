@@ -159,3 +159,86 @@ actions:
       highly_sensitive:
         end_date_table: output/follow_up_end_dates_unvax.rds
 
+  stage2_missing_table1_all:
+    run: r:latest analysis/descriptives/Stage2_missing_table1.R all
+    needs:
+    - stage1_data_cleaning_all
+    outputs:
+      moderately_sensitive:
+        Missing_RangeChecks: output/not-for-review/Check_missing_range_*.csv
+        DateChecks: output/not-for-review/Check_dates_range_*.csv
+        Descriptive_Table: output/review/descriptives/Table1_*.csv
+
+  ## Stage 4 - Table 2 - prevax cohort 
+
+  stage4_table_2_prevax:
+    run: r:latest analysis/descriptives/table_2.R prevax
+    needs:
+    - stage1_data_cleaning_all
+    - stage1_end_date_table_prevax
+    outputs:
+      moderately_sensitive:
+        input_table_2: output/review/descriptives/table2_prevax.csv
+
+  ## Stage 4 - Table 2 - vax cohort 
+
+  stage4_table_2_vax:
+    run: r:latest analysis/descriptives/table_2.R vax
+    needs:
+    - stage1_data_cleaning_all
+    - stage1_end_date_table_vax
+    outputs:
+      moderately_sensitive:
+        input_table_2: output/review/descriptives/table2_vax.csv
+
+  ## Stage 4 - Table 2 - unvax cohort 
+
+  stage4_table_2_unvax:
+    run: r:latest analysis/descriptives/table_2.R unvax
+    needs:
+    - stage1_data_cleaning_all
+    - stage1_end_date_table_unvax
+    outputs:
+      moderately_sensitive:
+        input_table_2: output/review/descriptives/table2_unvax.csv
+
+  stage4_venn_diagram_all:
+    run: r:latest analysis/descriptives/venn_diagram.R all
+    needs:
+    - preprocess_data_prevax
+    - preprocess_data_vax
+    - preprocess_data_unvax
+    - stage1_data_cleaning_all
+    - stage1_end_date_table_prevax
+    - stage1_end_date_table_vax
+    - stage1_end_date_table_unvax
+    outputs:
+      moderately_sensitive:
+        venn_diagram: output/review/venn-diagrams/venn_diagram_*
+
+  ## Stage 5a - Make model input 
+
+  make_model_input-cohort_vax:
+    run: r:latest analysis/model/make_model_input.R cohort_vax
+    needs:
+    - stage1_data_cleaning_all
+    outputs:
+      highly_sensitive:
+        model_input: output/model_input-cohort_vax*.csv
+
+  make_model_input-cohort_unvax:
+    run: r:latest analysis/model/make_model_input.R cohort_unvax
+    needs:
+    - stage1_data_cleaning_all
+    outputs:
+      highly_sensitive:
+        model_input: output/model_input-cohort_unvax*.csv
+
+  make_model_input-cohort_prevax:
+    run: r:latest analysis/model/make_model_input.R cohort_prevax
+    needs:
+    - stage1_data_cleaning_all
+    outputs:
+      highly_sensitive:
+        model_input: output/model_input-cohort_prevax*.csv
+

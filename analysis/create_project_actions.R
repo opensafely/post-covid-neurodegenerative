@@ -321,51 +321,72 @@ actions_list <- splice(
     run = "r:latest analysis/descriptives/venn_diagram.R all",
     needs = list("preprocess_data_prevax","preprocess_data_vax", "preprocess_data_unvax", "stage1_data_cleaning_all","stage1_end_date_table_prevax", "stage1_end_date_table_vax", "stage1_end_date_table_unvax"),
     moderately_sensitive = list(
-      venn_diagram = glue("output/review/venn-diagrams/venn_diagram_*"))
+      venn_diagram = glue("output/review/venn-diagrams/venn_diagram_*")
   )
+),
+
+  comment("Stage 5a - Make model input"),
+  # Note: this can be split in various ways, cohort seems to be a fair compromise on number of actions vs runtime
+
+  action(
+    name = "make_model_input-cohort_vax",
+    run = "r:latest analysis/model/make_model_input.R cohort_vax",
+    needs = list("stage1_data_cleaning_all"),
+    highly_sensitive = list(
+      model_input = glue("output/model_input-cohort_vax*.csv")
+  )
+),
+
+  action(
+    name = "make_model_input-cohort_unvax",
+    run = "r:latest analysis/model/make_model_input.R cohort_unvax",
+    needs = list("stage1_data_cleaning_all"),
+    highly_sensitive = list(
+      model_input = glue("output/model_input-cohort_unvax*.csv")
+  )
+),
+
+  action(
+    name = "make_model_input-cohort_prevax",
+    run = "r:latest analysis/model/make_model_input.R cohort_prevax",
+    needs = list("stage1_data_cleaning_all"),
+    highly_sensitive = list(
+      model_input = glue("output/model_input-cohort_prevax*.csv")
+  )
+)#,
+
+#   comment("Stage 5b - Run models"),
+# 
+#   action(
+#     name = list("cox_ipw-cohort_prevax-anxiety_ocd-main"),
+#     run = glue("cox-ipw:v0.0.8",
+#                " --df_input=model_input-", active_analyses$name[1], ".csv",
+#                " --ipw=",active_analyses$ipw[1],
+#                " --exposure=exp_date",
+#                " --outcome=out_date",
+#                " --strata=",active_analyses$strata[1],
+#                " --covariate_sex=",active_analyses$covariate_sex[1],
+#                " --covariate_age=",active_analyses$covariate_age[1],
+#                " --covariate_other=",active_analyses$covariate_other[1],
+#                " --cox_start=",active_analyses$cox_start[1],
+#                " --cox_stop=",active_analyses$cox_stop[1],
+#                " --study_start=",active_analyses$study_start[1],
+#                " --study_stop=",active_analyses$study_stop[1],
+#                " --cut_points=",active_analyses$cut_points[1],
+#                " --controls_per_case=",active_analyses$controls_per_case[1],
+#                " --total_event_threshold=",active_analyses$total_event_threshold[1],
+#                " --episode_event_threshold=",active_analyses$episode_event_threshold[1],
+#                " --covariate_threshold=",active_analyses$covariate_threshold[1],
+#                " --age_spline=",active_analyses$age_spline[1],
+#                " --df_output=results-",active_analyses$name[1],".csv"),
+#     needs = list("make_model_input-cohort_prevax", "make_model_input-cohort_unvax", "make_model_input-cohort_vax"),
+#     moderately_sensitive = list(
+#     model_input = glue("output/results-*.csv")
+#   )
+# )
+
+
 )
-
-  # #comment("Stage 5 - Apply models"),
-  # splice(
-  #   # over outcomes
-  #   unlist(lapply(outcomes_model, function(x) splice(unlist(lapply(cohort_to_run, function(y) apply_model_function(outcome = x, cohort = y)), recursive = FALSE))
-  #     ),recursive = FALSE)),
-
-  # #comment("Split hospitalised COVID by region - vaccinated"),
-  # action(
-  #   name = "split_hosp_covid_by_region_vaccinated",
-  #   run = "r:latest analysis/descriptives/hospitalised_covid_events_by_region.R vaccinated",
-  #   needs = list("stage1_data_cleaning_both","stage1_end_date_table_vaccinated"),
-  #   moderately_sensitive = list(
-  #     hosp_events_by_region_non_suppressed = "output/not-for-review/hospitalised_covid_event_counts_by_region_vaccinated_non_suppressed.csv",
-  #     hosp_events_by_region_suppressed = "output/not-for-review/hospitalised_covid_event_counts_by_region_vaccinated_suppressed.csv")),
-
-  # #comment("Split hospitalised COVID by region - electively unvaccinated"),
-  # action(
-  #   name = "split_hosp_covid_by_region_electively_unvaccinated",
-  #   run = "r:latest analysis/descriptives/hospitalised_covid_events_by_region.R electively_unvaccinated",
-  #   needs = list("stage1_data_cleaning_both","stage1_end_date_table_electively_unvaccinated"),
-  #   moderately_sensitive = list(
-  #   hosp_events_by_region_non_suppressed = "output/not-for-review/hospitalised_covid_event_counts_by_region_electively_unvaccinated_non_suppressed.csv",
-  #   hosp_events_by_region_suppressed = "output/not-for-review/hospitalised_covid_event_counts_by_region_electively_unvaccinated_suppressed.csv")),
-  
-  # #comment("Hospitalised event counts by covariate level"),
-  # splice(
-  #   # over cohort
-  #   unlist(lapply(cohort_to_run, function(x) hosp_event_counts_by_covariate_level(cohort = x)), recursive = FALSE)
-  # ),
-  
-  # #comment("Select covariates for hosp COVID)
-  # action(
-  #   name = "select_covariates_for_hosp_covid",
-  #   run = "r:latest analysis/descriptives/determine_covariates_for_hosp_covid.R both",
-  #   needs = list("hosp_event_counts_by_covariate_level_vaccinated","hosp_event_counts_by_covariate_level_electively_unvaccinated"),
-  #   moderately_sensitive = list(
-  #     covariates_for_hosp_covid_vacc = "output/not-for-review/covariates_to_adjust_for_hosp_covid_vaccinated.csv",
-  #     covariates_for_hosp_covid_electively_unvacc = "output/not-for-review/covariates_to_adjust_for_hosp_covid_electively_unvaccinated.csv")
-
-  # )
-
 
 
 ## combine everything ----
