@@ -16,11 +16,11 @@ defaults_list <- list(
   expectations= list(population_size=200000L)
 )
 
-# active_analyses <- read_rds("lib/active_analyses.rds")
-# active_analyses_table <- subset(active_analyses, active_analyses$active =="TRUE")
-# outcomes_model <- active_analyses_table$outcome_variable %>% str_replace("out_date_", "")
-# cohort_to_run <- c("prevax", "vax", "unvax")
-# analyses <- c("main", "subgroups")
+active_analyses <- read_rds("lib/active_analyses.rds")
+active_analyses_table <- subset(active_analyses, active_analyses$active =="TRUE")
+outcomes_model <- active_analyses_table$outcome_variable %>% str_replace("out_date_", "")
+cohort_to_run <- c("prevax", "vax", "unvax")
+analyses <- c("main", "subgroups")
 
 # create action functions ----
 
@@ -98,35 +98,21 @@ convert_comment_actions <-function(yaml.txt){
 #   )
 # }
 
-# table2 <- function(cohort){
-#   splice(
-#     comment(glue("Stage 4 - Table 2 - {cohort} cohort")),
-#     action(
-#       name = glue("stage4_table_2_{cohort}"),
-#       run = "r:latest analysis/descriptives/table_2.R",
-#       arguments = c(cohort),
-#       needs = list("stage1_data_cleaning_both",glue("stage1_end_date_table_{cohort}")),
-#       moderately_sensitive = list(
-#         input_table_2 = glue("output/review/descriptives/table2_{cohort}.csv")
-#       )
-#     )
-#   )
-# }
+table2 <- function(cohort){
+  splice(
+    comment(glue("Stage 4 - Table 2 - {cohort} cohort")),
+    action(
+      name = glue("stage4_table_2_{cohort}"),
+      run = "r:latest analysis/descriptives/table_2.R",
+      arguments = c(cohort),
+      needs = list("stage1_data_cleaning_all",glue("stage1_end_date_table_{cohort}")),
+      moderately_sensitive = list(
+        input_table_2 = glue("output/review/descriptives/table2_{cohort}.csv")
+      )
+    )
+  )
+}
 
-# hosp_event_counts_by_covariate_level <- function(cohort){
-#   splice(
-#     comment(glue("Hospitalised event counts by covariate - {cohort}")),
-#     action(
-#       name = glue("hosp_event_counts_by_covariate_level_{cohort}"),
-#       run = "r:latest analysis/descriptives/hospitalised_events_split_by_time_period_and_covariate_level.R",
-#       arguments = c(cohort),
-#       needs = list("stage1_data_cleaning_both",glue("stage1_end_date_table_{cohort}")),
-#       moderately_sensitive = list(
-#         hosp_counts_by_covariate = glue("output/not-for-review/hospitalised_event_counts_by_covariate_level_{cohort}.csv")
-#       )
-#     )
-#   )
-# }
 
 ##########################################################
 ## Define and combine all actions into a list of actions #
@@ -294,8 +280,7 @@ actions_list <- splice(
       DateChecks = glue("output/not-for-review/Check_dates_range_*.csv"),
       Descriptive_Table = glue("output/review/descriptives/Table1_*.csv")
     )
-  )
-)
+  ),
 
   # #comment("Stage 3 - No action there for CVD outcomes"),  
 
@@ -324,20 +309,21 @@ actions_list <- splice(
   # ),
   
   
-  # #comment("Stage 4 - Create input for table2"),
-  # splice(
-  #   # over outcomes
-  #   unlist(lapply(cohort_to_run, function(x) table2(cohort = x)), recursive = FALSE)
-  # ),
+#comment("Stage 4 - Create input for table2"),
+  splice(
+    # over outcomes
+    unlist(lapply(cohort_to_run, function(x) table2(cohort = x)), recursive = FALSE)
+  ),
   
-  # #comment("Stage 4 - Venn diagrams"),
-  # action(
-  #   name = "stage4_venn_diagram_both",
-  #   run = "r:latest analysis/descriptives/venn_diagram.R both",
-  #   needs = list("preprocess_data_vaccinated","preprocess_data_electively_unvaccinated","stage1_data_cleaning_both","stage1_end_date_table_vaccinated","stage1_end_date_table_electively_unvaccinated"),
-  #   moderately_sensitive = list(
-  #     venn_diagram = glue("output/review/venn-diagrams/venn_diagram_*"))
-  # ),
+  #comment("Stage 4 - Venn diagrams"),
+  action(
+    name = "stage4_venn_diagram_all",
+    run = "r:latest analysis/descriptives/venn_diagram.R all",
+    needs = list("preprocess_data_prevax","preprocess_data_vax", "preprocess_data_unvax", "stage1_data_cleaning_all","stage1_end_date_table_prevax", "stage1_end_date_table_vax", "stage1_end_date_table_unvax"),
+    moderately_sensitive = list(
+      venn_diagram = glue("output/review/venn-diagrams/venn_diagram_*"))
+  )
+)
 
   # #comment("Stage 5 - Apply models"),
   # splice(
