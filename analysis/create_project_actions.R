@@ -237,7 +237,7 @@ actions_list <- splice(
     highly_sensitive = list(
       cohort = glue("output/input_*.rds")
     )
-  )
+  ),
   
   # #comment("Stage 2 - Missing - Table 1 - all cohorts"),
   # action(
@@ -269,66 +269,66 @@ actions_list <- splice(
   #   unlist(lapply(cohort_to_run, function(x) table2(cohort = x)), recursive = FALSE)
   # ),
   
-  # comment("Stage 5a - Make model input"),
-  # # Note: this can be split in various ways, cohort seems to be a fair compromise on number of actions vs runtime
-  # 
-  # action(
-  #   name = "make_model_input-cohort_vax",
-  #   run = "r:latest analysis/model/make_model_input.R cohort_vax",
-  #   needs = list("stage1_data_cleaning_all"),
-  #   highly_sensitive = list(
-  #     model_input = glue("output/model_input-cohort_vax*.csv")
-  #   )
-  # ),
-  # 
-  # action(
-  #   name = "make_model_input-cohort_unvax",
-  #   run = "r:latest analysis/model/make_model_input.R cohort_unvax",
-  #   needs = list("stage1_data_cleaning_all"),
-  #   highly_sensitive = list(
-  #     model_input = glue("output/model_input-cohort_unvax*.csv")
-  #   )
-  # ),
-  # 
-  # action(
-  #   name = "make_model_input-cohort_prevax",
-  #   run = "r:latest analysis/model/make_model_input.R cohort_prevax",
-  #   needs = list("stage1_data_cleaning_all"),
-  #   highly_sensitive = list(
-  #     model_input = glue("output/model_input-cohort_prevax*.csv")
-  #   )
-  # ),
-  # 
-  # comment("Stage 5b - Run models"),
-  # 
-  # action(
-  #   name = "cox_ipw-cohort_vax-vascular_dementia-main",
-  #   run = glue("cox-ipw:v0.0.8",
-  #              " --df_input=model_input-", active_analyses$name[1], ".csv",
-  #              " --ipw=",active_analyses$ipw[1],
-  #              " --exposure=exp_date",
-  #              " --outcome=out_date",
-  #              " --strata=",active_analyses$strata[1],
-  #              " --covariate_sex=",active_analyses$covariate_sex[1],
-  #              " --covariate_age=",active_analyses$covariate_age[1],
-  #              " --covariate_other=",active_analyses$covariate_other[1],
-  #              " --cox_start=",active_analyses$cox_start[1],
-  #              " --cox_stop=",active_analyses$cox_stop[1],
-  #              " --study_start=",active_analyses$study_start[1],
-  #              " --study_stop=",active_analyses$study_stop[1],
-  #              " --cut_points=",active_analyses$cut_points[1],
-  #              " --controls_per_case=",active_analyses$controls_per_case[1],
-  #              " --total_event_threshold=",active_analyses$total_event_threshold[1],
-  #              " --episode_event_threshold=",active_analyses$episode_event_threshold[1],
-  #              " --covariate_threshold=",active_analyses$covariate_threshold[1],
-  #              " --age_spline=",active_analyses$age_spline[1],
-  #              " --df_output=results-",active_analyses$name[1],".csv"),
-  #   needs = list("make_model_input-cohort_vax"),
-  #   moderately_sensitive = list(
-  #     model_input = glue("output/results-*.csv")
-  #   )
-  # )
-  # 
+  comment("Stage 5a - Make model input"),
+  # Note: this can be split in various ways, cohort seems to be a fair compromise on number of actions vs runtime
+  
+  action(
+    name = "make_model_input-cohort_vax",
+    run = "r:latest analysis/model/make_model_input.R cohort_vax",
+    needs = list("stage1_data_cleaning_all"),
+    highly_sensitive = list(
+      model_input = glue("output/model_input-cohort_vax*.csv")
+    )
+  ),
+  
+  action(
+    name = "make_model_input-cohort_unvax",
+    run = "r:latest analysis/model/make_model_input.R cohort_unvax",
+    needs = list("stage1_data_cleaning_all"),
+    highly_sensitive = list(
+      model_input = glue("output/model_input-cohort_unvax*.csv")
+    )
+  ),
+  
+  action(
+    name = "make_model_input-cohort_prevax",
+    run = "r:latest analysis/model/make_model_input.R cohort_prevax",
+    needs = list("stage1_data_cleaning_all"),
+    highly_sensitive = list(
+      model_input = glue("output/model_input-cohort_prevax*.csv")
+    )
+  ),
+  
+  comment("Stage 5b - Run models"),
+
+  action(
+    name = "cox_ipw-cohort_vax-vascular_dementia-main",
+    run = glue("cox-ipw:v0.0.8",
+               " --df_input=model_input-", active_analyses$name[1], ".csv",
+               " --ipw=",active_analyses$ipw[1],
+               " --exposure=exp_date",
+               " --outcome=out_date",
+               " --strata=",active_analyses$strata[1],
+               " --covariate_sex=",active_analyses$covariate_sex[1],
+               " --covariate_age=",active_analyses$covariate_age[1],
+               " --covariate_other=",active_analyses$covariate_other[1],
+               " --cox_start=",active_analyses$cox_start[1],
+               " --cox_stop=",active_analyses$cox_stop[1],
+               " --study_start=",active_analyses$study_start[1],
+               " --study_stop=",active_analyses$study_stop[1],
+               " --cut_points=",active_analyses$cut_points[1],
+               " --controls_per_case=",active_analyses$controls_per_case[1],
+               " --total_event_threshold=",active_analyses$total_event_threshold[1],
+               " --episode_event_threshold=",active_analyses$episode_event_threshold[1],
+               " --covariate_threshold=",active_analyses$covariate_threshold[1],
+               " --age_spline=",active_analyses$age_spline[1],
+               " --df_output=results-",active_analyses$name[1],".csv"),
+    needs = list("make_model_input-cohort_vax"),
+    moderately_sensitive = list(
+      model_input = glue("output/results-*.csv")
+    )
+  )
+  
   
 )
 
