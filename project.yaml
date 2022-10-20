@@ -40,33 +40,33 @@ actions:
 
   generate_study_population_prevax:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_prevax
-      --output-format csv.gz
+      --output-format feather
     needs:
     - vax_eligibility_inputs
     - generate_index_dates
     outputs:
       highly_sensitive:
-        cohort: output/input_prevax.csv.gz
+        cohort: output/input_prevax.feather
 
   generate_study_population_vax:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_vax
-      --output-format csv.gz
+      --output-format feather
     needs:
     - generate_index_dates
     - vax_eligibility_inputs
     outputs:
       highly_sensitive:
-        cohort: output/input_vax.csv.gz
+        cohort: output/input_vax.feather
 
   generate_study_population_unvax:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_unvax
-      --output-format csv.gz
+      --output-format feather
     needs:
     - vax_eligibility_inputs
     - generate_index_dates
     outputs:
       highly_sensitive:
-        cohort: output/input_unvax.csv.gz
+        cohort: output/input_unvax.feather
 
   preprocess_data_prevax:
     run: r:latest analysis/preprocess/preprocess_data.R prevax
