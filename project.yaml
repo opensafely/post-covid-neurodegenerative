@@ -40,33 +40,33 @@ actions:
 
   generate_study_population_prevax:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_prevax
-      --output-format feather
+      --output-format csv.gz
     needs:
     - vax_eligibility_inputs
     - generate_index_dates
     outputs:
       highly_sensitive:
-        cohort: output/input_prevax.feather
+        cohort: output/input_prevax.csv.gz
 
   generate_study_population_vax:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_vax
-      --output-format feather
+      --output-format csv.gz
     needs:
     - generate_index_dates
     - vax_eligibility_inputs
     outputs:
       highly_sensitive:
-        cohort: output/input_vax.feather
+        cohort: output/input_vax.csv.gz
 
   generate_study_population_unvax:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_unvax
-      --output-format feather
+      --output-format csv.gz
     needs:
     - vax_eligibility_inputs
     - generate_index_dates
     outputs:
       highly_sensitive:
-        cohort: output/input_unvax.feather
+        cohort: output/input_unvax.csv.gz
 
   preprocess_data_prevax:
     run: r:latest analysis/preprocess/preprocess_data.R prevax
@@ -123,99 +123,6 @@ actions:
       highly_sensitive:
         cohort: output/input_*.rds
 
-  stage1_end_date_table_prevax:
-    run: r:latest analysis/preprocess/create_follow_up_end_date.R prevax
-    needs:
-    - preprocess_data_prevax
-    - preprocess_data_vax
-    - preprocess_data_unvax
-    - stage1_data_cleaning_all
-    - vax_eligibility_inputs
-    outputs:
-      highly_sensitive:
-        end_date_table: output/follow_up_end_dates_prevax.rds
-
-  stage1_end_date_table_vax:
-    run: r:latest analysis/preprocess/create_follow_up_end_date.R vax
-    needs:
-    - preprocess_data_prevax
-    - preprocess_data_vax
-    - preprocess_data_unvax
-    - stage1_data_cleaning_all
-    - vax_eligibility_inputs
-    outputs:
-      highly_sensitive:
-        end_date_table: output/follow_up_end_dates_vax.rds
-
-  stage1_end_date_table_unvax:
-    run: r:latest analysis/preprocess/create_follow_up_end_date.R unvax
-    needs:
-    - preprocess_data_prevax
-    - preprocess_data_vax
-    - preprocess_data_unvax
-    - stage1_data_cleaning_all
-    - vax_eligibility_inputs
-    outputs:
-      highly_sensitive:
-        end_date_table: output/follow_up_end_dates_unvax.rds
-
-  stage2_missing_table1_all:
-    run: r:latest analysis/descriptives/Stage2_missing_table1.R all
-    needs:
-    - stage1_data_cleaning_all
-    outputs:
-      moderately_sensitive:
-        Missing_RangeChecks: output/not-for-review/Check_missing_range_*.csv
-        DateChecks: output/not-for-review/Check_dates_range_*.csv
-        Descriptive_Table: output/review/descriptives/Table1_*.csv
-
-  ## Stage 4 - Table 2 - prevax cohort 
-
-  stage4_table_2_prevax:
-    run: r:latest analysis/descriptives/table_2.R prevax
-    needs:
-    - stage1_data_cleaning_all
-    - stage1_end_date_table_prevax
-    outputs:
-      moderately_sensitive:
-        input_table_2: output/review/descriptives/table2_prevax.csv
-
-  ## Stage 4 - Table 2 - vax cohort 
-
-  stage4_table_2_vax:
-    run: r:latest analysis/descriptives/table_2.R vax
-    needs:
-    - stage1_data_cleaning_all
-    - stage1_end_date_table_vax
-    outputs:
-      moderately_sensitive:
-        input_table_2: output/review/descriptives/table2_vax.csv
-
-  ## Stage 4 - Table 2 - unvax cohort 
-
-  stage4_table_2_unvax:
-    run: r:latest analysis/descriptives/table_2.R unvax
-    needs:
-    - stage1_data_cleaning_all
-    - stage1_end_date_table_unvax
-    outputs:
-      moderately_sensitive:
-        input_table_2: output/review/descriptives/table2_unvax.csv
-
-  stage4_venn_diagram_all:
-    run: r:latest analysis/descriptives/venn_diagram.R all
-    needs:
-    - preprocess_data_prevax
-    - preprocess_data_vax
-    - preprocess_data_unvax
-    - stage1_data_cleaning_all
-    - stage1_end_date_table_prevax
-    - stage1_end_date_table_vax
-    - stage1_end_date_table_unvax
-    outputs:
-      moderately_sensitive:
-        venn_diagram: output/review/venn-diagrams/venn_diagram_*
-
   ## Stage 5a - Make model input 
 
   make_model_input-cohort_vax:
@@ -241,4 +148,19 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax*.csv
+
+  ## Stage 5b - Run models 
+
+  cox_ipw-cohort_vax-vascular_dementia-main:
+    run: cox-ipw:v0.0.8 --df_input=model_input-cohort_vax-vascular_dementia-main.csv
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
+      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
+      --covariate_threshold=5 --age_spline=TRUE --df_output=results-cohort_vax-vascular_dementia-main.csv
+    needs:
+    - make_model_input-cohort_vax
+    outputs:
+      moderately_sensitive:
+        model_input: output/results-*.csv
 
