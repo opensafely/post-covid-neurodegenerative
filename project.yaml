@@ -38,16 +38,6 @@ actions:
       highly_sensitive:
         index_dates: output/index_dates.csv
 
-  generate_study_population_unvax:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition_unvax
-      --output-format feather
-    needs:
-    - vax_eligibility_inputs
-    - generate_index_dates
-    outputs:
-      highly_sensitive:
-        cohort: output/input_unvax.feather
-
   generate_study_population_prevax:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_prevax
       --output-format feather
@@ -67,4 +57,14 @@ actions:
     outputs:
       highly_sensitive:
         cohort: output/input_vax.feather
+
+  generate_study_population_unvax:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_unvax
+      --output-format feather
+    needs:
+    - vax_eligibility_inputs
+    - generate_index_dates
+    outputs:
+      highly_sensitive:
+        cohort: output/input_unvax.feather
 
