@@ -680,7 +680,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
     tmp_cov_bin_hypercholesterolaemia_snomed=patients.with_these_clinical_events(
         hypercholesterolaemia_snomed,
         returning="date",
-        on_or_after=f"{index_date_variable}",
+        between=[f"{index_date_variable}- 1680 days", f"{index_date_variable} -1 day"],
         date_format="YYYY-MM-DD",
         find_first_match_in_period=True,
         return_expectations={
@@ -693,7 +693,7 @@ def generate_common_variables(index_date_variable,end_date_variable):
     tmp_cov_bin_hypercholesterolaemia_hes=patients.admitted_to_hospital(
         returning="date_admitted",
         with_these_diagnoses=hypercholesterolaemia_icd10,
-        on_or_after=f"{index_date_variable}",
+        between=[f"{index_date_variable}- 1680 days", f"{index_date_variable} -1 day"],
         date_format="YYYY-MM-DD",
         find_first_match_in_period=True,
         return_expectations={
