@@ -36,7 +36,6 @@ covariate_sex <- "cov_cat_sex"
 covariate_age <- "cov_num_age"
 cox_start <- "index_date"
 cox_stop <- "end_date"
-cut_points <- "28;197"
 controls_per_case <- 20L
 total_event_threshold <- 50L
 episode_event_threshold <- 5L
@@ -82,7 +81,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -105,7 +104,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -128,7 +127,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -138,6 +137,8 @@ for (c in cohorts) {
                          priorhistory_var = "")
     
     ## analysis: sub_covid_history ---------------------------------------------
+    
+    if (c!="prevax") {
     
     df[nrow(df)+1,] <- c(cohort = c,
                          exposure = exposure, 
@@ -151,7 +152,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -159,6 +160,8 @@ for (c in cohorts) {
                          age_spline = TRUE,
                          analysis = "sub_covid_history",
                          priorhistory_var = "")
+    
+    }
     
   }
   
@@ -171,14 +174,14 @@ for (c in cohorts) {
                          outcome = i,
                          ipw = ipw, 
                          strata = strata,
-                         covariate_sex = "",
+                         covariate_sex = "NULL",
                          covariate_age = covariate_age,
                          covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia",
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -194,14 +197,14 @@ for (c in cohorts) {
                          outcome = i,
                          ipw = ipw, 
                          strata = strata,
-                         covariate_sex = "",
+                         covariate_sex = "NULL",
                          covariate_age = covariate_age,
                          covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia",
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -224,7 +227,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -247,7 +250,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -270,7 +273,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -293,7 +296,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -316,7 +319,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -339,7 +342,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -362,7 +365,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -385,7 +388,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
@@ -408,7 +411,7 @@ for (c in cohorts) {
                          cox_stop = cox_stop,
                          study_start = ifelse(i=="prevax", "2020-01-01", "2021-06-01"),
                          study_stop = ifelse(i=="prevax", "2021-06-18", "2021-12-14"),
-                         cut_points = cut_points,
+                         cut_points = ifelse(c=="prevax", "28;197;535", "28;197"),
                          controls_per_case = controls_per_case,
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
