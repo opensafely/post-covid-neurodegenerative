@@ -1,5 +1,6 @@
 # Modified from https://github.com/opensafely/waning-ve-2dose-1year/blob/main/analysis/dummy_data_vax.R
 # And https://github.com/opensafely/post-covid-vaccinated/blob/main/analysis/modify_dummy_vax_data.R
+
 # Set seed ---------------------------------------------------------------------
 set.seed(1)
 

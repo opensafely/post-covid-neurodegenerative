@@ -38,7 +38,7 @@ message("Death date added!")
 
 df <- df %>%
   mutate(across(c(contains("_date")),
-                ~ floor_date(as.Date(., format="%Y-%m-%d"), unit = "days")),
+                ~ floor_date(as.Date(., origin = "1970-01-01", format="%Y-%m-%d"), unit = "days")),
          across(contains('_birth_year'),
                 ~ format(as.Date(., origin = "1970-01-01"), "%Y")),
          across(contains('_num') & !contains('date'), ~ as.numeric(.)),
@@ -90,25 +90,10 @@ df[,c("sub_date_covid19_hospital")] <- NULL
 
 message("COVID19 severity determined successfully")
 
-# Define diabetes outcome (using Sophie Eastwood algorithm) ----------------------------
+# Define neurodegenerative outcome (using Sophie Eastwood algorithm) ----------------------------
 
-# Create vars for mental health outcomes -------------------------------------------------------------
+# Create vars for neurodegenerative outcomes -------------------------------------------------------------
 
-#Mental Health - Primary care (depression; anxiety; self-harm; serious mental illness)
-df<- df %>% mutate(out_date_depression_primarycare = tmp_out_date_depression_snomed,
-                   out_date_anxiety_general_primarycare = tmp_out_date_anxiety_general_snomed,
-                   out_date_serious_mental_illness_primarycare = tmp_out_date_serious_mental_illness_snomed,
-                   out_date_self_harm_primarycare = tmp_out_date_self_harm_snomed)
-
-print("Mental health primary care variables created successfully")
-
-#Mental Health - Secondary care (depression; anxiety; self-harm; serious mental illness)
-df<- df %>% mutate(out_date_depression_secondarycare = tmp_out_date_depression_hes,
-                   out_date_anxiety_general_secondarycare = tmp_out_date_anxiety_general_hes,
-                   out_date_serious_mental_illness_secondarycare = tmp_out_date_serious_mental_illness_hes,
-                   out_date_self_harm_secondarycare = tmp_out_date_self_harm_hes)
-
-print("Mental health secondary care variables created successfully")
 
 # Restrict columns and save analysis dataset ---------------------------------
 
