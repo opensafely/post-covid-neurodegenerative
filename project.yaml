@@ -2,7 +2,7 @@ version: '3.0'
 
 expectations:
 
-  population_size: 1000
+  population_size: 200000
 
 actions:
 
@@ -11,6 +11,7 @@ actions:
   ## This file is created by create_project_actions.R 
   ## Edit and run create_project_actions.R to update the project.yaml 
   ## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+  ## Generate vaccination eligibility information 
 
   vax_eligibility_inputs:
     run: r:latest analysis/metadates.R
@@ -19,6 +20,8 @@ actions:
         study_dates_json: output/study_dates.json
         vax_jcvi_groups: output/vax_jcvi_groups.csv
         vax_eligible_dates: output/vax_eligible_dates.csv
+
+  ## Generate dummy data for study_definition - population_prelim 
 
   generate_study_population_prelim:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_prelim
@@ -29,6 +32,8 @@ actions:
       highly_sensitive:
         cohort: output/input_prelim.feather
 
+  ## Generate dates for all study cohorts 
+
   generate_index_dates:
     run: r:latest analysis/prelim.R
     needs:
@@ -38,33 +43,39 @@ actions:
       highly_sensitive:
         index_dates: output/index_dates.csv
 
+  ## Generate dummy data for study_definition - prevax 
+
   generate_study_population_prevax:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_prevax
-      --output-format feather
+      --output-format csv.gz
     needs:
     - vax_eligibility_inputs
     - generate_index_dates
     outputs:
       highly_sensitive:
-        cohort: output/input_prevax.feather
+        cohort: output/input_prevax.csv.gz
+
+  ## Generate dummy data for study_definition - vax 
 
   generate_study_population_vax:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_vax
-      --output-format feather
+      --output-format csv.gz
     needs:
-    - vax_eligibility_inputs
     - generate_index_dates
+    - vax_eligibility_inputs
     outputs:
       highly_sensitive:
-        cohort: output/input_vax.feather
+        cohort: output/input_vax.csv.gz
+
+  ## Generate dummy data for study_definition - unvax 
 
   generate_study_population_unvax:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_unvax
-      --output-format feather
+      --output-format csv.gz
     needs:
-    - generate_index_dates
     - vax_eligibility_inputs
+    - generate_index_dates
     outputs:
       highly_sensitive:
-        cohort: output/input_unvax.feather
+        cohort: output/input_unvax.csv.gz
 
