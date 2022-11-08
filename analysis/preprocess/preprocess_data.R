@@ -21,7 +21,7 @@ fs::dir_create(here::here("output", "review"))
 
 # Read cohort dataset ---------------------------------------------------------- 
 
-df <- arrow::read_feather(file = paste0("output/input_",cohort_name,".feather") )
+df <- readr::read_csv(file = paste0("output/input_",cohort_name,".csv.gz"))
 
 message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 
@@ -40,11 +40,10 @@ df <- df %>%
   mutate(across(c(contains("_date")),
                 ~ floor_date(as.Date(., format="%Y-%m-%d"), unit = "days")),
          across(contains('_birth_year'),
-                ~ format(as.Date(.), "%Y")),
+                ~ format(as.Date(., origin = "1970-01-01"), "%Y")),
          across(contains('_num') & !contains('date'), ~ as.numeric(.)),
          across(contains('_cat'), ~ as.factor(.)),
          across(contains('_bin'), ~ as.logical(.)))
-
 
 # Overwrite vaccination information for dummy data and vax cohort only --
 
@@ -53,7 +52,6 @@ if(Sys.getenv("OPENSAFELY_BACKEND") %in% c("", "expectations") &&
   source("analysis/preprocess/modify_dummy_vax_data.R")
   message("Vaccine information overwritten successfully")
 }
-
 
 # Describe data ----------------------------------------------------------------
 
@@ -75,8 +73,7 @@ df <- df %>%
   mutate(cov_num_consulation_rate = replace(cov_num_consulation_rate, 
                                             cov_num_consulation_rate > 365, 365))
 
-
-#COVID19 severity --------------------------------------------------------------
+# Define COVID-19 severity --------------------------------------------------------------
 
 df <- df %>%
   mutate(sub_cat_covid19_hospital = 
@@ -93,10 +90,29 @@ df[,c("sub_date_covid19_hospital")] <- NULL
 
 message("COVID19 severity determined successfully")
 
+# Define diabetes outcome (using Sophie Eastwood algorithm) ----------------------------
+
+# Create vars for mental health outcomes -------------------------------------------------------------
+
+#Mental Health - Primary care (depression; anxiety; self-harm; serious mental illness)
+df<- df %>% mutate(out_date_depression_primarycare = tmp_out_date_depression_snomed,
+                   out_date_anxiety_general_primarycare = tmp_out_date_anxiety_general_snomed,
+                   out_date_serious_mental_illness_primarycare = tmp_out_date_serious_mental_illness_snomed,
+                   out_date_self_harm_primarycare = tmp_out_date_self_harm_snomed)
+
+print("Mental health primary care variables created successfully")
+
+#Mental Health - Secondary care (depression; anxiety; self-harm; serious mental illness)
+df<- df %>% mutate(out_date_depression_secondarycare = tmp_out_date_depression_hes,
+                   out_date_anxiety_general_secondarycare = tmp_out_date_anxiety_general_hes,
+                   out_date_serious_mental_illness_secondarycare = tmp_out_date_serious_mental_illness_hes,
+                   out_date_self_harm_secondarycare = tmp_out_date_self_harm_hes)
+
+print("Mental health secondary care variables created successfully")
 
 # Restrict columns and save analysis dataset ---------------------------------
 
-#TODO add the new variables 
+
 df1 <- df%>% select(patient_id,"death_date",starts_with("index_date_"),
                     has_follow_up_previous_6months,
                     dereg_date,
@@ -105,13 +121,12 @@ df1 <- df%>% select(patient_id,"death_date",starts_with("index_date_"),
                     contains("exp_"), # Exposures
                     contains("out_"), # Outcomes
                     contains("cov_"), # Covariates
-                    contains("qa_"), #quality assurance
+                    contains("qa_"), # Quality assurance
                     contains("step"), # diabetes steps
                     contains("vax_date_eligible"), # Vaccination eligibility
                     contains("vax_date_"), # Vaccination dates and vax type 
                     contains("vax_cat_")# Vaccination products
 )
-
 
 df1[,colnames(df)[grepl("tmp_",colnames(df))]] <- NULL
 
@@ -120,6 +135,12 @@ df1[,colnames(df)[grepl("tmp_",colnames(df))]] <- NULL
 saveRDS(df1, file = paste0("output/input_",cohort_name,".rds"))
 
 message(paste0("Input data saved successfully with N = ", nrow(df1), " rows"))
+
+# SAVE
+
+saveRDS(df1, file = paste0("output/input_",cohort_name,".rds"))
+
+print(paste0(cohort_name," ","Dataset saved successfully"))
 
 # Describe data --------------------------------------------------------------
 
@@ -140,4 +161,4 @@ sink()
 saveRDS(df2, file = paste0("output/venn_",cohort_name,".rds"))
 
 message("Venn diagram data saved successfully")
-tictoc::toc()
+tictoc::toc() 
