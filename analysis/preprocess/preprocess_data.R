@@ -18,7 +18,6 @@ if(length(args)==0){
 fs::dir_create(here::here("output", "not-for-review"))
 fs::dir_create(here::here("output", "review"))
 
-
 # Read cohort dataset ---------------------------------------------------------- 
 
 df <- readr::read_csv(file = paste0("output/input_",cohort_name,".csv.gz"))
@@ -31,7 +30,6 @@ prelim_data <- read_csv("output/index_dates.csv") %>%
 df <- df %>% inner_join(prelim_data,by="patient_id")
 
 message("Death date added!")
-
 
 # Format columns ---------------------------------------------------------------
 # dates, numerics, factors, logicals
@@ -65,7 +63,6 @@ message ("Cohort ",cohort_name, " description written successfully!")
 
 df$cov_bin_obesity <- ifelse(df$cov_bin_obesity == TRUE | 
                                df$cov_cat_bmi_groups=="Obese",TRUE,FALSE)
-#df[,c("cov_num_bmi")] <- NULL
 
 # QC for consultation variable--------------------------------------------------
 #max to 365 (average of one per day)
@@ -90,13 +87,10 @@ df[,c("sub_date_covid19_hospital")] <- NULL
 
 message("COVID19 severity determined successfully")
 
-# Define neurodegenerative outcome (using Sophie Eastwood algorithm) ----------------------------
-
-# Create vars for neurodegenerative outcomes -------------------------------------------------------------
+# Create vars for neurodegenerative outcomes - TBC -------------------------------------------------------------
 
 
 # Restrict columns and save analysis dataset ---------------------------------
-
 
 df1 <- df%>% select(patient_id,"death_date",starts_with("index_date_"),
                     has_follow_up_previous_6months,
@@ -114,8 +108,6 @@ df1 <- df%>% select(patient_id,"death_date",starts_with("index_date_"),
 )
 
 df1[,colnames(df)[grepl("tmp_",colnames(df))]] <- NULL
-
-# Repo specific preprocessing 
 
 saveRDS(df1, file = paste0("output/input_",cohort_name,".rds"))
 
