@@ -242,23 +242,23 @@ actions_list <- splice(
       cohort = glue("output/input_unvax.rds"),
       venn = glue("output/venn_unvax.rds")
     )
-  )#,
+  ),
 
-  # #comment("Stage 1 - Data cleaning - all cohorts"),
-  # action(
-  #   name = "stage1_data_cleaning_all",
-  #   run = "r:latest analysis/preprocess/Stage1_data_cleaning.R all",
-  #   needs = list("preprocess_data_prevax","preprocess_data_vax", "preprocess_data_unvax","vax_eligibility_inputs"),
-  #   moderately_sensitive = list(
-  #     refactoring = glue("output/not-for-review/meta_data_factors_*.csv"),
-  #     QA_rules = glue("output/review/descriptives/QA_summary_*.csv"),
-  #     IE_criteria = glue("output/review/descriptives/Cohort_flow_*.csv"),
-  #     histograms = glue("output/not-for-review/numeric_histograms_*.svg")
-  #   ),
-  #   highly_sensitive = list(
-  #     cohort = glue("output/input_*.rds")
-  #   )
-  # ),
+  #comment("Stage 1 - Data cleaning - all cohorts"),
+  action(
+    name = "stage1_data_cleaning_all",
+    run = "r:latest analysis/preprocess/Stage1_data_cleaning.R all",
+    needs = list("preprocess_data_prevax","preprocess_data_vax", "preprocess_data_unvax","vax_eligibility_inputs"),
+    moderately_sensitive = list(
+      refactoring = glue("output/not-for-review/meta_data_factors_*.csv"),
+      QA_rules = glue("output/review/descriptives/QA_summary_*.csv"),
+      IE_criteria = glue("output/review/descriptives/Cohort_flow_*.csv"),
+      histograms = glue("output/not-for-review/numeric_histograms_*.svg")
+    ),
+    highly_sensitive = list(
+      cohort = glue("output/input_*.rds")
+    )
+  )#,
   # 
   # #comment("Stage 1 - End date table - prevax"),
   # action(
