@@ -23,12 +23,10 @@ df <- data.frame(cohort = character(),
                  covariate_threshold = numeric(),
                  age_spline = logical(),
                  analysis = character(),
-                 priorhistory_var = character(),
                  stringsAsFactors = FALSE)
 
 # Set constant values ----------------------------------------------------------
 
-ipw <- TRUE
 age_spline <- TRUE
 exposure <- "exp_date_covid19_confirmed"
 strata <- "cov_cat_region"
@@ -87,8 +85,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "main",
-                         priorhistory_var = "")
+                         analysis = "main")
     
     ## analysis: sub_covid_hospitalised ----------------------------------------
     
@@ -110,8 +107,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_covid_hospitalised",
-                         priorhistory_var = "")
+                         analysis = "sub_covid_hospitalised")
     
     ## analysis: sub_covid_nonhospitalised -------------------------------------
     
@@ -133,8 +129,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_covid_nonhospitalised",
-                         priorhistory_var = "")
+                         analysis = "sub_covid_nonhospitalised")
     
     ## analysis: sub_covid_history ---------------------------------------------
     
@@ -158,8 +153,7 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = "sub_covid_history",
-                           priorhistory_var = "")
+                           analysis = "sub_covid_history")
       
     }
     
@@ -187,8 +181,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_sex_female",
-                         priorhistory_var = "")
+                         analysis = "sub_sex_female")
     
     ## analysis: sub_sex_male --------------------------------------------------
     
@@ -210,8 +203,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_sex_male",
-                         priorhistory_var = "")
+                         analysis = "sub_sex_male")
     
     ## analysis: sub_age_18_39 ------------------------------------------------
     
@@ -233,8 +225,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = FALSE,
-                         analysis = "sub_age_18_39",
-                         priorhistory_var = "")
+                         analysis = "sub_age_18_39")
     
     ## analysis: sub_age_40_59 ------------------------------------------------
     
@@ -256,8 +247,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = FALSE,
-                         analysis = "sub_age_40_59",
-                         priorhistory_var = "")
+                         analysis = "sub_age_40_59")
     
     ## analysis: sub_age_60_79 ------------------------------------------------
     
@@ -279,8 +269,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = FALSE,
-                         analysis = "sub_age_60_79",
-                         priorhistory_var = "")
+                         analysis = "sub_age_60_79")
     
     ## analysis: sub_age_80_110 ------------------------------------------------
     
@@ -302,8 +291,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = FALSE,
-                         analysis = "sub_age_80_110",
-                         priorhistory_var = "")
+                         analysis = "sub_age_80_110")
     
     ## analysis: sub_ethnicity_white -------------------------------------------
     
@@ -325,8 +313,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_ethnicity_white",
-                         priorhistory_var = "")
+                         analysis = "sub_ethnicity_white")
     
     ## analysis: sub_ethnicity_black -------------------------------------------
     
@@ -348,8 +335,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_ethnicity_black",
-                         priorhistory_var = "")
+                         analysis = "sub_ethnicity_black")
     
     ## analysis: sub_ethnicity_mixed -------------------------------------------
     
@@ -371,8 +357,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_ethnicity_mixed",
-                         priorhistory_var = "")
+                         analysis = "sub_ethnicity_mixed")
     
     ## analysis: sub_ethnicity_asian -------------------------------------------
     
@@ -394,8 +379,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_ethnicity_asian",
-                         priorhistory_var = "")
+                         analysis = "sub_ethnicity_asian")
     
     ## analysis: sub_ethnicity_other -------------------------------------------
     
@@ -417,8 +401,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_ethnicity_other",
-                         priorhistory_var = "")
+                         analysis = "sub_ethnicity_other")
     
   }
   
@@ -427,9 +410,8 @@ for (c in cohorts) {
 # Assign unique name -----------------------------------------------------------
 
 df$name <- paste0("cohort_",df$cohort, "-", 
-                  gsub("out_date_","",df$outcome), "-", 
-                  df$analysis, 
-                  ifelse(df$priorhistory_var=="","", paste0("-",df$priorhistory_var)))
+                  df$analysis, "-", 
+                  gsub("out_date_","",df$outcome))
 
 # Fix anxiety prior history variables ------------------------------------------
 
