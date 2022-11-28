@@ -978,6 +978,12 @@
       "downloaded_at": "2022-10-13 14:40:46.340536Z",
       "sha": "3bf7477fef9ca5a2de7510b25ffe380527baa316"
     },
+    "bristol-cognitive-impairment-disorder-snomed-ct.csv": {
+      "id": "bristol/cognitive-impairment-disorder-snomed-ct/0b2152f2",
+      "url": "https://codelists.opensafely.org/codelist/bristol/cognitive-impairment-disorder-snomed-ct/0b2152f2/",
+      "downloaded_at": "2022-11-28 11:29:16.739217Z",
+      "sha": "ab0ddde3fa68f2965a0bd6ea8ffc99dcf866aaac"
+    },
     "bristol-hypercholesterolaemia-snomedct.csv": {
       "id": "bristol/hypercholesterolaemia-snomedct/48e4bebd",
       "url": "https://codelists.opensafely.org/codelist/bristol/hypercholesterolaemia-snomedct/48e4bebd/",
@@ -1009,16 +1015,16 @@
       "sha": "cf431fff1e2a1cb159eb89e838f314d606bf300e"
     },
     "bristol-unspecified-dementia-snomed-ct.csv": {
-      "id": "bristol/unspecified-dementia-snomed-ct/0fd2f149",
-      "url": "https://codelists.opensafely.org/codelist/bristol/unspecified-dementia-snomed-ct/0fd2f149/",
-      "downloaded_at": "2022-10-13 14:40:47.429124Z",
-      "sha": "311b84d23e4daeb2d4955048a96955be808c88e7"
+      "id": "bristol/unspecified-dementia-snomed-ct/3ff2f952",
+      "url": "https://codelists.opensafely.org/codelist/bristol/unspecified-dementia-snomed-ct/3ff2f952/",
+      "downloaded_at": "2022-11-28 11:29:18.259785Z",
+      "sha": "58d1b3e7c4be17c342c01717ce4b46a71456cfd3"
     },
     "bristol-vascular-dementia.csv": {
-      "id": "bristol/vascular-dementia/76c37e13",
-      "url": "https://codelists.opensafely.org/codelist/bristol/vascular-dementia/76c37e13/",
-      "downloaded_at": "2022-10-13 14:40:47.622867Z",
-      "sha": "2033dc257bc862deb7bf6dbaf63f0cbbce26e423"
+      "id": "bristol/vascular-dementia/74c49fb2",
+      "url": "https://codelists.opensafely.org/codelist/bristol/vascular-dementia/74c49fb2/",
+      "downloaded_at": "2022-11-28 11:29:18.503431Z",
+      "sha": "540cf7e1e81754c05ba8705959b41e9e0221008d"
     },
     "bristol-vascular-dementia-snomed-ct.csv": {
       "id": "bristol/vascular-dementia-snomed-ct/5db40ade",
@@ -1057,10 +1063,10 @@
       "sha": "b6c92ec427cdbb5f4919ca72c2e163dec8d2e627"
     },
     "bristol-multiple-sclerosis.csv": {
-      "id": "bristol/multiple-sclerosis/1d50b117",
-      "url": "https://codelists.opensafely.org/codelist/bristol/multiple-sclerosis/1d50b117/",
-      "downloaded_at": "2022-10-13 14:40:48.862979Z",
-      "sha": "11e9929410c1a2ea37aa8b097e615e1c465b4677"
+      "id": "bristol/multiple-sclerosis/7211dfbc",
+      "url": "https://codelists.opensafely.org/codelist/bristol/multiple-sclerosis/7211dfbc/",
+      "downloaded_at": "2022-11-28 11:29:20.324118Z",
+      "sha": "271e9e4736e8fa74f802e62268b139babc150054"
     },
     "bristol-other-dementias.csv": {
       "id": "bristol/other-dementias/04413de2",
@@ -1087,16 +1093,10 @@
       "sha": "604aba3dc1c1af1f77e03b9f494d3d236b895ea8"
     },
     "bristol-other-dementias-snomed-ct.csv": {
-      "id": "bristol/other-dementias-snomed-ct/64484c9f",
-      "url": "https://codelists.opensafely.org/codelist/bristol/other-dementias-snomed-ct/64484c9f/",
-      "downloaded_at": "2022-10-13 14:40:49.786369Z",
-      "sha": "10eabd14790810411a3e512640cacc4afde8e1dd"
-    },
-    "bristol-cognitive-impairment-disorder-snomed-ct.csv": {
-      "id": "bristol/cognitive-impairment-disorder-snomed-ct/7850e531",
-      "url": "https://codelists.opensafely.org/codelist/bristol/cognitive-impairment-disorder-snomed-ct/7850e531/",
-      "downloaded_at": "2022-10-13 14:40:49.926745Z",
-      "sha": "2ea8fb109f4f9871dd65d790567866a7e7dc4d77"
+      "id": "bristol/other-dementias-snomed-ct/5bb52c7d",
+      "url": "https://codelists.opensafely.org/codelist/bristol/other-dementias-snomed-ct/5bb52c7d/",
+      "downloaded_at": "2022-11-28 11:29:21.623758Z",
+      "sha": "e745804aa641863c36e3db5806075bc425043b18"
     }
   }
 }
