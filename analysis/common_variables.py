@@ -508,35 +508,10 @@ def generate_common_variables(index_date_variable,end_date_variable):
             "incidence": 0.1,
         },
     ),
-    # HES
-    tmp_out_date_motor_neurone_disease_hes=patients.admitted_to_hospital(
-        returning="date_admitted",
-        with_these_diagnoses=motor_neurone_disease_icd10,
-        on_or_after=f"{index_date_variable}",
-        date_format="YYYY-MM-DD",
-        find_first_match_in_period=True,
-        return_expectations={
-            "date": {"earliest": "index_date", "latest" : "today"}, 
-            "rate": "uniform",
-            "incidence": 0.1,
-        },
-    ),
-    # ONS
-    tmp_out_date_motor_neurone_disease_death=patients.with_these_codes_on_death_certificate(
-        motor_neurone_disease_icd10,
-        returning="date_of_death",
-        on_or_after=f"{index_date_variable}",
-        match_only_underlying_cause=True,
-        date_format="YYYY-MM-DD",
-        return_expectations={
-            "date": {"earliest": "index_date", "latest" : "today"}, 
-            "rate": "uniform",
-            "incidence": 0.1,
-        },
-    ),
+
     # Combined motor neurone disease
     out_date_motor_neurone_disease = patients.minimum_of(
-        "tmp_out_date_motor_neurone_disease_snomed", "tmp_out_date_motor_neurone_disease_hes", "tmp_out_date_motor_neurone_disease_death",
+        "tmp_out_date_motor_neurone_disease_snomed", 
     ),
 
     # Multiple sclerosis
