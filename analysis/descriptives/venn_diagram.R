@@ -2,7 +2,7 @@
 ## Purpose:  Create data for venn diagrams
 ## 
 ## Programmed by:   Yinghui Wei, Venexia Walker, Kurt Taylor
-##
+## Updated by: Jose Ignacio Cuitun Coronado
 ## Reviewer: Renin Toms, Venexia Walker, Yinghui Wei
 ##
 ## Date:     07 July 2022
@@ -17,103 +17,83 @@ library(data.table)
 library(readr)
 library(dplyr)
 library(purrr)
+library(tidyverse)
 
 args <- commandArgs(trailingOnly=TRUE)
 
 if(length(args)==0){
   # use for interactive testing
-  cohort_name <- "all"
-  #group <- "diabetes"
+  cohort <- "prevax"
+  #model <- "model_input-cohort_"
+  #analysis <- "depression"
+  group <- "parkinson_disease"
 } else {
-  cohort_name <- args[[1]]
+  cohort <- args[[1]]
+  #group <- args[[2]]
 }
 
 fs::dir_create(here::here("output", "not-for-review"))
 fs::dir_create(here::here("output", "review", "venn-diagrams"))
 
-venn_output <- function(cohort_name){#, group
+#cohorts <- c("vax","unvax","prevax")
+
+venn_output <- function(cohort, group){
   
   # Identify active outcomes ---------------------------------------------------
   
+  ## Read in active analyses table and filter to relevant outcomes
   active_analyses <- readr::read_rds("lib/active_analyses.rds")
-  # added extra statement to include only those with venn == TRUE - because some diabetes outcomes only use one data source and so venn is not applicable
-  #outcomes <- active_analyses[active_analyses$active==TRUE & active_analyses$venn==TRUE & active_analyses$outcome_group==group,]$outcome_variable
-  outcomes <- active_analyses[active_analyses$active==TRUE & active_analyses$venn==TRUE,]$outcome_variable
   
-  #if(length(outcomes) == 0){
-  #  print(paste0("No venn diagram generated for outcome group ",group))
-  #} else{
+  outcomes <- unique(active_analyses[active_analyses$analysis == "main" & grepl("out_date_", active_analyses$outcome),]$outcome)
+  #outcomes <- active_analyses %>% select(outcome) %>% unique() 
   
-  # Load data ------------------------------------------------------------------
-  
-  input <- readr::read_rds(paste0("output/venn_",cohort_name, ".rds"))
-  end_dates <- read_rds(paste0("output/follow_up_end_dates_",cohort_name, ".rds"))#cohort_name, "_",group
-  
-  input_stage1 <- readr::read_rds(paste0("output/input_", cohort_name,"_stage1", ".rds"))#cohort_name,"_stage1_", group
-  input_stage1 <- input_stage1[input_stage1$sub_bin_covid19_confirmed_history==FALSE,]
-  
-  input <- input[input$patient_id %in% input_stage1$patient_id,]
-  input<- input %>% left_join(end_dates, by="patient_id")
-  
-  rm(input_stage1,end_dates)
-  
-  # Create empty table ---------------------------------------------------------
-  
-  df <- data.frame(outcome = character(),
-                   only_snomed = numeric(),
-                   only_hes = numeric(),
-                   only_death = numeric(),
-                   snomed_hes = numeric(),
-                   snomed_death = numeric(),
-                   hes_death = numeric(),
-                   snomed_hes_death = numeric(),
-                   total_snomed = numeric(),
-                   total_hes = numeric(),
-                   total_death = numeric(),
-                   total = numeric(),
-                   stringsAsFactors = FALSE)
-  
-  # Populate table and make Venn for each outcome ------------------------------
-  # Populate table and make Venn for each outcome ------------------------------
-  for (outcome in outcomes) {
-    outcome_save_name <- outcome
+  if(length(outcomes) == 0){
+    print(paste0("No venn diagram generated for outcome group ", group))
+  } else{  
     
-    print(paste0("Working on ", outcome))
-    # Restrict data to that relevant to the given outcome ----------------------
+    #Load data
+    input <- readr::read_rds(paste0("output/venn_", cohort, ".rds"))
     
-    if(grepl("_primary_position",outcome)==TRUE){
-      tmp <- input[!is.na(input[,outcome]),c("patient_id","index_date",paste0(gsub("out_date_","", outcome),"_follow_up_end"),outcome, colnames(input)[grepl(paste0("tmp_",gsub("_primary_position","", outcome)),colnames(input))])]
-      tmp[,grepl(paste0("tmp_",gsub("_primary_position","", outcome),"_hes"),colnames(tmp))] <- NULL
-      colnames(tmp) <- gsub("_primary_position","",colnames(tmp))
-    }else{
-      tmp <- input[!is.na(input[,outcome]),c("patient_id","index_date",paste0(gsub("out_date_","", outcome),"_follow_up_end"), colnames(input)[grepl(outcome,colnames(input))])]
-      tmp[,grepl("_primary_position",colnames(tmp))] <- NULL
-    }
+    #follow up end dates variables
+    model_input <- readr::read_rds(paste0("output/model_input-cohort_", cohort,"-main-", group, ".rds"))
     
-    if(dim(tmp)[1] == 0){
-      print(paste0("No venn diagram generated for outcome ",outcome))
-    } else{
+    #input<- input %>% left_join(end_dates, by="patient_id")
+    input <- left_join(input, model_input, by = "patient_id")
+    
+    rm(model_input)
+    
+    # Create empty table ---------------------------------------------------------
+    
+    df <- data.frame(outcome = character(),
+                     only_snomed = numeric(),
+                     only_hes = numeric(),
+                     only_death = numeric(),
+                     snomed_hes = numeric(),
+                     snomed_death = numeric(),
+                     hes_death = numeric(),
+                     snomed_hes_death = numeric(),
+                     total_snomed = numeric(),
+                     total_hes = numeric(),
+                     total_death = numeric(),
+                     total = numeric(),
+                     stringsAsFactors = FALSE)
+    
+    # Populate table and make Venn for each outcome ------------------------------
+    for (i in outcomes) {
+      outcome_save_name <- i
       
-      outcome <- gsub("_primary_position","",outcome)    
-      colnames(tmp) <- gsub(paste0("tmp_",outcome,"_"),"",colnames(tmp))
+      print(paste0("Working on ", i))
+      
+      outcome <- outcomes #Ask
+      #outcome_save_name <- outcome
+      
+      tmp <- input[!is.na(input[,i]), c("patient_id", "index_date", "end_date", colnames(input)[grepl(i, colnames(input))])] 
+      
+      colnames(tmp) <- gsub(paste0("tmp_",i,"_"),"",colnames(tmp)) 
       
       setnames(tmp,
-               old=c(paste0(gsub("out_date_","", outcome),"_follow_up_end"),
-                     outcome),
-               new=c("follow_up_end",
-                     "event_date"))
-      
-      tmp <- tmp %>% filter(follow_up_end >= index_date)
-      
-      # Impose follow-up start and end dates on events dates
-      
-      event_cols <- c("snomed","hes","death","event_date")
-      for(colname in event_cols){
-        if(colname %in% colnames(tmp)){
-          tmp <- tmp %>% mutate(!!sym(colname) := replace(!!sym(colname), which(!!sym(colname)>follow_up_end | !!sym(colname)<index_date), NA))
-          
-        }
-      }
+               old=i,
+               new="event_date") #Ask
       
       # Identify and add missing columns -----------------------------------------
       
@@ -121,8 +101,6 @@ venn_output <- function(cohort_name){#, group
                              snomed = as.Date(NA),
                              hes = as.Date(NA),
                              death = as.Date(NA))
-      
-      #colnames(complete) <- c("patient_id",paste0("tmp_",outcome,c("_snomed","_hes","_death")))
       
       complete[,setdiff(colnames(tmp),"patient_id")] <- NULL
       notused <- NULL
@@ -214,32 +192,43 @@ venn_output <- function(cohort_name){#, group
         # mutate_all(~ as.numeric(.)) %>%
         mutate_at(vars(contains(c('snomed', 'hes', 'death'))), ~ ceiling_any(., to=7))
       
-      write.csv(df, file = paste0("output/review/venn-diagrams/venn_diagram_number_check_", cohort_name, ".csv"), row.names = F)#cohort_name, "_",group
+      write.csv(df, file = paste0("output/review/venn-diagrams/venn_diagram_number_check_", cohort, ".csv"), row.names = F)#"_", group, 
     }
   }
 }
-#}
 
 # Run function using specified commandArgs and active analyses for group
 
-# active_analyses <- read_rds("lib/active_analyses.rds")
-# active_analyses <- active_analyses %>% filter(active==TRUE & venn==TRUE)
-# group <- unique(active_analyses$outcome_group)
+# active_analyses <- readr::read_rds("lib/active_analyses.rds")
+# active_analyses <- active_analyses %>% filter(analysis == "main")
+# group <- unique(active_analyses$outcome)
+# group <- unique(str_remove(active_analyses$outcome, "out_date_"))
 
-if (cohort_name == "all") {
-  venn_output("prevax")
-  venn_output("vax")
-  venn_output("unvax")
-} else{
-  venn_output(cohort_name)
+group <- c("vascular_dementia", "other_dementias", "unspecified_dementias", "any_dementia", "cognitive_impairment", "restless_leg_syndrome", "rem_sleep_disorder",
+           "motor_neurone_disease", "multiple_sclerosis", "migraine", "alzheimer_disease", "parkinson_disease")
+
+# if (cohort_name == "all") {
+#   venn_output("prevax")
+#   venn_output("vax")
+#   venn_output("unvax")
+# } else{
+#   venn_output(cohort_name)
+# }
+
+for(i in group){
+  if (cohort == "all") {
+    venn_output("prevax", i)
+    venn_output("vax", i)
+    venn_output("unvax", i)
+  } else{
+    venn_output(cohort, i)
+  }
 }
 
-# for(i in group){
-#   if (cohort_name == "all") {
-#     venn_output("prevax", i)
-#     venn_output("vax", i)
-#     venn_output("unvax", i)
-#   } else{
-#     venn_output(cohort_name, i)
-#   }
+# if (cohort == "all") {
+#   venn_output("prevax", i)
+#   venn_output("vax", i)
+#   venn_output("unvax", i)
+# } else{
+#   venn_output(cohort, i)
 # }

@@ -123,6 +123,72 @@ actions:
       highly_sensitive:
         cohort: output/input_*.rds
 
+  ## Stage 4a - Venn diagrams prevax 
+
+  stage4_venn_diagram_prevax:
+    run: r:latest analysis/descriptives/venn_diagram.R prevax
+    needs:
+    - preprocess_data_prevax
+    - make_model_input-cohort_prevax-main-alzheimer_disease
+    - make_model_input-cohort_prevax-main-any_dementia
+    - make_model_input-cohort_prevax-main-cognitive_impairment
+    - make_model_input-cohort_prevax-main-migraine
+    - make_model_input-cohort_prevax-main-motor_neurone_disease
+    - make_model_input-cohort_prevax-main-multiple_sclerosis
+    - make_model_input-cohort_prevax-main-other_dementias
+    - make_model_input-cohort_prevax-main-parkinson_disease
+    - make_model_input-cohort_prevax-main-rem_sleep_disorder
+    - make_model_input-cohort_prevax-main-restless_leg_syndrome
+    - make_model_input-cohort_prevax-main-unspecified_dementias
+    - make_model_input-cohort_prevax-main-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        venn_diagram: output/review/venn-diagrams/venn_diagram_number_check_prevax.csv
+
+  ## Stage 4b - Venn diagrams vax 
+
+  stage4_venn_diagram_vax:
+    run: r:latest analysis/descriptives/venn_diagram.R vax
+    needs:
+    - preprocess_data_vax
+    - make_model_input-cohort_vax-main-alzheimer_disease
+    - make_model_input-cohort_vax-main-any_dementia
+    - make_model_input-cohort_vax-main-cognitive_impairment
+    - make_model_input-cohort_vax-main-migraine
+    - make_model_input-cohort_vax-main-motor_neurone_disease
+    - make_model_input-cohort_vax-main-multiple_sclerosis
+    - make_model_input-cohort_vax-main-other_dementias
+    - make_model_input-cohort_vax-main-parkinson_disease
+    - make_model_input-cohort_vax-main-rem_sleep_disorder
+    - make_model_input-cohort_vax-main-restless_leg_syndrome
+    - make_model_input-cohort_vax-main-unspecified_dementias
+    - make_model_input-cohort_vax-main-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        venn_diagram: output/review/venn-diagrams/venn_diagram_number_check_vax.csv
+
+  ## Stage 4c - Venn diagrams unvax 
+
+  stage4_venn_diagram_unvax:
+    run: r:latest analysis/descriptives/venn_diagram.R unvax
+    needs:
+    - preprocess_data_unvax
+    - make_model_input-cohort_unvax-main-alzheimer_disease
+    - make_model_input-cohort_unvax-main-any_dementia
+    - make_model_input-cohort_unvax-main-cognitive_impairment
+    - make_model_input-cohort_unvax-main-migraine
+    - make_model_input-cohort_unvax-main-motor_neurone_disease
+    - make_model_input-cohort_unvax-main-multiple_sclerosis
+    - make_model_input-cohort_unvax-main-other_dementias
+    - make_model_input-cohort_unvax-main-parkinson_disease
+    - make_model_input-cohort_unvax-main-rem_sleep_disorder
+    - make_model_input-cohort_unvax-main-restless_leg_syndrome
+    - make_model_input-cohort_unvax-main-unspecified_dementias
+    - make_model_input-cohort_unvax-main-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        venn_diagram: output/review/venn-diagrams/venn_diagram_number_check_unvax.csv
+
   ## Stage 5 - Run models 
 
   make_model_input-cohort_prevax-main-alzheimer_disease:
