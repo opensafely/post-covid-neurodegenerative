@@ -27,6 +27,7 @@ df <- data.frame(cohort = character(),
 
 # Set constant values ----------------------------------------------------------
 
+#ipw <- TRUE
 age_spline <- TRUE
 exposure <- "exp_date_covid19_confirmed"
 strata <- "cov_cat_region"
@@ -62,6 +63,8 @@ outcomes_runmain <- c("out_date_vascular_dementia",
 # Add active analyses ----------------------------------------------------------
 
 for (c in cohorts) {
+  
+  ipw <- ifelse(c=="unvax", FALSE, TRUE)
   
   for (i in c(outcomes_runmain, outcomes_runall)) {
     
