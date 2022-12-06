@@ -118,3 +118,51 @@ actions:
         cohort: output/input_unvax.rds
         venn: output/venn_unvax.rds
 
+  stage1_data_cleaning_prevax:
+    run: r:latest analysis/preprocess/Stage1_data_cleaning.R prevax
+    needs:
+    - preprocess_data_prevax
+    - preprocess_data_vax
+    - preprocess_data_unvax
+    - vax_eligibility_inputs
+    outputs:
+      moderately_sensitive:
+        refactoring: output/not-for-review/meta_data_factors_prevax.csv
+        QA_rules: output/review/descriptives/QA_summary_prevax.csv
+        IE_criteria: output/review/descriptives/Cohort_flow_prevax.csv
+        histograms: output/not-for-review/numeric_histograms_prevax.svg
+      highly_sensitive:
+        cohort: output/input_prevax_*.rds
+
+  stage1_data_cleaning_vax:
+    run: r:latest analysis/preprocess/Stage1_data_cleaning.R vax
+    needs:
+    - preprocess_data_prevax
+    - preprocess_data_vax
+    - preprocess_data_unvax
+    - vax_eligibility_inputs
+    outputs:
+      moderately_sensitive:
+        refactoring: output/not-for-review/meta_data_factors_vax.csv
+        QA_rules: output/review/descriptives/QA_summary_vax.csv
+        IE_criteria: output/review/descriptives/Cohort_flow_vax.csv
+        histograms: output/not-for-review/numeric_histograms_vax.svg
+      highly_sensitive:
+        cohort: output/input_vax_*.rds
+
+  stage1_data_cleaning_unvax:
+    run: r:latest analysis/preprocess/Stage1_data_cleaning.R unvax
+    needs:
+    - preprocess_data_prevax
+    - preprocess_data_vax
+    - preprocess_data_unvax
+    - vax_eligibility_inputs
+    outputs:
+      moderately_sensitive:
+        refactoring: output/not-for-review/meta_data_factors_unvax.csv
+        QA_rules: output/review/descriptives/QA_summary_unvax.csv
+        IE_criteria: output/review/descriptives/Cohort_flow_unvax.csv
+        histograms: output/not-for-review/numeric_histograms_unvax.svg
+      highly_sensitive:
+        cohort: output/input_unvax_*.rds
+
