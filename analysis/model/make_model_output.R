@@ -60,7 +60,8 @@ for (i in files) {
   
   ## Append to master dataframe
   
-  df <- rbind(df,tmp)
+  #df <- rbind(df,tmp)
+  df <- plyr::rbind.fill(df,tmp)
 }
 
 
