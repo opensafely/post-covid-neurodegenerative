@@ -343,7 +343,7 @@ stage1 <- function(cohort_name){
   numeric_vars <- input %>% dplyr::select(contains("_num"))
   numeric_title <- colnames(numeric_vars)
   
-  svglite::svglite(file = file.path("output/not-for-review/", paste0("numeric_histograms_", cohort_name, "_",  ".svg")), width = 15, height = 8)
+  svglite::svglite(file = file.path("output/not-for-review/", paste0("numeric_histograms_", cohort_name,  ".svg")), width = 15, height = 8)
   g <- ggplot(gather(numeric_vars), aes(value)) + 
     geom_histogram(bins = 10) + 
     facet_wrap(~key, scales = 'free_x')
