@@ -108,7 +108,7 @@ apply_model_function <- function(name, cohort, analysis, ipw, strata,
     action(
       name = glue("make_model_input-{name}"),
       run = glue("r:latest analysis/model/make_model_input.R {name}"),
-      needs = list("stage1_data_cleaning_all"),
+      needs = list("stage1_data_cleaning_prevax", "stage1_data_cleaning_vax", "stage1_data_cleaning_unvax"),
       highly_sensitive = list(
         model_input = glue("output/model_input-{name}.rds")
       )
@@ -307,9 +307,8 @@ actions_list <- splice(
     highly_sensitive = list(
       cohort = glue("output/input_unvax_*.rds")
     )
-  )
+  ),
   
-  )#,
   # 
   # #comment("Stage 1 - End date table - prevax"),
   # action(
