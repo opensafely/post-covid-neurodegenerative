@@ -107,8 +107,8 @@ actions:
         cohort: output/input_unvax.rds
         venn: output/venn_unvax.rds
 
-  stage1_data_cleaning_all:
-    run: r:latest analysis/preprocess/Stage1_data_cleaning.R all
+  stage1_data_cleaning_prevax:
+    run: r:latest analysis/preprocess/Stage1_data_cleaning.R prevax
     needs:
     - preprocess_data_prevax
     - preprocess_data_vax
@@ -116,12 +116,44 @@ actions:
     - vax_eligibility_inputs
     outputs:
       moderately_sensitive:
-        refactoring: output/not-for-review/meta_data_factors_*.csv
-        QA_rules: output/review/descriptives/QA_summary_*.csv
-        IE_criteria: output/review/descriptives/Cohort_flow_*.csv
-        histograms: output/not-for-review/numeric_histograms_*.svg
+        refactoring: output/not-for-review/meta_data_factors_prevax.csv
+        QA_rules: output/review/descriptives/QA_summary_prevax.csv
+        IE_criteria: output/review/descriptives/Cohort_flow_prevax.csv
+        histograms: output/not-for-review/numeric_histograms_prevax.svg
       highly_sensitive:
-        cohort: output/input_*.rds
+        cohort: output/input_prevax_*.rds
+
+  stage1_data_cleaning_vax:
+    run: r:latest analysis/preprocess/Stage1_data_cleaning.R vax
+    needs:
+    - preprocess_data_prevax
+    - preprocess_data_vax
+    - preprocess_data_unvax
+    - vax_eligibility_inputs
+    outputs:
+      moderately_sensitive:
+        refactoring: output/not-for-review/meta_data_factors_vax.csv
+        QA_rules: output/review/descriptives/QA_summary_vax.csv
+        IE_criteria: output/review/descriptives/Cohort_flow_vax.csv
+        histograms: output/not-for-review/numeric_histograms_vax.svg
+      highly_sensitive:
+        cohort: output/input_vax_*.rds
+
+  stage1_data_cleaning_unvax:
+    run: r:latest analysis/preprocess/Stage1_data_cleaning.R unvax
+    needs:
+    - preprocess_data_prevax
+    - preprocess_data_vax
+    - preprocess_data_unvax
+    - vax_eligibility_inputs
+    outputs:
+      moderately_sensitive:
+        refactoring: output/not-for-review/meta_data_factors_unvax.csv
+        QA_rules: output/review/descriptives/QA_summary_unvax.csv
+        IE_criteria: output/review/descriptives/Cohort_flow_unvax.csv
+        histograms: output/not-for-review/numeric_histograms_unvax.svg
+      highly_sensitive:
+        cohort: output/input_unvax_*.rds
 
   ## Stage 4a - Venn diagrams prevax 
 
@@ -194,7 +226,9 @@ actions:
   make_model_input-cohort_prevax-main-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-alzheimer_disease.rds
@@ -215,7 +249,9 @@ actions:
   make_model_input-cohort_prevax-main-any_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-any_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-any_dementia.rds
@@ -236,7 +272,9 @@ actions:
   make_model_input-cohort_prevax-main-cognitive_impairment:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-cognitive_impairment
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-cognitive_impairment.rds
@@ -257,7 +295,9 @@ actions:
   make_model_input-cohort_prevax-main-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-migraine
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-migraine.rds
@@ -278,7 +318,9 @@ actions:
   make_model_input-cohort_prevax-main-motor_neurone_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-motor_neurone_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-motor_neurone_disease.rds
@@ -299,7 +341,9 @@ actions:
   make_model_input-cohort_prevax-main-multiple_sclerosis:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-multiple_sclerosis
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-multiple_sclerosis.rds
@@ -320,7 +364,9 @@ actions:
   make_model_input-cohort_prevax-main-other_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-other_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-other_dementias.rds
@@ -341,7 +387,9 @@ actions:
   make_model_input-cohort_prevax-main-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-parkinson_disease.rds
@@ -362,7 +410,9 @@ actions:
   make_model_input-cohort_prevax-main-rem_sleep_disorder:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-rem_sleep_disorder
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-rem_sleep_disorder.rds
@@ -383,7 +433,9 @@ actions:
   make_model_input-cohort_prevax-main-restless_leg_syndrome:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-restless_leg_syndrome
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-restless_leg_syndrome.rds
@@ -404,7 +456,9 @@ actions:
   make_model_input-cohort_prevax-main-unspecified_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-unspecified_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-unspecified_dementias.rds
@@ -425,7 +479,9 @@ actions:
   make_model_input-cohort_prevax-main-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-vascular_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-vascular_dementia.rds
@@ -446,7 +502,9 @@ actions:
   make_model_input-cohort_unvax-main-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-alzheimer_disease.rds
@@ -467,7 +525,9 @@ actions:
   make_model_input-cohort_unvax-main-any_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-any_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-any_dementia.rds
@@ -488,7 +548,9 @@ actions:
   make_model_input-cohort_unvax-main-cognitive_impairment:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-cognitive_impairment
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-cognitive_impairment.rds
@@ -509,7 +571,9 @@ actions:
   make_model_input-cohort_unvax-main-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-migraine
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-migraine.rds
@@ -530,7 +594,9 @@ actions:
   make_model_input-cohort_unvax-main-motor_neurone_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-motor_neurone_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-motor_neurone_disease.rds
@@ -551,7 +617,9 @@ actions:
   make_model_input-cohort_unvax-main-multiple_sclerosis:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-multiple_sclerosis
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-multiple_sclerosis.rds
@@ -572,7 +640,9 @@ actions:
   make_model_input-cohort_unvax-main-other_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-other_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-other_dementias.rds
@@ -593,7 +663,9 @@ actions:
   make_model_input-cohort_unvax-main-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-parkinson_disease.rds
@@ -614,7 +686,9 @@ actions:
   make_model_input-cohort_unvax-main-rem_sleep_disorder:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-rem_sleep_disorder
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-rem_sleep_disorder.rds
@@ -635,7 +709,9 @@ actions:
   make_model_input-cohort_unvax-main-restless_leg_syndrome:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-restless_leg_syndrome
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-restless_leg_syndrome.rds
@@ -656,7 +732,9 @@ actions:
   make_model_input-cohort_unvax-main-unspecified_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-unspecified_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-unspecified_dementias.rds
@@ -677,7 +755,9 @@ actions:
   make_model_input-cohort_unvax-main-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-vascular_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-vascular_dementia.rds
@@ -698,7 +778,9 @@ actions:
   make_model_input-cohort_vax-main-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-alzheimer_disease.rds
@@ -719,7 +801,9 @@ actions:
   make_model_input-cohort_vax-main-any_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-any_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-any_dementia.rds
@@ -740,7 +824,9 @@ actions:
   make_model_input-cohort_vax-main-cognitive_impairment:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-cognitive_impairment
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-cognitive_impairment.rds
@@ -761,7 +847,9 @@ actions:
   make_model_input-cohort_vax-main-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-migraine
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-migraine.rds
@@ -782,7 +870,9 @@ actions:
   make_model_input-cohort_vax-main-motor_neurone_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-motor_neurone_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-motor_neurone_disease.rds
@@ -803,7 +893,9 @@ actions:
   make_model_input-cohort_vax-main-multiple_sclerosis:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-multiple_sclerosis
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-multiple_sclerosis.rds
@@ -824,7 +916,9 @@ actions:
   make_model_input-cohort_vax-main-other_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-other_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-other_dementias.rds
@@ -845,7 +939,9 @@ actions:
   make_model_input-cohort_vax-main-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-parkinson_disease.rds
@@ -866,7 +962,9 @@ actions:
   make_model_input-cohort_vax-main-rem_sleep_disorder:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-rem_sleep_disorder
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-rem_sleep_disorder.rds
@@ -887,7 +985,9 @@ actions:
   make_model_input-cohort_vax-main-restless_leg_syndrome:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-restless_leg_syndrome
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-restless_leg_syndrome.rds
@@ -908,7 +1008,9 @@ actions:
   make_model_input-cohort_vax-main-unspecified_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-unspecified_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-unspecified_dementias.rds
@@ -929,7 +1031,9 @@ actions:
   make_model_input-cohort_vax-main-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-vascular_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-vascular_dementia.rds
@@ -950,7 +1054,9 @@ actions:
   make_model_input-cohort_prevax-sub_age_18_39-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_18_39-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_18_39-alzheimer_disease.rds
@@ -971,7 +1077,9 @@ actions:
   make_model_input-cohort_prevax-sub_age_18_39-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_18_39-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_18_39-parkinson_disease.rds
@@ -992,7 +1100,9 @@ actions:
   make_model_input-cohort_unvax-sub_age_18_39-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_18_39-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_18_39-alzheimer_disease.rds
@@ -1013,7 +1123,9 @@ actions:
   make_model_input-cohort_unvax-sub_age_18_39-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_18_39-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_18_39-parkinson_disease.rds
@@ -1034,7 +1146,9 @@ actions:
   make_model_input-cohort_vax-sub_age_18_39-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_18_39-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_18_39-alzheimer_disease.rds
@@ -1055,7 +1169,9 @@ actions:
   make_model_input-cohort_vax-sub_age_18_39-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_18_39-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_18_39-parkinson_disease.rds
@@ -1076,7 +1192,9 @@ actions:
   make_model_input-cohort_prevax-sub_age_40_59-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_40_59-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_40_59-alzheimer_disease.rds
@@ -1097,7 +1215,9 @@ actions:
   make_model_input-cohort_prevax-sub_age_40_59-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_40_59-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_40_59-parkinson_disease.rds
@@ -1118,7 +1238,9 @@ actions:
   make_model_input-cohort_unvax-sub_age_40_59-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_40_59-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_40_59-alzheimer_disease.rds
@@ -1139,7 +1261,9 @@ actions:
   make_model_input-cohort_unvax-sub_age_40_59-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_40_59-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_40_59-parkinson_disease.rds
@@ -1160,7 +1284,9 @@ actions:
   make_model_input-cohort_vax-sub_age_40_59-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_40_59-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_40_59-alzheimer_disease.rds
@@ -1181,7 +1307,9 @@ actions:
   make_model_input-cohort_vax-sub_age_40_59-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_40_59-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_40_59-parkinson_disease.rds
@@ -1202,7 +1330,9 @@ actions:
   make_model_input-cohort_prevax-sub_age_60_79-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_60_79-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_60_79-alzheimer_disease.rds
@@ -1223,7 +1353,9 @@ actions:
   make_model_input-cohort_prevax-sub_age_60_79-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_60_79-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_60_79-parkinson_disease.rds
@@ -1244,7 +1376,9 @@ actions:
   make_model_input-cohort_unvax-sub_age_60_79-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_60_79-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_60_79-alzheimer_disease.rds
@@ -1265,7 +1399,9 @@ actions:
   make_model_input-cohort_unvax-sub_age_60_79-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_60_79-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_60_79-parkinson_disease.rds
@@ -1286,7 +1422,9 @@ actions:
   make_model_input-cohort_vax-sub_age_60_79-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_60_79-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_60_79-alzheimer_disease.rds
@@ -1307,7 +1445,9 @@ actions:
   make_model_input-cohort_vax-sub_age_60_79-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_60_79-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_60_79-parkinson_disease.rds
@@ -1328,7 +1468,9 @@ actions:
   make_model_input-cohort_prevax-sub_age_80_110-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_80_110-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_80_110-alzheimer_disease.rds
@@ -1349,7 +1491,9 @@ actions:
   make_model_input-cohort_prevax-sub_age_80_110-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_80_110-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_80_110-parkinson_disease.rds
@@ -1370,7 +1514,9 @@ actions:
   make_model_input-cohort_unvax-sub_age_80_110-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_80_110-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_80_110-alzheimer_disease.rds
@@ -1391,7 +1537,9 @@ actions:
   make_model_input-cohort_unvax-sub_age_80_110-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_80_110-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_80_110-parkinson_disease.rds
@@ -1412,7 +1560,9 @@ actions:
   make_model_input-cohort_vax-sub_age_80_110-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_80_110-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_80_110-alzheimer_disease.rds
@@ -1433,7 +1583,9 @@ actions:
   make_model_input-cohort_vax-sub_age_80_110-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_80_110-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_80_110-parkinson_disease.rds
@@ -1454,7 +1606,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_history-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-alzheimer_disease.rds
@@ -1475,7 +1629,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_history-any_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-any_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-any_dementia.rds
@@ -1496,7 +1652,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_history-cognitive_impairment:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-cognitive_impairment
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-cognitive_impairment.rds
@@ -1517,7 +1675,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_history-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-migraine
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-migraine.rds
@@ -1538,7 +1698,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_history-motor_neurone_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-motor_neurone_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-motor_neurone_disease.rds
@@ -1559,7 +1721,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_history-multiple_sclerosis:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-multiple_sclerosis
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-multiple_sclerosis.rds
@@ -1580,7 +1744,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_history-other_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-other_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-other_dementias.rds
@@ -1601,7 +1767,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_history-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-parkinson_disease.rds
@@ -1622,7 +1790,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_history-rem_sleep_disorder:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-rem_sleep_disorder
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-rem_sleep_disorder.rds
@@ -1643,7 +1813,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_history-restless_leg_syndrome:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-restless_leg_syndrome
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-restless_leg_syndrome.rds
@@ -1664,7 +1836,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_history-unspecified_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-unspecified_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-unspecified_dementias.rds
@@ -1685,7 +1859,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_history-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-vascular_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-vascular_dementia.rds
@@ -1706,7 +1882,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_history-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-alzheimer_disease.rds
@@ -1727,7 +1905,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_history-any_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-any_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-any_dementia.rds
@@ -1748,7 +1928,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_history-cognitive_impairment:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-cognitive_impairment
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-cognitive_impairment.rds
@@ -1769,7 +1951,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_history-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-migraine
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-migraine.rds
@@ -1790,7 +1974,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_history-motor_neurone_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-motor_neurone_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-motor_neurone_disease.rds
@@ -1811,7 +1997,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_history-multiple_sclerosis:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-multiple_sclerosis
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-multiple_sclerosis.rds
@@ -1832,7 +2020,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_history-other_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-other_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-other_dementias.rds
@@ -1853,7 +2043,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_history-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-parkinson_disease.rds
@@ -1874,7 +2066,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_history-rem_sleep_disorder:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-rem_sleep_disorder
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-rem_sleep_disorder.rds
@@ -1895,7 +2089,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_history-restless_leg_syndrome:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-restless_leg_syndrome
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-restless_leg_syndrome.rds
@@ -1916,7 +2112,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_history-unspecified_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-unspecified_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-unspecified_dementias.rds
@@ -1937,7 +2135,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_history-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-vascular_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-vascular_dementia.rds
@@ -1958,7 +2158,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.rds
@@ -1979,7 +2181,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_hospitalised-any_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-any_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-any_dementia.rds
@@ -2000,7 +2204,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-cognitive_impairment
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment.rds
@@ -2021,7 +2227,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_hospitalised-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-migraine
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-migraine.rds
@@ -2042,7 +2250,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-motor_neurone_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease.rds
@@ -2063,7 +2273,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-multiple_sclerosis
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.rds
@@ -2084,7 +2296,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_hospitalised-other_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-other_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-other_dementias.rds
@@ -2105,7 +2319,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease.rds
@@ -2126,7 +2342,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.rds
@@ -2147,7 +2365,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome.rds
@@ -2168,7 +2388,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_hospitalised-unspecified_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-unspecified_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-unspecified_dementias.rds
@@ -2189,7 +2411,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-vascular_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia.rds
@@ -2210,7 +2434,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_hospitalised-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-alzheimer_disease.rds
@@ -2231,7 +2457,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_hospitalised-any_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-any_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-any_dementia.rds
@@ -2252,7 +2480,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-cognitive_impairment
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment.rds
@@ -2273,7 +2503,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_hospitalised-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-migraine
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-migraine.rds
@@ -2294,7 +2526,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-motor_neurone_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease.rds
@@ -2315,7 +2549,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-multiple_sclerosis
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis.rds
@@ -2336,7 +2572,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_hospitalised-other_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-other_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-other_dementias.rds
@@ -2357,7 +2595,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_hospitalised-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-parkinson_disease.rds
@@ -2378,7 +2618,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.rds
@@ -2399,7 +2641,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome.rds
@@ -2420,7 +2664,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_hospitalised-unspecified_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-unspecified_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-unspecified_dementias.rds
@@ -2441,7 +2687,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_hospitalised-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-vascular_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-vascular_dementia.rds
@@ -2462,7 +2710,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease.rds
@@ -2483,7 +2733,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_hospitalised-any_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-any_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-any_dementia.rds
@@ -2504,7 +2756,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_hospitalised-cognitive_impairment:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-cognitive_impairment
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-cognitive_impairment.rds
@@ -2525,7 +2779,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_hospitalised-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-migraine
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-migraine.rds
@@ -2546,7 +2802,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_hospitalised-motor_neurone_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-motor_neurone_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-motor_neurone_disease.rds
@@ -2567,7 +2825,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_hospitalised-multiple_sclerosis:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-multiple_sclerosis
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-multiple_sclerosis.rds
@@ -2588,7 +2848,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_hospitalised-other_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-other_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-other_dementias.rds
@@ -2609,7 +2871,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease.rds
@@ -2630,7 +2894,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.rds
@@ -2651,7 +2917,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-restless_leg_syndrome
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome.rds
@@ -2672,7 +2940,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_hospitalised-unspecified_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-unspecified_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-unspecified_dementias.rds
@@ -2693,7 +2963,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-vascular_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia.rds
@@ -2714,7 +2986,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.rds
@@ -2735,7 +3009,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-any_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia.rds
@@ -2756,7 +3032,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment.rds
@@ -2777,7 +3055,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-migraine
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-migraine.rds
@@ -2798,7 +3078,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.rds
@@ -2819,7 +3101,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis.rds
@@ -2840,7 +3124,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-other_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-other_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-other_dementias.rds
@@ -2861,7 +3147,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.rds
@@ -2882,7 +3170,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
@@ -2903,7 +3193,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome.rds
@@ -2924,7 +3216,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias.rds
@@ -2945,7 +3239,9 @@ actions:
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-vascular_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.rds
@@ -2966,7 +3262,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease.rds
@@ -2987,7 +3285,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-any_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-any_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-any_dementia.rds
@@ -3008,7 +3308,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment.rds
@@ -3029,7 +3331,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-migraine
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-migraine.rds
@@ -3050,7 +3354,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease.rds
@@ -3071,7 +3377,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis.rds
@@ -3092,7 +3400,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-other_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-other_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-other_dementias.rds
@@ -3113,7 +3423,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease.rds
@@ -3134,7 +3446,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
@@ -3155,7 +3469,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome.rds
@@ -3176,7 +3492,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias.rds
@@ -3197,7 +3515,9 @@ actions:
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-vascular_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia.rds
@@ -3218,7 +3538,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_nonhospitalised-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-alzheimer_disease.rds
@@ -3239,7 +3561,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_nonhospitalised-any_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-any_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-any_dementia.rds
@@ -3260,7 +3584,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-cognitive_impairment
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment.rds
@@ -3281,7 +3607,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_nonhospitalised-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-migraine
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-migraine.rds
@@ -3302,7 +3630,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease.rds
@@ -3323,7 +3653,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis.rds
@@ -3344,7 +3676,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_nonhospitalised-other_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-other_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-other_dementias.rds
@@ -3365,7 +3699,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_nonhospitalised-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-parkinson_disease.rds
@@ -3386,7 +3722,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_nonhospitalised-rem_sleep_disorder:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-rem_sleep_disorder
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
@@ -3407,7 +3745,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome.rds
@@ -3428,7 +3768,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_nonhospitalised-unspecified_dementias:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-unspecified_dementias
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-unspecified_dementias.rds
@@ -3449,7 +3791,9 @@ actions:
   make_model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-vascular_dementia
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.rds
@@ -3470,7 +3814,9 @@ actions:
   make_model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_asian-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.rds
@@ -3491,7 +3837,9 @@ actions:
   make_model_input-cohort_prevax-sub_ethnicity_asian-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_asian-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_asian-parkinson_disease.rds
@@ -3512,7 +3860,9 @@ actions:
   make_model_input-cohort_unvax-sub_ethnicity_asian-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_asian-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_asian-alzheimer_disease.rds
@@ -3533,7 +3883,9 @@ actions:
   make_model_input-cohort_unvax-sub_ethnicity_asian-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_asian-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_asian-parkinson_disease.rds
@@ -3554,7 +3906,9 @@ actions:
   make_model_input-cohort_vax-sub_ethnicity_asian-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_asian-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_asian-alzheimer_disease.rds
@@ -3575,7 +3929,9 @@ actions:
   make_model_input-cohort_vax-sub_ethnicity_asian-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_asian-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_asian-parkinson_disease.rds
@@ -3596,7 +3952,9 @@ actions:
   make_model_input-cohort_prevax-sub_ethnicity_black-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_black-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_black-alzheimer_disease.rds
@@ -3617,7 +3975,9 @@ actions:
   make_model_input-cohort_prevax-sub_ethnicity_black-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_black-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_black-parkinson_disease.rds
@@ -3638,7 +3998,9 @@ actions:
   make_model_input-cohort_unvax-sub_ethnicity_black-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_black-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_black-alzheimer_disease.rds
@@ -3659,7 +4021,9 @@ actions:
   make_model_input-cohort_unvax-sub_ethnicity_black-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_black-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_black-parkinson_disease.rds
@@ -3680,7 +4044,9 @@ actions:
   make_model_input-cohort_vax-sub_ethnicity_black-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_black-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_black-alzheimer_disease.rds
@@ -3701,7 +4067,9 @@ actions:
   make_model_input-cohort_vax-sub_ethnicity_black-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_black-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_black-parkinson_disease.rds
@@ -3722,7 +4090,9 @@ actions:
   make_model_input-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_mixed-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease.rds
@@ -3743,7 +4113,9 @@ actions:
   make_model_input-cohort_prevax-sub_ethnicity_mixed-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_mixed-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_mixed-parkinson_disease.rds
@@ -3764,7 +4136,9 @@ actions:
   make_model_input-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_mixed-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease.rds
@@ -3785,7 +4159,9 @@ actions:
   make_model_input-cohort_unvax-sub_ethnicity_mixed-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_mixed-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_mixed-parkinson_disease.rds
@@ -3806,7 +4182,9 @@ actions:
   make_model_input-cohort_vax-sub_ethnicity_mixed-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_mixed-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_mixed-alzheimer_disease.rds
@@ -3827,7 +4205,9 @@ actions:
   make_model_input-cohort_vax-sub_ethnicity_mixed-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_mixed-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_mixed-parkinson_disease.rds
@@ -3848,7 +4228,9 @@ actions:
   make_model_input-cohort_prevax-sub_ethnicity_other-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_other-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_other-alzheimer_disease.rds
@@ -3869,7 +4251,9 @@ actions:
   make_model_input-cohort_prevax-sub_ethnicity_other-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_other-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_other-parkinson_disease.rds
@@ -3890,7 +4274,9 @@ actions:
   make_model_input-cohort_unvax-sub_ethnicity_other-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_other-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_other-alzheimer_disease.rds
@@ -3911,7 +4297,9 @@ actions:
   make_model_input-cohort_unvax-sub_ethnicity_other-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_other-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_other-parkinson_disease.rds
@@ -3932,7 +4320,9 @@ actions:
   make_model_input-cohort_vax-sub_ethnicity_other-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_other-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_other-alzheimer_disease.rds
@@ -3953,7 +4343,9 @@ actions:
   make_model_input-cohort_vax-sub_ethnicity_other-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_other-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_other-parkinson_disease.rds
@@ -3974,7 +4366,9 @@ actions:
   make_model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_white-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease.rds
@@ -3995,7 +4389,9 @@ actions:
   make_model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_white-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease.rds
@@ -4016,7 +4412,9 @@ actions:
   make_model_input-cohort_unvax-sub_ethnicity_white-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_white-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_white-alzheimer_disease.rds
@@ -4037,7 +4435,9 @@ actions:
   make_model_input-cohort_unvax-sub_ethnicity_white-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_white-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_white-parkinson_disease.rds
@@ -4058,7 +4458,9 @@ actions:
   make_model_input-cohort_vax-sub_ethnicity_white-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_white-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_white-alzheimer_disease.rds
@@ -4079,7 +4481,9 @@ actions:
   make_model_input-cohort_vax-sub_ethnicity_white-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_white-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_white-parkinson_disease.rds
@@ -4100,7 +4504,9 @@ actions:
   make_model_input-cohort_prevax-sub_sex_female-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_sex_female-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_sex_female-alzheimer_disease.rds
@@ -4121,7 +4527,9 @@ actions:
   make_model_input-cohort_prevax-sub_sex_female-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_sex_female-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_sex_female-parkinson_disease.rds
@@ -4142,7 +4550,9 @@ actions:
   make_model_input-cohort_unvax-sub_sex_female-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_sex_female-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_sex_female-alzheimer_disease.rds
@@ -4163,7 +4573,9 @@ actions:
   make_model_input-cohort_unvax-sub_sex_female-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_sex_female-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_sex_female-parkinson_disease.rds
@@ -4184,7 +4596,9 @@ actions:
   make_model_input-cohort_vax-sub_sex_female-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_sex_female-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_sex_female-alzheimer_disease.rds
@@ -4205,7 +4619,9 @@ actions:
   make_model_input-cohort_vax-sub_sex_female-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_sex_female-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_sex_female-parkinson_disease.rds
@@ -4226,7 +4642,9 @@ actions:
   make_model_input-cohort_prevax-sub_sex_male-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_sex_male-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_sex_male-alzheimer_disease.rds
@@ -4247,7 +4665,9 @@ actions:
   make_model_input-cohort_prevax-sub_sex_male-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_sex_male-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_sex_male-parkinson_disease.rds
@@ -4268,7 +4688,9 @@ actions:
   make_model_input-cohort_unvax-sub_sex_male-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_sex_male-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_sex_male-alzheimer_disease.rds
@@ -4289,7 +4711,9 @@ actions:
   make_model_input-cohort_unvax-sub_sex_male-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_sex_male-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_sex_male-parkinson_disease.rds
@@ -4310,7 +4734,9 @@ actions:
   make_model_input-cohort_vax-sub_sex_male-alzheimer_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_sex_male-alzheimer_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_sex_male-alzheimer_disease.rds
@@ -4331,7 +4757,9 @@ actions:
   make_model_input-cohort_vax-sub_sex_male-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_sex_male-parkinson_disease
     needs:
-    - stage1_data_cleaning_all
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_sex_male-parkinson_disease.rds
