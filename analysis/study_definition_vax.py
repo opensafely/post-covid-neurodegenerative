@@ -43,14 +43,14 @@ study = StudyDefinition(
 
     # Read in index date for study from the output of prelim.R file 
     index_date_vax = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv', 
+        f_path = 'output/index_dates.csv.gz', 
         returning = 'index_vax', 
         returning_type = 'date', 
         date_format = 'YYYY-MM-DD',     
     ),
 
     end_date_vax = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'end_vax',
         returning_type = 'date', 
         date_format = 'YYYY-MM-DD',
@@ -69,7 +69,7 @@ study = StudyDefinition(
    
     # Define sex 
     cov_cat_sex = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'cov_cat_sex',
         returning_type = 'str',  
         ),
@@ -85,17 +85,17 @@ study = StudyDefinition(
 
     ## Any covid vaccination, identified by target disease
     vax_date_covid_1 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_covid_1',
         returning_type = 'date'          
     ),
     vax_date_covid_2 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_covid_2',
         returning_type = 'date'   
     ),
     vax_date_covid_3 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_covid_3',
         returning_type = 'date'
     ),
@@ -104,17 +104,17 @@ study = StudyDefinition(
     ## NB: may be patient's first COVID vaccine dose or their second if mixed types are given
         
     vax_date_Pfizer_1 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_Pfizer_1',
         returning_type = 'date'
     ), 
     vax_date_Pfizer_2 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_Pfizer_2',
         returning_type = 'date'
     ),
     vax_date_Pfizer_3 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_Pfizer_3',
         returning_type = 'date'
     ),
@@ -122,17 +122,17 @@ study = StudyDefinition(
     ## Oxford AZ 
     ## NB: may be patient's first COVID vaccine dose or their second if mixed types are given
     vax_date_AstraZeneca_1 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_AstraZeneca_1',
         returning_type = 'date'
     ),
     vax_date_AstraZeneca_2 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_AstraZeneca_2',
         returning_type = 'date'
     ),
     vax_date_AstraZeneca_3 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_AstraZeneca_3',
         returning_type = 'date'
     ),
@@ -140,17 +140,17 @@ study = StudyDefinition(
     ## Moderna
     ## NB: may be patient's first COVID vaccine dose or their second if mixed types are given
     vax_date_Moderna_1 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_Moderna_1',
         returning_type = 'date'
     ),            
     vax_date_Moderna_2 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_Moderna_2',
         returning_type = 'date'
     ),
     vax_date_Moderna_3 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_Moderna_3',
         returning_type = 'date'
     ),

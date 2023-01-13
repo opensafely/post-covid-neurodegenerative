@@ -10,9 +10,9 @@ print('Source functions')
 source("analysis/model/fn-check_vitals.R")
 
 # Make directory ---------------------------------------------------------------
-print('Make directory')
-
-fs::dir_create(here::here("output", "model_input"))
+# print('Make directory')
+# 
+# fs::dir_create(here::here("output", "model_input"))
 
 # Specify arguments ------------------------------------------------------------
 print('Specify arguments')
@@ -74,36 +74,6 @@ for (i in 1:nrow(active_analyses)) {
                            "cov_cat_ethnicity"))]#,
   #history_components))]
   
-  # if (active_analyses$priorhistory_var[i]=="") {
-  #   input <- input[,unique(c("patient_id",
-  #                            "index_date",
-  #                            "end_date",
-  #                            active_analyses$exposure[i],
-  #                            active_analyses$outcome[i],
-  #                            unlist(strsplit(active_analyses$strata[i], split = ";")),
-  #                            unlist(strsplit(active_analyses$covariate_other[i], split = ";")),
-  #                            "sub_cat_covid19_hospital",
-  #                            "sub_bin_covid19_confirmed_history",
-  #                            "cov_cat_sex",
-  #                            "cov_num_age",
-  #                            "cov_cat_ethnicity"))]
-  # } else {
-  #   input <- input[,unique(c("patient_id",
-  #                            "index_date",
-  #                            "end_date",
-  #                            active_analyses$exposure[i],
-  #                            active_analyses$outcome[i],
-  #                            unlist(strsplit(active_analyses$strata[i], split = ";")),
-  #                            unlist(strsplit(active_analyses$covariate_other[i], split = ";")),
-  #                            "sub_cat_covid19_hospital",
-  #                            "sub_bin_covid19_confirmed_history",
-  #                            "cov_cat_sex",
-  #                            "cov_num_age",
-  #                            "cov_cat_ethnicity",
-  #                            active_analyses$priorhistory_var[i]))]
-  # }
-  
-  
   # Remove outcomes outside of follow-up time ------------------------------------
   print('Remove outcomes outside of follow-up time')
   
@@ -134,7 +104,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
     
     #check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -158,7 +128,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -183,7 +153,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -200,7 +170,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -219,7 +189,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_sex")] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -237,7 +207,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_sex")] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -256,7 +226,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -275,7 +245,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -294,7 +264,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -313,7 +283,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -331,7 +301,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -349,7 +319,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -367,7 +337,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_ethnicity")] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -385,7 +355,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_ethnicity")] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     
@@ -403,7 +373,7 @@ for (i in 1:nrow(active_analyses)) {
     df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_ethnicity")] <- NULL
     
     check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")))
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
     

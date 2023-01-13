@@ -22,12 +22,12 @@ actions:
 
   generate_study_population_prelim:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_prelim
-      --output-format feather
+      --output-format csv.gz
     needs:
     - vax_eligibility_inputs
     outputs:
       highly_sensitive:
-        cohort: output/input_prelim.feather
+        cohort: output/input_prelim.csv.gz
 
   generate_index_dates:
     run: r:latest analysis/prelim.R
@@ -36,7 +36,7 @@ actions:
     - generate_study_population_prelim
     outputs:
       highly_sensitive:
-        index_dates: output/index_dates.csv
+        index_dates: output/index_dates.csv.gz
 
   generate_study_population_prevax:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_prevax
@@ -154,6 +154,30 @@ actions:
         histograms: output/not-for-review/numeric_histograms_unvax.svg
       highly_sensitive:
         cohort: output/input_unvax_*.rds
+
+  describe_file-input_prevax_stage1:
+    run: r:latest analysis/describe_file.R input_prevax_stage1 rds
+    needs:
+    - stage1_data_cleaning_prevax
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-input_prevax_stage1.txt
+
+  describe_file-input_vax_stage1:
+    run: r:latest analysis/describe_file.R input_vax_stage1 rds
+    needs:
+    - stage1_data_cleaning_vax
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-input_vax_stage1.txt
+
+  describe_file-input_unvax_stage1:
+    run: r:latest analysis/describe_file.R input_unvax_stage1 rds
+    needs:
+    - stage1_data_cleaning_unvax
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-input_unvax_stage1.txt
 
   ## Stage 5 - Run models 
 

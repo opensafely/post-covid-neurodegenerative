@@ -25,7 +25,7 @@ df <- readr::read_csv(file = paste0("output/input_",cohort_name,".csv.gz"))
 message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 
 #Add death_date from prelim data
-prelim_data <- read_csv("output/index_dates.csv") %>%
+prelim_data <- read_csv("output/index_dates.csv.gz") %>%
   select(c(patient_id,death_date))
 df <- df %>% inner_join(prelim_data,by="patient_id")
 
@@ -36,7 +36,7 @@ message("Death date added!")
 
 df <- df %>%
   mutate(across(c(contains("_date")),
-                ~ floor_date(as.Date(., origin = "1970-01-01", format="%Y-%m-%d"), unit = "days")),
+                ~ floor_date(as.Date(., format="%Y-%m-%d", origin = "1970-01-01"), unit = "days")),
          across(contains('_birth_year'),
                 ~ format(as.Date(., origin = "1970-01-01"), "%Y")),
          across(contains('_num') & !contains('date'), ~ as.numeric(.)),
@@ -109,7 +109,9 @@ df1 <- df%>% select(patient_id,"death_date",starts_with("index_date_"),
 
 df1[,colnames(df)[grepl("tmp_",colnames(df))]] <- NULL
 
-saveRDS(df1, file = paste0("output/input_",cohort_name,".rds"))
+# Repo specific preprocessing 
+
+saveRDS(df1, file = paste0("output/input_",cohort_name,".rds"), compress = "gzip")
 
 message(paste0("Input data saved successfully with N = ", nrow(df1), " rows"))
 

@@ -357,7 +357,7 @@ stage1 <- function(cohort_name){
   # Remove inclusion/exclusion variables from dataset
   input <- input[ , !names(input) %in% c("start_alive", "vax_gap", "vax_mixed", "vax_prior_unknown", "prior_vax1")]
   
-  saveRDS(input, file = file.path("output", paste0("input_",cohort_name, "_stage1",".rds")))
+  saveRDS(input, file = file.path("output", paste0("input_",cohort_name, "_stage1",".rds")), compress = "gzip")
   
 }
 
