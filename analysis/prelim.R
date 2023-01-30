@@ -12,7 +12,7 @@ efficacy_offset <- 14
 eligibility_offset <- 84
 
 #Read in the output of study_definition_prelim and add dates variables
-prelim_data <- readr::read_csv("output/input_prelim.csv.gz") 
+prelim_data <-  readr::read_csv("output/input_prelim.csv.gz") 
 prelim_data <- prelim_data %>%
   mutate(across(c(contains("_date")), 
                 ~ floor_date(

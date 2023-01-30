@@ -42,8 +42,8 @@ study = StudyDefinition(
     },
 
     # Define the study population 
-    # NB: not all inclusions and exclusions are written into study definition
-        # NB: all inclusions and exclusions are performed in stage 1
+     
+    # NB: all inclusions and exclusions are performed in stage 1
     population = patients.all(
     ), 
 
@@ -112,6 +112,7 @@ study = StudyDefinition(
             },
         ),
 
+       
         ## Pfizer BioNTech
         ## NB: may be patient's first COVID vaccine dose or their second if mixed types are given
         
