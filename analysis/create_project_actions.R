@@ -171,7 +171,7 @@ actions_list <- splice(
       vax_eligible_dates= ("output/vax_eligible_dates.csv")
     )
   ),
-  #comment("Generate dummy data for study_definition - population_prelim"),
+  #comment("Generate prelim study_definition),
   action(
     name = "generate_study_population_prelim",
     run = "cohortextractor:latest generate_cohort --study-definition study_definition_prelim --output-format csv.gz",
