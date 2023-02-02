@@ -36,7 +36,7 @@ message("Death date added!")
 
 df <- df %>%
   mutate(across(c(contains("_date")),
-                ~ floor_date(as.Date(., origin = "1970-01-01", format="%Y-%m-%d"), unit = "days")),
+                ~ floor_date(as.Date(., format="%Y-%m-%d", origin = "1970-01-01"), unit = "days")),
          across(contains('_birth_year'),
                 ~ format(as.Date(., origin = "1970-01-01"), "%Y")),
          across(contains('_num') & !contains('date'), ~ as.numeric(.)),

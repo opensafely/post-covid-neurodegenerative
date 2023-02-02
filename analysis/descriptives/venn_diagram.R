@@ -23,7 +23,7 @@ args <- commandArgs(trailingOnly=TRUE)
 
 if(length(args)==0){
   # use for interactive testing
-  cohort <- "prevax"
+  cohort <- "all"
   #model <- "model_input-cohort_"
   #analysis <- "depression"
   group <- "parkinson_disease"

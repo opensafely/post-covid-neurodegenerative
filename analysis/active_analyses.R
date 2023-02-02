@@ -63,6 +63,8 @@ outcomes_runmain <- c("out_date_vascular_dementia",
 
 for (c in cohorts) {
   
+  ipw <- ifelse(c=="unvax", FALSE, TRUE)
+  
   for (i in c(outcomes_runmain, outcomes_runall)) {
     
     ## analysis: main ----------------------------------------------------------
