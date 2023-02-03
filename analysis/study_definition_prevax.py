@@ -42,14 +42,14 @@ study = StudyDefinition(
 
     # Specify index date for study
     index_date_prevax = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv', 
+        f_path = 'output/index_dates.csv.gz', 
         returning = 'index_prevax', 
         returning_type = 'date', 
         date_format = 'YYYY-MM-DD',
         
     ),
      end_date_prevax = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv', 
+        f_path = 'output/index_dates.csv.gz', 
         returning = 'end_prevax', 
         returning_type = 'date', 
         date_format = 'YYYY-MM-DD',     
@@ -69,7 +69,7 @@ study = StudyDefinition(
 # Define sex 
     # NB: this is required for JCVI variables hence is defined here
     cov_cat_sex = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'cov_cat_sex',
         returning_type = 'str',  
     ),
@@ -82,7 +82,7 @@ study = StudyDefinition(
 
     ## Any covid vaccination, identified by target disease
     vax_date_covid_1 = patients.with_value_from_file(
-        f_path = 'output/index_dates.csv',
+        f_path = 'output/index_dates.csv.gz',
         returning = 'vax_date_covid_1',
         returning_type = 'date'          
     ),

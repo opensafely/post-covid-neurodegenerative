@@ -12,7 +12,7 @@ efficacy_offset <- 14
 eligibility_offset <- 84
 
 #Read in the output of study_definition_prelim and add dates variables
-prelim_data <- arrow::read_feather("output/input_prelim.feather") 
+prelim_data <-  readr::read_csv("output/input_prelim.csv.gz") 
 prelim_data <- prelim_data %>%
   mutate(across(c(contains("_date")), 
                 ~ floor_date(
@@ -30,4 +30,4 @@ prelim_data <- prelim_data %>%
 
 
 #Write data to csv file 
-write_csv(prelim_data, "output/index_dates.csv")
+write_csv(prelim_data, "output/index_dates.csv.gz")
