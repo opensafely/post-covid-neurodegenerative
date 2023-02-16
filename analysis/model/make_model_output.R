@@ -42,6 +42,7 @@ for (i in files) {
                         N_events = NA,
                         person_time_total = NA,
                         outcome_time_median = NA,
+                        strata_warning = "",
                         surv_formula = "",
                         input = "",
                         error = tmp$error)
@@ -100,6 +101,7 @@ redact$action <- (redact$min_total <= disclosure_threshold) |
 
 df$lnhr <- ifelse(df$name %in% redact[redact$action==TRUE,]$name,"[redact]",df$lnhr)
 df$se_lnhr <- ifelse(df$name %in% redact[redact$action==TRUE,]$name,"[redact]",df$se_lnhr)
+df$hr <- ifelse(df$name %in% redact[redact$action==TRUE,]$name,"[redact]",df$hr)
 df$conf_low <- ifelse(df$name %in% redact[redact$action==TRUE,]$name,"[redact]",df$conf_low)
 df$conf_high <- ifelse(df$name %in% redact[redact$action==TRUE,]$name,"[redact]",df$conf_high)
 df$N_total <- ifelse(df$name %in% redact[redact$action==TRUE,]$name,"[redact]",df$N_total)
@@ -114,6 +116,6 @@ print('Save model output')
 df <- df[,c("name","cohort","outcome","analysis","error","model","term",
             "lnhr","se_lnhr","hr","conf_low","conf_high",
             "N_total","N_exposed","N_events","person_time_total",
-            "outcome_time_median","surv_formula")]
+            "outcome_time_median","strata_warning","surv_formula")]
 
 readr::write_csv(df, "output/model_output.csv")

@@ -390,18 +390,18 @@ actions_list <- splice(
                                                    covariate_threshold = active_analyses$covariate_threshold[x],
                                                    age_spline = active_analyses$age_spline[x])), recursive = FALSE
     )
-  )#,
+  ),
   
-  # comment("Stage 6 - make model output"),
-  # 
-  # action(
-  #   name = "make_model_output",
-  #   run = "r:latest analysis/model/make_model_output.R",
-  #   needs = as.list(paste0("cox_ipw-",success$name)),
-  #   moderately_sensitive = list(
-  #     model_output = glue("output/model_output.csv")
-  #   )
-  # )
+  comment("Stage 6 - make model output"),
+
+  action(
+    name = "make_model_output",
+    run = "r:latest analysis/model/make_model_output.R",
+    needs = as.list(paste0("cox_ipw-",success$name)),
+    moderately_sensitive = list(
+      model_output = glue("output/model_output.csv")
+    )
+  )
   
 )
 

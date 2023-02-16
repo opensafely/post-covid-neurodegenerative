@@ -103,7 +103,7 @@ for (i in 1:nrow(active_analyses)) {
     
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
     
-    #check_vitals(df)
+    check_vitals(df)
     readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
