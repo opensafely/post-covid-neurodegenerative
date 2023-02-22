@@ -191,6 +191,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-main-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-main-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-main-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-main-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-main-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -213,6 +222,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-any_dementia.rds
+
+  describe_model_input-cohort_prevax-main-any_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-main-any_dementia
+      rds
+    needs:
+    - make_model_input-cohort_prevax-main-any_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-main-any_dementia.txt
 
   cox_ipw-cohort_prevax-main-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-any_dementia.rds
@@ -237,6 +255,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-cognitive_impairment.rds
 
+  describe_model_input-cohort_prevax-main-cognitive_impairment:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-main-cognitive_impairment
+      rds
+    needs:
+    - make_model_input-cohort_prevax-main-cognitive_impairment
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-main-cognitive_impairment.txt
+
   cox_ipw-cohort_prevax-main-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-cognitive_impairment.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -259,6 +286,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-migraine.rds
+
+  describe_model_input-cohort_prevax-main-migraine:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-main-migraine
+      rds
+    needs:
+    - make_model_input-cohort_prevax-main-migraine
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-main-migraine.txt
 
   cox_ipw-cohort_prevax-main-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-migraine.rds --ipw=TRUE
@@ -283,6 +319,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-motor_neurone_disease.rds
 
+  describe_model_input-cohort_prevax-main-motor_neurone_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-main-motor_neurone_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-main-motor_neurone_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-main-motor_neurone_disease.txt
+
   cox_ipw-cohort_prevax-main-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -305,6 +350,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-multiple_sclerosis.rds
+
+  describe_model_input-cohort_prevax-main-multiple_sclerosis:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-main-multiple_sclerosis
+      rds
+    needs:
+    - make_model_input-cohort_prevax-main-multiple_sclerosis
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-main-multiple_sclerosis.txt
 
   cox_ipw-cohort_prevax-main-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-multiple_sclerosis.rds
@@ -329,6 +383,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-other_dementias.rds
 
+  describe_model_input-cohort_prevax-main-other_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-main-other_dementias
+      rds
+    needs:
+    - make_model_input-cohort_prevax-main-other_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-main-other_dementias.txt
+
   cox_ipw-cohort_prevax-main-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-other_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -351,6 +414,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-main-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-main-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-main-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-main-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-main-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-parkinson_disease.rds
@@ -375,6 +447,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-rem_sleep_disorder.rds
 
+  describe_model_input-cohort_prevax-main-rem_sleep_disorder:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-main-rem_sleep_disorder
+      rds
+    needs:
+    - make_model_input-cohort_prevax-main-rem_sleep_disorder
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-main-rem_sleep_disorder.txt
+
   cox_ipw-cohort_prevax-main-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -397,6 +478,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-restless_leg_syndrome.rds
+
+  describe_model_input-cohort_prevax-main-restless_leg_syndrome:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-main-restless_leg_syndrome
+      rds
+    needs:
+    - make_model_input-cohort_prevax-main-restless_leg_syndrome
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-main-restless_leg_syndrome.txt
 
   cox_ipw-cohort_prevax-main-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-restless_leg_syndrome.rds
@@ -421,6 +511,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-unspecified_dementias.rds
 
+  describe_model_input-cohort_prevax-main-unspecified_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-main-unspecified_dementias
+      rds
+    needs:
+    - make_model_input-cohort_prevax-main-unspecified_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-main-unspecified_dementias.txt
+
   cox_ipw-cohort_prevax-main-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-unspecified_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -443,6 +542,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-vascular_dementia.rds
+
+  describe_model_input-cohort_prevax-main-vascular_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-main-vascular_dementia
+      rds
+    needs:
+    - make_model_input-cohort_prevax-main-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-main-vascular_dementia.txt
 
   cox_ipw-cohort_prevax-main-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-vascular_dementia.rds
@@ -467,6 +575,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-main-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-main-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-main-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-main-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-main-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -489,6 +606,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-any_dementia.rds
+
+  describe_model_input-cohort_unvax-main-any_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-main-any_dementia
+      rds
+    needs:
+    - make_model_input-cohort_unvax-main-any_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-main-any_dementia.txt
 
   cox_ipw-cohort_unvax-main-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-any_dementia.rds
@@ -513,6 +639,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-cognitive_impairment.rds
 
+  describe_model_input-cohort_unvax-main-cognitive_impairment:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-main-cognitive_impairment
+      rds
+    needs:
+    - make_model_input-cohort_unvax-main-cognitive_impairment
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-main-cognitive_impairment.txt
+
   cox_ipw-cohort_unvax-main-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-cognitive_impairment.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -535,6 +670,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-migraine.rds
+
+  describe_model_input-cohort_unvax-main-migraine:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-main-migraine
+      rds
+    needs:
+    - make_model_input-cohort_unvax-main-migraine
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-main-migraine.txt
 
   cox_ipw-cohort_unvax-main-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-migraine.rds --ipw=FALSE
@@ -559,6 +703,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-motor_neurone_disease.rds
 
+  describe_model_input-cohort_unvax-main-motor_neurone_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-main-motor_neurone_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-main-motor_neurone_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-main-motor_neurone_disease.txt
+
   cox_ipw-cohort_unvax-main-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-motor_neurone_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -581,6 +734,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-multiple_sclerosis.rds
+
+  describe_model_input-cohort_unvax-main-multiple_sclerosis:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-main-multiple_sclerosis
+      rds
+    needs:
+    - make_model_input-cohort_unvax-main-multiple_sclerosis
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-main-multiple_sclerosis.txt
 
   cox_ipw-cohort_unvax-main-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-multiple_sclerosis.rds
@@ -605,6 +767,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-other_dementias.rds
 
+  describe_model_input-cohort_unvax-main-other_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-main-other_dementias
+      rds
+    needs:
+    - make_model_input-cohort_unvax-main-other_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-main-other_dementias.txt
+
   cox_ipw-cohort_unvax-main-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-other_dementias.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -627,6 +798,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-main-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-main-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-main-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-main-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-main-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-parkinson_disease.rds
@@ -651,6 +831,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-rem_sleep_disorder.rds
 
+  describe_model_input-cohort_unvax-main-rem_sleep_disorder:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-main-rem_sleep_disorder
+      rds
+    needs:
+    - make_model_input-cohort_unvax-main-rem_sleep_disorder
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-main-rem_sleep_disorder.txt
+
   cox_ipw-cohort_unvax-main-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-rem_sleep_disorder.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -673,6 +862,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-restless_leg_syndrome.rds
+
+  describe_model_input-cohort_unvax-main-restless_leg_syndrome:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-main-restless_leg_syndrome
+      rds
+    needs:
+    - make_model_input-cohort_unvax-main-restless_leg_syndrome
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-main-restless_leg_syndrome.txt
 
   cox_ipw-cohort_unvax-main-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-restless_leg_syndrome.rds
@@ -697,6 +895,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-unspecified_dementias.rds
 
+  describe_model_input-cohort_unvax-main-unspecified_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-main-unspecified_dementias
+      rds
+    needs:
+    - make_model_input-cohort_unvax-main-unspecified_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-main-unspecified_dementias.txt
+
   cox_ipw-cohort_unvax-main-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-unspecified_dementias.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -719,6 +926,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-vascular_dementia.rds
+
+  describe_model_input-cohort_unvax-main-vascular_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-main-vascular_dementia
+      rds
+    needs:
+    - make_model_input-cohort_unvax-main-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-main-vascular_dementia.txt
 
   cox_ipw-cohort_unvax-main-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-vascular_dementia.rds
@@ -743,6 +959,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-main-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-main-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-main-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-main-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-main-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -765,6 +990,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-any_dementia.rds
+
+  describe_model_input-cohort_vax-main-any_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-main-any_dementia
+      rds
+    needs:
+    - make_model_input-cohort_vax-main-any_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-main-any_dementia.txt
 
   cox_ipw-cohort_vax-main-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-any_dementia.rds --ipw=TRUE
@@ -789,6 +1023,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-cognitive_impairment.rds
 
+  describe_model_input-cohort_vax-main-cognitive_impairment:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-main-cognitive_impairment
+      rds
+    needs:
+    - make_model_input-cohort_vax-main-cognitive_impairment
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-main-cognitive_impairment.txt
+
   cox_ipw-cohort_vax-main-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-cognitive_impairment.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -811,6 +1054,14 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-migraine.rds
+
+  describe_model_input-cohort_vax-main-migraine:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-main-migraine rds
+    needs:
+    - make_model_input-cohort_vax-main-migraine
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-main-migraine.txt
 
   cox_ipw-cohort_vax-main-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-migraine.rds --ipw=TRUE
@@ -835,6 +1086,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-motor_neurone_disease.rds
 
+  describe_model_input-cohort_vax-main-motor_neurone_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-main-motor_neurone_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-main-motor_neurone_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-main-motor_neurone_disease.txt
+
   cox_ipw-cohort_vax-main-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -857,6 +1117,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-multiple_sclerosis.rds
+
+  describe_model_input-cohort_vax-main-multiple_sclerosis:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-main-multiple_sclerosis
+      rds
+    needs:
+    - make_model_input-cohort_vax-main-multiple_sclerosis
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-main-multiple_sclerosis.txt
 
   cox_ipw-cohort_vax-main-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-multiple_sclerosis.rds
@@ -881,6 +1150,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-other_dementias.rds
 
+  describe_model_input-cohort_vax-main-other_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-main-other_dementias
+      rds
+    needs:
+    - make_model_input-cohort_vax-main-other_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-main-other_dementias.txt
+
   cox_ipw-cohort_vax-main-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-other_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -903,6 +1181,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-main-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-main-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-main-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-main-parkinson_disease.txt
 
   cox_ipw-cohort_vax-main-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-parkinson_disease.rds
@@ -927,6 +1214,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-rem_sleep_disorder.rds
 
+  describe_model_input-cohort_vax-main-rem_sleep_disorder:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-main-rem_sleep_disorder
+      rds
+    needs:
+    - make_model_input-cohort_vax-main-rem_sleep_disorder
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-main-rem_sleep_disorder.txt
+
   cox_ipw-cohort_vax-main-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -949,6 +1245,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-restless_leg_syndrome.rds
+
+  describe_model_input-cohort_vax-main-restless_leg_syndrome:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-main-restless_leg_syndrome
+      rds
+    needs:
+    - make_model_input-cohort_vax-main-restless_leg_syndrome
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-main-restless_leg_syndrome.txt
 
   cox_ipw-cohort_vax-main-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-restless_leg_syndrome.rds
@@ -973,6 +1278,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-unspecified_dementias.rds
 
+  describe_model_input-cohort_vax-main-unspecified_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-main-unspecified_dementias
+      rds
+    needs:
+    - make_model_input-cohort_vax-main-unspecified_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-main-unspecified_dementias.txt
+
   cox_ipw-cohort_vax-main-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-unspecified_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -995,6 +1309,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-vascular_dementia.rds
+
+  describe_model_input-cohort_vax-main-vascular_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-main-vascular_dementia
+      rds
+    needs:
+    - make_model_input-cohort_vax-main-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-main-vascular_dementia.txt
 
   cox_ipw-cohort_vax-main-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-vascular_dementia.rds
@@ -1019,6 +1342,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_18_39-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_age_18_39-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_age_18_39-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_age_18_39-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_age_18_39-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_age_18_39-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_18_39-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1041,6 +1373,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_18_39-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_age_18_39-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_age_18_39-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_age_18_39-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_age_18_39-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_age_18_39-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_18_39-parkinson_disease.rds
@@ -1065,6 +1406,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_18_39-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_age_18_39-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_age_18_39-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_age_18_39-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_age_18_39-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_age_18_39-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_18_39-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1087,6 +1437,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_18_39-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_age_18_39-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_age_18_39-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_age_18_39-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_age_18_39-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_age_18_39-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_18_39-parkinson_disease.rds
@@ -1111,6 +1470,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_18_39-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_age_18_39-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_age_18_39-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_age_18_39-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_age_18_39-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_age_18_39-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_18_39-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1133,6 +1501,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_18_39-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_age_18_39-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_age_18_39-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_age_18_39-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_age_18_39-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_age_18_39-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_18_39-parkinson_disease.rds
@@ -1157,6 +1534,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_40_59-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_age_40_59-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_age_40_59-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_age_40_59-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_age_40_59-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_age_40_59-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_40_59-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1179,6 +1565,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_40_59-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_age_40_59-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_age_40_59-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_age_40_59-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_age_40_59-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_age_40_59-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_40_59-parkinson_disease.rds
@@ -1203,6 +1598,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_40_59-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_age_40_59-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_age_40_59-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_age_40_59-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_age_40_59-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_age_40_59-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_40_59-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1225,6 +1629,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_40_59-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_age_40_59-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_age_40_59-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_age_40_59-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_age_40_59-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_age_40_59-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_40_59-parkinson_disease.rds
@@ -1249,6 +1662,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_40_59-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_age_40_59-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_age_40_59-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_age_40_59-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_age_40_59-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_age_40_59-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_40_59-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1271,6 +1693,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_40_59-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_age_40_59-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_age_40_59-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_age_40_59-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_age_40_59-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_age_40_59-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_40_59-parkinson_disease.rds
@@ -1295,6 +1726,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_60_79-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_age_60_79-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_age_60_79-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_age_60_79-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_age_60_79-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_age_60_79-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_60_79-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1317,6 +1757,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_60_79-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_age_60_79-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_age_60_79-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_age_60_79-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_age_60_79-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_age_60_79-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_60_79-parkinson_disease.rds
@@ -1341,6 +1790,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_60_79-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_age_60_79-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_age_60_79-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_age_60_79-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_age_60_79-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_age_60_79-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_60_79-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1363,6 +1821,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_60_79-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_age_60_79-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_age_60_79-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_age_60_79-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_age_60_79-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_age_60_79-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_60_79-parkinson_disease.rds
@@ -1387,6 +1854,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_60_79-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_age_60_79-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_age_60_79-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_age_60_79-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_age_60_79-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_age_60_79-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_60_79-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1409,6 +1885,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_60_79-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_age_60_79-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_age_60_79-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_age_60_79-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_age_60_79-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_age_60_79-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_60_79-parkinson_disease.rds
@@ -1433,6 +1918,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_80_110-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_age_80_110-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_age_80_110-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_age_80_110-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_age_80_110-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_age_80_110-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_80_110-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1455,6 +1949,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_age_80_110-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_age_80_110-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_age_80_110-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_age_80_110-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_age_80_110-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_age_80_110-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_80_110-parkinson_disease.rds
@@ -1479,6 +1982,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_80_110-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_age_80_110-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_age_80_110-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_age_80_110-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_age_80_110-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_age_80_110-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_80_110-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1501,6 +2013,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_age_80_110-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_age_80_110-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_age_80_110-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_age_80_110-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_age_80_110-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_age_80_110-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_80_110-parkinson_disease.rds
@@ -1525,6 +2046,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_80_110-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_age_80_110-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_age_80_110-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_age_80_110-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_age_80_110-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_age_80_110-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_80_110-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1547,6 +2077,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_age_80_110-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_age_80_110-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_age_80_110-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_age_80_110-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_age_80_110-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_age_80_110-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_80_110-parkinson_disease.rds
@@ -1571,6 +2110,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_covid_history-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_history-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_history-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_covid_history-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1593,6 +2141,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-any_dementia.rds
+
+  describe_model_input-cohort_unvax-sub_covid_history-any_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_history-any_dementia
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_history-any_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-any_dementia.txt
 
   cox_ipw-cohort_unvax-sub_covid_history-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-any_dementia.rds
@@ -1617,6 +2174,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-cognitive_impairment.rds
 
+  describe_model_input-cohort_unvax-sub_covid_history-cognitive_impairment:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_history-cognitive_impairment
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_history-cognitive_impairment
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-cognitive_impairment.txt
+
   cox_ipw-cohort_unvax-sub_covid_history-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-cognitive_impairment.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1639,6 +2205,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-migraine.rds
+
+  describe_model_input-cohort_unvax-sub_covid_history-migraine:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_history-migraine
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_history-migraine
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-migraine.txt
 
   cox_ipw-cohort_unvax-sub_covid_history-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-migraine.rds
@@ -1663,6 +2238,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-motor_neurone_disease.rds
 
+  describe_model_input-cohort_unvax-sub_covid_history-motor_neurone_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_history-motor_neurone_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_history-motor_neurone_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-motor_neurone_disease.txt
+
   cox_ipw-cohort_unvax-sub_covid_history-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-motor_neurone_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1685,6 +2269,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-multiple_sclerosis.rds
+
+  describe_model_input-cohort_unvax-sub_covid_history-multiple_sclerosis:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_history-multiple_sclerosis
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_history-multiple_sclerosis
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-multiple_sclerosis.txt
 
   cox_ipw-cohort_unvax-sub_covid_history-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-multiple_sclerosis.rds
@@ -1709,6 +2302,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-other_dementias.rds
 
+  describe_model_input-cohort_unvax-sub_covid_history-other_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_history-other_dementias
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_history-other_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-other_dementias.txt
+
   cox_ipw-cohort_unvax-sub_covid_history-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-other_dementias.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1731,6 +2333,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_covid_history-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_history-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_history-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_covid_history-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-parkinson_disease.rds
@@ -1755,6 +2366,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-rem_sleep_disorder.rds
 
+  describe_model_input-cohort_unvax-sub_covid_history-rem_sleep_disorder:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_history-rem_sleep_disorder
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_history-rem_sleep_disorder
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-rem_sleep_disorder.txt
+
   cox_ipw-cohort_unvax-sub_covid_history-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-rem_sleep_disorder.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1777,6 +2397,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-restless_leg_syndrome.rds
+
+  describe_model_input-cohort_unvax-sub_covid_history-restless_leg_syndrome:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_history-restless_leg_syndrome
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_history-restless_leg_syndrome
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-restless_leg_syndrome.txt
 
   cox_ipw-cohort_unvax-sub_covid_history-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-restless_leg_syndrome.rds
@@ -1801,6 +2430,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-unspecified_dementias.rds
 
+  describe_model_input-cohort_unvax-sub_covid_history-unspecified_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_history-unspecified_dementias
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_history-unspecified_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-unspecified_dementias.txt
+
   cox_ipw-cohort_unvax-sub_covid_history-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-unspecified_dementias.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1823,6 +2461,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_history-vascular_dementia.rds
+
+  describe_model_input-cohort_unvax-sub_covid_history-vascular_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_history-vascular_dementia
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_history-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-vascular_dementia.txt
 
   cox_ipw-cohort_unvax-sub_covid_history-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-vascular_dementia.rds
@@ -1847,6 +2494,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_covid_history-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_history-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_history-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_covid_history-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1869,6 +2525,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-any_dementia.rds
+
+  describe_model_input-cohort_vax-sub_covid_history-any_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_history-any_dementia
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_history-any_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-any_dementia.txt
 
   cox_ipw-cohort_vax-sub_covid_history-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-any_dementia.rds
@@ -1893,6 +2558,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-cognitive_impairment.rds
 
+  describe_model_input-cohort_vax-sub_covid_history-cognitive_impairment:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_history-cognitive_impairment
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_history-cognitive_impairment
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-cognitive_impairment.txt
+
   cox_ipw-cohort_vax-sub_covid_history-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-cognitive_impairment.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1915,6 +2589,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-migraine.rds
+
+  describe_model_input-cohort_vax-sub_covid_history-migraine:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_history-migraine
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_history-migraine
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-migraine.txt
 
   cox_ipw-cohort_vax-sub_covid_history-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-migraine.rds
@@ -1939,6 +2622,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-motor_neurone_disease.rds
 
+  describe_model_input-cohort_vax-sub_covid_history-motor_neurone_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_history-motor_neurone_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_history-motor_neurone_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-motor_neurone_disease.txt
+
   cox_ipw-cohort_vax-sub_covid_history-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -1961,6 +2653,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-multiple_sclerosis.rds
+
+  describe_model_input-cohort_vax-sub_covid_history-multiple_sclerosis:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_history-multiple_sclerosis
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_history-multiple_sclerosis
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-multiple_sclerosis.txt
 
   cox_ipw-cohort_vax-sub_covid_history-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-multiple_sclerosis.rds
@@ -1985,6 +2686,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-other_dementias.rds
 
+  describe_model_input-cohort_vax-sub_covid_history-other_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_history-other_dementias
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_history-other_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-other_dementias.txt
+
   cox_ipw-cohort_vax-sub_covid_history-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-other_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2007,6 +2717,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_covid_history-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_history-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_history-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_covid_history-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-parkinson_disease.rds
@@ -2031,6 +2750,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-rem_sleep_disorder.rds
 
+  describe_model_input-cohort_vax-sub_covid_history-rem_sleep_disorder:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_history-rem_sleep_disorder
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_history-rem_sleep_disorder
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-rem_sleep_disorder.txt
+
   cox_ipw-cohort_vax-sub_covid_history-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2053,6 +2781,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-restless_leg_syndrome.rds
+
+  describe_model_input-cohort_vax-sub_covid_history-restless_leg_syndrome:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_history-restless_leg_syndrome
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_history-restless_leg_syndrome
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-restless_leg_syndrome.txt
 
   cox_ipw-cohort_vax-sub_covid_history-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-restless_leg_syndrome.rds
@@ -2077,6 +2814,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-unspecified_dementias.rds
 
+  describe_model_input-cohort_vax-sub_covid_history-unspecified_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_history-unspecified_dementias
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_history-unspecified_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-unspecified_dementias.txt
+
   cox_ipw-cohort_vax-sub_covid_history-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-unspecified_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2099,6 +2845,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_history-vascular_dementia.rds
+
+  describe_model_input-cohort_vax-sub_covid_history-vascular_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_history-vascular_dementia
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_history-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-vascular_dementia.txt
 
   cox_ipw-cohort_vax-sub_covid_history-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-vascular_dementia.rds
@@ -2123,6 +2878,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_covid_hospitalised-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2145,6 +2909,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-any_dementia.rds
+
+  describe_model_input-cohort_prevax-sub_covid_hospitalised-any_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-any_dementia
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-any_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-any_dementia.txt
 
   cox_ipw-cohort_prevax-sub_covid_hospitalised-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-any_dementia.rds
@@ -2169,6 +2942,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment.rds
 
+  describe_model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment.txt
+
   cox_ipw-cohort_prevax-sub_covid_hospitalised-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2191,6 +2973,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-migraine.rds
+
+  describe_model_input-cohort_prevax-sub_covid_hospitalised-migraine:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-migraine
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-migraine
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-migraine.txt
 
   cox_ipw-cohort_prevax-sub_covid_hospitalised-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-migraine.rds
@@ -2215,6 +3006,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease.rds
 
+  describe_model_input-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease.txt
+
   cox_ipw-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2237,6 +3037,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.rds
+
+  describe_model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.txt
 
   cox_ipw-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.rds
@@ -2261,6 +3070,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-other_dementias.rds
 
+  describe_model_input-cohort_prevax-sub_covid_hospitalised-other_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-other_dementias
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-other_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-other_dementias.txt
+
   cox_ipw-cohort_prevax-sub_covid_hospitalised-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-other_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2283,6 +3101,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_covid_hospitalised-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease.rds
@@ -2307,6 +3134,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.rds
 
+  describe_model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.txt
+
   cox_ipw-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2329,6 +3165,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome.rds
+
+  describe_model_input-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome.txt
 
   cox_ipw-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome.rds
@@ -2353,6 +3198,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-unspecified_dementias.rds
 
+  describe_model_input-cohort_prevax-sub_covid_hospitalised-unspecified_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-unspecified_dementias
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-unspecified_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-unspecified_dementias.txt
+
   cox_ipw-cohort_prevax-sub_covid_hospitalised-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-unspecified_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2375,6 +3229,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia.rds
+
+  describe_model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia.txt
 
   cox_ipw-cohort_prevax-sub_covid_hospitalised-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia.rds
@@ -2399,6 +3262,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_covid_hospitalised-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_covid_hospitalised-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2421,6 +3293,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-any_dementia.rds
+
+  describe_model_input-cohort_unvax-sub_covid_hospitalised-any_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-any_dementia
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-any_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-any_dementia.txt
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-any_dementia.rds
@@ -2445,6 +3326,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment.rds
 
+  describe_model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment.txt
+
   cox_ipw-cohort_unvax-sub_covid_hospitalised-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2467,6 +3357,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-migraine.rds
+
+  describe_model_input-cohort_unvax-sub_covid_hospitalised-migraine:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-migraine
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-migraine
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-migraine.txt
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-migraine.rds
@@ -2491,6 +3390,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease.rds
 
+  describe_model_input-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease.txt
+
   cox_ipw-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2513,6 +3421,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis.rds
+
+  describe_model_input-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis.txt
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis.rds
@@ -2537,6 +3454,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-other_dementias.rds
 
+  describe_model_input-cohort_unvax-sub_covid_hospitalised-other_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-other_dementias
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-other_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-other_dementias.txt
+
   cox_ipw-cohort_unvax-sub_covid_hospitalised-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-other_dementias.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2559,6 +3485,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_covid_hospitalised-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-parkinson_disease.rds
@@ -2583,6 +3518,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.rds
 
+  describe_model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.txt
+
   cox_ipw-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2605,6 +3549,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome.rds
+
+  describe_model_input-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome.txt
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome.rds
@@ -2629,6 +3582,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-unspecified_dementias.rds
 
+  describe_model_input-cohort_unvax-sub_covid_hospitalised-unspecified_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-unspecified_dementias
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-unspecified_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-unspecified_dementias.txt
+
   cox_ipw-cohort_unvax-sub_covid_hospitalised-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-unspecified_dementias.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2651,6 +3613,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-vascular_dementia.rds
+
+  describe_model_input-cohort_unvax-sub_covid_hospitalised-vascular_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-vascular_dementia
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-vascular_dementia.txt
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-vascular_dementia.rds
@@ -2675,6 +3646,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_covid_hospitalised-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2697,6 +3677,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-any_dementia.rds
+
+  describe_model_input-cohort_vax-sub_covid_hospitalised-any_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-any_dementia
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_hospitalised-any_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-any_dementia.txt
 
   cox_ipw-cohort_vax-sub_covid_hospitalised-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-any_dementia.rds
@@ -2721,6 +3710,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-cognitive_impairment.rds
 
+  describe_model_input-cohort_vax-sub_covid_hospitalised-cognitive_impairment:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-cognitive_impairment
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_hospitalised-cognitive_impairment
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-cognitive_impairment.txt
+
   cox_ipw-cohort_vax-sub_covid_hospitalised-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-cognitive_impairment.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2743,6 +3741,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-migraine.rds
+
+  describe_model_input-cohort_vax-sub_covid_hospitalised-migraine:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-migraine
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_hospitalised-migraine
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-migraine.txt
 
   cox_ipw-cohort_vax-sub_covid_hospitalised-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-migraine.rds
@@ -2767,6 +3774,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-motor_neurone_disease.rds
 
+  describe_model_input-cohort_vax-sub_covid_hospitalised-motor_neurone_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-motor_neurone_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_hospitalised-motor_neurone_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-motor_neurone_disease.txt
+
   cox_ipw-cohort_vax-sub_covid_hospitalised-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2789,6 +3805,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-multiple_sclerosis.rds
+
+  describe_model_input-cohort_vax-sub_covid_hospitalised-multiple_sclerosis:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-multiple_sclerosis
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_hospitalised-multiple_sclerosis
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-multiple_sclerosis.txt
 
   cox_ipw-cohort_vax-sub_covid_hospitalised-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-multiple_sclerosis.rds
@@ -2813,6 +3838,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-other_dementias.rds
 
+  describe_model_input-cohort_vax-sub_covid_hospitalised-other_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-other_dementias
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_hospitalised-other_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-other_dementias.txt
+
   cox_ipw-cohort_vax-sub_covid_hospitalised-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-other_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2835,6 +3869,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease.rds
@@ -2859,6 +3902,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.rds
 
+  describe_model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.txt
+
   cox_ipw-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2881,6 +3933,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome.rds
+
+  describe_model_input-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome.txt
 
   cox_ipw-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome.rds
@@ -2905,6 +3966,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-unspecified_dementias.rds
 
+  describe_model_input-cohort_vax-sub_covid_hospitalised-unspecified_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-unspecified_dementias
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_hospitalised-unspecified_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-unspecified_dementias.txt
+
   cox_ipw-cohort_vax-sub_covid_hospitalised-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-unspecified_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2927,6 +3997,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia.rds
+
+  describe_model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia.txt
 
   cox_ipw-cohort_vax-sub_covid_hospitalised-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia.rds
@@ -2951,6 +4030,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -2973,6 +4061,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia.rds
+
+  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia.txt
 
   cox_ipw-cohort_prevax-sub_covid_nonhospitalised-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia.rds
@@ -2997,6 +4094,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment.rds
 
+  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment.txt
+
   cox_ipw-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3019,6 +4125,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-migraine.rds
+
+  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-migraine:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-migraine
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-migraine
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-migraine.txt
 
   cox_ipw-cohort_prevax-sub_covid_nonhospitalised-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-migraine.rds
@@ -3043,6 +4158,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.rds
 
+  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.txt
+
   cox_ipw-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3065,6 +4189,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis.rds
+
+  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis.txt
 
   cox_ipw-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis.rds
@@ -3089,6 +4222,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-other_dementias.rds
 
+  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-other_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-other_dementias
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-other_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-other_dementias.txt
+
   cox_ipw-cohort_prevax-sub_covid_nonhospitalised-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-other_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3111,6 +4253,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.rds
@@ -3135,6 +4286,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
 
+  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.txt
+
   cox_ipw-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3157,6 +4317,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome.rds
+
+  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome.txt
 
   cox_ipw-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome.rds
@@ -3181,6 +4350,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias.rds
 
+  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias.txt
+
   cox_ipw-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3203,6 +4381,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.rds
+
+  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.txt
 
   cox_ipw-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.rds
@@ -3227,6 +4414,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3249,6 +4445,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-any_dementia.rds
+
+  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-any_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-any_dementia
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-any_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-any_dementia.txt
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-any_dementia.rds
@@ -3273,6 +4478,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment.rds
 
+  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment.txt
+
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3295,6 +4509,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-migraine.rds
+
+  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-migraine:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-migraine
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-migraine
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-migraine.txt
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-migraine.rds
@@ -3319,6 +4542,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease.rds
 
+  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease.txt
+
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3341,6 +4573,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis.rds
+
+  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis.txt
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis.rds
@@ -3365,6 +4606,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-other_dementias.rds
 
+  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-other_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-other_dementias
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-other_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-other_dementias.txt
+
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-other_dementias.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3387,6 +4637,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease.rds
@@ -3411,6 +4670,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
 
+  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.txt
+
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3433,6 +4701,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome.rds
+
+  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome.txt
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome.rds
@@ -3457,6 +4734,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias.rds
 
+  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias.txt
+
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3479,6 +4765,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia.rds
+
+  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia.txt
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia.rds
@@ -3503,6 +4798,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_covid_nonhospitalised-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_covid_nonhospitalised-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3525,6 +4829,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-any_dementia.rds
+
+  describe_model_input-cohort_vax-sub_covid_nonhospitalised-any_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-any_dementia
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-any_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-any_dementia.txt
 
   cox_ipw-cohort_vax-sub_covid_nonhospitalised-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-any_dementia.rds
@@ -3549,6 +4862,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment.rds
 
+  describe_model_input-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment.txt
+
   cox_ipw-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3571,6 +4893,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-migraine.rds
+
+  describe_model_input-cohort_vax-sub_covid_nonhospitalised-migraine:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-migraine
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-migraine
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-migraine.txt
 
   cox_ipw-cohort_vax-sub_covid_nonhospitalised-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-migraine.rds
@@ -3595,6 +4926,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease.rds
 
+  describe_model_input-cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease.txt
+
   cox_ipw-cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3617,6 +4957,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis.rds
+
+  describe_model_input-cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis.txt
 
   cox_ipw-cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis.rds
@@ -3641,6 +4990,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-other_dementias.rds
 
+  describe_model_input-cohort_vax-sub_covid_nonhospitalised-other_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-other_dementias
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-other_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-other_dementias.txt
+
   cox_ipw-cohort_vax-sub_covid_nonhospitalised-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-other_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3663,6 +5021,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_covid_nonhospitalised-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_covid_nonhospitalised-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-parkinson_disease.rds
@@ -3687,6 +5054,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
 
+  describe_model_input-cohort_vax-sub_covid_nonhospitalised-rem_sleep_disorder:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-rem_sleep_disorder
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-rem_sleep_disorder
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-rem_sleep_disorder.txt
+
   cox_ipw-cohort_vax-sub_covid_nonhospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3709,6 +5085,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome.rds
+
+  describe_model_input-cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome.txt
 
   cox_ipw-cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome.rds
@@ -3733,6 +5118,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-unspecified_dementias.rds
 
+  describe_model_input-cohort_vax-sub_covid_nonhospitalised-unspecified_dementias:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-unspecified_dementias
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-unspecified_dementias
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-unspecified_dementias.txt
+
   cox_ipw-cohort_vax-sub_covid_nonhospitalised-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-unspecified_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3755,6 +5149,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.rds
+
+  describe_model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.txt
 
   cox_ipw-cohort_vax-sub_covid_nonhospitalised-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.rds
@@ -3779,6 +5182,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_ethnicity_asian-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3801,6 +5213,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_asian-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_ethnicity_asian-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_ethnicity_asian-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_ethnicity_asian-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_ethnicity_asian-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-parkinson_disease.rds
@@ -3825,6 +5246,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_asian-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_ethnicity_asian-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_ethnicity_asian-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_ethnicity_asian-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_ethnicity_asian-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_asian-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3847,6 +5277,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_asian-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_ethnicity_asian-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_ethnicity_asian-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_ethnicity_asian-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_ethnicity_asian-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_asian-parkinson_disease.rds
@@ -3871,6 +5310,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_asian-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_ethnicity_asian-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_ethnicity_asian-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_ethnicity_asian-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_ethnicity_asian-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_ethnicity_asian-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_asian-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3893,6 +5341,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_asian-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_ethnicity_asian-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_ethnicity_asian-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_ethnicity_asian-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_ethnicity_asian-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_ethnicity_asian-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_asian-parkinson_disease.rds
@@ -3917,6 +5374,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_black-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_ethnicity_black-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_ethnicity_black-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_ethnicity_black-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_ethnicity_black-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_ethnicity_black-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_black-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3939,6 +5405,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_black-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_ethnicity_black-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_ethnicity_black-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_ethnicity_black-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_ethnicity_black-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_ethnicity_black-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_black-parkinson_disease.rds
@@ -3963,6 +5438,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_black-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_ethnicity_black-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_ethnicity_black-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_ethnicity_black-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_ethnicity_black-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_ethnicity_black-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_black-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -3985,6 +5469,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_black-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_ethnicity_black-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_ethnicity_black-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_ethnicity_black-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_ethnicity_black-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_ethnicity_black-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_black-parkinson_disease.rds
@@ -4009,6 +5502,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_black-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_ethnicity_black-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_ethnicity_black-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_ethnicity_black-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_ethnicity_black-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_ethnicity_black-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_black-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -4031,6 +5533,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_black-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_ethnicity_black-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_ethnicity_black-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_ethnicity_black-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_ethnicity_black-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_ethnicity_black-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_black-parkinson_disease.rds
@@ -4055,6 +5566,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -4077,6 +5597,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_mixed-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_ethnicity_mixed-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_ethnicity_mixed-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_ethnicity_mixed-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_ethnicity_mixed-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_mixed-parkinson_disease.rds
@@ -4101,6 +5630,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -4123,6 +5661,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_mixed-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_ethnicity_mixed-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_ethnicity_mixed-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_ethnicity_mixed-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_ethnicity_mixed-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_mixed-parkinson_disease.rds
@@ -4147,6 +5694,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_mixed-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_ethnicity_mixed-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_ethnicity_mixed-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_ethnicity_mixed-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_ethnicity_mixed-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_mixed-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -4169,6 +5725,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_mixed-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_ethnicity_mixed-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_ethnicity_mixed-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_ethnicity_mixed-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_ethnicity_mixed-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_mixed-parkinson_disease.rds
@@ -4193,6 +5758,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_other-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_ethnicity_other-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_ethnicity_other-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_ethnicity_other-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_ethnicity_other-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_ethnicity_other-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_other-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -4215,6 +5789,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_other-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_ethnicity_other-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_ethnicity_other-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_ethnicity_other-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_ethnicity_other-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_ethnicity_other-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_other-parkinson_disease.rds
@@ -4239,6 +5822,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_other-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_ethnicity_other-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_ethnicity_other-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_ethnicity_other-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_ethnicity_other-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_ethnicity_other-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_other-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -4261,6 +5853,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_other-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_ethnicity_other-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_ethnicity_other-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_ethnicity_other-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_ethnicity_other-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_ethnicity_other-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_other-parkinson_disease.rds
@@ -4285,6 +5886,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_other-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_ethnicity_other-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_ethnicity_other-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_ethnicity_other-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_ethnicity_other-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_ethnicity_other-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_other-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -4307,6 +5917,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_other-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_ethnicity_other-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_ethnicity_other-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_ethnicity_other-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_ethnicity_other-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_ethnicity_other-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_other-parkinson_disease.rds
@@ -4331,6 +5950,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_ethnicity_white-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -4353,6 +5981,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_ethnicity_white-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease.rds
@@ -4377,6 +6014,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_white-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_ethnicity_white-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_ethnicity_white-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_ethnicity_white-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_ethnicity_white-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_ethnicity_white-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_white-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -4399,6 +6045,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_ethnicity_white-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_ethnicity_white-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_ethnicity_white-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_ethnicity_white-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_ethnicity_white-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_ethnicity_white-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_white-parkinson_disease.rds
@@ -4423,6 +6078,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_white-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_ethnicity_white-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_ethnicity_white-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_ethnicity_white-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_ethnicity_white-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_ethnicity_white-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_white-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -4445,6 +6109,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_ethnicity_white-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_ethnicity_white-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_ethnicity_white-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_ethnicity_white-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_ethnicity_white-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_ethnicity_white-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_white-parkinson_disease.rds
@@ -4469,6 +6142,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_sex_female-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_sex_female-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_sex_female-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_sex_female-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_sex_female-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_sex_female-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_sex_female-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
@@ -4491,6 +6173,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_sex_female-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_sex_female-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_sex_female-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_sex_female-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_sex_female-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_sex_female-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_sex_female-parkinson_disease.rds
@@ -4515,6 +6206,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_sex_female-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_sex_female-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_sex_female-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_sex_female-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_sex_female-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_sex_female-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_sex_female-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
@@ -4537,6 +6237,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_sex_female-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_sex_female-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_sex_female-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_sex_female-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_sex_female-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_sex_female-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_sex_female-parkinson_disease.rds
@@ -4561,6 +6270,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_sex_female-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_sex_female-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_sex_female-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_sex_female-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_sex_female-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_sex_female-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_sex_female-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
@@ -4583,6 +6301,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_sex_female-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_sex_female-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_sex_female-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_sex_female-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_sex_female-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_sex_female-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_sex_female-parkinson_disease.rds
@@ -4607,6 +6334,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_sex_male-alzheimer_disease.rds
 
+  describe_model_input-cohort_prevax-sub_sex_male-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_sex_male-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_sex_male-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_sex_male-alzheimer_disease.txt
+
   cox_ipw-cohort_prevax-sub_sex_male-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_sex_male-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
@@ -4629,6 +6365,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-sub_sex_male-parkinson_disease.rds
+
+  describe_model_input-cohort_prevax-sub_sex_male-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_prevax-sub_sex_male-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_prevax-sub_sex_male-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_prevax-sub_sex_male-parkinson_disease.txt
 
   cox_ipw-cohort_prevax-sub_sex_male-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_sex_male-parkinson_disease.rds
@@ -4653,6 +6398,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_sex_male-alzheimer_disease.rds
 
+  describe_model_input-cohort_unvax-sub_sex_male-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_sex_male-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_sex_male-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_sex_male-alzheimer_disease.txt
+
   cox_ipw-cohort_unvax-sub_sex_male-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_sex_male-alzheimer_disease.rds
       --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
@@ -4675,6 +6429,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-sub_sex_male-parkinson_disease.rds
+
+  describe_model_input-cohort_unvax-sub_sex_male-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_unvax-sub_sex_male-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_unvax-sub_sex_male-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_unvax-sub_sex_male-parkinson_disease.txt
 
   cox_ipw-cohort_unvax-sub_sex_male-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_sex_male-parkinson_disease.rds
@@ -4699,6 +6462,15 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_sex_male-alzheimer_disease.rds
 
+  describe_model_input-cohort_vax-sub_sex_male-alzheimer_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_sex_male-alzheimer_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_sex_male-alzheimer_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_sex_male-alzheimer_disease.txt
+
   cox_ipw-cohort_vax-sub_sex_male-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_sex_male-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
@@ -4721,6 +6493,15 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-sub_sex_male-parkinson_disease.rds
+
+  describe_model_input-cohort_vax-sub_sex_male-parkinson_disease:
+    run: r:latest analysis/describe_file.R model_input-cohort_vax-sub_sex_male-parkinson_disease
+      rds
+    needs:
+    - make_model_input-cohort_vax-sub_sex_male-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-model_input-cohort_vax-sub_sex_male-parkinson_disease.txt
 
   cox_ipw-cohort_vax-sub_sex_male-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_sex_male-parkinson_disease.rds
@@ -4793,4 +6574,212 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output.csv
+
+  ## Make Table 2 
+
+  table2:
+    run: r:latest analysis/descriptives/table2.R
+    needs:
+    - make_model_input-cohort_prevax-main-alzheimer_disease
+    - make_model_input-cohort_prevax-main-any_dementia
+    - make_model_input-cohort_prevax-main-cognitive_impairment
+    - make_model_input-cohort_prevax-main-migraine
+    - make_model_input-cohort_prevax-main-motor_neurone_disease
+    - make_model_input-cohort_prevax-main-multiple_sclerosis
+    - make_model_input-cohort_prevax-main-other_dementias
+    - make_model_input-cohort_prevax-main-parkinson_disease
+    - make_model_input-cohort_prevax-main-rem_sleep_disorder
+    - make_model_input-cohort_prevax-main-restless_leg_syndrome
+    - make_model_input-cohort_prevax-main-unspecified_dementias
+    - make_model_input-cohort_prevax-main-vascular_dementia
+    - make_model_input-cohort_unvax-main-alzheimer_disease
+    - make_model_input-cohort_unvax-main-any_dementia
+    - make_model_input-cohort_unvax-main-cognitive_impairment
+    - make_model_input-cohort_unvax-main-migraine
+    - make_model_input-cohort_unvax-main-motor_neurone_disease
+    - make_model_input-cohort_unvax-main-multiple_sclerosis
+    - make_model_input-cohort_unvax-main-other_dementias
+    - make_model_input-cohort_unvax-main-parkinson_disease
+    - make_model_input-cohort_unvax-main-rem_sleep_disorder
+    - make_model_input-cohort_unvax-main-restless_leg_syndrome
+    - make_model_input-cohort_unvax-main-unspecified_dementias
+    - make_model_input-cohort_unvax-main-vascular_dementia
+    - make_model_input-cohort_vax-main-alzheimer_disease
+    - make_model_input-cohort_vax-main-any_dementia
+    - make_model_input-cohort_vax-main-cognitive_impairment
+    - make_model_input-cohort_vax-main-migraine
+    - make_model_input-cohort_vax-main-motor_neurone_disease
+    - make_model_input-cohort_vax-main-multiple_sclerosis
+    - make_model_input-cohort_vax-main-other_dementias
+    - make_model_input-cohort_vax-main-parkinson_disease
+    - make_model_input-cohort_vax-main-rem_sleep_disorder
+    - make_model_input-cohort_vax-main-restless_leg_syndrome
+    - make_model_input-cohort_vax-main-unspecified_dementias
+    - make_model_input-cohort_vax-main-vascular_dementia
+    - make_model_input-cohort_prevax-sub_age_18_39-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_age_18_39-parkinson_disease
+    - make_model_input-cohort_unvax-sub_age_18_39-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_age_18_39-parkinson_disease
+    - make_model_input-cohort_vax-sub_age_18_39-alzheimer_disease
+    - make_model_input-cohort_vax-sub_age_18_39-parkinson_disease
+    - make_model_input-cohort_prevax-sub_age_40_59-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_age_40_59-parkinson_disease
+    - make_model_input-cohort_unvax-sub_age_40_59-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_age_40_59-parkinson_disease
+    - make_model_input-cohort_vax-sub_age_40_59-alzheimer_disease
+    - make_model_input-cohort_vax-sub_age_40_59-parkinson_disease
+    - make_model_input-cohort_prevax-sub_age_60_79-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_age_60_79-parkinson_disease
+    - make_model_input-cohort_unvax-sub_age_60_79-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_age_60_79-parkinson_disease
+    - make_model_input-cohort_vax-sub_age_60_79-alzheimer_disease
+    - make_model_input-cohort_vax-sub_age_60_79-parkinson_disease
+    - make_model_input-cohort_prevax-sub_age_80_110-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_age_80_110-parkinson_disease
+    - make_model_input-cohort_unvax-sub_age_80_110-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_age_80_110-parkinson_disease
+    - make_model_input-cohort_vax-sub_age_80_110-alzheimer_disease
+    - make_model_input-cohort_vax-sub_age_80_110-parkinson_disease
+    - make_model_input-cohort_unvax-sub_covid_history-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_covid_history-any_dementia
+    - make_model_input-cohort_unvax-sub_covid_history-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_covid_history-migraine
+    - make_model_input-cohort_unvax-sub_covid_history-motor_neurone_disease
+    - make_model_input-cohort_unvax-sub_covid_history-multiple_sclerosis
+    - make_model_input-cohort_unvax-sub_covid_history-other_dementias
+    - make_model_input-cohort_unvax-sub_covid_history-parkinson_disease
+    - make_model_input-cohort_unvax-sub_covid_history-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_covid_history-restless_leg_syndrome
+    - make_model_input-cohort_unvax-sub_covid_history-unspecified_dementias
+    - make_model_input-cohort_unvax-sub_covid_history-vascular_dementia
+    - make_model_input-cohort_vax-sub_covid_history-alzheimer_disease
+    - make_model_input-cohort_vax-sub_covid_history-any_dementia
+    - make_model_input-cohort_vax-sub_covid_history-cognitive_impairment
+    - make_model_input-cohort_vax-sub_covid_history-migraine
+    - make_model_input-cohort_vax-sub_covid_history-motor_neurone_disease
+    - make_model_input-cohort_vax-sub_covid_history-multiple_sclerosis
+    - make_model_input-cohort_vax-sub_covid_history-other_dementias
+    - make_model_input-cohort_vax-sub_covid_history-parkinson_disease
+    - make_model_input-cohort_vax-sub_covid_history-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_covid_history-restless_leg_syndrome
+    - make_model_input-cohort_vax-sub_covid_history-unspecified_dementias
+    - make_model_input-cohort_vax-sub_covid_history-vascular_dementia
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-any_dementia
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-migraine
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-other_dementias
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-unspecified_dementias
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-any_dementia
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-migraine
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-other_dementias
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-parkinson_disease
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-unspecified_dementias
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-vascular_dementia
+    - make_model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease
+    - make_model_input-cohort_vax-sub_covid_hospitalised-any_dementia
+    - make_model_input-cohort_vax-sub_covid_hospitalised-cognitive_impairment
+    - make_model_input-cohort_vax-sub_covid_hospitalised-migraine
+    - make_model_input-cohort_vax-sub_covid_hospitalised-motor_neurone_disease
+    - make_model_input-cohort_vax-sub_covid_hospitalised-multiple_sclerosis
+    - make_model_input-cohort_vax-sub_covid_hospitalised-other_dementias
+    - make_model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease
+    - make_model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome
+    - make_model_input-cohort_vax-sub_covid_hospitalised-unspecified_dementias
+    - make_model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-migraine
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-other_dementias
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-any_dementia
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-migraine
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-other_dementias
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-alzheimer_disease
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-any_dementia
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-migraine
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-other_dementias
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-parkinson_disease
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-unspecified_dementias
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-parkinson_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-parkinson_disease
+    - make_model_input-cohort_vax-sub_ethnicity_asian-alzheimer_disease
+    - make_model_input-cohort_vax-sub_ethnicity_asian-parkinson_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_black-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_black-parkinson_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_black-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_black-parkinson_disease
+    - make_model_input-cohort_vax-sub_ethnicity_black-alzheimer_disease
+    - make_model_input-cohort_vax-sub_ethnicity_black-parkinson_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-parkinson_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-parkinson_disease
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-alzheimer_disease
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-parkinson_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_other-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_other-parkinson_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_other-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_other-parkinson_disease
+    - make_model_input-cohort_vax-sub_ethnicity_other-alzheimer_disease
+    - make_model_input-cohort_vax-sub_ethnicity_other-parkinson_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_white-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_white-parkinson_disease
+    - make_model_input-cohort_vax-sub_ethnicity_white-alzheimer_disease
+    - make_model_input-cohort_vax-sub_ethnicity_white-parkinson_disease
+    - make_model_input-cohort_prevax-sub_sex_female-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_sex_female-parkinson_disease
+    - make_model_input-cohort_unvax-sub_sex_female-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_sex_female-parkinson_disease
+    - make_model_input-cohort_vax-sub_sex_female-alzheimer_disease
+    - make_model_input-cohort_vax-sub_sex_female-parkinson_disease
+    - make_model_input-cohort_prevax-sub_sex_male-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_sex_male-parkinson_disease
+    - make_model_input-cohort_unvax-sub_sex_male-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_sex_male-parkinson_disease
+    - make_model_input-cohort_vax-sub_sex_male-alzheimer_disease
+    - make_model_input-cohort_vax-sub_sex_male-parkinson_disease
+    outputs:
+      moderately_sensitive:
+        table2: output/table2.csv
+        table2_rounded: output/table2_rounded.csv
 
