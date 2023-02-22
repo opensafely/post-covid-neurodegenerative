@@ -10,9 +10,9 @@ print('Source functions')
 source("analysis/model/fn-check_vitals.R")
 
 # Make directory ---------------------------------------------------------------
-# print('Make directory')
-# 
-# fs::dir_create(here::here("output", "model_input"))
+print('Make directory')
+
+fs::dir_create(here::here("output", "model_input"))
 
 # Specify arguments ------------------------------------------------------------
 print('Specify arguments')

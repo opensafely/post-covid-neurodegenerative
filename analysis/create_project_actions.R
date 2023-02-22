@@ -114,14 +114,14 @@ apply_model_function <- function(name, cohort, analysis, ipw, strata,
       )
     ),
     
-    # action(
-    #   name = glue("describe_model_input-{name}"),
-    #   run = glue("r:latest analysis/describe_file.R model_input-{name} rds"),
-    #   needs = list(glue("make_model_input-{name}")),
-    #   moderately_sensitive = list(
-    #     describe_model_input = glue("output/describe-model_input-{name}.txt")
-    #   )
-    # ),
+    action(
+      name = glue("describe_model_input-{name}"),
+      run = glue("r:latest analysis/describe_file.R model_input-{name} rds"),
+      needs = list(glue("make_model_input-{name}")),
+      moderately_sensitive = list(
+        describe_model_input = glue("output/describe-model_input-{name}.txt")
+      )
+    ),
     
     #comment(glue("Cox model for {outcome} - {cohort}")),
     action(
@@ -401,8 +401,19 @@ actions_list <- splice(
     moderately_sensitive = list(
       model_output = glue("output/model_output.csv")
     )
-  )
+  ),
   
+  comment("Make Table 2"),
+  
+  action(
+    name = "table2",
+    run = "r:latest analysis/descriptives/table2.R",
+    needs = as.list(paste0("make_model_input-",active_analyses$name)),
+    moderately_sensitive = list(
+      table2 = glue("output/table2.csv"),
+      table2_rounded = glue("output/table2_rounded.csv")
+    )
+  )
 )
 
 ## combine everything ----
