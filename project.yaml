@@ -204,7 +204,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-alzheimer_disease.csv
     needs:
@@ -236,7 +236,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-any_dementia.csv
     needs:
@@ -268,7 +268,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-cognitive_impairment.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-cognitive_impairment.csv
     needs:
@@ -300,7 +300,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-migraine.rds --ipw=TRUE
       --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-migraine.csv
     needs:
@@ -332,7 +332,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-motor_neurone_disease.csv
     needs:
@@ -364,7 +364,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-multiple_sclerosis.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-multiple_sclerosis.csv
     needs:
@@ -396,7 +396,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-other_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-other_dementias.csv
     needs:
@@ -428,7 +428,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-parkinson_disease.csv
     needs:
@@ -460,7 +460,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-rem_sleep_disorder.csv
     needs:
@@ -492,7 +492,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-restless_leg_syndrome.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-restless_leg_syndrome.csv
     needs:
@@ -524,7 +524,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-unspecified_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-unspecified_dementias.csv
     needs:
@@ -556,7 +556,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-vascular_dementia.csv
     needs:
@@ -586,7 +586,7 @@ actions:
 
   cox_ipw-cohort_unvax-main-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -618,7 +618,7 @@ actions:
 
   cox_ipw-cohort_unvax-main-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-any_dementia.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -650,7 +650,7 @@ actions:
 
   cox_ipw-cohort_unvax-main-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-cognitive_impairment.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -681,7 +681,7 @@ actions:
         describe_model_input: output/describe-model_input-cohort_unvax-main-migraine.txt
 
   cox_ipw-cohort_unvax-main-migraine:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-migraine.rds --ipw=FALSE
+    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-migraine.rds --ipw=TRUE
       --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
@@ -714,7 +714,7 @@ actions:
 
   cox_ipw-cohort_unvax-main-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-motor_neurone_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -746,7 +746,7 @@ actions:
 
   cox_ipw-cohort_unvax-main-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-multiple_sclerosis.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -778,7 +778,7 @@ actions:
 
   cox_ipw-cohort_unvax-main-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-other_dementias.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -810,7 +810,7 @@ actions:
 
   cox_ipw-cohort_unvax-main-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -842,7 +842,7 @@ actions:
 
   cox_ipw-cohort_unvax-main-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-rem_sleep_disorder.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -874,7 +874,7 @@ actions:
 
   cox_ipw-cohort_unvax-main-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-restless_leg_syndrome.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -906,7 +906,7 @@ actions:
 
   cox_ipw-cohort_unvax-main-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-unspecified_dementias.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -938,7 +938,7 @@ actions:
 
   cox_ipw-cohort_unvax-main-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-vascular_dementia.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -1355,7 +1355,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_18_39-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_18_39-alzheimer_disease.csv
     needs:
@@ -1387,7 +1387,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_18_39-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_18_39-parkinson_disease.csv
     needs:
@@ -1417,7 +1417,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_age_18_39-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_18_39-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -1449,7 +1449,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_age_18_39-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_18_39-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -1547,7 +1547,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_40_59-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_40_59-alzheimer_disease.csv
     needs:
@@ -1579,7 +1579,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_40_59-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_40_59-parkinson_disease.csv
     needs:
@@ -1609,7 +1609,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_age_40_59-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_40_59-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -1641,7 +1641,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_age_40_59-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_40_59-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -1739,7 +1739,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_60_79-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_60_79-alzheimer_disease.csv
     needs:
@@ -1771,7 +1771,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_60_79-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_60_79-parkinson_disease.csv
     needs:
@@ -1801,7 +1801,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_age_60_79-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_60_79-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -1833,7 +1833,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_age_60_79-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_60_79-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -1931,7 +1931,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_80_110-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_80_110-alzheimer_disease.csv
     needs:
@@ -1963,7 +1963,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_80_110-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_80_110-parkinson_disease.csv
     needs:
@@ -1993,7 +1993,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_age_80_110-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_80_110-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2025,7 +2025,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_age_80_110-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_80_110-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2121,7 +2121,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_history-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2153,7 +2153,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_history-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-any_dementia.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2185,7 +2185,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_history-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-cognitive_impairment.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2217,7 +2217,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_history-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-migraine.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2249,7 +2249,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_history-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-motor_neurone_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2281,7 +2281,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_history-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-multiple_sclerosis.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2313,7 +2313,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_history-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-other_dementias.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2345,7 +2345,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_history-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2377,7 +2377,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_history-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-rem_sleep_disorder.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2409,7 +2409,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_history-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-restless_leg_syndrome.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2441,7 +2441,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_history-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-unspecified_dementias.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2473,7 +2473,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_history-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-vascular_dementia.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -2891,7 +2891,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.csv
     needs:
@@ -2923,7 +2923,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-any_dementia.csv
     needs:
@@ -2955,7 +2955,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-cognitive_impairment.csv
     needs:
@@ -2987,7 +2987,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-migraine.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-migraine.csv
     needs:
@@ -3019,7 +3019,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease.csv
     needs:
@@ -3051,7 +3051,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.csv
     needs:
@@ -3083,7 +3083,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-other_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-other_dementias.csv
     needs:
@@ -3115,7 +3115,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-parkinson_disease.csv
     needs:
@@ -3147,7 +3147,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.csv
     needs:
@@ -3179,7 +3179,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome.csv
     needs:
@@ -3211,7 +3211,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-unspecified_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-unspecified_dementias.csv
     needs:
@@ -3243,7 +3243,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-vascular_dementia.csv
     needs:
@@ -3273,7 +3273,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -3305,7 +3305,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-any_dementia.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -3337,7 +3337,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -3369,7 +3369,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-migraine.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -3401,7 +3401,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -3433,7 +3433,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -3465,7 +3465,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-other_dementias.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -3497,7 +3497,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -3529,7 +3529,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -3561,7 +3561,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -3593,7 +3593,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-unspecified_dementias.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -3625,7 +3625,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_hospitalised-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-vascular_dementia.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -4043,7 +4043,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.csv
     needs:
@@ -4075,7 +4075,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-any_dementia.csv
     needs:
@@ -4107,7 +4107,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment.csv
     needs:
@@ -4139,7 +4139,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-migraine.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-migraine.csv
     needs:
@@ -4171,7 +4171,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.csv
     needs:
@@ -4203,7 +4203,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis.csv
     needs:
@@ -4235,7 +4235,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-other_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-other_dementias.csv
     needs:
@@ -4267,7 +4267,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.csv
     needs:
@@ -4299,7 +4299,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.csv
     needs:
@@ -4331,7 +4331,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome.csv
     needs:
@@ -4363,7 +4363,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias.csv
     needs:
@@ -4395,7 +4395,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.csv
     needs:
@@ -4425,7 +4425,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -4457,7 +4457,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-any_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-any_dementia.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -4489,7 +4489,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -4521,7 +4521,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-migraine:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-migraine.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -4553,7 +4553,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -4585,7 +4585,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -4617,7 +4617,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-other_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-other_dementias.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -4649,7 +4649,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -4681,7 +4681,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -4713,7 +4713,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -4745,7 +4745,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -4777,7 +4777,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -5195,7 +5195,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.csv
     needs:
@@ -5227,7 +5227,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_asian-parkinson_disease.csv
     needs:
@@ -5257,7 +5257,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_ethnicity_asian-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_asian-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -5289,7 +5289,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_ethnicity_asian-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_asian-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -5387,7 +5387,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_black-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_black-alzheimer_disease.csv
     needs:
@@ -5419,7 +5419,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_black-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_black-parkinson_disease.csv
     needs:
@@ -5449,7 +5449,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_ethnicity_black-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_black-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -5481,7 +5481,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_ethnicity_black-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_black-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -5579,7 +5579,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease.csv
     needs:
@@ -5611,7 +5611,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_mixed-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_mixed-parkinson_disease.csv
     needs:
@@ -5641,7 +5641,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -5673,7 +5673,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_ethnicity_mixed-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_mixed-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -5771,7 +5771,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_other-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_other-alzheimer_disease.csv
     needs:
@@ -5803,7 +5803,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_other-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_other-parkinson_disease.csv
     needs:
@@ -5833,7 +5833,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_ethnicity_other-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_other-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -5865,7 +5865,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_ethnicity_other-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_other-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -5963,7 +5963,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_white-alzheimer_disease.csv
     needs:
@@ -5995,7 +5995,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_white-parkinson_disease.csv
     needs:
@@ -6025,7 +6025,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_ethnicity_white-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_white-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -6057,7 +6057,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_ethnicity_white-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_white-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -6155,7 +6155,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_sex_female-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_sex_female-alzheimer_disease.csv
     needs:
@@ -6187,7 +6187,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_sex_female-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_sex_female-parkinson_disease.csv
     needs:
@@ -6217,7 +6217,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_sex_female-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_sex_female-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -6249,7 +6249,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_sex_female-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_sex_female-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -6347,7 +6347,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_sex_male-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_sex_male-alzheimer_disease.csv
     needs:
@@ -6379,7 +6379,7 @@ actions:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_sex_male-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
-      --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
+      --cox_start=index_date --cox_stop=end_date --study_start=2020-01-01 --study_stop=2021-06-18
       --cut_points=28;197;535 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
       --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_sex_male-parkinson_disease.csv
     needs:
@@ -6409,7 +6409,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_sex_male-alzheimer_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_sex_male-alzheimer_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
@@ -6441,7 +6441,7 @@ actions:
 
   cox_ipw-cohort_unvax-sub_sex_male-parkinson_disease:
     run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_sex_male-parkinson_disease.rds
-      --ipw=FALSE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke;cov_bin_hypercholesterolaemia
       --cox_start=index_date --cox_stop=end_date --study_start=2021-06-01 --study_stop=2021-12-14
       --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50 --episode_event_threshold=5
