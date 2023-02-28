@@ -47,18 +47,18 @@ cohorts <- c("vax","unvax","prevax")
 # Specify outcomes -------------------------------------------------------------
 
 outcomes_runall <- c("out_date_alzheimer_disease", 
-                     "out_date_parkinson_disease")
+                     "out_date_parkinson_disease",
+                     "out_date_any_dementia",
+                     "out_date_cognitive_impairment",
+                     "out_date_rem_sleep_disorder",
+                     "out_date_migraine")
 
 outcomes_runmain <- c("out_date_vascular_dementia",
                       "out_date_other_dementias",
                       "out_date_unspecified_dementias",
-                      "out_date_any_dementia",
-                      "out_date_cognitive_impairment",
                       "out_date_restless_leg_syndrome",
-                      "out_date_rem_sleep_disorder",
                       "out_date_motor_neurone_disease",
-                      "out_date_multiple_sclerosis",
-                      "out_date_migraine")
+                      "out_date_multiple_sclerosis")
 
 # Add active analyses ----------------------------------------------------------
 
