@@ -34,7 +34,7 @@ strata <- "cov_cat_region"
 covariate_sex <- "cov_cat_sex"
 covariate_age <- "cov_num_age"
 cox_start <- "index_date"
-cox_stop <- "end_date"
+cox_stop <- "end_date_outcome"
 controls_per_case <- 20L
 total_event_threshold <- 50L
 episode_event_threshold <- 5L
@@ -409,6 +409,32 @@ for (c in cohorts) {
   }
   
 }
+
+# Add prevax extended follow-up analyses ---------------------------------------
+
+tmp <- df[df$cohort=="prevax" & 
+            (df$analysis %in% c("main",
+                                "sub_covid_hospitalised",
+                                "sub_covid_nonhospitalised") |
+               df$outcome %in% outcomes_runall),]
+
+tmp$cohort <- paste0(tmp$cohort,"_extf")
+tmp$study_stop <- "2021-12-14"
+tmp$cut_points <- "28;197;365;714"
+
+df <- rbind(df,tmp)
+
+# Add unvax extended follow-up analyses ----------------------------------------
+
+tmp <- df[df$cohort=="unvax" & 
+            (df$analysis %in% c("main",
+                                "sub_covid_hospitalised",
+                                "sub_covid_nonhospitalised") |
+               df$outcome %in% outcomes_runall),]
+
+tmp$cohort <- paste0(tmp$cohort,"_extf")
+
+df <- rbind(df,tmp)
 
 # Assign unique name -----------------------------------------------------------
 

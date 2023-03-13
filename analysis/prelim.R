@@ -26,7 +26,7 @@ prelim_data <- prelim_data %>%
          index_unvax =  max(c(vax_date_eligible_offset, delta_date), na.rm=T),
          end_vax = min(c(death_date, delta_end_date), na.rm=T),
          end_unvax = min(c(death_date, delta_end_date), na.rm=T),
-         end_prevax = min(c(vax_date_eligible,death_date, vax_date_covid_1, all_eligible_date), na.rm=T)) 
+         end_prevax = min(c(death_date, delta_end_date), na.rm=T)) 
 
 
 #Write data to csv file 
