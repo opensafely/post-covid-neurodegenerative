@@ -29,8 +29,16 @@ if(length(args)==0){
 # Load active analyses ---------------------------------------------------------
 print('Load active analyses')
 
-active_analyses <- readr::read_rds("lib/active_analyses.rds")
-active_analyses <- active_analyses[active_analyses$cohort==cohort,]
+#active_analyses <- readr::read_rds("lib/active_analyses.rds")
+#active_analyses <- active_analyses[active_analyses$cohort==cohort,]
+
+active_analyses <- readr::read_rds("lib/active_analyses.rds") %>% 
+  filter(outcome %in% c("out_date_alzheimer_disease", "out_date_parkinson_disease", "out_date_any_dementia", "out_date_rem_sleep_disorder",
+                        "out_date_migraine", "out_date_vascular_dementia", "out_date_other_dementias", "out_date_unspecified_dementias")) %>% #outcomes
+  filter(analysis %in% c("main", "sub_covid_hospitalised","sub_covid_nonhospitalised","sub_covid_history")) #sub-analysis
+  
+#outcomes to be reviewed
+#"out_date_cognitive_impairment", "out_date_multiple_sclerosis", "out_date_restless_leg_syndrome", "out_date_motor_neurone_disease"
 
 # Make empty table 2 -----------------------------------------------------------
 print('Make empty table 2')
@@ -59,14 +67,14 @@ for (i in 1:nrow(active_analyses)) {
   print(paste0("Load data for ",active_analyses$name[i]))
   
   df <- read_rds(paste0("output/model_input-",active_analyses$name[i],".rds"))
-  df <- df[,c("patient_id","index_date","exp_date","out_date","end_date_exposure","end_date_outcome")]
+  df <- df[,c("patient_id","index_date","exp_date","out_date","end_date")] #"end_date_exposure","end_date_outcome"
   
   ## Calculate person days -----------------------------------------------------
   print('Calculate person days')
   
   df <- df %>% 
-    dplyr::mutate(total_person_days = as.numeric((end_date_outcome - index_date))+1,
-                  fup_end_unexposed = min(end_date_outcome, exp_date, na.rm = TRUE),
+    dplyr::mutate(total_person_days = as.numeric((end_date - index_date))+1, #end_date_outcome
+                  fup_end_unexposed = min(end_date, exp_date, na.rm = TRUE), #end_date_outcome
                   unexposed_person_days = as.numeric((fup_end_unexposed - index_date))+1,
                   exposed_person_days = as.numeric((exp_date - index_date))+1)
   
@@ -93,7 +101,8 @@ for (i in 1:nrow(active_analyses)) {
 # Save Table 2 -----------------------------------------------------------------
 print('Save Table 2')
 
-write.csv(table2, paste0("output/table2_",cohort,".csv"))
+write.csv(table2, "output/table2.csv")
+#write.csv(table2, paste0("output/table2_",cohort,".csv"))
 
 # Perform redaction ------------------------------------------------------------
 print('Perform redaction')
@@ -104,4 +113,5 @@ table2[,setdiff(colnames(table2),c("name","cohort","exposure","outcome","analysi
 # Save Table 2 -----------------------------------------------------------------
 print('Save rounded Table 2')
 
-write.csv(table2, paste0("output/table2_",cohort,"_rounded.csv"))
+write.csv(table2, paste0("output/table2","_rounded.csv"))
+#write.csv(table2, paste0("output/table2_",cohort,"_rounded.csv"))
