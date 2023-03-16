@@ -67,14 +67,14 @@ for (i in 1:nrow(active_analyses)) {
   print(paste0("Load data for ",active_analyses$name[i]))
   
   df <- read_rds(paste0("output/model_input-",active_analyses$name[i],".rds"))
-  df <- df[,c("patient_id","index_date","exp_date","out_date","end_date", "end_date_exposure","end_date_outcome")] #column restriction
+  df <- df[,c("patient_id","index_date","exp_date","out_date","end_date_exposure","end_date_outcome")] #column restriction
   
   ## Calculate person days -----------------------------------------------------
   print('Calculate person days')
   
   df <- df %>% 
     dplyr::mutate(total_person_days = as.numeric((end_date - index_date))+1, 
-                  fup_end_unexposed = min(end_date, exp_date, na.rm = TRUE), 
+                  fup_end_unexposed = min(end_date_outcome, exp_date, na.rm = TRUE), 
                   unexposed_person_days = as.numeric((fup_end_unexposed - index_date))+1,
                   exposed_person_days = as.numeric((exp_date - index_date))+1)
   

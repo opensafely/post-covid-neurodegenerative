@@ -92,7 +92,7 @@ for (i in 1:nrow(active_analyses)) {
   
   input <- input %>% 
     dplyr::rowwise() %>% 
-    dplyr::mutate(end_date = min(end_date_outcome, out_date, na.rm = TRUE))
+    dplyr::mutate(end_date_outcome = min(end_date_outcome, out_date, na.rm = TRUE))
   
   # Make model input: main -------------------------------------------------------
   
@@ -120,7 +120,7 @@ for (i in 1:nrow(active_analyses)) {
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE,]
     
     df <- df %>% 
-      dplyr::mutate(end_date = replace(end_date_outcome, which(sub_cat_covid19_hospital=="non_hospitalised"), exp_date-1),
+      dplyr::mutate(end_date_outcome = replace(end_date_outcome, which(sub_cat_covid19_hospital=="non_hospitalised"), exp_date-1),
                     exp_date = replace(exp_date, which(sub_cat_covid19_hospital=="non_hospitalised"), NA),
                     out_date = replace(out_date, which(out_date>end_date_outcome), NA))
     
@@ -144,7 +144,7 @@ for (i in 1:nrow(active_analyses)) {
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE,]
     
     df <- df %>% 
-      dplyr::mutate(end_date = replace(end_date_outcome, which(sub_cat_covid19_hospital=="hospitalised"), exp_date-1),
+      dplyr::mutate(end_date_outcome = replace(end_date_outcome, which(sub_cat_covid19_hospital=="hospitalised"), exp_date-1),
                     exp_date = replace(exp_date, which(sub_cat_covid19_hospital=="hospitalised"), NA),
                     out_date = replace(out_date, which(out_date>end_date_outcome), NA))
     
