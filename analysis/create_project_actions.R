@@ -23,20 +23,20 @@ cohort_to_run <- unique(active_analyses$cohort)
 
 # Determine which outputs are ready --------------------------------------------
 
-success <- readxl::read_excel("C:/Users/rs22981/OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx",
-                              sheet = "neurodegenerative",
-                      col_types = c("text","text", "text", "text", "text", "text",
-                                    "text", "text", "text", "text", "text",
-                                    "text", "text", "text", "text", "text", "text",
-                                    "skip", "skip"))
-
-success <- tidyr::pivot_longer(success,
-                               cols = setdiff(colnames(success),c("outcome","cohort")),
-                               names_to = "analysis")
-
-success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-",success$outcome)
-
-success <- success[grepl("success",success$value, ignore.case = TRUE),]
+# success <- readxl::read_excel("C:/Users/rs22981/OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx",
+#                               sheet = "neurodegenerative",
+#                       col_types = c("text","text", "text", "text", "text", "text",
+#                                     "text", "text", "text", "text", "text",
+#                                     "text", "text", "text", "text", "text", "text",
+#                                     "skip", "skip"))
+# 
+# success <- tidyr::pivot_longer(success,
+#                                cols = setdiff(colnames(success),c("outcome","cohort")),
+#                                names_to = "analysis")
+# 
+# success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-",success$outcome)
+# 
+# success <- success[grepl("success",success$value, ignore.case = TRUE),]
 
 # create action functions ----
 
@@ -97,13 +97,13 @@ convert_comment_actions <-function(yaml.txt){
 # #################################################
 
 # Updated to a typical action running Cox models for one outcome
-apply_model_function <- function(name, cohort, analysis, ipw, strata, 
-                                 covariate_sex, covariate_age, covariate_other, 
+apply_model_function <- function(name, cohort, analysis, ipw, strata,
+                                 covariate_sex, covariate_age, covariate_other,
                                  cox_start, cox_stop, study_start, study_stop,
                                  cut_points, controls_per_case,
                                  total_event_threshold, episode_event_threshold,
                                  covariate_threshold, age_spline){
-  
+
   splice(
     action(
       name = glue("make_model_input-{name}"),
@@ -113,7 +113,7 @@ apply_model_function <- function(name, cohort, analysis, ipw, strata,
         model_input = glue("output/model_input-{name}.rds")
       )
     ),
-    
+
     action(
       name = glue("describe_model_input-{name}"),
       run = glue("r:latest analysis/describe_file.R model_input-{name} rds"),
@@ -122,7 +122,7 @@ apply_model_function <- function(name, cohort, analysis, ipw, strata,
         describe_model_input = glue("output/describe-model_input-{name}.txt")
       )
     ),
-    
+
     #comment(glue("Cox model for {outcome} - {cohort}")),
     action(
       name = glue("cox_ipw-{name}"),
@@ -367,10 +367,10 @@ actions_list <- splice(
   # ),
   
   comment("Stage 5 - Run models"),
-  
+
   splice(
     # over outcomes
-    unlist(lapply(1:nrow(active_analyses), 
+    unlist(lapply(1:nrow(active_analyses),
                   function(x) apply_model_function(name = active_analyses$name[x],
                                                    cohort = active_analyses$cohort[x],
                                                    analysis = active_analyses$analysis[x],
@@ -391,20 +391,20 @@ actions_list <- splice(
                                                    age_spline = active_analyses$age_spline[x])), recursive = FALSE
     )
   ),
-  
-  comment("Stage 6 - make model output"),
 
-  action(
-    name = "make_model_output",
-    run = "r:latest analysis/model/make_model_output.R",
-    needs = as.list(paste0("cox_ipw-",success$name)),
-    moderately_sensitive = list(
-      model_output = glue("output/model_output.csv")
-    )
-  ),
+  # comment("Stage 6 - make model output"),
+  # 
+  # action(
+  #   name = "make_model_output",
+  #   run = "r:latest analysis/model/make_model_output.R",
+  #   needs = as.list(paste0("cox_ipw-",success$name)),
+  #   moderately_sensitive = list(
+  #     model_output = glue("output/model_output.csv")
+  #   )
+  # ),
   
   comment("Make Table 2"),
-  
+
   action(
     name = "table2",
     run = "r:latest analysis/descriptives/table2.R",

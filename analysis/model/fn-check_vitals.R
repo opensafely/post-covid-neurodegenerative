@@ -8,7 +8,7 @@ check_vitals <- function(df) {
   
   # Confirm vital dates are present in dataset and have date format
   
-  for (i in c("index_date","exp_date","end_date","out_date")) {
+  for (i in c("index_date","exp_date","end_date_outcome","out_date")) {
     if (!(i %in% colnames(df))) {
       stop(paste0(i," is not in dataset"))
     } else {
