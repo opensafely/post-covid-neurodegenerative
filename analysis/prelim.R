@@ -25,8 +25,14 @@ prelim_data <- prelim_data %>%
   mutate(index_vax = max(c(vax_date_covid_2_offset, delta_date), na.rm=T),
          index_unvax =  max(c(vax_date_eligible_offset, delta_date), na.rm=T),
          end_vax = min(c(death_date, delta_end_date), na.rm=T),
-         end_unvax = min(c(death_date, delta_end_date), na.rm=T),
-         end_prevax = min(c(death_date, delta_end_date), na.rm=T)) 
+         end_unvax_exposure = min(c(death_date, delta_end_date, vax_date_covid_1), na.rm=T),
+         end_unvax_outcome = min(c(death_date, delta_end_date), na.rm=T), 
+         #end_unvax = min(c(death_date, delta_end_date, vax_date_covid_1), na.rm=T),
+         #end_unvax = min(c(death_date, delta_end_date), na.rm=T), #extf
+         end_prevax_exposure = min(c(vax_date_eligible, death_date, vax_date_covid_1, all_eligible_date), na.rm=T),
+         end_prevax_outcome = min(c(death_date, delta_end_date), na.rm=T))
+         #end_prevax = min(c(vax_date_eligible, death_date, vax_date_covid_1, all_eligible_date), na.rm=T),
+         #end_prevax = min(c(death_date, delta_end_date), na.rm=T)) #extf
 
 
 #Write data to csv file 

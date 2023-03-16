@@ -47,8 +47,8 @@ stage1 <- function(cohort_name){
   
   #Rename the index_date_vax/unvax/prevax to index_date   
   input<- input %>%
-    rename(index_date=!!sym(paste0("index_date_",cohort_name))) %>%
-    rename(end_date = !!sym(paste0("end_date_",cohort_name)))
+    rename(index_date=!!sym(paste0("index_date_",cohort_name))) #%>%
+    #rename(end_date = !!sym(paste0("end_date_",cohort_name)))
   
   
   
@@ -286,7 +286,7 @@ stage1 <- function(cohort_name){
     cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 12 (Exclusion): Received mixed vaccine products before 07-05-2021")
     
     #Inclusions criteria 13: Index date is before cohort end date - will remove anyone who is not fully vaccinated by the cohort end date
-    input <- input %>% filter (!is.na(index_date) & index_date <= end_date & index_date >= start_date_delta)
+    input <- input %>% filter (!is.na(index_date) & index_date <= end_date_exposure & index_date >= start_date_delta)
     cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 13 (Inclusion): Patient index date is within the study start and end dates i.e patient is fully vaccinated before the study end date")
     
     
@@ -309,7 +309,7 @@ stage1 <- function(cohort_name){
     cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 9 (Exclusion): Missing or unknown JCVI group")
     
     #Inclusions criteria 10: Index date is before cohort end date - will remove anyone whose eligibility date + 84 days is after study end date (only those with unknown JCVI group)
-    input <- input %>% filter (!is.na(index_date) & index_date <= end_date & index_date >= start_date_delta)
+    input <- input %>% filter (!is.na(index_date) & index_date <= end_date_exposure & index_date >= start_date_delta)
     cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 10 (Inclusion): Patient index date is within the study start and end dates i.e patients eligibility date + 84 days is before the study end date")
     
   }
