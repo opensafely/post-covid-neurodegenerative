@@ -186,7 +186,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # HES
@@ -199,7 +199,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # ONS
@@ -212,7 +212,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # Combined alzheimer disease
@@ -231,7 +231,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # HES
@@ -244,7 +244,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # ONS
@@ -257,7 +257,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # Combined alzheimer disease
@@ -276,7 +276,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # HES
@@ -289,7 +289,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # ONS
@@ -302,7 +302,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # Combined other dementias
@@ -321,7 +321,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # HES
@@ -334,7 +334,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # ONS
@@ -347,7 +347,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # Combined unspecified dementias
@@ -371,7 +371,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # HES
@@ -384,7 +384,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
 
@@ -405,7 +405,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # HES
@@ -418,7 +418,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
             # ONS
@@ -431,7 +431,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # Combined parkinson
@@ -450,7 +450,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # HES - No ICD10 
@@ -472,7 +472,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # HES
@@ -485,7 +485,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
 
@@ -506,7 +506,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
 
@@ -526,7 +526,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # HES
@@ -539,7 +539,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # ONS
@@ -552,7 +552,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # Combined multiple sclerosis
@@ -571,7 +571,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
     # HES
@@ -584,7 +584,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
             "rate": "uniform",
-            "incidence": 0.1,
+            "incidence": 0.3,
         },
     ),
 
