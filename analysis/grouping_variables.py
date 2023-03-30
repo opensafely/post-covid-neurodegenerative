@@ -16,7 +16,7 @@ import pandas as pd
 ### import groups and dates
 # jcvi_groups
 jcvi_groups = pd.read_csv(
-    filepath_or_buffer='output/vax_jcvi_groups.csv',
+    filepath_or_buffer='output/vax_jcvi_groups.csv.gz',
     dtype=str
 )
 dict_jcvi = {jcvi_groups['group'][i]: jcvi_groups['definition'][i] for i in jcvi_groups.index}

@@ -410,32 +410,6 @@ for (c in cohorts) {
   
 }
 
-# Add prevax extended follow-up analyses ---------------------------------------
-
-# tmp <- df[df$cohort=="prevax" & 
-#             (df$analysis %in% c("main",
-#                                 "sub_covid_hospitalised",
-#                                 "sub_covid_nonhospitalised") |
-#                df$outcome %in% outcomes_runall),]
-# 
-# tmp$cohort <- paste0(tmp$cohort,"_extf")
-# tmp$study_stop <- "2021-12-14"
-# tmp$cut_points <- "28;197;365;714"
-# 
-# df <- rbind(df,tmp)
-
-# Add unvax extended follow-up analyses ----------------------------------------
-
-# tmp <- df[df$cohort=="unvax" & 
-#             (df$analysis %in% c("main",
-#                                 "sub_covid_hospitalised",
-#                                 "sub_covid_nonhospitalised") |
-#                df$outcome %in% outcomes_runall),]
-# 
-# tmp$cohort <- paste0(tmp$cohort,"_extf")
-# 
-# df <- rbind(df,tmp)
-
 # Assign unique name -----------------------------------------------------------
 
 df$name <- paste0("cohort_",df$cohort, "-", 
