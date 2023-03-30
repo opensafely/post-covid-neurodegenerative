@@ -115,12 +115,6 @@ saveRDS(df1, file = paste0("output/input_",cohort_name,".rds"), compress = "gzip
 
 message(paste0("Input data saved successfully with N = ", nrow(df1), " rows"))
 
-# SAVE
-
-saveRDS(df1, file = paste0("output/input_",cohort_name,".rds"))
-
-print(paste0(cohort_name," ","Dataset saved successfully"))
-
 # Describe data --------------------------------------------------------------
 
 sink(paste0("output/not-for-review/describe_input_",cohort_name,"_stage0.txt"))
@@ -136,6 +130,8 @@ df2 <- df %>% select(starts_with(c("patient_id","tmp_out_date","out_date")))
 sink(paste0("output/not-for-review/describe_venn_",cohort_name,".txt"))
 print(Hmisc::describe(df2))
 sink()
+
+# SAVE
 
 saveRDS(df2, file = paste0("output/venn_",cohort_name,".rds"))
 

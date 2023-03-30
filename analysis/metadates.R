@@ -52,7 +52,7 @@ tribble(
     "99", "DEFAULT",
 )
 
-readr::write_csv(jcvi_groups,here::here( "output","vax_jcvi_groups.csv"))
+readr::write_csv(jcvi_groups,here::here( "output","vax_jcvi_groups.csv.gz"))
 
 # create elig_dates ----
 elig_dates <-
@@ -89,4 +89,4 @@ tribble(
     "2100-12-31", "DEFAULT", "NA",
 )
 
-readr::write_csv(elig_dates, here::here("output","vax_eligible_dates.csv"))
+readr::write_csv(elig_dates, here::here("output","vax_eligible_dates.csv.gz"))
