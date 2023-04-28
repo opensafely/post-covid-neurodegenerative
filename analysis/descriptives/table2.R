@@ -29,16 +29,8 @@ if(length(args)==0){
 # Load active analyses ---------------------------------------------------------
 print('Load active analyses')
 
-#active_analyses <- readr::read_rds("lib/active_analyses.rds")
-#active_analyses <- active_analyses[active_analyses$cohort==cohort,]
-
-active_analyses <- readr::read_rds("lib/active_analyses.rds") %>% 
-  filter(outcome %in% c("out_date_alzheimer_disease", "out_date_parkinson_disease", "out_date_any_dementia", "out_date_rem_sleep_disorder",
-                        "out_date_migraine", "out_date_vascular_dementia", "out_date_other_dementias", "out_date_unspecified_dementias")) %>% #outcomes
-  filter(analysis %in% c("main", "sub_covid_hospitalised","sub_covid_nonhospitalised","sub_covid_history")) #sub-analysis
-  
-#outcomes to be reviewed
-#"out_date_cognitive_impairment", "out_date_multiple_sclerosis", "out_date_restless_leg_syndrome", "out_date_motor_neurone_disease"
+active_analyses <- readr::read_rds("lib/active_analyses.rds")
+active_analyses <- active_analyses[active_analyses$cohort==cohort,]
 
 # Make empty table 2 -----------------------------------------------------------
 print('Make empty table 2')
@@ -67,16 +59,38 @@ for (i in 1:nrow(active_analyses)) {
   print(paste0("Load data for ",active_analyses$name[i]))
   
   df <- read_rds(paste0("output/model_input-",active_analyses$name[i],".rds"))
-  df <- df[,c("patient_id","index_date","exp_date","out_date","end_date_exposure","end_date_outcome")] #column restriction
+  df <- df[,c("patient_id","index_date","exp_date","out_date","end_date_exposure","end_date_outcome")]
   
-  ## Calculate person days -----------------------------------------------------
-  print('Calculate person days')
+  # Remove exposures and outcomes outside follow-up ----------------------------
+  print("Remove exposures and outcomes outside follow-up")
   
   df <- df %>% 
-    dplyr::mutate(total_person_days = as.numeric((end_date - index_date))+1, 
-                  fup_end_unexposed = min(end_date_outcome, exp_date, na.rm = TRUE), 
-                  unexposed_person_days = as.numeric((fup_end_unexposed - index_date))+1,
-                  exposed_person_days = as.numeric((exp_date - index_date))+1)
+    dplyr::mutate(exposure = replace(exp_date, which(exp_date>end_date_exposure | exp_date<index_date), NA),
+                  outcome = replace(out_date, which(out_date>end_date_outcome | out_date<index_date), NA))
+  
+  ## Make exposed subset -------------------------------------------------------
+  print('Make exposed subset')
+  
+  exposed <- df[!is.na(df$exp_date),c("patient_id","exp_date","out_date","end_date_outcome")]
+  
+  exposed <- exposed %>% dplyr::mutate(fup_start = exp_date,
+                                       fup_end = min(end_date_outcome, out_date, na.rm = TRUE))
+  
+  exposed <- exposed[exposed$fup_start<=exposed$fup_end,]
+  
+  exposed <- exposed %>% dplyr::mutate(person_days = as.numeric((fup_end - fup_start))+1)
+  
+  ## Make unexposed subset -----------------------------------------------------
+  print('Make unexposed subset')
+  
+  unexposed <- df[,c("patient_id","index_date","exp_date","out_date","end_date_outcome")]
+  
+  unexposed <- unexposed %>% dplyr::mutate(fup_start = index_date,
+                                           fup_end = min(exp_date, end_date_outcome, out_date, na.rm = TRUE))
+  
+  unexposed <- unexposed[unexposed$fup_start<=unexposed$fup_end,]
+  
+  unexposed <- unexposed %>% dplyr::mutate(person_days = as.numeric((fup_end - fup_start))+1)
   
   ## Append to table 2 ---------------------------------------------------------
   print('Append to table 2')
@@ -86,14 +100,14 @@ for (i in 1:nrow(active_analyses)) {
                                exposure = active_analyses$exposure[i],
                                outcome = active_analyses$outcome[i],
                                analysis = active_analyses$analysis[i],
-                               unexposed_person_days = sum(df$unexposed_person_days),
-                               unexposed_events = nrow(df[!is.na(df$out_date) & is.na(df$exp_date),]),
-                               exposed_person_days = sum(df$exposed_person_days, na.rm = TRUE),
-                               exposed_events = nrow(df[!is.na(df$out_date) & !is.na(df$exp_date),]),
-                               total_person_days = sum(df$total_person_days),
-                               total_events = nrow(df[!is.na(df$out_date),]),
-                               day0_events = nrow(df[!is.na(df$out_date) & !is.na(df$exp_date) & df$exp_date==df$out_date,]),
-                               total_exposed = nrow(df[!is.na(df$exp_date),]),
+                               unexposed_person_days = sum(unexposed$person_days),
+                               unexposed_events = nrow(unexposed[!is.na(unexposed$out_date),]),
+                               exposed_person_days = sum(exposed$person_days, na.rm = TRUE),
+                               exposed_events = nrow(exposed[!is.na(exposed$out_date),]),
+                               total_person_days = sum(unexposed$person_days) + sum(exposed$person_days),
+                               total_events = nrow(unexposed[!is.na(unexposed$out_date),]) + nrow(exposed[!is.na(exposed$out_date),]),
+                               day0_events = nrow(exposed[exposed$exp_date==exposed$out_date,]),
+                               total_exposed = nrow(exposed),
                                sample_size = nrow(df))
   
 }
@@ -101,8 +115,7 @@ for (i in 1:nrow(active_analyses)) {
 # Save Table 2 -----------------------------------------------------------------
 print('Save Table 2')
 
-write.csv(table2, "output/table2.csv")
-#write.csv(table2, paste0("output/table2_",cohort,".csv"))
+write.csv(table2, paste0("output/table2_",cohort,".csv"), row.names = FALSE)
 
 # Perform redaction ------------------------------------------------------------
 print('Perform redaction')
@@ -113,5 +126,4 @@ table2[,setdiff(colnames(table2),c("name","cohort","exposure","outcome","analysi
 # Save Table 2 -----------------------------------------------------------------
 print('Save rounded Table 2')
 
-write.csv(table2, paste0("output/table2","_rounded.csv"))
-#write.csv(table2, paste0("output/table2_",cohort,"_rounded.csv"))
+write.csv(table2, paste0("output/table2_",cohort,"_rounded.csv"), row.names = FALSE)
