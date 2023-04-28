@@ -160,6 +160,24 @@ stage1_data_cleaning <- function(cohort){
   )
 }
 
+# Create function for table1 --------------------------------------------
+
+table1 <- function(cohort){
+  splice(
+    comment(glue("Table 1 - {cohort}")),
+    action(
+      name = glue("table1_{cohort}"),
+      run = "r:latest analysis/table1.R",
+      arguments = c(cohort),
+      needs = list(glue("stage1_data_cleaning_{cohort}")),
+      moderately_sensitive = list(
+        table1 = glue("output/table1_{cohort}.csv"),
+        table1_rounded = glue("output/table1_{cohort}_rounded.csv")
+      )
+    )
+  )
+}
+
 # #################################################
 # ## Function for typical actions to analyse data #
 # #################################################
@@ -335,6 +353,15 @@ actions_list <- splice(
   splice(
     unlist(lapply(cohorts, 
                   function(x) stage1_data_cleaning(cohort = x)), 
+           recursive = FALSE
+    )
+  ),
+  
+  ## Table 1 -------------------------------------------------------------------
+  
+  splice(
+    unlist(lapply(unique(active_analyses$cohort), 
+                  function(x) table1(cohort = x)), 
            recursive = FALSE
     )
   ),
