@@ -1,4 +1,6 @@
-# Impact of vaccination on the association of COVID-19 with neurodegenerative diseases: an OpenSAFELY cohort study using linked electronic health records
+# Impact of COVID-19 infection on neurodegenerative diseases in vaccinated and unvaccinated individuals: an OpenSAFELY cohort study
+
+<!---# Impact of vaccination on the association of COVID-19 with neurodegenerative diseases: an OpenSAFELY cohort study using linked electronic health records --->
 
 Abstract: The incidence of neurodegenerative diseases _____ after COVID-19 diagnosis. How COVID-19 vaccination and different SARS-CoV-2 variants impact on this increase is unclear. The objective was to quantify associations between COVID-19 diagnosis and neurodegenerative diseases in different cohorts (prevaccinated, vaccinated, and unvaccinated) and variant eras in England.
 
