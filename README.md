@@ -31,6 +31,9 @@ Below is a description of each action in the [`project.yaml`](./project.yaml). A
     -   Runs [`Stage1_data_cleaning.R`](./analysis/preprocess/Stage1_data_cleaning.R)
     -   Applies quality assurance rule and inclusion/exclusion criteria
     -   Outputted dataset is analysis ready
+-   `table1_{cohort}`
+    -   Runs [`table1.R`](./analysis/table1.R) which calculates descriptive statistics for pre- and post-exposure events for all outcomes and subgroups.
+    -   Used for Table 1 in the manuscript
 -   `table2_{cohort}`
     -   Runs [`table2.R`](./analysis/descriptives/table2.R) which calculates pre- and post-exposure event counts and person days of follow-up for all outcomes and subgroups.
     -   Used for Table 2 in the manuscript
