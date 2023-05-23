@@ -35,7 +35,8 @@ df <- readr::read_rds(paste0("output/input_",cohort,"_stage1.rds"))
 # Filter to population of interest ---------------------------------------------
 print("Fiter Covid history population")
 
-df <- df[df$sub_bin_covid19_confirmed_history == covid_history,]
+df <- df[df$sub_bin_covid19_confirmed_history==FALSE,] #MH
+#df <- df[df$sub_bin_covid19_confirmed_history == covid_history,]
 
 # Create exposure indicator ----------------------------------------------------
 print("Create exposure indicator")
