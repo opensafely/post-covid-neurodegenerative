@@ -20,8 +20,10 @@ args <- commandArgs(trailingOnly=TRUE)
 
 if(length(args)==0){
   cohort <- "vax"
+  covid_history <- "FALSE"
 } else {
   cohort <- args[[1]]
+  covid_history <- args[[2]]
 }
 
 
@@ -29,6 +31,11 @@ if(length(args)==0){
 print("Load data")
 
 df <- readr::read_rds(paste0("output/input_",cohort,"_stage1.rds"))
+
+# Filter to population of interest ---------------------------------------------
+print("Fiter Covid history population")
+
+df <- df[df$sub_bin_covid19_confirmed_history == covid_history,]
 
 # Create exposure indicator ----------------------------------------------------
 print("Create exposure indicator")

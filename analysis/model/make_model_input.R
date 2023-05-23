@@ -379,4 +379,165 @@ for (i in 1:nrow(active_analyses)) {
     rm(df)
     
   }
+  
+  # Make model input: sub_male_age_18_39 -----------------------------------------
+  
+  if (active_analyses$analysis[i]=="sub_male_age_18_39") {
+    
+    print('Make model input: sub_male_age_18_39')
+    
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE & 
+                  input$cov_cat_sex=="Male" & 
+                  input$cov_num_age>=18 &
+                  input$cov_num_age<40,]
+    
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_sex")] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+    
+  }
+  
+  # Make model input: sub_male_age_40_59 -----------------------------------------
+  
+  if (active_analyses$analysis[i]=="sub_male_age_40_59") {
+    
+    print('Make model input: sub_male_age_40_59')
+    
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE & 
+                  input$cov_cat_sex=="Male" & 
+                  input$cov_num_age>=40 &
+                  input$cov_num_age<60,]
+    
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_sex")] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+    
+  }
+  
+  # Make model input: sub_male_age_60_79 -----------------------------------------
+  
+  if (active_analyses$analysis[i]=="sub_male_age_60_79") {
+    
+    print('Make model input: sub_male_age_60_79')
+    
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE & 
+                  input$cov_cat_sex=="Male" & 
+                  input$cov_num_age>=60 &
+                  input$cov_num_age<80,]
+    
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_sex")] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+    
+  }
+  
+  # Make model input: sub_male_age_80_110 ----------------------------------------
+  
+  if (active_analyses$analysis[i]=="sub_male_age_80_110") {
+    
+    print('Make model input: sub_male_age_80_110')
+    
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE & 
+                  input$cov_cat_sex=="Male" & 
+                  input$cov_num_age>=80 &
+                  input$cov_num_age<111,]
+    
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_sex")] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+    
+  }
+  
+  # Make model input: sub_female_age_18_39 ---------------------------------------
+  
+  if (active_analyses$analysis[i]=="sub_female_age_18_39") {
+    
+    print('Make model input: sub_female_age_18_39')
+    
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE & 
+                  input$cov_cat_sex=="Female" & 
+                  input$cov_num_age>=18 &
+                  input$cov_num_age<40,]
+    
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_sex")] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+    
+  }
+  
+  # Make model input: sub_female_age_40_59 ---------------------------------------
+  
+  if (active_analyses$analysis[i]=="sub_male_age_40_59") {
+    
+    print('Make model input: sub_female_age_40_59')
+    
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE & 
+                  input$cov_cat_sex=="Female" & 
+                  input$cov_num_age>=40 &
+                  input$cov_num_age<60,]
+    
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_sex")] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+    
+  }
+  
+  # Make model input: sub_female_age_60_79 ---------------------------------------
+  
+  if (active_analyses$analysis[i]=="sub_female_age_60_79") {
+    
+    print('Make model input: sub_female_age_60_79')
+    
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE & 
+                  input$cov_cat_sex=="Female" & 
+                  input$cov_num_age>=60 &
+                  input$cov_num_age<80,]
+    
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_sex")] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+    
+  }
+  
+  # Make model input: sub_female_age_80_110 --------------------------------------
+  
+  if (active_analyses$analysis[i]=="sub_female_age_80_110") {
+    
+    print('Make model input: sub_female_age_80_110')
+    
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE & 
+                  input$cov_cat_sex=="Female" & 
+                  input$cov_num_age>=80 &
+                  input$cov_num_age<111,]
+    
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_cat_sex")] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+    
+  }
+  
 }
