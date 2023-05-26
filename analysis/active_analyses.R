@@ -426,7 +426,7 @@ for (c in cohorts) {
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
-                         age_spline = TRUE,
+                         age_spline = FALSE, #squared age
                          analysis = "sub_male_age_18_39")
     
     ## analysis: sub_male_age_40_59 -------------------------------------------
@@ -448,7 +448,7 @@ for (c in cohorts) {
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
-                         age_spline = TRUE,
+                         age_spline = FALSE, #squared age
                          analysis = "sub_male_age_40_59")
     
     ## analysis: sub_male_age_60_79 -------------------------------------------
@@ -470,7 +470,7 @@ for (c in cohorts) {
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
-                         age_spline = TRUE,
+                         age_spline = FALSE, #squared age
                          analysis = "sub_male_age_60_79")
     
     ## analysis: sub_male_age_80_110 -------------------------------------------
@@ -492,7 +492,7 @@ for (c in cohorts) {
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
-                         age_spline = TRUE,
+                         age_spline = FALSE, #squared age
                          analysis = "sub_male_age_80_110")
     
     ## analysis: sub_female_age_18_39 -------------------------------------------
@@ -514,7 +514,7 @@ for (c in cohorts) {
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
-                         age_spline = TRUE,
+                         age_spline = FALSE, #squared age
                          analysis = "sub_female_age_18_39")
     
     ## analysis: sub_female_age_40_59 -------------------------------------------
@@ -536,7 +536,7 @@ for (c in cohorts) {
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
-                         age_spline = TRUE,
+                         age_spline = FALSE, #squared age
                          analysis = "sub_female_age_40_59")
     
     ## analysis: sub_female_age_60_79 -------------------------------------------
@@ -558,7 +558,7 @@ for (c in cohorts) {
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
-                         age_spline = TRUE,
+                         age_spline = FALSE, #squared age
                          analysis = "sub_female_age_60_79")
     
     ## analysis: sub_female_age_80_110 -------------------------------------------
@@ -580,7 +580,7 @@ for (c in cohorts) {
                          total_event_threshold = total_event_threshold,
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
-                         age_spline = TRUE,
+                         age_spline = FALSE, #squared age
                          analysis = "sub_female_80_110")
     
   }
