@@ -482,7 +482,7 @@ for (i in 1:nrow(active_analyses)) {
   
   # Make model input: sub_female_age_40_59 ---------------------------------------
   
-  if (active_analyses$analysis[i]=="sub_male_age_40_59") {
+  if (active_analyses$analysis[i]=="sub_female_age_40_59") {
     
     print('Make model input: sub_female_age_40_59')
     
