@@ -581,7 +581,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = FALSE, #squared age
-                         analysis = "sub_female_80_110")
+                         analysis = "sub_female_age_80_110")
     
   }
   
