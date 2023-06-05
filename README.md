@@ -1,4 +1,6 @@
-# Impact of vaccination on the association of COVID-19 with neurodegenerative diseases: an OpenSAFELY cohort study using linked electronic health records
+# Impact of COVID-19 infection on neurodegenerative diseases in vaccinated and unvaccinated individuals: an OpenSAFELY cohort study
+
+<!---# Impact of vaccination on the association of COVID-19 with neurodegenerative diseases: an OpenSAFELY cohort study using linked electronic health records --->
 
 Abstract: The incidence of neurodegenerative diseases _____ after COVID-19 diagnosis. How COVID-19 vaccination and different SARS-CoV-2 variants impact on this increase is unclear. The objective was to quantify associations between COVID-19 diagnosis and neurodegenerative diseases in different cohorts (prevaccinated, vaccinated, and unvaccinated) and variant eras in England.
 
@@ -31,6 +33,9 @@ Below is a description of each action in the [`project.yaml`](./project.yaml). A
     -   Runs [`Stage1_data_cleaning.R`](./analysis/preprocess/Stage1_data_cleaning.R)
     -   Applies quality assurance rule and inclusion/exclusion criteria
     -   Outputted dataset is analysis ready
+-   `table1_{cohort}`
+    -   Runs [`table1.R`](./analysis/table1.R) which calculates descriptive statistics for pre- and post-exposure events for all outcomes and subgroups.
+    -   Used for Table 1 in the manuscript
 -   `table2_{cohort}`
     -   Runs [`table2.R`](./analysis/descriptives/table2.R) which calculates pre- and post-exposure event counts and person days of follow-up for all outcomes and subgroups.
     -   Used for Table 2 in the manuscript

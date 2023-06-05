@@ -24,7 +24,7 @@ ratio_jcvi = {jcvi_groups['group'][i]: 1/len(jcvi_groups.index) for i in jcvi_gr
 
 # elig_dates
 elig_dates = pd.read_csv(
-    filepath_or_buffer='output/vax_eligible_dates.csv',
+    filepath_or_buffer='output/vax_eligible_dates.csv.gz',
     dtype=str
 )
 dict_elig = { elig_dates['date'][i] : elig_dates['description'][i] for i in elig_dates.index }
