@@ -23,21 +23,21 @@ cohorts <- unique(active_analyses$cohort)
 
 # Determine which outputs are ready --------------------------------------------
 
-success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx",
-                              sheet = "neuro_extf",
-                      col_types = c("text","text", "text", "text", "text", "text",
-                                    "text", "text", "text", "text", "text",
-                                    "text", "text", "text", "text", "text", "text",
-                                    "text", "text", "text", "text", "text", "text", "text", "text",
-                                    "skip", "skip"))
-
-success <- tidyr::pivot_longer(success,
-                               cols = setdiff(colnames(success),c("outcome","cohort")),
-                               names_to = "analysis")
-
-success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-",success$outcome)
-
-success <- success[grepl("success",success$value, ignore.case = TRUE),]
+# success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx",
+#                               sheet = "neuro_extf",
+#                       col_types = c("text","text", "text", "text", "text", "text",
+#                                     "text", "text", "text", "text", "text",
+#                                     "text", "text", "text", "text", "text", "text",
+#                                     "text", "text", "text", "text", "text", "text", "text", "text",
+#                                     "skip", "skip"))
+# 
+# success <- tidyr::pivot_longer(success,
+#                                cols = setdiff(colnames(success),c("outcome","cohort")),
+#                                names_to = "analysis")
+# 
+# success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-",success$outcome)
+# 
+# success <- success[grepl("success",success$value, ignore.case = TRUE),]
 
 # create action functions ----
 
@@ -208,16 +208,16 @@ apply_model_function <- function(name, cohort, analysis, ipw, strata,
       moderately_sensitive = list(
         describe_model_input = glue("output/describe-model_input-{name}.txt")
       )
-    ),
+    )#,
 
-    #comment(glue("Cox model for {outcome} - {cohort}")),
-    action(
-      name = glue("cox_ipw-{name}"),
-      run = glue("cox-ipw:v0.0.22 --df_input=model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} --df_output=model_output-{name}.csv"),
-      needs = list(glue("make_model_input-{name}")),
-      moderately_sensitive = list(
-        model_output = glue("output/model_output-{name}.csv"))
-    )
+  #   #comment(glue("Cox model for {outcome} - {cohort}")),
+  #   action(
+  #     name = glue("cox_ipw-{name}"),
+  #     run = glue("cox-ipw:v0.0.22 --df_input=model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} --df_output=model_output-{name}.csv"),
+  #     needs = list(glue("make_model_input-{name}")),
+  #     moderately_sensitive = list(
+  #       model_output = glue("output/model_output-{name}.csv"))
+  #   )
   )
 }
 
@@ -401,27 +401,27 @@ actions_list <- splice(
                   function(x) table2(cohort = x)), 
            recursive = FALSE
     )
-  ),
+  )#,
   
   ## Venn data -----------------------------------------------------------------
   
-  splice(
-    unlist(lapply(unique(active_analyses$cohort), 
-                  function(x) venn(cohort = x)), 
-           recursive = FALSE
-    )
-  ),
-  
-  comment("Stage 6 - make model output"),
-
-  action(
-    name = "make_model_output",
-    run = "r:latest analysis/model/make_model_output.R",
-    needs = as.list(paste0("cox_ipw-",success$name)),
-    moderately_sensitive = list(
-      model_output = glue("output/model_output.csv")
-    )
-  )
+  # splice(
+  #   unlist(lapply(unique(active_analyses$cohort), 
+  #                 function(x) venn(cohort = x)), 
+  #          recursive = FALSE
+  #   )
+  # ),
+  # 
+  # comment("Stage 6 - make model output"),
+  # 
+  # action(
+  #   name = "make_model_output",
+  #   run = "r:latest analysis/model/make_model_output.R",
+  #   needs = as.list(paste0("cox_ipw-",success$name)),
+  #   moderately_sensitive = list(
+  #     model_output = glue("output/model_output.csv")
+  #   )
+  # )
 )
 
 ## combine everything ----
