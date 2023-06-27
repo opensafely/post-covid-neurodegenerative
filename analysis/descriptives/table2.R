@@ -86,7 +86,8 @@ for (i in 1:nrow(active_analyses)) {
   unexposed <- df[,c("patient_id","index_date","exp_date","out_date","end_date_outcome")]
   
   unexposed <- unexposed %>% dplyr::mutate(fup_start = index_date,
-                                           fup_end = min(exp_date, end_date_outcome, out_date, na.rm = TRUE))
+                                           fup_end = min(exp_date-1, end_date_outcome, out_date, na.rm = TRUE),
+                                           out_date = replace(out_date, which(out_date>fup_end), NA))
   
   unexposed <- unexposed[unexposed$fup_start<=unexposed$fup_end,]
   
@@ -106,7 +107,7 @@ for (i in 1:nrow(active_analyses)) {
                                exposed_events = nrow(exposed[!is.na(exposed$out_date),]),
                                total_person_days = sum(unexposed$person_days) + sum(exposed$person_days),
                                total_events = nrow(unexposed[!is.na(unexposed$out_date),]) + nrow(exposed[!is.na(exposed$out_date),]),
-                               day0_events = nrow(exposed[exposed$exp_date==exposed$out_date,]),
+                               day0_events = nrow(exposed[exposed$exp_date==exposed$out_date & !is.na(exposed$exp_date) & !is.na(exposed$out_date),]),
                                total_exposed = nrow(exposed),
                                sample_size = nrow(df))
   
