@@ -12,6 +12,7 @@ library(flextable)
 library(officer)
 library(scales)
 library(broman)
+library(huxtable)
 
 #Directories
 results_dir <- "C:/Users/rs22981/GitHub/post-covid-neurodegenerative/output/" #change according to your repo
@@ -94,41 +95,25 @@ table2$period <- factor(table2$period, levels = c("No COVID-19",
 table2 <- table2[order(table2$outcome, table2$period),]
 
 table2 <- table2 %>%
-  rename_with(~ gsub("...", "", .x, fixed = T))
+  rename_with(~ gsub("...", "", .x, fixed = T)) 
+
+colnames(table2)[1:2] <- ""
 
 #Format table for Word ---------------------------------------------------------
+#Huxtable + flextable
 table2_format <- table2 %>%
-  flextable::flextable() %>% theme_vanilla() %>% #theme could be removed
-  padding(padding = 0, part = "all") %>% 
-  merge_v(~ outcome) %>%
-  add_header_row(values = c("", "", "Pre-vaccination cohort (Jan 1 2020 to Dec 14 2021)", "", "Vaccinated cohort (June 1 to Dec 14 2021)", "", "Unvaccinated cohort (June 1 to Dec 14 2021)", "")) %>%
-  set_caption(as_paragraph(as_chunk("Table 2. Number of arterial thrombotic, venous thrombotic, and other cardiovascular events in the pre-vaccination, vaccinated and unvaccinated cohorts, with person-years of follow-up, by COVID-19 severity. *Incidence rates are per 100,000 person-years", 
-    props = fp_text_default(bold = TRUE))), align_with_table = F) %>%
-  set_header_labels("outcome" = "Event", 'period' = 'COVID-19 severity', 
-                    'Event/person-years3' = 'Event/person-years', 'Incidence rate*4' = 'Incidence rate*',
-                    'Event/person-years5' = 'Event/person-years', 'Incidence rate*6' = 'Incidence rate*', 
-                    'Event/person-years7' = 'Event/person-years', 'Incidence rate*8' = 'Incidence rate*') %>%
-  bold(j = 1, bold = TRUE, part = "body") %>%
-  align(j = c(3:8), align = "right", part = "body") %>%
-  fontsize(size = 10)
+  as_huxtable() %>%
+  #Rows will change according to each repo
+  merge_repeated_rows(col = 1) %>%
+  theme_article() %>%
+  insert_row(c("Event", "COVID-19 severity", "Pre-vaccination cohort (N=18,210,937)", "", "Vaccinated cohort (N=13,572,399)", "", "Unvaccinated cohort (N=3,161,485)"), fill = "", after = 0) %>%
+  set_top_border(1) %>%
+  set_bold(1:2, 1:8, TRUE) %>%
+  #Change type of events according to each repo
+  set_caption("Table 2: Number neurodegenerative events in the pre-vaccination, vaccinated and unvaccinated cohorts, with person-years of follow-up, by COVID-19 severity. *Incidence rates are per 100,000 person-years") 
 
-# Set table 2 properties 
-sect_properties <- prop_section(
-  page_size = page_size(
-    orient = "landscape",
-    width = 8.3, height = 11.7
-  ),
-  type = "continuous",
-  page_margins = page_mar()
-)
+#Save table 2 
+quick_docx(table2_format, file = paste0(output_dir, "table2_formatted_test.docx"))
 
-#Save table 2
-save_as_docx(table2_format, path = paste0(output_dir, "table2_formatted.docx"), pr_section = sect_properties)
-#write.csv(table2, paste0(output_dir,"table2.csv"),row.names = F)
-
-#Notes 
-#While using word:
-#1. Change margins to narrow.
-#2. Merge horizontally Pre-vaccination, vaccionation and unvaccinated with the right cell, respectivelly.
-#3. IF theme_vanilla is not used, you will need to add borders between each covariate, or remove unnecessary lines.
-#4. Change font, CVD uses "Calibri".
+#Note
+#While using word: apply table2 format from CVD manuscript.
