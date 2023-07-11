@@ -13,7 +13,7 @@ library(dplyr)
 ## defaults ----
 defaults_list <- list(
   version = "3.0",
-  expectations= list(population_size=200000L)
+  expectations= list(population_size=350000L)
 )
 
 active_analyses <- read_rds("lib/active_analyses.rds")
@@ -23,7 +23,7 @@ cohorts <- unique(active_analyses$cohort)
 
 # Determine which outputs are ready --------------------------------------------
 
-success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx",
+success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx", 
                               sheet = "neuro_extf",
                       col_types = c("text","text", "text", "text", "text", "text",
                                     "text", "text", "text", "text", "text",
@@ -168,7 +168,7 @@ table1 <- function(cohort){
     comment(glue("Table 1 - {cohort}")),
     action(
       name = glue("table1_{cohort}"),
-      run = "r:latest analysis/table1.R",
+      run = "r:latest analysis/descriptives/table1.R",
       arguments = c(cohort),
       needs = list(glue("stage1_data_cleaning_{cohort}")),
       moderately_sensitive = list(

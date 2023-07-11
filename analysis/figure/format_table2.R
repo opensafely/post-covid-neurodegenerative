@@ -18,6 +18,8 @@ library(huxtable)
 results_dir <- "C:/Users/rs22981/GitHub/post-covid-neurodegenerative/output/" #change according to your repo
 output_dir <- "C:/Users/rs22981/Opensafely/Table2_test/" #change according to your repo
 
+results_dir <- "C:/Users/rs22981/Opensafely/Table2_test/"
+
 ###############################################
 # 1. CLEAN TABLE 2 FUNCTION
 ###############################################
@@ -68,35 +70,32 @@ clean_table_2 <- function(df) {
   
 }
 
-#Load files
-table2_prevax <- read.csv(paste0(results_dir,"table2_prevax_rounded.csv")) 
-table2_unvax <- read.csv(paste0(results_dir,"table2_unvax_rounded.csv")) 
-table2_vax <- read.csv(paste0(results_dir,"table2_vax_rounded.csv")) 
+# Read datasets before preprocessing
+dataset_names <- c("prevax", "vax", "unvax")
+#Load datasets as list
+df_list_t2 <- lapply(dataset_names, function(name) read.csv(paste0(results_dir, "table2_", name, "_rounded.csv")))
 
-#Apply clean table 2 function --------------------------------------------------
-table2_prevax_format <- clean_table_2(table2_prevax)
-table2_vax_format <- clean_table_2(table2_vax)
-table2_unvax_format <- clean_table_2(table2_unvax)
 
-#Remove columns (period, outcom) from vax and unvax tables ---------------------
-table2_vax_format <- table2_vax_format %>%
-  select(-c(period, outcome))
-table2_unvax_format <- table2_unvax_format %>%
-  select(-c(period, outcome))
-
-#Combine tables by columns -----------------------------------------------------
-table2 <- bind_cols(list(table2_prevax_format, table2_vax_format, table2_unvax_format))
+#Apply clean table 1 function
+table2 <- lapply(df_list_t2, clean_table_2) %>% 
+  #Combine tables into 1
+  bind_cols() %>%
+  #remove repeated columns: Characteristics and sub-characteristics from vax and unvax
+  select(-c(5:6, 9:10),)
 
 # Add labels, re-order rows, a clean names -------------------------------------
-
-table2$period <- factor(table2$period, levels = c("No COVID-19",
+table2 <- table2 %>%
+  #rename all columns (part 1)
+  rename_with(~ gsub("...", "", .x, fixed = T)) %>%
+  #rename 2 columns(part 2)
+  rename("Event/person-years" = "Event/person-years3",
+         "Incidence rate*" = "Incidence rate*4")
+#Reorder rows
+table2$period2 <- factor(table2$period2, levels = c("No COVID-19",
                                                   "Hospitalised COVID-19",
                                                   "Non-hospitalised COVID-19"))
-table2 <- table2[order(table2$outcome, table2$period),]
-
-table2 <- table2 %>%
-  rename_with(~ gsub("...", "", .x, fixed = T)) 
-
+table2 <- table2[order(table2$outcome1, table2$period2),]
+#Remove column names (according to CVD manuscript)
 colnames(table2)[1:2] <- ""
 
 #Format table for Word ---------------------------------------------------------
@@ -113,7 +112,7 @@ table2_format <- table2 %>%
   set_caption("Table 2: Number neurodegenerative events in the pre-vaccination, vaccinated and unvaccinated cohorts, with person-years of follow-up, by COVID-19 severity. *Incidence rates are per 100,000 person-years") 
 
 #Save table 2 
-quick_docx(table2_format, file = paste0(output_dir, "table2_formatted_test.docx"))
+quick_docx(table2_format, file = paste0(output_dir, "table2_formatted.docx"))
 
 #Note
 #While using word: apply table2 format from CVD manuscript.

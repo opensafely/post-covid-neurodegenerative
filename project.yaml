@@ -2,7 +2,7 @@ version: '3.0'
 
 expectations:
 
-  population_size: 200000
+  population_size: 350000
 
 actions:
 
@@ -186,7 +186,7 @@ actions:
   ## Table 1 - prevax 
 
   table1_prevax:
-    run: r:latest analysis/table1.R prevax
+    run: r:latest analysis/descriptives/table1.R prevax
     needs:
     - stage1_data_cleaning_prevax
     outputs:
@@ -197,7 +197,7 @@ actions:
   ## Table 1 - unvax 
 
   table1_unvax:
-    run: r:latest analysis/table1.R unvax
+    run: r:latest analysis/descriptives/table1.R unvax
     needs:
     - stage1_data_cleaning_unvax
     outputs:
@@ -208,7 +208,7 @@ actions:
   ## Table 1 - vax 
 
   table1_vax:
-    run: r:latest analysis/table1.R vax
+    run: r:latest analysis/descriptives/table1.R vax
     needs:
     - stage1_data_cleaning_vax
     outputs:
