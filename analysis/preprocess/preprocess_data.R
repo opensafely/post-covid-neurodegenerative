@@ -4,6 +4,8 @@ library(magrittr)
 library(dplyr)
 library(tidyverse)
 library(lubridate)
+library(data.table)
+library(readr)
 
 # Specify command arguments ----------------------------------------------------
 args <- commandArgs(trailingOnly=TRUE)
@@ -20,9 +22,18 @@ fs::dir_create(here::here("output", "review"))
 
 # Read cohort dataset ---------------------------------------------------------- 
 
-df <- readr::read_csv(file = paste0("output/input_",cohort_name,".csv.gz"))
+input_path<-paste0("output/input_",cohort_name,".csv.gz")
 
-message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
+# Get colnames 
+col_names <- fread(input_path, header = TRUE, sep = ",", nrows = 1, stringsAsFactors = FALSE)
+
+#Get column with "_date"
+out_date_cols <- grep("_date", colnames(col_names), value = TRUE)
+# Set class to date
+col_classes <- setNames(rep("Date", length(out_date_cols)), out_date_cols)
+df <- fread(input_path, colClasses = col_classes)
+
+print(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 
 #Add death_date from prelim data
 prelim_data <- read_csv("output/index_dates.csv.gz") %>%
@@ -31,17 +42,39 @@ df <- df %>% inner_join(prelim_data,by="patient_id")
 
 message("Death date added!")
 
+message(paste0("After adding death N = ", nrow(df), " rows"))
+
+# Read cohort dataset ---------------------------------------------------------- 
+
+#df <- readr::read_csv(file = paste0("output/input_",cohort_name,".csv.gz"))
+
+#message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
+
+#Add death_date from prelim data
+# prelim_data <- read_csv("output/index_dates.csv.gz") %>%
+#   select(c(patient_id,death_date))
+# df <- df %>% inner_join(prelim_data,by="patient_id")
+
+# message("Death date added!")
+
 # Format columns ---------------------------------------------------------------
 # dates, numerics, factors, logicals
 
 df <- df %>%
-  mutate(across(c(contains("_date")),
-                ~ floor_date(as.Date(., format="%Y-%m-%d", origin = "1970-01-01"), unit = "days")),
-         across(contains('_birth_year'),
-                ~ format(as.Date(., origin = "1970-01-01"), "%Y")),
-         across(contains('_num') & !contains('date'), ~ as.numeric(.)),
-         across(contains('_cat'), ~ as.factor(.)),
-         across(contains('_bin'), ~ as.logical(.)))
+  mutate(across(contains('_birth_year'),
+                 ~ format(as.Date(.,origin='1970-01-01'), "%Y")),
+          across(contains('_num') & !contains('date'), ~ as.numeric(.)),
+          across(contains('_cat'), ~ as.factor(.)),
+          across(contains('_bin'), ~ as.logical(.)))
+
+# df <- df %>%
+#   mutate(across(c(contains("_date")),
+#                 ~ floor_date(as.Date(., format="%Y-%m-%d", origin = "1970-01-01"), unit = "days")),
+#          across(contains('_birth_year'),
+#                 ~ format(as.Date(., origin = "1970-01-01"), "%Y")),
+#          across(contains('_num') & !contains('date'), ~ as.numeric(.)),
+#          across(contains('_cat'), ~ as.factor(.)),
+#          across(contains('_bin'), ~ as.logical(.)))
 
 # Overwrite vaccination information for dummy data and vax cohort only --
 
