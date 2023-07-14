@@ -53,7 +53,7 @@ for (i in 1:nrow(active_analyses)) {
   # Load data --------------------------------------------------------------------
   print(paste0("Load data for ",active_analyses$name[i]))
   
-  input <- readr::read_rds(paste0("output/input_",active_analyses$cohort[i],"_stage1.rds"))
+  input <- dplyr::as_tibble(readr::read_rds(paste0("output/input_",active_analyses$cohort[i],"_stage1.rds")))
   
   # Restrict to required variables -----------------------------------------------
   print('Restrict to required variables')

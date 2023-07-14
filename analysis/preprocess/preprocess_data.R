@@ -4,6 +4,8 @@ library(magrittr)
 library(dplyr)
 library(tidyverse)
 library(lubridate)
+library(data.table)
+library(readr)
 
 # Specify command arguments ----------------------------------------------------
 args <- commandArgs(trailingOnly=TRUE)
@@ -15,16 +17,36 @@ if(length(args)==0){
   cohort_name <- args[[1]]
 }
 
-fs::dir_create(here::here("output", "not-for-review"))
-fs::dir_create(here::here("output", "review"))
+# Get column names -------------------------------------------------------------
+
+cols <- fread(paste0("output/input_",cohort_name,".csv.gz"), 
+              header = TRUE, 
+              sep = ",", 
+              nrows = 1, 
+              stringsAsFactors = FALSE)
+
+message("Column names found")
+
+# Identify columns containg "_date" --------------------------------------------
+
+date_cols <- grep("_date", colnames(cols), value = TRUE)
+
+message("Date columns identified")
+
+# Set class to date ------------------------------------------------------------
+
+col_classes <- setNames(rep("Date", length(date_cols)), date_cols)
+
+message("Column classes defined")
 
 # Read cohort dataset ---------------------------------------------------------- 
 
-df <- readr::read_csv(file = paste0("output/input_",cohort_name,".csv.gz"))
+df <- fread(paste0("output/input_",cohort_name,".csv.gz"), colClasses = col_classes)
 
 message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 
-#Add death_date from prelim data
+# Add death_date from prelim data ----------------------------------------------
+
 prelim_data <- read_csv("output/index_dates.csv.gz") %>%
   select(c(patient_id,death_date))
 df <- df %>% inner_join(prelim_data,by="patient_id")
@@ -36,7 +58,7 @@ message("Death date added!")
 
 df <- df %>%
   mutate(across(c(contains("_date")),
-                ~ floor_date(as.Date(., format="%Y-%m-%d", origin = "1970-01-01"), unit = "days")),
+                ~ floor_date(as.Date(., format="%Y-%m-%d"), unit = "days")),
          across(contains('_birth_year'),
                 ~ format(as.Date(., origin = "1970-01-01"), "%Y")),
          across(contains('_num') & !contains('date'), ~ as.numeric(.)),

@@ -20,10 +20,8 @@ args <- commandArgs(trailingOnly=TRUE)
 
 if(length(args)==0){
   cohort <- "vax"
-  covid_history <- "FALSE"
 } else {
   cohort <- args[[1]]
-  covid_history <- args[[2]]
 }
 
 
@@ -32,11 +30,10 @@ print("Load data")
 
 df <- readr::read_rds(paste0("output/input_",cohort,"_stage1.rds"))
 
-# Filter to population of interest ---------------------------------------------
-print("Fiter Covid history population")
+# Remove people with history of COVID-19 ---------------------------------------
+print("Remove people with history of COVID-19")
 
-df <- df[df$sub_bin_covid19_confirmed_history==FALSE,] #MH
-#df <- df[df$sub_bin_covid19_confirmed_history == covid_history,]
+df <- df[df$sub_bin_covid19_confirmed_history==FALSE,]
 
 # Create exposure indicator ----------------------------------------------------
 print("Create exposure indicator")
@@ -111,7 +108,7 @@ df$characteristic <- factor(df$characteristic,
                                        "Sex",
                                        "Age, years",
                                        "Ethnicity",
-                                       "Index of multuple deprivation quintile",
+                                       "Index of multiple deprivation quintile",
                                        "Smoking status",
                                        "Region",
                                        "Care home resident"))
