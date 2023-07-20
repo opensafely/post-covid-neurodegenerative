@@ -26,9 +26,8 @@ cohorts <- unique(active_analyses$cohort)
 success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx", 
                               sheet = "neuro_extf",
                       col_types = c("text","text", "text", "text", "text", "text",
-                                    "text", "text", "text", "text", "text",
                                     "text", "text", "text", "text", "text", "text",
-                                    "text", "text", "text", "text", "text", "text", "text", "text",
+                                    "text", "text", "text", "text", "text", 
                                     "skip", "skip"))
 
 success <- tidyr::pivot_longer(success,
@@ -421,7 +420,20 @@ actions_list <- splice(
     moderately_sensitive = list(
       model_output = glue("output/model_output.csv")
     )
+  ),
+  
+  comment("Make absolute excess risk (AER) input"),
+  
+  action(
+    name = "make_aer_input",
+    run = "r:latest analysis/model/make_aer_input.R",
+    needs = as.list(paste0("make_model_input-",active_analyses[grepl("-main-",active_analyses$name),]$name)),
+    moderately_sensitive = list(
+      aer_input = glue("output/aer_input-main.csv"),
+      aer_input_rounded = glue("output/aer_input-main-rounded.csv")
+    )
   )
+  
 )
 
 ## combine everything ----
