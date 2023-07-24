@@ -5,7 +5,6 @@
 ##  Apply stage 5. Absolute excess risk analysis
 ##  - Create a function to calculate absolute excess risks
 ## 
-## Authors: Jose Ignacio Cuitun Coronado (adapted from LT, RT, XJ, VW, RK)
 ## Authors: Lucy Teece (adapted from RT, XJ, VW)
 ## Reviewer: Genevieve Cezard
 ## 
@@ -46,14 +45,16 @@ excess_risk <- function(outcome_of_interest, cohort_of_interest, model_of_intere
     input[,i] <- gsub("days", "",input[,i]) #Remove 'days'
   }
   
-  input$time_period_start <- gsub("\\_.*", "",input[,i]) #Remove everything after _
-  input$time_period_end <- gsub(".*_", "",input[,i]) #Remove everything before _
+  #Remove everything after _
+  input$time_period_start <- gsub("\\_.*", "",input[,i])
+  #Remove everything before _
+  input$time_period_end <- gsub(".*_", "",input[,i]) 
   input <- input %>% mutate(across(c("time_period_start", "time_period_end"), as.numeric))
-  
   
   #---------------------------------------------------------------
   # LIFETABLE APPROACH
   #---------------------------------------------------------------
+  
   lifetable <- data.frame(c(0:(max(input$time_period_end)-1)))
   
   colnames(lifetable) <- c("days")
@@ -61,7 +62,6 @@ excess_risk <- function(outcome_of_interest, cohort_of_interest, model_of_intere
   lifetable$cohort <- cohort_of_interest
   lifetable$model <- model_of_interest
   lifetable$analysis <- analysis_of_interest
-  
   
   #Step1. Calculate average daily incidence of outcome in unexposed age/sex subgroups
   #As number of events (in the unexposed) divided by time (days)

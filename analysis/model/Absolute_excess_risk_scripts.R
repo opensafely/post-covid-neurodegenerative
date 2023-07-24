@@ -52,18 +52,17 @@ input <- read.csv(file.path(results_dir, "model_output.csv")) %>%
          & hr != "[redact]") %>%
   mutate(hr = as.numeric(hr)) %>% 
   select(c(cohort, outcome, analysis, model, term, hr)) %>%
-  #mutate(outcome = str_to_title(outcome)) %>%
-  #mutate(outcome = str_replace_all(outcome, "_", " ")) %>%
-  filter(grepl("parkinson_disease", outcome)) #temporary step
+  #temporary step. Need to check with real data to select outcomes of interest.
+  filter(grepl("parkinson_disease", outcome)) 
 
 #------------------------- Input AER table ------------------------------------#
 
 aer_table <- read.csv(paste0(results_dir, "aer_input-main-rounded.csv")) %>%
-  #temporary step, should be changed according to each repo 
+  #temporary step. Syntethic data only allows to have prevax data. 
   filter(cohort == "prevax") %>% 
+  #temporary step. Need to check with real data to select outcomes of interest.
   filter(grepl("parkinson_disease", outcome))
-  #filter(!grepl("any_dementia|restless_leg_syndrome", outcome))
-
+ 
 #------------------ Select required columns and term --------------------------#
 
 #Join input (model_output) with aer_table
@@ -74,7 +73,7 @@ results <- input %>%
 
 #-------------------------Run AER function--------------------------------------
 
-lapply(split(input, seq(nrow(input))), #input can/should be changed, accoding to the diabetes repo, it should use the input file (line 70), because it contains the variables of interest
+lapply(split(input, seq(nrow(input))), #using input instead of active (see diabetes/cvd repo) as it has the outcomes of interest
        function(input)
          excess_risk(
            outcome_of_interest = input$outcome,
@@ -94,6 +93,7 @@ AER_compiled_results <- purrr::pmap(list(AER_files),
 AER_compiled_results = rbindlist(AER_compiled_results, fill=TRUE)
 
 #----------------------------- Calculate overall AER --------------------------#
+
 AER_combined <- AER_compiled_results %>% 
   select(days, outcome, cohort, analysis, cumulative_difference_absolute_excess_risk)
 
@@ -101,7 +101,7 @@ aer_table <- aer_table %>%
   select(outcome, cohort, analysis, sample_size)
 
 aer_table <- aer_table %>% filter(cohort == "prevax") %>% select(!cohort)
-aer_table$weight <- aer_table$sample_size/sum(aer_table$sample_size) #ASK
+aer_table$weight <- aer_table$sample_size/sum(aer_table$sample_size) #
 
 AER_combined <- AER_combined %>% left_join(aer_table %>%
                                              select(outcome, analysis, weight), by=c("outcome", "analysis"), relationship = "many-to-many") #
