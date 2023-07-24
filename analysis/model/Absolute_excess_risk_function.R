@@ -26,7 +26,7 @@
 # model_of_interest="mdl_max_adj"     #Should always be maximum adjusted model
 # subgroup_of_interest="hospitalised"
 
-excess_risk <- function(outcome_of_interest, cohort_of_interest, model_of_interest, analysis_of_interest, input) {  
+excess_risk <- function(outcome_of_interest, cohort_of_interest, model_of_interest, analysis_of_interest, input) {  # subgroup_of_interest, 
   
   
   #-------------------------Check structure the input---------------------------
@@ -37,6 +37,7 @@ excess_risk <- function(outcome_of_interest, cohort_of_interest, model_of_intere
   input <- input[input$outcome == outcome_of_interest
                  & input$model == model_of_interest
                  & input$cohort == cohort_of_interest
+                 #& input$subgroup == subgroup_of_interest,]
                  & input$analysis == analysis_of_interest,]
   
   #----Add start and end days for time periods which are needed for lifetable---
@@ -61,6 +62,7 @@ excess_risk <- function(outcome_of_interest, cohort_of_interest, model_of_intere
   lifetable$outcome <- outcome_of_interest
   lifetable$cohort <- cohort_of_interest
   lifetable$model <- model_of_interest
+  #lifetable$subgroup <- subgroup_of_interest
   lifetable$analysis <- analysis_of_interest
   
   #Step1. Calculate average daily incidence of outcome in unexposed age/sex subgroups
@@ -95,9 +97,11 @@ excess_risk <- function(outcome_of_interest, cohort_of_interest, model_of_intere
   #lifetable$total_AER = rowSums(select(lifetable, ends_with("_AER")))
   
   # write output for AER figure
-  write.csv(lifetable, file=paste0(aer_raw_output_dir, "/lifetable_" ,outcome_of_interest, "_" ,model_of_interest, "_",cohort_of_interest,"_","_time_points.csv"), row.names = F)
-  #write.csv(lifetable, file=paste0(aer_raw_output_dir, "/lifetable_" ,outcome_of_interest, "_" ,model_of_interest, "_",cohort_of_interest,"_",time_point_of_interest, "_time_points.csv"), row.names = F)
-
+  write.csv(lifetable, file=paste0(aer_raw_output_dir, "/lifetable_" ,outcome_of_interest, "_" ,model_of_interest, "_",cohort_of_interest,"_time_points.csv"), row.names = F)
+  
+  
+  #write.csv(lifetable, file=paste0(aer_raw_output_dir, "/lifetable_" ,outcome_of_interest, "_" , model_of_interest, "_", subgroup_of_interest ,"_",cohort_of_interest,"_time_points.csv"), row.names = F)
+  #write.csv(lifetable, file=paste0(aer_raw_output_dir, "/lifetable_" ,outcome_of_interest, "_" ,subgroup_of_interest ,"_", cohort_of_interest,"_time_points.csv"), row.names = F)
   
   # AER_followup_end <- lifetable[nrow(lifetable),]$total_AER
   # 

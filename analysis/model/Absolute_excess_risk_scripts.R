@@ -34,7 +34,8 @@ library(tidyverse)
 # active <- active %>%
 #   select(c("cohort", "outcome", "analysis")) %>%
 #   mutate(outcome = str_remove(outcome, "out_date_")) %>%
-#   filter(grepl("main", analysis)) %>% #sub_sex_female|sub_sex_male
+#   filter(grepl("sub_sex_female|sub_sex_male", analysis)) %>% #sub_sex_female|sub_sex_male|main
+#   filter(cohort == "prevax") %>%
 #   filter(outcome == "parkinson_disease") #optional step at the moment
 # 
 # #Add HR time point terms so that results can be left joined
@@ -55,6 +56,9 @@ input <- read.csv(file.path(results_dir, "model_output.csv")) %>%
   #temporary step. Need to check with real data to select outcomes of interest.
   filter(grepl("parkinson_disease", outcome)) 
 
+# term <- c("Female_18_39 ","Female_40_59","Female_60_79", "Female_80_110", "Male_18_39 ","Male_40_59", "Male_60_79", "Male_80_110")
+# results <- crossing(input, term)
+
 #------------------------- Input AER table ------------------------------------#
 
 aer_table <- read.csv(paste0(results_dir, "aer_input-main-rounded.csv")) %>%
@@ -62,7 +66,11 @@ aer_table <- read.csv(paste0(results_dir, "aer_input-main-rounded.csv")) %>%
   filter(cohort == "prevax") %>% 
   #temporary step. Need to check with real data to select outcomes of interest.
   filter(grepl("parkinson_disease", outcome))
- 
+
+aer_table$subgroup <- paste("aer", aer_table$aer_sex, aer_table$aer_age, sep = "_")
+aer_table <- aer_table %>%
+  select(-c("aer_sex", "aer_age"))
+
 #------------------ Select required columns and term --------------------------#
 
 #Join input (model_output) with aer_table
@@ -70,6 +78,8 @@ results <- input %>%
   left_join(aer_table, by = c("cohort", "outcome", "analysis"), relationship = "many-to-many") %>%
   mutate(across(c(hr, unexposed_person_days, unexposed_events, total_exposed, sample_size), as.numeric)) %>%
   as_tibble()
+
+results <- results[results$subgroup=="aer_Female_18_39",] #This works now.
 
 #-------------------------Run AER function--------------------------------------
 
@@ -79,6 +89,7 @@ lapply(split(input, seq(nrow(input))), #using input instead of active (see diabe
            outcome_of_interest = input$outcome,
            cohort_of_interest = input$cohort,
            model_of_interest = input$model,
+           #subgroup_of_interest = input$subgroup,
            analysis_of_interest = input$analysis,
            results))
 
