@@ -355,15 +355,69 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         "tmp_out_date_unspecified_dementias_snomed", "tmp_out_date_unspecified_dementias_hes", "tmp_out_date_unspecified_dementias_death",
     ),
 
+    # any_dementias
+    # Primary
+#    tmp_out_date_any_dementia_snomed=patients.with_these_clinical_events(
+#        any_dementia_snomed,
+#        returning="date",
+#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+#        date_format="YYYY-MM-DD",
+#        find_first_match_in_period=True,
+#        return_expectations={
+#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+#            "rate": "uniform",
+#            "incidence": 0.1,
+#        },
+#    ),
+    # HES
+#    tmp_out_date_any_dementia_hes=patients.admitted_to_hospital(
+#        returning="date_admitted",
+#        with_these_diagnoses=any_dementia_icd,
+#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+#        date_format="YYYY-MM-DD",
+#        find_first_match_in_period=True,
+#        return_expectations={
+#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+#            "rate": "uniform",
+#            "incidence": 0.1,
+#        },
+#    ),
+    # ONS
+#    tmp_out_date_any_dementia_death=patients.with_these_codes_on_death_certificate(
+#        any_dementia_icd,
+#        returning="date_of_death",
+#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+#        match_only_underlying_cause=True,
+#        date_format="YYYY-MM-DD",
+#        return_expectations={
+#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+#            "rate": "uniform",
+#            "incidence": 0.1,
+#        },
+#    ),
+
+    # Any dementia
+#    out_date_any_dementia = patients.minimum_of(
+#        "tmp_out_date_any_dementia_snomed", "tmp_out_date_any_dementia_hes", "tmp_out_date_any_dementia_death",
+#    ),
+
     # Any dementia
     out_date_any_dementia = patients.minimum_of(
-        "out_date_alzheimer_disease", "out_date_vascular_dementia", "out_date_other_dementias", "out_date_unspecified_dementias",
+        "tmp_out_date_alzheimer_snomed", "tmp_out_date_alzheimer_hes", "tmp_out_date_alzheimer_death",
+        "tmp_out_date_vascular_dementia_snomed", "tmp_out_date_vascular_dementia_hes", "tmp_out_date_vascular_dementia_death",
+        "tmp_out_date_other_dementias_snomed", "tmp_out_date_other_dementias_hes", "tmp_out_date_other_dementias_death",
+        "tmp_out_date_unspecified_dementias_snomed", "tmp_out_date_unspecified_dementias_hes", "tmp_out_date_unspecified_dementias_death",
     ),
 
+    # Any dementia
+#    out_date_any_dementia = patients.minimum_of(
+#        "out_date_alzheimer_disease", "out_date_vascular_dementia", "out_date_other_dementias", "out_date_unspecified_dementias",
+#    ),
+
     # Cognitive impairment
-    # Primary care
-    tmp_out_date_cognitive_impairment_snomed=patients.with_these_clinical_events(
-        cognitive_impairment_snomed,
+    # Primary care - symptoms
+    tmp_out_date_cognitive_impairment_symptoms_snomed=patients.with_these_clinical_events(
+        cognitive_impairment_symptoms_snomed,
         returning="date",
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
         date_format="YYYY-MM-DD",
@@ -374,23 +428,37 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
             "incidence": 0.1,
         },
     ),
+    # Primary care
+#    tmp_out_date_cognitive_impairment_snomed=patients.with_these_clinical_events(
+#        cognitive_impairment_snomed,
+#        returning="date",
+#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+#        date_format="YYYY-MM-DD",
+#        find_first_match_in_period=True,
+#        return_expectations={
+#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+#            "rate": "uniform",
+#            "incidence": 0.1,
+#        },
+#    ),
     # HES
-    tmp_out_date_cognitive_impairment_hes=patients.admitted_to_hospital(
-        returning="date_admitted",
-        with_these_diagnoses=cognitive_impairment_icd10,
-        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
-        date_format="YYYY-MM-DD",
-        find_first_match_in_period=True,
-        return_expectations={
-            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-            "rate": "uniform",
-            "incidence": 0.1,
-        },
-    ),
+#    tmp_out_date_cognitive_impairment_hes=patients.admitted_to_hospital(
+#        returning="date_admitted",
+#        with_these_diagnoses=cognitive_impairment_icd10,
+#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+#        date_format="YYYY-MM-DD",
+#        find_first_match_in_period=True,
+#        return_expectations={
+#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+#            "rate": "uniform",
+#            "incidence": 0.1,
+#        },
+#    ),
 
     # Combined cognitive impairment
     out_date_cognitive_impairment = patients.minimum_of(
-        "tmp_out_date_cognitive_impairment_snomed", "tmp_out_date_cognitive_impairment_hes", 
+        "tmp_out_date_cognitive_impairment_symptoms_snomed",
+        #"tmp_out_date_cognitive_impairment_snomed", "tmp_out_date_cognitive_impairment_hes", 
     ),
 
     # Parkinson's disease
@@ -593,24 +661,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         "tmp_out_date_migraine_snomed", "tmp_out_date_migraine_hes", 
     ),
 
-    # # Antispychotics - prescriptions (BNF)
-    # tmp_out_date_parkinson_antipsychotic_prescription_bnf=patients.with_these_medications(
-    #     parkinson_antipsychotics_prescription_bnf,
-    #     returning="date",
-    #     on_or_after=f"{index_date_variable}",
-    #     date_format="YYYY-MM-DD",
-    #     find_first_match_in_period=True,
-    #     return_expectations={
-    #         "date": {"earliest": index_date_MH, "latest" : "today"},
-    #         "rate": "uniform",
-    #         "incidence": 0.03,
-    #     },
-    # ),
-    # #
-    # out_date_parkinson_antipsychotic_prescription=patients.minimum_of(
-    #     "tmp_out_date_parkinson_antipsychotic_prescription_bnf",
-    # ),
-
 ################################
 # Neurodegenerative Covariates # 
 ################################
@@ -642,26 +692,31 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
             "incidence": 0.1,
         },
     ),
-    #ONS
-    # tmp_out_date_hypercholesterolaemia_death=patients.with_these_codes_on_death_certificate(
-    #     hypercholesterolaemia_icd10,
-    #     returning="date_of_death",
-    #     on_or_after=f"{index_date_variable}",
-    #     match_only_underlying_cause=True,
-    #     date_format="YYYY-MM-DD",
-    #     return_expectations={
-    #         "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-    #         "rate": "uniform",
-    #         "incidence": 0.1,
-    #     },
-    # ),
+
+    # Hypercholesterolaemia 
+    # Primary
+#    tmp_cov_bin_hypercholesterolaemia_snomed=patients.with_these_clinical_events(
+#        hypercholesterolaemia_snomed,
+#        returning="binary_flag",
+#        on_or_before=[f"{index_date_variable} - 1 day"],
+#        return_expectations={
+#            "incidence": 0.1,
+#        },
+#    ),
+    # HES
+#    tmp_cov_bin_hypercholesterolaemia_hes=patients.admitted_to_hospital(
+#        returning="binary_flag",
+#        with_these_diagnoses=hypercholesterolaemia_icd10,
+#        on_or_before=[f"{index_date_variable} - 1 day"],
+#        return_expectations={
+#            "incidence": 0.1,
+#        },
+#    ),
+
     #Combined Hypercholesterolaemia 
     cov_bin_hypercholesterolaemia=patients.minimum_of(
-        "tmp_cov_bin_hypercholesterolaemia_snomed", "tmp_cov_bin_hypercholesterolaemia_hes",#tmp_out_date_hypercholesterolaemia_death
+        "tmp_cov_bin_hypercholesterolaemia_snomed", "tmp_cov_bin_hypercholesterolaemia_hes",
     ),
-    # History of cognitive impairment
-    # History of restless leg
-    # History of REM sleep disorder
 
 #####################
 # DEFINE COVARIATES #

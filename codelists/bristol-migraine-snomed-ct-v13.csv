@@ -1,14 +1,15 @@
 code,term
 104591000000101,Migraine prophylaxis
+1153450000,Product containing precisely erenumab 140 milligram/1 milliliter conventional release solution for injection
+1153451001,Product containing precisely erenumab 70 milligram/1 milliliter conventional release solution for injection
+1236777007,Product containing precisely galcanezumab 120 milligram/1 milliliter conventional release solution for injection
 124001000119104,Status migrainosus co-occurrent and due to migraine without aura
 124081000119107,Menstrual status migrainosus
 124171000119105,Chronic intractable migraine without aura
-138752005,H/O: migraine
 139311007,Abdominal migraine - symptom
 145611000119107,Allergic migraine
 155046006,Migraine
 155047002,Migraine with aura
-161481007,History of migraine
 162040008,Abdominal migraine - symptom
 193027003,Atypical migraine
 193029000,Common migraine NOS
@@ -53,7 +54,6 @@ code,term
 59292006,Hemiplegic migraine
 603711000000104,Common migraine NOS
 603721000000105,Migraine variant NOS
-608837004,History of migraine with aura
 644011000000107,Other forms of migraine
 699314009,Migraine with persistent visual aura
 701602006,Migraine-therapy vagus nerve electrical stimulator
@@ -64,7 +64,6 @@ code,term
 773838001,Antimigraine therapeutic role
 773908008,Migraine prophylaxis therapeutic role
 781381000000100,Migraine induced by oestrogen contraceptive
-781421000000109,History of migraine with aura
 781431000000106,H/O migraine with aura 
 79267007,Retinal migraine
 807761000000102,Migraine induced by oestrogen contraceptive
