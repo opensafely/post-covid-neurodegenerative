@@ -877,17 +877,17 @@ alzheimer_icd10 = codelist_from_csv(
 )
 
 # Any dementia
-any_dementia_snomed = codelist_from_csv(
-    "codelists/bristol-any-dementia-snomed-ct-v14.csv",
-    system = "icd10",
-    column = "code",
-)
+#any_dementia_snomed = codelist_from_csv(
+#    "codelists/bristol-any-dementia-snomed-ct-v14.csv",
+#    system = "snomed",
+#    column = "code",
+#)
 
-any_dementia_icd = codelist_from_csv(
-    "codelists/bristol-any-dementia-icd-10-v13.csv",
-    system = "icd10",
-    column = "code",
-)
+#any_dementia_icd = codelist_from_csv(
+#    "codelists/bristol-any-dementia-icd-10-v13.csv",
+#    system = "icd10",
+#    column = "code",
+#)
 
 # Vascular dementia
 vascular_dementia_snomed = codelist_from_csv(

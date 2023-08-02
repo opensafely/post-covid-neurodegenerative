@@ -428,32 +428,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
             "incidence": 0.1,
         },
     ),
-    # Primary care
-#    tmp_out_date_cognitive_impairment_snomed=patients.with_these_clinical_events(
-#        cognitive_impairment_snomed,
-#        returning="date",
-#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
-#        date_format="YYYY-MM-DD",
-#        find_first_match_in_period=True,
-#        return_expectations={
-#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
-#            "rate": "uniform",
-#            "incidence": 0.1,
-#        },
-#    ),
-    # HES
-#    tmp_out_date_cognitive_impairment_hes=patients.admitted_to_hospital(
-#        returning="date_admitted",
-#        with_these_diagnoses=cognitive_impairment_icd10,
-#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
-#        date_format="YYYY-MM-DD",
-#        find_first_match_in_period=True,
-#        return_expectations={
-#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-#            "rate": "uniform",
-#            "incidence": 0.1,
-#        },
-#    ),
 
     # Combined cognitive impairment
     out_date_cognitive_impairment = patients.minimum_of(
