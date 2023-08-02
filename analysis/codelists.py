@@ -927,22 +927,10 @@ unspecified_dementias_icd10 = codelist_from_csv(
 
 # Cognitive impairment - symptoms
 cognitive_impairment_symptoms_snomed = codelist_from_csv(
-    "codelists/bristol-symptoms-cognitive-impairment-snomed-ct-v12.csv",
+    "codelists/opensafely-symptoms-cognitive-impairment.csv",
     system = "snomed",
     column = "code",
 )
-
-# Cognitive impairment
-#cognitive_impairment_snomed = codelist_from_csv(
-#    "codelists/bristol-cognitive-impairment-disorder-snomed-ct.csv",
-#    system = "snomed",
-#    column = "code",
-#)
-#cognitive_impairment_icd10 = codelist_from_csv(
-#    "codelists/bristol-cognitive-impairment-disorder.csv",
-#     system = "icd10",
-#     column = "code",
-#)
 
 # Parkinson diseases
 # Parkinson
@@ -1016,15 +1004,16 @@ multiple_sclerosis_icd10 = codelist_from_csv(
 # Neurodegenerative codes (covariates) #
 ########################################
 
-# Hypercholesterolaemia (HCh)
-hypercholesterolaemia_snomed = codelist_from_csv(
-    "codelists/bristol-hypercholesterolaemia-snomedct.csv",
-    system = "snomed",
-    column = "code"
+# Total Cholesterol
+cholesterol_snomed = codelist_from_csv(
+    "codelists/opensafely-cholesterol-tests-numerical-value.csv",
+    system="snomed",
+    column="code",
 )
 
-hypercholesterolaemia_icd10 = codelist_from_csv(
-    "codelists/bristol-hypercholesterolaemia.csv",
-    system = "icd10",
-    column = "code"
+# HDL Cholesterol
+hdl_cholesterol_snomed = codelist_from_csv(
+    "codelists/bristol-hdl-cholesterol.csv",
+    system="snomed",
+    column="code",
 )

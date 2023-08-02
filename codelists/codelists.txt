@@ -181,8 +181,7 @@ bristol/unspecified-dementia-icd10-v13/0d4660ae
 bristol/unspecified-dementia-snomed-ct-v13/7436ed78
 bristol/vascular-dementia-icd10-v13/3f654718
 bristol/vascular-dementia-snomed-ct-v13/2655d3e3
-bristol/hypercholesterolaemia-snomedct/48e4bebd
-bristol/hypercholesterolaemia/65cc4ac0
+opensafely/symptoms-cognitive-impairment/7af0d32d
 bristol/symptoms-cognitive-impairment-snomed-ct-v12/1cb995e0
 
 

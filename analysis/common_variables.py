@@ -665,59 +665,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
 # Neurodegenerative Covariates # 
 ################################
 
-    # Hypercholesterolaemia 
-    # Primary
-    tmp_cov_bin_hypercholesterolaemia_snomed=patients.with_these_clinical_events(
-        hypercholesterolaemia_snomed,
-        returning="date",
-        between=[f"{index_date_variable}- 1680 days", f"{index_date_variable} -1 day"],
-        date_format="YYYY-MM-DD",
-        find_first_match_in_period=True,
-        return_expectations={
-            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
-            "rate": "uniform",
-            "incidence": 0.1,
-        },
-    ),
-    # HES
-    tmp_cov_bin_hypercholesterolaemia_hes=patients.admitted_to_hospital(
-        returning="date_admitted",
-        with_these_diagnoses=hypercholesterolaemia_icd10,
-        between=[f"{index_date_variable}- 1680 days", f"{index_date_variable} -1 day"],
-        date_format="YYYY-MM-DD",
-        find_first_match_in_period=True,
-        return_expectations={
-            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-            "rate": "uniform",
-            "incidence": 0.1,
-        },
-    ),
-
-    # Hypercholesterolaemia 
-    # Primary
-#    tmp_cov_bin_hypercholesterolaemia_snomed=patients.with_these_clinical_events(
-#        hypercholesterolaemia_snomed,
-#        returning="binary_flag",
-#        on_or_before=[f"{index_date_variable} - 1 day"],
-#        return_expectations={
-#            "incidence": 0.1,
-#        },
-#    ),
-    # HES
-#    tmp_cov_bin_hypercholesterolaemia_hes=patients.admitted_to_hospital(
-#        returning="binary_flag",
-#        with_these_diagnoses=hypercholesterolaemia_icd10,
-#        on_or_before=[f"{index_date_variable} - 1 day"],
-#        return_expectations={
-#            "incidence": 0.1,
-#        },
-#    ),
-
-    #Combined Hypercholesterolaemia 
-    cov_bin_hypercholesterolaemia=patients.minimum_of(
-        "tmp_cov_bin_hypercholesterolaemia_snomed", "tmp_cov_bin_hypercholesterolaemia_hes",
-    ),
-
 #####################
 # DEFINE COVARIATES #
 #####################

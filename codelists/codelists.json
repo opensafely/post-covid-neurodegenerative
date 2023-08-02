@@ -1092,17 +1092,11 @@
       "downloaded_at": "2023-07-31 14:40:03.556919Z",
       "sha": "1c0a72fa95f16a424b8d99ed442638c1b0cce6f8"
     },
-    "bristol-hypercholesterolaemia-snomedct.csv": {
-      "id": "bristol/hypercholesterolaemia-snomedct/48e4bebd",
-      "url": "https://codelists.opensafely.org/codelist/bristol/hypercholesterolaemia-snomedct/48e4bebd/",
-      "downloaded_at": "2023-07-31 15:03:26.287477Z",
-      "sha": "9b70c2c9f8121e87c9fe7a85af3fdb4ef69c1839"
-    },
-    "bristol-hypercholesterolaemia.csv": {
-      "id": "bristol/hypercholesterolaemia/65cc4ac0",
-      "url": "https://codelists.opensafely.org/codelist/bristol/hypercholesterolaemia/65cc4ac0/",
-      "downloaded_at": "2023-07-31 15:03:26.511901Z",
-      "sha": "575e93d00ce61ba33c9f6dbf78ecf41197a93910"
+    "opensafely-symptoms-cognitive-impairment.csv": {
+      "id": "opensafely/symptoms-cognitive-impairment/7af0d32d",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/symptoms-cognitive-impairment/7af0d32d/",
+      "downloaded_at": "2023-08-02 09:38:19.048404Z",
+      "sha": "1fac3375ebc596e1ee2de2270f8d3b55090b4849"
     },
     "bristol-symptoms-cognitive-impairment-snomed-ct-v12.csv": {
       "id": "bristol/symptoms-cognitive-impairment-snomed-ct-v12/1cb995e0",
