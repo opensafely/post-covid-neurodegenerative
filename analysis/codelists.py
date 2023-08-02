@@ -866,183 +866,154 @@ pregnancy_snomed_clinical = codelist_from_csv(
 # Dementia
 # Alzheimer's disease
 alzheimer_snomed = codelist_from_csv(
-    "codelists/bristol-alzheimers-disease-snomed-ct.csv",
+    "codelists/bristol-alzheimers-disease-snomed-ct-v13.csv",
     system = "snomed",
     column = "code",
 )
 alzheimer_icd10 = codelist_from_csv(
-    "codelists/bristol-alzheimers-disease.csv",
+    "codelists/bristol-alzheimers-disease-icd10-v13.csv",
     system = "icd10",
     column = "code",
 )
 
+# Any dementia
+#any_dementia_snomed = codelist_from_csv(
+#    "codelists/bristol-any-dementia-snomed-ct-v14.csv",
+#    system = "snomed",
+#    column = "code",
+#)
+
+#any_dementia_icd = codelist_from_csv(
+#    "codelists/bristol-any-dementia-icd-10-v13.csv",
+#    system = "icd10",
+#    column = "code",
+#)
+
 # Vascular dementia
 vascular_dementia_snomed = codelist_from_csv(
-    "codelists/bristol-vascular-dementia-snomed-ct.csv",
+    "codelists/bristol-vascular-dementia-snomed-ct-v13.csv",
     system = "snomed",
     column = "code",
 )
 vascular_dementia_icd10 = codelist_from_csv(
-    "codelists/bristol-vascular-dementia.csv",
+    "codelists/bristol-vascular-dementia-icd10-v13.csv",
     system = "icd10",
     column = "code",
 )
 
 # Other dementias
 other_dementias_snomed = codelist_from_csv(
-    "codelists/bristol-other-dementias-snomed-ct.csv",
+    "codelists/bristol-other-dementias-snomed-ct-v13.csv",
     system = "snomed",
     column = "code",
 )
 other_dementias_icd10 = codelist_from_csv(
-    "codelists/bristol-other-dementias.csv",
+    "codelists/bristol-other-dementias-icd10-v13.csv",
     system = "icd10",
     column = "code",
 )
 
 # Unspecified dementias
 unspecified_dementias_snomed = codelist_from_csv(
-    "codelists/bristol-unspecified-dementia-snomed-ct.csv",
+    "codelists/bristol-unspecified-dementia-snomed-ct-v13.csv",
     system = "snomed",
     column = "code",
 )
 unspecified_dementias_icd10 = codelist_from_csv(
-    "codelists/bristol-unspecified-dementia.csv",
+    "codelists/bristol-unspecified-dementia-icd10-v13.csv",
     system = "icd10",
     column = "code",
 )
 
-# Cognitive impairment
-cognitive_impairment_snomed = codelist_from_csv(
-    "codelists/bristol-cognitive-impairment-disorder-snomed-ct.csv",
+# Cognitive impairment - symptoms
+cognitive_impairment_symptoms_snomed = codelist_from_csv(
+    "codelists/opensafely-symptoms-cognitive-impairment.csv",
     system = "snomed",
     column = "code",
-)
-cognitive_impairment_icd10 = codelist_from_csv(
-    "codelists/bristol-cognitive-impairment-disorder.csv",
-     system = "icd10",
-     column = "code",
 )
 
 # Parkinson diseases
 # Parkinson
 parkinson_snomed = codelist_from_csv(
-    "codelists/bristol-parkinsons-disease-snomed.csv",
+    "codelists/bristol-parkinsons-disease-snomed-ct-v13.csv",
     system = "snomed",
     column = "code",
 )
 parkinson_icd10 = codelist_from_csv(
-    "codelists/bristol-parkinsons-disease.csv",
+    "codelists/bristol-parkinsons-disease-icd10-v13.csv",
      system = "icd10",
      column = "code",
 )
 
 # Restless leg syndrome
 restless_leg_syndrome_snomed = codelist_from_csv(
-    "codelists/bristol-restless-leg-syndrome-snomed-ct.csv",
+    "codelists/bristol-restless-leg-syndrome-snomed-ct-v13.csv",
     system = "snomed",
     column = "code",
 )
-# restless_leg_syndrome__icd10 = codelist_from_csv(
-#     "codelists/",
-#      system = "icd10",
-#      column = "code",
-# )
 
 # REM sleep disorder
 rem_sleep_disorder_snomed = codelist_from_csv(
-    "codelists/bristol-rem-sleep-disorder-snomedct.csv",
+    "codelists/bristol-rem-sleep-disorder-snomed-ct-v13.csv",
     system = "snomed",
     column = "code",
 )
 rem_sleep_disorder_icd10 = codelist_from_csv(
-    "codelists/bristol-rem-sleep-disorder.csv",
+    "codelists/bristol-rem-sleep-disorder-icd10-v13.csv",
      system = "icd10",
      column = "code",
 )
 
 # Migraine
 migraine_snomed = codelist_from_csv(
-    "codelists/bristol-migraine-snomed-ct.csv",
+    "codelists/bristol-migraine-snomed-ct-v13.csv",
     system = "snomed",
     column = "code",
 )
 migraine_icd10 = codelist_from_csv(
-    "codelists/bristol-migraine.csv",
+    "codelists/bristol-migraine-icd10-v13.csv",
      system = "icd10",
      column = "code",
 )
 
 # Motor neurone disease
 motor_neurone_disease_snomed = codelist_from_csv(
-    "codelists/bristol-motor-neurone-disease-snomed-ct.csv",
+    "codelists/bristol-motor-neurone-disease-snomed-ct-v13.csv",
     system = "snomed",
     column = "code",
 )
-# motor_neurone_disease_icd10 = codelist_from_csv(
-#     "codelists/",
-#      system = "icd10",
-#      column = "code",
-# )
+motor_neurone_disease_icd10 = codelist_from_csv(
+    "codelists/bristol-motor-neurone-disease-icd10-v13.csv",
+    system = "icd10",
+    column = "code",
+)
 
 # Multiple sclerosis
 multiple_sclerosis_snomed = codelist_from_csv(
-    "codelists/bristol-multiple-sclerosis-snomed-ct.csv",
+    "codelists/bristol-multiple-sclerosis-snomed-ct-v13.csv",
     system = "snomed",
     column = "code",
 )
 multiple_sclerosis_icd10 = codelist_from_csv(
-    "codelists/bristol-multiple-sclerosis.csv",
+    "codelists/bristol-multiple-sclerosis-icd10-v13.csv",
      system = "icd10",
      column = "code",
 )
-
-# # Parkinson prescription
-# # Antipsychotics
-# parkinson_antipsychotics_prescription_bnf = codelist_from_csv(
-#     "local_codelists/",
-#     system = "snomed",
-#     colum = "dmd_id",
-# )
-# # Dopaminergic drugs
-# parkinson_antipsychotics_prescription_bnf = codelist_from_csv(
-#     "local_codelists/",
-#     system = "snomed",
-#     colum = "dmd_id",
-# )
-# # Antimuscarinic drugs
-# parkinson_antipsychotics_prescription_bnf = codelist_from_csv(
-#     "local_codelists/",
-#     system = "snomed",
-#     colum = "dmd_id",
-# )
-# # Essential tremor, chorea, tics, and related disorders drugs
-# parkinson_antipsychotics_prescription_bnf = codelist_from_csv(
-#     "local_codelists/",
-#     system = "snomed",
-#     colum = "dmd_id",
-# )
-
-# Migraine prescriptions
-# migraine_prescription_bnf = codelist_from_csv(
-#     "local_codelists/",
-#     system = "snomed",
-#     colum = "dmd_id",
-# )
 
 ########################################
 # Neurodegenerative codes (covariates) #
 ########################################
 
-# Hypercholesterolaemia (HCh)
-hypercholesterolaemia_snomed = codelist_from_csv(
-    "codelists/bristol-hypercholesterolaemia-snomedct.csv",
-    system = "snomed",
-    column = "code"
+# Total Cholesterol
+cholesterol_snomed = codelist_from_csv(
+    "codelists/opensafely-cholesterol-tests-numerical-value.csv",
+    system="snomed",
+    column="code",
 )
 
-hypercholesterolaemia_icd10 = codelist_from_csv(
-    "codelists/bristol-hypercholesterolaemia.csv",
-    system = "icd10",
-    column = "code"
+# HDL Cholesterol
+hdl_cholesterol_snomed = codelist_from_csv(
+    "codelists/bristol-hdl-cholesterol.csv",
+    system="snomed",
+    column="code",
 )
