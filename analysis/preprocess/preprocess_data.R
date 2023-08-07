@@ -17,62 +17,6 @@ if(length(args)==0){
   cohort_name <- args[[1]]
 }
 
-# Get column names -------------------------------------------------------------
-
-# all_cols <- fread(paste0("output/input_",cohort_name,".csv.gz"), 
-#                   header = TRUE, sep = ",", nrows = 0, 
-#                   stringsAsFactors = FALSE) %>%
-#   names()
-# 
-# message("Column names found")
-# 
-# # Identify column classes ------------------------------------------------------
-# 
-# cat_cols <- c("patient_id", grep("_cat", all_cols, value = TRUE))
-# 
-# bin_cols <- c(grep("_bin", all_cols, value = TRUE), 
-#               grep("prostate_cancer_", all_cols, value = TRUE),
-#               "has_follow_up_previous_6months", "has_died", "registered_at_start",
-#               "tmp_cocp","tmp_hrt")
-# 
-# num_cols <- c(grep("_num", all_cols, value = TRUE),
-#               grep("vax_jcvi_age_", all_cols, value = TRUE))
-# 
-# date_cols <- grep("_date", all_cols, value = TRUE)
-# 
-# message("Column classes identified")
-# 
-# # Define column classes --------------------------------------------------------
-# 
-# col_classes <- setNames(
-#   c(rep("c", length(cat_cols)),
-#     rep("l", length(bin_cols)),
-#     rep("d", length(num_cols)),
-#     rep("D", length(date_cols))
-#   ), 
-#   all_cols[match(c(cat_cols, bin_cols, num_cols, date_cols), all_cols)]
-# )
-# 
-# message("Column classes defined")
-# 
-# # Read cohort dataset ---------------------------------------------------------- 
-# 
-# df <- read_csv(paste0("output/input_",cohort_name,".csv.gz"), 
-#                col_types = col_classes)
-# 
-# message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
-# 
-# # Add death_date from prelim data ----------------------------------------------
-# 
-# prelim_data <- read_csv("output/index_dates.csv.gz")
-# prelim_data <- prelim_data[,c("patient_id","death_date")]
-# prelim_data$patient_id <- as.character(prelim_data$patient_id)
-# prelim_data$death_date <- as.Date(prelim_data$death_date)
-# 
-# df <- df %>% inner_join(prelim_data,by="patient_id")
-# 
-# message("Death date added!")
-
 #data set
 input_path <- paste0("output/input_",cohort_name,".csv.gz")
 
@@ -84,7 +28,6 @@ all_cols <- fread(paste0("output/input_",cohort_name,".csv.gz"),
               nrows = 0,
               stringsAsFactors = FALSE) %>%
   select(-c(cov_num_bmi_date_measured)) %>%
-  #select(-c(cov_num_systolic_bp_date_measured)) %>% #This column is not needed in Neuro
   names()
 
 #Get columns types based on their names
@@ -108,33 +51,12 @@ col_classes <- setNames(
 # read the input file and specify colClasses
 df <- read_csv(input_path, col_types = col_classes)
 
-#df$cov_num_systolic_bp_date_measured <- NULL#This column is not needed in GI
 df$cov_num_bmi_date_measured <- NULL
 
 print(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 print("type of columns:\n")
 
-#message("Column names found")
-
-# Identify columns containg "_date" --------------------------------------------
-
-#date_cols <- grep("_date", colnames(cols), value = TRUE)
-
-#message("Date columns identified")
-
-# Set class to date ------------------------------------------------------------
-
-#col_classes <- setNames(rep("Date", length(date_cols)), date_cols)
-
-#message("Column classes defined")
-
-# Read cohort dataset ----------------------------------------------------------
-
-# df <- fread(paste0("output/input_",cohort_name,".csv.gz", col_types = cols(patient_id = "c", death_date="D"))) %>%
-#   select(patient_id, death_date)
-# df <- df %>% inner_join(prelim_data, by = "patient_id")
-
-message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
+#message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 
 # Add death_date from prelim data ----------------------------------------------
 
