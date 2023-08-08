@@ -28,7 +28,6 @@ success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/p
                       col_types = c("text","text", "text", "text", "text", "text",
                                     "text", "text", "text", "text", "text",
                                     "text", "text", "text", "text", "text", "text",
-                                    "text", "text", "text", "text", "text", "text", "text", "text",
                                     "skip", "skip"))
 
 success <- tidyr::pivot_longer(success,
