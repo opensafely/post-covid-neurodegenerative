@@ -202,7 +202,7 @@ apply_model_function <- function(name, cohort, analysis, ipw, strata,
 
     action(
       name = glue("describe_model_input-{name}"),
-      run = glue("r:latest analysis/describe_file.R model_input-{name} rds"),
+      run = glue("r:latest analysis/model/describe_file.R model_input-{name} rds"),
       needs = list(glue("make_model_input-{name}")),
       moderately_sensitive = list(
         describe_model_input = glue("output/describe-model_input-{name}.txt")
@@ -411,6 +411,8 @@ actions_list <- splice(
     )
   ),
   
+  ## Model output --------------------------------------------------------------
+  
   comment("Stage 6 - make model output"),
 
   action(
@@ -419,6 +421,20 @@ actions_list <- splice(
     needs = as.list(paste0("cox_ipw-",success$name)),
     moderately_sensitive = list(
       model_output = glue("output/model_output.csv")
+    )
+  ),
+  
+  ## AER table -----------------------------------------------------------------
+  
+  comment("Make absolute excess risk (AER) input"),
+  
+  action(
+    name = "make_aer_input",
+    run = "r:latest analysis/model/make_aer_input.R",
+    needs = as.list(paste0("make_model_input-",active_analyses[grepl("-main-",active_analyses$name),]$name)),
+    moderately_sensitive = list(
+      aer_input = glue("output/aer_input-main.csv"),
+      aer_input_rounded = glue("output/aer_input-main-rounded.csv")
     )
   )
 )
