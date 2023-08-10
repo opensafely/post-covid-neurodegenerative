@@ -87,11 +87,11 @@ if(Sys.getenv("OPENSAFELY_BACKEND") %in% c("", "expectations") &&
 
 # Describe data ----------------------------------------------------------------
 
-sink(paste0("output/not-for-review/describe_",cohort_name,".txt"))
-print(Hmisc::describe(df))
-sink()
+#sink(paste0("output/not-for-review/describe_",cohort_name,".txt"))
+#print(Hmisc::describe(df))
+#sink()
 
-message ("Cohort ",cohort_name, " description written successfully!")
+#message ("Cohort ",cohort_name, " description written successfully!")
 
 #Combine BMI variables to create one history of obesity variable ---------------
 
