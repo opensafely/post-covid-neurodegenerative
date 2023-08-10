@@ -17,6 +17,9 @@ if(length(args)==0){
   cohort_name <- args[[1]]
 }
 
+fs::dir_create(here::here("output", "not-for-review"))
+fs::dir_create(here::here("output", "review"))
+
 #data set
 input_path <- paste0("output/input_",cohort_name,".csv.gz")
 
@@ -87,11 +90,12 @@ if(Sys.getenv("OPENSAFELY_BACKEND") %in% c("", "expectations") &&
 
 # Describe data ----------------------------------------------------------------
 
-#sink(paste0("output/not-for-review/describe_",cohort_name,".txt"))
-#print(Hmisc::describe(df))
-#sink()
+sink(paste0("output/not-for-review/describe_",cohort_name,".txt"))
+print(Hmisc::describe(df))
+print(str(df))
+sink()
 
-#message ("Cohort ",cohort_name, " description written successfully!")
+message ("Cohort ",cohort_name, " description written successfully!")
 
 #Combine BMI variables to create one history of obesity variable ---------------
 
@@ -158,9 +162,10 @@ df1 <- df%>% select(patient_id,"death_date",starts_with("index_date_"),
                     contains("vax_date_eligible"), # Vaccination eligibility
                     contains("vax_date_"), # Vaccination dates and vax type 
                     contains("vax_cat_")# Vaccination products
-)
+) %>% 
+  select(-matches("tmp_"))
 
-df1[,colnames(df)[grepl("tmp_",colnames(df))]] <- NULL
+#df1[,colnames(df)[grepl("tmp_",colnames(df))]] <- NULL
 
 # Repo specific preprocessing 
 
@@ -173,10 +178,16 @@ message(paste0("Input data saved successfully with N = ", nrow(df1), " rows"))
 sink(paste0("output/not-for-review/describe_input_",cohort_name,"_stage0.txt"))
 print(Hmisc::describe(df1))
 sink()
+#rm(df1)
+gc()
 
 # Restrict columns and save Venn diagram input dataset -----------------------
 
 df2 <- df %>% select(starts_with(c("patient_id","tmp_out_date","out_date")))
+#rm(df)
+gc()
+
+message(paste0("Input data saved successfully with N = ", nrow(df1), " rows"))
 
 # Describe data --------------------------------------------------------------
 
