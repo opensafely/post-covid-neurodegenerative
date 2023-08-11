@@ -7,20 +7,35 @@
 # 0. Load relevant libraries and read in data #
 ###############################################
 
-#Load libraries using pacman
-pacman::p_load(dplyr,tictoc,readr,stringr,tidyr,ggplot2,jsonlite,here,arrow)
+# Load libraries ---------------------------------------------------------------
+print('Load libraries')
 
-#clear memory
-rm(list=ls())
+library(dplyr)
+library(tictoc)
+library(readr)
+library(tidyr)
+library(stringr)
+library(ggplot2)
+library(jsonlite)
+library(here)
+library(arrow)
 
-# Get dataset for either the vaccinated or electively unvaccinated subcohort
+# Specify redaction threshold --------------------------------------------------
+print('Specify redaction threshold')
+
+threshold <- 6
+
+# Source common functions ------------------------------------------------------
+print('Source common functions')
+
+source("analysis/utility.R")
+
 # Specify command arguments ----------------------------------------------------
-
 args <- commandArgs(trailingOnly=TRUE)
 
 if(length(args)==0){
   # use for interactive testing
-  cohort_name <- "all"
+  cohort_name <- "prevax"
   
 } else {
   cohort_name <- args[[1]]
@@ -46,11 +61,11 @@ stage1 <- function(cohort_name){
   print(paste0(cohort_name,  " ", nrow(input), " rows in the input file"))
   
   #Rename the index_date_vax/unvax/prevax to index_date   
-  #input<- input %>%
-  #  rename(index_date=!!sym(paste0("index_date_",cohort_name))) #%>%
-    #rename(end_date = !!sym(paste0("end_date_",cohort_name)))
+  input<- input %>%
+    rename(index_date=!!sym(paste0("index_date_",cohort_name))) #%>%
+  #rename(end_date = !!sym(paste0("end_date_",cohort_name)))
   
-  input <- dplyr::rename(input, "index_date" = "index_date_cohort")
+  #input <- dplyr::rename(input, "index_date" = "index_date_prevax")
   
   # NOTE: no censoring of end date for death/event at this stage
   
