@@ -355,52 +355,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         "tmp_out_date_unspecified_dementias_snomed", "tmp_out_date_unspecified_dementias_hes", "tmp_out_date_unspecified_dementias_death",
     ),
 
-    # any_dementias
-    # Primary
-#    tmp_out_date_any_dementia_snomed=patients.with_these_clinical_events(
-#        any_dementia_snomed,
-#        returning="date",
-#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
-#        date_format="YYYY-MM-DD",
-#        find_first_match_in_period=True,
-#        return_expectations={
-#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
-#            "rate": "uniform",
-#            "incidence": 0.1,
-#        },
-#    ),
-    # HES
-#    tmp_out_date_any_dementia_hes=patients.admitted_to_hospital(
-#        returning="date_admitted",
-#        with_these_diagnoses=any_dementia_icd,
-#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
-#        date_format="YYYY-MM-DD",
-#        find_first_match_in_period=True,
-#        return_expectations={
-#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-#            "rate": "uniform",
-#            "incidence": 0.1,
-#        },
-#    ),
-    # ONS
-#    tmp_out_date_any_dementia_death=patients.with_these_codes_on_death_certificate(
-#        any_dementia_icd,
-#        returning="date_of_death",
-#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
-#        match_only_underlying_cause=True,
-#        date_format="YYYY-MM-DD",
-#        return_expectations={
-#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
-#            "rate": "uniform",
-#            "incidence": 0.1,
-#        },
-#    ),
-
-    # Any dementia
-#    out_date_any_dementia = patients.minimum_of(
-#        "tmp_out_date_any_dementia_snomed", "tmp_out_date_any_dementia_hes", "tmp_out_date_any_dementia_death",
-#    ),
-
     # Any dementia
     out_date_any_dementia = patients.minimum_of(
         "tmp_out_date_alzheimer_snomed", "tmp_out_date_alzheimer_hes", "tmp_out_date_alzheimer_death",
@@ -408,11 +362,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         "tmp_out_date_other_dementias_snomed", "tmp_out_date_other_dementias_hes", "tmp_out_date_other_dementias_death",
         "tmp_out_date_unspecified_dementias_snomed", "tmp_out_date_unspecified_dementias_hes", "tmp_out_date_unspecified_dementias_death",
     ),
-
-    # Any dementia
-#    out_date_any_dementia = patients.minimum_of(
-#        "out_date_alzheimer_disease", "out_date_vascular_dementia", "out_date_other_dementias", "out_date_unspecified_dementias",
-#    ),
 
     # Cognitive impairment
     # Primary care - symptoms
@@ -530,10 +479,23 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
             "incidence": 0.1,
         },
     ),
+     # ONS
+    tmp_out_date_rem_sleep_disorder_death=patients.with_these_codes_on_death_certificate(
+        rem_sleep_disorder_icd10,
+        returning="date_of_death",
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        match_only_underlying_cause=True,
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
 
     # Combined rem sleep disorder
     out_date_rem_sleep_disorder = patients.minimum_of(
-        "tmp_out_date_rem_sleep_disorder_snomed", "tmp_out_date_rem_sleep_disorder_hes", 
+        "tmp_out_date_rem_sleep_disorder_snomed", "tmp_out_date_rem_sleep_disorder_hes", "tmp_out_date_rem_sleep_disorder_death", 
     ),
 
     # Other Neurodegenerative conditions
@@ -655,10 +617,23 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
             "incidence": 0.1,
         },
     ),
+        # ONS
+    tmp_out_date_mmigraine_death=patients.with_these_codes_on_death_certificate(
+        migraine_icd10,
+        returning="date_of_death",
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        match_only_underlying_cause=True,
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"}, 
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
 
     # Combined mmigraine
     out_date_migraine = patients.minimum_of(
-        "tmp_out_date_migraine_snomed", "tmp_out_date_migraine_hes", 
+        "tmp_out_date_migraine_snomed", "tmp_out_date_migraine_hes", "tmp_out_date_mmigraine_death",
     ),
 
 ################################
