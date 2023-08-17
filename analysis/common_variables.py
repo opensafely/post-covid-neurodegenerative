@@ -633,7 +633,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
 
     # Combined mmigraine
     out_date_migraine = patients.minimum_of(
-        "tmp_out_date_migraine_snomed", "tmp_out_date_migraine_hes", "tmp_out_date_mmigraine_death",
+        "tmp_out_date_migraine_snomed", "tmp_out_date_migraine_hes", "tmp_out_date_migraine_death",
     ),
 
 ################################
