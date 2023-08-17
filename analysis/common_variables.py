@@ -618,7 +618,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         },
     ),
         # ONS
-    tmp_out_date_mmigraine_death=patients.with_these_codes_on_death_certificate(
+    tmp_out_date_migraine_death=patients.with_these_codes_on_death_certificate(
         migraine_icd10,
         returning="date_of_death",
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
