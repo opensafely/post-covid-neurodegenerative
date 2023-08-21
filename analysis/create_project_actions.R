@@ -23,20 +23,20 @@ cohorts <- unique(active_analyses$cohort)
 
 # Determine which outputs are ready --------------------------------------------
 
-success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx", 
-                              sheet = "neuro_extf",
-                      col_types = c("text","text", "text", "text", "text", "text",
-                                    "text", "text", "text", "text", "text",
-                                    "text", "text", "text", "text", "text", "text",
-                                    "skip", "skip"))
-
-success <- tidyr::pivot_longer(success,
-                               cols = setdiff(colnames(success),c("outcome","cohort")),
-                               names_to = "analysis")
-
-success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-",success$outcome)
-
-success <- success[grepl("success",success$value, ignore.case = TRUE),]
+# success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx", 
+#                               sheet = "neuro_extf",
+#                       col_types = c("text","text", "text", "text", "text", "text",
+#                                     "text", "text", "text", "text", "text",
+#                                     "text", "text", "text", "text", "text", "text",
+#                                     "skip", "skip"))
+# 
+# success <- tidyr::pivot_longer(success,
+#                                cols = setdiff(colnames(success),c("outcome","cohort")),
+#                                names_to = "analysis")
+# 
+# success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-",success$outcome)
+# 
+# success <- success[grepl("success",success$value, ignore.case = TRUE),]
 
 # create action functions ----
 
@@ -348,6 +348,21 @@ actions_list <- splice(
     )
   ),
   
+  #Count stage1 outcomes and binary covars
+  action(
+    name = "count_stage1_variables",
+    run = "r:latest analysis/descriptives/second_input_counts.R",
+    needs = list(#"generate_study_population_prevax","generate_study_population_unvax","generate_study_population_vax","preprocess_data_prevax","preprocess_data_unvax","preprocess_data_vax",
+                 "stage1_data_cleaning_prevax","stage1_data_cleaning_unvax","stage1_data_cleaning_vax"),
+    moderately_sensitive=list(
+      counts = glue("output/study_counts_stage1clean.txt"),
+      vax_summary = glue("output/describe_stage1clean_vax.txt"),
+      prevax_summary = glue("output/describe_stage1clean_prevax.txt"),
+      unvax_summary = glue("output/describe_stage1clean_unvax.txt")
+      
+    )
+  ),
+  
   ## Stage 1 - data cleaning -----------------------------------------------------------
   
   splice(
@@ -413,16 +428,16 @@ actions_list <- splice(
   
   ## Model output --------------------------------------------------------------
   
-  comment("Stage 6 - make model output"),
-
-  action(
-    name = "make_model_output",
-    run = "r:latest analysis/model/make_model_output.R",
-    needs = as.list(paste0("cox_ipw-",success$name)),
-    moderately_sensitive = list(
-      model_output = glue("output/model_output.csv")
-    )
-  ),
+  # comment("Stage 6 - make model output"),
+  # 
+  # action(
+  #   name = "make_model_output",
+  #   run = "r:latest analysis/model/make_model_output.R",
+  #   needs = as.list(paste0("cox_ipw-",success$name)),
+  #   moderately_sensitive = list(
+  #     model_output = glue("output/model_output.csv")
+  #   )
+  # ),
   
   ## AER table -----------------------------------------------------------------
   
