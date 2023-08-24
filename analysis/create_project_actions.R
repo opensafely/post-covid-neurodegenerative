@@ -23,20 +23,20 @@ cohorts <- unique(active_analyses$cohort)
 
 # Determine which outputs are ready --------------------------------------------
 
-# success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx", 
-#                               sheet = "neuro_extf",
-#                       col_types = c("text","text", "text", "text", "text", "text",
-#                                     "text", "text", "text", "text", "text",
-#                                     "text", "text", "text", "text", "text", "text",
-#                                     "skip", "skip"))
-# 
-# success <- tidyr::pivot_longer(success,
-#                                cols = setdiff(colnames(success),c("outcome","cohort")),
-#                                names_to = "analysis")
-# 
-# success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-",success$outcome)
-# 
-# success <- success[grepl("success",success$value, ignore.case = TRUE),]
+success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx",
+                              sheet = "neuro_extf",
+                      col_types = c("text","text", "text", "text", "text", "text",
+                                    "text", "text", "text", "text", "text",
+                                    "text", "text", "text", "text", "text", "text",
+                                    "skip", "skip"))
+
+success <- tidyr::pivot_longer(success,
+                               cols = setdiff(colnames(success),c("outcome","cohort")),
+                               names_to = "analysis")
+
+success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-",success$outcome)
+
+success <- success[grepl("success",success$value, ignore.case = TRUE),]
 
 # create action functions ----
 
@@ -146,12 +146,12 @@ stage1_data_cleaning <- function(cohort){
       arguments = c(cohort),
       needs = list("vax_eligibility_inputs",glue("preprocess_data_{cohort}")),
       moderately_sensitive = list(
+        consort = glue("output/consort_{cohort}.csv"),
+        consort_rounded = glue("output/consort_{cohort}_rounded.csv"),
         refactoring = glue("output/not-for-review/meta_data_factors_{cohort}.csv"),
         QA_rules = glue("output/review/descriptives/QA_summary_{cohort}.csv"),
         IE_criteria = glue("output/review/descriptives/Cohort_flow_{cohort}.csv"),
         histograms = glue("output/not-for-review/numeric_histograms_{cohort}.svg")#,
-        #consort = glue("output/consort_{cohort}.csv"),
-        #consort_rounded = glue("output/consort_{cohort}_rounded.csv")
       ),
       highly_sensitive = list(
         cohort = glue("output/input_{cohort}_stage1.rds")
@@ -428,16 +428,16 @@ actions_list <- splice(
   
   ## Model output --------------------------------------------------------------
   
-  # comment("Stage 6 - make model output"),
-  # 
-  # action(
-  #   name = "make_model_output",
-  #   run = "r:latest analysis/model/make_model_output.R",
-  #   needs = as.list(paste0("cox_ipw-",success$name)),
-  #   moderately_sensitive = list(
-  #     model_output = glue("output/model_output.csv")
-  #   )
-  # ),
+  comment("Stage 6 - make model output"),
+
+  action(
+    name = "make_model_output",
+    run = "r:latest analysis/model/make_model_output.R",
+    needs = as.list(paste0("cox_ipw-",success$name)),
+    moderately_sensitive = list(
+      model_output = glue("output/model_output.csv")
+    )
+  ),
   
   ## AER table -----------------------------------------------------------------
   

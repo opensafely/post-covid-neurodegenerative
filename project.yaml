@@ -157,6 +157,8 @@ actions:
     - preprocess_data_prevax
     outputs:
       moderately_sensitive:
+        consort: output/consort_prevax.csv
+        consort_rounded: output/consort_prevax_rounded.csv
         refactoring: output/not-for-review/meta_data_factors_prevax.csv
         QA_rules: output/review/descriptives/QA_summary_prevax.csv
         IE_criteria: output/review/descriptives/Cohort_flow_prevax.csv
@@ -173,6 +175,8 @@ actions:
     - preprocess_data_unvax
     outputs:
       moderately_sensitive:
+        consort: output/consort_unvax.csv
+        consort_rounded: output/consort_unvax_rounded.csv
         refactoring: output/not-for-review/meta_data_factors_unvax.csv
         QA_rules: output/review/descriptives/QA_summary_unvax.csv
         IE_criteria: output/review/descriptives/Cohort_flow_unvax.csv
@@ -189,6 +193,8 @@ actions:
     - preprocess_data_vax
     outputs:
       moderately_sensitive:
+        consort: output/consort_vax.csv
+        consort_rounded: output/consort_vax_rounded.csv
         refactoring: output/not-for-review/meta_data_factors_vax.csv
         QA_rules: output/review/descriptives/QA_summary_vax.csv
         IE_criteria: output/review/descriptives/Cohort_flow_vax.csv
@@ -11219,6 +11225,46 @@ actions:
       moderately_sensitive:
         table2: output/venn_vax.csv
         table2_rounded: output/venn_vax_rounded.csv
+
+  ## Stage 6 - make model output 
+
+  make_model_output:
+    run: r:latest analysis/model/make_model_output.R
+    needs:
+    - cox_ipw-cohort_prevax-main-alzheimer_disease
+    - cox_ipw-cohort_vax-main-alzheimer_disease
+    - cox_ipw-cohort_unvax-main-alzheimer_disease
+    - cox_ipw-cohort_prevax-main-parkinson_disease
+    - cox_ipw-cohort_vax-main-parkinson_disease
+    - cox_ipw-cohort_prevax-main-vascular_dementia
+    - cox_ipw-cohort_vax-main-vascular_dementia
+    - cox_ipw-cohort_prevax-main-other_dementias
+    - cox_ipw-cohort_vax-main-other_dementias
+    - cox_ipw-cohort_unvax-main-other_dementias
+    - cox_ipw-cohort_prevax-main-unspecified_dementias
+    - cox_ipw-cohort_vax-main-unspecified_dementias
+    - cox_ipw-cohort_unvax-main-unspecified_dementias
+    - cox_ipw-cohort_prevax-main-any_dementia
+    - cox_ipw-cohort_vax-main-any_dementia
+    - cox_ipw-cohort_unvax-main-any_dementia
+    - cox_ipw-cohort_prevax-main-cognitive_impairment
+    - cox_ipw-cohort_vax-main-cognitive_impairment
+    - cox_ipw-cohort_unvax-main-cognitive_impairment
+    - cox_ipw-cohort_prevax-main-restless_leg_syndrome
+    - cox_ipw-cohort_vax-main-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-main-rem_sleep_disorder
+    - cox_ipw-cohort_vax-main-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-main-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-main-motor_neurone_disease
+    - cox_ipw-cohort_prevax-main-multiple_sclerosis
+    - cox_ipw-cohort_vax-main-multiple_sclerosis
+    - cox_ipw-cohort_unvax-main-multiple_sclerosis
+    - cox_ipw-cohort_prevax-main-migraine
+    - cox_ipw-cohort_vax-main-migraine
+    - cox_ipw-cohort_unvax-main-migraine
+    outputs:
+      moderately_sensitive:
+        model_output: output/model_output.csv
 
   ## Make absolute excess risk (AER) input 
 
