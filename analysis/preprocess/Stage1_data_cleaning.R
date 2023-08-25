@@ -126,6 +126,12 @@ stage1 <- function(cohort_name){
   bin_factors <- colnames(input)[grepl("cov_bin_",colnames(input))]
   input[,bin_factors] <- lapply(input[,bin_factors], function(x) factor(x, levels = c("FALSE","TRUE")))
   
+  # Specify consort table --------------------------------------------------------
+  print('Specify consort table')
+  
+  consort <- data.frame(Description = "Input",
+                        N = nrow(input),
+                        stringsAsFactors = FALSE)
   
   #####################
   # 2. Apply QA rules #
@@ -135,25 +141,43 @@ stage1 <- function(cohort_name){
   input$rule1=NA
   input$rule1=((input$qa_num_birth_year > (format(input$death_date, format="%Y")) & is.na(input$qa_num_birth_year)== FALSE & is.na(input$death_date) == FALSE)|(is.na(input$qa_num_birth_year)== TRUE & is.na(input$death_date) == FALSE))
   
+  consort[nrow(consort)+1,] <- c("Quality assurance: Year of birth is after year of death or patient only has year of death",
+                                 nrow(input))
+  
   #Rule 2: Year of birth predates NHS established year or year of birth exceeds current date
   input$rule2=NA
   input$rule2=((input$qa_num_birth_year <1793 |(input$qa_num_birth_year >format(Sys.Date(),"%Y"))) & is.na(input$qa_num_birth_year) == FALSE)
+  
+  consort[nrow(consort)+1,] <- c("Quality assurance: Year of birth is before 1793 or year of birth exceeds current date",
+                                 nrow(input))
   
   #Rule 3: Date of death is NULL or invalid (on or before 1/1/1900 or after current date)
   input$rule3=NA
   input$rule3=((input$death_date <=as.Date(study_dates$earliest_expec)|input$death_date > format(Sys.Date(),"%Y-%m-%d")) & is.na(input$death_date) == FALSE)
   
+  consort[nrow(consort)+1,] <- c("Quality assurance: Date of death is NULL or invalid (on or before 1/1/1900 or after current date)",
+                                 nrow(input))
+  
   #Rule 4: Pregnancy/birth codes for men
   input$rule4=NA
   input$rule4=(input$qa_bin_pregnancy == TRUE & input$cov_cat_sex=="Male")
+  
+  consort[nrow(consort)+1,] <- c("Quality assurance: Pregnancy/birth codes for men",
+                                 nrow(input))
   
   #Rule 5: HRT or COCP meds for men
   input$rule5=NA
   input$rule5=((input$cov_cat_sex=="Male" & input$cov_bin_hormone_replacement_therapy==TRUE)|(input$cov_cat_sex=="Male" & input$cov_bin_combined_oral_contraceptive_pill==TRUE))
   
+  consort[nrow(consort)+1,] <- c("Quality assurance: HRT or COCP meds for men",
+                                 nrow(input))
+  
   #Rule 6: Prostate cancer codes for women
   input$rule6=NA
   input$rule6=(input$qa_bin_prostate_cancer == TRUE & input$cov_cat_sex=="Female")
+  
+  consort[nrow(consort)+1,] <- c("Quality assurance: Prostate cancer codes for women",
+                                 nrow(input))
   
   #Remove rows that are TRUE for at least one rule
   input_QA=input%>%filter(rule1==FALSE & rule2==FALSE & rule3==FALSE & rule4==FALSE & rule5==FALSE & rule6==FALSE)
@@ -218,30 +242,51 @@ stage1 <- function(cohort_name){
   input <- input %>% filter(index_date < death_date | is.na(death_date))
   cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 1 (Inclusion): Alive on the first day of follow up") # Feed into the cohort flow
   
+  consort[nrow(consort)+1,] <- c("Inclusion criteria: Alive on the first day of follow up",
+                                 nrow(input))
+  
   #Inclusion criteria 2: Known age between 18 and 110 on 01/06/2021 
   input <- subset(input, input$cov_num_age >= 18) # Subset input if age between 18 and 110 on 01/06/2021.
   cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 2a (Inclusion): Aged 18 and over on index date") # Feed into the cohort flow
   
+  consort[nrow(consort)+1,] <- c("Inclusion criteria: Known age 18 or over on 01/06/2021",
+                                 nrow(input))
+  
   input <- subset(input, input$cov_num_age <= 110) # Subset input if age between 18 and 110 on 01/06/2021.
   cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 2b (Inclusion): Aged 110 and under on index date") # Feed into the cohort flow
+  
+  consort[nrow(consort)+1,] <- c("Inclusion criteria: Known age 110 or under on 01/06/2021",
+                                 nrow(input))
   
   #Inclusion criteria 3: Known sex
   input <- input[!is.na(input$cov_cat_sex),] # removes NAs, if any
   cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 3 (Inclusion): Known sex")
   
+  consort[nrow(consort)+1,] <- c("Inclusion criteria: Known sex",
+                                 nrow(input))
+  
   #Inclusion criteria 4: Known deprivation 
   input <- input[!is.na(input$cov_cat_deprivation),] # removes NAs, if any
   cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 4 (Inclusion): Known deprivation")
   
+  consort[nrow(consort)+1,] <- c("Inclusion criteria: Known deprivation",
+                                 nrow(input))
+  
   #Inclusion criteria 5: Registered in an English GP with TPP software for at least 6 months prior to the study start date
   input <- subset(input, input$has_follow_up_previous_6months == TRUE)
   cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 5 (Inclusion): Registered in an English GP with TPP software for at least 6 months prior to the study start date")
+  
+  consort[nrow(consort)+1,] <- c("Inclusion criteria: Six months follow up prior to index",
+                                 nrow(input))
   
   #Inclusion criteria 6: Not deregistered 
   input <- input %>%
     filter(is.na(dereg_date))
   #cohort_flow <- rbind(cohort_flow,c(nrow(input),as.numeric(cohort_flow[(nrow(input)-1),1]) - nrow(input)))
   cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 6 (Exclusion): Not deregistered from all support practices between index and end of study date")
+  
+  consort[nrow(consort)+1,] <- c("Inclusion criteria: Active registration",
+                                 nrow(input))
   
   #Inclusion criteria 7: Known region
   input <- input %>% mutate(cov_cat_region = as.character(cov_cat_region)) %>%
@@ -250,6 +295,9 @@ stage1 <- function(cohort_name){
   
   input$cov_cat_region <- relevel(input$cov_cat_region, ref = "East")
   cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 7 (Inclusion): Known region")
+  
+  consort[nrow(consort)+1,] <- c("Inclusion criteria: Known region",
+                                 nrow(input))
   
   # A simple check if factor reference level has changed
   describe_vars <- tidyselect::vars_select(names(input), contains(c('_cat_', 'cov_bin','cov_cat','qa_bin','exp_cat','vax_cat', 'step'), ignore.case = TRUE))
@@ -268,17 +316,29 @@ stage1 <- function(cohort_name){
     input <- input[!is.na(input$vax_gap),] # Subset the fully vaccinated group
     cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 8 (Exclusion): No record of two vaccination doses prior to the study end date") # Feed into the cohort flow
     
+    consort[nrow(consort)+1,] <- c("Inclusion criteria: Record of two vaccination doses prior to the study end date",
+                                   nrow(input))
+    
     #Exclusion criteria 9: Received a vaccination prior to 08-12-2020 (i.e., the start of the vaccination program)
     input <- subset(input, input$vax_date_covid_1 >= vax_start_date&input$vax_date_covid_2 >= vax_start_date)
     cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 9 (Exclusion): Recorded vaccination prior to the start date of vaccination program")
+    
+    consort[nrow(consort)+1,] <- c("Inclusion criteria: Did not receive a vaccination prior to 08-12-2020 (i.e., the start of the vaccination program)",
+                                   nrow(input))
     
     #Exclusion criteria 10: Received a second dose vaccination before their first dose vaccination
     input <- subset(input, input$vax_gap >= 0) # Keep those with positive vaccination gap
     cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 10 (Exclusion): Second dose vaccination recorded before the first dose vaccination")
     
+    consort[nrow(consort)+1,] <- c("Inclusion criteria: Did not recieve a second dose vaccination before their first dose vaccination",
+                                   nrow(input))
+    
     #Exclusion criteria 11: Received a second dose vaccination less than three weeks after their first dose
     input <- subset(input, input$vax_gap >= 21) # Keep those with at least 3 weeks vaccination gap
     cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 11 (Exclusion): Second dose vaccination recorded less than three weeks after the first dose")
+    
+    consort[nrow(consort)+1,] <- c("Inclusion criteria: Did not recieve a second dose vaccination before their first dose vaccination",
+                                   nrow(input))
     
     #Exclusion criteria 12: Mixed vaccine products received before 07-05-2021
     # Trick to run the mixed vaccine code on dummy data with limited levels -> To ensure that the levels are the same in vax_cat_product variables
@@ -300,10 +360,15 @@ stage1 <- function(cohort_name){
     
     cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 12 (Exclusion): Received mixed vaccine products before 07-05-2021")
     
+    consort[nrow(consort)+1,] <- c("Inclusion criteria: Did not recieve a mixed vaccine products before 07-05-2021",
+                                   nrow(input))
+    
     #Inclusions criteria 13: Index date is before cohort end date - will remove anyone who is not fully vaccinated by the cohort end date
     input <- input %>% filter (!is.na(index_date) & index_date <= end_date_exposure & index_date >= start_date_delta)
     cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 13 (Inclusion): Patient index date is within the study start and end dates i.e patient is fully vaccinated before the study end date")
     
+    consort[nrow(consort)+1,] <- c("Inclusion criteria: Index date is before cohort end date",
+                                   nrow(input))
     
   } else if (cohort_name == "unvax"){
     
@@ -317,11 +382,21 @@ stage1 <- function(cohort_name){
     input <- subset(input, input$prior_vax1 == 0) #Exclude people with prior vaccination
     cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[9,1]) - nrow(input), "Criteria 8 (Exclusion): Have a record of a first vaccination prior index date")
     
+    consort[nrow(consort)+1,] <- c("Inclusion criteria: Does not have a record of one or more vaccination prior index date",
+                                   nrow(input))
+    
+    print("age check\n")                                
+    print(summary(input$cov_num_age))
+    print(sum(input$cov_num_age > 59))
+    
     #Exclusion criteria 9: Missing JCVI group
     input <- subset(input, vax_cat_jcvi_group == "01" | vax_cat_jcvi_group == "02" | vax_cat_jcvi_group == "03" | vax_cat_jcvi_group == "04" |
                       vax_cat_jcvi_group == "05" | vax_cat_jcvi_group == "06" | vax_cat_jcvi_group == "07" | vax_cat_jcvi_group == "08" |
                       vax_cat_jcvi_group == "09" | vax_cat_jcvi_group == "10" | vax_cat_jcvi_group == "11" | vax_cat_jcvi_group == "12")
     cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input),as.numeric(cohort_flow[nrow(cohort_flow),"N"]) - nrow(input), "Criteria 9 (Exclusion): Missing or unknown JCVI group")
+    
+    consort[nrow(consort)+1,] <- c("Inclusion criteria: Not missing JCVI group",
+                                   nrow(input))
     
     #Inclusions criteria 10: Index date is before cohort end date - will remove anyone whose eligibility date + 84 days is after study end date (only those with unknown JCVI group)
     input <- input %>% filter (!is.na(index_date) & index_date <= end_date_exposure & index_date >= start_date_delta)
@@ -329,17 +404,48 @@ stage1 <- function(cohort_name){
     
   }
   
+  consort[nrow(consort)+1,] <- c("Inclusion criteria: Index date is not before cohort end date - will remove anyone whose eligibility date + 84 days is after study end date (only those with unknown JCVI group)",
+                                 nrow(input))
+  
+  print("age check")                                
+  print(summary(input$cov_num_age))
+  print(sum(input$cov_num_age > 59))
+  
   print(paste0(cohort_name, " " , nrow(input), " rows in the input file after cohort specificinclusion criteria"))
   
   
   
   print(paste0(cohort_name, " ", nrow(input), " rows in the input file after common inclusion criteria"))
+  
   #-------------------------------------------------#
   # 3.c. Apply outcome specific exclusions criteria
   #-------------------------------------------------#
   ####INSERT OUTCOME SPECIFIC EXCLUSION HERE#######    
   
+  # Save consort data ------------------------------------------------------------
+  print('Save consort data')
   
+  consort$N <- as.numeric(consort$N)
+  
+  consort$removed <- dplyr::lag(consort$N, default = dplyr::first(consort$N)) - consort$N
+  
+  write.csv(consort, 
+            file = paste0("output/consort_",cohort_name, ".csv"), 
+            row.names=F)
+  
+  # Perform redaction ------------------------------------------------------------
+  print('Perform redaction')
+  
+  consort$removed <- NULL
+  consort$N <- roundmid_any(consort$N, to=threshold)
+  consort$removed <- dplyr::lag(consort$N, default = dplyr::first(consort$N)) - consort$N
+  
+  # Save rounded consort data ----------------------------------------------------
+  print('Save rounded consort data ')
+  
+  write.csv(consort, 
+            file = paste0("output/consort_",cohort_name, "_rounded.csv"), 
+            row.names=F)
   
   # NB: write.csv is not feasible to output list with uneven length
   sink(file = file.path("output/not-for-review", paste0("meta_data_factors_",cohort_name, ".csv")))
