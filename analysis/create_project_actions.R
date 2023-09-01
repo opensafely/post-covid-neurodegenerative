@@ -372,6 +372,19 @@ actions_list <- splice(
     )
   ),
   
+  ## consort output ------------------------------------------------------------
+  
+  action(
+    name = "make_consort_output",
+    run = "r:latest analysis/model/make_other_output.R consort prevax;vax;unvax",
+    needs = list("stage1_data_cleaning_prevax",
+                 "stage1_data_cleaning_vax",
+                 "stage1_data_cleaning_unvax"),
+    moderately_sensitive = list(
+      consort_output_rounded = glue("output/consort_output_rounded.csv")
+    )
+  ),
+  
   ## Table 1 -------------------------------------------------------------------
   
   splice(
