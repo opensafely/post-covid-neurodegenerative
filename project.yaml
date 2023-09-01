@@ -202,6 +202,16 @@ actions:
       highly_sensitive:
         cohort: output/input_vax_stage1.rds
 
+  make_consort_output:
+    run: r:latest analysis/model/make_other_output.R consort prevax;vax;unvax
+    needs:
+    - stage1_data_cleaning_prevax
+    - stage1_data_cleaning_vax
+    - stage1_data_cleaning_unvax
+    outputs:
+      moderately_sensitive:
+        consort_output_rounded: output/consort_output_rounded.csv
+
   ## Table 1 - prevax 
 
   table1_prevax:
