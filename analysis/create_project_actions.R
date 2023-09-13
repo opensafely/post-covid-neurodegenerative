@@ -160,6 +160,27 @@ stage1_data_cleaning <- function(cohort){
   )
 }
 
+################################################################################
+# Diagnosis -----------------------------------
+################################################################################
+
+diagnosis <- function(cohort){
+  splice(
+    comment(glue("Date and number of dementia diagnosis per patient - {cohort}")),
+    action(
+      name = glue("patients_diagnosis_{cohort}"),
+      run = glue("r:latest analysis/descriptives/diagnosis_count.R"),
+      arguments = c(cohort),
+      needs = list(glue("stage1_data_cleaning_{cohort}")),
+      moderately_sensitive=list(
+        dates = glue("output/not-for-review/dementia_diagnosis_dates_{cohort}.csv"),
+        diagnosis = glue("output/dementias_diagnosis_{cohort}.csv"),
+        diagnosis_rounded =glue("output/dementias_diagnosis_{cohort}_rounded.csv")
+      )
+    )
+  )
+}
+
 # Create function for table1 --------------------------------------------
 
 table1 <- function(cohort){
@@ -382,6 +403,30 @@ actions_list <- splice(
                  "stage1_data_cleaning_unvax"),
     moderately_sensitive = list(
       consort_output_rounded = glue("output/consort_output_rounded.csv")
+    )
+  ),
+  
+  ## Diagnostics per patient -----------------------------------------------------------
+  
+  splice(
+    unlist(lapply(cohorts, 
+                  function(x) diagnosis(cohort = x)), 
+           recursive = FALSE
+           
+    )
+  ),
+  
+  ## diagnostic output ------------------------------------------------------------
+  
+  action(
+    name = "make_diagnosis_output",
+    run = "r:latest analysis/model/make_diagnosis_output.R",
+    needs = list("patients_diagnosis_prevax",
+                 "patients_diagnosis_vax",
+                 "patients_diagnosis_unvax"),
+    moderately_sensitive = list(
+      #count_dementias_diagnosis_output = glue("output/count_dementias_diagnosis_output.csv"),
+      diagnosis_output_rounded = glue("output/dementias_diagnosis_output_rounded.csv")
     )
   ),
   

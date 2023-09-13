@@ -212,6 +212,52 @@ actions:
       moderately_sensitive:
         consort_output_rounded: output/consort_output_rounded.csv
 
+  ## Date and number of dementia diagnosis per patient - prevax 
+
+  patients_diagnosis_prevax:
+    run: r:latest analysis/descriptives/diagnosis_count.R prevax
+    needs:
+    - stage1_data_cleaning_prevax
+    outputs:
+      moderately_sensitive:
+        dates: output/not-for-review/dementia_diagnosis_dates_prevax.csv
+        diagnosis: output/dementias_diagnosis_prevax.csv
+        diagnosis_rounded: output/dementias_diagnosis_prevax_rounded.csv
+
+  ## Date and number of dementia diagnosis per patient - unvax 
+
+  patients_diagnosis_unvax:
+    run: r:latest analysis/descriptives/diagnosis_count.R unvax
+    needs:
+    - stage1_data_cleaning_unvax
+    outputs:
+      moderately_sensitive:
+        dates: output/not-for-review/dementia_diagnosis_dates_unvax.csv
+        diagnosis: output/dementias_diagnosis_unvax.csv
+        diagnosis_rounded: output/dementias_diagnosis_unvax_rounded.csv
+
+  ## Date and number of dementia diagnosis per patient - vax 
+
+  patients_diagnosis_vax:
+    run: r:latest analysis/descriptives/diagnosis_count.R vax
+    needs:
+    - stage1_data_cleaning_vax
+    outputs:
+      moderately_sensitive:
+        dates: output/not-for-review/dementia_diagnosis_dates_vax.csv
+        diagnosis: output/dementias_diagnosis_vax.csv
+        diagnosis_rounded: output/dementias_diagnosis_vax_rounded.csv
+
+  make_diagnosis_output:
+    run: r:latest analysis/model/make_diagnosis_output.R
+    needs:
+    - patients_diagnosis_prevax
+    - patients_diagnosis_vax
+    - patients_diagnosis_unvax
+    outputs:
+      moderately_sensitive:
+        diagnosis_output_rounded: output/dementias_diagnosis_output_rounded.csv
+
   ## Table 1 - prevax 
 
   table1_prevax:
