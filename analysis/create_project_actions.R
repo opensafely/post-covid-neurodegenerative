@@ -174,6 +174,16 @@ table1 <- function(cohort){
         table1 = glue("output/table1_{cohort}.csv"),
         table1_rounded = glue("output/table1_{cohort}_rounded.csv")
       )
+    ),
+    action(
+      name = glue("extendedtable1_{cohort}"),
+      run = "r:latest analysis/descriptives/extendedtable1.R",
+      arguments = c(cohort),
+      needs = list(glue("stage1_data_cleaning_{cohort}")),
+      moderately_sensitive = list(
+        extendedtable1 = glue("output/extendedtable1_{cohort}.csv"),
+        extendedtable1_rounded = glue("output/extendedtable1_{cohort}_rounded.csv")
+      )
     )
   )
 }
@@ -382,6 +392,58 @@ actions_list <- splice(
                  "stage1_data_cleaning_unvax"),
     moderately_sensitive = list(
       consort_output_rounded = glue("output/consort_output_rounded.csv")
+    )
+  ),
+  
+  ## table 1 output ------------------------------------------------------------
+  
+  action(
+    name = "make_table1_output",
+    run = "r:latest analysis/model/make_other_output.R table1 prevax;vax;unvax",
+    needs = list("table1_prevax",
+                 "table1_vax",
+                 "table1_unvax"),
+    moderately_sensitive = list(
+      table1_output_rounded = glue("output/table1_output_rounded.csv")
+    )
+  ),
+  
+  ## extend table 1output ------------------------------------------------------------
+  
+  action(
+    name = "make_extendedtable1_output",
+    run = "r:latest analysis/model/make_other_output.R extendedtable1 prevax;vax;unvax",
+    needs = list("extendedtable1_prevax",
+                 "extendedtable1_vax",
+                 "extendedtable1_unvax"),
+    moderately_sensitive = list(
+      table1_output_rounded = glue("output/extendedtable1_output_rounded.csv")
+    )
+  ),
+  
+  ## table 2 output ------------------------------------------------------------
+  
+  action(
+    name = "make_table2_output",
+    run = "r:latest analysis/model/make_other_output.R table2 prevax;vax;unvax",
+    needs = list("table2_prevax",
+                 "table2_vax",
+                 "table2_unvax"),
+    moderately_sensitive = list(
+      table2_output_rounded = glue("output/table2_output_rounded.csv")
+    )
+  ),
+  
+  ## venn output ------------------------------------------------------------
+  
+  action(
+    name = "make_venn_output",
+    run = "r:latest analysis/model/make_other_output.R venn prevax;vax;unvax",
+    needs = list("venn_prevax",
+                 "venn_vax",
+                 "venn_unvax"),
+    moderately_sensitive = list(
+      venn_output_rounded = glue("output/venn_output_rounded.csv")
     )
   ),
   
