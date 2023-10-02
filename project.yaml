@@ -212,6 +212,46 @@ actions:
       moderately_sensitive:
         consort_output_rounded: output/consort_output_rounded.csv
 
+  make_table1_output:
+    run: r:latest analysis/model/make_other_output.R table1 prevax;vax;unvax
+    needs:
+    - table1_prevax
+    - table1_vax
+    - table1_unvax
+    outputs:
+      moderately_sensitive:
+        table1_output_rounded: output/table1_output_rounded.csv
+
+  make_extendedtable1_output:
+    run: r:latest analysis/model/make_other_output.R extendedtable1 prevax;vax;unvax
+    needs:
+    - extendedtable1_prevax
+    - extendedtable1_vax
+    - extendedtable1_unvax
+    outputs:
+      moderately_sensitive:
+        table1_output_rounded: output/extendedtable1_output_rounded.csv
+
+  make_table2_output:
+    run: r:latest analysis/model/make_other_output.R table2 prevax;vax;unvax
+    needs:
+    - table2_prevax
+    - table2_vax
+    - table2_unvax
+    outputs:
+      moderately_sensitive:
+        table2_output_rounded: output/table2_output_rounded.csv
+
+  make_venn_output:
+    run: r:latest analysis/model/make_other_output.R venn prevax;vax;unvax
+    needs:
+    - venn_prevax
+    - venn_vax
+    - venn_unvax
+    outputs:
+      moderately_sensitive:
+        venn_output_rounded: output/venn_output_rounded.csv
+
   ## Table 1 - prevax 
 
   table1_prevax:
@@ -222,6 +262,15 @@ actions:
       moderately_sensitive:
         table1: output/table1_prevax.csv
         table1_rounded: output/table1_prevax_rounded.csv
+
+  extendedtable1_prevax:
+    run: r:latest analysis/descriptives/extendedtable1.R prevax
+    needs:
+    - stage1_data_cleaning_prevax
+    outputs:
+      moderately_sensitive:
+        extendedtable1: output/extendedtable1_prevax.csv
+        extendedtable1_rounded: output/extendedtable1_prevax_rounded.csv
 
   ## Table 1 - unvax 
 
@@ -234,6 +283,15 @@ actions:
         table1: output/table1_unvax.csv
         table1_rounded: output/table1_unvax_rounded.csv
 
+  extendedtable1_unvax:
+    run: r:latest analysis/descriptives/extendedtable1.R unvax
+    needs:
+    - stage1_data_cleaning_unvax
+    outputs:
+      moderately_sensitive:
+        extendedtable1: output/extendedtable1_unvax.csv
+        extendedtable1_rounded: output/extendedtable1_unvax_rounded.csv
+
   ## Table 1 - vax 
 
   table1_vax:
@@ -244,6 +302,15 @@ actions:
       moderately_sensitive:
         table1: output/table1_vax.csv
         table1_rounded: output/table1_vax_rounded.csv
+
+  extendedtable1_vax:
+    run: r:latest analysis/descriptives/extendedtable1.R vax
+    needs:
+    - stage1_data_cleaning_vax
+    outputs:
+      moderately_sensitive:
+        extendedtable1: output/extendedtable1_vax.csv
+        extendedtable1_rounded: output/extendedtable1_vax_rounded.csv
 
   ## Stage 5 - Run models 
 
