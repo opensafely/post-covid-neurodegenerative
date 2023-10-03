@@ -53,7 +53,7 @@ for (i in 1:nrow(aer_input)) {
 # Calculate prevax weightings --------------------------------------------------
 print('Calculate prevax weightings')
 
-prevax_weightings <- aer_input[aer_input$cohort=="prevax_extf",
+prevax_weightings <- aer_input[aer_input$cohort=="prevax",
                                c("analysis",
                                  "outcome",
                                  "aer_sex", 

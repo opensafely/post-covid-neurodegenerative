@@ -15,10 +15,10 @@ library(broman)
 library(huxtable)
 
 #Directories
-results_dir <- "C:/Users/rs22981/GitHub/post-covid-neurodegenerative/output/" #change according to your repo
-output_dir <- "C:/Users/rs22981/Opensafely/Table2_test/" #change according to your repo
+results_dir <- "../../" #change according to your repo
+output_dir <- "../../" #change according to your repo
 
-results_dir <- "C:/Users/rs22981/Opensafely/Table2_test/"
+results_dir <- "../../"
 
 ###############################################
 # 1. CLEAN TABLE 2 FUNCTION
@@ -90,11 +90,13 @@ table2 <- table2 %>%
   #rename 2 columns(part 2)
   rename("Event/person-years" = "Event/person-years3",
          "Incidence rate*" = "Incidence rate*4")
+
 #Reorder rows
 table2$period2 <- factor(table2$period2, levels = c("No COVID-19",
                                                   "Hospitalised COVID-19",
                                                   "Non-hospitalised COVID-19"))
 table2 <- table2[order(table2$outcome1, table2$period2),]
+
 #Remove column names (according to CVD manuscript)
 colnames(table2)[1:2] <- ""
 

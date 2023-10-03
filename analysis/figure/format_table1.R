@@ -13,8 +13,8 @@ library(officer)
 library(scales)
 
 #Directories
-results_dir <- "C:/Users/rs22981/Opensafely/Neuro/Release/20230408_tables/" #change according to your repo
-output_dir <- "C:/Users/rs22981/Opensafely/Neuro/Release/20230408_tables/" #change according to your repo
+results_dir <- "../../" #change according to your repo
+output_dir <- "../../" #change according to your repo
 
 ###############################################
 # 1. CLEAN TABLE 1 FUNCTION

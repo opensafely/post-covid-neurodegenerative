@@ -13,3 +13,5 @@ venv/
 .Rhistory
 .Rproj.user*
 .Rproj.user
+tmp/*
+analysis/specify_paths.R

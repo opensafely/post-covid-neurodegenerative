@@ -42,16 +42,26 @@ df <- tidyr::pivot_wider(df,
 print("Order outcomes")
 
 df$outcome_label <- factor(df$outcome_label,
-                           levels = c(c("Alzheimer disease", "Parkinson disease", "Any dementia","Cognitive Impairment","Rem sleep disorder","Migraine",
-                                        "Vascular dementia","Other dementias","Unspecified dementias","Restless leg syndrome", "Motor neurone disease", "Multiple sclerosis")))
+                           levels = c(c("Alzheimer disease",
+                                        "Any dementia",
+                                        "Cognitive impairment",
+                                        "Migraine",
+                                        "Motor neurone disease",
+                                        "Multiple sclerosis",
+                                        "Other dementias",
+                                        "Parkinson disease",
+                                        "Rem sleep disorder",
+                                        "Restless leg syndrome",
+                                        "Unspecified dementias",
+                                        "Vascular dementia")))
                            
-                           # Tidy table -------------------------------------------------------------------
-                           print("Tidy table")
+# Tidy table -------------------------------------------------------------------
+print("Tidy table")
                            
-                           df <- df[order(df$outcome_label),
-                                    c("outcome_label","prevax","vax","unvax")]
+df <- df[order(df$outcome_label),
+         c("outcome_label","prevax","vax","unvax")]
                            
-                           # Save table -------------------------------------------------------------------
-                           print("Save table")
+# Save table -------------------------------------------------------------------
+print("Save table")
                            
-                           readr::write_csv(df, "output/post_release/tableAER.csv", na = "-")
+readr::write_csv(df, "output/post_release/tableAER.csv", na = "-")
