@@ -2,7 +2,7 @@
 # To use, please remove "_example" from the file name and add your specific file paths below.
 
 #release <- "../../" # Specify path to release directory  
-release <- "../../OneDrive - University of Bristol/Projects/post-covid-neurodegenerative/release/20230904/" #"output/results/" # directory containing all results
+release <- "" #"output/results/" # directory containing all results
 path_aer_input <- paste0(release,"aer_input-main-rounded.csv")
 path_consort <- paste0(release,"consort_output_rounded.csv")
 # path_median_iqr_age <- paste0(release,"median_iqr_age.csv")
