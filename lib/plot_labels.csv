@@ -1,0 +1,44 @@
+﻿term,label
+alzheimer_disease,Alzheimer disease
+any_dementia,Any dementia
+cognitive_impairment,Cognitive impairment
+migraine,Migraine
+motor_neurone_disease,Motor neurone disease
+multiple_sclerosis,Multiple sclerosis
+other_dementias,Other dementias
+parkinson_disease,Parkinson's disease
+rem_sleep_disorder,Rem sleep disorder
+restless_leg_syndrome,Restless leg syndrome
+unspecified_dementias,Unspecified dementias
+vascular_dementia,Vascular dementia
+prevax,Pre-vaccination (Jan 1 2020 - Dec 14 2021)
+vax,Vaccinated (Jun 1 2021 - Dec 14 2021)
+unvax,Unvaccinated (Jun 1 2021 - Dec 14 2021)
+main,All COVID-19
+day0,Day 0
+sub_age_18_39,Age group: 18-39
+sub_age_40_59,Age group: 40-59
+sub_age_60_79,Age group: 60-79
+sub_age_80_110,Age group: 80-110
+sub_covid_hospitalised,Hospitalised COVID-19
+sub_covid_nonhospitalised,Non-hospitalised COVID-19
+sub_ethnicity_asian,Ethnicity: South Asian
+sub_ethnicity_black,Ethnicity: Black
+sub_ethnicity_mixed,Ethnicity: Mixed
+sub_ethnicity_other,Ethnicity: Other
+sub_ethnicity_white,Ethnicity: White
+sub_sex_female,Sex: Female
+sub_sex_male,Sex: Male
+sub_covid_history,History of COVID-19
+cov_bin_ami,Acute myocardial infarction 
+cov_bin_cancer,Cancer 
+cov_bin_chronic_kidney_disease,Chronic kidney disease 
+cov_bin_chronic_obstructive_pulmonary_disease,Chronic obstructive pulmonary disease 
+cov_bin_diabetes,Diabetes
+cov_bin_healthcare_worker,Healthcare worker 
+cov_bin_hypertension,Hypertension 
+cov_bin_liver_disease,Liver disease 
+cov_bin_obesity,Obesity 
+cov_bin_stroke_isch,Ischaemic strike
+cov_cat_consulation_rate,GP consultations in 2019
+All,All
