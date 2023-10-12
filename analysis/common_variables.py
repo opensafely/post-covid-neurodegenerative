@@ -1113,39 +1113,39 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         "tmp_cov_bin_angina_snomed", "tmp_cov_bin_angina_hes",
     ),
 
-    ## Dementia
-    ### Primary care
-    tmp_cov_bin_dementia_snomed=patients.with_these_clinical_events(
-        dementia_snomed_clinical,
-        returning='binary_flag',
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-    ### HES APC (Hospital Episode Statistics Admitted Patient Care)
-    tmp_cov_bin_dementia_hes=patients.admitted_to_hospital(
-        returning='binary_flag',
-        with_these_diagnoses=dementia_icd10,
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-    ### Primary care - vascular
-    tmp_cov_bin_dementia_vascular_snomed=patients.with_these_clinical_events(
-        dementia_vascular_snomed_clinical,
-        returning='binary_flag',
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-    ### HES APC - vascular
-    tmp_cov_bin_dementia_vascular_hes=patients.admitted_to_hospital(
-        returning='binary_flag',
-        with_these_diagnoses=dementia_vascular_icd10,
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-    ### Combined
-    cov_bin_dementia=patients.maximum_of(
-        "tmp_cov_bin_dementia_snomed", "tmp_cov_bin_dementia_hes", "tmp_cov_bin_dementia_vascular_snomed", "tmp_cov_bin_dementia_vascular_hes",
-    ),    
+    # ## Dementia
+    # ### Primary care
+    # tmp_cov_bin_dementia_snomed=patients.with_these_clinical_events(
+    #     dementia_snomed_clinical,
+    #     returning='binary_flag',
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1},
+    # ),
+    # ### HES APC (Hospital Episode Statistics Admitted Patient Care)
+    # tmp_cov_bin_dementia_hes=patients.admitted_to_hospital(
+    #     returning='binary_flag',
+    #     with_these_diagnoses=dementia_icd10,
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1},
+    # ),
+    # ### Primary care - vascular
+    # tmp_cov_bin_dementia_vascular_snomed=patients.with_these_clinical_events(
+    #     dementia_vascular_snomed_clinical,
+    #     returning='binary_flag',
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1},
+    # ),
+    # ### HES APC - vascular
+    # tmp_cov_bin_dementia_vascular_hes=patients.admitted_to_hospital(
+    #     returning='binary_flag',
+    #     with_these_diagnoses=dementia_vascular_icd10,
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1},
+    # ),
+    # ### Combined
+    # cov_bin_dementia=patients.maximum_of(
+    #     "tmp_cov_bin_dementia_snomed", "tmp_cov_bin_dementia_hes", "tmp_cov_bin_dementia_vascular_snomed", "tmp_cov_bin_dementia_vascular_hes",
+    # ),    
 
     ## Liver disease
      ### Primary care
