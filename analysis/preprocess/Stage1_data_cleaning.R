@@ -422,6 +422,20 @@ stage1 <- function(cohort_name){
   #-------------------------------------------------#
   ####INSERT OUTCOME SPECIFIC EXCLUSION HERE#######    
   
+  # Prevax / vax / unvax
+  
+  #   input <- input %>%
+  #   # Exclude individuals with a recorded diagnosis of chronic neuro-degenerative diseases prior to index date
+  #   filter(!out_date_alzheimer_disease < !!sym(paste0("index_date_",cohort_name)) | is.na(out_date_alzheimer_disease)) %>%
+  #   filter(!out_date_vascular_dementia < !!sym(paste0("index_date_",cohort_name)) | is.na(out_date_vascular_dementia)) %>%
+  #   filter(!out_date_mixed_dementia < !!sym(paste0("index_date_",cohort_name)) | is.na(out_date_mixed_dementia)) %>%
+  #   filter(!out_date_parkinson_disease < !!sym(paste0("index_date_",cohort_name)) | is.na(out_date_parkinson_disease)) %>%
+  #   filter(!out_date_motor_neurone_disease < !!sym(paste0("index_date_",cohort_name)) | is.na(out_date_motor_neurone_disease)) %>%
+  #   filter(!out_date_multiple_sclerosis < !!sym(paste0("index_date_",cohort_name)) | is.na(out_date_multiple_sclerosis))
+  # 
+  # cohort_flow[nrow(cohort_flow)+1,] <- c(nrow(input), "Calculate manually", "Neuro-degenerative specific criteria: Remove those with chornic neurodegenerative diseases prior to index date")
+  
+  
   # Save consort data ------------------------------------------------------------
   print('Save consort data')
   
