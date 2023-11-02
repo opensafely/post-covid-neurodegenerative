@@ -265,6 +265,12 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         "tmp_out_date_vascular_dementia_snomed", "tmp_out_date_vascular_dementia_hes", "tmp_out_date_vascular_dementia_death",
     ),
 
+    #Mixed dementia: Alzheimer disease & Vascular dementia
+    out_date_mixed_dementia = patients.minimum_of(
+        "tmp_out_date_alzheimer_snomed", "tmp_out_date_alzheimer_hes", "tmp_out_date_alzheimer_death",
+        "tmp_out_date_vascular_dementia_snomed", "tmp_out_date_vascular_dementia_hes", "tmp_out_date_vascular_dementia_death",
+    ),
+
     # Other dementias
     # Primary
     tmp_out_date_other_dementias_snomed=patients.with_these_clinical_events(
@@ -636,9 +642,111 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         "tmp_out_date_migraine_snomed", "tmp_out_date_migraine_hes", "tmp_out_date_migraine_death",
     ),
 
-################################
-# Neurodegenerative Covariates # 
-################################
+#############################################
+# Neurodegenerative History of (episodic) # 
+#############################################
+
+## History of... ##
+
+# # Other dementias
+# # primary care
+# tmp_cov_bin_history_other_dementias_snomed=patients.with_these_clinical_events(
+#     other_dementias_snomed,
+#     returning="binary_flag",
+#     on_or_before=f"{index_date_variable} - 1 day",
+#     return_expectations={"incidence": 0.1,
+#     },
+# ),
+# # HES
+# tmp_cov_bin_history_other_dementias_hes=patients.admitted_to_hospital(
+#     with_these_diagnoses=other_dementias_icd10,
+#     returning="binary_flag",
+#     on_or_before=f"{index_date_variable} - 1 day",
+#     return_expectations={"incidence": 0.1,
+#     },
+# ),
+# # Combined History of other dementias
+# cov_bin_history_other_dementias = patients.minimum_of(
+#     "tmp_cov_bin_history_other_dementias_snomed", "tmp_cov_bin_history_other_dementias_hes", 
+# ),
+# # Unspecified dementias
+# # primary care
+# tmp_cov_bin_history_unspecified_dementias_snomed=patients.with_these_clinical_events(
+#     unspecified_dementias_snomed,
+#     returning="binary_flag",
+#     on_or_before=f"{index_date_variable} - 1 day",
+#     return_expectations={"incidence": 0.1,
+#     },
+# ),
+# # HES
+# tmp_cov_bin_history_unspecified_dementias_hes=patients.admitted_to_hospital(
+#     with_these_diagnoses=unspecified_dementias_icd10,
+#     returning="binary_flag",
+#     on_or_before=f"{index_date_variable} - 1 day",
+#     return_expectations={"incidence": 0.1,
+#     },
+# ),
+# # Combined History of unspecified dementias
+# cov_bin_history_unspecified_dementias = patients.minimum_of(
+#     "tmp_cov_bin_history_unspecified_dementias_snomed", "tmp_cov_bin_history_unspecified_dementias_hes", 
+# ),
+# Restless leg syndrome
+# Primary care
+tmp_cov_bin_history_restless_leg_syndrome_snomed=patients.with_these_clinical_events(
+    restless_leg_syndrome_snomed,
+    returning="binary_flag",
+    on_or_before=f"{index_date_variable} - 1 day",
+    return_expectations={"incidence": 0.1,
+    },
+),
+# Combined history of 
+cov_bin_history_restless_leg_syndrome = patients.minimum_of(
+    "tmp_cov_bin_history_restless_leg_syndrome_snomed", 
+),
+
+# REM sleep disorder
+# Primary care
+tmp_cov_bin_history_rem_sleep_disorder_snomed=patients.with_these_clinical_events(
+    rem_sleep_disorder_snomed,
+    returning="binary_flag",
+    on_or_before=f"{index_date_variable} - 1 day",
+    return_expectations={"incidence": 0.1,
+    },
+),
+# HES
+tmp_cov_bin_history_rem_sleep_disorder_hes=patients.admitted_to_hospital(
+    with_these_diagnoses=rem_sleep_disorder_icd10,
+    returning="binary_flag",
+    on_or_before=f"{index_date_variable} - 1 day",
+    return_expectations={"incidence": 0.1,
+    },
+),
+# Combined history of 
+cov_bin_history_rem_sleep_disorder = patients.minimum_of(
+    "tmp_cov_bin_history_rem_sleep_disorder_snomed", "tmp_cov_bin_history_rem_sleep_disorder_hes", 
+),
+
+# Migraine
+# Primary care
+tmp_cov_bin_history_migraine_snomed=patients.with_these_clinical_events(
+    migraine_snomed,
+    returning="binary_flag",
+    on_or_before=f"{index_date_variable} - 1 day",
+    return_expectations={"incidence": 0.1,
+    },
+),
+# HES
+tmp_cov_bin_history_migraine_hes=patients.admitted_to_hospital(
+    with_these_diagnoses=migraine_icd10,
+    returning="binary_flag",
+    on_or_before=f"{index_date_variable} - 1 day",
+    return_expectations={"incidence": 0.1,
+    },
+),
+# Combined history of migraine
+cov_bin_history_migraine = patients.minimum_of(
+    "tmp_cov_bin_history_migraine_snomed", "tmp_cov_bin_history_migraine_hes", 
+),
 
 #####################
 # DEFINE COVARIATES #

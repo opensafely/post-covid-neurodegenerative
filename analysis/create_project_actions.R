@@ -237,6 +237,7 @@ apply_model_function <- function(name, cohort, analysis, ipw, strata,
 table2 <- function(cohort){
   
   table2_names <- gsub("out_date_","",unique(active_analyses[active_analyses$cohort=={cohort},]$name))
+  table2_names <- table2_names[grepl("-main-",table2_names)]
   
   splice(
     comment(glue("Table 2 - {cohort}")),

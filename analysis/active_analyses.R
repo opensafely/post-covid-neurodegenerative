@@ -49,6 +49,7 @@ cohorts <- c("vax","unvax","prevax")
 outcomes_runall <- c("out_date_alzheimer_disease", 
                      "out_date_parkinson_disease",
                      "out_date_any_dementia",
+                     "out_date_mixed_dementia",
                      "out_date_cognitive_impairment",
                      "out_date_rem_sleep_disorder",
                      "out_date_migraine")
