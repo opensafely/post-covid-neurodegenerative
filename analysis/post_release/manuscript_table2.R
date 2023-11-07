@@ -7,11 +7,11 @@ df <- readr::read_csv(path_table2,
 # Keep totals ------------------------------------------------------------------
 print("Keep totals")
 
-totals <- unique(df[df$analysis=="main",c("cohort","sample_size")])
+totals <- unique(df[df$analysis=="main",c("cohort","sample_size_rounded")])
 
 totals <- tidyr::pivot_wider(totals,
                              names_from = "cohort",
-                             values_from = c("sample_size"))
+                             values_from = c("sample_size_rounded"))
 
 colnames(totals) <- paste0("event_personyears_",colnames(totals))
 
@@ -22,7 +22,7 @@ print("Filter data")
 
 df <- df[df$analysis %in% c("main","sub_covid_hospitalised","sub_covid_nonhospitalised"),]
 
-df$events <- ifelse(df$analysis=="main", df$unexposed_events, df$exposed_events)
+df$events <- ifelse(df$analysis=="main", df$unexposed_events_rounded, df$exposed_events_rounded)
 df$person_days <- ifelse(df$analysis=="main", df$unexposed_person_days, df$exposed_person_days)
 
 df <- df[,c("cohort","analysis","outcome","events","person_days")]
@@ -71,6 +71,7 @@ df$outcome_label <- factor(df$outcome_label,
                                       "Any dementia",
                                       "Cognitive impairment",
                                       "Migraine",
+                                      "Mixed dementia",
                                       "Motor neurone disease",
                                       "Multiple sclerosis",
                                       "Other dementias",

@@ -265,6 +265,12 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         "tmp_out_date_vascular_dementia_snomed", "tmp_out_date_vascular_dementia_hes", "tmp_out_date_vascular_dementia_death",
     ),
 
+    # Mixed dementia: Alzheimer disease & Vascular dementia
+    out_date_mixed_dementia = patients.minimum_of(
+        "tmp_out_date_alzheimer_snomed", "tmp_out_date_alzheimer_hes", "tmp_out_date_alzheimer_death",
+        "tmp_out_date_vascular_dementia_snomed", "tmp_out_date_vascular_dementia_hes", "tmp_out_date_vascular_dementia_death",
+    ),
+
     # Other dementias
     # Primary
     tmp_out_date_other_dementias_snomed=patients.with_these_clinical_events(

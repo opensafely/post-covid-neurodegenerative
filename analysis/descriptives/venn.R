@@ -40,12 +40,6 @@ print('Load Venn data')
 
 venn <- readr::read_rds(paste0("output/venn_",cohort,".rds"))
 
-# rename columns
-venn <- venn %>%
-  rename_at(vars(matches(c("_symptoms"))), ~ str_remove(., c("_symptoms"))) %>%
-  rename_with(~ str_replace(., "tmp_out_date_alzheimer_", "tmp_out_date_alzheimer_disease_")) %>%
-  rename_with(~ str_replace(., "tmp_out_date_parkinson_", "tmp_out_date_parkinson_disease_"))
-
 # Create empty output table ----------------------------------------------------
 print('Create empty output table')
 
@@ -151,37 +145,48 @@ for (outcome in outcomes) {
                          total = nrow(tmp),
                          error = "")
     
-    # Fix source contribution for any dementia outcome -------------------------
+    # Fix source contribution for any dementia / mixed dementia outcomes -------
     
-    # any_dementia contribution
-    df_temp <- df[!grepl("any_dementia", df$outcome),]
-    # remove any_dementia outcome
-    df <- df[!grepl("any_dementia", df$outcome),]
+    df_temp1 <- df[!grepl("any_dementia", df$outcome),]
+    # mixed_dementia contribution
+    df_temp2 <- df[!grepl("mixed_dementia", df$outcome),]
+    
+    # remove any_dementia and mixed_dementia outcomes
+    df <- df[!grepl("any_dementia|mixed_dementia", df$outcome),]
     
     # Select Dementia subgroups
-    df_temp <- df[grep("vascular_dementia|other_dementias|unspecified_dementias|alzheimer", df$outcome),] 
+    df_temp1 <- df[grep("vascular_dementia|other_dementias|unspecified_dementias|alzheimer", df$outcome),] 
+    df_temp2 <- df[grep("vascular_dementia|alzheimer", df$outcome),] 
     
     # character to numeric
-    df_temp <- df_temp %>%
+    df_temp1 <- df_temp1 %>%
+      mutate_at(vars(matches("snomed|hes|death|total")),function(x) as.numeric(as.character(x)))
+    df_temp2 <- df_temp2 %>%
       mutate_at(vars(matches("snomed|hes|death|total")),function(x) as.numeric(as.character(x)))
     
     # Summarise
-    df_temp <- df_temp %>%
+    df_temp1 <- df_temp1 %>%
+      summarise_if(is.numeric, sum, na.rm = T)
+    df_temp2 <- df_temp2 %>%
       summarise_if(is.numeric, sum, na.rm = T)
     
     # add columns  
-    df_temp$outcome <- "any_dementia"
-    df_temp$error <- "" #NA
+    df_temp1$outcome <- "any_dementia"
+    df_temp2$outcome <- "mixed_dementia"
+    df_temp1$error <- "" #NA
+    df_temp2$error <- "" #NA
     #df_temp$cohort <- cohort
     
     # relocate
-    df_temp <- relocate(df_temp, outcome)
+    df_temp1 <- relocate(df_temp1, outcome)
+    df_temp2 <- relocate(df_temp2, outcome)
     
     # bind data frames
-    df <- rbind(df, df_temp)
+    df <- rbind(df, df_temp1, df_temp2)
+    #df <- rbind(df, df_temp2)
     
     # remove temporary df
-    rm(df_temp)
+    rm(df_temp1, df_temp2)
     
     # Replace source combinations with NA if not in study definition -------------
     print('Replace source combinations with NA if not in study definition')
