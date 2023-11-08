@@ -426,7 +426,7 @@ actions_list <- splice(
   
   action(
     name = "make_table2_output",
-    run = "r:latest analysis/model/make_other_output.R",
+    run = "r:latest analysis/model/make_table2_output.R",
     needs = list("table2_prevax",
                  "table2_vax",
                  "table2_unvax"),
