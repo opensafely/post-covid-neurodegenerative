@@ -181,7 +181,7 @@ actions:
     - table2_unvax
     outputs:
       moderately_sensitive:
-        table2_output_rounded: output/table2_output_rounded.csv
+        table2_output_midpoint6_derived: output/table2_output_midpoint6_derived.csv
 
   ## Stage 5 - Run models 
 
@@ -3972,7 +3972,7 @@ actions:
     outputs:
       moderately_sensitive:
         table2: output/table2_prevax.csv
-        table2_rounded: output/table2_prevax_rounded.csv
+        table2_midpoint6: output/table2_prevax_midpoint6.csv
 
   ## Table 2 - unvax 
 
@@ -4021,7 +4021,7 @@ actions:
     outputs:
       moderately_sensitive:
         table2: output/table2_unvax.csv
-        table2_rounded: output/table2_unvax_rounded.csv
+        table2_midpoint6: output/table2_unvax_midpoint6.csv
 
   ## Table 2 - vax 
 
@@ -4070,5 +4070,5 @@ actions:
     outputs:
       moderately_sensitive:
         table2: output/table2_vax.csv
-        table2_rounded: output/table2_vax_rounded.csv
+        table2_midpoint6: output/table2_vax_midpoint6.csv
 

@@ -248,7 +248,7 @@ table2 <- function(cohort){
       needs = c(as.list(paste0("make_model_input-",table2_names))),
       moderately_sensitive = list(
         table2 = glue("output/table2_{cohort}.csv"),
-        table2_rounded = glue("output/table2_{cohort}_rounded.csv")
+        table2_midpoint6 = glue("output/table2_{cohort}_midpoint6.csv")
       )
     )
   )
@@ -431,7 +431,7 @@ actions_list <- splice(
                  "table2_vax",
                  "table2_unvax"),
     moderately_sensitive = list(
-      table2_output_rounded = glue("output/table2_output_rounded.csv")
+      table2_output_midpoint6_derived = glue("output/table2_output_midpoint6_derived.csv")
     )
   ),
   
