@@ -181,7 +181,7 @@ actions:
     - table2_unvax
     outputs:
       moderately_sensitive:
-        table2_output_midpoint6_derived: output/table2_output_midpoint6_derived.csv
+        table2_output_rounded: output/table2_output_rounded.csv
 
   ## Stage 5 - Run models 
 

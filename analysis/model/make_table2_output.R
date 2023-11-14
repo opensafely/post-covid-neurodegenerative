@@ -45,7 +45,7 @@ for (cohort in c("prevax","vax","unvax")) {
   # Recalculate total columns --------------------------------------------------
   print('Recalculate total columns')
   
-  table2$total_events_midpoint6 <- table2$exposed_events_midpoint6 + table2$unexposed_events_midpoint6
+  table2$total_events_midpoint6_derived <- table2$exposed_events_midpoint6 + table2$unexposed_events_midpoint6
   
   # Merge to main dataframe ----------------------------------------------------
   print('Recalculate total columns')
@@ -53,7 +53,7 @@ for (cohort in c("prevax","vax","unvax")) {
   table2 <- table2[,c("name","cohort","exposure","outcome","analysis",
                       "unexposed_person_days","unexposed_events_midpoint6",
                       "exposed_person_days","exposed_events_midpoint6",
-                      "total_person_days","total_events_midpoint6","day0_events_midpoint6",
+                      "total_person_days","total_events_midpoint6_derived","day0_events_midpoint6",
                       "total_exposed_midpoint6","sample_size_midpoint6")]
   
   df <- rbind(df, table2)
@@ -63,4 +63,4 @@ for (cohort in c("prevax","vax","unvax")) {
 # Save Table 2 -----------------------------------------------------------------
 print('Save rounded Table 2')
 
-write.csv(df, "output/table2_output_midpoint6_derived.csv", row.names = FALSE)
+write.csv(df, "output/table2_output_rounded.csv", row.names = FALSE)

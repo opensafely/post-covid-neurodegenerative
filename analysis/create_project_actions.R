@@ -431,7 +431,7 @@ actions_list <- splice(
                  "table2_vax",
                  "table2_unvax"),
     moderately_sensitive = list(
-      table2_output_midpoint6_derived = glue("output/table2_output_midpoint6_derived.csv")
+      table2_output_rounded = glue("output/table2_output_rounded.csv")
     )
   ),
   
