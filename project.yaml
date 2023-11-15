@@ -173,7 +173,7 @@ actions:
       highly_sensitive:
         cohort: output/input_vax_stage1.rds
 
-  make_table2_output:
+  make_other_output:
     run: r:latest analysis/model/make_table2_output.R
     needs:
     - table2_prevax

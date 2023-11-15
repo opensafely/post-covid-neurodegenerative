@@ -31,7 +31,7 @@ for (cohort in c("prevax","vax","unvax")) {
   # Load data ------------------------------------------------------------------
   print('Load data')
   
-  table2 <- readr::read_csv(paste0("output/table2_",cohort,"_midpoint6.csv"))
+  table2 <- readr::read_csv(paste0("output/table2_",cohort,"_rounded.csv"))
   
   # Perform redaction ----------------------------------------------------------
   print('Perform redaction')
