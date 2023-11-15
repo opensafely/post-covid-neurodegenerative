@@ -176,9 +176,9 @@ actions:
   make_other_output:
     run: r:latest analysis/model/make_table2_output.R
     needs:
-    - table2_prevax
-    - table2_vax
-    - table2_unvax
+    - table2_prevax_extf
+    - table2_vax_extf
+    - table2_unvax_extf
     outputs:
       moderately_sensitive:
         table2_output_rounded: output/table2_output_rounded.csv

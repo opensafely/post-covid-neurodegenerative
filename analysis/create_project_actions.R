@@ -422,25 +422,14 @@ actions_list <- splice(
   #   )
   # ),
   
-  ## table 2 output ------------------------------------------------------------
-  
-  # action(
-  #   name = "make_table2_output",
-  #   run = "r:latest analysis/model/make_table2_output.R",
-  #   needs = list("table2_prevax",
-  #                "table2_vax",
-  #                "table2_unvax"),
-  #   moderately_sensitive = list(
-  #     table2_output_rounded = glue("output/table2_output_rounded.csv")
-  #   )
-  # ),
+  ## other output ------------------------------------------------------------
   
   action(
     name = "make_other_output",
     run = "r:latest analysis/model/make_table2_output.R",
-    needs = list("table2_prevax",
-                 "table2_vax",
-                 "table2_unvax"),
+    needs = list("table2_prevax_extf",
+                 "table2_vax_extf",
+                 "table2_unvax_extf"),
     moderately_sensitive = list(
       table2_output_rounded = glue("output/table2_output_rounded.csv")
     )
