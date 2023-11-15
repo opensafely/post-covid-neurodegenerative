@@ -248,7 +248,7 @@ table2 <- function(cohort){
       needs = c(as.list(paste0("make_model_input-",table2_names))),
       moderately_sensitive = list(
         table2 = glue("output/table2_{cohort}.csv"),
-        table2_midpoint6 = glue("output/table2_{cohort}_midpoint6.csv")
+        table2_rounded = glue("output/table2_{cohort}_rounded.csv")
       )
     )
   )
