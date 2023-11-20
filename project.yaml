@@ -173,12 +173,12 @@ actions:
       highly_sensitive:
         cohort: output/input_vax_stage1.rds
 
-  make_other_output:
-    run: r:latest analysis/model/make_table2_output.R
+  make_table2_output:
+    run: r:latest analysis/model/make_other_output.R table2 prevax;vax;unvax
     needs:
-    - table2_prevax_extf
-    - table2_vax_extf
-    - table2_unvax_extf
+    - table2_prevax
+    - table2_vax
+    - table2_unvax
     outputs:
       moderately_sensitive:
         table2_output_rounded: output/table2_output_rounded.csv
@@ -3943,6 +3943,34 @@ actions:
     - make_model_input-cohort_prevax-main-restless_leg_syndrome
     - make_model_input-cohort_prevax-main-unspecified_dementias
     - make_model_input-cohort_prevax-main-vascular_dementia
+    - make_model_input-cohort_prevax-sub_age_18_39-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_age_18_39-any_dementia
+    - make_model_input-cohort_prevax-sub_age_18_39-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_age_18_39-migraine
+    - make_model_input-cohort_prevax-sub_age_18_39-mixed_dementia
+    - make_model_input-cohort_prevax-sub_age_18_39-parkinson_disease
+    - make_model_input-cohort_prevax-sub_age_18_39-rem_sleep_disorder
+    - make_model_input-cohort_prevax-sub_age_40_59-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_age_40_59-any_dementia
+    - make_model_input-cohort_prevax-sub_age_40_59-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_age_40_59-migraine
+    - make_model_input-cohort_prevax-sub_age_40_59-mixed_dementia
+    - make_model_input-cohort_prevax-sub_age_40_59-parkinson_disease
+    - make_model_input-cohort_prevax-sub_age_40_59-rem_sleep_disorder
+    - make_model_input-cohort_prevax-sub_age_60_79-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_age_60_79-any_dementia
+    - make_model_input-cohort_prevax-sub_age_60_79-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_age_60_79-migraine
+    - make_model_input-cohort_prevax-sub_age_60_79-mixed_dementia
+    - make_model_input-cohort_prevax-sub_age_60_79-parkinson_disease
+    - make_model_input-cohort_prevax-sub_age_60_79-rem_sleep_disorder
+    - make_model_input-cohort_prevax-sub_age_80_110-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_age_80_110-any_dementia
+    - make_model_input-cohort_prevax-sub_age_80_110-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_age_80_110-migraine
+    - make_model_input-cohort_prevax-sub_age_80_110-mixed_dementia
+    - make_model_input-cohort_prevax-sub_age_80_110-parkinson_disease
+    - make_model_input-cohort_prevax-sub_age_80_110-rem_sleep_disorder
     - make_model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease
     - make_model_input-cohort_prevax-sub_covid_hospitalised-any_dementia
     - make_model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment
@@ -3969,6 +3997,55 @@ actions:
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-unspecified_dementias
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-any_dementia
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-migraine
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-mixed_dementia
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-parkinson_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder
+    - make_model_input-cohort_prevax-sub_ethnicity_black-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_black-any_dementia
+    - make_model_input-cohort_prevax-sub_ethnicity_black-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_ethnicity_black-migraine
+    - make_model_input-cohort_prevax-sub_ethnicity_black-mixed_dementia
+    - make_model_input-cohort_prevax-sub_ethnicity_black-parkinson_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-any_dementia
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-migraine
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-mixed_dementia
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-parkinson_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-rem_sleep_disorder
+    - make_model_input-cohort_prevax-sub_ethnicity_other-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_other-any_dementia
+    - make_model_input-cohort_prevax-sub_ethnicity_other-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_ethnicity_other-migraine
+    - make_model_input-cohort_prevax-sub_ethnicity_other-mixed_dementia
+    - make_model_input-cohort_prevax-sub_ethnicity_other-parkinson_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder
+    - make_model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_white-any_dementia
+    - make_model_input-cohort_prevax-sub_ethnicity_white-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_ethnicity_white-migraine
+    - make_model_input-cohort_prevax-sub_ethnicity_white-mixed_dementia
+    - make_model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease
+    - make_model_input-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder
+    - make_model_input-cohort_prevax-sub_sex_female-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_sex_female-any_dementia
+    - make_model_input-cohort_prevax-sub_sex_female-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_sex_female-migraine
+    - make_model_input-cohort_prevax-sub_sex_female-mixed_dementia
+    - make_model_input-cohort_prevax-sub_sex_female-parkinson_disease
+    - make_model_input-cohort_prevax-sub_sex_female-rem_sleep_disorder
+    - make_model_input-cohort_prevax-sub_sex_male-alzheimer_disease
+    - make_model_input-cohort_prevax-sub_sex_male-any_dementia
+    - make_model_input-cohort_prevax-sub_sex_male-cognitive_impairment
+    - make_model_input-cohort_prevax-sub_sex_male-migraine
+    - make_model_input-cohort_prevax-sub_sex_male-mixed_dementia
+    - make_model_input-cohort_prevax-sub_sex_male-parkinson_disease
+    - make_model_input-cohort_prevax-sub_sex_male-rem_sleep_disorder
     outputs:
       moderately_sensitive:
         table2: output/table2_prevax.csv
@@ -3992,6 +4069,47 @@ actions:
     - make_model_input-cohort_unvax-main-restless_leg_syndrome
     - make_model_input-cohort_unvax-main-unspecified_dementias
     - make_model_input-cohort_unvax-main-vascular_dementia
+    - make_model_input-cohort_unvax-sub_age_18_39-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_age_18_39-any_dementia
+    - make_model_input-cohort_unvax-sub_age_18_39-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_age_18_39-migraine
+    - make_model_input-cohort_unvax-sub_age_18_39-mixed_dementia
+    - make_model_input-cohort_unvax-sub_age_18_39-parkinson_disease
+    - make_model_input-cohort_unvax-sub_age_18_39-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_age_40_59-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_age_40_59-any_dementia
+    - make_model_input-cohort_unvax-sub_age_40_59-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_age_40_59-migraine
+    - make_model_input-cohort_unvax-sub_age_40_59-mixed_dementia
+    - make_model_input-cohort_unvax-sub_age_40_59-parkinson_disease
+    - make_model_input-cohort_unvax-sub_age_40_59-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_age_60_79-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_age_60_79-any_dementia
+    - make_model_input-cohort_unvax-sub_age_60_79-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_age_60_79-migraine
+    - make_model_input-cohort_unvax-sub_age_60_79-mixed_dementia
+    - make_model_input-cohort_unvax-sub_age_60_79-parkinson_disease
+    - make_model_input-cohort_unvax-sub_age_60_79-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_age_80_110-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_age_80_110-any_dementia
+    - make_model_input-cohort_unvax-sub_age_80_110-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_age_80_110-migraine
+    - make_model_input-cohort_unvax-sub_age_80_110-mixed_dementia
+    - make_model_input-cohort_unvax-sub_age_80_110-parkinson_disease
+    - make_model_input-cohort_unvax-sub_age_80_110-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_covid_history-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_covid_history-any_dementia
+    - make_model_input-cohort_unvax-sub_covid_history-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_covid_history-migraine
+    - make_model_input-cohort_unvax-sub_covid_history-mixed_dementia
+    - make_model_input-cohort_unvax-sub_covid_history-motor_neurone_disease
+    - make_model_input-cohort_unvax-sub_covid_history-multiple_sclerosis
+    - make_model_input-cohort_unvax-sub_covid_history-other_dementias
+    - make_model_input-cohort_unvax-sub_covid_history-parkinson_disease
+    - make_model_input-cohort_unvax-sub_covid_history-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_covid_history-restless_leg_syndrome
+    - make_model_input-cohort_unvax-sub_covid_history-unspecified_dementias
+    - make_model_input-cohort_unvax-sub_covid_history-vascular_dementia
     - make_model_input-cohort_unvax-sub_covid_hospitalised-alzheimer_disease
     - make_model_input-cohort_unvax-sub_covid_hospitalised-any_dementia
     - make_model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment
@@ -4018,6 +4136,55 @@ actions:
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-unspecified_dementias
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-any_dementia
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-migraine
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-mixed_dementia
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-parkinson_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_ethnicity_black-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_black-any_dementia
+    - make_model_input-cohort_unvax-sub_ethnicity_black-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_ethnicity_black-migraine
+    - make_model_input-cohort_unvax-sub_ethnicity_black-mixed_dementia
+    - make_model_input-cohort_unvax-sub_ethnicity_black-parkinson_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_black-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-any_dementia
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-migraine
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-mixed_dementia
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-parkinson_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_ethnicity_other-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_other-any_dementia
+    - make_model_input-cohort_unvax-sub_ethnicity_other-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_ethnicity_other-migraine
+    - make_model_input-cohort_unvax-sub_ethnicity_other-mixed_dementia
+    - make_model_input-cohort_unvax-sub_ethnicity_other-parkinson_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_other-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_ethnicity_white-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_white-any_dementia
+    - make_model_input-cohort_unvax-sub_ethnicity_white-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_ethnicity_white-migraine
+    - make_model_input-cohort_unvax-sub_ethnicity_white-mixed_dementia
+    - make_model_input-cohort_unvax-sub_ethnicity_white-parkinson_disease
+    - make_model_input-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_sex_female-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_sex_female-any_dementia
+    - make_model_input-cohort_unvax-sub_sex_female-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_sex_female-migraine
+    - make_model_input-cohort_unvax-sub_sex_female-mixed_dementia
+    - make_model_input-cohort_unvax-sub_sex_female-parkinson_disease
+    - make_model_input-cohort_unvax-sub_sex_female-rem_sleep_disorder
+    - make_model_input-cohort_unvax-sub_sex_male-alzheimer_disease
+    - make_model_input-cohort_unvax-sub_sex_male-any_dementia
+    - make_model_input-cohort_unvax-sub_sex_male-cognitive_impairment
+    - make_model_input-cohort_unvax-sub_sex_male-migraine
+    - make_model_input-cohort_unvax-sub_sex_male-mixed_dementia
+    - make_model_input-cohort_unvax-sub_sex_male-parkinson_disease
+    - make_model_input-cohort_unvax-sub_sex_male-rem_sleep_disorder
     outputs:
       moderately_sensitive:
         table2: output/table2_unvax.csv
@@ -4041,6 +4208,47 @@ actions:
     - make_model_input-cohort_vax-main-restless_leg_syndrome
     - make_model_input-cohort_vax-main-unspecified_dementias
     - make_model_input-cohort_vax-main-vascular_dementia
+    - make_model_input-cohort_vax-sub_age_18_39-alzheimer_disease
+    - make_model_input-cohort_vax-sub_age_18_39-any_dementia
+    - make_model_input-cohort_vax-sub_age_18_39-cognitive_impairment
+    - make_model_input-cohort_vax-sub_age_18_39-migraine
+    - make_model_input-cohort_vax-sub_age_18_39-mixed_dementia
+    - make_model_input-cohort_vax-sub_age_18_39-parkinson_disease
+    - make_model_input-cohort_vax-sub_age_18_39-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_age_40_59-alzheimer_disease
+    - make_model_input-cohort_vax-sub_age_40_59-any_dementia
+    - make_model_input-cohort_vax-sub_age_40_59-cognitive_impairment
+    - make_model_input-cohort_vax-sub_age_40_59-migraine
+    - make_model_input-cohort_vax-sub_age_40_59-mixed_dementia
+    - make_model_input-cohort_vax-sub_age_40_59-parkinson_disease
+    - make_model_input-cohort_vax-sub_age_40_59-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_age_60_79-alzheimer_disease
+    - make_model_input-cohort_vax-sub_age_60_79-any_dementia
+    - make_model_input-cohort_vax-sub_age_60_79-cognitive_impairment
+    - make_model_input-cohort_vax-sub_age_60_79-migraine
+    - make_model_input-cohort_vax-sub_age_60_79-mixed_dementia
+    - make_model_input-cohort_vax-sub_age_60_79-parkinson_disease
+    - make_model_input-cohort_vax-sub_age_60_79-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_age_80_110-alzheimer_disease
+    - make_model_input-cohort_vax-sub_age_80_110-any_dementia
+    - make_model_input-cohort_vax-sub_age_80_110-cognitive_impairment
+    - make_model_input-cohort_vax-sub_age_80_110-migraine
+    - make_model_input-cohort_vax-sub_age_80_110-mixed_dementia
+    - make_model_input-cohort_vax-sub_age_80_110-parkinson_disease
+    - make_model_input-cohort_vax-sub_age_80_110-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_covid_history-alzheimer_disease
+    - make_model_input-cohort_vax-sub_covid_history-any_dementia
+    - make_model_input-cohort_vax-sub_covid_history-cognitive_impairment
+    - make_model_input-cohort_vax-sub_covid_history-migraine
+    - make_model_input-cohort_vax-sub_covid_history-mixed_dementia
+    - make_model_input-cohort_vax-sub_covid_history-motor_neurone_disease
+    - make_model_input-cohort_vax-sub_covid_history-multiple_sclerosis
+    - make_model_input-cohort_vax-sub_covid_history-other_dementias
+    - make_model_input-cohort_vax-sub_covid_history-parkinson_disease
+    - make_model_input-cohort_vax-sub_covid_history-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_covid_history-restless_leg_syndrome
+    - make_model_input-cohort_vax-sub_covid_history-unspecified_dementias
+    - make_model_input-cohort_vax-sub_covid_history-vascular_dementia
     - make_model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease
     - make_model_input-cohort_vax-sub_covid_hospitalised-any_dementia
     - make_model_input-cohort_vax-sub_covid_hospitalised-cognitive_impairment
@@ -4067,6 +4275,55 @@ actions:
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-unspecified_dementias
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia
+    - make_model_input-cohort_vax-sub_ethnicity_asian-alzheimer_disease
+    - make_model_input-cohort_vax-sub_ethnicity_asian-any_dementia
+    - make_model_input-cohort_vax-sub_ethnicity_asian-cognitive_impairment
+    - make_model_input-cohort_vax-sub_ethnicity_asian-migraine
+    - make_model_input-cohort_vax-sub_ethnicity_asian-mixed_dementia
+    - make_model_input-cohort_vax-sub_ethnicity_asian-parkinson_disease
+    - make_model_input-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_ethnicity_black-alzheimer_disease
+    - make_model_input-cohort_vax-sub_ethnicity_black-any_dementia
+    - make_model_input-cohort_vax-sub_ethnicity_black-cognitive_impairment
+    - make_model_input-cohort_vax-sub_ethnicity_black-migraine
+    - make_model_input-cohort_vax-sub_ethnicity_black-mixed_dementia
+    - make_model_input-cohort_vax-sub_ethnicity_black-parkinson_disease
+    - make_model_input-cohort_vax-sub_ethnicity_black-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-alzheimer_disease
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-any_dementia
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-cognitive_impairment
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-migraine
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-mixed_dementia
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-parkinson_disease
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_ethnicity_other-alzheimer_disease
+    - make_model_input-cohort_vax-sub_ethnicity_other-any_dementia
+    - make_model_input-cohort_vax-sub_ethnicity_other-cognitive_impairment
+    - make_model_input-cohort_vax-sub_ethnicity_other-migraine
+    - make_model_input-cohort_vax-sub_ethnicity_other-mixed_dementia
+    - make_model_input-cohort_vax-sub_ethnicity_other-parkinson_disease
+    - make_model_input-cohort_vax-sub_ethnicity_other-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_ethnicity_white-alzheimer_disease
+    - make_model_input-cohort_vax-sub_ethnicity_white-any_dementia
+    - make_model_input-cohort_vax-sub_ethnicity_white-cognitive_impairment
+    - make_model_input-cohort_vax-sub_ethnicity_white-migraine
+    - make_model_input-cohort_vax-sub_ethnicity_white-mixed_dementia
+    - make_model_input-cohort_vax-sub_ethnicity_white-parkinson_disease
+    - make_model_input-cohort_vax-sub_ethnicity_white-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_sex_female-alzheimer_disease
+    - make_model_input-cohort_vax-sub_sex_female-any_dementia
+    - make_model_input-cohort_vax-sub_sex_female-cognitive_impairment
+    - make_model_input-cohort_vax-sub_sex_female-migraine
+    - make_model_input-cohort_vax-sub_sex_female-mixed_dementia
+    - make_model_input-cohort_vax-sub_sex_female-parkinson_disease
+    - make_model_input-cohort_vax-sub_sex_female-rem_sleep_disorder
+    - make_model_input-cohort_vax-sub_sex_male-alzheimer_disease
+    - make_model_input-cohort_vax-sub_sex_male-any_dementia
+    - make_model_input-cohort_vax-sub_sex_male-cognitive_impairment
+    - make_model_input-cohort_vax-sub_sex_male-migraine
+    - make_model_input-cohort_vax-sub_sex_male-mixed_dementia
+    - make_model_input-cohort_vax-sub_sex_male-parkinson_disease
+    - make_model_input-cohort_vax-sub_sex_male-rem_sleep_disorder
     outputs:
       moderately_sensitive:
         table2: output/table2_vax.csv

@@ -21,7 +21,7 @@ print('Specify arguments')
 args <- commandArgs(trailingOnly=TRUE)
 
 if(length(args)==0){
-  cohort <- "vax"
+  cohort <- "prevax"
 } else {
   cohort <- args[[1]]
 }
@@ -31,7 +31,6 @@ print('Load active analyses')
 
 active_analyses <- readr::read_rds("lib/active_analyses.rds")
 active_analyses <- active_analyses[active_analyses$cohort==cohort,]
-active_analyses <- active_analyses[active_analyses$analysis == "main",]
 
 # Make empty table 2 -----------------------------------------------------------
 print('Make empty table 2')
@@ -42,14 +41,14 @@ table2 <- data.frame(name = character(),
                      outcome = character(),
                      analysis = character(),
                      unexposed_person_days = numeric(),
-                     unexposed_events = numeric(),
+                     unexposed_events_midpoint6 = numeric(),
                      exposed_person_days = numeric(),
-                     exposed_events = numeric(),
+                     exposed_events_midpoint6 = numeric(),
                      total_person_days = numeric(),
-                     total_events = numeric(),
-                     day0_events = numeric(),
-                     total_exposed = numeric(),
-                     sample_size = numeric())
+                     total_events_midpoint6 = numeric(),
+                     day0_events_midpoint6 = numeric(),
+                     total_exposed_midpoint6_derived = numeric(),
+                     sample_size_midpoint6 = numeric())
 
 # Record number of events and person days for each active analysis -------------
 print('Record number of events and person days for each active analysis')
@@ -103,14 +102,14 @@ for (i in 1:nrow(active_analyses)) {
                                outcome = active_analyses$outcome[i],
                                analysis = active_analyses$analysis[i],
                                unexposed_person_days = sum(unexposed$person_days),
-                               unexposed_events = nrow(unexposed[!is.na(unexposed$out_date),]),
+                               unexposed_events_midpoint6 = nrow(unexposed[!is.na(unexposed$out_date),]),
                                exposed_person_days = sum(exposed$person_days, na.rm = TRUE),
-                               exposed_events = nrow(exposed[!is.na(exposed$out_date),]),
+                               exposed_events_midpoint6 = nrow(exposed[!is.na(exposed$out_date),]),
                                total_person_days = sum(unexposed$person_days) + sum(exposed$person_days),
-                               total_events = nrow(unexposed[!is.na(unexposed$out_date),]) + nrow(exposed[!is.na(exposed$out_date),]),
-                               day0_events = nrow(exposed[exposed$exp_date==exposed$out_date & !is.na(exposed$exp_date) & !is.na(exposed$out_date),]),
-                               total_exposed = nrow(exposed),
-                               sample_size = nrow(df))
+                               total_events_midpoint6_derived = nrow(unexposed[!is.na(unexposed$out_date),]) + nrow(exposed[!is.na(exposed$out_date),]),
+                               day0_events_midpoint6 = nrow(exposed[exposed$exp_date==exposed$out_date & !is.na(exposed$exp_date) & !is.na(exposed$out_date),]),
+                               total_exposed_midpoint6 = nrow(exposed),
+                               sample_size_midpoint6 = nrow(df))
   
 }
 

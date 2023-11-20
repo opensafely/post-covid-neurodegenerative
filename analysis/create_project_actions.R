@@ -237,7 +237,7 @@ apply_model_function <- function(name, cohort, analysis, ipw, strata,
 table2 <- function(cohort){
   
   table2_names <- gsub("out_date_","",unique(active_analyses[active_analyses$cohort=={cohort},]$name))
-  table2_names <- table2_names[grepl("-main-|_hospitalised-|_nonhospitalised-",table2_names)]
+  #table2_names <- table2_names[grepl("-main-|_hospitalised-|_nonhospitalised-",table2_names)]
   
   splice(
     comment(glue("Table 2 - {cohort}")),
@@ -253,6 +253,8 @@ table2 <- function(cohort){
     )
   )
 }
+
+# needs = as.list(c(paste0("table2_prevax_", c("prevax_extf","vax","unvax_extf"))),
 
 ################################################################################
 # Create function to make Venn data --------------------------------------------
@@ -425,11 +427,12 @@ actions_list <- splice(
   ## other output ------------------------------------------------------------
   
   action(
-    name = "make_other_output",
-    run = "r:latest analysis/model/make_table2_output.R",
-    needs = list("table2_prevax_extf",
-                 "table2_vax_extf",
-                 "table2_unvax_extf"),
+    name = "make_table2_output",
+    run = "r:latest analysis/model/make_other_output.R table2 prevax;vax;unvax",#_extf
+    # needs = as.list(c(paste0("table2_prevax_", c("prevax_extf","vax","unvax_extf"))),
+    needs = list("table2_prevax",
+                 "table2_vax",
+                 "table2_unvax"),
     moderately_sensitive = list(
       table2_output_rounded = glue("output/table2_output_rounded.csv")
     )
