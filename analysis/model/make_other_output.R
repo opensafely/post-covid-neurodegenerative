@@ -16,7 +16,7 @@ args <- commandArgs(trailingOnly=TRUE)
 
 if(length(args)==0){
   output <- "table1"
-  cohorts <- "prevax;vax;unvax"
+  cohorts <- "prevax;vax;unvax"#_extf
 } else {
   output <- args[[1]]
   cohorts <- args[[2]]

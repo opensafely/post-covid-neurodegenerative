@@ -49,9 +49,9 @@ input <- data.frame(aer_sex = character(),
                     cohort = character(),
                     outcome = character(),
                     unexposed_person_days = numeric(),
-                    unexposed_events = numeric(),
-                    total_exposed = numeric(),
-                    sample_size = numeric())
+                    unexposed_events_midpoint6 = numeric(),
+                    total_exposed_midpoint6 = numeric(),
+                    sample_size_midpoint6 = numeric())
 
 # Record number of events and person days for each active analysis -------------
 print('Record number of events and person days for each active analysis')
@@ -122,9 +122,9 @@ for (i in 1:nrow(active_analyses)) {
                                  cohort = active_analyses$cohort[i],
                                  outcome = active_analyses$outcome[i],
                                  unexposed_person_days = sum(unexposed$person_days),
-                                 unexposed_events = nrow(unexposed[!is.na(unexposed$out_date),]),
-                                 total_exposed = nrow(exposed),
-                                 sample_size = nrow(df))
+                                 unexposed_events_midpoint6 = nrow(unexposed[!is.na(unexposed$out_date),]),
+                                 total_exposed_midpoint6 = nrow(exposed),
+                                 sample_size_midpoint6 = nrow(df))
       
     }
   }
