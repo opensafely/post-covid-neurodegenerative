@@ -494,7 +494,7 @@ actions_list <- splice(
                   function(x) table2(cohort = x)), 
            recursive = FALSE
     )
-  )#,
+  ),
   
   ## Venn data -----------------------------------------------------------------
   
@@ -520,17 +520,17 @@ actions_list <- splice(
   
   ## AER table -----------------------------------------------------------------
   
-  # comment("Make absolute excess risk (AER) input"),
-  # 
-  # action(
-  #   name = "make_aer_input",
-  #   run = "r:latest analysis/model/make_aer_input.R",
-  #   needs = as.list(paste0("make_model_input-",active_analyses[grepl("-main-",active_analyses$name),]$name)),
-  #   moderately_sensitive = list(
-  #     aer_input = glue("output/aer_input-main.csv"),
-  #     aer_input_rounded = glue("output/aer_input-main-rounded.csv")
-  #   )
-  # )
+  comment("Make absolute excess risk (AER) input"),
+
+  action(
+    name = "make_aer_input",
+    run = "r:latest analysis/model/make_aer_input.R",
+    needs = as.list(paste0("make_model_input-",active_analyses[grepl("-main-",active_analyses$name),]$name)),
+    moderately_sensitive = list(
+      aer_input = glue("output/aer_input-main.csv"),
+      aer_input_rounded = glue("output/aer_input-main-rounded.csv")
+    )
+  )
 )
 
 ## combine everything ----
