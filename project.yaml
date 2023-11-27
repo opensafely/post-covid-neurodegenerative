@@ -410,38 +410,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-main-cognitive_impairment.csv
 
-  make_model_input-cohort_prevax-main-lewy_body:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-main-lewy_body
-    needs:
-    - stage1_data_cleaning_prevax
-    - stage1_data_cleaning_vax
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-main-lewy_body.rds
-
-  describe_model_input-cohort_prevax-main-lewy_body:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_prevax-main-lewy_body
-      rds
-    needs:
-    - make_model_input-cohort_prevax-main-lewy_body
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_prevax-main-lewy_body.txt
-
-  cox_ipw-cohort_prevax-main-lewy_body:
-    run: cox-ipw:v0.0.27 --df_input=model_input-cohort_prevax-main-lewy_body.rds --ipw=TRUE
-      --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-lewy_body.csv
-    needs:
-    - make_model_input-cohort_prevax-main-lewy_body
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-main-lewy_body.csv
-
   make_model_input-cohort_prevax-main-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-migraine
     needs:
@@ -762,38 +730,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-main-cognitive_impairment.csv
 
-  make_model_input-cohort_unvax-main-lewy_body:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-main-lewy_body
-    needs:
-    - stage1_data_cleaning_prevax
-    - stage1_data_cleaning_vax
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-main-lewy_body.rds
-
-  describe_model_input-cohort_unvax-main-lewy_body:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_unvax-main-lewy_body
-      rds
-    needs:
-    - make_model_input-cohort_unvax-main-lewy_body
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_unvax-main-lewy_body.txt
-
-  cox_ipw-cohort_unvax-main-lewy_body:
-    run: cox-ipw:v0.0.27 --df_input=model_input-cohort_unvax-main-lewy_body.rds --ipw=TRUE
-      --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-main-lewy_body.csv
-    needs:
-    - make_model_input-cohort_unvax-main-lewy_body
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-main-lewy_body.csv
-
   make_model_input-cohort_unvax-main-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-migraine
     needs:
@@ -1113,38 +1049,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-main-cognitive_impairment.csv
-
-  make_model_input-cohort_vax-main-lewy_body:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-main-lewy_body
-    needs:
-    - stage1_data_cleaning_prevax
-    - stage1_data_cleaning_vax
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-main-lewy_body.rds
-
-  describe_model_input-cohort_vax-main-lewy_body:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_vax-main-lewy_body
-      rds
-    needs:
-    - make_model_input-cohort_vax-main-lewy_body
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_vax-main-lewy_body.txt
-
-  cox_ipw-cohort_vax-main-lewy_body:
-    run: cox-ipw:v0.0.27 --df_input=model_input-cohort_vax-main-lewy_body.rds --ipw=TRUE
-      --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-main-lewy_body.csv
-    needs:
-    - make_model_input-cohort_vax-main-lewy_body
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-main-lewy_body.csv
 
   make_model_input-cohort_vax-main-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-migraine
@@ -3770,38 +3674,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_covid_history-cognitive_impairment.csv
 
-  make_model_input-cohort_unvax-sub_covid_history-lewy_body:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-lewy_body
-    needs:
-    - stage1_data_cleaning_prevax
-    - stage1_data_cleaning_vax
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_covid_history-lewy_body.rds
-
-  describe_model_input-cohort_unvax-sub_covid_history-lewy_body:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_unvax-sub_covid_history-lewy_body
-      rds
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_history-lewy_body
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_history-lewy_body.txt
-
-  cox_ipw-cohort_unvax-sub_covid_history-lewy_body:
-    run: cox-ipw:v0.0.27 --df_input=model_input-cohort_unvax-sub_covid_history-lewy_body.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_history-lewy_body.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_history-lewy_body
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_covid_history-lewy_body.csv
-
   make_model_input-cohort_unvax-sub_covid_history-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-migraine
     needs:
@@ -4121,38 +3993,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_covid_history-cognitive_impairment.csv
-
-  make_model_input-cohort_vax-sub_covid_history-lewy_body:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-lewy_body
-    needs:
-    - stage1_data_cleaning_prevax
-    - stage1_data_cleaning_vax
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_covid_history-lewy_body.rds
-
-  describe_model_input-cohort_vax-sub_covid_history-lewy_body:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_vax-sub_covid_history-lewy_body
-      rds
-    needs:
-    - make_model_input-cohort_vax-sub_covid_history-lewy_body
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_history-lewy_body.txt
-
-  cox_ipw-cohort_vax-sub_covid_history-lewy_body:
-    run: cox-ipw:v0.0.27 --df_input=model_input-cohort_vax-sub_covid_history-lewy_body.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_history-lewy_body.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covid_history-lewy_body
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_covid_history-lewy_body.csv
 
   make_model_input-cohort_vax-sub_covid_history-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-migraine
@@ -4474,38 +4314,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_covid_hospitalised-cognitive_impairment.csv
 
-  make_model_input-cohort_prevax-sub_covid_hospitalised-lewy_body:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-lewy_body
-    needs:
-    - stage1_data_cleaning_prevax
-    - stage1_data_cleaning_vax
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-lewy_body.rds
-
-  describe_model_input-cohort_prevax-sub_covid_hospitalised-lewy_body:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_prevax-sub_covid_hospitalised-lewy_body
-      rds
-    needs:
-    - make_model_input-cohort_prevax-sub_covid_hospitalised-lewy_body
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_hospitalised-lewy_body.txt
-
-  cox_ipw-cohort_prevax-sub_covid_hospitalised-lewy_body:
-    run: cox-ipw:v0.0.27 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-lewy_body.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-lewy_body.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_covid_hospitalised-lewy_body
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_covid_hospitalised-lewy_body.csv
-
   make_model_input-cohort_prevax-sub_covid_hospitalised-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-migraine
     needs:
@@ -4825,38 +4633,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_covid_hospitalised-cognitive_impairment.csv
-
-  make_model_input-cohort_unvax-sub_covid_hospitalised-lewy_body:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-lewy_body
-    needs:
-    - stage1_data_cleaning_prevax
-    - stage1_data_cleaning_vax
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-lewy_body.rds
-
-  describe_model_input-cohort_unvax-sub_covid_hospitalised-lewy_body:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_unvax-sub_covid_hospitalised-lewy_body
-      rds
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_hospitalised-lewy_body
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_hospitalised-lewy_body.txt
-
-  cox_ipw-cohort_unvax-sub_covid_hospitalised-lewy_body:
-    run: cox-ipw:v0.0.27 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-lewy_body.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_hospitalised-lewy_body.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_hospitalised-lewy_body
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_covid_hospitalised-lewy_body.csv
 
   make_model_input-cohort_unvax-sub_covid_hospitalised-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-migraine
@@ -5178,38 +4954,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_covid_hospitalised-cognitive_impairment.csv
 
-  make_model_input-cohort_vax-sub_covid_hospitalised-lewy_body:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-lewy_body
-    needs:
-    - stage1_data_cleaning_prevax
-    - stage1_data_cleaning_vax
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_covid_hospitalised-lewy_body.rds
-
-  describe_model_input-cohort_vax-sub_covid_hospitalised-lewy_body:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_vax-sub_covid_hospitalised-lewy_body
-      rds
-    needs:
-    - make_model_input-cohort_vax-sub_covid_hospitalised-lewy_body
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_hospitalised-lewy_body.txt
-
-  cox_ipw-cohort_vax-sub_covid_hospitalised-lewy_body:
-    run: cox-ipw:v0.0.27 --df_input=model_input-cohort_vax-sub_covid_hospitalised-lewy_body.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_hospitalised-lewy_body.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covid_hospitalised-lewy_body
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_covid_hospitalised-lewy_body.csv
-
   make_model_input-cohort_vax-sub_covid_hospitalised-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-migraine
     needs:
@@ -5529,38 +5273,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment.csv
-
-  make_model_input-cohort_prevax-sub_covid_nonhospitalised-lewy_body:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-lewy_body
-    needs:
-    - stage1_data_cleaning_prevax
-    - stage1_data_cleaning_vax
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-lewy_body.rds
-
-  describe_model_input-cohort_prevax-sub_covid_nonhospitalised-lewy_body:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_prevax-sub_covid_nonhospitalised-lewy_body
-      rds
-    needs:
-    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-lewy_body
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_prevax-sub_covid_nonhospitalised-lewy_body.txt
-
-  cox_ipw-cohort_prevax-sub_covid_nonhospitalised-lewy_body:
-    run: cox-ipw:v0.0.27 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-lewy_body.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-lewy_body.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-lewy_body
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_covid_nonhospitalised-lewy_body.csv
 
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-migraine
@@ -5882,38 +5594,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment.csv
 
-  make_model_input-cohort_unvax-sub_covid_nonhospitalised-lewy_body:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-lewy_body
-    needs:
-    - stage1_data_cleaning_prevax
-    - stage1_data_cleaning_vax
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-lewy_body.rds
-
-  describe_model_input-cohort_unvax-sub_covid_nonhospitalised-lewy_body:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_unvax-sub_covid_nonhospitalised-lewy_body
-      rds
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-lewy_body
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_unvax-sub_covid_nonhospitalised-lewy_body.txt
-
-  cox_ipw-cohort_unvax-sub_covid_nonhospitalised-lewy_body:
-    run: cox-ipw:v0.0.27 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-lewy_body.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_nonhospitalised-lewy_body.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-lewy_body
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_covid_nonhospitalised-lewy_body.csv
-
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-migraine
     needs:
@@ -6233,38 +5913,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment.csv
-
-  make_model_input-cohort_vax-sub_covid_nonhospitalised-lewy_body:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-lewy_body
-    needs:
-    - stage1_data_cleaning_prevax
-    - stage1_data_cleaning_vax
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-lewy_body.rds
-
-  describe_model_input-cohort_vax-sub_covid_nonhospitalised-lewy_body:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_vax-sub_covid_nonhospitalised-lewy_body
-      rds
-    needs:
-    - make_model_input-cohort_vax-sub_covid_nonhospitalised-lewy_body
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_vax-sub_covid_nonhospitalised-lewy_body.txt
-
-  cox_ipw-cohort_vax-sub_covid_nonhospitalised-lewy_body:
-    run: cox-ipw:v0.0.27 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-lewy_body.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_all_stroke
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_nonhospitalised-lewy_body.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covid_nonhospitalised-lewy_body
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_covid_nonhospitalised-lewy_body.csv
 
   make_model_input-cohort_vax-sub_covid_nonhospitalised-migraine:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-migraine
@@ -10530,7 +10178,6 @@ actions:
     - make_model_input-cohort_prevax-main-alzheimer_disease
     - make_model_input-cohort_prevax-main-any_dementia
     - make_model_input-cohort_prevax-main-cognitive_impairment
-    - make_model_input-cohort_prevax-main-lewy_body
     - make_model_input-cohort_prevax-main-migraine
     - make_model_input-cohort_prevax-main-motor_neurone_disease
     - make_model_input-cohort_prevax-main-multiple_sclerosis
@@ -10565,7 +10212,6 @@ actions:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease
     - make_model_input-cohort_prevax-sub_covid_hospitalised-any_dementia
     - make_model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment
-    - make_model_input-cohort_prevax-sub_covid_hospitalised-lewy_body
     - make_model_input-cohort_prevax-sub_covid_hospitalised-migraine
     - make_model_input-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease
     - make_model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis
@@ -10576,7 +10222,6 @@ actions:
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment
-    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-lewy_body
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-migraine
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis
@@ -10639,7 +10284,6 @@ actions:
     - make_model_input-cohort_unvax-main-alzheimer_disease
     - make_model_input-cohort_unvax-main-any_dementia
     - make_model_input-cohort_unvax-main-cognitive_impairment
-    - make_model_input-cohort_unvax-main-lewy_body
     - make_model_input-cohort_unvax-main-migraine
     - make_model_input-cohort_unvax-main-motor_neurone_disease
     - make_model_input-cohort_unvax-main-multiple_sclerosis
@@ -10674,7 +10318,6 @@ actions:
     - make_model_input-cohort_unvax-sub_covid_history-alzheimer_disease
     - make_model_input-cohort_unvax-sub_covid_history-any_dementia
     - make_model_input-cohort_unvax-sub_covid_history-cognitive_impairment
-    - make_model_input-cohort_unvax-sub_covid_history-lewy_body
     - make_model_input-cohort_unvax-sub_covid_history-migraine
     - make_model_input-cohort_unvax-sub_covid_history-motor_neurone_disease
     - make_model_input-cohort_unvax-sub_covid_history-multiple_sclerosis
@@ -10685,7 +10328,6 @@ actions:
     - make_model_input-cohort_unvax-sub_covid_hospitalised-alzheimer_disease
     - make_model_input-cohort_unvax-sub_covid_hospitalised-any_dementia
     - make_model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment
-    - make_model_input-cohort_unvax-sub_covid_hospitalised-lewy_body
     - make_model_input-cohort_unvax-sub_covid_hospitalised-migraine
     - make_model_input-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease
     - make_model_input-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis
@@ -10696,7 +10338,6 @@ actions:
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-any_dementia
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment
-    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-lewy_body
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-migraine
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis
@@ -10759,7 +10400,6 @@ actions:
     - make_model_input-cohort_vax-main-alzheimer_disease
     - make_model_input-cohort_vax-main-any_dementia
     - make_model_input-cohort_vax-main-cognitive_impairment
-    - make_model_input-cohort_vax-main-lewy_body
     - make_model_input-cohort_vax-main-migraine
     - make_model_input-cohort_vax-main-motor_neurone_disease
     - make_model_input-cohort_vax-main-multiple_sclerosis
@@ -10794,7 +10434,6 @@ actions:
     - make_model_input-cohort_vax-sub_covid_history-alzheimer_disease
     - make_model_input-cohort_vax-sub_covid_history-any_dementia
     - make_model_input-cohort_vax-sub_covid_history-cognitive_impairment
-    - make_model_input-cohort_vax-sub_covid_history-lewy_body
     - make_model_input-cohort_vax-sub_covid_history-migraine
     - make_model_input-cohort_vax-sub_covid_history-motor_neurone_disease
     - make_model_input-cohort_vax-sub_covid_history-multiple_sclerosis
@@ -10805,7 +10444,6 @@ actions:
     - make_model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease
     - make_model_input-cohort_vax-sub_covid_hospitalised-any_dementia
     - make_model_input-cohort_vax-sub_covid_hospitalised-cognitive_impairment
-    - make_model_input-cohort_vax-sub_covid_hospitalised-lewy_body
     - make_model_input-cohort_vax-sub_covid_hospitalised-migraine
     - make_model_input-cohort_vax-sub_covid_hospitalised-motor_neurone_disease
     - make_model_input-cohort_vax-sub_covid_hospitalised-multiple_sclerosis
@@ -10816,7 +10454,6 @@ actions:
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-alzheimer_disease
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-any_dementia
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment
-    - make_model_input-cohort_vax-sub_covid_nonhospitalised-lewy_body
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-migraine
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis
@@ -10880,7 +10517,6 @@ actions:
     - make_model_input-cohort_prevax-main-alzheimer_disease
     - make_model_input-cohort_prevax-main-any_dementia
     - make_model_input-cohort_prevax-main-cognitive_impairment
-    - make_model_input-cohort_prevax-main-lewy_body
     - make_model_input-cohort_prevax-main-migraine
     - make_model_input-cohort_prevax-main-motor_neurone_disease
     - make_model_input-cohort_prevax-main-multiple_sclerosis
@@ -10902,7 +10538,6 @@ actions:
     - make_model_input-cohort_unvax-main-alzheimer_disease
     - make_model_input-cohort_unvax-main-any_dementia
     - make_model_input-cohort_unvax-main-cognitive_impairment
-    - make_model_input-cohort_unvax-main-lewy_body
     - make_model_input-cohort_unvax-main-migraine
     - make_model_input-cohort_unvax-main-motor_neurone_disease
     - make_model_input-cohort_unvax-main-multiple_sclerosis
@@ -10924,7 +10559,6 @@ actions:
     - make_model_input-cohort_vax-main-alzheimer_disease
     - make_model_input-cohort_vax-main-any_dementia
     - make_model_input-cohort_vax-main-cognitive_impairment
-    - make_model_input-cohort_vax-main-lewy_body
     - make_model_input-cohort_vax-main-migraine
     - make_model_input-cohort_vax-main-motor_neurone_disease
     - make_model_input-cohort_vax-main-multiple_sclerosis
@@ -10945,7 +10579,6 @@ actions:
     - make_model_input-cohort_prevax-main-alzheimer_disease
     - make_model_input-cohort_prevax-main-any_dementia
     - make_model_input-cohort_prevax-main-cognitive_impairment
-    - make_model_input-cohort_prevax-main-lewy_body
     - make_model_input-cohort_prevax-main-migraine
     - make_model_input-cohort_prevax-main-motor_neurone_disease
     - make_model_input-cohort_prevax-main-multiple_sclerosis
@@ -10956,7 +10589,6 @@ actions:
     - make_model_input-cohort_unvax-main-alzheimer_disease
     - make_model_input-cohort_unvax-main-any_dementia
     - make_model_input-cohort_unvax-main-cognitive_impairment
-    - make_model_input-cohort_unvax-main-lewy_body
     - make_model_input-cohort_unvax-main-migraine
     - make_model_input-cohort_unvax-main-motor_neurone_disease
     - make_model_input-cohort_unvax-main-multiple_sclerosis
@@ -10967,7 +10599,6 @@ actions:
     - make_model_input-cohort_vax-main-alzheimer_disease
     - make_model_input-cohort_vax-main-any_dementia
     - make_model_input-cohort_vax-main-cognitive_impairment
-    - make_model_input-cohort_vax-main-lewy_body
     - make_model_input-cohort_vax-main-migraine
     - make_model_input-cohort_vax-main-motor_neurone_disease
     - make_model_input-cohort_vax-main-multiple_sclerosis

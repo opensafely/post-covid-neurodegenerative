@@ -54,7 +54,7 @@ outcomes_runall <- c("out_date_alzheimer_disease",
                      "out_date_migraine")
 
 outcomes_runmain <- c("out_date_vascular_dementia",
-                      "out_date_lewy_body",
+                      #"out_date_lewy_body", #add once code lists is ready
                       "out_date_restless_leg_syndrome",
                       "out_date_motor_neurone_disease",
                       "out_date_multiple_sclerosis")
