@@ -495,29 +495,29 @@ actions_list <- splice(
   ## Venn data -----------------------------------------------------------------
   
   splice(
-    unlist(lapply(unique(active_analyses$cohort), 
-                  function(x) venn(cohort = x)), 
+    unlist(lapply(unique(active_analyses$cohort),
+                  function(x) venn(cohort = x)),
            recursive = FALSE
     )
   ),
   
   ## Model output --------------------------------------------------------------
-  
-  comment("Stage 6 - make model output"),
-
-  action(
-    name = "make_model_output",
-    run = "r:latest analysis/model/make_model_output.R",
-    needs = as.list(paste0("cox_ipw-",success$name)),
-    moderately_sensitive = list(
-      model_output = glue("output/model_output.csv")
-    )
-  ),
+  # 
+  # comment("Stage 6 - make model output"),
+  # 
+  # action(
+  #   name = "make_model_output",
+  #   run = "r:latest analysis/model/make_model_output.R",
+  #   needs = as.list(paste0("cox_ipw-",success$name)),
+  #   moderately_sensitive = list(
+  #     model_output = glue("output/model_output.csv")
+  #   )
+  # ),
   
   ## AER table -----------------------------------------------------------------
   
   comment("Make absolute excess risk (AER) input"),
-  
+
   action(
     name = "make_aer_input",
     run = "r:latest analysis/model/make_aer_input.R",
@@ -546,3 +546,8 @@ as.yaml(project_list, indent=2) %>%
   str_replace_all("\\\n\\s\\s(\\w)", "\n\n  \\1") %>%
   writeLines("project.yaml")
   print("YAML file printed!")
+  
+# Return number of actions -----------------------------------------------------
+  
+print(paste0("YAML created with ",length(actions_list)," actions."))
+  
