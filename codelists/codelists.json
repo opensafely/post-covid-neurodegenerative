@@ -279,8 +279,8 @@
     "user-elsie_horne-diabetes_drugs_dmd.csv": {
       "id": "user/elsie_horne/diabetes_drugs_dmd/3228dace",
       "url": "https://codelists.opensafely.org/codelist/user/elsie_horne/diabetes_drugs_dmd/3228dace/",
-      "downloaded_at": "2022-08-22 08:13:34.176869Z",
-      "sha": "77ae9149dbd431c7905ef10b1ad311e7aec8e1f9"
+      "downloaded_at": "2023-11-02 10:29:02.639604Z",
+      "sha": "2935477c4e86e8e43ae63eef8710c6baebff8e91"
     },
     "user-elsie_horne-depression_icd10.csv": {
       "id": "user/elsie_horne/depression_icd10/116935fd",
@@ -297,32 +297,32 @@
     "user-elsie_horne-antiplatelet_dmd.csv": {
       "id": "user/elsie_horne/antiplatelet_dmd/61950142",
       "url": "https://codelists.opensafely.org/codelist/user/elsie_horne/antiplatelet_dmd/61950142/",
-      "downloaded_at": "2022-08-22 08:13:35.297157Z",
-      "sha": "75fcb2cdcc0c05e0d6b3fbfbee4cd101058b67f0"
+      "downloaded_at": "2023-11-02 10:29:03.183404Z",
+      "sha": "5e030db8aa4a0faf47a0173195a9e3cc3309079d"
     },
     "user-elsie_horne-lipid_lowering_dmd.csv": {
       "id": "user/elsie_horne/lipid_lowering_dmd/66fa812e",
       "url": "https://codelists.opensafely.org/codelist/user/elsie_horne/lipid_lowering_dmd/66fa812e/",
-      "downloaded_at": "2022-08-22 08:13:35.626754Z",
-      "sha": "da2bb21052af9520f52d9d7c9edcf2198aec0cc9"
+      "downloaded_at": "2023-11-02 10:29:03.302535Z",
+      "sha": "6d8cefffedcfe9503fde27e7cb83507780f35c50"
     },
     "user-elsie_horne-anticoagulant_dmd.csv": {
       "id": "user/elsie_horne/anticoagulant_dmd/7aa47477",
       "url": "https://codelists.opensafely.org/codelist/user/elsie_horne/anticoagulant_dmd/7aa47477/",
-      "downloaded_at": "2022-08-22 08:13:35.980915Z",
-      "sha": "b0ab6e34262fcd2fee99d25068b25e140603e9e8"
+      "downloaded_at": "2023-11-02 10:29:03.518013Z",
+      "sha": "0bc6f48da0b3f37a655d46a46953f940c2ae7e87"
     },
     "user-elsie_horne-cocp_dmd.csv": {
       "id": "user/elsie_horne/cocp_dmd/1666a7a3",
       "url": "https://codelists.opensafely.org/codelist/user/elsie_horne/cocp_dmd/1666a7a3/",
-      "downloaded_at": "2022-08-22 08:13:36.327824Z",
-      "sha": "8327c8ec4d2a3f1fcec7ffaa76a3e79cc1e5974a"
+      "downloaded_at": "2023-11-02 10:29:03.747283Z",
+      "sha": "5e7f6a150dac1ee7755f7a0a4cd08da88227ecff"
     },
     "user-elsie_horne-hrt_dmd.csv": {
       "id": "user/elsie_horne/hrt_dmd/19196799",
       "url": "https://codelists.opensafely.org/codelist/user/elsie_horne/hrt_dmd/19196799/",
-      "downloaded_at": "2022-08-22 08:13:36.681554Z",
-      "sha": "14aff592668a703f02cc68aa54c7ebab0774c62f"
+      "downloaded_at": "2023-11-02 10:29:03.913372Z",
+      "sha": "ff6562b775746d312b321bca3c1786322ced45ea"
     },
     "user-elsie_horne-other_arterial_embolism_icd10.csv": {
       "id": "user/elsie_horne/other_arterial_embolism_icd10/463adc5d",
@@ -363,8 +363,8 @@
     "user-elsie_horne-hypertension_drugs_dmd.csv": {
       "id": "user/elsie_horne/hypertension_drugs_dmd/0009f464",
       "url": "https://codelists.opensafely.org/codelist/user/elsie_horne/hypertension_drugs_dmd/0009f464/",
-      "downloaded_at": "2022-08-22 08:13:39.149845Z",
-      "sha": "09641b467bfb30b5d37852a65002a74d3d8a2217"
+      "downloaded_at": "2023-11-02 10:29:05.302042Z",
+      "sha": "d1f9010356a9cf4eb45453a58f2160f0e79338ea"
     },
     "nhsd-primary-care-domain-refsets-hyp_cod.csv": {
       "id": "nhsd-primary-care-domain-refsets/hyp_cod/20210127",
@@ -417,8 +417,8 @@
     "primis-covid19-vacc-uptake-astrx.csv": {
       "id": "primis-covid19-vacc-uptake/astrx/v1",
       "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/astrx/v1/",
-      "downloaded_at": "2022-07-06 13:43:45.448370Z",
-      "sha": "fbb45446f0f5be328ffd792eae223ee98673050e"
+      "downloaded_at": "2023-11-02 10:29:07.345017Z",
+      "sha": "9614ab29a19eb4466440a7d355dccecba7b2f663"
     },
     "primis-covid19-vacc-uptake-resp_cov.csv": {
       "id": "primis-covid19-vacc-uptake/resp_cov/v1",
@@ -471,8 +471,8 @@
     "primis-covid19-vacc-uptake-immrx.csv": {
       "id": "primis-covid19-vacc-uptake/immrx/v1",
       "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/immrx/v1/",
-      "downloaded_at": "2022-07-06 15:48:27.388312Z",
-      "sha": "8523d6c40d34eeedaab6bf7e550a4b295b83b7dd"
+      "downloaded_at": "2023-11-02 10:29:09.110599Z",
+      "sha": "59483f6d04c67da373a425583dd3082909e258f4"
     },
     "primis-covid19-vacc-uptake-cns_cov.csv": {
       "id": "primis-covid19-vacc-uptake/cns_cov/v1",
@@ -813,32 +813,32 @@
     "opensafely-second-generation-antipsychotics-excluding-long-acting-injections.csv": {
       "id": "opensafely/second-generation-antipsychotics-excluding-long-acting-injections/6c7c3c11",
       "url": "https://codelists.opensafely.org/codelist/opensafely/second-generation-antipsychotics-excluding-long-acting-injections/6c7c3c11/",
-      "downloaded_at": "2022-08-22 08:14:11.718088Z",
-      "sha": "2330a3239958a1e120352e26fa7126e71d5dfdba"
+      "downloaded_at": "2023-11-02 10:29:21.300449Z",
+      "sha": "09e7f29aa16b4e637f977a3ce3cc85775323fa23"
     },
     "opensafely-prochlorperazine-dmd.csv": {
       "id": "opensafely/prochlorperazine-dmd/058baf47",
       "url": "https://codelists.opensafely.org/codelist/opensafely/prochlorperazine-dmd/058baf47/",
-      "downloaded_at": "2022-08-22 08:14:12.019561Z",
-      "sha": "f2823afd905cf7070e5f6a69fad42f617ed444b3"
+      "downloaded_at": "2023-11-02 10:29:21.517223Z",
+      "sha": "e723059e0d80dc478a902b2a765350e6402cf16f"
     },
     "opensafely-monoamine-oxidase-inhibitors-dmd.csv": {
       "id": "opensafely/monoamine-oxidase-inhibitors-dmd/2b785e16",
       "url": "https://codelists.opensafely.org/codelist/opensafely/monoamine-oxidase-inhibitors-dmd/2b785e16/",
-      "downloaded_at": "2022-08-22 08:14:12.352001Z",
-      "sha": "1a1da18d75a6a1111929df9c2ab2799d2229a95c"
+      "downloaded_at": "2023-11-02 10:29:21.812322Z",
+      "sha": "15629888cf9db70073ce34a3a515b146289f37fc"
     },
     "opensafely-other-antidepressants-dmd.csv": {
       "id": "opensafely/other-antidepressants-dmd/795977ab",
       "url": "https://codelists.opensafely.org/codelist/opensafely/other-antidepressants-dmd/795977ab/",
-      "downloaded_at": "2022-08-22 08:14:12.714953Z",
-      "sha": "d65ff8ed8378bf5c7875858b55b76527ec7f1574"
+      "downloaded_at": "2023-11-02 10:29:21.992147Z",
+      "sha": "7ccebc99feecfa791cc7bfd31386f9be25ed7b5b"
     },
     "opensafely-tricyclic-and-related-antidepressants-dmd.csv": {
       "id": "opensafely/tricyclic-and-related-antidepressants-dmd/1268eae1",
       "url": "https://codelists.opensafely.org/codelist/opensafely/tricyclic-and-related-antidepressants-dmd/1268eae1/",
-      "downloaded_at": "2022-08-22 08:14:13.036396Z",
-      "sha": "83a2fab241ad02c9175479b8cad6955395b2f0ee"
+      "downloaded_at": "2023-11-02 10:29:22.166807Z",
+      "sha": "9737c279d56e9de9ce8601df127438b503fbe5e1"
     },
     "user-RochelleKnight-ami_icd10.csv": {
       "id": "user/RochelleKnight/ami_icd10/3dea268d",
@@ -891,20 +891,20 @@
     "opensafely-insulin-medication.csv": {
       "id": "opensafely/insulin-medication/2020-04-26",
       "url": "https://codelists.opensafely.org/codelist/opensafely/insulin-medication/2020-04-26/",
-      "downloaded_at": "2022-08-22 08:14:16.147115Z",
-      "sha": "9d4c57c0b8738962da04b32ab43b7659cd64d774"
+      "downloaded_at": "2023-11-02 10:29:24.771338Z",
+      "sha": "c7bff11d746c9a05806bef4f746cce18f832369c"
     },
     "opensafely-antidiabetic-drugs.csv": {
       "id": "opensafely/antidiabetic-drugs/2020-07-16",
       "url": "https://codelists.opensafely.org/codelist/opensafely/antidiabetic-drugs/2020-07-16/",
-      "downloaded_at": "2022-08-22 08:14:16.476590Z",
-      "sha": "f0b93b0054d673e8dcfbeba8fea0cd54239f0725"
+      "downloaded_at": "2023-11-02 10:29:25.003859Z",
+      "sha": "216318b305a6c085c18a847fbd0e226e9f10d318"
     },
     "user-r_denholm-non-metformin-antidiabetic-drugs_bristol.csv": {
       "id": "user/r_denholm/non-metformin-antidiabetic-drugs_bristol/7207eb58",
       "url": "https://codelists.opensafely.org/codelist/user/r_denholm/non-metformin-antidiabetic-drugs_bristol/7207eb58/",
-      "downloaded_at": "2022-08-22 08:14:16.806748Z",
-      "sha": "43ff2e176f22e6050f6bf92e6d30deff40e97383"
+      "downloaded_at": "2023-11-02 10:29:25.182139Z",
+      "sha": "a7ac5fed9d7dd2c764a127b4cbf8eeb9cbcdd8c4"
     },
     "user-r_denholm-non-metformin-drugs.csv": {
       "id": "user/r_denholm/non-metformin-drugs/74baab4e",
@@ -915,8 +915,8 @@
     "user-r_denholm-non-metformin-drugs-dmd.csv": {
       "id": "user/r_denholm/non-metformin-drugs-dmd/107cde7a",
       "url": "https://codelists.opensafely.org/codelist/user/r_denholm/non-metformin-drugs-dmd/107cde7a/",
-      "downloaded_at": "2022-08-22 08:14:17.491055Z",
-      "sha": "6b51e927f83c2632d2b9dd1eb03a276cac4ff0ec"
+      "downloaded_at": "2023-11-02 10:29:25.740846Z",
+      "sha": "2a23901a8cbda43b180db2a3c5e73c5391854212"
     },
     "opensafely-glycated-haemoglobin-hba1c-tests-numerical-value.csv": {
       "id": "opensafely/glycated-haemoglobin-hba1c-tests-numerical-value/5134e926",
