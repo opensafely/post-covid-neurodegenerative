@@ -210,14 +210,14 @@ apply_model_function <- function(name, cohort, analysis, ipw, strata,
       )
     ),
 
-    action(
-      name = glue("describe_model_input-{name}"),
-      run = glue("r:latest analysis/model/describe_file.R model_input-{name} rds"),
-      needs = list(glue("make_model_input-{name}")),
-      moderately_sensitive = list(
-        describe_model_input = glue("output/describe-model_input-{name}.txt")
-      )
-    ),
+    # action(
+    #   name = glue("describe_model_input-{name}"),
+    #   run = glue("r:latest analysis/model/describe_file.R model_input-{name} rds"),
+    #   needs = list(glue("make_model_input-{name}")),
+    #   moderately_sensitive = list(
+    #     describe_model_input = glue("output/describe-model_input-{name}.txt")
+    #   )
+    # ),
 
     #comment(glue("Cox model for {outcome} - {cohort}")),
     action(
@@ -345,33 +345,33 @@ actions_list <- splice(
   
   
   #Count outcomes and binary covars
-  action(
-    name = "count_study_def_variables",
-    run = "r:latest analysis/descriptives/intitial_input_counts.R",
-    needs = list("generate_study_population_prevax","generate_study_population_unvax","generate_study_population_vax","preprocess_data_prevax","preprocess_data_unvax","preprocess_data_vax"),
-    moderately_sensitive=list(
-      counts = glue("output/study_counts_prepro.txt"),
-      vax_summary = glue("output/describe_prepro_vax.txt"),
-      prevax_summary = glue("output/describe_prepro_prevax.txt"),
-      unvax_summary = glue("output/describe_prepro_unvax.txt")
-      
-    )
-  ),
+  # action(
+  #   name = "count_study_def_variables",
+  #   run = "r:latest analysis/descriptives/intitial_input_counts.R",
+  #   needs = list("generate_study_population_prevax","generate_study_population_unvax","generate_study_population_vax","preprocess_data_prevax","preprocess_data_unvax","preprocess_data_vax"),
+  #   moderately_sensitive=list(
+  #     counts = glue("output/study_counts_prepro.txt"),
+  #     vax_summary = glue("output/describe_prepro_vax.txt"),
+  #     prevax_summary = glue("output/describe_prepro_prevax.txt"),
+  #     unvax_summary = glue("output/describe_prepro_unvax.txt")
+  #     
+  #   )
+  # ),
   
   #Count stage1 outcomes and binary covars
-  action(
-    name = "count_stage1_variables",
-    run = "r:latest analysis/descriptives/second_input_counts.R",
-    needs = list(#"generate_study_population_prevax","generate_study_population_unvax","generate_study_population_vax","preprocess_data_prevax","preprocess_data_unvax","preprocess_data_vax",
-                 "stage1_data_cleaning_prevax","stage1_data_cleaning_unvax","stage1_data_cleaning_vax"),
-    moderately_sensitive=list(
-      counts = glue("output/study_counts_stage1clean.txt"),
-      vax_summary = glue("output/describe_stage1clean_vax.txt"),
-      prevax_summary = glue("output/describe_stage1clean_prevax.txt"),
-      unvax_summary = glue("output/describe_stage1clean_unvax.txt")
-      
-    )
-  ),
+  # action(
+  #   name = "count_stage1_variables",
+  #   run = "r:latest analysis/descriptives/second_input_counts.R",
+  #   needs = list(#"generate_study_population_prevax","generate_study_population_unvax","generate_study_population_vax","preprocess_data_prevax","preprocess_data_unvax","preprocess_data_vax",
+  #                "stage1_data_cleaning_prevax","stage1_data_cleaning_unvax","stage1_data_cleaning_vax"),
+  #   moderately_sensitive=list(
+  #     counts = glue("output/study_counts_stage1clean.txt"),
+  #     vax_summary = glue("output/describe_stage1clean_vax.txt"),
+  #     prevax_summary = glue("output/describe_stage1clean_prevax.txt"),
+  #     unvax_summary = glue("output/describe_stage1clean_unvax.txt")
+  #     
+  #   )
+  # ),
   
   ## Stage 1 - data cleaning -----------------------------------------------------------
   

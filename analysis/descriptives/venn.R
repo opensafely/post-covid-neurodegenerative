@@ -153,7 +153,7 @@ for (outcome in outcomes) {
     df <- df[!grepl("any_dementia", df$outcome),]
     
     # Select Dementia subgroups
-    df_temp <- df[grep("vascular_dementia|other_dementias|unspecified_dementias|alzheimer", df$outcome),] 
+    df_temp <- df[grep("vascular_dementia|other_dementias|unspecified_dementias|alzheimer|lewy_body", df$outcome),] 
     
     # character to numeric
     df_temp <- df_temp %>%

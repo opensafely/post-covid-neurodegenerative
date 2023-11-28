@@ -268,7 +268,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
 
     # Lewy body
     # Primary
-    # tmp_out_date_lewy_body_snomed=patients.with_these_clinical_events(
+    # tmp_out_date_lewy_body_disease_snomed=patients.with_these_clinical_events(
     #     lewy_body_snomed,
     #     returning="date",
     #     between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
@@ -283,8 +283,8 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     # HES
     # ONS
     # Combined lewy body disease
-    # out_date_lewy_body = patients.minimum_of(
-    #     "tmp_out_date_lewy_body_snomed", 
+    # out_date_lewy_body_disease = patients.minimum_of(
+    #     "tmp_out_date_lewy_body_disease_snomed", 
     # ),
 
     # Other dementias
@@ -383,6 +383,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         "tmp_out_date_vascular_dementia_snomed", "tmp_out_date_vascular_dementia_hes", "tmp_out_date_vascular_dementia_death",
         "tmp_out_date_other_dementias_snomed", "tmp_out_date_other_dementias_hes", "tmp_out_date_other_dementias_death",
         "tmp_out_date_unspecified_dementias_snomed", "tmp_out_date_unspecified_dementias_hes", "tmp_out_date_unspecified_dementias_death",
+        #"tmp_out_date_lewy_body_disease",
     ),
 
     # Cognitive impairment
