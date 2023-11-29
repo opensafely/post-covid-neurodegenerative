@@ -40,12 +40,6 @@ print('Load Venn data')
 
 venn <- readr::read_rds(paste0("output/venn_",cohort,".rds"))
 
-# rename columns
-venn <- venn %>%
-  rename_at(vars(matches(c("_symptoms"))), ~ str_remove(., c("_symptoms"))) %>%
-  rename_with(~ str_replace(., "tmp_out_date_alzheimer_", "tmp_out_date_alzheimer_disease_")) %>%
-  rename_with(~ str_replace(., "tmp_out_date_parkinson_", "tmp_out_date_parkinson_disease_"))
-
 # Create empty output table ----------------------------------------------------
 print('Create empty output table')
 
@@ -159,7 +153,7 @@ for (outcome in outcomes) {
     df <- df[!grepl("any_dementia", df$outcome),]
     
     # Select Dementia subgroups
-    df_temp <- df[grep("vascular_dementia|other_dementias|unspecified_dementias|alzheimer", df$outcome),] 
+    df_temp <- df[grep("vascular_dementia|other_dementias|unspecified_dementias|alzheimer|lewy_body", df$outcome),] 
     
     # character to numeric
     df_temp <- df_temp %>%

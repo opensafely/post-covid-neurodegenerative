@@ -36,13 +36,13 @@ import study_definition_helper_functions as helpers
 from common_variables import generate_common_variables
 (
     dynamic_variables
-) = generate_common_variables(index_date_variable="index_date_vax", exposure_end_date_variable="end_date_exposure", outcome_end_date_variable = "end_date_outcome")
+) = generate_common_variables(index_date_variable="index_date_cohort", exposure_end_date_variable="end_date_exposure", outcome_end_date_variable = "end_date_outcome")
 
 
 study = StudyDefinition(
 
     # Read in index date for study from the output of prelim.R file 
-    index_date_vax = patients.with_value_from_file(
+    index_date_cohort = patients.with_value_from_file(
         f_path = 'output/index_dates.csv.gz', 
         returning = 'index_vax', 
         returning_type = 'date', 
