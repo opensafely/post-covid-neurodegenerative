@@ -1467,32 +1467,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={"incidence": 0.1},
     ),  
 
-    ## Total Cholesterol
-    tmp_cov_num_cholesterol=patients.max_recorded_value(
-        cholesterol_snomed,
-        on_most_recent_day_of_measurement=True, 
-        between=[f"{index_date_variable} - 5years", f"{index_date_variable} -1 day"],
-        date_format="YYYY-MM-DD",
-        return_expectations={
-            "float": {"distribution": "normal", "mean": 5.0, "stddev": 2.5},
-            "date": {"earliest":study_dates["earliest_expec"], "latest": "today"}, ##return_expectations can't take dynamic variable se default are kept here! 
-            "incidence": 0.80,
-        },
-    ),
-
-    ## HDL Cholesterol
-    tmp_cov_num_hdl_cholesterol=patients.max_recorded_value(
-        hdl_cholesterol_snomed,
-        on_most_recent_day_of_measurement=True, 
-        between=[f"{index_date_variable}- 5years", f"{index_date_variable} -1 day"],
-        date_format="YYYY-MM-DD",
-        return_expectations={
-            "float": {"distribution": "normal", "mean": 2.0, "stddev": 1.5},
-            "date": {"earliest": study_dates["earliest_expec"] , "latest": "today"},
-            "incidence": 0.80,
-        },
-    ),
-
     ## BMI
     # taken from: https://github.com/opensafely/BMI-and-Metabolic-Markers/blob/main/analysis/common_variables.py 
     cov_num_bmi=patients.most_recent_bmi(
