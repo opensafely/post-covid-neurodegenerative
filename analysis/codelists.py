@@ -901,6 +901,13 @@ vascular_dementia_icd10 = codelist_from_csv(
     column = "code",
 )
 
+#Lewy body disease
+lewy_body_snomed = codelist_from_csv(
+    "codelists/bristol-lewy-body-dementia-snomed-v1.csv",
+    system = "snomed",
+    column = "code"
+)
+
 # Other dementias
 other_dementias_snomed = codelist_from_csv(
     "codelists/bristol-other-dementias-snomed-ct-v13.csv",
