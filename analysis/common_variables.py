@@ -267,7 +267,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
 
     # Lewy body
     # Primary
-    tmp_out_date_lewy_body_dementia_snomed=patients.with_these_clinical_events(
+    out_date_lewy_body_dementia=patients.with_these_clinical_events(
         lewy_body_snomed,
         returning="date",
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
@@ -281,10 +281,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     ),
     # HES NO ICD10
     # ONS NO ICD10
-    # Combined lewy body disease
-    out_date_lewy_body_dementia = patients.minimum_of(
-        "tmp_out_date_lewy_body_dementia_snomed", 
-    ),
 
     # Other dementias
     # Primary
@@ -378,15 +374,13 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
 
     # Any dementia
     out_date_any_dementia = patients.minimum_of(
-        "tmp_out_date_alzheimer_snomed", "tmp_out_date_alzheimer_hes", "tmp_out_date_alzheimer_death",
-        "tmp_out_date_vascular_dementia_snomed", "tmp_out_date_vascular_dementia_hes", "tmp_out_date_vascular_dementia_death",
-        "tmp_out_date_other_dementias_snomed", "tmp_out_date_other_dementias_hes", "tmp_out_date_other_dementias_death",
-        "tmp_out_date_unspecified_dementias_snomed", "tmp_out_date_unspecified_dementias_hes", "tmp_out_date_unspecified_dementias_death",
+        "out_date_alzheimer_disease", "out_date_vascular_dementia", "out_date_lewy_body_dementia", "out_date_other_dementias",
+        "out_date_unspecified_dementias",
     ),
 
     # Cognitive impairment
     # Primary care - symptoms
-    tmp_out_date_cognitive_impairment_symptoms_snomed=patients.with_these_clinical_events(
+    out_date_cognitive_impairment_symptoms=patients.with_these_clinical_events(
         cognitive_impairment_symptoms_snomed,
         returning="date",
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
@@ -397,12 +391,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
             "rate": "uniform",
             "incidence": 0.1,
         },
-    ),
-
-    # Combined cognitive impairment
-    out_date_cognitive_impairment = patients.minimum_of(
-        "tmp_out_date_cognitive_impairment_symptoms_snomed",
-        #"tmp_out_date_cognitive_impairment_snomed", "tmp_out_date_cognitive_impairment_hes", 
     ),
 
     # Parkinson's disease
@@ -453,7 +441,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
 
     ## Restless leg syndrome (Condition on the clinical pathway to outcome of interest)
     # Primary
-    tmp_out_date_restless_leg_syndrome_snomed=patients.with_these_clinical_events(
+    out_date_restless_leg_syndrome=patients.with_these_clinical_events(
         restless_leg_syndrome_snomed,
         returning="date",
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
@@ -467,11 +455,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     ),
     # HES - No ICD10 
     # ONS - No ICD10
-    
-    # Combined restless leg syndrome
-    out_date_restless_leg_syndrome = patients.minimum_of(
-        "tmp_out_date_restless_leg_syndrome_snomed", 
-    ),
 
     ## REM sleep disorder (Condition on the clinical pathway to outcome of interest)
     # Primary
@@ -680,6 +663,21 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={"incidence": 0.1,
         },
     ),
+    
+    # ONS
+    # tmp_cov_bin_history_alzheimer_disease_death=patients.with_these_codes_on_death_certificate(
+    #     alzheimer_icd10,
+    #     returning="binary_flag",
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1,
+    #     },
+    # ),
+
+    # Combined alzheimer disease
+    cov_bin_history_alzheimer_disease = patients.minimum_of(
+        "tmp_cov_bin_history_alzheimer_disease_snomed", "tmp_cov_bin_history_alzheimer_disease_hes",
+        #"tmp_cov_bin_history_alzheimer_disease_death",
+    ),
 
     # History of  vascular dementia
     # Primary
@@ -697,6 +695,21 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         on_or_before=f"{index_date_variable} - 1 day",
         return_expectations={"incidence": 0.1,
          },
+    ),
+
+    # ONS
+    # tmp_cov_bin_history_vascular_dementia_death=patients.with_these_codes_on_death_certificate(
+    #     vascular_dementia_icd10,
+    #     returning="binary_flag",
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1,
+    #     },
+    # ),
+
+    # Combined vascular dementia
+    cov_bin_history_vascular_dementia = patients.minimum_of(
+        "tmp_cov_bin_history_vascular_dementia_snomed", "tmp_cov_bin_history_vascular_dementia_hes",
+        #"tmp_cov_bin_history_vascular_dementia_death",
     ),
 
     # History of other dementias
@@ -717,6 +730,21 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         },
     ),
 
+    # ONS
+    # tmp_cov_bin_history_other_dementias_death=patients.with_these_codes_on_death_certificate(
+    #     other_dementias_icd10,
+    #     returning="binary_flag",
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1,
+    #     },
+    # ),
+
+    # Combined other dementias
+    cov_bin_history_other_dementias = patients.minimum_of(
+        "tmp_cov_bin_history_other_dementias_snomed", "tmp_cov_bin_history_other_dementias_hes",
+        #"tmp_cov_bin_history_other_dementias_death",
+    ),
+
     # History of Unspecified_dementias
     # Primary
     tmp_cov_bin_history_unspecified_dementias_snomed=patients.with_these_clinical_events(
@@ -735,9 +763,24 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         },
     ),
 
+    # ONS
+    # tmp_cov_bin_history_unspecified_dementias_death=patients.with_these_codes_on_death_certificate(
+    #     unspecified_dementias_icd10,
+    #     returning="binary_flag",
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1,
+    #     },
+    # ),
+
+    # Combined unspecified dementias
+    cov_bin_history_unspecified_dementias = patients.minimum_of(
+        "tmp_cov_bin_history_unspecified_dementias_snomed", "tmp_cov_bin_history_unspecified_dementias_hes",
+        #"tmp_cov_bin_history_unspecified_dementias_death",
+    ),
+
     # History of lewy body
     # Primary
-    tmp_cov_bin_history_lewy_body_dementia_snomed=patients.with_these_clinical_events(
+    cov_bin_history_lewy_body_dementia=patients.with_these_clinical_events(
         lewy_body_snomed,
         returning="binary_flag",
         on_or_before=f"{index_date_variable} - 1 day",
@@ -747,11 +790,9 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
 
     # History of any dementia
     cov_bin_history_any_dementia = patients.minimum_of(
-        "tmp_cov_bin_history_alzheimer_disease_snomed", "tmp_cov_bin_history_alzheimer_disease_hes", 
-        "tmp_cov_bin_history_vascular_dementia_snomed", "tmp_cov_bin_history_vascular_dementia_hes", 
-        "tmp_cov_bin_history_other_dementias_snomed", "tmp_cov_bin_history_other_dementias_hes", 
-        "tmp_cov_bin_history_unspecified_dementias_snomed", "tmp_cov_bin_history_unspecified_dementias_hes", 
-        "tmp_cov_bin_history_lewy_body_dementia_snomed",
+        "cov_bin_history_alzheimer_disease", "cov_bin_history_vascular_dementia",
+        "cov_bin_history_other_dementias", "cov_bin_history_unspecified_dementias",
+        "cov_bin_history_lewy_body_dementia",
     ),    
 
 ## History of Parkinsons disease 
@@ -771,9 +812,20 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={"incidence": 0.1,
         },
     ),
+
+    # ONS
+    # tmp_cov_bin_history_parkinson_disease_death=patients.with_these_codes_on_death_certificate(
+    #     parkinson_icd10,
+    #     returning="binary_flag",
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1,
+    #     },
+    # ),
+
     # Combined history of parkinson_disease
     cov_bin_history_parkinson_disease = patients.minimum_of(
         "tmp_cov_bin_history_parkinson_disease_snomed", "tmp_cov_bin_history_parkinson_disease_hes", 
+        #"tmp_cov_bin_history_parkinson_disease_death",
     ),
 
 ## History of Multiple Sclerosis
@@ -793,23 +845,30 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={"incidence": 0.1,
         },
     ),
+
+    # ONS
+    # tmp_cov_bin_history_multiple_sclerosis_death=patients.with_these_codes_on_death_certificate(
+    #     multiple_sclerosis_icd10,
+    #     returning="binary_flag",
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1,
+    #     },
+    # ),
+
     # Combined history of multiple_sclerosis
     cov_bin_history_multiple_sclerosis = patients.minimum_of(
         "tmp_cov_bin_history_multiple_sclerosis_snomed", "tmp_cov_bin_history_multiple_sclerosis_hes", 
+        #"tmp_cov_bin_history_multiple_sclerosis_death",
     ),
 
     # History of restless leg syndrome
     # Primary
-    tmp_cov_bin_history_restless_leg_syndrome_snomed=patients.with_these_clinical_events(
+    cov_bin_history_restless_leg_syndrome=patients.with_these_clinical_events(
         restless_leg_syndrome_snomed,
         returning="binary_flag",
         on_or_before=f"{index_date_variable} - 1 day",
         return_expectations={"incidence": 0.1,
         },
-    ),
-    # Combined history of restless leg syndrome
-    cov_bin_history_restless_leg_syndrome = patients.minimum_of(
-        "tmp_cov_bin_history_restless_leg_syndrome_snomed", 
     ),
 
     # History of REM sleep disorder
@@ -830,32 +889,28 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={"incidence": 0.1,
         },
     ),
-     # ONS
-    tmp_cov_bin_history_rem_sleep_disorder_death=patients.with_these_codes_on_death_certificate(
-        rem_sleep_disorder_icd10,
-        returning="binary_flag",
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1,
-        },
-    ),
+    # ONS
+    # tmp_cov_bin_history_rem_sleep_disorder_death=patients.with_these_codes_on_death_certificate(
+    #     rem_sleep_disorder_icd10,
+    #     returning="binary_flag",
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1,
+    #     },
+    # ),
     # Combined rem sleep disorder
     cov_bin_history_rem_sleep_disorder = patients.minimum_of(
         "tmp_cov_bin_history_rem_sleep_disorder_snomed", "tmp_cov_bin_history_rem_sleep_disorder_hes", 
-        "tmp_cov_bin_history_rem_sleep_disorder_death", 
+        #"tmp_cov_bin_history_rem_sleep_disorder_death", 
     ),
 
     # History of cognitive impairment
     # Primary care - symptoms
-    tmp_cov_bin_history_cognitive_impairment_snomed=patients.with_these_clinical_events(
+    cov_bin_history_cognitive_impairment=patients.with_these_clinical_events(
         cognitive_impairment_symptoms_snomed,
         returning="binary_flag",
         on_or_before=f"{index_date_variable} - 1 day",
         return_expectations={"incidence": 0.1,
         },
-    ),
-    # Combined cognitive impairment
-    cov_bin_history_cognitive_impairment = patients.minimum_of(
-        "tmp_cov_bin_history_cognitive_impairment_snomed",
     ),
 
 ## History of MND
@@ -875,9 +930,19 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={"incidence": 0.1,
         },
     ),
+    # ONS
+    # tmp_cov_bin_history_motor_neurone_disease_death=patients.with_these_codes_on_death_certificate(
+    #     motor_neurone_disease_icd10,
+    #     returning="binary_flag",
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1,
+    #     },
+    # ),
+
     # Combined history of motor_neurone_disease
     cov_bin_history_motor_neurone_disease = patients.minimum_of(
         "tmp_cov_bin_history_motor_neurone_disease_snomed", "tmp_cov_bin_history_motor_neurone_disease_hes", 
+        #"tmp_cov_bin_history_motor_neurone_disease_death",
     ),
 
 ## History of migraine
@@ -897,17 +962,25 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         return_expectations={"incidence": 0.1,
         },
     ),
+    # ONS
+    # tmp_cov_bin_history_migraine_death=patients.with_these_codes_on_death_certificate(
+    #     migraine_icd10,
+    #     returning="binary_flag",
+    #     on_or_before=f"{index_date_variable} - 1 day",
+    #     return_expectations={"incidence": 0.1,
+    #     },
+    # ),
     # Combined history of migraine
     cov_bin_history_migraine = patients.minimum_of(
         "tmp_cov_bin_history_migraine_snomed", "tmp_cov_bin_history_migraine_hes", 
+        #"tmp_cov_bin_history_migraine_death",
     ),
 
     # History of Parkinson risk conditions (REM / Restless leg)
     # Combined history of Parkinson risk conditions
     cov_bin_history_parkison_risk_conditions = patients.minimum_of(
-        "tmp_cov_bin_history_rem_sleep_disorder_snomed", "tmp_cov_bin_history_rem_sleep_disorder_hes", 
-        "tmp_cov_bin_history_rem_sleep_disorder_death",
-        "tmp_cov_bin_history_restless_leg_syndrome_snomed", 
+        "cov_bin_history_rem_sleep_disorder",
+        "cov_bin_history_restless_leg_syndrome", 
     ),
 
 ################################
@@ -1102,92 +1175,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         "tmp_cov_bin_stroke_isch_hes", "tmp_cov_bin_stroke_isch_snomed", "tmp_cov_bin_stroke_sah_hs_hes", "tmp_cov_bin_stroke_sah_hs_snomed",
     ),
 
-    #     ### Combined Stroke Ischeamic
-    # cov_bin_stroke_isch=patients.maximum_of(
-    #     "tmp_cov_bin_stroke_isch_hes", "tmp_cov_bin_stroke_isch_snomed",
-    # ),
-
-    ## Other Arterial Embolism
-    ### Primary care
-    tmp_cov_bin_other_arterial_embolism_snomed=patients.with_these_clinical_events(
-        other_arterial_embolism_snomed_clinical,
-        returning='binary_flag',
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-    ### HES APC
-    tmp_cov_bin_other_arterial_embolism_hes=patients.admitted_to_hospital(
-        returning='binary_flag',
-        with_these_diagnoses=ami_icd10,
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-    ### Combined
-    cov_bin_other_arterial_embolism=patients.maximum_of(
-        "tmp_cov_bin_other_arterial_embolism_snomed", "tmp_cov_bin_other_arterial_embolism_hes",
-    ),
-    
-    ## Venous thrombolism events
-    ### Primary care
-    tmp_cov_bin_vte_snomed=patients.with_these_clinical_events(
-        all_vte_codes_snomed_clinical,
-        returning='binary_flag',
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-    ### HES APC
-    tmp_cov_bin_vte_hes=patients.admitted_to_hospital(
-        returning='binary_flag',
-        with_these_diagnoses=all_vte_codes_icd10,
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-    ### Combined
-    cov_bin_vte=patients.maximum_of(
-        "tmp_cov_bin_vte_snomed", "tmp_cov_bin_vte_hes",
-    ),
-
-    ## Heart failure
-    ### Primary care
-    tmp_cov_bin_hf_snomed=patients.with_these_clinical_events(
-        hf_snomed_clinical,
-        returning='binary_flag',
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-    ### HES APC
-    tmp_cov_bin_hf_hes=patients.admitted_to_hospital(
-        returning='binary_flag',
-        with_these_diagnoses=hf_icd10,
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-    ### Combined
-    cov_bin_hf=patients.maximum_of(
-        "tmp_cov_bin_hf_snomed", "tmp_cov_bin_hf_hes",
-    ),
-
-    ## Angina
-    ### Primary care
-    tmp_cov_bin_angina_snomed=patients.with_these_clinical_events(
-        angina_snomed_clinical,
-        returning='binary_flag',
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-    ### HES APC
-    tmp_cov_bin_angina_hes=patients.admitted_to_hospital(
-        returning='binary_flag',
-        with_these_diagnoses=angina_icd10,
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-    ### Combined
-    cov_bin_angina=patients.maximum_of(
-        "tmp_cov_bin_angina_snomed", "tmp_cov_bin_angina_hes",
-    ),
-
-    # ## Dementia
+     # ## Dementia
     # ### Primary care
     # tmp_cov_bin_dementia_snomed=patients.with_these_clinical_events(
     #     dementia_snomed_clinical,
@@ -1421,30 +1409,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         "tmp_cov_bin_chronic_obstructive_pulmonary_disease_snomed", "tmp_cov_bin_chronic_obstructive_pulmonary_disease_hes",
     ),
 
-    ## Lipid medications
-    cov_bin_lipid_medications=patients.with_these_medications(
-        lipid_lowering_dmd,
-        returning='binary_flag',
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-
-    ## Antiplatelet_medications
-    cov_bin_antiplatelet_medications=patients.with_these_medications(
-        antiplatelet_dmd,
-        returning='binary_flag',
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-
-    ## Anticoagulation_medications
-    cov_bin_anticoagulation_medications=patients.with_these_medications(
-        anticoagulant_dmd, 
-        returning='binary_flag',
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1},
-    ),
-
     ## Combined oral contraceptive pill
     ### dmd: dictionary of medicines and devices
     cov_bin_combined_oral_contraceptive_pill=patients.with_these_medications(
@@ -1461,32 +1425,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         on_or_before=f"{index_date_variable} - 1 day",
         return_expectations={"incidence": 0.1},
     ),  
-
-    ## Total Cholesterol
-    tmp_cov_num_cholesterol=patients.max_recorded_value(
-        cholesterol_snomed,
-        on_most_recent_day_of_measurement=True, 
-        between=[f"{index_date_variable} - 5years", f"{index_date_variable} -1 day"],
-        date_format="YYYY-MM-DD",
-        return_expectations={
-            "float": {"distribution": "normal", "mean": 5.0, "stddev": 2.5},
-            "date": {"earliest":study_dates["earliest_expec"], "latest": "today"}, ##return_expectations can't take dynamic variable se default are kept here! 
-            "incidence": 0.80,
-        },
-    ),
-
-    ## HDL Cholesterol
-    tmp_cov_num_hdl_cholesterol=patients.max_recorded_value(
-        hdl_cholesterol_snomed,
-        on_most_recent_day_of_measurement=True, 
-        between=[f"{index_date_variable}- 5years", f"{index_date_variable} -1 day"],
-        date_format="YYYY-MM-DD",
-        return_expectations={
-            "float": {"distribution": "normal", "mean": 2.0, "stddev": 1.5},
-            "date": {"earliest": study_dates["earliest_expec"] , "latest": "today"},
-            "incidence": 0.80,
-        },
-    ),
 
     ## BMI
     # taken from: https://github.com/opensafely/BMI-and-Metabolic-Markers/blob/main/analysis/common_variables.py 
