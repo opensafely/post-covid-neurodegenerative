@@ -576,7 +576,7 @@ unspecified_dementias_icd10 = codelist_from_csv(
 
 # Cognitive impairment - symptoms
 cognitive_impairment_symptoms_snomed = codelist_from_csv(
-    "codelists/opensafely-symptoms-cognitive-impairment.csv",
+    "codelists/bristol-symptoms-cognitive-impairment-snomed-ct-v12.csv", 
     system = "snomed",
     column = "code",
 )

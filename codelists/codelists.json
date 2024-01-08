@@ -1,11 +1,5 @@
 {
   "files": {
-    "opensafely-covid-identification.csv": {
-      "id": "opensafely/covid-identification/2020-06-03",
-      "url": "https://www.opencodelists.org/codelist/opensafely/covid-identification/2020-06-03/",
-      "downloaded_at": "2022-08-22 08:13:15.303380Z",
-      "sha": "124db6929439379b7dacd55ba26ae4f2ed9370bc"
-    },
     "opensafely-covid-identification-in-primary-care-probable-covid-positive-test.csv": {
       "id": "opensafely/covid-identification-in-primary-care-probable-covid-positive-test/2020-07-16",
       "url": "https://www.opencodelists.org/codelist/opensafely/covid-identification-in-primary-care-probable-covid-positive-test/2020-07-16/",
@@ -462,12 +456,6 @@
       "downloaded_at": "2024-01-04 08:55:15.126125Z",
       "sha": "0093a97f54acf7034f4f12344c627b247d19eeb9"
     },
-    "opensafely-glycated-haemoglobin-hba1c-tests-numerical-value.csv": {
-      "id": "opensafely/glycated-haemoglobin-hba1c-tests-numerical-value/5134e926",
-      "url": "https://www.opencodelists.org/codelist/opensafely/glycated-haemoglobin-hba1c-tests-numerical-value/5134e926/",
-      "downloaded_at": "2022-08-22 08:14:17.838722Z",
-      "sha": "bc7e48efd370be65686755f0a843058f1ec767e0"
-    },
     "opensafely-type-1-diabetes-secondary-care.csv": {
       "id": "opensafely/type-1-diabetes-secondary-care/2020-09-27",
       "url": "https://www.opencodelists.org/codelist/opensafely/type-1-diabetes-secondary-care/2020-09-27/",
@@ -623,12 +611,6 @@
       "url": "https://www.opencodelists.org/codelist/bristol/vascular-dementia-snomed-ct-v13/2655d3e3/",
       "downloaded_at": "2023-07-31 14:40:03.556919Z",
       "sha": "1c0a72fa95f16a424b8d99ed442638c1b0cce6f8"
-    },
-    "opensafely-symptoms-cognitive-impairment.csv": {
-      "id": "opensafely/symptoms-cognitive-impairment/7af0d32d",
-      "url": "https://www.opencodelists.org/codelist/opensafely/symptoms-cognitive-impairment/7af0d32d/",
-      "downloaded_at": "2023-08-02 09:38:19.048404Z",
-      "sha": "1fac3375ebc596e1ee2de2270f8d3b55090b4849"
     },
     "bristol-symptoms-cognitive-impairment-snomed-ct-v12.csv": {
       "id": "bristol/symptoms-cognitive-impairment-snomed-ct-v12/1cb995e0",
