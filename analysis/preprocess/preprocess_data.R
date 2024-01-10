@@ -26,10 +26,10 @@ input_path <- paste0("output/input_",cohort_name,".csv.gz")
 # Get column names -------------------------------------------------------------
 
 all_cols <- fread(paste0("output/input_",cohort_name,".csv.gz"),
-              header = TRUE,
-              sep = ",",
-              nrows = 0,
-              stringsAsFactors = FALSE) %>%
+                  header = TRUE,
+                  sep = ",",
+                  nrows = 0,
+                  stringsAsFactors = FALSE) %>%
   select(-c(cov_num_bmi_date_measured)) %>%
   names()
 
@@ -51,7 +51,7 @@ col_classes <- setNames(
   ),
   all_cols[match(c(cat_cols, bin_cols, num_cols, date_cols), all_cols)]
 )
-# read the input file and specify colClasses
+# read the input file and specify colClasses -----------------------------------
 df <- read_csv(input_path, col_types = col_classes)
 
 df$cov_num_bmi_date_measured <- NULL
@@ -59,7 +59,14 @@ df$cov_num_bmi_date_measured <- NULL
 print(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 print("type of columns:\n")
 
-#message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
+# Describe data ----------------------------------------------------------------
+
+sink(paste0("output/not-for-review/describe_",cohort_name,".txt"))
+print(Hmisc::describe(df))
+print(str(df))
+sink()
+
+message ("Cohort ",cohort_name, " description written successfully!")
 
 # Add death_date from prelim data ----------------------------------------------
 
@@ -80,7 +87,7 @@ df <- df %>%
           across(contains('_cat'), ~ as.factor(.)),
           across(contains('_bin'), ~ as.logical(.)))
 
-# Overwrite vaccination information for dummy data and vax cohort only --
+# Overwrite vaccination information for dummy data and vax cohort only ---------
 
 if(Sys.getenv("OPENSAFELY_BACKEND") %in% c("", "expectations") &&
    cohort_name %in% c("vax")) {
@@ -88,38 +95,10 @@ if(Sys.getenv("OPENSAFELY_BACKEND") %in% c("", "expectations") &&
   message("Vaccine information overwritten successfully")
 }
 
-# Describe data ----------------------------------------------------------------
-
-sink(paste0("output/not-for-review/describe_",cohort_name,".txt"))
-print(Hmisc::describe(df))
-print(str(df))
-sink()
-
-message ("Cohort ",cohort_name, " description written successfully!")
-
 #Combine BMI variables to create one history of obesity variable ---------------
 
 df$cov_bin_obesity <- ifelse(df$cov_bin_obesity == TRUE | 
                                df$cov_cat_bmi_groups=="Obese",TRUE,FALSE)
-
-# remove biologically implausible TC/HDL ratio values: https://doi.org/10.1093/ije/dyz099
-# Remove TC < 1.75 or > 20 
-# remove HDL < 0.4 or > 5
-# BMI numerical (for table 1 only to 12 min and 70 max)
-
-df <- df %>%
-  mutate(tmp_cov_num_cholesterol = replace(tmp_cov_num_cholesterol, tmp_cov_num_cholesterol < 1.75 | tmp_cov_num_cholesterol > 20, NA),
-         tmp_cov_num_hdl_cholesterol = replace(tmp_cov_num_hdl_cholesterol, tmp_cov_num_hdl_cholesterol < 0.4 | tmp_cov_num_hdl_cholesterol > 5, NA)) %>%
-  mutate(cov_num_tc_hdl_ratio = tmp_cov_num_cholesterol / tmp_cov_num_hdl_cholesterol) %>%
-  mutate(cov_num_tc_hdl_ratio = replace(cov_num_tc_hdl_ratio, cov_num_tc_hdl_ratio > 50 | cov_num_tc_hdl_ratio < 1, NA)) %>%
-  mutate(cov_num_bmi = replace(cov_num_bmi, cov_num_bmi > 70 | cov_num_bmi < 12, NA))
-
-# replace NaN and Inf with NA's (probably only an issue with dummy data)
-df$cov_num_tc_hdl_ratio[is.nan(df$cov_num_tc_hdl_ratio)] <- NA
-df$cov_num_tc_hdl_ratio[is.infinite(df$cov_num_tc_hdl_ratio)] <- NA
-
-print("Cholesterol ratio variable created successfully and QC'd")
-summary(df$cov_num_tc_hdl_ratio)
 
 # QC for consultation variable--------------------------------------------------
 #max to 365 (average of one per day)
@@ -127,7 +106,7 @@ df <- df %>%
   mutate(cov_num_consulation_rate = replace(cov_num_consulation_rate, 
                                             cov_num_consulation_rate > 365, 365))
 
-# Define COVID-19 severity --------------------------------------------------------------
+# Define COVID-19 severity -----------------------------------------------------
 
 df <- df %>%
   mutate(sub_cat_covid19_hospital = 
@@ -146,6 +125,11 @@ message("COVID19 severity determined successfully")
 
 # Create vars for neurodegenerative outcomes - TBC -------------------------------------------------------------
 
+# High vascular risk -----------------------------------------------------------
+
+df <- df %>%
+  mutate(cov_bin_high_vascular_risk = case_when(cov_bin_hypertension == FALSE & cov_bin_diabetes == FALSE ~ FALSE,
+                                                (cov_bin_hypertension == TRUE | cov_bin_diabetes == TRUE) & (cov_bin_hypertension == TRUE & cov_bin_diabetes == TRUE) ~ TRUE))
 
 # Restrict columns and save analysis dataset ---------------------------------
 
@@ -161,11 +145,9 @@ df1 <- df%>% select(patient_id,"death_date",starts_with("index_date_"),
                     contains("step"), # diabetes steps
                     contains("vax_date_eligible"), # Vaccination eligibility
                     contains("vax_date_"), # Vaccination dates and vax type 
-                    contains("vax_cat_")# Vaccination products
+                    contains("vax_cat_") # Vaccination products
 ) %>% 
   select(-matches("tmp_"))
-
-#df1[,colnames(df)[grepl("tmp_",colnames(df))]] <- NULL
 
 # Repo specific preprocessing 
 
@@ -189,7 +171,7 @@ gc()
 
 message(paste0("Input data saved successfully with N = ", nrow(df1), " rows"))
 
-# Describe data --------------------------------------------------------------
+# Describe venn ----------------------------------------------------------------
 
 sink(paste0("output/not-for-review/describe_venn_",cohort_name,".txt"))
 print(Hmisc::describe(df2))

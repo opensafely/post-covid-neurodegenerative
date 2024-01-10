@@ -147,14 +147,15 @@ stage1_data_cleaning <- function(cohort){
       needs = list("vax_eligibility_inputs",glue("preprocess_data_{cohort}")),
       moderately_sensitive = list(
         consort = glue("output/consort_{cohort}.csv"),
-        consort_rounded = glue("output/consort_{cohort}_rounded.csv"),
-        refactoring = glue("output/not-for-review/meta_data_factors_{cohort}.csv"),
-        QA_rules = glue("output/review/descriptives/QA_summary_{cohort}.csv"),
-        IE_criteria = glue("output/review/descriptives/Cohort_flow_{cohort}.csv"),
-        histograms = glue("output/not-for-review/numeric_histograms_{cohort}.svg")#,
-      ),
-      highly_sensitive = list(
-        cohort = glue("output/input_{cohort}_stage1.rds")
+        consort_rounded = glue("output/consort_{cohort}_rounded.csv")
+      )
+    ),
+    action(
+      name = glue("describe_stage1_data_cleaning_{cohort}"),
+      run = glue("r:latest analysis/describe_file.R input_{cohort}_stage1 rds"),
+      needs = list(glue("stage1_data_cleaning_{cohort}")),
+      moderately_sensitive = list(
+        describe_model_input = glue("output/describe-input_{cohort}_stage1.txt")
       )
     )
   )
@@ -546,3 +547,7 @@ as.yaml(project_list, indent=2) %>%
   str_replace_all("\\\n\\s\\s(\\w)", "\n\n  \\1") %>%
   writeLines("project.yaml")
   print("YAML file printed!")
+  
+# Return number of actions -----------------------------------------------------
+  
+print(paste0("YAML created with ",length(actions_list)," actions."))

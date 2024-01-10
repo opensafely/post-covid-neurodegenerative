@@ -159,12 +159,14 @@ actions:
       moderately_sensitive:
         consort: output/consort_prevax.csv
         consort_rounded: output/consort_prevax_rounded.csv
-        refactoring: output/not-for-review/meta_data_factors_prevax.csv
-        QA_rules: output/review/descriptives/QA_summary_prevax.csv
-        IE_criteria: output/review/descriptives/Cohort_flow_prevax.csv
-        histograms: output/not-for-review/numeric_histograms_prevax.svg
-      highly_sensitive:
-        cohort: output/input_prevax_stage1.rds
+
+  describe_stage1_data_cleaning_prevax:
+    run: r:latest analysis/describe_file.R input_prevax_stage1 rds
+    needs:
+    - stage1_data_cleaning_prevax
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-input_prevax_stage1.txt
 
   ## Stage 1 - data cleaning - unvax 
 
@@ -177,12 +179,14 @@ actions:
       moderately_sensitive:
         consort: output/consort_unvax.csv
         consort_rounded: output/consort_unvax_rounded.csv
-        refactoring: output/not-for-review/meta_data_factors_unvax.csv
-        QA_rules: output/review/descriptives/QA_summary_unvax.csv
-        IE_criteria: output/review/descriptives/Cohort_flow_unvax.csv
-        histograms: output/not-for-review/numeric_histograms_unvax.svg
-      highly_sensitive:
-        cohort: output/input_unvax_stage1.rds
+
+  describe_stage1_data_cleaning_unvax:
+    run: r:latest analysis/describe_file.R input_unvax_stage1 rds
+    needs:
+    - stage1_data_cleaning_unvax
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-input_unvax_stage1.txt
 
   ## Stage 1 - data cleaning - vax 
 
@@ -195,12 +199,14 @@ actions:
       moderately_sensitive:
         consort: output/consort_vax.csv
         consort_rounded: output/consort_vax_rounded.csv
-        refactoring: output/not-for-review/meta_data_factors_vax.csv
-        QA_rules: output/review/descriptives/QA_summary_vax.csv
-        IE_criteria: output/review/descriptives/Cohort_flow_vax.csv
-        histograms: output/not-for-review/numeric_histograms_vax.svg
-      highly_sensitive:
-        cohort: output/input_vax_stage1.rds
+
+  describe_stage1_data_cleaning_vax:
+    run: r:latest analysis/describe_file.R input_vax_stage1 rds
+    needs:
+    - stage1_data_cleaning_vax
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-input_vax_stage1.txt
 
   make_consort_output:
     run: r:latest analysis/model/make_other_output.R consort prevax;vax;unvax
