@@ -860,7 +860,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
 
     # History of restless leg syndrome
     # Primary
-    cov_bin_history_restless_leg_syndrome=patients.with_these_clinical_events(
+    tmp_cov_bin_history_restless_leg_syndrome_snomed=patients.with_these_clinical_events(
         restless_leg_syndrome_snomed,
         returning="binary_flag",
         on_or_before=f"{index_date_variable} - 1 day",
@@ -897,7 +897,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     cov_bin_history_parkison_risk_conditions = patients.minimum_of(
         "tmp_cov_bin_history_rem_sleep_disorder_snomed", 
         "tmp_cov_bin_history_rem_sleep_disorder_hes",
-        #"cov_bin_history_rem_sleep_disorder",
         "tmp_cov_bin_history_restless_leg_syndrome", 
     ),
 
