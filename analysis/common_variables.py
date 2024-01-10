@@ -667,7 +667,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     # Combined alzheimer disease
     cov_bin_history_alzheimer_disease = patients.minimum_of(
         "tmp_cov_bin_history_alzheimer_disease_snomed", "tmp_cov_bin_history_alzheimer_disease_hes",
-        #"tmp_cov_bin_history_alzheimer_disease_death",
     ),
 
     # History of  vascular dementia
@@ -691,7 +690,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     # Combined vascular dementia
     cov_bin_history_vascular_dementia = patients.minimum_of(
         "tmp_cov_bin_history_vascular_dementia_snomed", "tmp_cov_bin_history_vascular_dementia_hes",
-        #"tmp_cov_bin_history_vascular_dementia_death",
     ),
 
     # History of other dementias
@@ -715,7 +713,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     # Combined other dementias
     cov_bin_history_other_dementias = patients.minimum_of(
         "tmp_cov_bin_history_other_dementias_snomed", "tmp_cov_bin_history_other_dementias_hes",
-        #"tmp_cov_bin_history_other_dementias_death",
     ),
 
     # History of Unspecified_dementias
@@ -739,7 +736,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     # Combined unspecified dementias
     cov_bin_history_unspecified_dementias = patients.minimum_of(
         "tmp_cov_bin_history_unspecified_dementias_snomed", "tmp_cov_bin_history_unspecified_dementias_hes",
-        #"tmp_cov_bin_history_unspecified_dementias_death",
     ),
 
     # History of lewy body
@@ -780,7 +776,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     # Combined history of parkinson_disease
     cov_bin_history_parkinson_disease = patients.minimum_of(
         "tmp_cov_bin_history_parkinson_disease_snomed", "tmp_cov_bin_history_parkinson_disease_hes", 
-        #"tmp_cov_bin_history_parkinson_disease_death",
     ),
 
 ## History of Multiple Sclerosis
@@ -804,43 +799,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     # Combined history of multiple_sclerosis
     cov_bin_history_multiple_sclerosis = patients.minimum_of(
         "tmp_cov_bin_history_multiple_sclerosis_snomed", "tmp_cov_bin_history_multiple_sclerosis_hes", 
-        #"tmp_cov_bin_history_multiple_sclerosis_death",
     ),
-
-    # History of restless leg syndrome
-    # Primary
-    cov_bin_history_restless_leg_syndrome=patients.with_these_clinical_events(
-        restless_leg_syndrome_snomed,
-        returning="binary_flag",
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1,
-        },
-    ),
-
-    # History of REM sleep disorder
-    ## REM sleep disorder (Condition on the clinical pathway to outcome of interest)
-    # Primary
-    tmp_cov_bin_history_rem_sleep_disorder_snomed=patients.with_these_clinical_events(
-        rem_sleep_disorder_snomed,
-        returning="binary_flag",
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1,
-        },
-    ),
-    # HES
-    tmp_cov_bin_history_rem_sleep_disorder_hes=patients.admitted_to_hospital(
-        with_these_diagnoses=rem_sleep_disorder_icd10,
-        returning="binary_flag",
-        on_or_before=f"{index_date_variable} - 1 day",
-        return_expectations={"incidence": 0.1,
-        },
-    ),
-
-    # Combined rem sleep disorder
-    # cov_bin_history_rem_sleep_disorder = patients.minimum_of(
-    #     "tmp_cov_bin_history_rem_sleep_disorder_snomed", "tmp_cov_bin_history_rem_sleep_disorder_hes", 
-    #     #"tmp_cov_bin_history_rem_sleep_disorder_death", 
-    # ),
 
     # History of cognitive impairment
     # Primary care - symptoms
@@ -873,7 +832,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     # Combined history of motor_neurone_disease
     cov_bin_history_motor_neurone_disease = patients.minimum_of(
         "tmp_cov_bin_history_motor_neurone_disease_snomed", "tmp_cov_bin_history_motor_neurone_disease_hes", 
-        #"tmp_cov_bin_history_motor_neurone_disease_death",
     ),
 
 ## History of migraine
@@ -898,7 +856,40 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     # Combined history of migraine
     cov_bin_history_migraine = patients.minimum_of(
         "tmp_cov_bin_history_migraine_snomed", "tmp_cov_bin_history_migraine_hes", 
-        #"tmp_cov_bin_history_migraine_death",
+    ),
+
+    # History of restless leg syndrome
+    # Primary
+    cov_bin_history_restless_leg_syndrome=patients.with_these_clinical_events(
+        restless_leg_syndrome_snomed,
+        returning="binary_flag",
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1,
+        },
+    ),
+
+    # History of REM sleep disorder
+    ## REM sleep disorder (Condition on the clinical pathway to outcome of interest)
+    # Primary
+    tmp_cov_bin_history_rem_sleep_disorder_snomed=patients.with_these_clinical_events(
+        rem_sleep_disorder_snomed,
+        returning="binary_flag",
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1,
+        },
+    ),
+    # HES
+    tmp_cov_bin_history_rem_sleep_disorder_hes=patients.admitted_to_hospital(
+        with_these_diagnoses=rem_sleep_disorder_icd10,
+        returning="binary_flag",
+        on_or_before=f"{index_date_variable} - 1 day",
+        return_expectations={"incidence": 0.1,
+        },
+    ),
+
+    # Combined rem sleep disorder
+    cov_bin_history_rem_sleep_disorder = patients.minimum_of(
+        "tmp_cov_bin_history_rem_sleep_disorder_snomed", "tmp_cov_bin_history_rem_sleep_disorder_hes", 
     ),
 
     # History of Parkinson risk conditions (REM / Restless leg)
@@ -907,7 +898,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         "tmp_cov_bin_history_rem_sleep_disorder_snomed", 
         "tmp_cov_bin_history_rem_sleep_disorder_hes",
         #"cov_bin_history_rem_sleep_disorder",
-        "cov_bin_history_restless_leg_syndrome", 
+        "tmp_cov_bin_history_restless_leg_syndrome", 
     ),
 
 ################################
