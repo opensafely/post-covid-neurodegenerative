@@ -173,16 +173,16 @@ stroke_isch_snomed_clinical = codelist_from_csv(
     system="snomed",
     column="code",
 )
-stroke_sah_hs_icd10 = codelist_from_csv(
-    "codelists/user-RochelleKnight-stroke_sah_hs_icd10.csv",
-    system="icd10",
-    column="code",
-)
-stroke_sah_hs_snomed_clinical = codelist_from_csv(
-    "codelists/user-elsie_horne-stroke_sah_hs_snomed.csv",
-    system="snomed",
-    column="code",
-)
+# stroke_sah_hs_icd10 = codelist_from_csv(
+#     "codelists/user-RochelleKnight-stroke_sah_hs_icd10.csv",
+#     system="icd10",
+#     column="code",
+# )
+# stroke_sah_hs_snomed_clinical = codelist_from_csv(
+#     "codelists/user-elsie_horne-stroke_sah_hs_snomed.csv",
+#     system="snomed",
+#     column="code",
+# )
 
 # BMI
 bmi_obesity_snomed_clinical = codelist_from_csv(
