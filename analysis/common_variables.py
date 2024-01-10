@@ -1088,7 +1088,7 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         },
     ),
     ### Combined
-    out_cov_bin_isch=patients.minimum_of(
+    cov_bin_isch=patients.minimum_of(
         "tmp_cov_bin_stroke_isch_snomed", "tmp_cov_bin_stroke_isch_hes", 
     ),
 
