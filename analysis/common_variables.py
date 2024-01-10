@@ -887,11 +887,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
         },
     ),
 
-    # Combined rem sleep disorder
-    cov_bin_history_rem_sleep_disorder = patients.minimum_of(
-        "tmp_cov_bin_history_rem_sleep_disorder_snomed", "tmp_cov_bin_history_rem_sleep_disorder_hes", 
-    ),
-
     # History of Parkinson risk conditions (REM / Restless leg)
     # Combined history of Parkinson risk conditions
     cov_bin_history_parkison_risk_conditions = patients.minimum_of(
