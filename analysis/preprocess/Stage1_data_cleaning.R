@@ -365,31 +365,6 @@ if (cohort == "vax") {
 #Apply outcome specific exclusions criteria
 #-------------------------------------------------#
 
-input <- input %>%
-  # Exclude individuals with a recorded diagnosis of chronic neuro-degenerative diseases prior to index date
-  # dementia
-  filter(!out_date_alzheimer_disease < index_date | is.na(out_date_alzheimer_disease)) %>%
-  filter(!out_date_vascular_dementia < index_date | is.na(out_date_vascular_dementia)) %>%
-  filter(!out_date_lewy_body_dementia < index_date | is.na(out_date_lewy_body_dementia)) %>%
-  filter(!out_date_any_dementia < index_date | is.na(out_date_any_dementia)) %>%
-  filter(!out_date_other_dementias < index_date | is.na(out_date_other_dementias)) %>%
-  filter(!out_date_unspecified_dementias < index_date | is.na(out_date_unspecified_dementias)) %>%
-  # dementia risk conditions
-  filter(!out_date_cognitive_impairment_symptoms < index_date | is.na(out_date_cognitive_impairment_symptoms)) %>%
-  # parkinson's disease
-  filter(!out_date_parkinson_disease < index_date | is.na(out_date_parkinson_disease)) %>%
-  # parkinson's risk conditions
-  filter(!out_date_restless_leg_syndrome < index_date | is.na(out_date_restless_leg_syndrome)) %>%
-  filter(!out_date_rem_sleep_disorder < index_date | is.na(out_date_rem_sleep_disorder)) %>%
-  # other neurodegenerative conditions
-  filter(!out_date_motor_neurone_disease < index_date | is.na(out_date_motor_neurone_disease)) %>%
-  filter(!out_date_multiple_sclerosis < index_date | is.na(out_date_multiple_sclerosis)) %>%
-  # neurological conditions
-  filter(!out_date_migraine < index_date | is.na(out_date_migraine))
-
-consort[nrow(consort)+1,] <- c("Neuro-degenerative specific criteria: Remove those with chornic neurodegenerative diseases prior to index date",
-                               nrow(input))
-
 # Parkinson additional exclusion criteria ‘Parkinson's disease’, we will exclude individuals if they have a record of any dementia
 
 input <- input %>%

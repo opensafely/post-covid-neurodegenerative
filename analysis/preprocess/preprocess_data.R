@@ -17,9 +17,6 @@ if(length(args)==0){
   cohort_name <- args[[1]]
 }
 
-fs::dir_create(here::here("output", "not-for-review"))
-fs::dir_create(here::here("output", "review"))
-
 #data set
 input_path <- paste0("output/input_",cohort_name,".csv.gz")
 
@@ -30,10 +27,10 @@ all_cols <- fread(paste0("output/input_",cohort_name,".csv.gz"),
                   sep = ",",
                   nrows = 0,
                   stringsAsFactors = FALSE) %>%
-  select(-c(cov_num_bmi_date_measured)) %>%
   names()
 
 #Get columns types based on their names
+
 cat_cols <- c("patient_id", grep("_cat", all_cols, value = TRUE))
 bin_cols <- c(grep("_bin", all_cols, value = TRUE),
               grep("prostate_cancer_", all_cols, value = TRUE),
@@ -43,6 +40,7 @@ num_cols <- c(grep("_num", all_cols, value = TRUE),
 date_cols <- grep("_date", all_cols, value = TRUE)
 
 # Set the class of the columns with match to make sure the column match the type
+
 col_classes <- setNames(
   c(rep("c", length(cat_cols)),
     rep("l", length(bin_cols)),
@@ -51,10 +49,12 @@ col_classes <- setNames(
   ),
   all_cols[match(c(cat_cols, bin_cols, num_cols, date_cols), all_cols)]
 )
+
 # read the input file and specify colClasses -----------------------------------
+
 df <- read_csv(input_path, col_types = col_classes)
 
-df$cov_num_bmi_date_measured <- NULL
+#df$cov_num_bmi_date_measured <- NULL
 
 print(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 print("type of columns:\n")
@@ -97,8 +97,7 @@ if(Sys.getenv("OPENSAFELY_BACKEND") %in% c("", "expectations") &&
 
 #Combine BMI variables to create one history of obesity variable ---------------
 
-df$cov_bin_obesity <- ifelse(df$cov_bin_obesity == TRUE | 
-                               df$cov_cat_bmi_groups=="Obese",TRUE,FALSE)
+df$cov_bin_obesity <- ifelse(df$cov_bin_obesity == TRUE, TRUE,FALSE)
 
 # QC for consultation variable--------------------------------------------------
 #max to 365 (average of one per day)
@@ -125,10 +124,21 @@ message("COVID19 severity determined successfully")
 
 # Create vars for neurodegenerative outcomes - TBC -------------------------------------------------------------
 
+# Rename cov_bin_chronic_obstructive_pulmonary_disease
+
+df <- df %>%
+  rename(cov_bin_copd = cov_bin_chronic_obstructive_pulmonary_disease,
+         cov_bin_ckd = cov_bin_chronic_kidney_disease,
+         cov_bin_history_cog_imp_sympt = cov_bin_history_cognitive_impairment_symptoms,
+         cov_bin_history_mnd = cov_bin_history_motor_neurone_disease,
+         cov_bin_history_parkinson = cov_bin_history_parkinson_disease,
+         cov_bin_history_ms = cov_bin_history_multiple_sclerosis,
+         cov_bin_history_parkinson_risk = cov_bin_history_parkison_risk_conditions)
+
 # High vascular risk -----------------------------------------------------------
 
 df <- df %>%
-  mutate(cov_bin_high_vascular_risk = case_when(cov_bin_hypertension == FALSE & cov_bin_diabetes == FALSE ~ FALSE,
+  mutate(sub_bin_high_vascular_risk = case_when(cov_bin_hypertension == FALSE & cov_bin_diabetes == FALSE ~ FALSE,
                                                 (cov_bin_hypertension == TRUE | cov_bin_diabetes == TRUE) & (cov_bin_hypertension == TRUE & cov_bin_diabetes == TRUE) ~ TRUE))
 
 # Restrict columns and save analysis dataset ---------------------------------
@@ -142,7 +152,6 @@ df1 <- df%>% select(patient_id,"death_date",starts_with("index_date_"),
                     contains("out_"), # Outcomes
                     contains("cov_"), # Covariates
                     contains("qa_"), # Quality assurance
-                    contains("step"), # diabetes steps
                     contains("vax_date_eligible"), # Vaccination eligibility
                     contains("vax_date_"), # Vaccination dates and vax type 
                     contains("vax_cat_") # Vaccination products
