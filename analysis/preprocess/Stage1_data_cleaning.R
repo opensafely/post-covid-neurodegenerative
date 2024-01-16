@@ -32,6 +32,9 @@ if(length(args)==0){
   cohort <- args[[1]]
 }
 
+fs::dir_create(here::here("output", "not-for-review"))
+fs::dir_create(here::here("output", "review", "descriptives"))
+
 # Load json file containing vax study dates ------------------------------------
 print('Load json file containing vax study dates')
 

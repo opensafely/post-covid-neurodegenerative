@@ -17,6 +17,9 @@ if(length(args)==0){
   cohort_name <- args[[1]]
 }
 
+fs::dir_create(here::here("output", "not-for-review"))
+fs::dir_create(here::here("output", "review"))
+
 #data set
 
 input_path <- paste0("output/input_",cohort_name,".csv.gz")
@@ -143,7 +146,7 @@ df <- df %>%
 
 # High vascular risk -----------------------------------------------------------
 
-df <- df1 %>%
+df <- df %>%
   mutate(sub_bin_high_vascular_risk = case_when(cov_bin_hypertension == FALSE & cov_bin_diabetes == FALSE ~ FALSE,
                                                 cov_bin_hypertension == FALSE & cov_bin_diabetes == TRUE ~ TRUE,
                                                 cov_bin_hypertension == TRUE & cov_bin_diabetes == FALSE ~ TRUE,
