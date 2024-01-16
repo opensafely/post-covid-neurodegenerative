@@ -18,6 +18,7 @@ if(length(args)==0){
 }
 
 #data set
+
 input_path <- paste0("output/input_",cohort_name,".csv.gz")
 
 # Get column names -------------------------------------------------------------
@@ -53,8 +54,6 @@ col_classes <- setNames(
 # read the input file and specify colClasses -----------------------------------
 
 df <- read_csv(input_path, col_types = col_classes)
-
-#df$cov_num_bmi_date_measured <- NULL
 
 print(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 print("type of columns:\n")
@@ -97,7 +96,14 @@ if(Sys.getenv("OPENSAFELY_BACKEND") %in% c("", "expectations") &&
 
 #Combine BMI variables to create one history of obesity variable ---------------
 
-df$cov_bin_obesity <- ifelse(df$cov_bin_obesity == TRUE, TRUE,FALSE)
+df$cov_bin_obesity <- ifelse(df$cov_bin_obesity == TRUE | 
+                               df$cov_cat_bmi_groups=="Obese",TRUE,FALSE)
+
+# drop BMI variables 
+
+df$cov_num_bmi_date_measured <- NULL
+df$cov_num_bmi <- NULL
+df$cov_cat_bmi_groups <- NULL
 
 # QC for consultation variable--------------------------------------------------
 #max to 365 (average of one per day)
@@ -137,8 +143,10 @@ df <- df %>%
 
 # High vascular risk -----------------------------------------------------------
 
-df <- df %>%
+df <- df1 %>%
   mutate(sub_bin_high_vascular_risk = case_when(cov_bin_hypertension == FALSE & cov_bin_diabetes == FALSE ~ FALSE,
+                                                cov_bin_hypertension == FALSE & cov_bin_diabetes == TRUE ~ TRUE,
+                                                cov_bin_hypertension == TRUE & cov_bin_diabetes == FALSE ~ TRUE,
                                                 (cov_bin_hypertension == TRUE | cov_bin_diabetes == TRUE) & (cov_bin_hypertension == TRUE & cov_bin_diabetes == TRUE) ~ TRUE))
 
 # Restrict columns and save analysis dataset ---------------------------------

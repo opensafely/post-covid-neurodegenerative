@@ -32,9 +32,6 @@ if(length(args)==0){
   cohort <- args[[1]]
 }
 
-fs::dir_create(here::here("output", "not-for-review"))
-fs::dir_create(here::here("output", "review", "descriptives"))
-
 # Load json file containing vax study dates ------------------------------------
 print('Load json file containing vax study dates')
 
@@ -369,11 +366,11 @@ if (cohort == "vax") {
 
 input <- input %>%
   mutate(
-    out_date_parkinson_disease = ifelse(
-      is.na(out_date_parkinson_disease) != is.na(out_date_any_dementia), out_date_parkinson_disease, NA))
+    out_date_parkinson_disease = case_when(
+      (!is.na(out_date_parkinson_disease) & out_date_any_dementia == FALSE) ~ out_date_parkinson_disease, 
+      TRUE ~ NA_real_))
 
-consort[nrow(consort)+1,] <- c("Neuro-degenerative specific criteria: Remove those with Parkinson and any dementia",
-                               nrow(input))
+consort[nrow(consort)+1,] <- c( "Exclusion Criteria: Remove those with previous any dementia diagnostic from parkinson events", nrow(input))
 
 # Save consort data ------------------------------------------------------------
 print('Save consort data')
@@ -392,12 +389,13 @@ print('Perform redaction')
 consort$removed <- NULL
 consort$N <- roundmid_any(consort$N, to=threshold)
 consort$removed <- dplyr::lag(consort$N, default = dplyr::first(consort$N)) - consort$N
+names(consort)[names(consort) == "N"] <- "N_midpoint6"
 
 # Save rounded consort data ----------------------------------------------------
 print('Save rounded consort data ')
 
 write.csv(consort, 
-          file = paste0("output/consort_",cohort, "_rounded.csv"), 
+          file = paste0("output/consort_",cohort, "_midpoint6.csv"), 
           row.names=F)
 
 # Save stage 1 dataset ---------------------------------------------------------

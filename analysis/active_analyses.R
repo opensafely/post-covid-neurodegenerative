@@ -517,7 +517,7 @@ for (c in cohorts) {
 
     for (i in parkinson_disease) { #remove any_dementia
 
-    ## analysis: sub_prior_parkinson_risk_true ---------------------------------------
+    ## analysis: sub_prior_parkinson_true ---------------------------------------
 
     df[nrow(df)+1,] <- c(cohort = c,
                          exposure = exposure,
@@ -539,7 +539,7 @@ for (c in cohorts) {
                          age_spline = TRUE,
                          analysis = "sub_prior_parkinson_true")
 
-    ## analysis: sub_prior_parkinson_risk_false --------------------------------------
+    ## analysis: sub_prior_parkinson_false --------------------------------------
 
     df[nrow(df)+1,] <- c(cohort = c,
                          exposure = exposure,
@@ -561,6 +561,53 @@ for (c in cohorts) {
                          age_spline = TRUE,
                          analysis = "sub_prior_parkinson_false")
     }
+  
+  for (i in parkinson_disease) { #remove any_dementia
+    
+    ## analysis: sub_prior_parkinson_risk_true ---------------------------------------
+    
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = gsub("cov_bin_any_dementia;","",all_covars),
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"),
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"),
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = TRUE,
+                         analysis = "sub_prior_parkinson_risk_true")
+    
+    ## analysis: sub_prior_parkinson_risk_false --------------------------------------
+    
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = gsub("cov_bin_any_dementia;","",all_covars),
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"),
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"),
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = TRUE,
+                         analysis = "sub_prior_parkinson_risk_false")
+  }
     
   }
 
