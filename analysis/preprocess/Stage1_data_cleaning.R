@@ -380,6 +380,7 @@ consort$removed <- NULL
 consort$N <- roundmid_any(consort$N, to=threshold)
 consort$removed <- dplyr::lag(consort$N, default = dplyr::first(consort$N)) - consort$N
 names(consort)[names(consort) == "N"] <- "N_midpoint6"
+names(consort)[names(consort) == "removed"] <- "removed_midpoint6_derived"
 
 # Save rounded consort data ----------------------------------------------------
 print('Save rounded consort data ')
