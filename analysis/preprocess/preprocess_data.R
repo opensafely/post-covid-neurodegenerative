@@ -18,22 +18,22 @@ if(length(args)==0){
 }
 
 fs::dir_create(here::here("output", "not-for-review"))
-fs::dir_create(here::here("output", "review"))
 
 #data set
+
 input_path <- paste0("output/input_",cohort_name,".csv.gz")
 
 # Get column names -------------------------------------------------------------
 
 all_cols <- fread(paste0("output/input_",cohort_name,".csv.gz"),
-              header = TRUE,
-              sep = ",",
-              nrows = 0,
-              stringsAsFactors = FALSE) %>%
-  select(-c(cov_num_bmi_date_measured)) %>%
+                  header = TRUE,
+                  sep = ",",
+                  nrows = 0,
+                  stringsAsFactors = FALSE) %>%
   names()
 
 #Get columns types based on their names
+
 cat_cols <- c("patient_id", grep("_cat", all_cols, value = TRUE))
 bin_cols <- c(grep("_bin", all_cols, value = TRUE),
               grep("prostate_cancer_", all_cols, value = TRUE),
@@ -43,6 +43,7 @@ num_cols <- c(grep("_num", all_cols, value = TRUE),
 date_cols <- grep("_date", all_cols, value = TRUE)
 
 # Set the class of the columns with match to make sure the column match the type
+
 col_classes <- setNames(
   c(rep("c", length(cat_cols)),
     rep("l", length(bin_cols)),
@@ -51,15 +52,22 @@ col_classes <- setNames(
   ),
   all_cols[match(c(cat_cols, bin_cols, num_cols, date_cols), all_cols)]
 )
-# read the input file and specify colClasses
-df <- read_csv(input_path, col_types = col_classes)
 
-df$cov_num_bmi_date_measured <- NULL
+# read the input file and specify colClasses -----------------------------------
+
+df <- read_csv(input_path, col_types = col_classes)
 
 print(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 print("type of columns:\n")
 
-#message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
+# Describe data ----------------------------------------------------------------
+
+sink(paste0("output/not-for-review/describe_",cohort_name,".txt"))
+print(Hmisc::describe(df))
+print(str(df))
+sink()
+
+message ("Cohort ",cohort_name, " description written successfully!")
 
 # Add death_date from prelim data ----------------------------------------------
 
@@ -80,7 +88,7 @@ df <- df %>%
           across(contains('_cat'), ~ as.factor(.)),
           across(contains('_bin'), ~ as.logical(.)))
 
-# Overwrite vaccination information for dummy data and vax cohort only --
+# Overwrite vaccination information for dummy data and vax cohort only ---------
 
 if(Sys.getenv("OPENSAFELY_BACKEND") %in% c("", "expectations") &&
    cohort_name %in% c("vax")) {
@@ -88,38 +96,16 @@ if(Sys.getenv("OPENSAFELY_BACKEND") %in% c("", "expectations") &&
   message("Vaccine information overwritten successfully")
 }
 
-# Describe data ----------------------------------------------------------------
-
-sink(paste0("output/not-for-review/describe_",cohort_name,".txt"))
-print(Hmisc::describe(df))
-print(str(df))
-sink()
-
-message ("Cohort ",cohort_name, " description written successfully!")
-
 #Combine BMI variables to create one history of obesity variable ---------------
 
 df$cov_bin_obesity <- ifelse(df$cov_bin_obesity == TRUE | 
                                df$cov_cat_bmi_groups=="Obese",TRUE,FALSE)
 
-# remove biologically implausible TC/HDL ratio values: https://doi.org/10.1093/ije/dyz099
-# Remove TC < 1.75 or > 20 
-# remove HDL < 0.4 or > 5
-# BMI numerical (for table 1 only to 12 min and 70 max)
+# drop BMI variables 
 
-df <- df %>%
-  mutate(tmp_cov_num_cholesterol = replace(tmp_cov_num_cholesterol, tmp_cov_num_cholesterol < 1.75 | tmp_cov_num_cholesterol > 20, NA),
-         tmp_cov_num_hdl_cholesterol = replace(tmp_cov_num_hdl_cholesterol, tmp_cov_num_hdl_cholesterol < 0.4 | tmp_cov_num_hdl_cholesterol > 5, NA)) %>%
-  mutate(cov_num_tc_hdl_ratio = tmp_cov_num_cholesterol / tmp_cov_num_hdl_cholesterol) %>%
-  mutate(cov_num_tc_hdl_ratio = replace(cov_num_tc_hdl_ratio, cov_num_tc_hdl_ratio > 50 | cov_num_tc_hdl_ratio < 1, NA)) %>%
-  mutate(cov_num_bmi = replace(cov_num_bmi, cov_num_bmi > 70 | cov_num_bmi < 12, NA))
-
-# replace NaN and Inf with NA's (probably only an issue with dummy data)
-df$cov_num_tc_hdl_ratio[is.nan(df$cov_num_tc_hdl_ratio)] <- NA
-df$cov_num_tc_hdl_ratio[is.infinite(df$cov_num_tc_hdl_ratio)] <- NA
-
-print("Cholesterol ratio variable created successfully and QC'd")
-summary(df$cov_num_tc_hdl_ratio)
+df$cov_num_bmi_date_measured <- NULL
+df$cov_num_bmi <- NULL
+df$cov_cat_bmi_groups <- NULL
 
 # QC for consultation variable--------------------------------------------------
 #max to 365 (average of one per day)
@@ -127,7 +113,7 @@ df <- df %>%
   mutate(cov_num_consulation_rate = replace(cov_num_consulation_rate, 
                                             cov_num_consulation_rate > 365, 365))
 
-# Define COVID-19 severity --------------------------------------------------------------
+# Define COVID-19 severity -----------------------------------------------------
 
 df <- df %>%
   mutate(sub_cat_covid19_hospital = 
@@ -146,6 +132,24 @@ message("COVID19 severity determined successfully")
 
 # Create vars for neurodegenerative outcomes - TBC -------------------------------------------------------------
 
+# Rename cov_bin_chronic_obstructive_pulmonary_disease
+
+df <- df %>%
+  rename(cov_bin_copd = cov_bin_chronic_obstructive_pulmonary_disease,
+         cov_bin_ckd = cov_bin_chronic_kidney_disease,
+         cov_bin_history_cog_imp_sympt = cov_bin_history_cognitive_impairment_symptoms,
+         cov_bin_history_mnd = cov_bin_history_motor_neurone_disease,
+         cov_bin_history_parkinson = cov_bin_history_parkinson_disease,
+         cov_bin_history_ms = cov_bin_history_multiple_sclerosis,
+         cov_bin_history_parkinson_risk = cov_bin_history_parkison_risk_conditions)
+
+# High vascular risk -----------------------------------------------------------
+
+df <- df %>%
+  mutate(sub_bin_high_vascular_risk = case_when(cov_bin_hypertension == FALSE & cov_bin_diabetes == FALSE ~ FALSE,
+                                                cov_bin_hypertension == FALSE & cov_bin_diabetes == TRUE ~ TRUE,
+                                                cov_bin_hypertension == TRUE & cov_bin_diabetes == FALSE ~ TRUE,
+                                                cov_bin_hypertension == TRUE & cov_bin_diabetes == TRUE ~ TRUE))
 
 # Restrict columns and save analysis dataset ---------------------------------
 
@@ -158,14 +162,11 @@ df1 <- df%>% select(patient_id,"death_date",starts_with("index_date_"),
                     contains("out_"), # Outcomes
                     contains("cov_"), # Covariates
                     contains("qa_"), # Quality assurance
-                    contains("step"), # diabetes steps
                     contains("vax_date_eligible"), # Vaccination eligibility
                     contains("vax_date_"), # Vaccination dates and vax type 
-                    contains("vax_cat_")# Vaccination products
+                    contains("vax_cat_") # Vaccination products
 ) %>% 
   select(-matches("tmp_"))
-
-#df1[,colnames(df)[grepl("tmp_",colnames(df))]] <- NULL
 
 # Repo specific preprocessing 
 
@@ -189,7 +190,7 @@ gc()
 
 message(paste0("Input data saved successfully with N = ", nrow(df1), " rows"))
 
-# Describe data --------------------------------------------------------------
+# Describe venn ----------------------------------------------------------------
 
 sink(paste0("output/not-for-review/describe_venn_",cohort_name,".txt"))
 print(Hmisc::describe(df2))
