@@ -18,7 +18,6 @@ if(length(args)==0){
 }
 
 fs::dir_create(here::here("output", "not-for-review"))
-fs::dir_create(here::here("output", "review"))
 
 #data set
 
@@ -150,7 +149,7 @@ df <- df %>%
   mutate(sub_bin_high_vascular_risk = case_when(cov_bin_hypertension == FALSE & cov_bin_diabetes == FALSE ~ FALSE,
                                                 cov_bin_hypertension == FALSE & cov_bin_diabetes == TRUE ~ TRUE,
                                                 cov_bin_hypertension == TRUE & cov_bin_diabetes == FALSE ~ TRUE,
-                                                (cov_bin_hypertension == TRUE | cov_bin_diabetes == TRUE) & (cov_bin_hypertension == TRUE & cov_bin_diabetes == TRUE) ~ TRUE))
+                                                cov_bin_hypertension == TRUE & cov_bin_diabetes == TRUE ~ TRUE))
 
 # Restrict columns and save analysis dataset ---------------------------------
 

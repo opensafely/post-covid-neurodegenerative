@@ -32,9 +32,6 @@ if(length(args)==0){
   cohort <- args[[1]]
 }
 
-fs::dir_create(here::here("output", "not-for-review"))
-fs::dir_create(here::here("output", "review", "descriptives"))
-
 # Load json file containing vax study dates ------------------------------------
 print('Load json file containing vax study dates')
 
@@ -364,16 +361,6 @@ if (cohort == "vax") {
 
 #Apply outcome specific exclusions criteria
 #-------------------------------------------------#
-
-# Parkinson additional exclusion criteria ‘Parkinson's disease’, we will exclude individuals if they have a record of any dementia
-
-input <- input %>%
-  mutate(
-    out_date_parkinson_disease = case_when(
-      (!is.na(out_date_parkinson_disease) & out_date_any_dementia == FALSE) ~ out_date_parkinson_disease, 
-      TRUE ~ NA_real_))
-
-consort[nrow(consort)+1,] <- c( "Exclusion Criteria: Remove those with previous any dementia diagnostic from parkinson events", nrow(input))
 
 # Save consort data ------------------------------------------------------------
 print('Save consort data')
