@@ -106,73 +106,73 @@ for (c in cohorts) {
     
     ## analysis: sub_covid_hospitalised ----------------------------------------
     
-    # df[nrow(df)+1,] <- c(cohort = c,
-    #                      exposure = exposure,
-    #                      outcome = i,
-    #                      ipw = ipw,
-    #                      strata = strata,
-    #                      covariate_sex = covariate_sex,
-    #                      covariate_age = covariate_age,
-    #                      covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
-    #                      cox_start = cox_start,
-    #                      cox_stop = cox_stop,
-    #                      study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-    #                      study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-    #                      cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-    #                      controls_per_case = controls_per_case,
-    #                      total_event_threshold = total_event_threshold,
-    #                      episode_event_threshold = episode_event_threshold,
-    #                      covariate_threshold = covariate_threshold,
-    #                      age_spline = TRUE,
-    #                      analysis = "sub_covid_hospitalised")
-    # 
-    # ## analysis: sub_covid_nonhospitalised -------------------------------------
-    # 
-    # df[nrow(df)+1,] <- c(cohort = c,
-    #                      exposure = exposure,
-    #                      outcome = i,
-    #                      ipw = ipw,
-    #                      strata = strata,
-    #                      covariate_sex = covariate_sex,
-    #                      covariate_age = covariate_age,
-    #                      covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
-    #                      cox_start = cox_start,
-    #                      cox_stop = cox_stop,
-    #                      study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-    #                      study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-    #                      cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-    #                      controls_per_case = controls_per_case,
-    #                      total_event_threshold = total_event_threshold,
-    #                      episode_event_threshold = episode_event_threshold,
-    #                      covariate_threshold = covariate_threshold,
-    #                      age_spline = TRUE,
-    #                      analysis = "sub_covid_nonhospitalised")
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = TRUE,
+                         analysis = "sub_covid_hospitalised")
+
+    ## analysis: sub_covid_nonhospitalised -------------------------------------
+
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = TRUE,
+                         analysis = "sub_covid_nonhospitalised")
 
     ## analysis: sub_covid_history ---------------------------------------------
 
-    # if (c!="prevax") {
-    # 
-    #   df[nrow(df)+1,] <- c(cohort = c,
-    #                        exposure = exposure,
-    #                        outcome = i,
-    #                        ipw = ipw,
-    #                        strata = strata,
-    #                        covariate_sex = covariate_sex,
-    #                        covariate_age = covariate_age,
-    #                        covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
-    #                        cox_start = cox_start,
-    #                        cox_stop = cox_stop,
-    #                        study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-    #                        study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-    #                        cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-    #                        controls_per_case = controls_per_case,
-    #                        total_event_threshold = total_event_threshold,
-    #                        episode_event_threshold = episode_event_threshold,
-    #                        covariate_threshold = covariate_threshold,
-    #                        age_spline = TRUE,
-    #                        analysis = "sub_covid_history")
-    # 
-    # }
+    if (c!="prevax") {
+
+      df[nrow(df)+1,] <- c(cohort = c,
+                           exposure = exposure,
+                           outcome = i,
+                           ipw = ipw,
+                           strata = strata,
+                           covariate_sex = covariate_sex,
+                           covariate_age = covariate_age,
+                           covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
+                           cox_start = cox_start,
+                           cox_stop = cox_stop,
+                           study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                           study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                           cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                           controls_per_case = controls_per_case,
+                           total_event_threshold = total_event_threshold,
+                           episode_event_threshold = episode_event_threshold,
+                           covariate_threshold = covariate_threshold,
+                           age_spline = TRUE,
+                           analysis = "sub_covid_history")
+
+    }
     
   }
   
@@ -180,47 +180,47 @@ for (c in cohorts) {
 
     ## analysis: sub_sex_female ------------------------------------------------
 
-    # df[nrow(df)+1,] <- c(cohort = c,
-    #                      exposure = exposure,
-    #                      outcome = i,
-    #                      ipw = ipw,
-    #                      strata = strata,
-    #                      covariate_sex = "NULL",
-    #                      covariate_age = covariate_age,
-    #                      covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
-    #                      cox_start = cox_start,
-    #                      cox_stop = cox_stop,
-    #                      study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-    #                      study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-    #                      cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-    #                      controls_per_case = controls_per_case,
-    #                      total_event_threshold = total_event_threshold,
-    #                      episode_event_threshold = episode_event_threshold,
-    #                      covariate_threshold = covariate_threshold,
-    #                      age_spline = TRUE,
-    #                      analysis = "sub_sex_female")
-    # 
-    # ## analysis: sub_sex_male --------------------------------------------------
-    # 
-    # df[nrow(df)+1,] <- c(cohort = c,
-    #                      exposure = exposure,
-    #                      outcome = i,
-    #                      ipw = ipw,
-    #                      strata = strata,
-    #                      covariate_sex = "NULL",
-    #                      covariate_age = covariate_age,
-    #                      covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
-    #                      cox_start = cox_start,
-    #                      cox_stop = cox_stop,
-    #                      study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-    #                      study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-    #                      cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-    #                      controls_per_case = controls_per_case,
-    #                      total_event_threshold = total_event_threshold,
-    #                      episode_event_threshold = episode_event_threshold,
-    #                      covariate_threshold = covariate_threshold,
-    #                      age_spline = TRUE,
-    #                      analysis = "sub_sex_male")
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = "NULL",
+                         covariate_age = covariate_age,
+                         covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = TRUE,
+                         analysis = "sub_sex_female")
+
+    ## analysis: sub_sex_male --------------------------------------------------
+
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = "NULL",
+                         covariate_age = covariate_age,
+                         covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = TRUE,
+                         analysis = "sub_sex_male")
     
     ## analysis: sub_age_18_39 ------------------------------------------------
     
@@ -312,113 +312,113 @@ for (c in cohorts) {
     
     ## analysis: sub_ethnicity_white -------------------------------------------
     
-  #   df[nrow(df)+1,] <- c(cohort = c,
-  #                        exposure = exposure,
-  #                        outcome = i,
-  #                        ipw = ipw,
-  #                        strata = strata,
-  #                        covariate_sex = covariate_sex,
-  #                        covariate_age = covariate_age,
-  #                        covariate_other = "cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
-  #                        cox_start = cox_start,
-  #                        cox_stop = cox_stop,
-  #                        study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-  #                        study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-  #                        cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-  #                        controls_per_case = controls_per_case,
-  #                        total_event_threshold = total_event_threshold,
-  #                        episode_event_threshold = episode_event_threshold,
-  #                        covariate_threshold = covariate_threshold,
-  #                        age_spline = TRUE,
-  #                        analysis = "sub_ethnicity_white")
-  # 
-  #   ## analysis: sub_ethnicity_black -------------------------------------------
-  # 
-  #   df[nrow(df)+1,] <- c(cohort = c,
-  #                        exposure = exposure,
-  #                        outcome = i,
-  #                        ipw = ipw,
-  #                        strata = strata,
-  #                        covariate_sex = covariate_sex,
-  #                        covariate_age = covariate_age,
-  #                        covariate_other = "cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
-  #                        cox_start = cox_start,
-  #                        cox_stop = cox_stop,
-  #                        study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-  #                        study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-  #                        cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-  #                        controls_per_case = controls_per_case,
-  #                        total_event_threshold = total_event_threshold,
-  #                        episode_event_threshold = episode_event_threshold,
-  #                        covariate_threshold = covariate_threshold,
-  #                        age_spline = TRUE,
-  #                        analysis = "sub_ethnicity_black")
-  # 
-  #   ## analysis: sub_ethnicity_mixed -------------------------------------------
-  # 
-  #   df[nrow(df)+1,] <- c(cohort = c,
-  #                        exposure = exposure,
-  #                        outcome = i,
-  #                        ipw = ipw,
-  #                        strata = strata,
-  #                        covariate_sex = covariate_sex,
-  #                        covariate_age = covariate_age,
-  #                        covariate_other = "cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
-  #                        cox_start = cox_start,
-  #                        cox_stop = cox_stop,
-  #                        study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-  #                        study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-  #                        cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-  #                        controls_per_case = controls_per_case,
-  #                        total_event_threshold = total_event_threshold,
-  #                        episode_event_threshold = episode_event_threshold,
-  #                        covariate_threshold = covariate_threshold,
-  #                        age_spline = TRUE,
-  #                        analysis = "sub_ethnicity_mixed")
-  # 
-  #   ## analysis: sub_ethnicity_asian -------------------------------------------
-  # 
-  #   df[nrow(df)+1,] <- c(cohort = c,
-  #                        exposure = exposure,
-  #                        outcome = i,
-  #                        ipw = ipw,
-  #                        strata = strata,
-  #                        covariate_sex = covariate_sex,
-  #                        covariate_age = covariate_age,
-  #                        covariate_other = "cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
-  #                        cox_start = cox_start,
-  #                        cox_stop = cox_stop,
-  #                        study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-  #                        study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-  #                        cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-  #                        controls_per_case = controls_per_case,
-  #                        total_event_threshold = total_event_threshold,
-  #                        episode_event_threshold = episode_event_threshold,
-  #                        covariate_threshold = covariate_threshold,
-  #                        age_spline = TRUE,
-  #                        analysis = "sub_ethnicity_asian")
-  # 
-  #   ## analysis: sub_ethnicity_other -------------------------------------------
-  # 
-  #   df[nrow(df)+1,] <- c(cohort = c,
-  #                        exposure = exposure,
-  #                        outcome = i,
-  #                        ipw = ipw,
-  #                        strata = strata,
-  #                        covariate_sex = covariate_sex,
-  #                        covariate_age = covariate_age,
-  #                        covariate_other = "cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
-  #                        cox_start = cox_start,
-  #                        cox_stop = cox_stop,
-  #                        study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-  #                        study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-  #                        cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-  #                        controls_per_case = controls_per_case,
-  #                        total_event_threshold = total_event_threshold,
-  #                        episode_event_threshold = episode_event_threshold,
-  #                        covariate_threshold = covariate_threshold,
-  #                        age_spline = TRUE,
-  #                        analysis = "sub_ethnicity_other")
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = "cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = TRUE,
+                         analysis = "sub_ethnicity_white")
+
+    ## analysis: sub_ethnicity_black -------------------------------------------
+
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = "cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = TRUE,
+                         analysis = "sub_ethnicity_black")
+
+    ## analysis: sub_ethnicity_mixed -------------------------------------------
+
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = "cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = TRUE,
+                         analysis = "sub_ethnicity_mixed")
+
+    ## analysis: sub_ethnicity_asian -------------------------------------------
+
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = "cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = TRUE,
+                         analysis = "sub_ethnicity_asian")
+
+    ## analysis: sub_ethnicity_other -------------------------------------------
+
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = "cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = TRUE,
+                         analysis = "sub_ethnicity_other")
 
   }
     
@@ -470,53 +470,53 @@ for (c in cohorts) {
   # 
   # }
 
-    for (i in cognitive_impairment) { #remove cov_bin_history_any_dementia
-
-    ## analysis: sub_prior_cognitive_impairment_true ---------------------------
-
-    df[nrow(df)+1,] <- c(cohort = c,
-                         exposure = exposure,
-                         outcome = i,
-                         ipw = ipw,
-                         strata = strata,
-                         covariate_sex = covariate_sex,
-                         covariate_age = covariate_age,
-                         covariate_other = gsub("cov_bin_history_any_dementia;","",all_covars),#cov_bin_history_cog_imp_sympt
-                         cox_start = cox_start,
-                         cox_stop = cox_stop,
-                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"),
-                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"),
-                         controls_per_case = controls_per_case,
-                         total_event_threshold = total_event_threshold,
-                         episode_event_threshold = episode_event_threshold,
-                         covariate_threshold = covariate_threshold,
-                         age_spline = TRUE,
-                         analysis = "sub_prior_cognitive_impairment_true")
-
-    ## analysis: sub_prior_cognitive_impairment_false --------------------------
-
-    df[nrow(df)+1,] <- c(cohort = c,
-                         exposure = exposure,
-                         outcome = i,
-                         ipw = ipw,
-                         strata = strata,
-                         covariate_sex = covariate_sex,
-                         covariate_age = covariate_age,
-                         covariate_other = gsub("cov_bin_history_any_dementia;","",all_covars),#cov_bin_history_cog_imp_sympt
-                         cox_start = cox_start,
-                         cox_stop = cox_stop,
-                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"),
-                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"),
-                         controls_per_case = controls_per_case,
-                         total_event_threshold = total_event_threshold,
-                         episode_event_threshold = episode_event_threshold,
-                         covariate_threshold = covariate_threshold,
-                         age_spline = TRUE,
-                         analysis = "sub_prior_cognitive_impairment_false")
-
-    }
+    # for (i in cognitive_impairment) { #remove cov_bin_history_any_dementia
+    # 
+    # ## analysis: sub_prior_cognitive_impairment_true ---------------------------
+    # 
+    # df[nrow(df)+1,] <- c(cohort = c,
+    #                      exposure = exposure,
+    #                      outcome = i,
+    #                      ipw = ipw,
+    #                      strata = strata,
+    #                      covariate_sex = covariate_sex,
+    #                      covariate_age = covariate_age,
+    #                      covariate_other = gsub("cov_bin_history_cog_imp_sympt;","",all_covars),#cov_bin_history_cog_imp_sympt #cov_bin_history_any_dementia
+    #                      cox_start = cox_start,
+    #                      cox_stop = cox_stop,
+    #                      study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+    #                      study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"),
+    #                      cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"),
+    #                      controls_per_case = controls_per_case,
+    #                      total_event_threshold = total_event_threshold,
+    #                      episode_event_threshold = episode_event_threshold,
+    #                      covariate_threshold = covariate_threshold,
+    #                      age_spline = TRUE,
+    #                      analysis = "sub_prior_cognitive_impairment_true")
+    # 
+    # ## analysis: sub_prior_cognitive_impairment_false --------------------------
+    # 
+    # df[nrow(df)+1,] <- c(cohort = c,
+    #                      exposure = exposure,
+    #                      outcome = i,
+    #                      ipw = ipw,
+    #                      strata = strata,
+    #                      covariate_sex = covariate_sex,
+    #                      covariate_age = covariate_age,
+    #                      covariate_other = gsub("cov_bin_history_cog_imp_sympt;","",all_covars),#cov_bin_history_cog_imp_sympt #cov_bin_history_any_dementia
+    #                      cox_start = cox_start,
+    #                      cox_stop = cox_stop,
+    #                      study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+    #                      study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"),
+    #                      cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"),
+    #                      controls_per_case = controls_per_case,
+    #                      total_event_threshold = total_event_threshold,
+    #                      episode_event_threshold = episode_event_threshold,
+    #                      covariate_threshold = covariate_threshold,
+    #                      age_spline = TRUE,
+    #                      analysis = "sub_prior_cognitive_impairment_false")
+    # 
+    # }
 
     # for (i in parkinson_disease) { #remove cov_bin_history_any_dementia
     # 
@@ -565,7 +565,7 @@ for (c in cohorts) {
     #                      analysis = "sub_prior_parkinson_false")
     # }
 
-  # for (i in parkinson_disease) { #remove cov_bin_history_parkinson
+  # for (i in parkinson_risk) { #remove cov_bin_history_parkinson
   # 
   #   ## analysis: sub_prior_parkinson_risk_true ---------------------------------------
   # 
