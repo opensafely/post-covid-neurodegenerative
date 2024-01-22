@@ -22,7 +22,7 @@ args <- commandArgs(trailingOnly=TRUE)
 
 if(length(args)==0){
   # name <- "all" # prepare datasets for all active analyses 
-  name <-  "prevax" #cohort_prevax-main" # prepare datasets for all active analyses whose name contains X
+  name <-  "all" #cohort_prevax-main" # prepare datasets for all active analyses whose name contains X
   # name <- "vax-depression-main;vax-depression-sub_covid_hospitalised;vax-depression-sub_covid_nonhospitalised" # prepare datasets for specific active analyses
 } else {
   name <- args[[1]]
@@ -77,6 +77,15 @@ for (i in 1:nrow(active_analyses)) {
                            "sub_bin_high_vascular_risk",
                            "cov_cat_sex",
                            "cov_num_age",
+                           "cov_bin_history_cog_imp_sympt",
+                           "cov_bin_history_alzheimer_disease",
+                           "cov_bin_history_vascular_dementia",
+                           "cov_bin_history_lewy_body_dementia",
+                           "cov_bin_history_any_dementia",
+                           "cov_bin_hypertension",
+                           "cov_bin_diabetes",
+                           "cov_bin_history_parkinson",
+                           "cov_bin_history_parkinson_risk",
                            "cov_cat_ethnicity"))]#,
   #history_components))]
   
@@ -153,22 +162,22 @@ for (i in 1:nrow(active_analyses)) {
    # Make model input: main -------------------------------------------------------
   
   if (active_analyses$analysis[i]=="main") {
-    
+
     print('Make model input: main')
-    
+
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE,]
-    
+
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
-    
+
     check_vitals(df)
     readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
-    
+
   }
-  
+
   # Make model input: sub_covid_hospitalised -------------------------------------
-  
+
   if (active_analyses$analysis[i]=="sub_covid_hospitalised") {
 
     print('Make model input: sub_covid_hospitalised')
@@ -271,79 +280,79 @@ for (i in 1:nrow(active_analyses)) {
 
   # Make model input: sub_age_18_39 ----------------------------------------------
 
-  if (active_analyses$analysis[i]=="sub_age_18_39") {
-
-    print('Make model input: sub_age_18_39')
-
-    df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
-                  input$cov_num_age>=18 &
-                  input$cov_num_age<40,]
-
-    df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
-
-    check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-    rm(df)
-
-  }
-
-  # Make model input: sub_age_40_59 ----------------------------------------------
-
-  if (active_analyses$analysis[i]=="sub_age_40_59") {
-
-    print('Make model input: sub_age_40_59')
-
-    df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
-                  input$cov_num_age>=40 &
-                  input$cov_num_age<60,]
-
-    df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
-
-    check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-    rm(df)
-
-  }
-
-  # Make model input: sub_age_60_79 ----------------------------------------------
-
-  if (active_analyses$analysis[i]=="sub_age_60_79") {
-
-    print('Make model input: sub_age_60_79')
-
-    df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
-                  input$cov_num_age>=60 &
-                  input$cov_num_age<80,]
-
-    df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
-
-    check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-    rm(df)
-
-  }
-
-  # Make model input: sub_age_80_110 ---------------------------------------------
-
-  if (active_analyses$analysis[i]=="sub_age_80_110") {
-
-    print('Make model input: sub_age_80_110')
-
-    df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
-                  input$cov_num_age>=80 &
-                  input$cov_num_age<111,]
-
-    df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
-
-    check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-    rm(df)
-
-  }
+  # if (active_analyses$analysis[i]=="sub_age_18_39") {
+  # 
+  #   print('Make model input: sub_age_18_39')
+  # 
+  #   df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
+  #                 input$cov_num_age>=18 &
+  #                 input$cov_num_age<40,]
+  # 
+  #   df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
+  # 
+  #   check_vitals(df)
+  #   readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+  #   print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+  #   rm(df)
+  # 
+  # }
+  # 
+  # # Make model input: sub_age_40_59 ----------------------------------------------
+  # 
+  # if (active_analyses$analysis[i]=="sub_age_40_59") {
+  # 
+  #   print('Make model input: sub_age_40_59')
+  # 
+  #   df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
+  #                 input$cov_num_age>=40 &
+  #                 input$cov_num_age<60,]
+  # 
+  #   df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
+  # 
+  #   check_vitals(df)
+  #   readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+  #   print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+  #   rm(df)
+  # 
+  # }
+  # 
+  # # Make model input: sub_age_60_79 ----------------------------------------------
+  # 
+  # if (active_analyses$analysis[i]=="sub_age_60_79") {
+  # 
+  #   print('Make model input: sub_age_60_79')
+  # 
+  #   df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
+  #                 input$cov_num_age>=60 &
+  #                 input$cov_num_age<80,]
+  # 
+  #   df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
+  # 
+  #   check_vitals(df)
+  #   readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+  #   print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+  #   rm(df)
+  # 
+  # }
+  # 
+  # # Make model input: sub_age_80_110 ---------------------------------------------
+  # 
+  # if (active_analyses$analysis[i]=="sub_age_80_110") {
+  # 
+  #   print('Make model input: sub_age_80_110')
+  # 
+  #   df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
+  #                 input$cov_num_age>=80 &
+  #                 input$cov_num_age<111,]
+  # 
+  #   df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
+  # 
+  #   check_vitals(df)
+  #   readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+  #   print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+  #   rm(df)
+  # 
+  # }
 
   # Make model input: sub_ethnicity_white --------------------------------------
 
@@ -434,175 +443,150 @@ for (i in 1:nrow(active_analyses)) {
     rm(df)
 
   }
-  
-  # Make model input: Vascular risk true----------------------------------------
-  
-  # if (active_analyses$analysis[i]=="sub_vascular_risk_true") {
-  # 
-  #   print('Make model input: sub_vascular_risk_true')
-  # 
-  #   df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
-  #                 input$sub_bin_high_vascular_risk == TRUE,]# &
-  #                 # input$cov_bin_history_alzheimer_disease == TRUE &
-  #                 # input$cov_bin_history_vascular_dementia == TRUE &
-  #                 # input$cov_bin_history_lewy_body_dementia == TRUE &
-  #                 # input$cov_bin_history_any_dementia == TRUE &
-  #                 # input$cov_bin_history_cog_imp_sympt == TRUE,]
-  # 
-  #   #df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
-  #   df[,c(colnames(df)[grepl("sub_",colnames(df))],"sub_bin_high_vascular_risk")] <- NULL
-  #   # df[,c(colnames(df)[grepl("sub_",colnames(df))],c("cov_bin_history_alzheimer_disease", "cov_bin_history_vascular_dementia", "cov_bin_history_lewy_body_dementia",
-  #   #                                                  "cov_bin_history_any_dementia", "cov_bin_history_cog_imp_sympt", "sub_bin_high_vascular_risk"))] <- NULL
-  # 
-  #   check_vitals(df)
-  #   readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-  #   print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-  #   rm(df)
-  # 
-  # }
-  # 
-  # # Make model input: Vascular risk false --------------------------------------
-  # 
-  # if (active_analyses$analysis[i]=="sub_vascular_risk_false") {
-  # 
-  #   print('Make model input: sub_vascular_risk_false')
-  # 
-  #   df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
-  #                 input$sub_bin_high_vascular_risk == FALSE ,]#&
-  #                 # input$cov_bin_history_alzheimer_disease == FALSE &
-  #                 # input$cov_bin_history_vascular_dementia == FALSE &
-  #                 # input$cov_bin_history_lewy_body_dementia == FALSE &
-  #                 # input$cov_bin_history_any_dementia == FALSE &
-  #                 # input$cov_bin_history_cog_imp_sympt == FALSE,]
-  # 
-  #   #df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
-  #   df[,c(colnames(df)[grepl("sub_",colnames(df))],"sub_bin_high_vascular_risk")] <- NULL
-  #   # df[,c(colnames(df)[grepl("sub_",colnames(df))],c("cov_bin_history_alzheimer_disease", "cov_bin_history_vascular_dementia", "cov_bin_history_lewy_body_dementia",
-  #   #                                                  "cov_bin_history_any_dementia", "cov_bin_history_cog_imp_sympt", "sub_bin_high_vascular_risk"))] <- NULL
-  # 
-  #   check_vitals(df)
-  #   readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-  #   print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-  #   rm(df)
-  # 
-  # }
 
   # Make model input: prior cognitive impairment true --------------------------
 
-  # if (active_analyses$analysis[i]=="sub_prior_cognitive_impairment_true") {
-  # 
-  #   print('Make model input: sub_prior_cognitive_impairment_true')
-  # 
-  #   df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
-  #                 input$cov_bin_history_any_dementia == TRUE,]
-  #                 #input$cov_bin_history_cog_imp_sympt == TRUE,]
-  # 
-  #   #df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_any_dementia")] <- NULL
-  #   #df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_cog_imp_sympt")] <- NULL
-  #   df[,c(colnames(df)[grepl("sub_",colnames(df))])] <- NULL
-  # 
-  #   check_vitals(df)
-  #   readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-  #   print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-  #   rm(df)
-  # 
-  # }
-  # 
-  # # Make model input: prior cognitive impairment false -------------------------
-  # 
-  # if (active_analyses$analysis[i]=="sub_prior_cognitive_impairment_false") {
-  # 
-  #   print('Make model input: sub_prior_cognitive_impairment_false')
-  # 
-  #   df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
-  #                 input$cov_bin_history_any_dementia == TRUE,]
-  #                 #input$cov_bin_history_cog_imp_sympt == FALSE,]
-  # 
-  #   #df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_any_dementia")] <- NULL
-  #   #df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_cog_imp_sympt")] <- NULL
-  #   df[,c(colnames(df)[grepl("sub_",colnames(df))])] <- NULL
-  # 
-  #   check_vitals(df)
-  #   readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-  #   print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-  #   rm(df)
-  # 
-  # }
+  if (active_analyses$analysis[i]=="sub_prior_cognitive_impairment_true") {
+
+    print('Make model input: sub_prior_cognitive_impairment_true')
+
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
+                  input$cov_bin_history_cog_imp_sympt == TRUE,]
+
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_cog_imp_sympt")] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+
+  }
+
+  # Make model input: prior cognitive impairment false -------------------------
+
+  if (active_analyses$analysis[i]=="sub_prior_cognitive_impairment_false") {
+
+    print('Make model input: sub_prior_cognitive_impairment_false')
+
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
+                  input$cov_bin_history_cog_imp_sympt == FALSE,]
+
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_cog_imp_sympt")] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+
+  }
 
   # Make model input: prior parkinson true -------------------------------------
 
-  # if (active_analyses$analysis[i]=="sub_prior_parkinson_true") {
-  # 
-  #   print('Make model input: sub_prior_parkinson_true')
-  # 
-  #   df <- input[input$sub_bin_covid19_confirmed_history==FALSE,]# &
-  #                 #input$cov_bin_history_parkinson == TRUE &
-  #                 #input$cov_bin_history_any_dementia == TRUE,]
-  # 
-  #   #df[,c(colnames(df)[grepl("sub_",colnames(df))],c("cov_bin_history_parkinson","cov_bin_history_any_dementia"))] <- NULL 
-  #   df[,c(colnames(df)[grepl("sub_",colnames(df))])] <- NULL 
-  #   
-  #   check_vitals(df)
-  #   readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-  #   print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-  #   rm(df)
-  # 
-  # }
-  # 
-  # # Make model input: prior parkison false -------------------------------------
-  # 
-  # if (active_analyses$analysis[i]=="sub_prior_parkinson_true") {
-  # 
-  #   print('Make model input: sub_prior_parkinson_false')
-  # 
-  #   df <- input[input$sub_bin_covid19_confirmed_history==FALSE,]# &
-  #                 #input$cov_bin_history_parkinson == FALSE &
-  #                 #input$cov_bin_history_any_dementia == FALSE,]
-  # 
-  #   #df[,c(colnames(df)[grepl("sub_",colnames(df))],c("cov_bin_history_parkinson","cov_bin_history_any_dementia"))] <- NULL 
-  #   df[,c(colnames(df)[grepl("sub_",colnames(df))])] <- NULL 
-  # 
-  #   check_vitals(df)
-  #   readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-  #   print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-  #   rm(df)
-  # 
-  # }
+  if (active_analyses$analysis[i]=="sub_prior_parkinson_true") {
+
+    print('Make model input: sub_prior_parkinson_true')
+
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
+                  input$cov_bin_history_any_dementia == TRUE,]
+
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_any_dementia")] <- NULL 
+    
+
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+
+  }
+
+  # Make model input: prior parkison false -------------------------------------
+
+  if (active_analyses$analysis[i]=="sub_prior_parkinson_true") {
+
+    print('Make model input: sub_prior_parkinson_false')
+
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
+                  input$cov_bin_history_any_dementia == FALSE,]
+
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_any_dementia")] <- NULL 
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+
+  }
 
   # Make model input: prior prior parkinson risk true --------------------------
 
-  # if (active_analyses$analysis[i]=="sub_prior_parkinson_risk_true") {
-  # 
-  #   print('Make model input: sub_prior_parkinson_risk_true')
-  # 
-  #   df <- input[input$sub_bin_covid19_confirmed_history==FALSE  &
-  #                 input$cov_bin_history_parkison_risk_conditions == TRUE,]
-  # 
-  #   df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_parkison_risk_conditions")] <- NULL
-  # 
-  #   check_vitals(df)
-  #   readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-  #   print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-  #   rm(df)
-  # 
-  # }
-  # 
-  # # Make model input: prior parkison risk false --------------------------------
-  # 
-  # if (active_analyses$analysis[i]=="sub_prior_parkinson_risk_false") {
-  # 
-  #   print('Make model input: sub_prior_parkinson_risk_false')
-  # 
-  #   df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
-  #                 input$cov_bin_history_parkison_risk_conditions == FALSE,]
-  # 
-  #   df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_parkison_risk_conditions")] <- NULL
-  # 
-  #   check_vitals(df)
-  #   readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-  #   print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-  #   rm(df)
-  # 
-  # }
+  if (active_analyses$analysis[i]=="sub_prior_parkinson_risk_true") {
+
+    print('Make model input: sub_prior_parkinson_risk_true')
+
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
+                  input$cov_bin_history_parkinson_risk == TRUE,]
+
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_parkinson_risk")] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+
+  }
+
+  # Make model input: prior parkison risk false --------------------------------
+
+  if (active_analyses$analysis[i]=="sub_prior_parkinson_risk_false") {
+
+    print('Make model input: sub_prior_parkinson_risk_false')
+
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
+                  input$cov_bin_history_parkinson_risk == FALSE,]
+
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_parkinson_risk")] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+
+  }
+  
+  # Make model input: Vascular risk true----------------------------------------
+  
+  if (active_analyses$analysis[i]=="sub_vascular_risk_true") {
+
+    print('Make model input: sub_vascular_risk_true')
+
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
+                  input$sub_bin_high_vascular_risk == TRUE,] 
+
+    df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
+
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+
+  }
+
+  # Make model input: Vascular risk false --------------------------------------
+
+  if (active_analyses$analysis[i]=="sub_vascular_risk_false") {
+
+    print('Make model input: sub_vascular_risk_false')
+
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
+                  input$sub_bin_high_vascular_risk == FALSE,] 
+
+    df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
+
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+
+  }
   
 }
