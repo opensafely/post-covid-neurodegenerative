@@ -63,24 +63,25 @@ outcomes_runall <- c("out_date_alzheimer_disease",
 #                       "out_date_motor_neurone_disease",
 #                       "out_date_multiple_sclerosis")
 
-vascular_risk <- c("out_date_alzheimer_disease", "out_date_vascular_dementia", "out_date_lewy_body_dementia", "out_date_any_dementia", "out_date_cognitive_impairment_symptoms")
+# Note:
+# suffix _sub_out refers to the neuro specific models 
+# sub_out remove history variables or certain covariates
+# vascular_risk_sub_out remove cov_bin_hypertension, cov_bin_diabetes, history variables are removed in the make_model_input script
+vascular_risk_sub_out <- c("out_date_alzheimer_disease", "out_date_vascular_dementia", "out_date_lewy_body_dementia", "out_date_any_dementia", "out_date_cognitive_impairment_symptoms")
+# parkinson_risk_sub_ou remove cov_bin_history_parkinson
+parkinson_risk_sub_out <- c("out_date_parkinson_disease") 
+# cognitive_impairment_sub_out remove cov_bin_history_any_dementia
+cognitive_impairment_sub_out <- c("out_date_any_dementia")
+# parkinson_disease_sub_out remove cov_bin_history_any_dementia
+parkinson_disease_sub_out <- c("out_date_any_dementia")
 
-parkinson_risk <- c("out_date_parkinson_disease") 
-
-cognitive_impairment <- c("out_date_any_dementia")
-
-parkinson_disease <- c("out_date_any_dementia")
-
-#all_covars <- c("cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_alzheimer_disease;cov_bin_history_lewy_body_dementia;cov_bin_history_vascular_dementia;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk")
+# list of covariates according to protocol
 all_covars <- c("cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk")
 
 # Add active analyses ----------------------------------------------------------
 
 for (c in cohorts) {
-  
-  #ipw <- ifelse(c=="unvax", FALSE, TRUE)
-  
-  # for (i in c(outcomes_runmain, outcomes_runall)) { 
+
     for (i in outcomes_runall) {
     
     ## analysis: main ----------------------------------------------------------
@@ -423,7 +424,7 @@ for (c in cohorts) {
 
   }
 
-    for (i in cognitive_impairment) { #remove cov_bin_history_any_dementia
+    for (i in cognitive_impairment_sub_out) { #remove cov_bin_history_any_dementia
 
     ## analysis: sub_history_cognitive_impairment_true ---------------------------
 
@@ -434,7 +435,7 @@ for (c in cohorts) {
                          strata = strata,
                          covariate_sex = covariate_sex,
                          covariate_age = covariate_age,
-                         covariate_other = gsub("cov_bin_history_any_dementia;","",all_covars),#cov_bin_history_cog_imp_sympt #cov_bin_history_any_dementia
+                         covariate_other = gsub("cov_bin_history_any_dementia;","",all_covars), #remove cov_bin_history_any_dementia
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
@@ -456,7 +457,7 @@ for (c in cohorts) {
                          strata = strata,
                          covariate_sex = covariate_sex,
                          covariate_age = covariate_age,
-                         covariate_other = gsub("cov_bin_history_any_dementia;","",all_covars),#cov_bin_history_cog_imp_sympt #cov_bin_history_any_dementia
+                         covariate_other = gsub("cov_bin_history_any_dementia;","",all_covars),# remove cov_bin_history_any_dementia
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
@@ -471,7 +472,7 @@ for (c in cohorts) {
 
     }
 
-    for (i in parkinson_disease) { #remove cov_bin_history_any_dementia
+    for (i in parkinson_disease_sub_out) { #remove cov_bin_history_any_dementia
 
     ## analysis: sub_history_parkinson_true ---------------------------------------
 
@@ -482,7 +483,7 @@ for (c in cohorts) {
                          strata = strata,
                          covariate_sex = covariate_sex,
                          covariate_age = covariate_age,
-                         covariate_other = gsub("cov_bin_history_parkinson;","",all_covars),
+                         covariate_other = gsub("cov_bin_history_parkinson;","",all_covars), #remove cov_bin_history_parkinson
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
@@ -504,7 +505,7 @@ for (c in cohorts) {
                          strata = strata,
                          covariate_sex = covariate_sex,
                          covariate_age = covariate_age,
-                         covariate_other = gsub("cov_bin_history_parkinson;","",all_covars),
+                         covariate_other = gsub("cov_bin_history_parkinson;","",all_covars), #remove cov_bin_history_parkinson
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
@@ -518,9 +519,9 @@ for (c in cohorts) {
                          analysis = "sub_history_parkinson_false")
     }
   
-  for (i in vascular_risk) { #remove cov_bin_history_alzheimer_disease, cov_bin_history_vascular_dementia, cov_bin_history_lewy_body, cov_bin_history_any_dementia, cov_bin_history_cog_imp_sympt
+  for (i in vascular_risk_sub_out) { #remove cov_bin_history_alzheimer_disease, cov_bin_history_vascular_dementia, cov_bin_history_lewy_body, cov_bin_history_any_dementia, cov_bin_history_cog_imp_sympt
 
-    ## analysis: sub_history_vascular_risk_true --------------------------------------
+    ## analysis: sub_bin_vascular_risk_true --------------------------------------
 
     df[nrow(df)+1,] <- c(cohort = c,
                          exposure = exposure,
@@ -529,8 +530,7 @@ for (c in cohorts) {
                          strata = strata,
                          covariate_sex = covariate_sex,
                          covariate_age = covariate_age,
-                         covariate_other = #"cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",#;sub_bin_high_vascular_risk",
-                        gsub("cov_bin_hypertension;|cov_bin_diabetes;|cov_bin_history_alzheimer_disease;|cov_bin_history_vascular_dementia;|cov_bin_history_any_dementia;|cov_bin_history_lewy_body_dementia;|cov_bin_history_any_dementia;|cov_bin_history_cog_imp_sympt;","",all_covars),
+                         covariate_other = gsub("cov_bin_hypertension;|cov_bin_diabetes;","",all_covars), #remove cov_bin_hypertension & cov_bin_diabetes, history variables removed in make_model_input
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
@@ -541,9 +541,9 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_history_vascular_risk_true")
+                         analysis = "sub_bin_vascular_risk_true")
 
-    ## analysis: sub_history_vascular_risk_false -------------------------------------
+    ## analysis: sub_bin_vascular_risk_false -------------------------------------
 
     df[nrow(df)+1,] <- c(cohort = c,
                          exposure = exposure,
@@ -552,8 +552,7 @@ for (c in cohorts) {
                          strata = strata,
                          covariate_sex = covariate_sex,
                          covariate_age = covariate_age,
-                         covariate_other = #"cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk",#;sub_bin_high_vascular_risk",
-                         gsub("cov_bin_hypertension;|cov_bin_diabetes;|cov_bin_history_alzheimer_disease;|cov_bin_history_vascular_dementia;|cov_bin_history_any_dementia;|cov_bin_history_lewy_body_dementia;|cov_bin_history_any_dementia;|cov_bin_history_cog_imp_sympt;","",all_covars),
+                         covariate_other = gsub("cov_bin_hypertension;|cov_bin_diabetes;","",all_covars), #remove cov_bin_hypertension & cov_bin_diabetes, history variables removed in make_model_input
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
@@ -564,11 +563,11 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_history_vascular_risk_false")
+                         analysis = "sub_bin_vascular_risk_false")
 
   }
 
-  for (i in parkinson_risk) { #remove cov_bin_history_parkinson
+  for (i in parkinson_risk_sub_out) { #remove cov_bin_history_parkinson
 
     ## analysis: sub_history_parkinson_risk_true ---------------------------------------
 
@@ -579,8 +578,7 @@ for (c in cohorts) {
                          strata = strata,
                          covariate_sex = covariate_sex,
                          covariate_age = covariate_age,
-                         covariate_other = gsub("cov_bin_history_parkinson;","",all_covars), #cov_bin_history_parkison_risk #cov_bin_history_parkinson
-                         #gsub("cov_bin_history_any_dementia;","",all_covars),
+                         covariate_other = gsub("cov_bin_history_parkinson;","",all_covars), # remove cov_bin_history_parkinson
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
@@ -602,7 +600,7 @@ for (c in cohorts) {
                          strata = strata,
                          covariate_sex = covariate_sex,
                          covariate_age = covariate_age,
-                         covariate_other = gsub("cov_bin_history_parkinson;","",all_covars), #cov_bin_history_parkison_risk #cov_bin_history_parkinson
+                         covariate_other = gsub("cov_bin_history_parkinson;","",all_covars), # remove cov_bin_history_parkinson
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),

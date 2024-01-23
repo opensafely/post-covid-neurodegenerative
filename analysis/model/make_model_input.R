@@ -22,7 +22,7 @@ args <- commandArgs(trailingOnly=TRUE)
 
 if(length(args)==0){
   # name <- "all" # prepare datasets for all active analyses 
-  name <-  "cohort_prevax-main" #cohort_prevax-main" # prepare datasets for all active analyses whose name contains X
+  name <-  "all" #cohort_prevax-main" # prepare datasets for all active analyses whose name contains X
   # name <- "vax-depression-main;vax-depression-sub_covid_hospitalised;vax-depression-sub_covid_nonhospitalised" # prepare datasets for specific active analyses
 } else {
   name <- args[[1]]
@@ -59,8 +59,6 @@ for (i in 1:nrow(active_analyses)) {
   # Restrict to required variables -----------------------------------------------
   print('Restrict to required variables')
   
-  #history_components <- colnames(input)[grepl("cov_bin_recent",colnames(input)) | grepl("cov_bin_history",colnames(input))]
-  
   input <- input[,unique(c("patient_id",
                            "index_date",
                            "end_date_exposure",
@@ -79,12 +77,9 @@ for (i in 1:nrow(active_analyses)) {
                            "cov_bin_history_vascular_dementia",
                            "cov_bin_history_lewy_body_dementia",
                            "cov_bin_history_any_dementia",
-                           "cov_bin_hypertension",
-                           "cov_bin_diabetes",
                            "cov_bin_history_parkinson",
                            "cov_bin_history_parkinson_risk",
-                           "cov_cat_ethnicity"))]#,
-  #history_components))]
+                           "cov_cat_ethnicity"))]
   
   # Remove outcomes outside of follow-up time ------------------------------------
   print('Remove outcomes outside of follow-up time')
