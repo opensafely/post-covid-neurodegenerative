@@ -22,7 +22,7 @@ args <- commandArgs(trailingOnly=TRUE)
 
 if(length(args)==0){
   # name <- "all" # prepare datasets for all active analyses 
-  name <-  "all" #cohort_prevax-main" # prepare datasets for all active analyses whose name contains X
+  name <-  "cohort_prevax-main" #cohort_prevax-main" # prepare datasets for all active analyses whose name contains X
   # name <- "vax-depression-main;vax-depression-sub_covid_hospitalised;vax-depression-sub_covid_nonhospitalised" # prepare datasets for specific active analyses
 } else {
   name <- args[[1]]
@@ -48,9 +48,6 @@ if (name=="all") {
 print('Filter active_analyses to model inputs to be prepared')
 
 active_analyses <- active_analyses[active_analyses$name %in% prepare,]
-
-# print(active_analyses$covariate_other[i])
-# print(unlist(strsplit(active_analyses$covariate_other[i], split = ";")))
 
 for (i in 1:nrow(active_analyses)) {
   
@@ -108,54 +105,64 @@ for (i in 1:nrow(active_analyses)) {
     dplyr::rowwise() %>% 
     dplyr::mutate(end_date_outcome = min(end_date_outcome, out_date, na.rm = TRUE))
   
-  # Exclude individuals at index date
+  # Exclude individuals at index date ------------------------------------------
+  print("Apply exclusion criteria according to each outcome")
   
   outcome <- active_analyses$outcome[i]
 
   if (outcome == "out_date_cognitive_impairment_symptoms") {
 
     input <- input %>%
-      filter(cov_bin_history_cog_imp_sympt == FALSE)
-
+      filter(cov_bin_history_cog_imp_sympt == FALSE) %>%
+      select(-cov_bin_history_cog_imp_sympt)
+    
   } else if (outcome == "out_date_motor_neurone_disease") {
 
     input<- input %>%
-      filter(cov_bin_history_mnd == FALSE)
+      filter(cov_bin_history_mnd == FALSE) %>%
+      select(-cov_bin_history_mnd)
 
   } else if (outcome == "out_date_multiple_sclerosis") {
 
     input<- input %>%
-      filter(cov_bin_history_ms == FALSE)
+      filter(cov_bin_history_ms == FALSE) %>%
+      select(-cov_bin_history_ms)
 
   } else if (outcome == "out_date_migraine") {
 
     input<- input %>%
-      filter(cov_bin_history_migraine == FALSE)
+      filter(cov_bin_history_migraine == FALSE) %>%
+      select(-cov_bin_history_migraine)
 
   } else if (outcome == "out_date_any_dementia") {
 
     input<- input %>%
-      filter(cov_bin_history_any_dementia == FALSE) 
+      filter(cov_bin_history_any_dementia == FALSE) %>%
+      select(-cov_bin_history_any_dementia)
 
   } else if (outcome == "out_date_parkinson_disease") {
 
     input<- input %>%
-      filter(cov_bin_history_parkinson == FALSE & cov_bin_history_any_dementia == FALSE)
+      filter(cov_bin_history_parkinson == FALSE & cov_bin_history_any_dementia == FALSE) %>%
+      select(-c(cov_bin_history_parkinson, cov_bin_history_any_dementia))
 
   } else if (outcome == "out_date_alzheimer_disease") {
     
     input<- input %>%
-      filter(cov_bin_history_alzheimer_disease == FALSE)
+      filter(cov_bin_history_alzheimer_disease == FALSE) %>%
+      select(-cov_bin_history_alzheimer_disease)
     
   } else if (outcome == "out_date_vascular_dementia") {
     
     input<- input %>%
-      filter(cov_bin_history_vascular_dementia == FALSE)
+      filter(cov_bin_history_vascular_dementia == FALSE) %>%
+      select(-cov_bin_history_vascular_dementia)
     
   } else if (outcome == "out_date_lewy_body_dementia") {
     
     input<- input %>%
-      filter(cov_bin_history_lewy_body_dementia == FALSE)
+      filter(cov_bin_history_lewy_body_dementia == FALSE) %>%
+      select(-cov_bin_history_lewy_body_dementia)
     
   }
 
@@ -446,9 +453,9 @@ for (i in 1:nrow(active_analyses)) {
 
   # Make model input: prior cognitive impairment true --------------------------
 
-  if (active_analyses$analysis[i]=="sub_prior_cognitive_impairment_true") {
+  if (active_analyses$analysis[i]=="sub_history_cognitive_impairment_true") {
 
-    print('Make model input: sub_prior_cognitive_impairment_true')
+    print('Make model input: sub_history_cognitive_impairment_true')
 
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
                   input$cov_bin_history_cog_imp_sympt == TRUE,]
@@ -464,9 +471,9 @@ for (i in 1:nrow(active_analyses)) {
 
   # Make model input: prior cognitive impairment false -------------------------
 
-  if (active_analyses$analysis[i]=="sub_prior_cognitive_impairment_false") {
+  if (active_analyses$analysis[i]=="sub_history_cognitive_impairment_false") {
 
-    print('Make model input: sub_prior_cognitive_impairment_false')
+    print('Make model input: sub_history_cognitive_impairment_false')
 
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
                   input$cov_bin_history_cog_imp_sympt == FALSE,]
@@ -482,14 +489,14 @@ for (i in 1:nrow(active_analyses)) {
 
   # Make model input: prior parkinson true -------------------------------------
 
-  if (active_analyses$analysis[i]=="sub_prior_parkinson_true") {
+  if (active_analyses$analysis[i]=="sub_history_parkinson_true") {
 
-    print('Make model input: sub_prior_parkinson_true')
+    print('Make model input: sub_history_parkinson_true')
 
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
-                  input$cov_bin_history_any_dementia == TRUE,]
+                  input$cov_bin_history_parkinson == TRUE,]
 
-    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_any_dementia")] <- NULL 
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_parkinson")] <- NULL 
     
 
     check_vitals(df)
@@ -501,14 +508,14 @@ for (i in 1:nrow(active_analyses)) {
 
   # Make model input: prior parkison false -------------------------------------
 
-  if (active_analyses$analysis[i]=="sub_prior_parkinson_true") {
+  if (active_analyses$analysis[i]=="sub_history_parkinson_true") {
 
-    print('Make model input: sub_prior_parkinson_false')
+    print('Make model input: sub_history_parkinson_false')
 
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
-                  input$cov_bin_history_any_dementia == FALSE,]
+                  input$cov_bin_history_parkinson == FALSE,]
 
-    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_any_dementia")] <- NULL 
+    df[,c(colnames(df)[grepl("sub_",colnames(df))],"cov_bin_history_parkinson")] <- NULL 
     
     check_vitals(df)
     readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
@@ -519,9 +526,9 @@ for (i in 1:nrow(active_analyses)) {
 
   # Make model input: prior prior parkinson risk true --------------------------
 
-  if (active_analyses$analysis[i]=="sub_prior_parkinson_risk_true") {
+  if (active_analyses$analysis[i]=="sub_history_parkinson_risk_true") {
 
-    print('Make model input: sub_prior_parkinson_risk_true')
+    print('Make model input: sub_history_parkinson_risk_true')
 
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
                   input$cov_bin_history_parkinson_risk == TRUE,]
@@ -537,9 +544,9 @@ for (i in 1:nrow(active_analyses)) {
 
   # Make model input: prior parkison risk false --------------------------------
 
-  if (active_analyses$analysis[i]=="sub_prior_parkinson_risk_false") {
+  if (active_analyses$analysis[i]=="sub_history_parkinson_risk_false") {
 
-    print('Make model input: sub_prior_parkinson_risk_false')
+    print('Make model input: sub_history_parkinson_risk_false')
 
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
                   input$cov_bin_history_parkinson_risk == FALSE,]
@@ -555,9 +562,9 @@ for (i in 1:nrow(active_analyses)) {
   
   # Make model input: Vascular risk true----------------------------------------
   
-  if (active_analyses$analysis[i]=="sub_vascular_risk_true") {
+  if (active_analyses$analysis[i]=="sub_history_vascular_risk_true") {
 
-    print('Make model input: sub_vascular_risk_true')
+    print('Make model input: sub_history_vascular_risk_true')
 
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
                   input$sub_bin_high_vascular_risk == TRUE,] 
@@ -573,9 +580,9 @@ for (i in 1:nrow(active_analyses)) {
 
   # Make model input: Vascular risk false --------------------------------------
 
-  if (active_analyses$analysis[i]=="sub_vascular_risk_false") {
+  if (active_analyses$analysis[i]=="sub_history_vascular_risk_false") {
 
-    print('Make model input: sub_vascular_risk_false')
+    print('Make model input: sub_history_vascular_risk_false')
 
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
                   input$sub_bin_high_vascular_risk == FALSE,] 
