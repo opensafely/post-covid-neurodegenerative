@@ -58,11 +58,6 @@ outcomes_runall <- c("out_date_alzheimer_disease",
                      "out_date_multiple_sclerosis",
                      "out_date_migraine")
 
-# outcomes_runmain <- c("out_date_vascular_dementia",
-#                       "out_date_restless_leg_syndrome",
-#                       "out_date_motor_neurone_disease",
-#                       "out_date_multiple_sclerosis")
-
 # Note:
 # suffix _sub_out refers to the neuro specific models 
 # sub_out remove history variables or certain covariates
@@ -175,11 +170,7 @@ for (c in cohorts) {
                            analysis = "sub_covid_history")
 
     }
-    
-  }
   
-  for (i in outcomes_runall) {
-
     ## analysis: sub_sex_female ------------------------------------------------
 
     df[nrow(df)+1,] <- c(cohort = c,
@@ -613,7 +604,6 @@ for (c in cohorts) {
                          age_spline = TRUE,
                          analysis = "sub_history_parkinson_risk_false")
   }
-    
 }
 
 # Assign unique name -----------------------------------------------------------

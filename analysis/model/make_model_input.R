@@ -66,7 +66,7 @@ for (i in 1:nrow(active_analyses)) {
                            active_analyses$exposure[i], 
                            active_analyses$outcome[i],
                            unlist(strsplit(active_analyses$strata[i], split = ";")),
-                           unlist(strsplit(active_analyses$covariate_other[i], split = ";")),#[!grepl("_priorhistory_",unlist(strsplit(active_analyses$covariate_other[i], split = ";")))],
+                           unlist(strsplit(active_analyses$covariate_other[i], split = ";")),
                            "sub_cat_covid19_hospital",
                            "sub_bin_covid19_confirmed_history",
                            "sub_bin_high_vascular_risk",
