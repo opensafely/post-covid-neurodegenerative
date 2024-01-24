@@ -60,12 +60,14 @@ outcomes_runall <- c("out_date_alzheimer_disease",
 
 # Note:
 # suffix _sub_out refers to the neuro specific models 
-# sub_out remove history variables or certain covariates
-# vascular_risk_sub_out remove cov_bin_hypertension, cov_bin_diabetes, history variables are removed in the make_model_input script
+# The suffix _sub_out creates a vector of outcomes that when applied to the given subgroup, it will help to indicate which binary covariates (cov_bin / cov_bin_history) 
+# should be removed from the covariate_other column in the active_analyses table.
+
+# vascular_risk_sub_out remove cov_bin_hypertension, cov_bin_diabetes, cov_bin_history_cog_imp_sympt, and cov_bin_history_any_dementia
 vascular_risk_sub_out <- c("out_date_alzheimer_disease", "out_date_vascular_dementia", "out_date_lewy_body_dementia", "out_date_any_dementia", "out_date_cognitive_impairment_symptoms")
 # parkinson_risk_sub_ou remove cov_bin_history_parkinson
 parkinson_risk_sub_out <- c("out_date_parkinson_disease") 
-# cognitive_impairment_sub_out remove cov_bin_history_any_dementia
+# cognitive_impairment_sub_out remove cov_bin_history_any_dementia and cov_bin_history_cog_imp_sympt
 cognitive_impairment_sub_out <- c("out_date_any_dementia")
 # parkinson_disease_sub_out remove cov_bin_history_any_dementia
 parkinson_disease_sub_out <- c("out_date_any_dementia")
@@ -426,7 +428,7 @@ for (c in cohorts) {
                          strata = strata,
                          covariate_sex = covariate_sex,
                          covariate_age = covariate_age,
-                         covariate_other = gsub("cov_bin_history_any_dementia;","",all_covars), #remove cov_bin_history_any_dementia
+                         covariate_other = gsub("cov_bin_history_any_dementia;|cov_bin_history_cog_imp_sympt;","",all_covars), #remove cov_bin_history_any_dementia
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
@@ -448,7 +450,7 @@ for (c in cohorts) {
                          strata = strata,
                          covariate_sex = covariate_sex,
                          covariate_age = covariate_age,
-                         covariate_other = gsub("cov_bin_history_any_dementia;","",all_covars),# remove cov_bin_history_any_dementia
+                         covariate_other = gsub("cov_bin_history_any_dementia;|cov_bin_history_cog_imp_sympt;","",all_covars),# remove cov_bin_history_any_dementia
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
@@ -521,7 +523,7 @@ for (c in cohorts) {
                          strata = strata,
                          covariate_sex = covariate_sex,
                          covariate_age = covariate_age,
-                         covariate_other = gsub("cov_bin_hypertension;|cov_bin_diabetes;","",all_covars), #remove cov_bin_hypertension & cov_bin_diabetes, history variables removed in make_model_input
+                         covariate_other = gsub("cov_bin_hypertension;|cov_bin_diabetes;|cov_bin_history_any_dementia;|cov_bin_history_cog_imp_sympt;","",all_covars), #remove cov_bin_hypertension & cov_bin_diabetes, history variables removed in make_model_input
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
@@ -543,7 +545,7 @@ for (c in cohorts) {
                          strata = strata,
                          covariate_sex = covariate_sex,
                          covariate_age = covariate_age,
-                         covariate_other = gsub("cov_bin_hypertension;|cov_bin_diabetes;","",all_covars), #remove cov_bin_hypertension & cov_bin_diabetes, history variables removed in make_model_input
+                         covariate_other = gsub("cov_bin_hypertension;|cov_bin_diabetes;|cov_bin_history_any_dementia;|cov_bin_history_cog_imp_sympt;","",all_covars), #remove cov_bin_hypertension & cov_bin_diabetes, history variables removed in make_model_input
                          cox_start = cox_start,
                          cox_stop = cox_stop,
                          study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
