@@ -63,13 +63,9 @@ outcomes_runall <- c("out_date_alzheimer_disease",
 # The suffix _sub_out creates a vector of outcomes that when applied to the given subgroup, it will help to indicate which binary covariates (cov_bin / cov_bin_history) 
 # should be removed from the covariate_other column in the active_analyses table.
 
-# vascular_risk_sub_out remove cov_bin_hypertension, cov_bin_diabetes, cov_bin_history_cog_imp_sympt, and cov_bin_history_any_dementia
 vascular_risk_sub_out <- c("out_date_alzheimer_disease", "out_date_vascular_dementia", "out_date_lewy_body_dementia", "out_date_any_dementia", "out_date_cognitive_impairment_symptoms")
-# parkinson_risk_sub_ou remove cov_bin_history_parkinson
 parkinson_risk_sub_out <- c("out_date_parkinson_disease") 
-# cognitive_impairment_sub_out remove cov_bin_history_any_dementia and cov_bin_history_cog_imp_sympt
 cognitive_impairment_sub_out <- c("out_date_any_dementia")
-# parkinson_disease_sub_out remove cov_bin_history_any_dementia
 parkinson_disease_sub_out <- c("out_date_any_dementia")
 
 # list of covariates according to protocol
@@ -617,121 +613,42 @@ df$name <- paste0("cohort_",df$cohort, "-",
 # Remove covariate according to each outcome -----------------------------------
 print("Removing coviriates according to each outcome")
 
-for (i in 1:nrow(df)) {
-
-  analysis <- df$analysis[i]
-  outcome <- df$outcome[i]
-
   # Cognitive impairment symptoms
 
-  if (outcome == "out_date_cognitive_impairment_symptoms" &
-      analysis == "main" | analysis == "sub_covid_hospital" | analysis == "sub_covid_nonhospitalised" | analysis == "sub_covid_history" |
-      analysis == "sub_sex_male" | analysis == "sub_sex_female" | analysis == "sub_ethnicity_white" | analysis == "sub_ethnicity_black" |
-      analysis == "sub_ethnicity_mixed" | analysis == "sub_ethnicity_asian" | analysis == "sub_ethnicity_other" |
-      analysis == "sub_history_cognitive_impairment_true" | analysis == "sub_history_cognitive_impairment_false" |
-      analysis == "sub_bin_vascular_risk_true" | analysis == "sub_bin_vascular_risk_false") {
-
-    df$covariate_other[i] <- gsub("cov_bin_history_cog_imp_sympt;", "", df$covariate_other[i])
-
+  df$covariate_other <- ifelse(df$outcome=="out_date_cognitive_impairment_symptoms",gsub("cov_bin_history_cog_imp_sympt;", "", df$covariate_other),df$covariate_other)
+    
   # Parkinson disease 
 
-  } else if (outcome == "out_date_parkinson_disease" &
-             analysis == "main" | analysis == "sub_covid_hospital" | analysis == "sub_covid_nonhospitalised" | analysis == "sub_covid_history" |
-             analysis == "sub_sex_male" | analysis == "sub_sex_female" | analysis == "sub_ethnicity_white" | analysis == "sub_ethnicity_black" |
-             analysis == "sub_ethnicity_mixed" | analysis == "sub_ethnicity_asian" | analysis == "sub_ethnicity_other" |
-             analysis == "sub_history_parkinson_true" | analysis == "sub_history_parkinson_false" |
-             analysis == "sub_history_parkinson_risk_true" | analysis == "sub_history_parkinson_risk_false") {
-
-    df$covariate_other[i] <- gsub("cov_bin_history_parkinson;", "", df$covariate_other[i])
+  df$covariate_other <- ifelse(df$outcome=="out_date_parkinson",gsub("cov_bin_history_parkinson;", "", df$covariate_other),df$covariate_other)
     
   # Alzheimer 
 
-  } else if (outcome == "out_date_alzheimer_disease" |
-             analysis == "main" | analysis == "sub_covid_hospital" | analysis == "sub_covid_nonhospitalised" | analysis == "sub_covid_history" |
-             analysis == "sub_sex_male" | analysis == "sub_sex_female" | analysis == "sub_ethnicity_white" | analysis == "sub_ethnicity_black" |
-             analysis == "sub_ethnicity_mixed" | analysis == "sub_ethnicity_asian" | analysis == "sub_ethnicity_other" |
-             analysis == "sub_bin_vascular_risk_true" | analysis == "sub_bin_vascular_risk_false") {
-
-    df$covariate_other[i] <- gsub("cov_bin_history_alzheimer_disease;", "", df$covariate_other[i])
-
+  df$covariate_other <- ifelse(df$outcome=="out_date_cognitive_impairment_symptoms",gsub("cov_bin_history_cog_imp_sympt;", "", df$covariate_other),df$covariate_other)
+  
   # Vascular dementia 
 
-  } else if (outcome == "out_date_vascular_dementia" &
-             analysis == "main" | analysis == "sub_covid_hospital" | analysis == "sub_covid_nonhospitalised" | analysis == "sub_covid_history" |
-             analysis == "sub_sex_male" | analysis == "sub_sex_female" | analysis == "sub_ethnicity_white" | analysis == "sub_ethnicity_black" |
-             analysis == "sub_ethnicity_mixed" | analysis == "sub_ethnicity_asian" | analysis == "sub_ethnicity_other" |
-             analysis == "sub_bin_vascular_risk_true" | analysis == "sub_bin_vascular_risk_false") {
-
-    df$covariate_other[i] <- gsub("cov_bin_history_vascular_dementia;", "", df$covariate_other[i])
+  df$covariate_other <- ifelse(df$outcome=="out_date_vascular_dementia",gsub("cov_bin_history_vascular_dementia;", "", df$covariate_other),df$covariate_other)
 
   # Lewy body 
 
-  } else if (outcome == "out_date_lewy_body_dementia" &
-             analysis == "main" | analysis == "sub_covid_hospital" | analysis == "sub_covid_nonhospitalised" | analysis == "sub_covid_history" |
-             analysis == "sub_sex_male" | analysis == "sub_sex_female" | analysis == "sub_ethnicity_white" | analysis == "sub_ethnicity_black" |
-             analysis == "sub_ethnicity_mixed" | analysis == "sub_ethnicity_asian" | analysis == "sub_ethnicity_other" |
-             analysis == "sub_bin_vascular_risk_true" | analysis == "sub_bin_vascular_risk_false") {
+  df$covariate_other <- ifelse(df$outcome=="out_date_lewy_body_dementia",gsub("cov_bin_history_lewy_body_dementia;", "", df$covariate_other),df$covariate_other)
+  
+  # Any dementia
 
-    df$covariate_other[i] <- gsub("cov_bin_history_lewy_body_dementia;", "", df$covariate_other[i])
-
-  }
-}
+  df$covariate_other <- ifelse(df$outcome=="out_date_any_dementia",gsub("cov_bin_history_any_dementia;", "", df$covariate_other),df$covariate_other)
+    
+  # Motor neurone disease 
+  
+  df$covariate_other <- ifelse(df$outcome=="out_date_mnd",gsub("cov_bin_history_mnd;", "", df$covariate_other),df$covariate_other)
+    
+  # Multiple sclerosis
+    
+  df$covariate_other <- ifelse(df$outcome=="out_date_ms",gsub("cov_bin_history_ms;", "", df$covariate_other),df$covariate_other) 
+  
+  # Migraine
+  
+   df$covariate_other <- ifelse(df$outcome=="out_date_migraine",gsub("cov_bin_history_migraine;", "", df$covariate_other),df$covariate_other)
  
-# Remove covariate according to outcome (outsde loop) --------------------------
-# Note: gsub and stringr not working for any_dementia, motor neurone disease, multiple sclerosis, and migraine
-print("Remove covariate according to outcome (outside loop)")
- 
-  # Any dementia (50)
-  print("Create dataframe for any dementia")
-  
-  any_dementia <- df |>
-    subset(outcome == "out_date_any_dementia")
-  any_dementia_covars <- c("cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk")
-  any_dementia$covariate_other <- NULL
-  any_dementia[,"covariate_other"] <- any_dementia_covars
-  
-  # Motor neurone disease (32)
-  print("Create dataframe for motor neurone disease")
-  
-  mnd <- df |>
-    subset(outcome == "out_date_motor_neurone_disease")
-  mnd_covars <- c("cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk")
-  mnd$covariate_other <- NULL
-  mnd[,"covariate_other"] <- mnd_covars
-  
-  # Multiple sclerosis (32)
-  print("Create dataframe for multiple sclerosis")
-  
-  ms <- df |>
-    subset(outcome == "out_date_multiple_sclerosis")
-  ms_covars <- c("cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_parkinson_risk")
-  ms$covariate_other <- NULL
-  ms[,"covariate_other"] <- ms_covars
-  
-  # Migraine (32)
-  print("Create dataframe for migriane")
-  
-  migraine <- df |>
-    subset(outcome == "out_date_migraine")
-  migraine_covars <- c("cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk")
-  migraine$covariate_other <- NULL
-  migraine[,"covariate_other"] <- migraine_covars
-
-  # Remove outcomes from original dataframe (any_dementia, multiple sclerosis, motor neurone disease, migraine)
-  print("Remove rows for outcomes any_dementia, multiple sclerosis, motor neurone disease, migraine")
-  
-  df <- df[!(df$outcome == "out_date_migraine" | df$outcome == "out_date_multiple_sclerosis" | df$outcome == "out_date_motor_neurone_disease" | df$outcome == "out_date_any_dementia"),] 
-  
-  # Combine in one dataframe
-  print("Comnine all dataframes into one")
-  
-  df <- as.data.frame(Reduce(function(x,y) merge(x, y, all = TRUE), list(df, any_dementia, mnd, ms, migraine)))
-  
-  # Remove any dementia, motor neurone disease, multiple sclerosis, and migraine from environment
-  print("Remove subset dataframes")
-  
-  rm(any_dementia, mnd, ms, migraine)
-
 # Check names are unique and save active analyses list -------------------------
 
 if (length(unique(df$name))==nrow(df)) {
