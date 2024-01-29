@@ -60,8 +60,8 @@ outcomes_runall <- c("out_date_alzheimer_disease",
 
 # Note:
 # suffix _sub_out refers to the neuro specific models 
-# The suffix _sub_out creates a vector of outcomes that when applied to the given subgroup, it will help to indicate which binary covariates (cov_bin / cov_bin_history) 
-# should be removed from the covariate_other column in the active_analyses table.
+# The suffix _sub_out creates a vector of outcomes that when applied to the given subgroup. The outcomes are handle using gsub(), as it is done for hospitalised, nonhospitalised, sex, age, 
+# and ethnicity models.
 
 vascular_risk_sub_out <- c("out_date_alzheimer_disease", "out_date_vascular_dementia", "out_date_lewy_body_dementia", "out_date_any_dementia", "out_date_cognitive_impairment_symptoms")
 parkinson_risk_sub_out <- c("out_date_parkinson_disease") 
