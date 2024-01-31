@@ -60,8 +60,7 @@ outcomes_runall <- c("out_date_alzheimer_disease",
 
 # Note:
 # suffix _sub_out refers to the neuro specific models 
-# The suffix _sub_out creates a vector of outcomes that when applied to the given subgroup. The outcomes are handle using gsub(), as it is done for hospitalised, nonhospitalised, sex, age, 
-# and ethnicity models.
+# The suffix _sub_out creates a vector of outcomes that when applied to the given subgroup. 
 
 vascular_risk_sub_out <- c("out_date_alzheimer_disease", "out_date_vascular_dementia", "out_date_lewy_body_dementia", "out_date_any_dementia", "out_date_cognitive_impairment_symptoms")
 parkinson_risk_sub_out <- c("out_date_parkinson_disease") 
@@ -215,91 +214,91 @@ for (c in cohorts) {
     
     ## analysis: sub_age_18_39 ------------------------------------------------
     
-    # df[nrow(df)+1,] <- c(cohort = c,
-    #                      exposure = exposure, 
-    #                      outcome = i,
-    #                      ipw = ipw, 
-    #                      strata = strata,
-    #                      covariate_sex = covariate_sex,
-    #                      covariate_age = covariate_age,
-    #                      covariate_other = all_covars,
-    #                      cox_start = cox_start,
-    #                      cox_stop = cox_stop,
-    #                      study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-    #                      study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-    #                      cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-    #                      controls_per_case = controls_per_case,
-    #                      total_event_threshold = total_event_threshold,
-    #                      episode_event_threshold = episode_event_threshold,
-    #                      covariate_threshold = covariate_threshold,
-    #                      age_spline = FALSE,
-    #                      analysis = "sub_age_18_39")
-    # 
-    # ## analysis: sub_age_40_59 ------------------------------------------------
-    # 
-    # df[nrow(df)+1,] <- c(cohort = c,
-    #                      exposure = exposure, 
-    #                      outcome = i,
-    #                      ipw = ipw, 
-    #                      strata = strata,
-    #                      covariate_sex = covariate_sex,
-    #                      covariate_age = covariate_age,
-    #                      covariate_other = all_covars,
-    #                      cox_start = cox_start,
-    #                      cox_stop = cox_stop,
-    #                      study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-    #                      study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-    #                      cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-    #                      controls_per_case = controls_per_case,
-    #                      total_event_threshold = total_event_threshold,
-    #                      episode_event_threshold = episode_event_threshold,
-    #                      covariate_threshold = covariate_threshold,
-    #                      age_spline = FALSE,
-    #                      analysis = "sub_age_40_59")
-    # 
-    # ## analysis: sub_age_60_79 ------------------------------------------------
-    # 
-    # df[nrow(df)+1,] <- c(cohort = c,
-    #                      exposure = exposure, 
-    #                      outcome = i,
-    #                      ipw = ipw, 
-    #                      strata = strata,
-    #                      covariate_sex = covariate_sex,
-    #                      covariate_age = covariate_age,
-    #                      covariate_other = all_covars,
-    #                      cox_start = cox_start,
-    #                      cox_stop = cox_stop,
-    #                      study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-    #                      study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-    #                      cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-    #                      controls_per_case = controls_per_case,
-    #                      total_event_threshold = total_event_threshold,
-    #                      episode_event_threshold = episode_event_threshold,
-    #                      covariate_threshold = covariate_threshold,
-    #                      age_spline = FALSE,
-    #                      analysis = "sub_age_60_79")
-    # 
-    # ## analysis: sub_age_80_110 ------------------------------------------------
-    # 
-    # df[nrow(df)+1,] <- c(cohort = c,
-    #                      exposure = exposure, 
-    #                      outcome = i,
-    #                      ipw = ipw, 
-    #                      strata = strata,
-    #                      covariate_sex = covariate_sex,
-    #                      covariate_age = covariate_age,
-    #                      covariate_other = all_covars,
-    #                      cox_start = cox_start,
-    #                      cox_stop = cox_stop,
-    #                      study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
-    #                      study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
-    #                      cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
-    #                      controls_per_case = controls_per_case,
-    #                      total_event_threshold = total_event_threshold,
-    #                      episode_event_threshold = episode_event_threshold,
-    #                      covariate_threshold = covariate_threshold,
-    #                      age_spline = FALSE,
-    #                      analysis = "sub_age_80_110")
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = all_covars,
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = FALSE,
+                         analysis = "sub_age_18_39")
+    
+    ## analysis: sub_age_40_65 ------------------------------------------------
+
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = all_covars,
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = FALSE,
+                         analysis = "sub_age_40_65")
+
+    ## analysis: sub_age_65_85 ------------------------------------------------
+
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = all_covars,
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = FALSE,
+                         analysis = "sub_age_65_85")
+
+    ## analysis: sub_age_85_110 ------------------------------------------------
+
+    df[nrow(df)+1,] <- c(cohort = c,
+                         exposure = exposure,
+                         outcome = i,
+                         ipw = ipw,
+                         strata = strata,
+                         covariate_sex = covariate_sex,
+                         covariate_age = covariate_age,
+                         covariate_other = all_covars,
+                         cox_start = cox_start,
+                         cox_stop = cox_stop,
+                         study_start = ifelse(c=="prevax", "2020-01-01", "2021-06-01"),
+                         study_stop = ifelse(c=="prevax", "2021-12-14", "2021-12-14"), #original study stop: 2021-06-18
+                         cut_points = ifelse(c=="prevax", "1;28;197;365;714", "1;28;197"), #original cut points: 28;197;365
+                         controls_per_case = controls_per_case,
+                         total_event_threshold = total_event_threshold,
+                         episode_event_threshold = episode_event_threshold,
+                         covariate_threshold = covariate_threshold,
+                         age_spline = FALSE,
+                         analysis = "sub_age_85_110")
     
     ## analysis: sub_ethnicity_white -------------------------------------------
     
@@ -621,18 +620,6 @@ print("Removing coviriates according to each outcome")
 
   df$covariate_other <- ifelse(df$outcome=="out_date_parkinson",gsub("cov_bin_history_parkinson;", "", df$covariate_other),df$covariate_other)
     
-  # Alzheimer 
-
-  df$covariate_other <- ifelse(df$outcome=="out_date_cognitive_impairment_symptoms",gsub("cov_bin_history_cog_imp_sympt;", "", df$covariate_other),df$covariate_other)
-  
-  # Vascular dementia 
-
-  df$covariate_other <- ifelse(df$outcome=="out_date_vascular_dementia",gsub("cov_bin_history_vascular_dementia;", "", df$covariate_other),df$covariate_other)
-
-  # Lewy body 
-
-  df$covariate_other <- ifelse(df$outcome=="out_date_lewy_body_dementia",gsub("cov_bin_history_lewy_body_dementia;", "", df$covariate_other),df$covariate_other)
-  
   # Any dementia
 
   df$covariate_other <- ifelse(df$outcome=="out_date_any_dementia",gsub("cov_bin_history_any_dementia;", "", df$covariate_other),df$covariate_other)
