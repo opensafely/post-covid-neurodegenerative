@@ -299,11 +299,11 @@ for (i in 1:nrow(active_analyses)) {
 
   }
 
-  # Make model input: sub_age_40_65 --------------------------------------------
+  # Make model input: sub_age_40_64 --------------------------------------------
   
-  if (active_analyses$analysis[i]=="sub_age_40_65") {
+  if (active_analyses$analysis[i]=="sub_age_40_64") {
     
-    print('Make model input: sub_age_40_65')
+    print('Make model input: sub_age_40_64')
     
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
                   input$cov_num_age>=40 &
@@ -318,15 +318,15 @@ for (i in 1:nrow(active_analyses)) {
     
   }
   
-  # Make model input: sub_age_65_85 --------------------------------------------
+  # Make model input: sub_age_65_84 --------------------------------------------
   
-  if (active_analyses$analysis[i]=="sub_age_65_85") {
+  if (active_analyses$analysis[i]=="sub_age_65_84") {
     
-    print('Make model input: sub_age_65_85')
+    print('Make model input: sub_age_65_84')
     
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
                   input$cov_num_age>=65 &
-                  input$cov_num_age<85,]
+                  input$cov_num_age<84,]
     
     df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
     

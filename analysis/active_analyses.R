@@ -234,7 +234,7 @@ for (c in cohorts) {
                          age_spline = FALSE,
                          analysis = "sub_age_18_39")
     
-    ## analysis: sub_age_40_65 ------------------------------------------------
+    ## analysis: sub_age_40_64 ------------------------------------------------
 
     df[nrow(df)+1,] <- c(cohort = c,
                          exposure = exposure,
@@ -254,9 +254,9 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = FALSE,
-                         analysis = "sub_age_40_65")
+                         analysis = "sub_age_40_64")
 
-    ## analysis: sub_age_65_85 ------------------------------------------------
+    ## analysis: sub_age_65_84 ------------------------------------------------
 
     df[nrow(df)+1,] <- c(cohort = c,
                          exposure = exposure,
@@ -276,7 +276,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = FALSE,
-                         analysis = "sub_age_65_85")
+                         analysis = "sub_age_65_84")
 
     ## analysis: sub_age_85_110 ------------------------------------------------
 
