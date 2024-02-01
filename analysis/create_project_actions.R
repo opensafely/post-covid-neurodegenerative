@@ -23,20 +23,20 @@ cohorts <- unique(active_analyses$cohort)
 
 # Determine which outputs are ready --------------------------------------------
 
-success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx",
-                              sheet = "neuro_extf",
-                      col_types = c("text","text", "text", "text", "text", "text",
-                                    "text", "text", "text", "text", "text",
-                                    "text", "text", "text", "text", "text", "text",
-                                    "skip", "skip"))
-
-success <- tidyr::pivot_longer(success,
-                               cols = setdiff(colnames(success),c("outcome","cohort")),
-                               names_to = "analysis")
-
-success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-",success$outcome)
-
-success <- success[grepl("success",success$value, ignore.case = TRUE),]
+# success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx",
+#                               sheet = "neuro_extf",
+#                       col_types = c("text","text", "text", "text", "text", "text",
+#                                     "text", "text", "text", "text", "text",
+#                                     "text", "text", "text", "text", "text", "text",
+#                                     "skip", "skip"))
+# 
+# success <- tidyr::pivot_longer(success,
+#                                cols = setdiff(colnames(success),c("outcome","cohort")),
+#                                names_to = "analysis")
+# 
+# success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-",success$outcome)
+# 
+# success <- success[grepl("success",success$value, ignore.case = TRUE),]
 
 # create action functions ----
 
@@ -440,16 +440,16 @@ actions_list <- splice(
   
   ## venn output ------------------------------------------------------------
   
-  action(
-    name = "make_venn_output",
-    run = "r:latest analysis/model/make_other_output.R venn prevax;vax;unvax",
-    needs = list("venn_prevax",
-                 "venn_vax",
-                 "venn_unvax"),
-    moderately_sensitive = list(
-      venn_output_rounded = glue("output/venn_output_rounded.csv")
-    )
-  ),
+  # action(
+  #   name = "make_venn_output",
+  #   run = "r:latest analysis/model/make_other_output.R venn prevax;vax;unvax",
+  #   needs = list("venn_prevax",
+  #                "venn_vax",
+  #                "venn_unvax"),
+  #   moderately_sensitive = list(
+  #     venn_output_rounded = glue("output/venn_output_rounded.csv")
+  #   )
+  # ),
   
   ## Table 1 -------------------------------------------------------------------
   
@@ -494,16 +494,16 @@ actions_list <- splice(
                   function(x) table2(cohort = x)), 
            recursive = FALSE
     )
-  ),
+  )#,
   
   ## Venn data -----------------------------------------------------------------
   
-  splice(
-    unlist(lapply(unique(active_analyses$cohort), 
-                  function(x) venn(cohort = x)), 
-           recursive = FALSE
-    )
-  ),
+  # splice(
+  #   unlist(lapply(unique(active_analyses$cohort), 
+  #                 function(x) venn(cohort = x)), 
+  #          recursive = FALSE
+  #   )
+  # ),
   
   ## Model output --------------------------------------------------------------
   
@@ -520,17 +520,17 @@ actions_list <- splice(
   
   ## AER table -----------------------------------------------------------------
   
-  comment("Make absolute excess risk (AER) input"),
-  
-  action(
-    name = "make_aer_input",
-    run = "r:latest analysis/model/make_aer_input.R",
-    needs = as.list(paste0("make_model_input-",active_analyses[grepl("-main-",active_analyses$name),]$name)),
-    moderately_sensitive = list(
-      aer_input = glue("output/aer_input-main.csv"),
-      aer_input_rounded = glue("output/aer_input-main-rounded.csv")
-    )
-  )
+  # comment("Make absolute excess risk (AER) input"),
+  # 
+  # action(
+  #   name = "make_aer_input",
+  #   run = "r:latest analysis/model/make_aer_input.R",
+  #   needs = as.list(paste0("make_model_input-",active_analyses[grepl("-main-",active_analyses$name),]$name)),
+  #   moderately_sensitive = list(
+  #     aer_input = glue("output/aer_input-main.csv"),
+  #     aer_input_rounded = glue("output/aer_input-main-rounded.csv")
+  #   )
+  # )
 )
 
 ## combine everything ----
