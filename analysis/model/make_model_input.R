@@ -78,6 +78,7 @@ for (i in 1:nrow(active_analyses)) {
                            "cov_bin_history_lewy_body_dementia",
                            "cov_bin_history_any_dementia",
                            "cov_bin_history_parkinson",
+                           "cov_bin_history_migraine",
                            "cov_bin_history_parkinson_risk",
                            "cov_cat_ethnicity"))]
   
