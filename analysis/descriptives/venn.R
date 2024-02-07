@@ -40,27 +40,31 @@ print('Load Venn data')
 
 venn <- readr::read_rds(paste0("output/venn_",cohort,".rds"))
 
-# rename columns
+# rename columns ---------------------------------------------------------------
+print("Rename temporary outcomes columns")
+
 venn <- venn %>%
-  rename_at(vars(matches(c("_symptoms"))), ~ str_remove(., c("_symptoms"))) %>%
   rename_with(~ str_replace(., "tmp_out_date_alzheimer_", "tmp_out_date_alzheimer_disease_")) %>%
-  rename_with(~ str_replace(., "tmp_out_date_parkinson_", "tmp_out_date_parkinson_disease_"))
+  rename_with(~ str_replace(., "tmp_out_date_parkinson_", "tmp_out_date_parkinson_disease_")) %>%
+  rename_with(~ str_replace(., "out_date_lewy_body_dementia", "tmp_out_date_lewy_body_dementia_snomed")) %>%
+  rename_with(~ str_replace(., "out_date_cognitive_impairment_symptoms", "tmp_out_date_cognitive_impairment_symptoms_snomed")) %>%
+  rename_with(~ str_replace(., "out_date_restless_leg_syndrome", "tmp_out_date_restless_leg_syndrome_snomed"))
 
 # Create empty output table ----------------------------------------------------
 print('Create empty output table')
 
 df <- data.frame(outcome = character(),
-                 only_snomed = numeric(),
-                 only_hes = numeric(),
-                 only_death = numeric(),
-                 snomed_hes = numeric(),
-                 snomed_death = numeric(),
-                 hes_death = numeric(),
-                 snomed_hes_death = numeric(),
-                 total_snomed = numeric(),
-                 total_hes = numeric(),
-                 total_death = numeric(),
-                 total = numeric(),
+                 only_snomed_midpoint6 = numeric(),
+                 only_hes_midpoint6 = numeric(),
+                 only_death_midpoint6 = numeric(),
+                 snomed_hes_midpoint6 = numeric(),
+                 snomed_death_midpoint6 = numeric(),
+                 hes_death_midpoint6 = numeric(),
+                 snomed_hes_death_midpoint6 = numeric(),
+                 total_snomed_midpoint6 = numeric(),
+                 total_hes_midpoint6 = numeric(),
+                 total_death_midpoint6 = numeric(),
+                 total_midpoint6_derived = numeric(),
                  error = character(),
                  stringsAsFactors = FALSE)
 
@@ -138,55 +142,56 @@ for (outcome in outcomes) {
     print('Record the number contributing to each source combination')
     
     df[nrow(df)+1,] <- c(outcome,
-                         only_snomed = nrow(tmp %>% filter(snomed_contributing==T)),
-                         only_hes = nrow(tmp %>% filter(hes_contributing==T)),
-                         only_death = nrow(tmp %>% filter(death_contributing==T)),
-                         snomed_hes = nrow(tmp %>% filter(snomed_hes_contributing==T)),
-                         snomed_death = nrow(tmp %>% filter(snomed_death_contributing==T)),
-                         hes_death = nrow(tmp %>% filter(hes_death_contributing==T)),
-                         snomed_hes_death = nrow(tmp %>% filter(snomed_hes_death_contributing==T)),
-                         total_snomed = nrow(tmp %>% filter(!is.na(snomed))),
-                         total_hes = nrow(tmp %>% filter(!is.na(hes))),
-                         total_death = nrow(tmp %>% filter(!is.na(death))),
-                         total = nrow(tmp),
+                         only_snomed_midpoint6 = nrow(tmp %>% filter(snomed_contributing==T)),
+                         only_hes_midpoint6 = nrow(tmp %>% filter(hes_contributing==T)),
+                         only_death_midpoint6 = nrow(tmp %>% filter(death_contributing==T)),
+                         snomed_he_midpoint6s = nrow(tmp %>% filter(snomed_hes_contributing==T)),
+                         snomed_death_midpoint6 = nrow(tmp %>% filter(snomed_death_contributing==T)),
+                         hes_death_midpoint6 = nrow(tmp %>% filter(hes_death_contributing==T)),
+                         snomed_hes_death_midpoint6 = nrow(tmp %>% filter(snomed_hes_death_contributing==T)),
+                         total_snomed_midpoint6 = nrow(tmp %>% filter(!is.na(snomed))),
+                         total_hes_midpoint6 = nrow(tmp %>% filter(!is.na(hes))),
+                         total_death_midpoint6 = nrow(tmp %>% filter(!is.na(death))),
+                         total_midpoint6_derived = nrow(tmp),
                          error = "")
     
     # Fix source contribution for any dementia outcome -------------------------
+    print("Fix source contribution for any dementia")
     
     # any_dementia contribution
     df_temp <- df[!grepl("any_dementia", df$outcome),]
     # remove any_dementia outcome
     df <- df[!grepl("any_dementia", df$outcome),]
-    
+
     # Select Dementia subgroups
-    df_temp <- df[grep("vascular_dementia|other_dementias|unspecified_dementias|alzheimer", df$outcome),] 
-    
+    df_temp <- df[grep("alzheimer|vascular_dementia|lewy_body|other_dementias|unspecified_dementias", df$outcome),]
+
     # character to numeric
     df_temp <- df_temp %>%
       mutate_at(vars(matches("snomed|hes|death|total")),function(x) as.numeric(as.character(x)))
-    
+
     # Summarise
     df_temp <- df_temp %>%
       summarise_if(is.numeric, sum, na.rm = T)
-    
-    # add columns  
+
+    # add columns
     df_temp$outcome <- "any_dementia"
-    df_temp$error <- "" #NA
-    #df_temp$cohort <- cohort
-    
+    df_temp$error <- "" 
+
     # relocate
     df_temp <- relocate(df_temp, outcome)
-    
+
     # bind data frames
     df <- rbind(df, df_temp)
-    
+
     # remove temporary df
     rm(df_temp)
     
     # Replace source combinations with NA if not in study definition -------------
     print('Replace source combinations with NA if not in study definition')
     
-    source_combos <- c("only_snomed","only_hes","only_death","snomed_hes","snomed_death","hes_death","snomed_hes_death","total_snomed","total_hes","total_death")
+    source_combos <- c("only_snomed_midpoint6","only_hes_midpoint6","only_death_midpoint6","snomed_hes_midpoint6","snomed_death_midpoint6","hes_death_midpoint6","snomed_hes_death_midpoint6",
+                       "total_snomed_midpoint6","total_hes_midpoint6","total_death_midpoint6")
     source_consid <- source_combos
     
     if (!is.null(notused)) {
@@ -209,17 +214,17 @@ for (outcome in outcomes) {
     print('Record empty outcome')
     
     df[nrow(df)+1,] <- c(outcome,
-                         only_snomed = NA,
-                         only_hes = NA,
-                         only_death = NA,
-                         snomed_hes = NA,
-                         snomed_death = NA,
-                         hes_death = NA,
-                         snomed_hes_death = NA,
-                         total_snomed = NA,
-                         total_hes = NA,
-                         total_death = NA,
-                         total = NA,
+                         only_snomed_midpoint6 = NA,
+                         only_hes_midpoint6 = NA,
+                         only_death_midpoint6 = NA,
+                         snomed_hes_midpoint6 = NA,
+                         snomed_death_midpoint6 = NA,
+                         hes_death_midpoint6 = NA,
+                         snomed_hes_death_midpoint6 = NA,
+                         total_snomed_midpoint6 = NA,
+                         total_hes_midpoint6 = NA,
+                         total_death_midpoint6 = NA,
+                         total_midpoint6_derived = NA,
                          error = "No outcomes in model input")
     
     
@@ -246,4 +251,4 @@ df[,setdiff(colnames(df),c("outcome"))] <- lapply(df[,setdiff(colnames(df),c("ou
 # Save rounded Venn data -------------------------------------------------------
 print('Save rounded Venn data')
 
-write.csv(df, paste0("output/venn_",cohort,"_rounded.csv"), row.names = FALSE)
+write.csv(df, paste0("output/venn_",cohort,"_midpoint6.csv"), row.names = FALSE)

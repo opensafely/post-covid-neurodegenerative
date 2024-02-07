@@ -38,7 +38,7 @@ df <- df[df$sub_bin_covid19_confirmed_history==FALSE,]
 # Create exposure indicator ----------------------------------------------------
 print("Create exposure indicator")
 
-df$exposed <- !is.na(df$exp_date_covid19_confirmed)
+df$exposed_midpoint6 <- !is.na(df$exp_date_covid19_confirmed)
 
 # Define age groups ------------------------------------------------------------
 print("Define age groups")
@@ -57,7 +57,7 @@ df$cov_cat_age_group <- ifelse(df$cov_num_age>=90, "90+", df$cov_cat_age_group)
 print("Filter data")
 
 df <- df[,c("patient_id",
-            "exposed",
+            "exposed_midpoint6",
             "cov_cat_sex",
             "cov_cat_age_group",
             "cov_cat_ethnicity",
@@ -72,13 +72,13 @@ df$All <- "All"
 print("Aggregate data")
 
 df <- tidyr::pivot_longer(df,
-                          cols = setdiff(colnames(df),c("patient_id","exposed")),
+                          cols = setdiff(colnames(df),c("patient_id","exposed_midpoint6")),
                           names_to = "characteristic",
                           values_to = "subcharacteristic")
 
-df$total <- 1
+df$total_midpoint6 <- 1
 
-df <- aggregate(cbind(total, exposed) ~ characteristic + subcharacteristic, 
+df <- aggregate(cbind(total_midpoint6, exposed_midpoint6) ~ characteristic + subcharacteristic, 
                 data = df,
                 sum)
 
@@ -210,12 +210,12 @@ df[,setdiff(colnames(df),c("characteristic","subcharacteristic"))] <- lapply(df[
 # Calculate column percentages -------------------------------------------------
 
 df$Npercent <- paste0(df$total,ifelse(df$characteristic=="All","",
-                                      paste0(" (",round(100*(df$total / df[df$characteristic=="All","total"]),1),"%)")))
+                                      paste0(" (",round(100*(df$total_midpoint6 / df[df$characteristic=="All","total_midpoint6"]),1),"%)")))
 
-df <- df[,c("characteristic","subcharacteristic","Npercent","exposed")]
-colnames(df) <- c("Characteristic","Subcharacteristic","N (%)","COVID-19 diagnoses")
+df <- df[,c("characteristic","subcharacteristic","Npercent","exposed_midpoint6")]
+colnames(df) <- c("Characteristic","Subcharacteristic","N (%) derived","COVID-19 diagnoses midpoint6")
 
 # Save Table 1 -----------------------------------------------------------------
 print('Save rounded Table 1')
 
-write.csv(df, paste0("output/table1_",cohort,"_rounded.csv"), row.names = FALSE)
+write.csv(df, paste0("output/table1_",cohort,"_midpoint6.csv"), row.names = FALSE)

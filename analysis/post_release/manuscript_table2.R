@@ -69,15 +69,14 @@ df$outcome_label <- factor(df$outcome_label,
                            levels = c("N",
                                       "Alzheimer disease",
                                       "Any dementia",
-                                      "Cognitive impairment",
+                                      "Cognitive impairment Symptoms",
                                       "Migraine",
                                       "Motor neurone disease",
                                       "Multiple sclerosis",
-                                      "Other dementias",
+                                      "Lewy body",
                                       "Parkinson disease",
                                       "Rem sleep disorder",
                                       "Restless leg syndrome",
-                                      "Unspecified dementias",
                                       "Vascular dementia"))
 
 # Tidy table -------------------------------------------------------------------

@@ -41,14 +41,14 @@ table2 <- data.frame(name = character(),
                      outcome = character(),
                      analysis = character(),
                      unexposed_person_days = numeric(),
-                     unexposed_events = numeric(),
+                     unexposed_events_midpoint6 = numeric(),
                      exposed_person_days = numeric(),
-                     exposed_events = numeric(),
+                     exposed_events_midpoint6 = numeric(),
                      total_person_days = numeric(),
-                     total_events = numeric(),
-                     day0_events = numeric(),
-                     total_exposed = numeric(),
-                     sample_size = numeric())
+                     total_events_midpoint6 = numeric(),
+                     day0_events_midpoint6 = numeric(),
+                     total_exposed_midpoint6_derived = numeric(),
+                     sample_size_midpoint6 = numeric())
 
 # Record number of events and person days for each active analysis -------------
 print('Record number of events and person days for each active analysis')
@@ -102,14 +102,14 @@ for (i in 1:nrow(active_analyses)) {
                                outcome = active_analyses$outcome[i],
                                analysis = active_analyses$analysis[i],
                                unexposed_person_days = sum(unexposed$person_days),
-                               unexposed_events = nrow(unexposed[!is.na(unexposed$out_date),]),
+                               unexposed_events_midpoint6 = nrow(unexposed[!is.na(unexposed$out_date),]),
                                exposed_person_days = sum(exposed$person_days, na.rm = TRUE),
-                               exposed_events = nrow(exposed[!is.na(exposed$out_date),]),
+                               exposed_events_midpoint6 = nrow(exposed[!is.na(exposed$out_date),]),
                                total_person_days = sum(unexposed$person_days) + sum(exposed$person_days),
-                               total_events = nrow(unexposed[!is.na(unexposed$out_date),]) + nrow(exposed[!is.na(exposed$out_date),]),
-                               day0_events = nrow(exposed[exposed$exp_date==exposed$out_date & !is.na(exposed$exp_date) & !is.na(exposed$out_date),]),
-                               total_exposed = nrow(exposed),
-                               sample_size = nrow(df))
+                               total_events_midpoint6 = nrow(unexposed[!is.na(unexposed$out_date),]) + nrow(exposed[!is.na(exposed$out_date),]),
+                               day0_events_midpoint6 = nrow(exposed[exposed$exp_date==exposed$out_date & !is.na(exposed$exp_date) & !is.na(exposed$out_date),]),
+                               total_exposed_midpoint6_derived = nrow(exposed),
+                               sample_size_midpoint6 = nrow(df))
   
 }
 
@@ -127,4 +127,4 @@ table2[,setdiff(colnames(table2),c("name","cohort","exposure","outcome","analysi
 # Save Table 2 -----------------------------------------------------------------
 print('Save rounded Table 2')
 
-write.csv(table2, paste0("output/table2_",cohort,"_rounded.csv"), row.names = FALSE)
+write.csv(table2, paste0("output/table2_",cohort,"_midpoint6.csv"), row.names = FALSE)

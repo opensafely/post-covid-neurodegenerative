@@ -105,9 +105,9 @@ df$Npercent <- paste0(df$total,ifelse(df$characteristic=="All","",
                                       paste0(" (",round(100*(df$total / df[df$characteristic=="All","total"]),1),"%)")))
 
 df <- df[,c("characteristic","subcharacteristic","Npercent","exposed")]
-colnames(df) <- c("Characteristic","Subcharacteristic","N (%)","COVID-19 diagnoses")
+colnames(df) <- c("Characteristic","Subcharacteristic","N (%) derived","COVID-19 diagnoses midpoint6")
 
 # Save Table 1 -----------------------------------------------------------------
 print('Save rounded Table 1')
 
-write.csv(df, paste0("output/extendedtable1_",cohort,"_rounded.csv"), row.names = FALSE)
+write.csv(df, paste0("output/extendedtable1_",cohort,"_midpoint6.csv"), row.names = FALSE)
