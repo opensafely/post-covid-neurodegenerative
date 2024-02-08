@@ -82,7 +82,7 @@ print('Save model output')
 
 df <- df[,c("name","cohort","outcome","analysis","error","model","term",
             "lnhr","se_lnhr","hr","conf_low","conf_high",
-            "N_total_midpoint6","N_exposed_midpoint6","N_events_midpoint6","person_time_total",
+            "N_total","N_exposed","N_events","person_time_total",
             "outcome_time_median","strata_warning","surv_formula")]
 
 readr::write_csv(df, "output/model_output.csv")
@@ -91,8 +91,14 @@ readr::write_csv(df, "output/model_output.csv")
 # Perform redaction ------------------------------------------------------------
 print('Perform redaction')
 
-df[,c("N_total_midpoint6","N_exposed_midpoint6","N_events_midpoint6")] <- lapply(df[,c("N_total_midpoint6","N_exposed_midpoint6","N_events_midpoint6")],
+df[,c("N_total","N_exposed","N_events")] <- lapply(df[,c("N_total","N_exposed","N_events")],
                                                                                  FUN=function(y){roundmid_any(as.numeric(y), to=threshold)})
+
+# Rename columns (output redaction) --------------------------------------------
+
+names(df)[names(df) == "N_total"] <- "N_total_midpoint6"
+names(df)[names(df) == "N_exposed"] <- "N_exposed_midpoint6"
+names(df)[names(df) == "N_events"] <- "N_events_midpoint6"
 
 # Save model output ------------------------------------------------------------
 print('Save model output')

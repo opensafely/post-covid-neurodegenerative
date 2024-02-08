@@ -1,12 +1,12 @@
 ﻿term,label
-alzheimer_disease,Alzheimer disease
+alzheimer_disease,Alzheimer's disease
 any_dementia,Any dementia
 cognitive_impairment_symptoms,Cognitive impairment symptoms
 migraine,Migraine
 motor_neurone_disease,Motor neurone disease
 multiple_sclerosis,Multiple sclerosis
 parkinson_disease,Parkinson's disease
-rem_sleep_disorder,Rem sleep disorder
+rem_sleep_disorder,REM sleep disorder
 restless_leg_syndrome,Restless leg syndrome
 vascular_dementia,Vascular dementia
 prevax,Pre-vaccination (Jan 1 2020 - Dec 14 2021)
