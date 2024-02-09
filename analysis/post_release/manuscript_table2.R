@@ -67,17 +67,17 @@ print("Order outcomes")
 
 df$outcome_label <- factor(df$outcome_label,
                            levels = c("N",
-                                      "Alzheimer's disease",
+                                      "Alzheimer’s disease",
+                                      "Vascular dementia",
+                                      "Lewy body dementia",
                                       "Any dementia",
                                       "Cognitive impairment",
-                                      "Migraine",
+                                      "Parkinson’s disease",
+                                      "Restless leg syndrome",
+                                      "REM sleep disorder",
                                       "Motor neurone disease",
                                       "Multiple sclerosis",
-                                      "Lewy body dementia",
-                                      "Parkinson's disease",
-                                      "REM sleep disorder",
-                                      "Restless leg syndrome",
-                                      "Vascular dementia"))
+                                      "Migraine"))
 
 # Tidy table -------------------------------------------------------------------
 print("Tidy table")
