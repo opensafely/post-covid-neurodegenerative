@@ -210,12 +210,14 @@ df[,setdiff(colnames(df),c("characteristic","subcharacteristic"))] <- lapply(df[
 # Calculate column percentages -------------------------------------------------
 
 df$Npercent <- paste0(df$total,ifelse(df$characteristic=="All","",
-                                      paste0(" (",round(100*(df$total / df[df$characteristic=="All","total"]),1),"%)")))
+                                      paste0(" (",round(100*(df$total_midpoint6 / df[df$characteristic=="All","total"]),1),"%)")))
+
+# Rename columns (output redaction) --------------------------------------------
 
 df <- df[,c("characteristic","subcharacteristic","Npercent","exposed")]
-colnames(df) <- c("Characteristic","Subcharacteristic","N (%)","COVID-19 diagnoses")
+colnames(df) <- c("Characteristic","Subcharacteristic","N (%) midpoint6 derived","COVID-19 diagnoses midpoint6")
 
 # Save Table 1 -----------------------------------------------------------------
 print('Save rounded Table 1')
 
-write.csv(df, paste0("output/table1_",cohort,"_rounded.csv"), row.names = FALSE)
+write.csv(df, paste0("output/table1_",cohort,"_midpoint6.csv"), row.names = FALSE)

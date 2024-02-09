@@ -1,15 +1,13 @@
 ﻿term,label
-alzheimer_disease,Alzheimer disease
+alzheimer_disease,Alzheimer's disease
 any_dementia,Any dementia
-cognitive_impairment,Cognitive impairment
+cognitive_impairment_symptoms,Cognitive impairment
 migraine,Migraine
 motor_neurone_disease,Motor neurone disease
 multiple_sclerosis,Multiple sclerosis
-other_dementias,Other dementias
 parkinson_disease,Parkinson's disease
-rem_sleep_disorder,Rem sleep disorder
+rem_sleep_disorder,REM sleep disorder
 restless_leg_syndrome,Restless leg syndrome
-unspecified_dementias,Unspecified dementias
 vascular_dementia,Vascular dementia
 prevax,Pre-vaccination (Jan 1 2020 - Dec 14 2021)
 vax,Vaccinated (Jun 1 2021 - Dec 14 2021)
@@ -30,15 +28,30 @@ sub_ethnicity_white,Ethnicity: White
 sub_sex_female,Sex: Female
 sub_sex_male,Sex: Male
 sub_covid_history,History of COVID-19
+sub_history_cognitive_impairment_true,Prior history of cognitive impairment
+sub_history_cognitive_impairment_false,No prior history of cognitive impairment 
+sub_history_parkinson_true,Prior history of Parkinson's disease
+sub_history_parkinson_false,No prior history of Parkinson's disease
+sub_history_parkinson_risk_true,Prior history of Parkinson's disease risk
+sub_history_parkinson_risk_false,No prior history of Parkinson's disease risk
+sub_history_vascular_risk_true,Prior history of vascular risk
+sub_history_vascular_risk_false,No prior history of vascular risk
 cov_bin_ami,Acute myocardial infarction 
 cov_bin_cancer,Cancer 
-cov_bin_chronic_kidney_disease,Chronic kidney disease 
-cov_bin_chronic_obstructive_pulmonary_disease,Chronic obstructive pulmonary disease 
+cov_bin_ckd,Chronic kidney disease 
+cov_bin_copd,Chronic obstructive pulmonary disease 
 cov_bin_diabetes,Diabetes
 cov_bin_healthcare_worker,Healthcare worker 
 cov_bin_hypertension,Hypertension 
 cov_bin_liver_disease,Liver disease 
 cov_bin_obesity,Obesity 
-cov_bin_stroke_isch,Ischaemic strike
+cov_bin_isch,Ischaemic stroke
+cov_bin_history_cog_imp_sympt,History of cognitive impairment 
+cov_bin_history_mnd,History of motor neurone disease
+cov_bin_history_migraine,History of migraine
+cov_bin_history_any_dementia,History of any dementia
+cov_bin_history_parkinson,History of Parkinson's disease
+cov_bin_history_ms,History of multiple sclerosis
+cov_bin_history_parkinson_risk,History of Parkinson's disease risk
 cov_cat_consulation_rate,GP consultations in 2019
 All,All

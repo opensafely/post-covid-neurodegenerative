@@ -40,11 +40,15 @@ print('Load Venn data')
 
 venn <- readr::read_rds(paste0("output/venn_",cohort,".rds"))
 
-# rename columns
+# rename columns ---------------------------------------------------------------
+print("Rename temporary outcomes columns")
+
 venn <- venn %>%
-  rename_at(vars(matches(c("_symptoms"))), ~ str_remove(., c("_symptoms"))) %>%
   rename_with(~ str_replace(., "tmp_out_date_alzheimer_", "tmp_out_date_alzheimer_disease_")) %>%
-  rename_with(~ str_replace(., "tmp_out_date_parkinson_", "tmp_out_date_parkinson_disease_"))
+  rename_with(~ str_replace(., "tmp_out_date_parkinson_", "tmp_out_date_parkinson_disease_")) %>%
+  rename_with(~ str_replace(., "out_date_lewy_body_dementia", "tmp_out_date_lewy_body_dementia_snomed")) %>%
+  rename_with(~ str_replace(., "out_date_cognitive_impairment_symptoms", "tmp_out_date_cognitive_impairment_symptoms_snomed")) %>%
+  rename_with(~ str_replace(., "out_date_restless_leg_syndrome", "tmp_out_date_restless_leg_syndrome_snomed"))
 
 # Create empty output table ----------------------------------------------------
 print('Create empty output table')
@@ -151,42 +155,11 @@ for (outcome in outcomes) {
                          total = nrow(tmp),
                          error = "")
     
-    # Fix source contribution for any dementia outcome -------------------------
-    
-    # any_dementia contribution
-    df_temp <- df[!grepl("any_dementia", df$outcome),]
-    # remove any_dementia outcome
-    df <- df[!grepl("any_dementia", df$outcome),]
-    
-    # Select Dementia subgroups
-    df_temp <- df[grep("vascular_dementia|other_dementias|unspecified_dementias|alzheimer", df$outcome),] 
-    
-    # character to numeric
-    df_temp <- df_temp %>%
-      mutate_at(vars(matches("snomed|hes|death|total")),function(x) as.numeric(as.character(x)))
-    
-    # Summarise
-    df_temp <- df_temp %>%
-      summarise_if(is.numeric, sum, na.rm = T)
-    
-    # add columns  
-    df_temp$outcome <- "any_dementia"
-    df_temp$error <- "" #NA
-    #df_temp$cohort <- cohort
-    
-    # relocate
-    df_temp <- relocate(df_temp, outcome)
-    
-    # bind data frames
-    df <- rbind(df, df_temp)
-    
-    # remove temporary df
-    rm(df_temp)
-    
     # Replace source combinations with NA if not in study definition -------------
     print('Replace source combinations with NA if not in study definition')
     
-    source_combos <- c("only_snomed","only_hes","only_death","snomed_hes","snomed_death","hes_death","snomed_hes_death","total_snomed","total_hes","total_death")
+    source_combos <- c("only_snomed","only_hes","only_death","snomed_hes","snomed_death","hes_death","snomed_hes_death",
+                       "total_snomed","total_hes","total_death")
     source_consid <- source_combos
     
     if (!is.null(notused)) {
@@ -227,6 +200,38 @@ for (outcome in outcomes) {
   
 }
 
+# Fix source contribution for any dementia outcome -----------------------------
+print("Fix source contribution for any dementia")
+
+# any_dementia contribution
+df_temp <- df[!grepl("any_dementia", df$outcome),]
+# remove any_dementia outcome
+df <- df[!grepl("any_dementia", df$outcome),]
+
+# Select Dementia subgroups
+df_temp <- df[grep("alzheimer|vascular_dementia|lewy_body|other_dementias|unspecified_dementias", df$outcome),]
+
+# character to numeric
+df_temp <- df_temp %>%
+  mutate_at(vars(matches("snomed|hes|death|total")),function(x) as.numeric(as.character(x)))
+
+# Summarise
+df_temp <- df_temp %>%
+  summarise_if(is.numeric, sum, na.rm = T)
+
+# add columns
+df_temp$outcome <- "any_dementia"
+df_temp$error <- "" 
+
+# relocate
+df_temp <- relocate(df_temp, outcome)
+
+# bind data frames
+df <- rbind(df, df_temp)
+
+# remove temporary data frame
+rm(df_temp)
+
 # Record cohort ----------------------------------------------------------------
 print('Record cohort')
 
@@ -243,7 +248,21 @@ print('Perform redaction')
 df[,setdiff(colnames(df),c("outcome"))] <- lapply(df[,setdiff(colnames(df),c("outcome"))],
                                                   FUN=function(y){roundmid_any(as.numeric(y), to=threshold)})
 
+# Rename columns (output redaction) --------------------------------------------
+
+names(df)[names(df) == "only_snomed"] <- "only_snomed_midpoint6"
+names(df)[names(df) == "only_hes"] <- "only_hes_midpoint6"
+names(df)[names(df) == "only_death"] <- "only_death_midpoint6"
+names(df)[names(df) == "snomed_hes"] <- "snomed_hes_midpoint6"
+names(df)[names(df) == "snomed_death"] <- "snomed_death_midpoint6"
+names(df)[names(df) == "hes_death"] <- "hes_death_midpoint6"
+names(df)[names(df) == "snomed_hes_death"] <- "snomed_hes_death_midpoint6"
+names(df)[names(df) == "total_snomed"] <- "total_snomed_midpoint6"
+names(df)[names(df) == "total_hes"] <- "total_hes_midpoint6"
+names(df)[names(df) == "total_death"] <- "total_death_midpoint6"
+names(df)[names(df) == "total"] <- "total_midpoint6_derived"
+
 # Save rounded Venn data -------------------------------------------------------
 print('Save rounded Venn data')
 
-write.csv(df, paste0("output/venn_",cohort,"_rounded.csv"), row.names = FALSE)
+write.csv(df, paste0("output/venn_",cohort,"_midpoint6.csv"), row.names = FALSE)
