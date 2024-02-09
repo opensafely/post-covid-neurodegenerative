@@ -28,8 +28,8 @@ sub_ethnicity_white,Ethnicity: White
 sub_sex_female,Sex: Female
 sub_sex_male,Sex: Male
 sub_covid_history,History of COVID-19
-sub_history_cognitive_impairment_true,Prior history of Cognitive impairment
-sub_history_cognitive_impairment_false,No prior history of Cognitive impairment 
+sub_history_cognitive_impairment_true,Prior history of cognitive impairment
+sub_history_cognitive_impairment_false,No prior history of cognitive impairment 
 sub_history_parkinson_true,Prior history of Parkinson's disease
 sub_history_parkinson_false,No prior history of Parkinson's disease
 sub_history_parkinson_risk_true,Prior history of Parkinson's disease risk
@@ -46,12 +46,12 @@ cov_bin_hypertension,Hypertension 
 cov_bin_liver_disease,Liver disease 
 cov_bin_obesity,Obesity 
 cov_bin_isch,Ischaemic stroke
-cov_bin_history_cog_imp_sympt,History of Cognitive impairment 
-cov_bin_history_mnd,History of Motor neurone disease
-cov_bin_history_migraine,History of Migraine
-cov_bin_history_any_dementia,History of any Dementia
+cov_bin_history_cog_imp_sympt,History of cognitive impairment 
+cov_bin_history_mnd,History of motor neurone disease
+cov_bin_history_migraine,History of migraine
+cov_bin_history_any_dementia,History of any dementia
 cov_bin_history_parkinson,History of Parkinson's disease
-cov_bin_history_ms,History of Multiple sclerosis
+cov_bin_history_ms,History of multiple sclerosis
 cov_bin_history_parkinson_risk,History of Parkinson's disease risk
 cov_cat_consulation_rate,GP consultations in 2019
 All,All
