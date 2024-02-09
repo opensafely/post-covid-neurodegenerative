@@ -136,7 +136,7 @@ names(table2)[names(table2) == "sample_size"] <- "sample_size_midpoint6"
 # Recalculate total events midpoint --------------------------------------------
 print("Recalculate total events (midpoint6 derived) column")
 
-table2$total_events_midpoint_derived <- table2$unexposed_events_midpoint6 + table2$exposed_events_midpoint6
+table2$total_events_midpoint6_derived <- table2$unexposed_events_midpoint6 + table2$exposed_events_midpoint6
 
 # Remove total events column ---------------------------------------------------
 print("Remove total events column")
@@ -147,7 +147,7 @@ table2$total_events <- NULL
 print("Relocate columns following dummy table 2")
 
 table2 <- table2 %>%
-  relocate(total_events_midpoint_derived, .after = total_person_days)
+  relocate(total_events_midpoint6_derived, .after = total_person_days)
 
 # Save Table 2 -----------------------------------------------------------------
 print('Save rounded Table 2')
