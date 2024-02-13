@@ -618,7 +618,7 @@ print("Removing coviriates according to each outcome")
     
   # Parkinson disease 
 
-  df$covariate_other <- ifelse(df$outcome=="out_date_parkinson",gsub("cov_bin_history_parkinson;", "", df$covariate_other),df$covariate_other)
+  df$covariate_other <- ifelse(df$outcome=="out_date_parkinson_disease",gsub("cov_bin_history_parkinson;|cov_bin_history_any_dementia;", "", df$covariate_other),df$covariate_other)
     
   # Any dementia
 
@@ -626,16 +626,16 @@ print("Removing coviriates according to each outcome")
     
   # Motor neurone disease 
   
-  df$covariate_other <- ifelse(df$outcome=="out_date_mnd",gsub("cov_bin_history_mnd;", "", df$covariate_other),df$covariate_other)
+  df$covariate_other <- ifelse(df$outcome=="out_date_motor_neurone_disease",gsub("cov_bin_history_mnd;", "", df$covariate_other),df$covariate_other)
     
   # Multiple sclerosis
     
-  df$covariate_other <- ifelse(df$outcome=="out_date_ms",gsub("cov_bin_history_ms;", "", df$covariate_other),df$covariate_other) 
+  df$covariate_other <- ifelse(df$outcome=="out_date_multiple_sclerosis",gsub("cov_bin_history_ms;", "", df$covariate_other),df$covariate_other) 
   
   # Migraine
   
    df$covariate_other <- ifelse(df$outcome=="out_date_migraine",gsub("cov_bin_history_migraine;", "", df$covariate_other),df$covariate_other)
- 
+
 # Check names are unique and save active analyses list -------------------------
 
 if (length(unique(df$name))==nrow(df)) {

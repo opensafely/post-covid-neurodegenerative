@@ -72,14 +72,16 @@ for (i in 1:nrow(active_analyses)) {
                            "sub_bin_high_vascular_risk",
                            "cov_cat_sex",
                            "cov_num_age",
-                           "cov_bin_history_cog_imp_sympt",
+                           "cov_bin_history_cog_imp_sympt",#
                            "cov_bin_history_alzheimer_disease",
                            "cov_bin_history_vascular_dementia",
                            "cov_bin_history_lewy_body_dementia",
-                           "cov_bin_history_any_dementia",
-                           "cov_bin_history_parkinson",
-                           "cov_bin_history_migraine",
-                           "cov_bin_history_parkinson_risk",
+                           "cov_bin_history_mnd",
+                           "cov_bin_history_ms",
+                           "cov_bin_history_any_dementia",#
+                           "cov_bin_history_parkinson",#
+                           "cov_bin_history_migraine",#
+                           "cov_bin_history_parkinson_risk",#
                            "cov_cat_ethnicity"))]
   
   # Remove outcomes outside of follow-up time ------------------------------------
@@ -105,12 +107,42 @@ for (i in 1:nrow(active_analyses)) {
   print("Apply exclusion criteria according to each outcome")
   
   outcome <- active_analyses$outcome[i]
-
-  if (outcome == "out_date_cognitive_impairment_symptoms") {
+  
+  if (outcome == "out_date_alzheimer_disease") {
+    
+    input<- input %>%
+      filter(cov_bin_history_alzheimer_disease == FALSE) %>%
+      select(-c(cov_bin_history_alzheimer_disease))
+    
+  } else if (outcome == "out_date_vascular_dementia") {
+    
+    input<- input %>%
+      filter(cov_bin_history_vascular_dementia == FALSE) %>%
+      select(-cov_bin_history_vascular_dementia)
+    
+  } else if (outcome == "out_date_lewy_body_dementia") {
+    
+    input<- input %>%
+      filter(cov_bin_history_lewy_body_dementia == FALSE) %>%
+      select(-cov_bin_history_lewy_body_dementia)
+    
+  } else if (outcome == "out_date_any_dementia") {
+    
+    input<- input %>%
+      filter(cov_bin_history_any_dementia == FALSE) %>%
+      select(-cov_bin_history_any_dementia)
+    
+  } else if (outcome == "out_date_cognitive_impairment_symptoms") {
 
     input <- input %>%
       filter(cov_bin_history_cog_imp_sympt == FALSE) %>%
       select(-cov_bin_history_cog_imp_sympt)
+    
+  } else if (outcome == "out_date_parkinson_disease") {
+    
+    input<- input %>%
+      filter(cov_bin_history_parkinson == FALSE & cov_bin_history_any_dementia == FALSE) %>%
+      select(-c(cov_bin_history_parkinson, cov_bin_history_any_dementia))
     
   } else if (outcome == "out_date_motor_neurone_disease") {
 
@@ -130,37 +162,7 @@ for (i in 1:nrow(active_analyses)) {
       filter(cov_bin_history_migraine == FALSE) %>%
       select(-cov_bin_history_migraine)
 
-  } else if (outcome == "out_date_any_dementia") {
-
-    input<- input %>%
-      filter(cov_bin_history_any_dementia == FALSE) %>%
-      select(-cov_bin_history_any_dementia)
-
-  } else if (outcome == "out_date_parkinson_disease") {
-
-    input<- input %>%
-      filter(cov_bin_history_parkinson == FALSE & cov_bin_history_any_dementia == FALSE) %>%
-      select(-c(cov_bin_history_parkinson, cov_bin_history_any_dementia))
-
-  } else if (outcome == "out_date_alzheimer_disease") {
-    
-    input<- input %>%
-      filter(cov_bin_history_alzheimer_disease == FALSE) %>%
-      select(-cov_bin_history_alzheimer_disease)
-    
-  } else if (outcome == "out_date_vascular_dementia") {
-    
-    input<- input %>%
-      filter(cov_bin_history_vascular_dementia == FALSE) %>%
-      select(-cov_bin_history_vascular_dementia)
-    
-  } else if (outcome == "out_date_lewy_body_dementia") {
-    
-    input<- input %>%
-      filter(cov_bin_history_lewy_body_dementia == FALSE) %>%
-      select(-cov_bin_history_lewy_body_dementia)
-    
-  }
+  }   
 
    # Make model input: main -------------------------------------------------------
   
