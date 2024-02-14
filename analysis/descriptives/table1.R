@@ -2,6 +2,7 @@
 print('Load libraries')
 
 library(magrittr)
+library(dplyr)
 
 # Specify redaction threshold --------------------------------------------------
 print('Specify redaction threshold')
@@ -30,10 +31,12 @@ print("Load data")
 
 df <- readr::read_rds(paste0("output/input_",cohort,"_stage1.rds"))
 
-# Remove people with history of COVID-19 ---------------------------------------
-print("Remove people with history of COVID-19")
+# Format columns ---------------------------------------------------------------
+# dates, numerics, factors, logicals
 
-df <- df[df$sub_bin_covid19_confirmed_history==FALSE,]
+df <- df %>%
+  mutate(sub_bin_covid19_confirmed_history = as.factor(sub_bin_covid19_confirmed_history),
+                sub_bin_high_vascular_risk = as.factor(sub_bin_high_vascular_risk))
 
 # Create exposure indicator ----------------------------------------------------
 print("Create exposure indicator")
@@ -44,14 +47,18 @@ df$exposed <- !is.na(df$exp_date_covid19_confirmed)
 print("Define age groups")
 
 df$cov_cat_age_group <- ""
-df$cov_cat_age_group <- ifelse(df$cov_num_age>=18 & df$cov_num_age<=29, "18-29", df$cov_cat_age_group)
-df$cov_cat_age_group <- ifelse(df$cov_num_age>=30 & df$cov_num_age<=39, "30-39", df$cov_cat_age_group)
-df$cov_cat_age_group <- ifelse(df$cov_num_age>=40 & df$cov_num_age<=49, "40-49", df$cov_cat_age_group)
-df$cov_cat_age_group <- ifelse(df$cov_num_age>=50 & df$cov_num_age<=59, "50-59", df$cov_cat_age_group)
-df$cov_cat_age_group <- ifelse(df$cov_num_age>=60 & df$cov_num_age<=69, "60-69", df$cov_cat_age_group)
-df$cov_cat_age_group <- ifelse(df$cov_num_age>=70 & df$cov_num_age<=79, "70-79", df$cov_cat_age_group)
-df$cov_cat_age_group <- ifelse(df$cov_num_age>=80 & df$cov_num_age<=89, "80-89", df$cov_cat_age_group)
-df$cov_cat_age_group <- ifelse(df$cov_num_age>=90, "90+", df$cov_cat_age_group)
+df$cov_cat_age_group <- ifelse(df$cov_num_age>=18 & df$cov_num_age<=39, "18-39", df$cov_cat_age_group)
+df$cov_cat_age_group <- ifelse(df$cov_num_age>=40 & df$cov_num_age<=64, "40-64", df$cov_cat_age_group)
+df$cov_cat_age_group <- ifelse(df$cov_num_age>=65 & df$cov_num_age<=84, "65-84", df$cov_cat_age_group)
+df$cov_cat_age_group <- ifelse(df$cov_num_age>=85, "85+", df$cov_cat_age_group)
+
+# Define consultation rate groups ----------------------------------------------
+print("Define consultation rate groups")
+
+df$cov_cat_consulation_rate <- ""
+df$cov_cat_consulation_rate <- ifelse(df$cov_num_consulation_rate==0, "0", df$cov_cat_consulation_rate)
+df$cov_cat_consulation_rate <- ifelse(df$cov_num_consulation_rate>=1 & df$cov_num_consulation_rate<=5, "1-5", df$cov_cat_consulation_rate)
+df$cov_cat_consulation_rate <- ifelse(df$cov_num_consulation_rate>=6, "6+", df$cov_cat_consulation_rate)
 
 # Filter data ------------------------------------------------------------------
 print("Filter data")
@@ -64,7 +71,27 @@ df <- df[,c("patient_id",
             "cov_cat_deprivation",
             "cov_cat_smoking_status",
             "cov_cat_region",
-            "cov_bin_carehome_status")]
+            "cov_bin_carehome_status",
+            "cov_cat_consulation_rate",
+            "cov_bin_healthcare_worker",
+            "cov_bin_liver_disease",
+            "cov_bin_ckd",
+            "cov_bin_cancer",
+            "cov_bin_hypertension",
+            "cov_bin_diabetes",
+            "cov_bin_obesity",
+            "cov_bin_copd",
+            "cov_bin_ami",
+            "cov_bin_isch",
+            "sub_bin_covid19_confirmed_history", 
+            "sub_bin_high_vascular_risk", 
+            "cov_bin_history_cog_imp_sympt",
+            "cov_bin_history_mnd",
+            "cov_bin_history_migraine",
+            "cov_bin_history_any_dementia",
+            "cov_bin_history_parkinson",
+            "cov_bin_history_ms",
+            "cov_bin_history_parkinson_risk")]
 
 df$All <- "All"
 
@@ -72,7 +99,7 @@ df$All <- "All"
 print("Aggregate data")
 
 df <- tidyr::pivot_longer(df,
-                          cols = setdiff(colnames(df),c("patient_id","exposed")),
+                          cols = setdiff(colnames(df), c("patient_id","exposed")),
                           names_to = "characteristic",
                           values_to = "subcharacteristic")
 
@@ -82,15 +109,7 @@ df <- aggregate(cbind(total, exposed) ~ characteristic + subcharacteristic,
                 data = df,
                 sum)
 
-# Tidy care home characteristic ------------------------------------------------
-print("Remove extraneous information")
-
-df <- df[!(df$characteristic=="cov_bin_carehome_status" & 
-             df$subcharacteristic=="FALSE"),]
-
-df$subcharacteristic <- ifelse(df$characteristic=="cov_bin_carehome_status",
-                               "Care home resident",
-                               df$subcharacteristic)
+df$subcharacteristic <- ifelse(df$subcharacteristic == "", "Missing", df$subcharacteristic)
 
 # Sort characteristics ---------------------------------------------------------
 print("Sort characteristics")
@@ -103,7 +122,27 @@ df$characteristic <- factor(df$characteristic,
                                        "cov_cat_deprivation",
                                        "cov_cat_smoking_status",
                                        "cov_cat_region",
-                                       "cov_bin_carehome_status"),
+                                       "cov_bin_carehome_status",
+                                       "cov_cat_consulation_rate",
+                                       "cov_bin_healthcare_worker",
+                                       "cov_bin_liver_disease",
+                                       "cov_bin_ckd",
+                                       "cov_bin_cancer",
+                                       "cov_bin_hypertension",
+                                       "cov_bin_diabetes",
+                                       "cov_bin_obesity",
+                                       "cov_bin_copd",
+                                       "cov_bin_ami",
+                                       "cov_bin_isch",
+                                       "sub_bin_covid19_confirmed_history", 
+                                       "sub_bin_high_vascular_risk", 
+                                       "cov_bin_history_cog_imp_sympt",
+                                       "cov_bin_history_mnd",
+                                       "cov_bin_history_migraine",
+                                       "cov_bin_history_any_dementia",
+                                       "cov_bin_history_parkinson",
+                                       "cov_bin_history_ms",
+                                       "cov_bin_history_parkinson_risk"),
                             labels = c("All",
                                        "Sex",
                                        "Age, years",
@@ -111,23 +150,39 @@ df$characteristic <- factor(df$characteristic,
                                        "Index of multiple deprivation quintile",
                                        "Smoking status",
                                        "Region",
-                                       "Care home resident"))
+                                       "Care home resident",
+                                       "Consultation rate",
+                                       "Health care worker",
+                                       "Liver disease",
+                                       "Chronic kidney disease",
+                                       "Cancer",
+                                       "Hypertension",
+                                       "Diabetes",
+                                       "Obesity",
+                                       "Chronic obstructive pulmonary disease (COPD)",
+                                       "Acute myocardial infarction",
+                                       "Ischaemic stroke",
+                                       "History of COVID-19",
+                                       "History of High vascular risk",
+                                       "History of cognitive impairment",
+                                       "History of motor neurone disease",
+                                       "History of migraine",
+                                       "History of any dementia",
+                                       "History of Parkinson's disease",
+                                       "History of multiple sclerosis",
+                                       "History of Parkinson's disease risk")) 
 
 # Sort subcharacteristics ------------------------------------------------------
 print("Sort subcharacteristics")
 
-df$subcharacteristic <- factor(df$subcharacteristic,
+df$subcharacteristic <- factor(df$subcharacteristic, 
                                levels = c("All",
                                           "Female",
                                           "Male",
-                                          "18-29",
-                                          "30-39",
-                                          "40-49",
-                                          "50-59",
-                                          "60-69",
-                                          "70-79",
-                                          "80-89",
-                                          "90+",
+                                          "18-39",
+                                          "40-64",
+                                          "65-84",
+                                          "85+",
                                           "White",
                                           "Mixed",
                                           "South Asian",
@@ -152,18 +207,27 @@ df$subcharacteristic <- factor(df$subcharacteristic,
                                           "West Midlands",
                                           "Yorkshire and The Humber",
                                           "Care home resident",
+                                          "0",
+                                          "1-5",
+                                          "6+",
+                                          "Healthcare worker",
+                                          "TRUE", "FALSE", "TRUE", "FALSE",
+                                          "TRUE", "FALSE", "TRUE", "FALSE", 
+                                          "TRUE", "FALSE", "TRUE", "FALSE", 
+                                          "TRUE", "FALSE", "TRUE", "FALSE", 
+                                          "TRUE", "FALSE", "TRUE", "FALSE", 
+                                          "TRUE", "FALSE", "TRUE", "FALSE",
+                                          "TRUE", "FALSE", "TRUE", "FALSE",
+                                          "TRUE", "FALSE", "TRUE", "FALSE",
+                                          "TRUE", "FALSE", "TRUE", "FALSE",
                                           "Missing"),
                                labels = c("All",
                                           "Female",
                                           "Male",
-                                          "18-29",
-                                          "30-39",
-                                          "40-49",
-                                          "50-59",
-                                          "60-69",
-                                          "70-79",
-                                          "80-89",
-                                          "90+",
+                                          "18-39",
+                                          "40-64",
+                                          "65-84",
+                                          "85+",
                                           "White",
                                           "Mixed",
                                           "South Asian",
@@ -188,8 +252,20 @@ df$subcharacteristic <- factor(df$subcharacteristic,
                                           "West Midlands",
                                           "Yorkshire/Humber",
                                           "Care home resident",
-                                          "Missing"))
-
+                                          "0",
+                                          "1-5",
+                                          "6+",
+                                          "Healthcare worker",
+                                          "TRUE", "FALSE", "TRUE", "FALSE",
+                                          "TRUE", "FALSE", "TRUE", "FALSE", 
+                                          "TRUE", "FALSE", "TRUE", "FALSE", 
+                                          "TRUE", "FALSE", "TRUE", "FALSE", 
+                                          "TRUE", "FALSE", "TRUE", "FALSE", 
+                                          "TRUE", "FALSE", "TRUE", "FALSE",
+                                          "TRUE", "FALSE", "TRUE", "FALSE",
+                                          "TRUE", "FALSE", "TRUE", "FALSE",
+                                          "TRUE", "FALSE", "TRUE", "FALSE",
+                                          "Missing")) 
 
 # Sort data --------------------------------------------------------------------
 print("Sort data")

@@ -234,16 +234,6 @@ actions:
       moderately_sensitive:
         table1_output_midpoint6: output/table1_output_midpoint6.csv
 
-  make_extendedtable1_output:
-    run: r:latest analysis/model/make_other_output.R extendedtable1 prevax;vax;unvax
-    needs:
-    - extendedtable1_prevax
-    - extendedtable1_vax
-    - extendedtable1_unvax
-    outputs:
-      moderately_sensitive:
-        table1_output_midpoint6: output/extendedtable1_output_midpoint6.csv
-
   make_table2_output:
     run: r:latest analysis/model/make_other_output.R table2 prevax;vax;unvax
     needs:
@@ -275,15 +265,6 @@ actions:
         table1: output/table1_prevax.csv
         table1_midpoint6: output/table1_prevax_midpoint6.csv
 
-  extendedtable1_prevax:
-    run: r:latest analysis/descriptives/extendedtable1.R prevax
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      moderately_sensitive:
-        extendedtable1: output/extendedtable1_prevax.csv
-        extendedtable1_midpoint6: output/extendedtable1_prevax_midpoint6.csv
-
   ## Table 1 - unvax 
 
   table1_unvax:
@@ -295,15 +276,6 @@ actions:
         table1: output/table1_unvax.csv
         table1_midpoint6: output/table1_unvax_midpoint6.csv
 
-  extendedtable1_unvax:
-    run: r:latest analysis/descriptives/extendedtable1.R unvax
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      moderately_sensitive:
-        extendedtable1: output/extendedtable1_unvax.csv
-        extendedtable1_midpoint6: output/extendedtable1_unvax_midpoint6.csv
-
   ## Table 1 - vax 
 
   table1_vax:
@@ -314,15 +286,6 @@ actions:
       moderately_sensitive:
         table1: output/table1_vax.csv
         table1_midpoint6: output/table1_vax_midpoint6.csv
-
-  extendedtable1_vax:
-    run: r:latest analysis/descriptives/extendedtable1.R vax
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      moderately_sensitive:
-        extendedtable1: output/extendedtable1_vax.csv
-        extendedtable1_midpoint6: output/extendedtable1_vax_midpoint6.csv
 
   ## Stage 5 - Run models 
 
