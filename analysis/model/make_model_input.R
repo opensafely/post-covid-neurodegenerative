@@ -72,16 +72,16 @@ for (i in 1:nrow(active_analyses)) {
                            "sub_bin_high_vascular_risk",
                            "cov_cat_sex",
                            "cov_num_age",
-                           "cov_bin_history_cog_imp_sympt",#
+                           "cov_bin_history_cog_imp_sympt",
                            "cov_bin_history_alzheimer_disease",
                            "cov_bin_history_vascular_dementia",
                            "cov_bin_history_lewy_body_dementia",
                            "cov_bin_history_mnd",
                            "cov_bin_history_ms",
-                           "cov_bin_history_any_dementia",#
-                           "cov_bin_history_parkinson",#
-                           "cov_bin_history_migraine",#
-                           "cov_bin_history_parkinson_risk",#
+                           "cov_bin_history_any_dementia",
+                           "cov_bin_history_parkinson",
+                           "cov_bin_history_migraine",
+                           "cov_bin_history_parkinson_risk",
                            "cov_cat_ethnicity"))]
   
   # Remove outcomes outside of follow-up time ------------------------------------
