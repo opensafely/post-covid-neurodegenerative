@@ -4,14 +4,7 @@ This is the code and configuration for post-covid-neurodegenerative.
 
 You can run this project via [Gitpod](https://gitpod.io) in a web browser by clicking on this badge: [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/opensafely/post-covid-neurodegenerative).
 
-[View on OpenSAFELY](https://jobs.opensafely.org/university-of-bristol/investigating-events-following-sars-cov-2-infection/).
-
-Details of the purpose and any published outputs from this project can be found at the link above.
-
-The contents of this repository MUST NOT be considered an accurate or valid representation of the study or its purpose. 
-This repository may reflect an incomplete or incorrect analysis with no further ongoing work.
-The content has ONLY been made public to support the OpenSAFELY [open science and transparency principles](https://www.opensafely.org/about/#contributing-to-best-practice-around-open-science) and to support the sharing of re-usable code for other subsequent users.
-No clinical, policy or safety conclusions must be drawn from the contents of this repository.
+The content has ONLY been made public to support the OpenSAFELY [open science and transparency principles](https://www.opensafely.org/about/#contributing-to-best-practice-around-open-science) and to support the sharing of re-usable code for other subsequent users. No clinical, policy or safety conclusions must be drawn from the contents of this repository.
 
 ## Repository navigation
 
@@ -90,6 +83,8 @@ The contents of this repository MUST NOT be considered an accurate or valid repr
 
 ## Output
 
+Outputs follow OpenSAFELY naming conventions related to suppression rules by adding the suffix "_midpoint6". The suffix "_midpoint6_derived" means that the value(s) are derived from the midpoint6 values. Detailed information regarding naming conventions can be found [here](https://docs.opensafely.org/releasing-files/#naming-convention-for-midpoint-6-rounding).
+
 ### consort_\*.csv
 
 | Variable           | Description                                                    |
@@ -105,7 +100,7 @@ The contents of this repository MUST NOT be considered an accurate or valid repr
 |-----------------------------------|------------------------------------------------------------------|
 |     Characteristic                | patient characteristic under consideration                       |
 |     Subcharacteristic             | patient sub characteristic under consideration                   |
-|     N (%) derived                 | number of people with characteristic, alongside % of total       |
+|     N (%) midpoint6 derived       | number of people with characteristic, alongside % of total       |
 |     COVID-19 diagnoses midpoint6  | number of people with characteristic and COVID-19                |
 
 ### table2_\*.csv
@@ -122,28 +117,28 @@ The contents of this repository MUST NOT be considered an accurate or valid repr
 |     exposed_person_days              | number of person days after exposure in the analysis                    |
 |     exposed_events_midpoint6         | number of exposed people with the outcome in the analysis               |  
 |     total_person_days                | number of person days in the analysis                                   |
-|     total_events_midpoint6           | number of people with the outcome in the analysis                       |
+|     total_events_midpoint6_derived   | number of people with the outcome in the analysis                       |
 |     day0_events_midpoint6            | number of people with the exposure and outcome on the same day          |
-|     total_exposed_midpoint6_derived  | number of people with the exposure in the analysis                      |
+|     total_exposed_midpoint6          | number of people with the exposure in the analysis                      |
 |     sample_size_midpoint6            | number of people in the analysis                                        |
 
 ### venn_\*.csv
 
-| Variable                | Description                                                                 |
-|-------------------------|-----------------------------------------------------------------------------|
-|     outcome             | outcome under consideration                                                 |
-|     only_snomed         | outcome identified in primary care only                                     |
-|     only_hes            | outcome identified in secondary care only                                   |
-|     only_death          | outcome identified in death registry only                                   |
-|     snomed_hes          | outcome identified in primary and secondary care                            |
-|     snomed_death        | outcome identified in primary care and death registry                       |
-|     hes_death           | outcome identified in secondary care and death registry                     |
-|     snomed_hes_death    | outcome identified in primary care, secondary care, and death registry      |
-|     total_snomed        | total outcomes identified in primary care                                   |
-|     total_hes           | total outcomes identified in secondary care                                 |
-|     total_death         | total outcomes identified in death registry                                 |
-|     total               | total outcomes identified                                                   |
-|     cohort              | cohort under consideration                                                  |
+| Variable                          | Description                                                                 |
+|-----------------------------------|-----------------------------------------------------------------------------|
+|     outcome                       | outcome under consideration                                                 |
+|     only_snomed_midpoint6         | outcome identified in primary care only                                     |
+|     only_hes_midpoint6            | outcome identified in secondary care only                                   |
+|     only_death_midpoint6          | outcome identified in death registry only                                   |
+|     snomed_hes_midpoint6          | outcome identified in primary and secondary care                            |
+|     snomed_death_midpoint6        | outcome identified in primary care and death registry                       |
+|     hes_death_midpoint6           | outcome identified in secondary care and death registry                     |
+|     snomed_hes_death_midpoint6    | outcome identified in primary care, secondary care, and death registry      |
+|     total_snomed_midpoint6        | total outcomes identified in primary care                                   |
+|     total_hes_midpoint6           | total outcomes identified in secondary care                                 |
+|     total_death_midpoint6         | total outcomes identified in death registry                                 |
+|     total_midpoint6_derived       | total outcomes identified                                                   |
+|     cohort                        | cohort under consideration                                                  |
 
 ### *model_output.csv
 
