@@ -142,7 +142,13 @@ print('Perform redaction')
 input[,setdiff(colnames(input),c("aer_sex","aer_age","analysis","cohort","outcome"))] <- lapply(input[,setdiff(colnames(input),c("aer_sex","aer_age","analysis","cohort","outcome"))],
                                                                                                 FUN=function(y){roundmid_any(as.numeric(y), to=threshold)})
 
+# Rename columns (output redaction) --------------------------------------------
+
+names(input)[names(input) == "unexposed_events"] <- "unexposed_events_midpoint6"
+names(input)[names(input) == "total_exposed"] <- "total_exposed_midpoint6"
+names(input)[names(input) == "sample_size"] <- "sample_size_midpoint6"
+
 # Save rounded AER input -------------------------------------------------------
 print('Save rounded AER input')
 
-write.csv(input, paste0("output/aer_input-",analysis,"-rounded.csv"), row.names = FALSE)
+write.csv(input, paste0("output/aer_input-",analysis,"-midpoint6.csv"), row.names = FALSE)
