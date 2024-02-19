@@ -509,7 +509,7 @@ for (c in cohorts) {
   
   for (i in vascular_risk_sub_out) { #remove cov_bin_history_alzheimer_disease, cov_bin_history_vascular_dementia, cov_bin_history_lewy_body, cov_bin_history_any_dementia, cov_bin_history_cog_imp_sympt
 
-    ## analysis: sub_bin_vascular_risk_true --------------------------------------
+    ## analysis: sub_bin_high_vascular_risk_true -------------------------------
 
     df[nrow(df)+1,] <- c(cohort = c,
                          exposure = exposure,
@@ -529,9 +529,9 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_bin_vascular_risk_true")
+                         analysis = "sub_bin_high_vascular_risk_true")
 
-    ## analysis: sub_bin_vascular_risk_false -------------------------------------
+    ## analysis: sub_bin_high_vascular_risk_false ------------------------------
 
     df[nrow(df)+1,] <- c(cohort = c,
                          exposure = exposure,
@@ -551,7 +551,7 @@ for (c in cohorts) {
                          episode_event_threshold = episode_event_threshold,
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
-                         analysis = "sub_bin_vascular_risk_false")
+                         analysis = "sub_bin_high_vascular_risk_false")
 
   }
 

@@ -506,7 +506,7 @@ for (i in 1:nrow(active_analyses)) {
 
   # Make model input: prior parkison false -------------------------------------
 
-  if (active_analyses$analysis[i]=="sub_history_parkinson_true") {
+  if (active_analyses$analysis[i]=="sub_history_parkinson_false") {
 
     print('Make model input: sub_history_parkinson_false')
 
@@ -560,9 +560,9 @@ for (i in 1:nrow(active_analyses)) {
   
   # Make model input: Vascular risk true----------------------------------------
   
-  if (active_analyses$analysis[i]=="sub_history_vascular_risk_true") {
+  if (active_analyses$analysis[i]=="sub_bin_high_vascular_risk_true") {
 
-    print('Make model input: sub_history_vascular_risk_true')
+    print('Make model input: sub_bin_high_vascular_risk_true')
 
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
                   input$sub_bin_high_vascular_risk == TRUE,] 
@@ -578,9 +578,9 @@ for (i in 1:nrow(active_analyses)) {
 
   # Make model input: Vascular risk false --------------------------------------
 
-  if (active_analyses$analysis[i]=="sub_history_vascular_risk_false") {
+  if (active_analyses$analysis[i]=="sub_bin_high_vascular_risk_false") {
 
-    print('Make model input: sub_history_vascular_risk_false')
+    print('Make model input: sub_bin_high_vascular_risk_false')
 
     df <- input[input$sub_bin_covid19_confirmed_history==FALSE &
                   input$sub_bin_high_vascular_risk == FALSE,] 
