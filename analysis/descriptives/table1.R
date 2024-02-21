@@ -50,7 +50,7 @@ df$cov_cat_age_group <- ""
 df$cov_cat_age_group <- ifelse(df$cov_num_age>=18 & df$cov_num_age<=39, "18-39", df$cov_cat_age_group)
 df$cov_cat_age_group <- ifelse(df$cov_num_age>=40 & df$cov_num_age<=64, "40-64", df$cov_cat_age_group)
 df$cov_cat_age_group <- ifelse(df$cov_num_age>=65 & df$cov_num_age<=84, "65-84", df$cov_cat_age_group)
-df$cov_cat_age_group <- ifelse(df$cov_num_age>=85, "85+", df$cov_cat_age_group)
+df$cov_cat_age_group <- ifelse(df$cov_num_age>=85, "85-110", df$cov_cat_age_group)
 
 # Define consultation rate groups ----------------------------------------------
 print("Define consultation rate groups")
@@ -163,7 +163,7 @@ df$characteristic <- factor(df$characteristic,
                                        "Acute myocardial infarction",
                                        "Ischaemic stroke",
                                        "History of COVID-19",
-                                       "History of High vascular risk",
+                                       "History of high vascular risk",
                                        "History of cognitive impairment",
                                        "History of motor neurone disease",
                                        "History of migraine",
@@ -182,7 +182,7 @@ df$subcharacteristic <- factor(df$subcharacteristic,
                                           "18-39",
                                           "40-64",
                                           "65-84",
-                                          "85+",
+                                          "85-110",
                                           "White",
                                           "Mixed",
                                           "South Asian",
@@ -211,15 +211,7 @@ df$subcharacteristic <- factor(df$subcharacteristic,
                                           "1-5",
                                           "6+",
                                           "Healthcare worker",
-                                          "TRUE", "FALSE", "TRUE", "FALSE",
-                                          "TRUE", "FALSE", "TRUE", "FALSE", 
-                                          "TRUE", "FALSE", "TRUE", "FALSE", 
-                                          "TRUE", "FALSE", "TRUE", "FALSE", 
-                                          "TRUE", "FALSE", "TRUE", "FALSE", 
-                                          "TRUE", "FALSE", "TRUE", "FALSE",
-                                          "TRUE", "FALSE", "TRUE", "FALSE",
-                                          "TRUE", "FALSE", "TRUE", "FALSE",
-                                          "TRUE", "FALSE", "TRUE", "FALSE",
+                                          "TRUE", "FALSE",
                                           "Missing"),
                                labels = c("All",
                                           "Female",
@@ -227,7 +219,7 @@ df$subcharacteristic <- factor(df$subcharacteristic,
                                           "18-39",
                                           "40-64",
                                           "65-84",
-                                          "85+",
+                                          "85-110",
                                           "White",
                                           "Mixed",
                                           "South Asian",
@@ -256,15 +248,7 @@ df$subcharacteristic <- factor(df$subcharacteristic,
                                           "1-5",
                                           "6+",
                                           "Healthcare worker",
-                                          "TRUE", "FALSE", "TRUE", "FALSE",
-                                          "TRUE", "FALSE", "TRUE", "FALSE", 
-                                          "TRUE", "FALSE", "TRUE", "FALSE", 
-                                          "TRUE", "FALSE", "TRUE", "FALSE", 
-                                          "TRUE", "FALSE", "TRUE", "FALSE", 
-                                          "TRUE", "FALSE", "TRUE", "FALSE",
-                                          "TRUE", "FALSE", "TRUE", "FALSE",
-                                          "TRUE", "FALSE", "TRUE", "FALSE",
-                                          "TRUE", "FALSE", "TRUE", "FALSE",
+                                          "TRUE", "FALSE", 
                                           "Missing")) 
 
 # Sort data --------------------------------------------------------------------
@@ -283,15 +267,21 @@ print('Perform redaction')
 df[,setdiff(colnames(df),c("characteristic","subcharacteristic"))] <- lapply(df[,setdiff(colnames(df),c("characteristic","subcharacteristic"))],
                                                                              FUN=function(y){roundmid_any(as.numeric(y), to=threshold)})
 
+# Rename columns (output redaction) --------------------------------------------
+print("Rename columns for output redaction")
+
+names(df)[names(df) == "total"] <- "total_midpoint6"
+names(df)[names(df) == "exposed"] <- "exposed_midpoint6"
+
 # Calculate column percentages -------------------------------------------------
 
-df$Npercent <- paste0(df$total,ifelse(df$characteristic=="All","",
-                                      paste0(" (",round(100*(df$total_midpoint6 / df[df$characteristic=="All","total"]),1),"%)")))
+df$Npercent_derived <- paste0(df$total,ifelse(df$characteristic=="All","",
+                                      paste0(" (",round(100*(df$total_midpoint6 / df[df$characteristic=="All","total_midpoint6"]),1),"%)")))
 
 # Rename columns (output redaction) --------------------------------------------
 
-df <- df[,c("characteristic","subcharacteristic","Npercent","exposed")]
-colnames(df) <- c("Characteristic","Subcharacteristic","N (%) midpoint6 derived","COVID-19 diagnoses midpoint6")
+df <- df[,c("characteristic","subcharacteristic","Npercent_derived","exposed_midpoint6")]
+colnames(df) <- c("Characteristic","Subcharacteristic","N (%) derived","COVID-19 diagnoses midpoint6")
 
 # Save Table 1 -----------------------------------------------------------------
 print('Save rounded Table 1')
