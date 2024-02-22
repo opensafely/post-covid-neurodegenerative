@@ -112,18 +112,6 @@ def generate_common_variables(index_date_variable, exposure_end_date_variable, o
     registered_at_start = patients.registered_as_of(f"{index_date_variable}",
     ),
 
-    # Deregistration date
-    dereg_date=patients.date_deregistered_from_all_supported_practices(
-        
-        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
-        date_format = 'YYYY-MM-DD',
-        return_expectations={
-        "date": {"earliest": study_dates["pandemic_start"], "latest": "today"},
-        "rate": "uniform",
-        "incidence": 0.01
-        },
-    ),
-
     # Define subgroups (for variables that don't have a corresponding covariate only)
     ## COVID-19 severity
     sub_date_covid19_hospital = patients.admitted_to_hospital(

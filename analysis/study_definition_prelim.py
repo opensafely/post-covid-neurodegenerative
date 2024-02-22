@@ -229,9 +229,19 @@ study = StudyDefinition(
             "category": {"ratios": {"M": 0.49, "F": 0.51}},
             }
         ),
+
+# Deregistration data 
+deregistration_date=patients.date_deregistered_from_all_supported_practices( 
+            date_format = 'YYYY-MM-DD',
+            return_expectations={
+            "date": {"earliest": "2000-01-01", "latest": "today"},
+            "rate": "uniform",
+            "incidence": 0.01
+            },
+        ),
+
     # Define vaccine eligibility variables
 
         **jcvi_variables,
         
-    
 )
