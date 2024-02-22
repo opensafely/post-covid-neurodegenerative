@@ -17,7 +17,7 @@ day0,Day 0
 sub_age_18_39,Age group: 18-39
 sub_age_40_64,Age group: 40-64
 sub_age_65_84,Age group: 65-84
-sub_age_85_110,Age group: 85+
+sub_age_85_110,Age group: 85_110
 sub_covid_hospitalised,Hospitalised COVID-19
 sub_covid_nonhospitalised,Non-hospitalised COVID-19
 sub_ethnicity_asian,Ethnicity: South Asian
