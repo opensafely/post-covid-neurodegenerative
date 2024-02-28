@@ -77,9 +77,9 @@ prelim_data$patient_id <- as.character(prelim_data$patient_id)
 prelim_data$death_date <- as.Date(prelim_data$death_date)
 prelim_data$deregistration_date <- as.Date(prelim_data$deregistration_date)
 
-message("Death and deregistration dates format update")
+df <- df %>% inner_join(prelim_data,by="patient_id")
 
-message(paste0("After adding death N = ", nrow(df), " rows"))
+message("Death and deregistration dates format update")
 
 # Format columns ---------------------------------------------------------------
 # dates, numerics, factors, logicals
@@ -156,8 +156,9 @@ df <- df %>%
 
 # Restrict columns and save analysis dataset ---------------------------------
 
-df1 <- df%>% select(patient_id, starts_with("index_date_"),
+df1 <- df%>% select(patient_id, "death_date", starts_with("index_date_"),
                     has_follow_up_previous_6months,
+                    deregistration_date,
                     starts_with("end_date_"),
                     contains("sub_"), # Subgroups
                     contains("exp_"), # Exposures
