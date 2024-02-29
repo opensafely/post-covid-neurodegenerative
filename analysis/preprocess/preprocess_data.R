@@ -69,14 +69,17 @@ sink()
 
 message ("Cohort ",cohort_name, " description written successfully!")
 
-# Add death_date from prelim data ----------------------------------------------
+# Select death_date and deregistration_date from prelim data ----------------------
 
-prelim_data <- read_csv("output/index_dates.csv.gz",col_types=cols(patient_id = "c",death_date="D")) %>%
-  select(patient_id,death_date)
+prelim_data <- read_csv("output/index_dates.csv.gz", col_types=cols(patient_id = "c", death_date="D"))
+prelim_data <- prelim_data[,c("patient_id","death_date","deregistration_date")]
+prelim_data$patient_id <- as.character(prelim_data$patient_id)
+prelim_data$death_date <- as.Date(prelim_data$death_date)
+prelim_data$deregistration_date <- as.Date(prelim_data$deregistration_date)
+
 df <- df %>% inner_join(prelim_data,by="patient_id")
 
-message("Death date added!")
-message(paste0("After adding death N = ", nrow(df), " rows"))
+message("Death and deregistration dates format update")
 
 # Format columns ---------------------------------------------------------------
 # dates, numerics, factors, logicals
@@ -153,8 +156,9 @@ df <- df %>%
 
 # Restrict columns and save analysis dataset ---------------------------------
 
-df1 <- df%>% select(patient_id, starts_with("index_date_"),
+df1 <- df%>% select(patient_id, "death_date", starts_with("index_date_"),
                     has_follow_up_previous_6months,
+                    deregistration_date,
                     starts_with("end_date_"),
                     contains("sub_"), # Subgroups
                     contains("exp_"), # Exposures
@@ -167,19 +171,13 @@ df1 <- df%>% select(patient_id, starts_with("index_date_"),
 ) %>% 
   select(-matches("tmp_"))
 
-# Add death_date and deregistration_date from prelim data ----------------------
-
-prelim_data <- read_csv("output/index_dates.csv.gz")
-prelim_data <- prelim_data[,c("patient_id","death_date","deregistration_date")]
-prelim_data$patient_id <- as.character(prelim_data$patient_id)
-prelim_data$death_date <- as.Date(prelim_data$death_date)
-prelim_data$deregistration_date <- as.Date(prelim_data$deregistration_date)
+# Add death and deregistration from prelim data -------------------------------- 
 
 df1 <- df1 %>% inner_join(prelim_data,by="patient_id")
 
 message("Death and deregistration dates added!")
 
-# Repo specific preprocessing 
+# Repo specific preprocessing --------------------------------------------------
 
 saveRDS(df1, file = paste0("output/input_",cohort_name,".rds"), compress = "gzip")
 
@@ -190,16 +188,16 @@ message(paste0("Input data saved successfully with N = ", nrow(df1), " rows"))
 sink(paste0("output/not-for-review/describe_input_",cohort_name,"_stage0.txt"))
 print(Hmisc::describe(df1))
 sink()
-#rm(df1)
+rm(df1, prelim_data)
 gc()
 
 # Restrict columns and save Venn diagram input dataset -----------------------
 
 df2 <- df %>% select(starts_with(c("patient_id","tmp_out_date","out_date")))
-#rm(df)
+rm(df)
 gc()
 
-message(paste0("Input data saved successfully with N = ", nrow(df1), " rows"))
+message(paste0("Input data saved successfully with N = ", nrow(df2), " rows"))
 
 # Describe venn ----------------------------------------------------------------
 
@@ -210,6 +208,7 @@ sink()
 # SAVE
 
 saveRDS(df2, file = paste0("output/venn_",cohort_name,".rds"))
+rm(df2)
 
 message("Venn diagram data saved successfully")
 tictoc::toc() 
