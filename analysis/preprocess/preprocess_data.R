@@ -171,12 +171,6 @@ df1 <- df%>% select(patient_id, "death_date", starts_with("index_date_"),
 ) %>% 
   select(-matches("tmp_"))
 
-# Add death and deregistration from prelim data -------------------------------- 
-
-df1 <- df1 %>% inner_join(prelim_data,by="patient_id")
-
-message("Death and deregistration dates added!")
-
 # Repo specific preprocessing --------------------------------------------------
 
 saveRDS(df1, file = paste0("output/input_",cohort_name,".rds"), compress = "gzip")
