@@ -18111,6 +18111,46 @@ actions:
         table2: output/venn_vax.csv
         table2_midpoint6: output/venn_vax_midpoint6.csv
 
+  make_model_output:
+    run: r:latest analysis/model/make_model_output.R
+    needs:
+    - cox_ipw-cohort_prevax-main-alzheimer_disease
+    - cox_ipw-cohort_prevax-main-any_dementia
+    - cox_ipw-cohort_prevax-main-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-main-lewy_body_dementia
+    - cox_ipw-cohort_prevax-main-migraine
+    - cox_ipw-cohort_prevax-main-motor_neurone_disease
+    - cox_ipw-cohort_prevax-main-multiple_sclerosis
+    - cox_ipw-cohort_prevax-main-parkinson_disease
+    - cox_ipw-cohort_prevax-main-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-main-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-main-vascular_dementia
+    - cox_ipw-cohort_unvax-main-alzheimer_disease
+    - cox_ipw-cohort_unvax-main-any_dementia
+    - cox_ipw-cohort_unvax-main-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-main-lewy_body_dementia
+    - cox_ipw-cohort_unvax-main-migraine
+    - cox_ipw-cohort_unvax-main-motor_neurone_disease
+    - cox_ipw-cohort_unvax-main-multiple_sclerosis
+    - cox_ipw-cohort_unvax-main-parkinson_disease
+    - cox_ipw-cohort_unvax-main-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-main-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-main-vascular_dementia
+    - cox_ipw-cohort_vax-main-alzheimer_disease
+    - cox_ipw-cohort_vax-main-any_dementia
+    - cox_ipw-cohort_vax-main-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-main-lewy_body_dementia
+    - cox_ipw-cohort_vax-main-migraine
+    - cox_ipw-cohort_vax-main-motor_neurone_disease
+    - cox_ipw-cohort_vax-main-multiple_sclerosis
+    - cox_ipw-cohort_vax-main-parkinson_disease
+    - cox_ipw-cohort_vax-main-rem_sleep_disorder
+    - cox_ipw-cohort_vax-main-restless_leg_syndrome
+    - cox_ipw-cohort_vax-main-vascular_dementia
+    outputs:
+      moderately_sensitive:
+        model_output: output/model_output.csv
+
   ## Make absolute excess risk (AER) input 
 
   make_aer_input:

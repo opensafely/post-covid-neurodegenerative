@@ -485,15 +485,15 @@ actions_list <- splice(
   ## Model output --------------------------------------------------------------
   
   # comment("Stage 6 - make model output"),
-  # 
-  # action(
-  #   name = "make_model_output",
-  #   run = "r:latest analysis/model/make_model_output.R",
-  #   needs = as.list(paste0("cox_ipw-",success$name)),
-  #   moderately_sensitive = list(
-  #     model_output = glue("output/model_output.csv")
-  #   )
-  # ),
+
+  action(
+    name = "make_model_output",
+    run = "r:latest analysis/model/make_model_output.R",
+    needs = as.list(paste0("cox_ipw-",active_analyses[active_analyses$analysis=="main",]$name)),
+    moderately_sensitive = list(
+      model_output = glue("output/model_output.csv")
+    )
+  ),
   
   ## AER table -----------------------------------------------------------------
   
