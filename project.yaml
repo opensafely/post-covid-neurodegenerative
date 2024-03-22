@@ -18150,6 +18150,7 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output.csv
+        model_output_midpoint6: output/model_output_midpoint6.csv
 
   ## Make absolute excess risk (AER) input 
 
