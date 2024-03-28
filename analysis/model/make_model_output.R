@@ -8,6 +8,16 @@ print('Load active analyses')
 
 active_analyses <- readr::read_rds("lib/active_analyses.rds")
 
+# Specify redaction threshold --------------------------------------------------
+print('Specify redaction threshold')
+
+threshold <- 6
+
+# Source common functions ------------------------------------------------------
+print('Source common functions')
+
+source("analysis/utility.R")
+
 # List available model outputs -------------------------------------------------
 print('List available model outputs')
 
