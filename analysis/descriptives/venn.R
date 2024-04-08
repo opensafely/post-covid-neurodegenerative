@@ -40,6 +40,11 @@ print('Load Venn data')
 
 venn <- readr::read_rds(paste0("output/venn_",cohort,".rds"))
 
+# Load any dementia model ------------------------------------------------------
+
+model_input_any_dementia <- readr::read_rds(paste0("output/model_input-cohort_",cohort,"-main-any_dementia.rds"))
+model_input_any_dementia <- model_input_any_dementia[!is.na(model_input_any_dementia$out_date),c("patient_id","out_date")]
+
 # rename columns ---------------------------------------------------------------
 print("Rename temporary outcomes columns")
 
@@ -200,44 +205,126 @@ for (outcome in outcomes) {
   
 }
 
-# Fix source contribution for any dementia outcome -----------------------------
-print("Fix source contribution for any dementia")
+# remove any_dementia outcome --------------------------------------------------
 
-# any_dementia contribution
-df_temp <- df[!grepl("any_dementia", df$outcome),]
-# remove any_dementia outcome
 df <- df[!grepl("any_dementia", df$outcome),]
+df_any <- df[grepl("any_dementia", df$outcome),]
 
-# Select Dementia subgroups
-df_temp <- df[grep("alzheimer|vascular_dementia|lewy_body|other_dementias|unspecified_dementias", df$outcome),]
+# Filter columns of interest ---------------------------------------------------
 
-# character to numeric
-df_temp <- df_temp %>%
-  mutate_at(vars(matches("snomed|hes|death|total")),function(x) as.numeric(as.character(x)))
+venn_any <- venn %>%
+  select_if(grepl("patient_id|tmp_out_date_alzheimer|tmp_out_date_other_dementias|tmp_out_date_unspecified_dementias|tmp_out_date_vascular_dementia|tmp_out_date_lewy_body|out_date_any_dementia", 
+                  names(.))) %>%
+  rename_at(vars(matches("tmp_out_date_")), ~ str_remove(., "tmp_out_date_"))
 
-# Summarise
-df_temp <- df_temp %>%
-  summarise_if(is.numeric, sum, na.rm = T)
+# Filter venn any dementia based on model input any dementia -------------------
 
-# add columns
-df_temp$outcome <- "any_dementia"
-df_temp$error <- "" 
+tmp_any <- venn_any[venn_any$patient_id %in% model_input_any_dementia$patient_id,]
 
-# relocate
-df_temp <- relocate(df_temp, outcome)
+# Calculate the number contributing to each source combination -----------------
 
-# bind data frames
-df <- rbind(df, df_temp)
+tmp_any$snomed_contributing <- !is.na(tmp_any$alzheimer_disease_snomed) & is.na(tmp_any$alzheimer_disease_hes) & 
+  is.na(tmp_any$alzheimer_disease_death) |
+  !is.na(tmp_any$vascular_dementia_snomed) & is.na(tmp_any$vascular_dementia_hes) & 
+  is.na(tmp_any$vascular_dementia_death) |
+  !is.na(tmp_any$other_dementias_snomed) & is.na(tmp_any$other_dementias_hes) & 
+  is.na(tmp_any$other_dementias_death) |
+  !is.na(tmp_any$unspecified_dementias_snomed) & is.na(tmp_any$unspecified_dementias_hes) & 
+  is.na(tmp_any$unspecified_dementias_death) |
+  !is.na(tmp_any$lewy_body_dementia_snomed)
 
-# remove temporary data frame
-rm(df_temp)
+tmp_any$hes_contributing <- is.na(tmp_any$alzheimer_disease_snomed) & !is.na(tmp_any$alzheimer_disease_hes) & 
+  is.na(tmp_any$alzheimer_disease_death) |
+  is.na(tmp_any$vascular_dementia_snomed) & !is.na(tmp_any$vascular_dementia_hes) & 
+  is.na(tmp_any$vascular_dementia_death) |
+  is.na(tmp_any$other_dementias_snomed) & !is.na(tmp_any$other_dementias_hes) & 
+  is.na(tmp_any$other_dementias_death) |
+  is.na(tmp_any$unspecified_dementias_snomed) & !is.na(tmp_any$unspecified_dementias_hes) & 
+  is.na(tmp_any$unspecified_dementias_death) |
+  is.na(tmp_any$lewy_body_dementia_snomed)
+
+tmp_any$death_contributing <- is.na(tmp_any$alzheimer_disease_snomed) & is.na(tmp_any$alzheimer_disease_hes) & 
+  !is.na(tmp_any$alzheimer_disease_death) |
+  is.na(tmp_any$vascular_dementia_snomed) & is.na(tmp_any$vascular_dementia_hes) & 
+  !is.na(tmp_any$vascular_dementia_death) |
+  is.na(tmp_any$other_dementias_snomed) & is.na(tmp_any$other_dementias_hes) & 
+  !is.na(tmp_any$other_dementias_death) |
+  is.na(tmp_any$unspecified_dementias_snomed) & is.na(tmp_any$unspecified_dementias_hes) & 
+  !is.na(tmp_any$unspecified_dementias_death) |
+  is.na(tmp_any$lewy_body_dementia_snomed)
+
+tmp_any$snomed_hes_contributing <- !is.na(tmp_any$alzheimer_disease_snomed) & !is.na(tmp_any$alzheimer_disease_hes) & 
+  is.na(tmp_any$alzheimer_disease_death) |
+  !is.na(tmp_any$vascular_dementia_snomed) & !is.na(tmp_any$vascular_dementia_hes) & 
+  is.na(tmp_any$vascular_dementia_death) |
+  !is.na(tmp_any$other_dementias_snomed) & !is.na(tmp_any$other_dementias_hes) & 
+  is.na(tmp_any$other_dementias_death) |
+  !is.na(tmp_any$unspecified_dementias_snomed) & !is.na(tmp_any$unspecified_dementias_hes) & 
+  is.na(tmp_any$unspecified_dementias_death) |
+  !is.na(tmp_any$lewy_body_dementia_snomed)
+
+tmp_any$hes_death_contributing <- is.na(tmp_any$alzheimer_disease_snomed) & !is.na(tmp_any$alzheimer_disease_hes) & 
+  !is.na(tmp_any$alzheimer_disease_death) |
+  is.na(tmp_any$vascular_dementia_snomed) & !is.na(tmp_any$vascular_dementia_hes) & 
+  !is.na(tmp_any$vascular_dementia_death) |
+  is.na(tmp_any$other_dementias_snomed) & !is.na(tmp_any$other_dementias_hes) & 
+  !is.na(tmp_any$other_dementias_death) |
+  is.na(tmp_any$unspecified_dementias_snomed) & !is.na(tmp_any$unspecified_dementias_hes) & 
+  !is.na(tmp_any$unspecified_dementias_death) |
+  is.na(tmp_any$lewy_body_dementia_snomed)
+
+tmp_any$snomed_death_contributing <- !is.na(tmp_any$alzheimer_disease_snomed) & is.na(tmp_any$alzheimer_disease_hes) & 
+  !is.na(tmp_any$alzheimer_disease_death) |
+  !is.na(tmp_any$vascular_dementia_snomed) & is.na(tmp_any$vascular_dementia_hes) & 
+  !is.na(tmp_any$vascular_dementia_death) |
+  !is.na(tmp_any$other_dementias_snomed) & is.na(tmp_any$other_dementias_hes) & 
+  !is.na(tmp_any$other_dementias_death) |
+  !is.na(tmp_any$unspecified_dementias_snomed) & is.na(tmp_any$unspecified_dementias_hes) & 
+  !is.na(tmp_any$unspecified_dementias_death) |
+  !is.na(tmp_any$lewy_body_dementia_snomed)
+
+tmp_any$snomed_hes_death_contributing <- !is.na(tmp_any$alzheimer_disease_snomed) & !is.na(tmp_any$alzheimer_disease_hes) & 
+  !is.na(tmp_any$alzheimer_disease_death) |
+  !is.na(tmp_any$vascular_dementia_snomed) & !is.na(tmp_any$vascular_dementia_hes) & 
+  !is.na(tmp_any$vascular_dementia_death) |
+  !is.na(tmp_any$other_dementias_snomed) & !is.na(tmp_any$other_dementias_hes) & 
+  !is.na(tmp_any$other_dementias_death) |
+  !is.na(tmp_any$unspecified_dementias_snomed) & !is.na(tmp_any$unspecified_dementias_hes) & 
+  !is.na(tmp_any$unspecified_dementias_death) |
+  !is.na(tmp_any$lewy_body_dementia_snomed)
+
+# Record the number contributing to each source combination --------------------
+print('Record the number contributing to each source combination')
+
+outcome_any_dementia <- "any_dementia"
+
+df_any[nrow(df_any)+1,] <- c(outcome_any_dementia,
+                             only_snomed = nrow(tmp_any %>% filter(snomed_contributing==T)),
+                             only_hes = nrow(tmp_any %>% filter(hes_contributing==T)),
+                             only_death = nrow(tmp_any %>% filter(death_contributing==T)),
+                             snomed_hes = nrow(tmp_any %>% filter(snomed_hes_contributing==T)),
+                             snomed_death = nrow(tmp_any %>% filter(snomed_death_contributing==T)),
+                             hes_death = nrow(tmp_any %>% filter(hes_death_contributing==T)),
+                             snomed_hes_death = nrow(tmp_any %>% filter(snomed_hes_death_contributing==T)),
+                             total_snomed = nrow(tmp_any %>% filter(!is.na(snomed_contributing))), 
+                             total_hes = nrow(tmp_any %>% filter(!is.na(hes_contributing))), 
+                             total_death = nrow(tmp_any %>% filter(!is.na(death_contributing))), 
+                             total = nrow(tmp_any), 
+                             error = "")
+
+
+# bind data frames -------------------------------------------------------------
+df <- rbind(df, df_any)
+
+# remove temporary data frame --------------------------------------------------
+rm(df_any, tmp_any, venn_any)
 
 # Record cohort ----------------------------------------------------------------
 print('Record cohort')
 
 df$cohort <- cohort
 
-# Save Venn data -----------------------------------------------------------------
+# Save Venn data ---------------------------------------------------------------
 print('Save Venn data')
 
 write.csv(df, paste0("output/venn_",cohort,".csv"), row.names = FALSE)
@@ -250,17 +337,8 @@ df[,setdiff(colnames(df),c("outcome"))] <- lapply(df[,setdiff(colnames(df),c("ou
 
 # Rename columns (output redaction) --------------------------------------------
 
-names(df)[names(df) == "only_snomed"] <- "only_snomed_midpoint6"
-names(df)[names(df) == "only_hes"] <- "only_hes_midpoint6"
-names(df)[names(df) == "only_death"] <- "only_death_midpoint6"
-names(df)[names(df) == "snomed_hes"] <- "snomed_hes_midpoint6"
-names(df)[names(df) == "snomed_death"] <- "snomed_death_midpoint6"
-names(df)[names(df) == "hes_death"] <- "hes_death_midpoint6"
-names(df)[names(df) == "snomed_hes_death"] <- "snomed_hes_death_midpoint6"
-names(df)[names(df) == "total_snomed"] <- "total_snomed_midpoint6"
-names(df)[names(df) == "total_hes"] <- "total_hes_midpoint6"
-names(df)[names(df) == "total_death"] <- "total_death_midpoint6"
-names(df)[names(df) == "total"] <- "total_midpoint6_derived"
+colnames(df)[2:12] <- paste(colnames(df)[2:12], "midpoint6", sep = "_")
+names(df)[names(df) == "total_midpoint6"] <- "total_midpoint6_derived"
 
 # Save rounded Venn data -------------------------------------------------------
 print('Save rounded Venn data')
