@@ -16,8 +16,7 @@ source("analysis/utility.R")
 # List files to be combined ----------------------------------------------------
 print('List files to be combined')
 
-files <- list.files(path = "output/", pattern = "stata_make_model_input-cohort_.*\\.txt$")
-#files <- list.files(path = "output/", pattern = "ready-cohort_.*\\.txt$")
+files <- list.files(path = "output/", pattern = "ready-cohort_.*\\.txt$")
 
 # Create empty master data frame -----------------------------------------------
 print('Create empty master data frame')

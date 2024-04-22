@@ -23,49 +23,24 @@ cohorts <- unique(active_analyses$cohort)
 
 # Remove fail models
 run_stata <- c(
-  # "cohort_prevax-main-any_dementia",
-  # "cohort_vax-main-any_dementia",
-  # "cohort_unvax-main-any_dementia",
+  "cohort_prevax-main-any_dementia",
+  "cohort_vax-main-any_dementia",
+  "cohort_unvax-main-any_dementia",
   "cohort_prevax-main-vascular_dementia",
   "cohort_vax-main-vascular_dementia",
   "cohort_prevax-main-rem_sleep_disorder",
   "cohort_vax-main-rem_sleep_disorder",
   "cohort_unvax-main-rem_sleep_disorder",
-  "cohort_vax-main-motor_neurone_disease",
   "cohort_prevax-main-parkinson_disease",
   "cohort_vax-sub_covid_hospitalised-vascular_dementia", 
   "cohort_vax-sub_covid_hospitalised-rem_sleep_disorder", 
   "cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder", 
   "cohort_prevax-sub_covid_hospitalised-vascular_dementia", 
   "cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder", 
-  #"cohort_prevax-sub_covid_hospitalised-any_dementia", 
+  "cohort_prevax-sub_covid_hospitalised-any_dementia", 
   "cohort_prevax-sub_covid_hospitalised-multiple_sclerosis", 
-  "cohort_prevax-sub_covid_hospitalised-parkinson_disease"#, 
-  # "cohort_unvax-sub_covid_hospitalised-any_dementia"
-  )#, 
-# "cohort_unvax-sub_covid_history-lewy_body_dementia",
-# "cohort_vax-sub_age_18_39-vascular_dementia", 
-# "cohort_vax-sub_age_18_39-lewy_body_dementia", 
-# "cohort_unvax-sub_age_18_39-lewy_body_dementia", 
-# "cohort_prevax-sub_age_18_39-lewy_body_dementia", 
-# "cohort_unvax-sub_age_18_39-alzheimer_disease",
-# "cohort_unvax-sub_age_40_64-lewy_body_dementia", 
-# "cohort_unvax-sub_age_65_84-rem_sleep_disorder",
-# "cohort_prevax-sub_age_65_84-multiple_sclerosis", 
-# "cohort_unvax-sub_ethnicity_black-lewy_body_dementia",
-# "cohort_vax-sub_ethnicity_mixed-lewy_body_dementia",
-# "cohort_unvax-sub_ethnicity_mixed-motor_neurone_disease", 
-# "cohort_unvax-sub_ethnicity_mixed-lewy_body_dementia",
-# "cohort_unvax-sub_ethnicity_other-lewy_body_dementia", 
-# "cohort_unvax-sub_ethnicity_other-motor_neurone_disease", 
-# "cohort_prevax-sub_history_cognitive_impairment_false-any_dementia", 
-# "cohort_vax-sub_history_parkinson_risk_false-parkinson_disease", 
-# "cohort_vax-sub_history_cognitive_impairment_false-any_dementia", 
-# "cohort_vax-sub_history_cognitive_impairment_true-any_dementia", 
-# "cohort_unvax-sub_history_cognitive_impairment_false-any_dementia", 
-# "cohort_prevax-sub_history_cognitive_impairment_true-any_dementia", 
-# "cohort_prevax-sub_history_parkinson_risk_false-parkinson_disease",
-# "cohort_unvax-sub_bin_high_vascular_risk_false-lewy_body_dementia")
+  "cohort_prevax-sub_covid_hospitalised-parkinson_disease", 
+  "cohort_unvax-sub_covid_hospitalised-any_dementia")
 
 stata <- active_analyses[active_analyses$name %in% run_stata,]
 stata$save_analysis_ready <- TRUE
@@ -287,7 +262,7 @@ apply_stata_model_function <- function(name, cohort, analysis, ipw, strata,
                                        covariate_threshold, age_spline){
   splice(
     action(
-      name = glue("ready-{name}"),#stata_make_model_input
+      name = glue("ready-{name}"),
       run = glue("cox-ipw:v0.0.30 --df_input=model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-{name}.csv"),
       needs = list(glue("make_model_input-{name}")),
       highly_sensitive = list(
@@ -295,12 +270,11 @@ apply_stata_model_function <- function(name, cohort, analysis, ipw, strata,
     ),
     action(
       name = glue("stata_cox_ipw-{name}"),
-      run = glue("stata-mp:latest analysis/stata/cox_model.do ready-{name}"),# ready-{name}TRUE TRUE"),
+      run = glue("stata-mp:latest analysis/stata/cox_model.do ready-{name}"),
       needs = list(glue("ready-{name}")),
       moderately_sensitive = list(
         medianfup = glue("output/ready-{name}_median_fup.csv"),
         stata_output = glue("output/ready-{name}_cox_model.txt")
-        #stata_output = glue("output/stata_model_output-{name}.txt") 
       )
     )
   )
@@ -437,8 +411,7 @@ actions_list <- splice(
   action(
     name = "count_stage1_variables",
     run = "r:latest analysis/descriptives/second_input_counts.R",
-    needs = list(#"generate_study_population_prevax","generate_study_population_unvax","generate_study_population_vax","preprocess_data_prevax","preprocess_data_unvax","preprocess_data_vax",
-                 "stage1_data_cleaning_prevax","stage1_data_cleaning_unvax","stage1_data_cleaning_vax"),
+    needs = list("stage1_data_cleaning_prevax","stage1_data_cleaning_unvax","stage1_data_cleaning_vax"),
     moderately_sensitive=list(
       counts = glue("output/study_counts_stage1clean.txt"),
       vax_summary = glue("output/describe_stage1clean_vax.txt"),
@@ -597,16 +570,14 @@ actions_list <- splice(
   action(
     name = "make_model_output",
     run = "r:latest analysis/model/make_model_output.R",
-    needs = as.list(paste0("cox_ipw-",active_analyses$name)),
-    #needs = as.list(paste0("cox_ipw-",active_analyses[!active_analyses$name %in% run_stata,]$name)),
-    #needs = as.list(paste0("cox_ipw-",active_analyses[active_analyses$analysis=="main",]$name)),
+    needs = as.list(paste0("cox_ipw-",active_analyses[active_analyses$analysis=="main",]$name)),
     moderately_sensitive = list(
       model_output = glue("output/model_output.csv"),
       model_output_midpoint6 = glue("output/model_output_midpoint6.csv")
     )
   ),
   
-  # comment ("Stata models"), STATA ANALYSES
+  # comment ("Stata models"), Stata Analyses
   
   action(
     name = "make_stata_model_output",
