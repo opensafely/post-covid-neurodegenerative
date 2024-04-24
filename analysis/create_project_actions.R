@@ -32,14 +32,14 @@ run_stata <- c(
   "cohort_vax-main-rem_sleep_disorder",
   "cohort_unvax-main-rem_sleep_disorder",
   "cohort_prevax-main-parkinson_disease",
-  "cohort_vax-sub_covid_hospitalised-vascular_dementia", 
-  "cohort_vax-sub_covid_hospitalised-rem_sleep_disorder", 
-  "cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder", 
-  "cohort_prevax-sub_covid_hospitalised-vascular_dementia", 
-  "cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder", 
-  "cohort_prevax-sub_covid_hospitalised-any_dementia", 
-  "cohort_prevax-sub_covid_hospitalised-multiple_sclerosis", 
-  "cohort_prevax-sub_covid_hospitalised-parkinson_disease", 
+  "cohort_vax-sub_covid_hospitalised-vascular_dementia",
+  "cohort_vax-sub_covid_hospitalised-rem_sleep_disorder",
+  "cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder",
+  "cohort_prevax-sub_covid_hospitalised-vascular_dementia",
+  "cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder",
+  "cohort_prevax-sub_covid_hospitalised-any_dementia",
+  "cohort_prevax-sub_covid_hospitalised-multiple_sclerosis",
+  "cohort_prevax-sub_covid_hospitalised-parkinson_disease",
   "cohort_unvax-sub_covid_hospitalised-any_dementia")
 
 stata <- active_analyses[active_analyses$name %in% run_stata,]
@@ -259,7 +259,7 @@ apply_stata_model_function <- function(name, cohort, analysis, ipw, strata,
                                        cox_start, cox_stop, study_start, study_stop,
                                        cut_points, controls_per_case,
                                        total_event_threshold, episode_event_threshold,
-                                       covariate_threshold, age_spline){
+                                       covariate_threshold, age_spline, day0){
   splice(
     action(
       name = glue("ready-{name}"),
@@ -271,6 +271,7 @@ apply_stata_model_function <- function(name, cohort, analysis, ipw, strata,
     action(
       name = glue("stata_cox_ipw-{name}"),
       run = glue("stata-mp:latest analysis/stata/cox_model.do ready-{name}"),
+      arguments = c(name, day0),
       needs = list(glue("ready-{name}")),
       moderately_sensitive = list(
         medianfup = glue("output/ready-{name}_median_fup.csv"),
@@ -541,7 +542,8 @@ actions_list <- splice(
                                                          total_event_threshold = stata$total_event_threshold[x],
                                                          episode_event_threshold = stata$episode_event_threshold[x],
                                                          covariate_threshold = stata$covariate_threshold[x],
-                                                         age_spline = stata$age_spline[x])), recursive = FALSE
+                                                         age_spline = stata$age_spline[x],
+                                                         day0 = stata$day0[x])), recursive = FALSE
     )
   ),
 
@@ -570,22 +572,11 @@ actions_list <- splice(
   action(
     name = "make_model_output",
     run = "r:latest analysis/model/make_model_output.R",
-    needs = as.list(paste0("cox_ipw-",active_analyses[active_analyses$analysis=="main",]$name)),
+    needs = as.list(c(paste0("cox_ipw-",setdiff(active_analyses$name,stata$name)),
+                      paste0("stata_cox_ipw-",stata$name))),
     moderately_sensitive = list(
       model_output = glue("output/model_output.csv"),
       model_output_midpoint6 = glue("output/model_output_midpoint6.csv")
-    )
-  ),
-  
-  # comment ("Stata models"), Stata Analyses
-  
-  action(
-    name = "make_stata_model_output",
-    run = "r:latest analysis/stata/make_stata_model_output.R",
-    needs = as.list(paste0("stata_cox_ipw-",stata$name)),
-    moderately_sensitive = list(
-      stata_model_output = glue("output/stata_model_output.csv"),
-      stata_model_output_midpoint6 = glue("output/stata_model_output_midpoint6.csv")
     )
   ),
   

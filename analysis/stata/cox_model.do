@@ -9,9 +9,9 @@
 	   Other output:			logfiles
    -----------------------------------------------------------------------------*/
 
-local cpf "`1'"
+local name "`1'"
 local day0 "`2'"
-local extf "`3'"
+* local extf "`3'"
 
 * Set file paths
 
@@ -24,11 +24,11 @@ adopath + "$projectdir/analysis/stata/extra_ados"
 
 * unzip the input data 
 
-shell gunzip "./output/`cpf'.csv.gz"
+shell gunzip "./output/`name'.csv.gz"
 
 * Import and describe data
 
-import delim using "./output/`cpf'.csv", clear
+import delim using "./output/`name'.csv", clear
 
 
 des
@@ -44,7 +44,7 @@ rename cov_num_age age
 rename cov_cat_region region
 
 * Generate pre vaccination cohort dummy variable
-local prevax_cohort = regexm("`cpf'", "_pre")
+local prevax_cohort = regexm("`name'", "_pre")
 display "`prevax_cohort'"
 
 * Replace NA with missing value that Stata recognises
@@ -170,8 +170,8 @@ tab time outcome_status
 di "Total follow-up in days: " fup_total
 bysort time: summarize(fup), detail
 
-* Check if `cpf` contains "sub_sex"
-if regexm("`cpf'", "sub_sex") {
+* Check if `name` contains "sub_sex"
+if regexm("`name'", "sub_sex") {
 stcox days*  age_spline1 age_spline2, strata(region) vce(r)
 }
 else{
@@ -182,7 +182,7 @@ est store min, title(Age_Sex)
 stcox days* age_spline1 age_spline2 i.cov_cat_* cov_num_* cov_bin_*, strata(region) vce(r)
 est store max, title(Maximal)
 
-estout * using "output/`cpf'_cox_model.txt", cells("b se t ci_l ci_u p") stats(risk N_fail N_sub N N_clust) replace 
+estout * using "output/`name'_cox_model.txt", cells("b se t ci_l ci_u p") stats(risk N_fail N_sub N N_clust) replace 
 
 * Calculate median follow-up among individuals with the outcome
 
@@ -233,4 +233,4 @@ egen events = count(patient_id), by(term)
 keep term median_tte events
 duplicates drop
 
-export delimited using "output/`cpf'_median_fup.csv", replace
+export delimited using "output/`name'_median_fup.csv", replace

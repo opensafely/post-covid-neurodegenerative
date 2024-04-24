@@ -17501,6 +17501,7 @@ actions:
 
   stata_cox_ipw-cohort_prevax-main-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_prevax-main-any_dementia
+      cohort_prevax-main-any_dementia
     needs:
     - ready-cohort_prevax-main-any_dementia
     outputs:
@@ -17524,6 +17525,7 @@ actions:
 
   stata_cox_ipw-cohort_prevax-main-parkinson_disease:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_prevax-main-parkinson_disease
+      cohort_prevax-main-parkinson_disease
     needs:
     - ready-cohort_prevax-main-parkinson_disease
     outputs:
@@ -17547,6 +17549,7 @@ actions:
 
   stata_cox_ipw-cohort_prevax-main-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_prevax-main-rem_sleep_disorder
+      cohort_prevax-main-rem_sleep_disorder
     needs:
     - ready-cohort_prevax-main-rem_sleep_disorder
     outputs:
@@ -17570,6 +17573,7 @@ actions:
 
   stata_cox_ipw-cohort_prevax-main-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_prevax-main-vascular_dementia
+      cohort_prevax-main-vascular_dementia
     needs:
     - ready-cohort_prevax-main-vascular_dementia
     outputs:
@@ -17593,6 +17597,7 @@ actions:
 
   stata_cox_ipw-cohort_unvax-main-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_unvax-main-any_dementia
+      cohort_unvax-main-any_dementia
     needs:
     - ready-cohort_unvax-main-any_dementia
     outputs:
@@ -17616,6 +17621,7 @@ actions:
 
   stata_cox_ipw-cohort_unvax-main-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_unvax-main-rem_sleep_disorder
+      cohort_unvax-main-rem_sleep_disorder
     needs:
     - ready-cohort_unvax-main-rem_sleep_disorder
     outputs:
@@ -17639,6 +17645,7 @@ actions:
 
   stata_cox_ipw-cohort_vax-main-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_vax-main-any_dementia
+      cohort_vax-main-any_dementia
     needs:
     - ready-cohort_vax-main-any_dementia
     outputs:
@@ -17662,6 +17669,7 @@ actions:
 
   stata_cox_ipw-cohort_vax-main-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_vax-main-rem_sleep_disorder
+      cohort_vax-main-rem_sleep_disorder
     needs:
     - ready-cohort_vax-main-rem_sleep_disorder
     outputs:
@@ -17685,6 +17693,7 @@ actions:
 
   stata_cox_ipw-cohort_vax-main-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_vax-main-vascular_dementia
+      cohort_vax-main-vascular_dementia
     needs:
     - ready-cohort_vax-main-vascular_dementia
     outputs:
@@ -17708,6 +17717,7 @@ actions:
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_prevax-sub_covid_hospitalised-any_dementia
+      cohort_prevax-sub_covid_hospitalised-any_dementia
     needs:
     - ready-cohort_prevax-sub_covid_hospitalised-any_dementia
     outputs:
@@ -17731,6 +17741,7 @@ actions:
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis
+      cohort_prevax-sub_covid_hospitalised-multiple_sclerosis
     needs:
     - ready-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis
     outputs:
@@ -17754,6 +17765,7 @@ actions:
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-parkinson_disease:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_prevax-sub_covid_hospitalised-parkinson_disease
+      cohort_prevax-sub_covid_hospitalised-parkinson_disease
     needs:
     - ready-cohort_prevax-sub_covid_hospitalised-parkinson_disease
     outputs:
@@ -17777,6 +17789,7 @@ actions:
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder
+      cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder
     needs:
     - ready-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder
     outputs:
@@ -17800,6 +17813,7 @@ actions:
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_prevax-sub_covid_hospitalised-vascular_dementia
+      cohort_prevax-sub_covid_hospitalised-vascular_dementia
     needs:
     - ready-cohort_prevax-sub_covid_hospitalised-vascular_dementia
     outputs:
@@ -17823,6 +17837,7 @@ actions:
 
   stata_cox_ipw-cohort_unvax-sub_covid_hospitalised-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_unvax-sub_covid_hospitalised-any_dementia
+      cohort_unvax-sub_covid_hospitalised-any_dementia
     needs:
     - ready-cohort_unvax-sub_covid_hospitalised-any_dementia
     outputs:
@@ -17846,6 +17861,7 @@ actions:
 
   stata_cox_ipw-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
+      cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
     needs:
     - ready-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
     outputs:
@@ -17869,6 +17885,7 @@ actions:
 
   stata_cox_ipw-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
+      cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
     needs:
     - ready-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
     outputs:
@@ -17892,6 +17909,7 @@ actions:
 
   stata_cox_ipw-cohort_vax-sub_covid_hospitalised-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do ready-cohort_vax-sub_covid_hospitalised-vascular_dementia
+      cohort_vax-sub_covid_hospitalised-vascular_dementia
     needs:
     - ready-cohort_vax-sub_covid_hospitalised-vascular_dementia
     outputs:
@@ -18531,46 +18549,519 @@ actions:
     run: r:latest analysis/model/make_model_output.R
     needs:
     - cox_ipw-cohort_prevax-main-alzheimer_disease
-    - cox_ipw-cohort_prevax-main-any_dementia
     - cox_ipw-cohort_prevax-main-cognitive_impairment_symptoms
     - cox_ipw-cohort_prevax-main-lewy_body_dementia
     - cox_ipw-cohort_prevax-main-migraine
     - cox_ipw-cohort_prevax-main-motor_neurone_disease
     - cox_ipw-cohort_prevax-main-multiple_sclerosis
-    - cox_ipw-cohort_prevax-main-parkinson_disease
-    - cox_ipw-cohort_prevax-main-rem_sleep_disorder
     - cox_ipw-cohort_prevax-main-restless_leg_syndrome
-    - cox_ipw-cohort_prevax-main-vascular_dementia
     - cox_ipw-cohort_unvax-main-alzheimer_disease
-    - cox_ipw-cohort_unvax-main-any_dementia
     - cox_ipw-cohort_unvax-main-cognitive_impairment_symptoms
     - cox_ipw-cohort_unvax-main-lewy_body_dementia
     - cox_ipw-cohort_unvax-main-migraine
     - cox_ipw-cohort_unvax-main-motor_neurone_disease
     - cox_ipw-cohort_unvax-main-multiple_sclerosis
     - cox_ipw-cohort_unvax-main-parkinson_disease
-    - cox_ipw-cohort_unvax-main-rem_sleep_disorder
     - cox_ipw-cohort_unvax-main-restless_leg_syndrome
     - cox_ipw-cohort_unvax-main-vascular_dementia
     - cox_ipw-cohort_vax-main-alzheimer_disease
-    - cox_ipw-cohort_vax-main-any_dementia
     - cox_ipw-cohort_vax-main-cognitive_impairment_symptoms
     - cox_ipw-cohort_vax-main-lewy_body_dementia
     - cox_ipw-cohort_vax-main-migraine
     - cox_ipw-cohort_vax-main-motor_neurone_disease
     - cox_ipw-cohort_vax-main-multiple_sclerosis
     - cox_ipw-cohort_vax-main-parkinson_disease
-    - cox_ipw-cohort_vax-main-rem_sleep_disorder
     - cox_ipw-cohort_vax-main-restless_leg_syndrome
-    - cox_ipw-cohort_vax-main-vascular_dementia
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output.csv
-        model_output_midpoint6: output/model_output_midpoint6.csv
-
-  make_stata_model_output:
-    run: r:latest analysis/stata/make_stata_model_output.R
-    needs:
+    - cox_ipw-cohort_prevax-sub_age_18_39-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_age_18_39-any_dementia
+    - cox_ipw-cohort_prevax-sub_age_18_39-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_age_18_39-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_age_18_39-migraine
+    - cox_ipw-cohort_prevax-sub_age_18_39-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_age_18_39-multiple_sclerosis
+    - cox_ipw-cohort_prevax-sub_age_18_39-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_age_18_39-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-sub_age_18_39-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_age_18_39-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_age_18_39-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_age_18_39-any_dementia
+    - cox_ipw-cohort_unvax-sub_age_18_39-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_age_18_39-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_age_18_39-migraine
+    - cox_ipw-cohort_unvax-sub_age_18_39-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_age_18_39-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_age_18_39-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_age_18_39-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_age_18_39-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_age_18_39-vascular_dementia
+    - cox_ipw-cohort_vax-sub_age_18_39-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_age_18_39-any_dementia
+    - cox_ipw-cohort_vax-sub_age_18_39-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_age_18_39-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_age_18_39-migraine
+    - cox_ipw-cohort_vax-sub_age_18_39-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_age_18_39-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_age_18_39-parkinson_disease
+    - cox_ipw-cohort_vax-sub_age_18_39-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_age_18_39-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_age_18_39-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_age_40_64-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_age_40_64-any_dementia
+    - cox_ipw-cohort_prevax-sub_age_40_64-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_age_40_64-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_age_40_64-migraine
+    - cox_ipw-cohort_prevax-sub_age_40_64-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_age_40_64-multiple_sclerosis
+    - cox_ipw-cohort_prevax-sub_age_40_64-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_age_40_64-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-sub_age_40_64-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_age_40_64-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_age_40_64-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_age_40_64-any_dementia
+    - cox_ipw-cohort_unvax-sub_age_40_64-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_age_40_64-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_age_40_64-migraine
+    - cox_ipw-cohort_unvax-sub_age_40_64-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_age_40_64-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_age_40_64-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_age_40_64-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_age_40_64-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_age_40_64-vascular_dementia
+    - cox_ipw-cohort_vax-sub_age_40_64-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_age_40_64-any_dementia
+    - cox_ipw-cohort_vax-sub_age_40_64-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_age_40_64-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_age_40_64-migraine
+    - cox_ipw-cohort_vax-sub_age_40_64-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_age_40_64-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_age_40_64-parkinson_disease
+    - cox_ipw-cohort_vax-sub_age_40_64-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_age_40_64-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_age_40_64-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_age_65_84-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_age_65_84-any_dementia
+    - cox_ipw-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_age_65_84-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_age_65_84-migraine
+    - cox_ipw-cohort_prevax-sub_age_65_84-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_age_65_84-multiple_sclerosis
+    - cox_ipw-cohort_prevax-sub_age_65_84-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_age_65_84-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-sub_age_65_84-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_age_65_84-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_age_65_84-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_age_65_84-any_dementia
+    - cox_ipw-cohort_unvax-sub_age_65_84-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_age_65_84-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_age_65_84-migraine
+    - cox_ipw-cohort_unvax-sub_age_65_84-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_age_65_84-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_age_65_84-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_age_65_84-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_age_65_84-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_age_65_84-vascular_dementia
+    - cox_ipw-cohort_vax-sub_age_65_84-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_age_65_84-any_dementia
+    - cox_ipw-cohort_vax-sub_age_65_84-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_age_65_84-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_age_65_84-migraine
+    - cox_ipw-cohort_vax-sub_age_65_84-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_age_65_84-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_age_65_84-parkinson_disease
+    - cox_ipw-cohort_vax-sub_age_65_84-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_age_65_84-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_age_65_84-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_age_85_110-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_age_85_110-any_dementia
+    - cox_ipw-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_age_85_110-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_age_85_110-migraine
+    - cox_ipw-cohort_prevax-sub_age_85_110-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_age_85_110-multiple_sclerosis
+    - cox_ipw-cohort_prevax-sub_age_85_110-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_age_85_110-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-sub_age_85_110-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_age_85_110-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_age_85_110-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_age_85_110-any_dementia
+    - cox_ipw-cohort_unvax-sub_age_85_110-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_age_85_110-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_age_85_110-migraine
+    - cox_ipw-cohort_unvax-sub_age_85_110-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_age_85_110-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_age_85_110-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_age_85_110-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_age_85_110-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_age_85_110-vascular_dementia
+    - cox_ipw-cohort_vax-sub_age_85_110-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_age_85_110-any_dementia
+    - cox_ipw-cohort_vax-sub_age_85_110-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_age_85_110-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_age_85_110-migraine
+    - cox_ipw-cohort_vax-sub_age_85_110-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_age_85_110-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_age_85_110-parkinson_disease
+    - cox_ipw-cohort_vax-sub_age_85_110-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_age_85_110-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_age_85_110-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia
+    - cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_false-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_false-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_bin_high_vascular_risk_false-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_bin_high_vascular_risk_false-any_dementia
+    - cox_ipw-cohort_unvax-sub_bin_high_vascular_risk_false-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_bin_high_vascular_risk_false-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_bin_high_vascular_risk_false-vascular_dementia
+    - cox_ipw-cohort_vax-sub_bin_high_vascular_risk_false-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_bin_high_vascular_risk_false-any_dementia
+    - cox_ipw-cohort_vax-sub_bin_high_vascular_risk_false-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_bin_high_vascular_risk_false-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_bin_high_vascular_risk_false-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia
+    - cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_true-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_true-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_bin_high_vascular_risk_true-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia
+    - cox_ipw-cohort_unvax-sub_bin_high_vascular_risk_true-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_bin_high_vascular_risk_true-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_bin_high_vascular_risk_true-vascular_dementia
+    - cox_ipw-cohort_vax-sub_bin_high_vascular_risk_true-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_bin_high_vascular_risk_true-any_dementia
+    - cox_ipw-cohort_vax-sub_bin_high_vascular_risk_true-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_bin_high_vascular_risk_true-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_covid_history-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_covid_history-any_dementia
+    - cox_ipw-cohort_unvax-sub_covid_history-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_covid_history-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_covid_history-migraine
+    - cox_ipw-cohort_unvax-sub_covid_history-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_covid_history-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_covid_history-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_covid_history-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_covid_history-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_covid_history-vascular_dementia
+    - cox_ipw-cohort_vax-sub_covid_history-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_covid_history-any_dementia
+    - cox_ipw-cohort_vax-sub_covid_history-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_covid_history-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_covid_history-migraine
+    - cox_ipw-cohort_vax-sub_covid_history-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_covid_history-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_covid_history-parkinson_disease
+    - cox_ipw-cohort_vax-sub_covid_history-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_covid_history-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_covid_history-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_covid_hospitalised-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_covid_hospitalised-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_covid_hospitalised-migraine
+    - cox_ipw-cohort_prevax-sub_covid_hospitalised-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_covid_hospitalised-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_covid_hospitalised-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_covid_hospitalised-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_covid_hospitalised-migraine
+    - cox_ipw-cohort_unvax-sub_covid_hospitalised-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_covid_hospitalised-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_covid_hospitalised-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_covid_hospitalised-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_covid_hospitalised-vascular_dementia
+    - cox_ipw-cohort_vax-sub_covid_hospitalised-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_covid_hospitalised-any_dementia
+    - cox_ipw-cohort_vax-sub_covid_hospitalised-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_covid_hospitalised-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_covid_hospitalised-migraine
+    - cox_ipw-cohort_vax-sub_covid_hospitalised-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_covid_hospitalised-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease
+    - cox_ipw-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-any_dementia
+    - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-migraine
+    - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-multiple_sclerosis
+    - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-any_dementia
+    - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-migraine
+    - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-vascular_dementia
+    - cox_ipw-cohort_vax-sub_covid_nonhospitalised-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_covid_nonhospitalised-any_dementia
+    - cox_ipw-cohort_vax-sub_covid_nonhospitalised-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_covid_nonhospitalised-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_covid_nonhospitalised-migraine
+    - cox_ipw-cohort_vax-sub_covid_nonhospitalised-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_covid_nonhospitalised-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_covid_nonhospitalised-parkinson_disease
+    - cox_ipw-cohort_vax-sub_covid_nonhospitalised-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_covid_nonhospitalised-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_covid_nonhospitalised-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_asian-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_asian-any_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_ethnicity_asian-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_asian-migraine
+    - cox_ipw-cohort_prevax-sub_ethnicity_asian-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_asian-multiple_sclerosis
+    - cox_ipw-cohort_prevax-sub_ethnicity_asian-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-sub_ethnicity_asian-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_ethnicity_asian-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_asian-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_asian-any_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_asian-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_ethnicity_asian-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_asian-migraine
+    - cox_ipw-cohort_unvax-sub_ethnicity_asian-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_asian-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_ethnicity_asian-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_asian-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_ethnicity_asian-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_ethnicity_asian-vascular_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_asian-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_asian-any_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_asian-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_ethnicity_asian-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_asian-migraine
+    - cox_ipw-cohort_vax-sub_ethnicity_asian-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_asian-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_ethnicity_asian-parkinson_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_ethnicity_asian-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_ethnicity_asian-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_black-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_black-any_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_ethnicity_black-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_black-migraine
+    - cox_ipw-cohort_prevax-sub_ethnicity_black-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_black-multiple_sclerosis
+    - cox_ipw-cohort_prevax-sub_ethnicity_black-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-sub_ethnicity_black-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_ethnicity_black-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_black-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_black-any_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_black-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_ethnicity_black-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_black-migraine
+    - cox_ipw-cohort_unvax-sub_ethnicity_black-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_black-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_ethnicity_black-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_black-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_ethnicity_black-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_ethnicity_black-vascular_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_black-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_black-any_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_black-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_ethnicity_black-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_black-migraine
+    - cox_ipw-cohort_vax-sub_ethnicity_black-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_black-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_ethnicity_black-parkinson_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_black-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_ethnicity_black-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_ethnicity_black-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_mixed-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_mixed-any_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_mixed-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_ethnicity_mixed-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_mixed-migraine
+    - cox_ipw-cohort_prevax-sub_ethnicity_mixed-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_mixed-multiple_sclerosis
+    - cox_ipw-cohort_prevax-sub_ethnicity_mixed-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_mixed-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-sub_ethnicity_mixed-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_ethnicity_mixed-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_mixed-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_mixed-any_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_mixed-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_ethnicity_mixed-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_mixed-migraine
+    - cox_ipw-cohort_unvax-sub_ethnicity_mixed-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_mixed-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_ethnicity_mixed-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_mixed-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_ethnicity_mixed-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_ethnicity_mixed-vascular_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_mixed-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_mixed-any_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_mixed-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_ethnicity_mixed-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_mixed-migraine
+    - cox_ipw-cohort_vax-sub_ethnicity_mixed-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_mixed-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_ethnicity_mixed-parkinson_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_mixed-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_ethnicity_mixed-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_ethnicity_mixed-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_other-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_other-any_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_ethnicity_other-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_other-migraine
+    - cox_ipw-cohort_prevax-sub_ethnicity_other-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_other-multiple_sclerosis
+    - cox_ipw-cohort_prevax-sub_ethnicity_other-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-sub_ethnicity_other-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_ethnicity_other-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_other-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_other-any_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_other-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_ethnicity_other-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_other-migraine
+    - cox_ipw-cohort_unvax-sub_ethnicity_other-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_other-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_ethnicity_other-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_other-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_ethnicity_other-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_ethnicity_other-vascular_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_other-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_other-any_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_other-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_ethnicity_other-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_other-migraine
+    - cox_ipw-cohort_vax-sub_ethnicity_other-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_other-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_ethnicity_other-parkinson_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_other-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_ethnicity_other-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_ethnicity_other-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_white-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_white-any_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_white-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_ethnicity_white-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_ethnicity_white-migraine
+    - cox_ipw-cohort_prevax-sub_ethnicity_white-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_white-multiple_sclerosis
+    - cox_ipw-cohort_prevax-sub_ethnicity_white-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-sub_ethnicity_white-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_ethnicity_white-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_white-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_white-any_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_white-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_ethnicity_white-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_ethnicity_white-migraine
+    - cox_ipw-cohort_unvax-sub_ethnicity_white-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_white-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_ethnicity_white-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_ethnicity_white-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_ethnicity_white-vascular_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_white-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_white-any_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_white-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_ethnicity_white-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_ethnicity_white-migraine
+    - cox_ipw-cohort_vax-sub_ethnicity_white-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_white-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_ethnicity_white-parkinson_disease
+    - cox_ipw-cohort_vax-sub_ethnicity_white-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_ethnicity_white-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_ethnicity_white-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_history_cognitive_impairment_false-any_dementia
+    - cox_ipw-cohort_unvax-sub_history_cognitive_impairment_false-any_dementia
+    - cox_ipw-cohort_vax-sub_history_cognitive_impairment_false-any_dementia
+    - cox_ipw-cohort_prevax-sub_history_cognitive_impairment_true-any_dementia
+    - cox_ipw-cohort_unvax-sub_history_cognitive_impairment_true-any_dementia
+    - cox_ipw-cohort_vax-sub_history_cognitive_impairment_true-any_dementia
+    - cox_ipw-cohort_prevax-sub_history_parkinson_false-any_dementia
+    - cox_ipw-cohort_unvax-sub_history_parkinson_false-any_dementia
+    - cox_ipw-cohort_vax-sub_history_parkinson_false-any_dementia
+    - cox_ipw-cohort_prevax-sub_history_parkinson_risk_false-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_history_parkinson_risk_false-parkinson_disease
+    - cox_ipw-cohort_vax-sub_history_parkinson_risk_false-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_history_parkinson_risk_true-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_history_parkinson_risk_true-parkinson_disease
+    - cox_ipw-cohort_vax-sub_history_parkinson_risk_true-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_history_parkinson_true-any_dementia
+    - cox_ipw-cohort_unvax-sub_history_parkinson_true-any_dementia
+    - cox_ipw-cohort_vax-sub_history_parkinson_true-any_dementia
+    - cox_ipw-cohort_prevax-sub_sex_female-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_sex_female-any_dementia
+    - cox_ipw-cohort_prevax-sub_sex_female-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_sex_female-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_sex_female-migraine
+    - cox_ipw-cohort_prevax-sub_sex_female-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_sex_female-multiple_sclerosis
+    - cox_ipw-cohort_prevax-sub_sex_female-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_sex_female-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-sub_sex_female-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_sex_female-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_sex_female-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_sex_female-any_dementia
+    - cox_ipw-cohort_unvax-sub_sex_female-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_sex_female-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_sex_female-migraine
+    - cox_ipw-cohort_unvax-sub_sex_female-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_sex_female-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_sex_female-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_sex_female-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_sex_female-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_sex_female-vascular_dementia
+    - cox_ipw-cohort_vax-sub_sex_female-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_sex_female-any_dementia
+    - cox_ipw-cohort_vax-sub_sex_female-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_sex_female-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_sex_female-migraine
+    - cox_ipw-cohort_vax-sub_sex_female-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_sex_female-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_sex_female-parkinson_disease
+    - cox_ipw-cohort_vax-sub_sex_female-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_sex_female-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_sex_female-vascular_dementia
+    - cox_ipw-cohort_prevax-sub_sex_male-alzheimer_disease
+    - cox_ipw-cohort_prevax-sub_sex_male-any_dementia
+    - cox_ipw-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms
+    - cox_ipw-cohort_prevax-sub_sex_male-lewy_body_dementia
+    - cox_ipw-cohort_prevax-sub_sex_male-migraine
+    - cox_ipw-cohort_prevax-sub_sex_male-motor_neurone_disease
+    - cox_ipw-cohort_prevax-sub_sex_male-multiple_sclerosis
+    - cox_ipw-cohort_prevax-sub_sex_male-parkinson_disease
+    - cox_ipw-cohort_prevax-sub_sex_male-rem_sleep_disorder
+    - cox_ipw-cohort_prevax-sub_sex_male-restless_leg_syndrome
+    - cox_ipw-cohort_prevax-sub_sex_male-vascular_dementia
+    - cox_ipw-cohort_unvax-sub_sex_male-alzheimer_disease
+    - cox_ipw-cohort_unvax-sub_sex_male-any_dementia
+    - cox_ipw-cohort_unvax-sub_sex_male-cognitive_impairment_symptoms
+    - cox_ipw-cohort_unvax-sub_sex_male-lewy_body_dementia
+    - cox_ipw-cohort_unvax-sub_sex_male-migraine
+    - cox_ipw-cohort_unvax-sub_sex_male-motor_neurone_disease
+    - cox_ipw-cohort_unvax-sub_sex_male-multiple_sclerosis
+    - cox_ipw-cohort_unvax-sub_sex_male-parkinson_disease
+    - cox_ipw-cohort_unvax-sub_sex_male-rem_sleep_disorder
+    - cox_ipw-cohort_unvax-sub_sex_male-restless_leg_syndrome
+    - cox_ipw-cohort_unvax-sub_sex_male-vascular_dementia
+    - cox_ipw-cohort_vax-sub_sex_male-alzheimer_disease
+    - cox_ipw-cohort_vax-sub_sex_male-any_dementia
+    - cox_ipw-cohort_vax-sub_sex_male-cognitive_impairment_symptoms
+    - cox_ipw-cohort_vax-sub_sex_male-lewy_body_dementia
+    - cox_ipw-cohort_vax-sub_sex_male-migraine
+    - cox_ipw-cohort_vax-sub_sex_male-motor_neurone_disease
+    - cox_ipw-cohort_vax-sub_sex_male-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_sex_male-parkinson_disease
+    - cox_ipw-cohort_vax-sub_sex_male-rem_sleep_disorder
+    - cox_ipw-cohort_vax-sub_sex_male-restless_leg_syndrome
+    - cox_ipw-cohort_vax-sub_sex_male-vascular_dementia
     - stata_cox_ipw-cohort_prevax-main-any_dementia
     - stata_cox_ipw-cohort_prevax-main-parkinson_disease
     - stata_cox_ipw-cohort_prevax-main-rem_sleep_disorder
@@ -18591,8 +19082,8 @@ actions:
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-vascular_dementia
     outputs:
       moderately_sensitive:
-        stata_model_output: output/stata_model_output.csv
-        stata_model_output_midpoint6: output/stata_model_output_midpoint6.csv
+        model_output: output/model_output.csv
+        model_output_midpoint6: output/model_output_midpoint6.csv
 
   median_iqr_age:
     run: r:latest analysis/median_iqr_age.R
