@@ -21,6 +21,39 @@ active_analyses <- active_analyses[order(active_analyses$analysis,active_analyse
 cohorts <- unique(active_analyses$cohort)
 #names <- unique(active_analyses$names)
 
+failed_models <- c("cohort_prevax-sub_covid_hospitalised-parkinson_disease",
+                   "cohort_prevax-sub_covid_hospitalised-vascular_dementia",
+                   "cohort_vax-sub_covid_hospitalised-vascular_dementia",
+                   "cohort_prevax-sub_covid_hospitalised-any_dementia",
+                   "cohort_unvax-sub_covid_hospitalised-any_dementia",
+                   "cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder", 
+                   "cohort_vax-sub_covid_hospitalised-rem_sleep_disorder", 
+                   "cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder", 
+                   "cohort_prevax-sub_covid_hospitalised-multiple_sclerosis", 
+                   "cohort_unvax-sub_age_18_39-alzheimer_dementia", 
+                   "cohort_vax-sub_age_18_39-vascular_dementia", 
+                   "cohort_vax-sub_age_18_39-lewy_body_dementia", 
+                   "cohort_unvax-sub_age_18_39-lewy_body_dementia", 
+                   "cohort_prevax-sub_age_18_39-lewy_body_dementia", 
+                   "cohort_unvax-sub_age_18_39-alzheimer_disease",
+                   "cohort_unvax-sub_age_40_64-lewy_body_dementia", 
+                   "cohort_unvax-sub_age_65_84-rem_sleep_disorder",
+                   "cohort_prevax-sub_age_65_84-multiple_sclerosis", 
+                   "cohort_unvax-sub_ethnicity_black-lewy_body_dementia",
+                   "cohort_vax-sub_ethnicity_mixed-lewy_body_dementia",
+                   "cohort_unvax-sub_ethnicity_mixed-lewy_body_dementia",
+                   "cohort_unvax-sub_ethnicity_mixed-motor_neurone_disease", 
+                   "cohort_unvax-sub_ethnicity_other-lewy_body_dementia", 
+                   "cohort_unvax-sub_ethnicity_other-motor_neurone_disease", 
+                   "cohort_prevax-sub_history_cognitive_impairment_true-any_dementia", 
+                   "cohort_vax-sub_history_cognitive_impairment_true-any_dementia", 
+                   "cohort_prevax-sub_history_cognitive_impairment_false-any_dementia", 
+                   "cohort_vax-sub_history_cognitive_impairment_false-any_dementia", 
+                   "cohort_unvax-sub_history_cognitive_impairment_false-any_dementia", 
+                   "cohort_unvax-sub_bin_high_vascular_risk_false-lewy_body_dementia",
+                   "cohort_vax-sub_history_parkinson_risk_false-parkinson_disease", 
+                   "cohort_prevax-sub_history_parkinson_risk_false-parkinson_disease")
+
 # Determine which outputs are ready --------------------------------------------
 
 # success <- readxl::read_excel("../../OneDrive - University of Bristol/Projects/post-covid-outcome-tracker.xlsx",
@@ -489,7 +522,7 @@ actions_list <- splice(
   action(
     name = "make_model_output",
     run = "r:latest analysis/model/make_model_output.R",
-    needs = as.list(paste0("cox_ipw-",active_analyses[active_analyses$analysis=="main",]$name)),
+    needs = as.list(paste0("cox_ipw-",active_analyses[!active_analyses$name %in% failed_models,]$name)),
     moderately_sensitive = list(
       model_output = glue("output/model_output.csv"),
       model_output_midpoint6 = glue("output/model_output_midpoint6.csv")
