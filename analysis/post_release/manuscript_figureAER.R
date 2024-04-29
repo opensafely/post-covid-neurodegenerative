@@ -6,19 +6,6 @@ df <- read.csv("output/post_release/lifetables_compiled.csv")
 # Filter data ------------------------------------------------------------------
 print("Filter data")
 
-# Neurodegenerative outcomes
-#4
-# df <- df[df$outcome %in% c("alzheimer_disease", "any_dementia", "cognitive_impairment", "migraine", "multiple_sclerosis", "rem_sleep_disorder","unspecified_dementias"),]
-
-# df <- df[df$outcome %in% c("alzheimer_disease"),]
-
-# df <- df[df$outcome %in% c(""other_dementias", "parkinson_disease", "restless_leg_syndrome", "vascular_dementia"),]
-
-# df <- df[df$outcome %in% c("motor_neurone_disease"),]
-
-# df <- df[df$outcome %in% c("alzheimer_disease", "any_dementia", "cognitive_impairment", "migraine", "motor_neurone_disease", "multiple_sclerosis",
-#                            "other_dementias", "parkinson_disease", "rem_sleep_disorder", "restless_leg_syndrome", "unspecified_dementias", "vascular_dementia"),]
-
 # Format aer_age ---------------------------------------------------------------
 print("Format aer_age")
 

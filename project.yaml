@@ -18157,7 +18157,6 @@ actions:
     - cox_ipw-cohort_prevax-sub_age_18_39-rem_sleep_disorder
     - cox_ipw-cohort_prevax-sub_age_18_39-restless_leg_syndrome
     - cox_ipw-cohort_prevax-sub_age_18_39-vascular_dementia
-    - cox_ipw-cohort_unvax-sub_age_18_39-alzheimer_disease
     - cox_ipw-cohort_unvax-sub_age_18_39-any_dementia
     - cox_ipw-cohort_unvax-sub_age_18_39-cognitive_impairment_symptoms
     - cox_ipw-cohort_unvax-sub_age_18_39-migraine
