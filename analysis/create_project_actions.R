@@ -21,29 +21,33 @@ active_analyses <- active_analyses[order(active_analyses$analysis,active_analyse
 cohorts <- unique(active_analyses$cohort)
 #names <- unique(active_analyses$names)
 
-# Remove fail models
-run_stata <- c(
-  "cohort_prevax-main-any_dementia",
-  "cohort_vax-main-any_dementia",
-  "cohort_unvax-main-any_dementia",
-  "cohort_prevax-main-vascular_dementia",
-  "cohort_vax-main-vascular_dementia",
-  "cohort_prevax-main-rem_sleep_disorder",
-  "cohort_vax-main-rem_sleep_disorder",
-  "cohort_unvax-main-rem_sleep_disorder",
-  "cohort_prevax-main-parkinson_disease",
-  "cohort_vax-sub_covid_hospitalised-vascular_dementia",
-  "cohort_vax-sub_covid_hospitalised-rem_sleep_disorder",
-  "cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder",
-  "cohort_prevax-sub_covid_hospitalised-vascular_dementia",
-  "cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder",
-  "cohort_prevax-sub_covid_hospitalised-any_dementia",
-  "cohort_prevax-sub_covid_hospitalised-multiple_sclerosis",
-  "cohort_prevax-sub_covid_hospitalised-parkinson_disease",
-  "cohort_unvax-sub_covid_hospitalised-any_dementia")
+# Test Stata locally
+run_stata <- c("cohort_prevax-main-vascular_dementia")
+
+# Select Stata models
+# run_stata <- c(
+#   "cohort_prevax-main-any_dementia",
+#   "cohort_vax-main-any_dementia",
+#   "cohort_unvax-main-any_dementia",
+#   "cohort_prevax-main-vascular_dementia",
+#   "cohort_vax-main-vascular_dementia",
+#   "cohort_prevax-main-rem_sleep_disorder",
+#   "cohort_vax-main-rem_sleep_disorder",
+#   "cohort_unvax-main-rem_sleep_disorder",
+#   "cohort_prevax-main-parkinson_disease",
+#   "cohort_vax-sub_covid_hospitalised-vascular_dementia",
+#   "cohort_vax-sub_covid_hospitalised-rem_sleep_disorder",
+#   "cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder",
+#   "cohort_prevax-sub_covid_hospitalised-vascular_dementia",
+#   "cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder",
+#   "cohort_prevax-sub_covid_hospitalised-any_dementia",
+#   "cohort_prevax-sub_covid_hospitalised-multiple_sclerosis",
+#   "cohort_prevax-sub_covid_hospitalised-parkinson_disease",
+#   "cohort_unvax-sub_covid_hospitalised-any_dementia")
 
 stata <- active_analyses[active_analyses$name %in% run_stata,]
 stata$save_analysis_ready <- TRUE
+stata$day0 <- grepl("1;",stata$cut_points)
 
 #active_analyses <- active_analyses[!active_analyses$name %in% run_stata,]
 
@@ -270,7 +274,7 @@ apply_stata_model_function <- function(name, cohort, analysis, ipw, strata,
     ),
     action(
       name = glue("stata_cox_ipw-{name}"),
-      run = glue("stata-mp:latest analysis/stata/cox_model.do ready-{name}"),
+      run = glue("stata-mp:latest analysis/stata/cox_model.do"),
       arguments = c(name, day0),
       needs = list(glue("ready-{name}")),
       moderately_sensitive = list(
@@ -577,6 +581,19 @@ actions_list <- splice(
     moderately_sensitive = list(
       model_output = glue("output/model_output.csv"),
       model_output_midpoint6 = glue("output/model_output_midpoint6.csv")
+    )
+  ),
+  
+  # Test locally
+  # comment ("Stata models"), Stata Analyses
+  
+  action(
+    name = "make_stata_model_output",
+    run = "r:latest analysis/stata/make_stata_model_output.R",
+    needs = as.list(paste0("stata_cox_ipw-",stata$name)),
+    moderately_sensitive = list(
+      stata_model_output = glue("output/stata_model_output.csv"),
+      stata_model_output_midpoint6 = glue("output/stata_model_output_midpoint6.csv")
     )
   ),
   
