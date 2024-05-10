@@ -266,20 +266,20 @@ apply_stata_model_function <- function(name, cohort, analysis, ipw, strata,
                                        covariate_threshold, age_spline, day0){
   splice(
     action(
-      name = glue("ready-{name}"),
+      name = glue("{name}"),
       run = glue("cox-ipw:v0.0.30 --df_input=model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-{name}.csv"),
       needs = list(glue("make_model_input-{name}")),
       highly_sensitive = list(
-        analysis_ready = glue("output/ready-{name}.csv.gz"))
+        analysis_ready = glue("output/{name}.csv.gz"))
     ),
     action(
       name = glue("stata_cox_ipw-{name}"),
       run = glue("stata-mp:latest analysis/stata/cox_model.do"),
       arguments = c(name, day0),
-      needs = list(glue("ready-{name}")),
+      needs = list(glue("{name}")),
       moderately_sensitive = list(
-        medianfup = glue("output/ready-{name}_median_fup.csv"),
-        stata_output = glue("output/ready-{name}_cox_model.txt")
+        medianfup = glue("output/{name}_median_fup.csv"),
+        stata_output = glue("output/{name}_cox_model.txt")
       )
     )
   )
