@@ -24,11 +24,11 @@ adopath + "$projectdir/analysis/stata/extra_ados"
 
 * unzip the input data 
 
-shell gunzip "./output/`name'.csv.gz"
+shell gunzip "./output/ready-`name'.csv.gz"
 
 * Import and describe data
 
-import delim using "./output/`name'.csv", clear
+import delim using "./output/ready-`name'.csv", clear
 
 des
 
@@ -181,7 +181,7 @@ est store min, title(Age_Sex)
 stcox days* age_spline1 age_spline2 i.cov_cat_* cov_num_* cov_bin_*, strata(region) vce(r)
 est store max, title(Maximal)
 
-estout * using "output/`name'_cox_model.txt", cells("b se t ci_l ci_u p") stats(risk N_fail N_sub N N_clust) replace 
+estout * using "output/ready-`name'_cox_model.txt", cells("b se t ci_l ci_u p") stats(risk N_fail N_sub N N_clust) replace 
 
 * Calculate median follow-up among individuals with the outcome
 
@@ -232,4 +232,4 @@ egen events = count(patient_id), by(term)
 keep term median_tte events
 duplicates drop
 
-export delimited using "output/`name'_median_fup.csv", replace
+export delimited using "output/ready-`name'_median_fup.csv", replace

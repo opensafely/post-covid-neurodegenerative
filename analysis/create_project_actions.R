@@ -22,28 +22,115 @@ cohorts <- unique(active_analyses$cohort)
 #names <- unique(active_analyses$names)
 
 # Test Stata locally
-run_stata <- c("cohort_prevax-main-vascular_dementia")
+#run_stata <- c("cohort_prevax-main-vascular_dementia")
 
-# Select Stata models
-# run_stata <- c(
-#   "cohort_prevax-main-any_dementia",
-#   "cohort_vax-main-any_dementia",
-#   "cohort_unvax-main-any_dementia",
-#   "cohort_prevax-main-vascular_dementia",
-#   "cohort_vax-main-vascular_dementia",
-#   "cohort_prevax-main-rem_sleep_disorder",
-#   "cohort_vax-main-rem_sleep_disorder",
-#   "cohort_unvax-main-rem_sleep_disorder",
-#   "cohort_prevax-main-parkinson_disease",
-#   "cohort_vax-sub_covid_hospitalised-vascular_dementia",
-#   "cohort_vax-sub_covid_hospitalised-rem_sleep_disorder",
-#   "cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder",
-#   "cohort_prevax-sub_covid_hospitalised-vascular_dementia",
-#   "cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder",
-#   "cohort_prevax-sub_covid_hospitalised-any_dementia",
-#   "cohort_prevax-sub_covid_hospitalised-multiple_sclerosis",
-#   "cohort_prevax-sub_covid_hospitalised-parkinson_disease",
-#   "cohort_unvax-sub_covid_hospitalised-any_dementia")
+run_stata <- c(
+  "cohort_prevax-main-alzheimer_disease",
+  "cohort_prevax-main-any_dementia",#
+  "cohort_prevax-main-motor_neurone_disease",
+  "cohort_prevax-main-multiple_sclerosis",
+  "cohort_prevax-main-parkinson_disease",#
+  "cohort_prevax-main-rem_sleep_disorder",#
+  "cohort_prevax-main-vascular_dementia",#
+  "cohort_prevax-sub_age_18_39-rem_sleep_disorder",
+  "cohort_prevax-sub_age_40_64-any_dementia",
+  "cohort_prevax-sub_age_40_64-rem_sleep_disorder",
+  "cohort_prevax-sub_age_40_64-vascular_dementia",
+  "cohort_prevax-sub_age_65_84-alzheimer_disease",
+  "cohort_prevax-sub_age_65_84-any_dementia",
+  "cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms",
+  "cohort_prevax-sub_age_65_84-parkinson_disease",
+  "cohort_prevax-sub_age_65_84-rem_sleep_disorder",
+  "cohort_prevax-sub_age_65_84-vascular_dementia",
+  "cohort_prevax-sub_age_85_110-alzheimer_disease",
+  "cohort_prevax-sub_age_85_110-any_dementia",
+  "cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms",
+  "cohort_prevax-sub_age_85_110-parkinson_disease",
+  "cohort_prevax-sub_age_85_110-rem_sleep_disorder",
+  "cohort_prevax-sub_age_85_110-vascular_dementia",
+  "cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease",
+  "cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia",
+  "cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia",
+  "cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease",
+  "cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia",
+  "cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia",
+  "cohort_prevax-sub_covid_hospitalised-alzheimer_disease",
+  "cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms",
+  "cohort_prevax-sub_covid_hospitalised-migraine",
+  "cohort_prevax-sub_covid_hospitalised-vascular_dementia",#
+  "cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder",#
+  "cohort_prevax-sub_covid_hospitalised-any_dementia",#
+  "cohort_prevax-sub_covid_hospitalised-multiple_sclerosis",#
+  "cohort_prevax-sub_covid_hospitalised-parkinson_disease",#
+  "cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease",
+  "cohort_prevax-sub_covid_nonhospitalised-any_dementia",
+  "cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease",
+  "cohort_prevax-sub_covid_nonhospitalised-parkinson_disease",
+  "cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder",
+  "cohort_prevax-sub_covid_nonhospitalised-vascular_dementia",
+  "cohort_prevax-sub_ethnicity_asian-alzheimer_disease",
+  "cohort_prevax-sub_ethnicity_asian-any_dementia",
+  "cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms",
+  "cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder",
+  "cohort_prevax-sub_ethnicity_black-any_dementia",
+  "cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms",
+  "cohort_prevax-sub_ethnicity_black-rem_sleep_disorder",
+  "cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms",
+  "cohort_prevax-sub_ethnicity_other-rem_sleep_disorder",
+  "cohort_prevax-sub_ethnicity_white-alzheimer_disease",
+  "cohort_prevax-sub_ethnicity_white-any_dementia",
+  "cohort_prevax-sub_ethnicity_white-motor_neurone_disease",
+  "cohort_prevax-sub_ethnicity_white-multiple_sclerosis",
+  "cohort_prevax-sub_ethnicity_white-parkinson_disease",
+  "cohort_prevax-sub_ethnicity_white-rem_sleep_disorder",
+  "cohort_prevax-sub_ethnicity_white-vascular_dementia",
+  "cohort_prevax-sub_history_parkinson_false-any_dementia",
+  "cohort_prevax-sub_history_parkinson_true-any_dementia",
+  "cohort_prevax-sub_sex_female-alzheimer_disease",
+  "cohort_prevax-sub_sex_female-any_dementia",
+  "cohort_prevax-sub_sex_female-multiple_sclerosis",
+  "cohort_prevax-sub_sex_female-parkinson_disease",
+  "cohort_prevax-sub_sex_female-rem_sleep_disorder",
+  "cohort_prevax-sub_sex_female-vascular_dementia",
+  "cohort_prevax-sub_sex_male-alzheimer_disease",
+  "cohort_prevax-sub_sex_male-any_dementia",
+  "cohort_prevax-sub_sex_male-cognitive_impairment_symptoms",
+  "cohort_prevax-sub_sex_male-multiple_sclerosis",
+  "cohort_prevax-sub_sex_male-parkinson_disease",
+  "cohort_prevax-sub_sex_male-rem_sleep_disorder",
+  "cohort_prevax-sub_sex_male-vascular_dementia",
+  "cohort_unvax-main-any_dementia",#
+  "cohort_unvax-main-rem_sleep_disorder",#
+  "cohort_unvax-sub_age_18_39-rem_sleep_disorder",
+  "cohort_unvax-sub_age_40_64-rem_sleep_disorder",
+  "cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia",
+  "cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms",
+  "cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder",#
+  "cohort_unvax-sub_covid_hospitalised-any_dementia",#
+  "cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder",
+  "cohort_unvax-sub_ethnicity_white-any_dementia",
+  "cohort_unvax-sub_ethnicity_white-rem_sleep_disorder",
+  "cohort_unvax-sub_history_parkinson_false-any_dementia",
+  "cohort_unvax-sub_sex_female-any_dementia",
+  "cohort_unvax-sub_sex_female-rem_sleep_disorder",
+  "cohort_unvax-sub_sex_male-rem_sleep_disorder",
+  "cohort_vax-main-any_dementia",#
+  "cohort_vax-main-vascular_dementia",#
+  "cohort_vax-main-rem_sleep_disorder",#
+  "cohort_vax-sub_age_65_84-rem_sleep_disorder",                   
+  "cohort_vax-sub_age_65_84-vascular_dementia",
+  "cohort_vax-sub_age_85_110-any_dementia",
+  "cohort_vax-sub_age_85_110-vascular_dementia",
+  "cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia",
+  "cohort_vax-sub_covid_hospitalised-alzheimer_disease",
+  "cohort_vax-sub_covid_hospitalised-any_dementia",
+  "cohort_vax-sub_covid_hospitalised-vascular_dementia",#
+  "cohort_vax-sub_covid_hospitalised-rem_sleep_disorder",#
+  "cohort_vax-sub_covid_nonhospitalised-vascular_dementia",
+  "cohort_vax-sub_ethnicity_asian-rem_sleep_disorder",
+  "cohort_vax-sub_ethnicity_white-vascular_dementia",
+  "cohort_vax-sub_sex_male-any_dementia",
+  "cohort_vax-sub_sex_male-vascular_dementia")
 
 stata <- active_analyses[active_analyses$name %in% run_stata,]
 stata$save_analysis_ready <- TRUE
@@ -266,20 +353,20 @@ apply_stata_model_function <- function(name, cohort, analysis, ipw, strata,
                                        covariate_threshold, age_spline, day0){
   splice(
     action(
-      name = glue("{name}"),
+      name = glue("ready-{name}"),
       run = glue("cox-ipw:v0.0.30 --df_input=model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-{name}.csv"),
       needs = list(glue("make_model_input-{name}")),
       highly_sensitive = list(
-        analysis_ready = glue("output/{name}.csv.gz"))
+        analysis_ready = glue("output/ready-{name}.csv.gz"))
     ),
     action(
       name = glue("stata_cox_ipw-{name}"),
       run = glue("stata-mp:latest analysis/stata/cox_model.do"),
       arguments = c(name, day0),
-      needs = list(glue("{name}")),
+      needs = list(glue("ready-{name}")),
       moderately_sensitive = list(
-        medianfup = glue("output/{name}_median_fup.csv"),
-        stata_output = glue("output/{name}_cox_model.txt")
+        medianfup = glue("output/ready-{name}_median_fup.csv"),
+        stata_output = glue("output/ready-{name}_cox_model.txt")
       )
     )
   )
