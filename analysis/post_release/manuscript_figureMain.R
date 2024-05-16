@@ -11,20 +11,7 @@ df <- df[grepl("day",df$term) &
            df$model=="mdl_max_adj",
          c("cohort","analysis","outcome","outcome_time_median","term","hr","conf_low","conf_high")]
 
-df <- df[df$term!="days_pre",]
-
-# Neurodegenerative outcomes
-# df <- df[df$outcome %in% c("any_dementia", "cognitive_impairment", "migraine", "parkinson_disease"),]
-
-# df <- df[df$outcome %in% c("alzheimer_disease", "multiple_sclerosis"),]
-
-df <- df[df$outcome %in% c("motor_neurone_disease"),]
-
-# df <- df[df$outcome %in% c("other_dementias", "restless_leg_syndrome", "unspecified_dementias"),]
-
-# All
-# df <- df[df$outcome %in% c("alzheimer_disease", "any_dementia", "cognitive_impairment", "migraine", "motor_neurone_disease", "multiple_sclerosis",
-#                            "other_dementias", "parkinson_disease", "rem_sleep_disorder", "restless_leg_syndrome", "unspecified_dementias", "vascular_dementia"),]
+df <- df[!(df$term %in% c("days_pre","days0_1")),]
 
 # Make columns numeric ---------------------------------------------------------
 print("Make columns numeric")

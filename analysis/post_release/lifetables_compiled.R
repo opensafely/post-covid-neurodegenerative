@@ -60,8 +60,8 @@ prevax_weightings <- aer_input[aer_input$cohort=="prevax",
                                  "aer_age", 
                                  "sample_size")]
 
-prevax_weightings$weight <- prevax_weightings$sample_size/sum(prevax_weightings$sample_size)
-prevax_weightings$sample_size <- NULL
+prevax_weightings$weight <- prevax_weightings$sample_size_midpoint6/sum(prevax_weightings$sample_size_midpoint6)
+prevax_weightings$sample_size_midpoint6 <- NULL
 
 # Calculate overall AER --------------------------------------------------------
 print('Calculate overall AER')
