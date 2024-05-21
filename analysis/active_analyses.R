@@ -36,7 +36,7 @@ covariate_age <- "cov_num_age"
 cox_start <- "index_date"
 cox_stop <- "end_date_outcome"
 controls_per_case <- 20L
-total_event_threshold <- 50L
+total_event_threshold <- 20L
 episode_event_threshold <- 5L
 covariate_threshold <- 5L
 
