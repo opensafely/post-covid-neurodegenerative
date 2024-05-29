@@ -200,38 +200,6 @@ for (outcome in outcomes) {
   
 }
 
-# Fix source contribution for any dementia outcome -----------------------------
-print("Fix source contribution for any dementia")
-
-# any_dementia contribution
-df_temp <- df[!grepl("any_dementia", df$outcome),]
-# remove any_dementia outcome
-df <- df[!grepl("any_dementia", df$outcome),]
-
-# Select Dementia subgroups
-df_temp <- df[grep("alzheimer|vascular_dementia|lewy_body|other_dementias|unspecified_dementias", df$outcome),]
-
-# character to numeric
-df_temp <- df_temp %>%
-  mutate_at(vars(matches("snomed|hes|death|total")),function(x) as.numeric(as.character(x)))
-
-# Summarise
-df_temp <- df_temp %>%
-  summarise_if(is.numeric, sum, na.rm = T)
-
-# add columns
-df_temp$outcome <- "any_dementia"
-df_temp$error <- "" 
-
-# relocate
-df_temp <- relocate(df_temp, outcome)
-
-# bind data frames
-df <- rbind(df, df_temp)
-
-# remove temporary data frame
-rm(df_temp)
-
 # Record cohort ----------------------------------------------------------------
 print('Record cohort')
 
@@ -250,17 +218,8 @@ df[,setdiff(colnames(df),c("outcome"))] <- lapply(df[,setdiff(colnames(df),c("ou
 
 # Rename columns (output redaction) --------------------------------------------
 
-names(df)[names(df) == "only_snomed"] <- "only_snomed_midpoint6"
-names(df)[names(df) == "only_hes"] <- "only_hes_midpoint6"
-names(df)[names(df) == "only_death"] <- "only_death_midpoint6"
-names(df)[names(df) == "snomed_hes"] <- "snomed_hes_midpoint6"
-names(df)[names(df) == "snomed_death"] <- "snomed_death_midpoint6"
-names(df)[names(df) == "hes_death"] <- "hes_death_midpoint6"
-names(df)[names(df) == "snomed_hes_death"] <- "snomed_hes_death_midpoint6"
-names(df)[names(df) == "total_snomed"] <- "total_snomed_midpoint6"
-names(df)[names(df) == "total_hes"] <- "total_hes_midpoint6"
-names(df)[names(df) == "total_death"] <- "total_death_midpoint6"
-names(df)[names(df) == "total"] <- "total_midpoint6_derived"
+colnames(df)[2:12] <- paste(colnames(df)[2:12], "midpoint6", sep = "_")
+names(df)[names(df) == "total_midpoint6"] <- "total_midpoint6_derived"
 
 # Save rounded Venn data -------------------------------------------------------
 print('Save rounded Venn data')
