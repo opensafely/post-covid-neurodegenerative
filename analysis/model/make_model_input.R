@@ -82,6 +82,8 @@ for (i in 1:nrow(active_analyses)) {
                            "cov_bin_history_parkinson",
                            "cov_bin_history_migraine",
                            "cov_bin_history_parkinson_risk",
+                           "cov_bin_history_other_dementias",
+                           "cov_bin_history_unspecified_dementias",
                            "cov_cat_ethnicity"))]
   
   # Remove outcomes outside of follow-up time ------------------------------------
@@ -162,6 +164,18 @@ for (i in 1:nrow(active_analyses)) {
       filter(cov_bin_history_migraine == FALSE) %>%
       select(-cov_bin_history_migraine)
 
+  }   else if (outcome == "out_date_other_dementias") {
+    
+    input<- input %>%
+      filter(cov_bin_history_other_dementias == FALSE) %>%
+      select(-cov_bin_history_other_dementias)
+    
+  }   else if (outcome == "out_date_unspecified_dementias") {
+    
+    input<- input %>%
+      filter(cov_bin_history_unspecified_dementias == FALSE) %>%
+      select(-cov_bin_history_unspecified_dementias)
+    
   }   
 
    # Make model input: main -------------------------------------------------------

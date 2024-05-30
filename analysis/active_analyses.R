@@ -50,8 +50,6 @@ outcomes_runall <- c("out_date_alzheimer_disease",
                      "out_date_vascular_dementia",
                      "out_date_lewy_body_dementia",
                      "out_date_any_dementia",
-                     "out_date_other_dementias",
-                     "out_date_unspecified_dementias",
                      "out_date_cognitive_impairment_symptoms",
                      "out_date_parkinson_disease",
                      "out_date_restless_leg_syndrome",
@@ -69,6 +67,10 @@ parkinson_risk_sub_out <- c("out_date_parkinson_disease")
 cognitive_impairment_sub_out <- c("out_date_any_dementia")
 parkinson_disease_sub_out <- c("out_date_any_dementia")
 
+# Note:
+# suffix _venn refers to the any dementia components to calculate venn diagram
+any_dementia_venn <- c("out_date_other_dementias", "out_date_unspecified_dementias")
+
 # list of covariates according to protocol
 all_covars <- c("cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk")
 
@@ -76,8 +78,10 @@ all_covars <- c("cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;co
 
 for (c in cohorts) {
 
-    for (i in outcomes_runall) {
-    
+    for (i in c(outcomes_runall, any_dementia_venn)) {
+      
+      #for (i in any_dementia_venn) {
+        
     ## analysis: main ----------------------------------------------------------
     
     df[nrow(df)+1,] <- c(cohort = c,
@@ -99,8 +103,11 @@ for (c in cohorts) {
                          covariate_threshold = covariate_threshold,
                          age_spline = TRUE,
                          analysis = "main")
-    
+      }
+      
     ## analysis: sub_covid_hospitalised ----------------------------------------
+    
+    for (i in outcomes_runall) {
     
     df[nrow(df)+1,] <- c(cohort = c,
                          exposure = exposure,
@@ -412,7 +419,8 @@ for (c in cohorts) {
                          age_spline = TRUE,
                          analysis = "sub_ethnicity_other")
 
-  }
+    }
+    }
 
     for (i in cognitive_impairment_sub_out) { #remove cov_bin_history_any_dementia
 
@@ -603,7 +611,7 @@ for (c in cohorts) {
                          age_spline = TRUE,
                          analysis = "sub_history_parkinson_risk_false")
   }
-}
+#}
 
 # Assign unique name -----------------------------------------------------------
 

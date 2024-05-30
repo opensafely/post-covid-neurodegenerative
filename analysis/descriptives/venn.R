@@ -30,6 +30,7 @@ if(length(args)==0){
 print('Identify outcomes')
 
 active_analyses <- readr::read_rds("lib/active_analyses.rds")
+active_analyses <- active_analyses[!grepl("out_date_any_dementia", active_analyses$outcome),]
 
 outcomes <- gsub("out_date_","",
                  unique(active_analyses[active_analyses$cohort==cohort &
@@ -218,8 +219,40 @@ df[,setdiff(colnames(df),c("outcome"))] <- lapply(df[,setdiff(colnames(df),c("ou
 
 # Rename columns (output redaction) --------------------------------------------
 
-colnames(df)[2:12] <- paste(colnames(df)[2:12], "midpoint6", sep = "_")
-names(df)[names(df) == "total_midpoint6"] <- "total_midpoint6_derived"
+names(df)[names(df) == "only_snomed"] <- "only_snomed_midpoint6"
+names(df)[names(df) == "only_hes"] <- "only_hes_midpoint6"
+names(df)[names(df) == "only_death"] <- "only_death_midpoint6"
+names(df)[names(df) == "snomed_hes"] <- "snomed_hes_midpoint6"
+names(df)[names(df) == "snomed_death"] <- "snomed_death_midpoint6"
+names(df)[names(df) == "hes_death"] <- "hes_death_midpoint6"
+names(df)[names(df) == "snomed_hes_death"] <- "snomed_hes_death_midpoint6"
+
+# character to numeric ---------------------------------------------------------
+
+df <- df %>%
+  mutate_at(vars(matches("snomed|hes|death|total")),function(x) as.numeric(as.character(x)))
+
+# Recalculate total events midpoint --------------------------------------------
+print("Recalculate total events (midpoint6 derived) column")
+
+# df$total_snomed_midpoint6 <- df$
+# df$total_hes_midpoint6 <- 
+# df$total_death_midpoint6 <- 
+df$total_midpoint6_derived <- df$total_snomed + df$total_hes + df$total_death
+
+# Remove total events column ---------------------------------------------------
+print("Remove total events column")
+
+# df$total_snomed <- NULL
+# df$total_hes <- NULL
+# df$total_death <- NULL
+df$total <- NULL
+
+# Relocate columns -------------------------------------------------------------
+print("Relocate columns following dummy dataframe")
+
+df <- df %>%
+  relocate(total_midpoint6_derived, .after = total_death)
 
 # Save rounded Venn data -------------------------------------------------------
 print('Save rounded Venn data')
