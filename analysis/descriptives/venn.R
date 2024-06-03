@@ -235,24 +235,25 @@ df <- df %>%
 # Recalculate total events midpoint --------------------------------------------
 print("Recalculate total events (midpoint6 derived) column")
 
-# df$total_snomed_midpoint6 <- df$
-# df$total_hes_midpoint6 <- 
-# df$total_death_midpoint6 <- 
-df$total_midpoint6_derived <- df$total_snomed + df$total_hes + df$total_death
+df$total_snomed_midpoint6 <- df$only_snomed_midpoint6 + df$snomed_hes_midpoint6 + df$snomed_death_midpoint6 + df$snomed_hes_death_midpoint6
+df$total_hes_midpoint6 <- df$only_hes_midpoint6 + df$snomed_hes_midpoint6 + df$hes_death_midpoint6 + df$snomed_hes_death_midpoint6
+df$total_death_midpoint6 <- df$only_death_midpoint6 + df$snomed_death_midpoint6 + df$hes_death_midpoint6 + df$snomed_hes_death_midpoint6
+df$total_midpoint6_derived <- df$only_snomed + df$only_hes + df$only_death+ df$snomed_hes_midpoint6 + df$snomed_death_midpoint6 + df$hes_death_midpoint6 + df$snomed_hes_death_midpoint6
 
 # Remove total events column ---------------------------------------------------
 print("Remove total events column")
 
-# df$total_snomed <- NULL
-# df$total_hes <- NULL
-# df$total_death <- NULL
+df$total_snomed <- NULL
+df$total_hes <- NULL
+df$total_death <- NULL
 df$total <- NULL
 
 # Relocate columns -------------------------------------------------------------
 print("Relocate columns following dummy dataframe")
 
 df <- df %>%
-  relocate(total_midpoint6_derived, .after = total_death)
+  relocate(c(total_snomed_midpoint6, total_hes_midpoint6, total_death_midpoint6), .after = snomed_hes_death_midpoint6) %>%
+  relocate(total_midpoint6_derived, .before = error)
 
 # Save rounded Venn data -------------------------------------------------------
 print('Save rounded Venn data')
