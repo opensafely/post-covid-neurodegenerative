@@ -530,29 +530,6 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-other_dementias.rds
 
-  describe_model_input-cohort_prevax-main-other_dementias:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_prevax-main-other_dementias
-      rds
-    needs:
-    - make_model_input-cohort_prevax-main-other_dementias
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_prevax-main-other_dementias.txt
-
-  cox_ipw-cohort_prevax-main-other_dementias:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-other_dementias.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
-      --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --df_output=model_output-cohort_prevax-main-other_dementias.csv
-    needs:
-    - make_model_input-cohort_prevax-main-other_dementias
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-main-other_dementias.csv
-
   make_model_input-cohort_prevax-main-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-parkinson_disease
     needs:
@@ -661,29 +638,6 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_prevax-main-unspecified_dementias.rds
-
-  describe_model_input-cohort_prevax-main-unspecified_dementias:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_prevax-main-unspecified_dementias
-      rds
-    needs:
-    - make_model_input-cohort_prevax-main-unspecified_dementias
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_prevax-main-unspecified_dementias.txt
-
-  cox_ipw-cohort_prevax-main-unspecified_dementias:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-unspecified_dementias.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
-      --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --df_output=model_output-cohort_prevax-main-unspecified_dementias.csv
-    needs:
-    - make_model_input-cohort_prevax-main-unspecified_dementias
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-main-unspecified_dementias.csv
 
   make_model_input-cohort_prevax-main-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-vascular_dementia
@@ -952,28 +906,6 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-other_dementias.rds
 
-  describe_model_input-cohort_unvax-main-other_dementias:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_unvax-main-other_dementias
-      rds
-    needs:
-    - make_model_input-cohort_unvax-main-other_dementias
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_unvax-main-other_dementias.txt
-
-  cox_ipw-cohort_unvax-main-other_dementias:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-main-other_dementias.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-main-other_dementias.csv
-    needs:
-    - make_model_input-cohort_unvax-main-other_dementias
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-main-other_dementias.csv
-
   make_model_input-cohort_unvax-main-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-parkinson_disease
     needs:
@@ -1079,28 +1011,6 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_unvax-main-unspecified_dementias.rds
-
-  describe_model_input-cohort_unvax-main-unspecified_dementias:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_unvax-main-unspecified_dementias
-      rds
-    needs:
-    - make_model_input-cohort_unvax-main-unspecified_dementias
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_unvax-main-unspecified_dementias.txt
-
-  cox_ipw-cohort_unvax-main-unspecified_dementias:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-main-unspecified_dementias.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-main-unspecified_dementias.csv
-    needs:
-    - make_model_input-cohort_unvax-main-unspecified_dementias
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-main-unspecified_dementias.csv
 
   make_model_input-cohort_unvax-main-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-vascular_dementia
@@ -1368,28 +1278,6 @@ actions:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-other_dementias.rds
 
-  describe_model_input-cohort_vax-main-other_dementias:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_vax-main-other_dementias
-      rds
-    needs:
-    - make_model_input-cohort_vax-main-other_dementias
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_vax-main-other_dementias.txt
-
-  cox_ipw-cohort_vax-main-other_dementias:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-main-other_dementias.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-main-other_dementias.csv
-    needs:
-    - make_model_input-cohort_vax-main-other_dementias
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-main-other_dementias.csv
-
   make_model_input-cohort_vax-main-parkinson_disease:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-parkinson_disease
     needs:
@@ -1495,28 +1383,6 @@ actions:
     outputs:
       highly_sensitive:
         model_input: output/model_input-cohort_vax-main-unspecified_dementias.rds
-
-  describe_model_input-cohort_vax-main-unspecified_dementias:
-    run: r:latest analysis/model/describe_file.R model_input-cohort_vax-main-unspecified_dementias
-      rds
-    needs:
-    - make_model_input-cohort_vax-main-unspecified_dementias
-    outputs:
-      moderately_sensitive:
-        describe_model_input: output/describe-model_input-cohort_vax-main-unspecified_dementias.txt
-
-  cox_ipw-cohort_vax-main-unspecified_dementias:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-main-unspecified_dementias.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-main-unspecified_dementias.csv
-    needs:
-    - make_model_input-cohort_vax-main-unspecified_dementias
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-main-unspecified_dementias.csv
 
   make_model_input-cohort_vax-main-vascular_dementia:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-vascular_dementia

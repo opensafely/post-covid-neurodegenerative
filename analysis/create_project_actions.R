@@ -715,6 +715,10 @@ actions_list <- splice(
   )
 )
 
+# Remove describe and cox ipw for other and unspecified dementias
+actions_list <- actions_list[!grepl("describe_.+.-other_dementias$|describe_.+.-unspecified_dementias$|cox_ipw-.+.-other_dementias$|cox_ipw-.+.-unspecified_dementias$",
+                                    names(actions_list))]
+
 ## combine everything ----
 project_list <- splice(
   defaults_list,
