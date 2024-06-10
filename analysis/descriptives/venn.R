@@ -235,9 +235,9 @@ df <- df %>%
 # Recalculate total events midpoint --------------------------------------------
 print("Recalculate total events (midpoint6 derived) column")
 
-df$total_snomed_midpoint6 <- df$only_snomed_midpoint6 + df$snomed_hes_midpoint6 + df$snomed_death_midpoint6 + df$snomed_hes_death_midpoint6
-df$total_hes_midpoint6 <- df$only_hes_midpoint6 + df$snomed_hes_midpoint6 + df$hes_death_midpoint6 + df$snomed_hes_death_midpoint6
-df$total_death_midpoint6 <- df$only_death_midpoint6 + df$snomed_death_midpoint6 + df$hes_death_midpoint6 + df$snomed_hes_death_midpoint6
+df$total_snomed_midpoint6_derived <- df$only_snomed_midpoint6 + df$snomed_hes_midpoint6 + df$snomed_death_midpoint6 + df$snomed_hes_death_midpoint6
+df$total_hes_midpoint6_derived <- df$only_hes_midpoint6 + df$snomed_hes_midpoint6 + df$hes_death_midpoint6 + df$snomed_hes_death_midpoint6
+df$total_death_midpoint6_derived <- df$only_death_midpoint6 + df$snomed_death_midpoint6 + df$hes_death_midpoint6 + df$snomed_hes_death_midpoint6
 df$total_midpoint6_derived <- df$only_snomed + df$only_hes + df$only_death+ df$snomed_hes_midpoint6 + df$snomed_death_midpoint6 + df$hes_death_midpoint6 + df$snomed_hes_death_midpoint6
 
 # Remove total events column ---------------------------------------------------
