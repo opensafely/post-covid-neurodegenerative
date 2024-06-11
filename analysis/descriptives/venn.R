@@ -227,6 +227,12 @@ names(df)[names(df) == "snomed_death"] <- "snomed_death_midpoint6"
 names(df)[names(df) == "hes_death"] <- "hes_death_midpoint6"
 names(df)[names(df) == "snomed_hes_death"] <- "snomed_hes_death_midpoint6"
 
+# To be removed (use to test)
+names(df)[names(df) == "total_snomed"] <- "total_snomed_midpoint6"
+names(df)[names(df) == "total_hes"] <- "total_hes_midpoint6"
+names(df)[names(df) == "total_death"] <- "total_death_midpoint6"
+names(df)[names(df) == "total"] <- "total_midpoint6"
+
 # character to numeric ---------------------------------------------------------
 
 df <- df %>%
@@ -243,17 +249,16 @@ df$total_midpoint6_derived <- df$only_snomed + df$only_hes + df$only_death+ df$s
 # Remove total events column ---------------------------------------------------
 print("Remove total events column")
 
-df$total_snomed <- NULL
-df$total_hes <- NULL
-df$total_death <- NULL
-df$total <- NULL
+# df$total_snomed <- NULL
+# df$total_hes <- NULL
+# df$total_death <- NULL
+# df$total <- NULL
 
 # Relocate columns -------------------------------------------------------------
 print("Relocate columns following dummy dataframe")
 
 df <- df %>%
-  relocate(c(total_snomed_midpoint6, total_hes_midpoint6, total_death_midpoint6), .after = snomed_hes_death_midpoint6) %>%
-  relocate(total_midpoint6_derived, .before = error)
+  relocate(c(total_snomed_midpoint6_derived, total_hes_midpoint6_derived, total_death_midpoint6_derived, total_midpoint6_derived), .before = error) 
 
 # Save rounded Venn data -------------------------------------------------------
 print('Save rounded Venn data')
