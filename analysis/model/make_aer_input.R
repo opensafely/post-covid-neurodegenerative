@@ -39,6 +39,7 @@ active_analyses <- active_analyses[active_analyses$analysis==analysis,
                                    c("cohort","outcome","name")]
 
 active_analyses$outcome <- gsub("out_date_","",active_analyses$outcome)
+active_analyses <- active_analyses[!grepl("-unspecified_dementias|-other_dementias", active_analyses$name),]
 
 # Make empty AER input ---------------------------------------------------------
 print('Make empty AER input')

@@ -351,10 +351,11 @@ apply_stata_model_function <- function(name, cohort, analysis, ipw, strata,
                                        cut_points, controls_per_case,
                                        total_event_threshold, episode_event_threshold,
                                        covariate_threshold, age_spline, day0){
+
   splice(
     action(
       name = glue("ready-{name}"),
-      run = glue("cox-ipw:v0.0.30 --df_input=model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-{name}.csv"),
+      run = glue("cox-ipw:v0.0.31 --df_input=model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-{name}.csv"),
       needs = list(glue("make_model_input-{name}")),
       highly_sensitive = list(
         analysis_ready = glue("output/ready-{name}.csv.gz"))
@@ -378,7 +379,9 @@ apply_stata_model_function <- function(name, cohort, analysis, ipw, strata,
 
 table2 <- function(cohort){
   
+  
   table2_names <- gsub("out_date_","",unique(active_analyses[active_analyses$cohort=={cohort},]$name))
+  table2_names <- table2_names[grepl("-main-|-sub_covid_nonhospitalised-|-sub_covid_hospitalised-", table2_names) & !grepl("-unspecified_dementias|-other_dementias", table2_names)]
   
   splice(
     comment(glue("Table 2 - {cohort}")),
@@ -563,16 +566,16 @@ actions_list <- splice(
   
   ## venn output ------------------------------------------------------------
   
-  action(
-    name = "make_venn_output",
-    run = "r:latest analysis/model/make_other_output.R venn prevax;vax;unvax",
-    needs = list("venn_prevax",
-                 "venn_vax",
-                 "venn_unvax"),
-    moderately_sensitive = list(
-      venn_output_midpoint6 = glue("output/venn_output_midpoint6.csv")
-    )
-  ),
+  # action(
+  #   name = "make_venn_output",
+  #   run = "r:latest analysis/model/make_other_output.R venn prevax;vax;unvax",
+  #   needs = list("venn_prevax",
+  #                "venn_vax",
+  #                "venn_unvax"),
+  #   moderately_sensitive = list(
+  #     venn_output_midpoint6 = glue("output/venn_output_midpoint6.csv")
+  #   )
+  # ),
   
   ## Table 1 -------------------------------------------------------------------
   
@@ -609,7 +612,7 @@ actions_list <- splice(
                                                    age_spline = active_analyses$age_spline[x])), recursive = FALSE
     )
   ),
-  
+
   ## Run models with Stata -----------------------------------------------------
   
   comment("Run models with stata"),
@@ -649,12 +652,12 @@ actions_list <- splice(
   
   ## Venn data -----------------------------------------------------------------
   
-  splice(
-    unlist(lapply(unique(active_analyses$cohort),
-                  function(x) venn(cohort = x)),
-           recursive = FALSE
-    )
-  ),
+  # splice(
+  #   unlist(lapply(unique(active_analyses$cohort),
+  #                 function(x) venn(cohort = x)),
+  #          recursive = FALSE
+  #   )
+  # ),
   
   ## Model output --------------------------------------------------------------
   
@@ -663,8 +666,8 @@ actions_list <- splice(
   action(
     name = "make_model_output",
     run = "r:latest analysis/model/make_model_output.R",
-    needs = as.list(c(paste0("cox_ipw-",setdiff(active_analyses$name,stata$name)),
-                      paste0("stata_cox_ipw-",stata$name))),
+    needs = as.list(c(paste0("cox_ipw-", setdiff(active_analyses[!grepl("-unspecified_dementias|-other_dementias", active_analyses$name),]$name, stata$name)),
+                    paste0("stata_cox_ipw-",stata$name))),
     moderately_sensitive = list(
       model_output = glue("output/model_output.csv"),
       model_output_midpoint6 = glue("output/model_output_midpoint6.csv")
@@ -704,13 +707,17 @@ actions_list <- splice(
   action(
     name = "make_aer_input",
     run = "r:latest analysis/model/make_aer_input.R",
-    needs = as.list(paste0("make_model_input-",active_analyses[grepl("-main-",active_analyses$name),]$name)),
+    needs = as.list(paste0("make_model_input-", active_analyses[grepl("-main",active_analyses$name) & !grepl("-unspecified_dementias|-other_dementias",active_analyses$name),]$name)),
     moderately_sensitive = list(
       aer_input = glue("output/aer_input-main.csv"),
       aer_input_midpoint6 = glue("output/aer_input-main-midpoint6.csv")
     )
   )
 )
+
+# Remove describe and cox ipw for other and unspecified dementias
+actions_list <- actions_list[!grepl("describe_.+.-other_dementias$|describe_.+.-unspecified_dementias$|cox_ipw-.+.-other_dementias$|cox_ipw-.+.-unspecified_dementias$",
+                                    names(actions_list))]
 
 ## combine everything ----
 project_list <- splice(
