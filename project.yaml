@@ -244,16 +244,6 @@ actions:
       moderately_sensitive:
         table2_output_midpoint6: output/table2_output_midpoint6.csv
 
-  make_venn_output:
-    run: r:latest analysis/model/make_other_output.R venn prevax;vax;unvax
-    needs:
-    - venn_prevax
-    - venn_vax
-    - venn_unvax
-    outputs:
-      moderately_sensitive:
-        venn_output_midpoint6: output/venn_output_midpoint6.csv
-
   ## Table 1 - prevax 
 
   table1_prevax:
@@ -19121,78 +19111,6 @@ actions:
       moderately_sensitive:
         table2: output/table2_vax.csv
         table2_midpoint6: output/table2_vax_midpoint6.csv
-
-  ## Venn - prevax 
-
-  venn_prevax:
-    run: r:latest analysis/descriptives/venn.R prevax
-    needs:
-    - preprocess_data_prevax
-    - make_model_input-cohort_prevax-main-alzheimer_disease
-    - make_model_input-cohort_prevax-main-any_dementia
-    - make_model_input-cohort_prevax-main-cognitive_impairment_symptoms
-    - make_model_input-cohort_prevax-main-lewy_body_dementia
-    - make_model_input-cohort_prevax-main-migraine
-    - make_model_input-cohort_prevax-main-motor_neurone_disease
-    - make_model_input-cohort_prevax-main-multiple_sclerosis
-    - make_model_input-cohort_prevax-main-other_dementias
-    - make_model_input-cohort_prevax-main-parkinson_disease
-    - make_model_input-cohort_prevax-main-rem_sleep_disorder
-    - make_model_input-cohort_prevax-main-restless_leg_syndrome
-    - make_model_input-cohort_prevax-main-unspecified_dementias
-    - make_model_input-cohort_prevax-main-vascular_dementia
-    outputs:
-      moderately_sensitive:
-        table2: output/venn_prevax.csv
-        table2_midpoint6: output/venn_prevax_midpoint6.csv
-
-  ## Venn - unvax 
-
-  venn_unvax:
-    run: r:latest analysis/descriptives/venn.R unvax
-    needs:
-    - preprocess_data_unvax
-    - make_model_input-cohort_unvax-main-alzheimer_disease
-    - make_model_input-cohort_unvax-main-any_dementia
-    - make_model_input-cohort_unvax-main-cognitive_impairment_symptoms
-    - make_model_input-cohort_unvax-main-lewy_body_dementia
-    - make_model_input-cohort_unvax-main-migraine
-    - make_model_input-cohort_unvax-main-motor_neurone_disease
-    - make_model_input-cohort_unvax-main-multiple_sclerosis
-    - make_model_input-cohort_unvax-main-other_dementias
-    - make_model_input-cohort_unvax-main-parkinson_disease
-    - make_model_input-cohort_unvax-main-rem_sleep_disorder
-    - make_model_input-cohort_unvax-main-restless_leg_syndrome
-    - make_model_input-cohort_unvax-main-unspecified_dementias
-    - make_model_input-cohort_unvax-main-vascular_dementia
-    outputs:
-      moderately_sensitive:
-        table2: output/venn_unvax.csv
-        table2_midpoint6: output/venn_unvax_midpoint6.csv
-
-  ## Venn - vax 
-
-  venn_vax:
-    run: r:latest analysis/descriptives/venn.R vax
-    needs:
-    - preprocess_data_vax
-    - make_model_input-cohort_vax-main-alzheimer_disease
-    - make_model_input-cohort_vax-main-any_dementia
-    - make_model_input-cohort_vax-main-cognitive_impairment_symptoms
-    - make_model_input-cohort_vax-main-lewy_body_dementia
-    - make_model_input-cohort_vax-main-migraine
-    - make_model_input-cohort_vax-main-motor_neurone_disease
-    - make_model_input-cohort_vax-main-multiple_sclerosis
-    - make_model_input-cohort_vax-main-other_dementias
-    - make_model_input-cohort_vax-main-parkinson_disease
-    - make_model_input-cohort_vax-main-rem_sleep_disorder
-    - make_model_input-cohort_vax-main-restless_leg_syndrome
-    - make_model_input-cohort_vax-main-unspecified_dementias
-    - make_model_input-cohort_vax-main-vascular_dementia
-    outputs:
-      moderately_sensitive:
-        table2: output/venn_vax.csv
-        table2_midpoint6: output/venn_vax_midpoint6.csv
 
   make_model_output:
     run: r:latest analysis/model/make_model_output.R
