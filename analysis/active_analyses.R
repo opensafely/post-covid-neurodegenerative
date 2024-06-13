@@ -420,7 +420,6 @@ for (c in cohorts) {
                          analysis = "sub_ethnicity_other")
 
     }
-    }
 
     for (i in cognitive_impairment_sub_out) { #remove cov_bin_history_any_dementia
 
@@ -611,7 +610,7 @@ for (c in cohorts) {
                          age_spline = TRUE,
                          analysis = "sub_history_parkinson_risk_false")
   }
-#}
+}
 
 # Assign unique name -----------------------------------------------------------
 
