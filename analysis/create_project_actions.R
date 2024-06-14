@@ -567,16 +567,16 @@ actions_list <- splice(
   
   ## venn output ------------------------------------------------------------
   
-  # action(
-  #   name = "make_venn_output",
-  #   run = "r:latest analysis/model/make_other_output.R venn prevax;vax;unvax",
-  #   needs = list("venn_prevax",
-  #                "venn_vax",
-  #                "venn_unvax"),
-  #   moderately_sensitive = list(
-  #     venn_output_midpoint6 = glue("output/venn_output_midpoint6.csv")
-  #   )
-  # ),
+  action(
+    name = "make_venn_output",
+    run = "r:latest analysis/model/make_other_output.R venn prevax;vax;unvax",
+    needs = list("venn_prevax",
+                 "venn_vax",
+                 "venn_unvax"),
+    moderately_sensitive = list(
+      venn_output_midpoint6 = glue("output/venn_output_midpoint6.csv")
+    )
+  ),
   
   ## Table 1 -------------------------------------------------------------------
   
@@ -653,12 +653,12 @@ actions_list <- splice(
   
   ## Venn data -----------------------------------------------------------------
   
-  # splice(
-  #   unlist(lapply(unique(active_analyses$cohort),
-  #                 function(x) venn(cohort = x)),
-  #          recursive = FALSE
-  #   )
-  # ),
+  splice(
+    unlist(lapply(unique(active_analyses$cohort),
+                  function(x) venn(cohort = x)),
+           recursive = FALSE
+    )
+  ),
   
   ## Model output --------------------------------------------------------------
   
