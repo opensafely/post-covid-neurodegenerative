@@ -48,12 +48,12 @@ run_stata <- c(
   "cohort_prevax-sub_age_85_110-parkinson_disease",
   "cohort_prevax-sub_age_85_110-rem_sleep_disorder",
   "cohort_prevax-sub_age_85_110-vascular_dementia",
-  "cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease",
-  "cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia",
-  "cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia",
-  "cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease",
-  "cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia",
-  "cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia",
+  "cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease",###
+  "cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia",###
+  "cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia",###
+  "cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease",###
+  "cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia",###
+  "cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia",###
   "cohort_prevax-sub_covid_hospitalised-alzheimer_disease",
   "cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms",
   "cohort_prevax-sub_covid_hospitalised-migraine",
@@ -84,8 +84,8 @@ run_stata <- c(
   "cohort_prevax-sub_ethnicity_white-parkinson_disease",
   "cohort_prevax-sub_ethnicity_white-rem_sleep_disorder",
   "cohort_prevax-sub_ethnicity_white-vascular_dementia",
-  "cohort_prevax-sub_history_parkinson_false-any_dementia",
-  "cohort_prevax-sub_history_parkinson_true-any_dementia",
+  "cohort_prevax-sub_history_parkinson_false-any_dementia",###
+  "cohort_prevax-sub_history_parkinson_true-any_dementia",###
   "cohort_prevax-sub_sex_female-alzheimer_disease",
   "cohort_prevax-sub_sex_female-any_dementia",
   "cohort_prevax-sub_sex_female-multiple_sclerosis",
@@ -103,14 +103,14 @@ run_stata <- c(
   "cohort_unvax-main-rem_sleep_disorder",#
   "cohort_unvax-sub_age_18_39-rem_sleep_disorder",
   "cohort_unvax-sub_age_40_64-rem_sleep_disorder",
-  "cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia",
+  "cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia",###
   "cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms",
   "cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder",#
   "cohort_unvax-sub_covid_hospitalised-any_dementia",#
   "cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder",
   "cohort_unvax-sub_ethnicity_white-any_dementia",
   "cohort_unvax-sub_ethnicity_white-rem_sleep_disorder",
-  "cohort_unvax-sub_history_parkinson_false-any_dementia",
+  "cohort_unvax-sub_history_parkinson_false-any_dementia",###
   "cohort_unvax-sub_sex_female-any_dementia",
   "cohort_unvax-sub_sex_female-rem_sleep_disorder",
   "cohort_unvax-sub_sex_male-rem_sleep_disorder",
@@ -121,8 +121,9 @@ run_stata <- c(
   "cohort_vax-sub_age_65_84-vascular_dementia",
   "cohort_vax-sub_age_85_110-any_dementia",
   "cohort_vax-sub_age_85_110-vascular_dementia",
-  "cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia",
+  "cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia",###
   "cohort_vax-sub_covid_hospitalised-alzheimer_disease",
+  "cohort_vax-sub_covid_hospitalised-parkinson_disease",
   "cohort_vax-sub_covid_hospitalised-any_dementia",
   "cohort_vax-sub_covid_hospitalised-vascular_dementia",#
   "cohort_vax-sub_covid_hospitalised-rem_sleep_disorder",#
