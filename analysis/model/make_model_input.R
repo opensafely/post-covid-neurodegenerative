@@ -59,6 +59,38 @@ for (i in 1:nrow(active_analyses)) {
   # Restrict to required variables -----------------------------------------------
   print('Restrict to required variables')
   
+  # For models with strata = NULL
+  if (active_analyses$name[i] == "cohort_vax-sub_covid_hospitalised-parkinson_disease") {
+    
+    input <- input[,unique(c("patient_id",
+                             "index_date",
+                             "end_date_exposure",
+                             "end_date_outcome",
+                             active_analyses$exposure[i], 
+                             active_analyses$outcome[i],
+                             unlist(strsplit(active_analyses$covariate_other[i], split = ";")),
+                             "sub_cat_covid19_hospital",
+                             "sub_bin_covid19_confirmed_history",
+                             "sub_bin_high_vascular_risk",
+                             "cov_cat_region",
+                             "cov_cat_sex",
+                             "cov_num_age",
+                             "cov_bin_history_cog_imp_sympt",
+                             "cov_bin_history_alzheimer_disease",
+                             "cov_bin_history_vascular_dementia",
+                             "cov_bin_history_lewy_body_dementia",
+                             "cov_bin_history_mnd",
+                             "cov_bin_history_ms",
+                             "cov_bin_history_any_dementia",
+                             "cov_bin_history_parkinson",
+                             "cov_bin_history_migraine",
+                             "cov_bin_history_parkinson_risk",
+                             "cov_bin_history_other_dementias",
+                             "cov_bin_history_unspecified_dementias",
+                             "cov_cat_ethnicity"))]
+    
+  } else {
+  
   input <- input[,unique(c("patient_id",
                            "index_date",
                            "end_date_exposure",
@@ -85,6 +117,7 @@ for (i in 1:nrow(active_analyses)) {
                            "cov_bin_history_other_dementias",
                            "cov_bin_history_unspecified_dementias",
                            "cov_cat_ethnicity"))]
+  }
   
   # Remove outcomes outside of follow-up time ------------------------------------
   print('Remove outcomes outside of follow-up time')
@@ -606,6 +639,30 @@ for (i in 1:nrow(active_analyses)) {
     print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
     rm(df)
 
+  }
+  
+  # test
+  
+  if (active_analyses$analysis[i]=="sub_strata_removed") {
+    
+    print('Make model input: sub_strata_removed')
+    
+    df <- input[input$sub_bin_covid19_confirmed_history==FALSE,]
+    
+    df <- df %>%
+      dplyr::mutate(end_date_outcome = replace(end_date_outcome, which(sub_cat_covid19_hospital=="non_hospitalised"), exp_date-1),
+                    exp_date = replace(exp_date, which(sub_cat_covid19_hospital=="non_hospitalised"), NA),
+                    out_date = replace(out_date, which(out_date>end_date_outcome), NA))
+    
+    df <- df[df$end_date_outcome>=df$index_date,]
+    
+    df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
+    
+    check_vitals(df)
+    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
+    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
+    rm(df)
+    
   }
   
 }

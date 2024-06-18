@@ -8318,8 +8318,8 @@ actions:
 
   cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=NULL --covariate_sex=cov_cat_sex
+      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk;cov_cat_region
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_hospitalised-parkinson_disease.csv
@@ -18865,30 +18865,6 @@ actions:
         medianfup: output/ready-cohort_vax-sub_covid_hospitalised-any_dementia_median_fup.csv
         stata_output: output/ready-cohort_vax-sub_covid_hospitalised-any_dementia_cox_model.txt
 
-  ready-cohort_vax-sub_covid_hospitalised-parkinson_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_covid_hospitalised-parkinson_disease.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease
-    outputs:
-      highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_covid_hospitalised-parkinson_disease.csv.gz
-
-  stata_cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease:
-    run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_covid_hospitalised-parkinson_disease
-      TRUE
-    needs:
-    - ready-cohort_vax-sub_covid_hospitalised-parkinson_disease
-    outputs:
-      moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_covid_hospitalised-parkinson_disease_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_covid_hospitalised-parkinson_disease_cox_model.txt
-
   ready-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
@@ -20508,6 +20484,7 @@ actions:
     - cox_ipw-cohort_vax-sub_covid_hospitalised-migraine
     - cox_ipw-cohort_vax-sub_covid_hospitalised-motor_neurone_disease
     - cox_ipw-cohort_vax-sub_covid_hospitalised-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease
     - cox_ipw-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome
     - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment_symptoms
     - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-lewy_body_dementia
@@ -20797,7 +20774,6 @@ actions:
     - stata_cox_ipw-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-alzheimer_disease
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-any_dementia
-    - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-vascular_dementia
     - stata_cox_ipw-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease
@@ -20912,7 +20888,6 @@ actions:
     - stata_cox_ipw-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-alzheimer_disease
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-any_dementia
-    - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-vascular_dementia
     - stata_cox_ipw-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease

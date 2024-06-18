@@ -644,6 +644,48 @@ print("Removing coviriates according to each outcome")
   # Migraine
   
    df$covariate_other <- ifelse(df$outcome=="out_date_migraine",gsub("cov_bin_history_migraine;", "", df$covariate_other),df$covariate_other)
+   
+# Turn Strata to NULL ----------------------------------------------------------
+   
+strata_covariate <- c(
+ #  "cohort_prevax-sub_age_18_39-lewy_body_dementia",
+ #  "cohort_unvax-sub_age_18_39-alzheimer_disease",
+ #  "cohort_unvax-sub_age_18_39-lewy_body_dementia",
+ #  "cohort_vax-sub_age_18_39-lewy_body_dementia",
+ #  "cohort_vax-sub_age_18_39-vascular_dementia",
+ #  "cohort_unvax-sub_age_40_64-lewy_body_dementia",
+ #  "cohort_prevax-sub_age_65_84-multiple_sclerosis",
+ #  "cohort_unvax-sub_age_65_84-rem_sleep_disorder",
+ #  "cohort_unvax-sub_bin_high_vascular_risk_false-lewy_body_dementia",
+ #  "cohort_unvax-sub_covid_history-lewy_body_dementia",
+ #  "cohort_unvax-sub_ethnicity_black-lewy_body_dementia",
+ #  "cohort_unvax-sub_ethnicity_mixed-lewy_body_dementia",
+ #  "cohort_unvax-sub_ethnicity_mixed-motor_neurone_disease",
+ #  "cohort_vax-sub_ethnicity_mixed-lewy_body_dementia",
+ #  "cohort_unvax-sub_ethnicity_other-lewy_body_dementia",
+ #  "cohort_unvax-sub_ethnicity_other-motor_neurone_disease",
+ #  "cohort_prevax-sub_history_cognitive_impairment_false-any_dementia",
+ #  "cohort_unvax-sub_history_cognitive_impairment_false-any_dementia",
+ #  "cohort_vax-sub_history_cognitive_impairment_false-any_dementia",
+ #  "cohort_prevax-sub_history_cognitive_impairment_true-any_dementia",
+ #  "cohort_vax-sub_history_cognitive_impairment_true-any_dementia",
+ #  "cohort_prevax-sub_history_parkinson_risk_false-parkinson_disease",
+ #  "cohort_vax-sub_history_parkinson_risk_false-parkinson_disease",
+ # "cohort_prevax-sub_history_parkinson_risk_true-parkinson_disease",
+ "cohort_vax-sub_covid_hospitalised-parkinson_disease")
+  
+df <- df %>%
+  mutate(strata = case_when(name %in% strata_covariate ~ "NULL",
+                            .default = strata))
+
+# Add cov_cat_region as covariate ----------------------------------------------
+
+# list of covariates including cov_cat_region
+strata_covars <- c("cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk;cov_cat_region")
+
+df <- df %>%
+  mutate(covariate_other = case_when(name %in% strata_covariate ~ strata_covars,
+                                     .default = covariate_other))
 
 # Check names are unique and save active analyses list -------------------------
 
