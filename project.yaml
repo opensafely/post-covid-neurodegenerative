@@ -17546,7 +17546,7 @@ actions:
   ## Run models with stata 
 
   ready-cohort_prevax-main-alzheimer_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-alzheimer_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-main-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -17570,7 +17570,7 @@ actions:
         stata_output: output/ready-cohort_prevax-main-alzheimer_disease_cox_model.txt
 
   ready-cohort_prevax-main-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-main-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -17594,7 +17594,7 @@ actions:
         stata_output: output/ready-cohort_prevax-main-any_dementia_cox_model.txt
 
   ready-cohort_prevax-main-motor_neurone_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-motor_neurone_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-main-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -17618,7 +17618,7 @@ actions:
         stata_output: output/ready-cohort_prevax-main-motor_neurone_disease_cox_model.txt
 
   ready-cohort_prevax-main-multiple_sclerosis:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-multiple_sclerosis.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-main-multiple_sclerosis.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -17642,7 +17642,7 @@ actions:
         stata_output: output/ready-cohort_prevax-main-multiple_sclerosis_cox_model.txt
 
   ready-cohort_prevax-main-parkinson_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-parkinson_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-main-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -17666,7 +17666,7 @@ actions:
         stata_output: output/ready-cohort_prevax-main-parkinson_disease_cox_model.txt
 
   ready-cohort_prevax-main-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-main-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -17690,7 +17690,7 @@ actions:
         stata_output: output/ready-cohort_prevax-main-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-main-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-main-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -17714,7 +17714,7 @@ actions:
         stata_output: output/ready-cohort_prevax-main-vascular_dementia_cox_model.txt
 
   ready-cohort_unvax-main-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-main-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-main-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -17738,7 +17738,7 @@ actions:
         stata_output: output/ready-cohort_unvax-main-any_dementia_cox_model.txt
 
   ready-cohort_unvax-main-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-main-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-main-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -17762,7 +17762,7 @@ actions:
         stata_output: output/ready-cohort_unvax-main-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_vax-main-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-main-any_dementia.rds --ipw=TRUE
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-main-any_dementia.rds --ipw=TRUE
       --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -17786,7 +17786,7 @@ actions:
         stata_output: output/ready-cohort_vax-main-any_dementia_cox_model.txt
 
   ready-cohort_vax-main-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-main-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-main-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -17810,7 +17810,7 @@ actions:
         stata_output: output/ready-cohort_vax-main-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_vax-main-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-main-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-main-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -17834,7 +17834,7 @@ actions:
         stata_output: output/ready-cohort_vax-main-vascular_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_age_18_39-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_18_39-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_18_39-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -17858,7 +17858,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_18_39-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_unvax-sub_age_18_39-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_age_18_39-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_age_18_39-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -17882,7 +17882,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_age_18_39-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_age_40_64-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_40_64-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_40_64-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -17906,7 +17906,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_40_64-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_age_40_64-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_40_64-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_40_64-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -17930,7 +17930,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_40_64-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_age_40_64-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_40_64-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_40_64-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -17954,7 +17954,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_40_64-vascular_dementia_cox_model.txt
 
   ready-cohort_unvax-sub_age_40_64-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_age_40_64-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_age_40_64-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -17978,7 +17978,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_age_40_64-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_age_65_84-alzheimer_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_65_84-alzheimer_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_65_84-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18002,7 +18002,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_65_84-alzheimer_disease_cox_model.txt
 
   ready-cohort_prevax-sub_age_65_84-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_65_84-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_65_84-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18026,7 +18026,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_65_84-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18050,7 +18050,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms_cox_model.txt
 
   ready-cohort_prevax-sub_age_65_84-parkinson_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_65_84-parkinson_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_65_84-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18074,7 +18074,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_65_84-parkinson_disease_cox_model.txt
 
   ready-cohort_prevax-sub_age_65_84-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_65_84-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_65_84-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18098,7 +18098,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_65_84-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_age_65_84-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_65_84-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_65_84-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18122,7 +18122,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_65_84-vascular_dementia_cox_model.txt
 
   ready-cohort_vax-sub_age_65_84-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_age_65_84-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_age_65_84-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18146,7 +18146,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_age_65_84-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_vax-sub_age_65_84-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_age_65_84-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_age_65_84-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18170,7 +18170,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_age_65_84-vascular_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_age_85_110-alzheimer_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_85_110-alzheimer_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_85_110-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18194,7 +18194,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_85_110-alzheimer_disease_cox_model.txt
 
   ready-cohort_prevax-sub_age_85_110-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_85_110-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_85_110-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18218,7 +18218,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_85_110-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18242,7 +18242,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms_cox_model.txt
 
   ready-cohort_prevax-sub_age_85_110-parkinson_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_85_110-parkinson_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_85_110-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18266,7 +18266,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_85_110-parkinson_disease_cox_model.txt
 
   ready-cohort_prevax-sub_age_85_110-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_85_110-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_85_110-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18290,7 +18290,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_85_110-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_age_85_110-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_85_110-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_age_85_110-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18314,7 +18314,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_age_85_110-vascular_dementia_cox_model.txt
 
   ready-cohort_vax-sub_age_85_110-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_age_85_110-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_age_85_110-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18338,7 +18338,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_age_85_110-any_dementia_cox_model.txt
 
   ready-cohort_vax-sub_age_85_110-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_age_85_110-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_age_85_110-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18362,7 +18362,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_age_85_110-vascular_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18386,7 +18386,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease_cox_model.txt
 
   ready-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18410,7 +18410,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18434,7 +18434,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18458,7 +18458,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease_cox_model.txt
 
   ready-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18482,7 +18482,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18506,7 +18506,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia_cox_model.txt
 
   ready-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18530,7 +18530,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia_cox_model.txt
 
   ready-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18554,7 +18554,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-alzheimer_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18578,7 +18578,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-alzheimer_disease_cox_model.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18602,7 +18602,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18626,7 +18626,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms_cox_model.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-migraine:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-migraine.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-migraine.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18650,7 +18650,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-migraine_cox_model.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18674,7 +18674,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis_cox_model.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-parkinson_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18698,7 +18698,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-parkinson_disease_cox_model.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18722,7 +18722,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18746,7 +18746,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-vascular_dementia_cox_model.txt
 
   ready-cohort_unvax-sub_covid_hospitalised-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18770,7 +18770,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_covid_hospitalised-any_dementia_cox_model.txt
 
   ready-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18794,7 +18794,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms_cox_model.txt
 
   ready-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18818,7 +18818,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_vax-sub_covid_hospitalised-alzheimer_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18842,7 +18842,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_covid_hospitalised-alzheimer_disease_cox_model.txt
 
   ready-cohort_vax-sub_covid_hospitalised-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_covid_hospitalised-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18866,7 +18866,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_covid_hospitalised-any_dementia_cox_model.txt
 
   ready-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18890,7 +18890,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_vax-sub_covid_hospitalised-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -18914,7 +18914,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_covid_hospitalised-vascular_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18938,7 +18938,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease_cox_model.txt
 
   ready-cohort_prevax-sub_covid_nonhospitalised-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18962,7 +18962,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_nonhospitalised-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -18986,7 +18986,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease_cox_model.txt
 
   ready-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19010,7 +19010,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease_cox_model.txt
 
   ready-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19034,7 +19034,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19058,7 +19058,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia_cox_model.txt
 
   ready-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -19082,7 +19082,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_vax-sub_covid_nonhospitalised-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -19106,7 +19106,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_covid_nonhospitalised-vascular_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_asian-alzheimer_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19130,7 +19130,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_asian-alzheimer_disease_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_asian-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19154,7 +19154,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_asian-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19178,7 +19178,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19202,7 +19202,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -19226,7 +19226,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_black-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_black-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_black-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19250,7 +19250,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_black-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19274,7 +19274,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19298,7 +19298,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19322,7 +19322,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19346,7 +19346,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_white-alzheimer_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19370,7 +19370,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_white-alzheimer_disease_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_white-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_white-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19394,7 +19394,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_white-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_white-motor_neurone_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-motor_neurone_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_white-motor_neurone_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19418,7 +19418,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_white-motor_neurone_disease_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_white-multiple_sclerosis:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-multiple_sclerosis.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_white-multiple_sclerosis.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19442,7 +19442,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_white-multiple_sclerosis_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_white-parkinson_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19466,7 +19466,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_white-parkinson_disease_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19490,7 +19490,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_ethnicity_white-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_ethnicity_white-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19514,7 +19514,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_ethnicity_white-vascular_dementia_cox_model.txt
 
   ready-cohort_unvax-sub_ethnicity_white-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_ethnicity_white-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_ethnicity_white-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -19538,7 +19538,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_ethnicity_white-any_dementia_cox_model.txt
 
   ready-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -19562,7 +19562,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_vax-sub_ethnicity_white-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_ethnicity_white-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_ethnicity_white-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -19586,7 +19586,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_ethnicity_white-vascular_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_history_parkinson_false-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_history_parkinson_false-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_history_parkinson_false-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19610,7 +19610,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_history_parkinson_false-any_dementia_cox_model.txt
 
   ready-cohort_unvax-sub_history_parkinson_false-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_history_parkinson_false-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_history_parkinson_false-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -19634,7 +19634,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_history_parkinson_false-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_history_parkinson_true-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_history_parkinson_true-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_history_parkinson_true-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19658,7 +19658,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_history_parkinson_true-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_sex_female-alzheimer_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_female-alzheimer_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_female-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19682,7 +19682,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_female-alzheimer_disease_cox_model.txt
 
   ready-cohort_prevax-sub_sex_female-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_female-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_female-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19706,7 +19706,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_female-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_sex_female-multiple_sclerosis:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_female-multiple_sclerosis.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_female-multiple_sclerosis.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19730,7 +19730,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_female-multiple_sclerosis_cox_model.txt
 
   ready-cohort_prevax-sub_sex_female-parkinson_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_female-parkinson_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_female-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19754,7 +19754,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_female-parkinson_disease_cox_model.txt
 
   ready-cohort_prevax-sub_sex_female-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_female-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_female-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19778,7 +19778,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_female-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_sex_female-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_female-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_female-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19802,7 +19802,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_female-vascular_dementia_cox_model.txt
 
   ready-cohort_unvax-sub_sex_female-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_sex_female-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_sex_female-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -19826,7 +19826,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_sex_female-any_dementia_cox_model.txt
 
   ready-cohort_unvax-sub_sex_female-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_sex_female-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_sex_female-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -19850,7 +19850,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_sex_female-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_sex_male-alzheimer_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-alzheimer_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_male-alzheimer_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19874,7 +19874,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_male-alzheimer_disease_cox_model.txt
 
   ready-cohort_prevax-sub_sex_male-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_male-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19898,7 +19898,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_male-any_dementia_cox_model.txt
 
   ready-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19922,7 +19922,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms_cox_model.txt
 
   ready-cohort_prevax-sub_sex_male-multiple_sclerosis:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-multiple_sclerosis.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_male-multiple_sclerosis.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19946,7 +19946,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_male-multiple_sclerosis_cox_model.txt
 
   ready-cohort_prevax-sub_sex_male-parkinson_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-parkinson_disease.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_male-parkinson_disease.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19970,7 +19970,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_male-parkinson_disease_cox_model.txt
 
   ready-cohort_prevax-sub_sex_male-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_male-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -19994,7 +19994,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_male-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_prevax-sub_sex_male-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_sex_male-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
@@ -20018,7 +20018,7 @@ actions:
         stata_output: output/ready-cohort_prevax-sub_sex_male-vascular_dementia_cox_model.txt
 
   ready-cohort_unvax-sub_sex_male-rem_sleep_disorder:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_sex_male-rem_sleep_disorder.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_sex_male-rem_sleep_disorder.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -20042,7 +20042,7 @@ actions:
         stata_output: output/ready-cohort_unvax-sub_sex_male-rem_sleep_disorder_cox_model.txt
 
   ready-cohort_vax-sub_sex_male-any_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_sex_male-any_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_sex_male-any_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
@@ -20066,7 +20066,7 @@ actions:
         stata_output: output/ready-cohort_vax-sub_sex_male-any_dementia_cox_model.txt
 
   ready-cohort_vax-sub_sex_male-vascular_dementia:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_sex_male-vascular_dementia.rds
+    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_vax-sub_sex_male-vascular_dementia.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
