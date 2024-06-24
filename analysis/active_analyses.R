@@ -1,3 +1,8 @@
+# library
+
+library(magrittr)
+library(tidyverse)
+
 # Create output directory ------------------------------------------------------
 
 fs::dir_create(here::here("lib"))
@@ -680,13 +685,8 @@ df <- df %>%
 
 # Add cov_cat_region as covariate ----------------------------------------------
 
-# list of covariates including cov_cat_region
-strata_covars <- c("cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_any_dementia;cov_bin_history_parkinson;cov_bin_history_ms;cov_bin_history_parkinson_risk;cov_cat_region")
-
-df <- df %>%
-  mutate(covariate_other = case_when(name %in% strata_covariate ~ strata_covars,
-                                     .default = covariate_other))
-
+df$covariate_other <- ifelse(df$name == "cohort_vax-sub_covid_hospitalised-parkinson_disease", paste0("cov_cat_region;",df$covariate_other), df$covariate_other)
+  
 # Check names are unique and save active analyses list -------------------------
 
 if (length(unique(df$name))==nrow(df)) {

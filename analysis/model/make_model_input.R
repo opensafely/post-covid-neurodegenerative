@@ -60,7 +60,7 @@ for (i in 1:nrow(active_analyses)) {
   print('Restrict to required variables')
   
   # For models with strata = NULL
-  if (active_analyses$name[i] == "cohort_vax-sub_covid_hospitalised-parkinson_disease") {
+  if (active_analyses$strata[i] == "NULL") {
     
     input <- input[,unique(c("patient_id",
                              "index_date",
@@ -640,29 +640,4 @@ for (i in 1:nrow(active_analyses)) {
     rm(df)
 
   }
-  
-  # test
-  
-  if (active_analyses$analysis[i]=="sub_strata_removed") {
-    
-    print('Make model input: sub_strata_removed')
-    
-    df <- input[input$sub_bin_covid19_confirmed_history==FALSE,]
-    
-    df <- df %>%
-      dplyr::mutate(end_date_outcome = replace(end_date_outcome, which(sub_cat_covid19_hospital=="non_hospitalised"), exp_date-1),
-                    exp_date = replace(exp_date, which(sub_cat_covid19_hospital=="non_hospitalised"), NA),
-                    out_date = replace(out_date, which(out_date>end_date_outcome), NA))
-    
-    df <- df[df$end_date_outcome>=df$index_date,]
-    
-    df[,colnames(df)[grepl("sub_",colnames(df))]] <- NULL
-    
-    check_vitals(df)
-    readr::write_rds(df, file.path("output", paste0("model_input-",active_analyses$name[i],".rds")), compress = "gz")
-    print(paste0("Saved: output/model_input-",active_analyses$name[i],".rds"))
-    rm(df)
-    
-  }
-  
 }
