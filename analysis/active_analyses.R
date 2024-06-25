@@ -1,3 +1,8 @@
+# library
+
+library(magrittr)
+library(tidyverse)
+
 # Create output directory ------------------------------------------------------
 
 fs::dir_create(here::here("lib"))
@@ -644,7 +649,44 @@ print("Removing coviriates according to each outcome")
   # Migraine
   
    df$covariate_other <- ifelse(df$outcome=="out_date_migraine",gsub("cov_bin_history_migraine;", "", df$covariate_other),df$covariate_other)
+   
+# Turn Strata to NULL ----------------------------------------------------------
+   
+strata_covariate <- c(
+ #  "cohort_prevax-sub_age_18_39-lewy_body_dementia",
+ #  "cohort_unvax-sub_age_18_39-alzheimer_disease",
+ #  "cohort_unvax-sub_age_18_39-lewy_body_dementia",
+ #  "cohort_vax-sub_age_18_39-lewy_body_dementia",
+ #  "cohort_vax-sub_age_18_39-vascular_dementia",
+ #  "cohort_unvax-sub_age_40_64-lewy_body_dementia",
+ #  "cohort_prevax-sub_age_65_84-multiple_sclerosis",
+ #  "cohort_unvax-sub_age_65_84-rem_sleep_disorder",
+ #  "cohort_unvax-sub_bin_high_vascular_risk_false-lewy_body_dementia",
+ #  "cohort_unvax-sub_covid_history-lewy_body_dementia",
+ #  "cohort_unvax-sub_ethnicity_black-lewy_body_dementia",
+ #  "cohort_unvax-sub_ethnicity_mixed-lewy_body_dementia",
+ #  "cohort_unvax-sub_ethnicity_mixed-motor_neurone_disease",
+ #  "cohort_vax-sub_ethnicity_mixed-lewy_body_dementia",
+ #  "cohort_unvax-sub_ethnicity_other-lewy_body_dementia",
+ #  "cohort_unvax-sub_ethnicity_other-motor_neurone_disease",
+ #  "cohort_prevax-sub_history_cognitive_impairment_false-any_dementia",
+ #  "cohort_unvax-sub_history_cognitive_impairment_false-any_dementia",
+ #  "cohort_vax-sub_history_cognitive_impairment_false-any_dementia",
+ #  "cohort_prevax-sub_history_cognitive_impairment_true-any_dementia",
+ #  "cohort_vax-sub_history_cognitive_impairment_true-any_dementia",
+ #  "cohort_prevax-sub_history_parkinson_risk_false-parkinson_disease",
+ #  "cohort_vax-sub_history_parkinson_risk_false-parkinson_disease",
+ # "cohort_prevax-sub_history_parkinson_risk_true-parkinson_disease",
+ "cohort_vax-sub_covid_hospitalised-parkinson_disease")
+  
+df <- df %>%
+  mutate(strata = case_when(name %in% strata_covariate ~ "NULL",
+                            .default = strata))
 
+# Add cov_cat_region as covariate ----------------------------------------------
+
+df$covariate_other <- ifelse(df$name == "cohort_vax-sub_covid_hospitalised-parkinson_disease", paste0("cov_cat_region;",df$covariate_other), df$covariate_other)
+  
 # Check names are unique and save active analyses list -------------------------
 
 if (length(unique(df$name))==nrow(df)) {

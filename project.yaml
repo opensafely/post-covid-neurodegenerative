@@ -8318,8 +8318,8 @@ actions:
 
   cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=NULL --covariate_sex=cov_cat_sex
+      --covariate_age=cov_num_age --covariate_other=cov_cat_region;cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_hospitalised-parkinson_disease.csv
@@ -17552,12 +17552,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-main-alzheimer_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-main-alzheimer_disease.csv
     needs:
     - make_model_input-cohort_prevax-main-alzheimer_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-main-alzheimer_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-main-alzheimer_disease.dta
 
   stata_cox_ipw-cohort_prevax-main-alzheimer_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-main-alzheimer_disease
@@ -17566,8 +17566,8 @@ actions:
     - ready-cohort_prevax-main-alzheimer_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-main-alzheimer_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-main-alzheimer_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-main-alzheimer_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-main-alzheimer_disease.txt
 
   ready-cohort_prevax-main-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-any_dementia.rds
@@ -17576,12 +17576,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-main-any_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-main-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-main-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-main-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-main-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-main-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-main-any_dementia
@@ -17590,8 +17590,8 @@ actions:
     - ready-cohort_prevax-main-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-main-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-main-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-main-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-main-any_dementia.txt
 
   ready-cohort_prevax-main-motor_neurone_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-motor_neurone_disease.rds
@@ -17600,12 +17600,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-main-motor_neurone_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-main-motor_neurone_disease.csv
     needs:
     - make_model_input-cohort_prevax-main-motor_neurone_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-main-motor_neurone_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-main-motor_neurone_disease.dta
 
   stata_cox_ipw-cohort_prevax-main-motor_neurone_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-main-motor_neurone_disease
@@ -17614,8 +17614,8 @@ actions:
     - ready-cohort_prevax-main-motor_neurone_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-main-motor_neurone_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-main-motor_neurone_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-main-motor_neurone_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-main-motor_neurone_disease.txt
 
   ready-cohort_prevax-main-multiple_sclerosis:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-multiple_sclerosis.rds
@@ -17624,12 +17624,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-main-multiple_sclerosis.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-main-multiple_sclerosis.csv
     needs:
     - make_model_input-cohort_prevax-main-multiple_sclerosis
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-main-multiple_sclerosis.csv.gz
+        analysis_ready: output/ready-cohort_prevax-main-multiple_sclerosis.dta
 
   stata_cox_ipw-cohort_prevax-main-multiple_sclerosis:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-main-multiple_sclerosis
@@ -17638,8 +17638,8 @@ actions:
     - ready-cohort_prevax-main-multiple_sclerosis
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-main-multiple_sclerosis_median_fup.csv
-        stata_output: output/ready-cohort_prevax-main-multiple_sclerosis_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-main-multiple_sclerosis.csv
+        stata_output: output/stata_model_output-cohort_prevax-main-multiple_sclerosis.txt
 
   ready-cohort_prevax-main-parkinson_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-parkinson_disease.rds
@@ -17648,12 +17648,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-main-parkinson_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-main-parkinson_disease.csv
     needs:
     - make_model_input-cohort_prevax-main-parkinson_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-main-parkinson_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-main-parkinson_disease.dta
 
   stata_cox_ipw-cohort_prevax-main-parkinson_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-main-parkinson_disease
@@ -17662,8 +17662,8 @@ actions:
     - ready-cohort_prevax-main-parkinson_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-main-parkinson_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-main-parkinson_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-main-parkinson_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-main-parkinson_disease.txt
 
   ready-cohort_prevax-main-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-rem_sleep_disorder.rds
@@ -17672,12 +17672,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-main-rem_sleep_disorder.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-main-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-main-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-main-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-main-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-main-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-main-rem_sleep_disorder
@@ -17686,8 +17686,8 @@ actions:
     - ready-cohort_prevax-main-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-main-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-main-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-main-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-main-rem_sleep_disorder.txt
 
   ready-cohort_prevax-main-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-main-vascular_dementia.rds
@@ -17696,12 +17696,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-main-vascular_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-main-vascular_dementia.csv
     needs:
     - make_model_input-cohort_prevax-main-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-main-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-main-vascular_dementia.dta
 
   stata_cox_ipw-cohort_prevax-main-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-main-vascular_dementia
@@ -17710,8 +17710,8 @@ actions:
     - ready-cohort_prevax-main-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-main-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-main-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-main-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-main-vascular_dementia.txt
 
   ready-cohort_unvax-main-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-main-any_dementia.rds
@@ -17720,12 +17720,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-main-any_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-main-any_dementia.csv
     needs:
     - make_model_input-cohort_unvax-main-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-main-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_unvax-main-any_dementia.dta
 
   stata_cox_ipw-cohort_unvax-main-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-main-any_dementia
@@ -17734,8 +17734,8 @@ actions:
     - ready-cohort_unvax-main-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-main-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_unvax-main-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-main-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_unvax-main-any_dementia.txt
 
   ready-cohort_unvax-main-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-main-rem_sleep_disorder.rds
@@ -17744,12 +17744,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-main-rem_sleep_disorder.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-main-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_unvax-main-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-main-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_unvax-main-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_unvax-main-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-main-rem_sleep_disorder
@@ -17758,8 +17758,8 @@ actions:
     - ready-cohort_unvax-main-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-main-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_unvax-main-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-main-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_unvax-main-rem_sleep_disorder.txt
 
   ready-cohort_vax-main-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-main-any_dementia.rds --ipw=TRUE
@@ -17768,12 +17768,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-main-any_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-main-any_dementia.csv
     needs:
     - make_model_input-cohort_vax-main-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-main-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_vax-main-any_dementia.dta
 
   stata_cox_ipw-cohort_vax-main-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-main-any_dementia
@@ -17782,8 +17782,8 @@ actions:
     - ready-cohort_vax-main-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-main-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_vax-main-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-main-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_vax-main-any_dementia.txt
 
   ready-cohort_vax-main-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-main-rem_sleep_disorder.rds
@@ -17792,12 +17792,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-main-rem_sleep_disorder.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-main-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_vax-main-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-main-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_vax-main-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_vax-main-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-main-rem_sleep_disorder
@@ -17806,8 +17806,8 @@ actions:
     - ready-cohort_vax-main-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-main-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_vax-main-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-main-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_vax-main-rem_sleep_disorder.txt
 
   ready-cohort_vax-main-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-main-vascular_dementia.rds
@@ -17816,12 +17816,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-main-vascular_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-main-vascular_dementia.csv
     needs:
     - make_model_input-cohort_vax-main-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-main-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_vax-main-vascular_dementia.dta
 
   stata_cox_ipw-cohort_vax-main-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-main-vascular_dementia
@@ -17830,8 +17830,8 @@ actions:
     - ready-cohort_vax-main-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-main-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_vax-main-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-main-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_vax-main-vascular_dementia.txt
 
   ready-cohort_prevax-sub_age_18_39-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_18_39-rem_sleep_disorder.rds
@@ -17840,12 +17840,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_18_39-rem_sleep_disorder.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_18_39-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_18_39-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_18_39-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_18_39-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_18_39-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_18_39-rem_sleep_disorder
@@ -17854,8 +17854,8 @@ actions:
     - ready-cohort_prevax-sub_age_18_39-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_18_39-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_18_39-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_18_39-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_18_39-rem_sleep_disorder.txt
 
   ready-cohort_unvax-sub_age_18_39-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_age_18_39-rem_sleep_disorder.rds
@@ -17864,12 +17864,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_age_18_39-rem_sleep_disorder.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_age_18_39-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_18_39-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_age_18_39-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_age_18_39-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_unvax-sub_age_18_39-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_age_18_39-rem_sleep_disorder
@@ -17878,8 +17878,8 @@ actions:
     - ready-cohort_unvax-sub_age_18_39-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_age_18_39-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_age_18_39-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_age_18_39-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_age_18_39-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_age_40_64-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_40_64-any_dementia.rds
@@ -17888,12 +17888,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_40_64-any_dementia.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_40_64-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_40_64-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_40_64-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_40_64-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_40_64-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_40_64-any_dementia
@@ -17902,8 +17902,8 @@ actions:
     - ready-cohort_prevax-sub_age_40_64-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_40_64-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_40_64-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_40_64-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_40_64-any_dementia.txt
 
   ready-cohort_prevax-sub_age_40_64-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_40_64-rem_sleep_disorder.rds
@@ -17912,12 +17912,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_40_64-rem_sleep_disorder.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_40_64-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_40_64-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_40_64-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_40_64-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_40_64-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_40_64-rem_sleep_disorder
@@ -17926,8 +17926,8 @@ actions:
     - ready-cohort_prevax-sub_age_40_64-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_40_64-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_40_64-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_40_64-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_40_64-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_age_40_64-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_40_64-vascular_dementia.rds
@@ -17936,12 +17936,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_40_64-vascular_dementia.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_40_64-vascular_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_40_64-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_40_64-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_40_64-vascular_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_40_64-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_40_64-vascular_dementia
@@ -17950,8 +17950,8 @@ actions:
     - ready-cohort_prevax-sub_age_40_64-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_40_64-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_40_64-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_40_64-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_40_64-vascular_dementia.txt
 
   ready-cohort_unvax-sub_age_40_64-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_age_40_64-rem_sleep_disorder.rds
@@ -17960,12 +17960,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_age_40_64-rem_sleep_disorder.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_age_40_64-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_40_64-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_age_40_64-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_age_40_64-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_unvax-sub_age_40_64-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_age_40_64-rem_sleep_disorder
@@ -17974,8 +17974,8 @@ actions:
     - ready-cohort_unvax-sub_age_40_64-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_age_40_64-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_age_40_64-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_age_40_64-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_age_40_64-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_age_65_84-alzheimer_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_65_84-alzheimer_disease.rds
@@ -17984,12 +17984,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_65_84-alzheimer_disease.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_65_84-alzheimer_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_65_84-alzheimer_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_65_84-alzheimer_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_65_84-alzheimer_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_65_84-alzheimer_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_65_84-alzheimer_disease
@@ -17998,8 +17998,8 @@ actions:
     - ready-cohort_prevax-sub_age_65_84-alzheimer_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_65_84-alzheimer_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_65_84-alzheimer_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_65_84-alzheimer_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_65_84-alzheimer_disease.txt
 
   ready-cohort_prevax-sub_age_65_84-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_65_84-any_dementia.rds
@@ -18008,12 +18008,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_65_84-any_dementia.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_65_84-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_65_84-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_65_84-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_65_84-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_65_84-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_65_84-any_dementia
@@ -18022,8 +18022,8 @@ actions:
     - ready-cohort_prevax-sub_age_65_84-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_65_84-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_65_84-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_65_84-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_65_84-any_dementia.txt
 
   ready-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms.rds
@@ -18032,12 +18032,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms
@@ -18046,8 +18046,8 @@ actions:
     - ready-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_65_84-cognitive_impairment_symptoms.txt
 
   ready-cohort_prevax-sub_age_65_84-parkinson_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_65_84-parkinson_disease.rds
@@ -18056,12 +18056,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_65_84-parkinson_disease.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_65_84-parkinson_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_65_84-parkinson_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_65_84-parkinson_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_65_84-parkinson_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_65_84-parkinson_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_65_84-parkinson_disease
@@ -18070,8 +18070,8 @@ actions:
     - ready-cohort_prevax-sub_age_65_84-parkinson_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_65_84-parkinson_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_65_84-parkinson_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_65_84-parkinson_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_65_84-parkinson_disease.txt
 
   ready-cohort_prevax-sub_age_65_84-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_65_84-rem_sleep_disorder.rds
@@ -18080,12 +18080,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_65_84-rem_sleep_disorder.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_65_84-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_65_84-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_65_84-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_65_84-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_65_84-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_65_84-rem_sleep_disorder
@@ -18094,8 +18094,8 @@ actions:
     - ready-cohort_prevax-sub_age_65_84-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_65_84-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_65_84-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_65_84-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_65_84-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_age_65_84-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_65_84-vascular_dementia.rds
@@ -18104,12 +18104,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_65_84-vascular_dementia.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_65_84-vascular_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_65_84-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_65_84-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_65_84-vascular_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_65_84-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_65_84-vascular_dementia
@@ -18118,8 +18118,8 @@ actions:
     - ready-cohort_prevax-sub_age_65_84-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_65_84-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_65_84-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_65_84-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_65_84-vascular_dementia.txt
 
   ready-cohort_vax-sub_age_65_84-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_age_65_84-rem_sleep_disorder.rds
@@ -18128,12 +18128,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_age_65_84-rem_sleep_disorder.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_age_65_84-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_vax-sub_age_65_84-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_age_65_84-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_age_65_84-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_vax-sub_age_65_84-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_age_65_84-rem_sleep_disorder
@@ -18142,8 +18142,8 @@ actions:
     - ready-cohort_vax-sub_age_65_84-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_age_65_84-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_age_65_84-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_age_65_84-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_age_65_84-rem_sleep_disorder.txt
 
   ready-cohort_vax-sub_age_65_84-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_age_65_84-vascular_dementia.rds
@@ -18152,12 +18152,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_age_65_84-vascular_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_age_65_84-vascular_dementia.csv
     needs:
     - make_model_input-cohort_vax-sub_age_65_84-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_age_65_84-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_age_65_84-vascular_dementia.dta
 
   stata_cox_ipw-cohort_vax-sub_age_65_84-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_age_65_84-vascular_dementia
@@ -18166,8 +18166,8 @@ actions:
     - ready-cohort_vax-sub_age_65_84-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_age_65_84-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_age_65_84-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_age_65_84-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_age_65_84-vascular_dementia.txt
 
   ready-cohort_prevax-sub_age_85_110-alzheimer_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_85_110-alzheimer_disease.rds
@@ -18176,12 +18176,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_85_110-alzheimer_disease.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_85_110-alzheimer_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_85_110-alzheimer_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_85_110-alzheimer_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_85_110-alzheimer_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_85_110-alzheimer_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_85_110-alzheimer_disease
@@ -18190,8 +18190,8 @@ actions:
     - ready-cohort_prevax-sub_age_85_110-alzheimer_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_85_110-alzheimer_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_85_110-alzheimer_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_85_110-alzheimer_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_85_110-alzheimer_disease.txt
 
   ready-cohort_prevax-sub_age_85_110-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_85_110-any_dementia.rds
@@ -18200,12 +18200,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_85_110-any_dementia.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_85_110-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_85_110-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_85_110-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_85_110-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_85_110-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_85_110-any_dementia
@@ -18214,8 +18214,8 @@ actions:
     - ready-cohort_prevax-sub_age_85_110-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_85_110-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_85_110-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_85_110-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_85_110-any_dementia.txt
 
   ready-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms.rds
@@ -18224,12 +18224,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms
@@ -18238,8 +18238,8 @@ actions:
     - ready-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_85_110-cognitive_impairment_symptoms.txt
 
   ready-cohort_prevax-sub_age_85_110-parkinson_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_85_110-parkinson_disease.rds
@@ -18248,12 +18248,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_85_110-parkinson_disease.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_85_110-parkinson_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_85_110-parkinson_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_85_110-parkinson_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_85_110-parkinson_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_85_110-parkinson_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_85_110-parkinson_disease
@@ -18262,8 +18262,8 @@ actions:
     - ready-cohort_prevax-sub_age_85_110-parkinson_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_85_110-parkinson_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_85_110-parkinson_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_85_110-parkinson_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_85_110-parkinson_disease.txt
 
   ready-cohort_prevax-sub_age_85_110-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_85_110-rem_sleep_disorder.rds
@@ -18272,12 +18272,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_85_110-rem_sleep_disorder.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_85_110-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_85_110-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_85_110-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_85_110-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_85_110-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_85_110-rem_sleep_disorder
@@ -18286,8 +18286,8 @@ actions:
     - ready-cohort_prevax-sub_age_85_110-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_85_110-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_85_110-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_85_110-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_85_110-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_age_85_110-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_age_85_110-vascular_dementia.rds
@@ -18296,12 +18296,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_age_85_110-vascular_dementia.csv
+      --age_spline=FALSE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_age_85_110-vascular_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_85_110-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_age_85_110-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_age_85_110-vascular_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_85_110-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_age_85_110-vascular_dementia
@@ -18310,8 +18310,8 @@ actions:
     - ready-cohort_prevax-sub_age_85_110-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_age_85_110-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_age_85_110-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_age_85_110-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_age_85_110-vascular_dementia.txt
 
   ready-cohort_vax-sub_age_85_110-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_age_85_110-any_dementia.rds
@@ -18320,12 +18320,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_age_85_110-any_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_age_85_110-any_dementia.csv
     needs:
     - make_model_input-cohort_vax-sub_age_85_110-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_age_85_110-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_age_85_110-any_dementia.dta
 
   stata_cox_ipw-cohort_vax-sub_age_85_110-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_age_85_110-any_dementia
@@ -18334,8 +18334,8 @@ actions:
     - ready-cohort_vax-sub_age_85_110-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_age_85_110-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_age_85_110-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_age_85_110-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_age_85_110-any_dementia.txt
 
   ready-cohort_vax-sub_age_85_110-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_age_85_110-vascular_dementia.rds
@@ -18344,12 +18344,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_age_85_110-vascular_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_age_85_110-vascular_dementia.csv
     needs:
     - make_model_input-cohort_vax-sub_age_85_110-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_age_85_110-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_age_85_110-vascular_dementia.dta
 
   stata_cox_ipw-cohort_vax-sub_age_85_110-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_age_85_110-vascular_dementia
@@ -18358,8 +18358,8 @@ actions:
     - ready-cohort_vax-sub_age_85_110-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_age_85_110-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_age_85_110-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_age_85_110-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_age_85_110-vascular_dementia.txt
 
   ready-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease.rds
@@ -18368,12 +18368,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease
@@ -18382,8 +18382,8 @@ actions:
     - ready-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_bin_high_vascular_risk_false-alzheimer_disease.txt
 
   ready-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia.rds
@@ -18392,12 +18392,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia
@@ -18406,8 +18406,8 @@ actions:
     - ready-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_bin_high_vascular_risk_false-any_dementia.txt
 
   ready-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia.rds
@@ -18416,12 +18416,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia
@@ -18430,8 +18430,8 @@ actions:
     - ready-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_bin_high_vascular_risk_false-vascular_dementia.txt
 
   ready-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease.rds
@@ -18440,12 +18440,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease
@@ -18454,8 +18454,8 @@ actions:
     - ready-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_bin_high_vascular_risk_true-alzheimer_disease.txt
 
   ready-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia.rds
@@ -18464,12 +18464,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia
@@ -18478,8 +18478,8 @@ actions:
     - ready-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_bin_high_vascular_risk_true-any_dementia.txt
 
   ready-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia.rds
@@ -18488,12 +18488,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia
@@ -18502,8 +18502,8 @@ actions:
     - ready-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_bin_high_vascular_risk_true-vascular_dementia.txt
 
   ready-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia.rds
@@ -18512,12 +18512,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia.csv
     needs:
     - make_model_input-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia.dta
 
   stata_cox_ipw-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia
@@ -18526,8 +18526,8 @@ actions:
     - ready-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_bin_high_vascular_risk_true-any_dementia.txt
 
   ready-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia.rds
@@ -18536,12 +18536,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia.csv
     needs:
     - make_model_input-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia.dta
 
   stata_cox_ipw-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia
@@ -18550,8 +18550,8 @@ actions:
     - ready-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-alzheimer_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.rds
@@ -18560,12 +18560,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-alzheimer_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-alzheimer_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_hospitalised-alzheimer_disease
@@ -18574,8 +18574,8 @@ actions:
     - ready-cohort_prevax-sub_covid_hospitalised-alzheimer_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_hospitalised-alzheimer_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-alzheimer_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_hospitalised-alzheimer_disease.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-any_dementia.rds
@@ -18584,12 +18584,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-any_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_hospitalised-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_hospitalised-any_dementia
@@ -18598,8 +18598,8 @@ actions:
     - ready-cohort_prevax-sub_covid_hospitalised-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_hospitalised-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_hospitalised-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_hospitalised-any_dementia.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms.rds
@@ -18608,12 +18608,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms
@@ -18622,8 +18622,8 @@ actions:
     - ready-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_hospitalised-cognitive_impairment_symptoms.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-migraine:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-migraine.rds
@@ -18632,12 +18632,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-migraine.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_hospitalised-migraine.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-migraine
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-migraine.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-migraine.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-migraine:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_hospitalised-migraine
@@ -18646,8 +18646,8 @@ actions:
     - ready-cohort_prevax-sub_covid_hospitalised-migraine
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_hospitalised-migraine_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-migraine_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_hospitalised-migraine.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_hospitalised-migraine.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.rds
@@ -18656,12 +18656,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_hospitalised-multiple_sclerosis
@@ -18670,8 +18670,8 @@ actions:
     - ready-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_hospitalised-multiple_sclerosis.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-parkinson_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease.rds
@@ -18680,12 +18680,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-parkinson_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_hospitalised-parkinson_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-parkinson_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-parkinson_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-parkinson_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-parkinson_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_hospitalised-parkinson_disease
@@ -18694,8 +18694,8 @@ actions:
     - ready-cohort_prevax-sub_covid_hospitalised-parkinson_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_hospitalised-parkinson_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-parkinson_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_hospitalised-parkinson_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_hospitalised-parkinson_disease.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.rds
@@ -18704,12 +18704,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder
@@ -18718,8 +18718,8 @@ actions:
     - ready-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_hospitalised-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_covid_hospitalised-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia.rds
@@ -18728,12 +18728,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-vascular_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_hospitalised-vascular_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_hospitalised-vascular_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_hospitalised-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_hospitalised-vascular_dementia
@@ -18742,8 +18742,8 @@ actions:
     - ready-cohort_prevax-sub_covid_hospitalised-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_hospitalised-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_hospitalised-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_hospitalised-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_hospitalised-vascular_dementia.txt
 
   ready-cohort_unvax-sub_covid_hospitalised-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-any_dementia.rds
@@ -18752,12 +18752,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_covid_hospitalised-any_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_covid_hospitalised-any_dementia.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_hospitalised-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_covid_hospitalised-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_covid_hospitalised-any_dementia.dta
 
   stata_cox_ipw-cohort_unvax-sub_covid_hospitalised-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_covid_hospitalised-any_dementia
@@ -18766,8 +18766,8 @@ actions:
     - ready-cohort_unvax-sub_covid_hospitalised-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_covid_hospitalised-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_covid_hospitalised-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_covid_hospitalised-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_covid_hospitalised-any_dementia.txt
 
   ready-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms.rds
@@ -18776,12 +18776,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms.dta
 
   stata_cox_ipw-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms
@@ -18790,8 +18790,8 @@ actions:
     - ready-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_covid_hospitalised-cognitive_impairment_symptoms.txt
 
   ready-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.rds
@@ -18800,12 +18800,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
@@ -18814,8 +18814,8 @@ actions:
     - ready-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder.txt
 
   ready-cohort_vax-sub_covid_hospitalised-alzheimer_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease.rds
@@ -18824,12 +18824,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_covid_hospitalised-alzheimer_disease.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_covid_hospitalised-alzheimer_disease.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_hospitalised-alzheimer_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_covid_hospitalised-alzheimer_disease.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_covid_hospitalised-alzheimer_disease.dta
 
   stata_cox_ipw-cohort_vax-sub_covid_hospitalised-alzheimer_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_covid_hospitalised-alzheimer_disease
@@ -18838,8 +18838,8 @@ actions:
     - ready-cohort_vax-sub_covid_hospitalised-alzheimer_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_covid_hospitalised-alzheimer_disease_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_covid_hospitalised-alzheimer_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_covid_hospitalised-alzheimer_disease.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_covid_hospitalised-alzheimer_disease.txt
 
   ready-cohort_vax-sub_covid_hospitalised-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-any_dementia.rds
@@ -18848,12 +18848,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_covid_hospitalised-any_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_covid_hospitalised-any_dementia.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_hospitalised-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_covid_hospitalised-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_covid_hospitalised-any_dementia.dta
 
   stata_cox_ipw-cohort_vax-sub_covid_hospitalised-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_covid_hospitalised-any_dementia
@@ -18862,32 +18862,8 @@ actions:
     - ready-cohort_vax-sub_covid_hospitalised-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_covid_hospitalised-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_covid_hospitalised-any_dementia_cox_model.txt
-
-  ready-cohort_vax-sub_covid_hospitalised-parkinson_disease:
-    run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_copd;cov_bin_ami;cov_bin_isch;cov_bin_history_cog_imp_sympt;cov_bin_history_mnd;cov_bin_history_migraine;cov_bin_history_ms;cov_bin_history_parkinson_risk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_covid_hospitalised-parkinson_disease.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covid_hospitalised-parkinson_disease
-    outputs:
-      highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_covid_hospitalised-parkinson_disease.csv.gz
-
-  stata_cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease:
-    run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_covid_hospitalised-parkinson_disease
-      TRUE
-    needs:
-    - ready-cohort_vax-sub_covid_hospitalised-parkinson_disease
-    outputs:
-      moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_covid_hospitalised-parkinson_disease_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_covid_hospitalised-parkinson_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_covid_hospitalised-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_covid_hospitalised-any_dementia.txt
 
   ready-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.rds
@@ -18896,12 +18872,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
@@ -18910,8 +18886,8 @@ actions:
     - ready-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder.txt
 
   ready-cohort_vax-sub_covid_hospitalised-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia.rds
@@ -18920,12 +18896,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_covid_hospitalised-vascular_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_covid_hospitalised-vascular_dementia.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_hospitalised-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_covid_hospitalised-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_covid_hospitalised-vascular_dementia.dta
 
   stata_cox_ipw-cohort_vax-sub_covid_hospitalised-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_covid_hospitalised-vascular_dementia
@@ -18934,8 +18910,8 @@ actions:
     - ready-cohort_vax-sub_covid_hospitalised-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_covid_hospitalised-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_covid_hospitalised-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_covid_hospitalised-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_covid_hospitalised-vascular_dementia.txt
 
   ready-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.rds
@@ -18944,12 +18920,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease
@@ -18958,8 +18934,8 @@ actions:
     - ready-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease.txt
 
   ready-cohort_prevax-sub_covid_nonhospitalised-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia.rds
@@ -18968,12 +18944,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-any_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_nonhospitalised-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_nonhospitalised-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_nonhospitalised-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_nonhospitalised-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_nonhospitalised-any_dementia
@@ -18982,8 +18958,8 @@ actions:
     - ready-cohort_prevax-sub_covid_nonhospitalised-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_nonhospitalised-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_nonhospitalised-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_nonhospitalised-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_nonhospitalised-any_dementia.txt
 
   ready-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.rds
@@ -18992,12 +18968,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease
@@ -19006,8 +18982,8 @@ actions:
     - ready-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_nonhospitalised-motor_neurone_disease.txt
 
   ready-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.rds
@@ -19016,12 +18992,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_nonhospitalised-parkinson_disease
@@ -19030,8 +19006,8 @@ actions:
     - ready-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_nonhospitalised-parkinson_disease.txt
 
   ready-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
@@ -19040,12 +19016,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder
@@ -19054,8 +19030,8 @@ actions:
     - ready-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_nonhospitalised-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.rds
@@ -19064,12 +19040,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_covid_nonhospitalised-vascular_dementia
@@ -19078,8 +19054,8 @@ actions:
     - ready-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_covid_nonhospitalised-vascular_dementia.txt
 
   ready-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.rds
@@ -19088,12 +19064,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder
@@ -19102,8 +19078,8 @@ actions:
     - ready-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_covid_nonhospitalised-rem_sleep_disorder.txt
 
   ready-cohort_vax-sub_covid_nonhospitalised-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.rds
@@ -19112,12 +19088,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.dta
 
   stata_cox_ipw-cohort_vax-sub_covid_nonhospitalised-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_covid_nonhospitalised-vascular_dementia
@@ -19126,8 +19102,8 @@ actions:
     - ready-cohort_vax-sub_covid_nonhospitalised-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_covid_nonhospitalised-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_covid_nonhospitalised-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_covid_nonhospitalised-vascular_dementia.txt
 
   ready-cohort_prevax-sub_ethnicity_asian-alzheimer_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.rds
@@ -19136,12 +19112,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_asian-alzheimer_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_asian-alzheimer_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_asian-alzheimer_disease
@@ -19150,8 +19126,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_asian-alzheimer_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_asian-alzheimer_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_asian-alzheimer_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_asian-alzheimer_disease.txt
 
   ready-cohort_prevax-sub_ethnicity_asian-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-any_dementia.rds
@@ -19160,12 +19136,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_asian-any_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_asian-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_asian-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_asian-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_asian-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_asian-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_asian-any_dementia
@@ -19174,8 +19150,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_asian-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_asian-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_asian-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_asian-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_asian-any_dementia.txt
 
   ready-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms.rds
@@ -19184,12 +19160,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms
@@ -19198,8 +19174,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_asian-cognitive_impairment_symptoms.txt
 
   ready-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder.rds
@@ -19208,12 +19184,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder
@@ -19222,8 +19198,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_asian-rem_sleep_disorder.txt
 
   ready-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder.rds
@@ -19232,12 +19208,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_ethnicity_asian-rem_sleep_disorder
@@ -19246,8 +19222,8 @@ actions:
     - ready-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_ethnicity_asian-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_ethnicity_black-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_black-any_dementia.rds
@@ -19256,12 +19232,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_black-any_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_black-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_black-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_black-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_black-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_black-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_black-any_dementia
@@ -19270,8 +19246,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_black-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_black-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_black-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_black-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_black-any_dementia.txt
 
   ready-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms.rds
@@ -19280,12 +19256,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms
@@ -19294,8 +19270,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_black-cognitive_impairment_symptoms.txt
 
   ready-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder.rds
@@ -19304,12 +19280,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_black-rem_sleep_disorder
@@ -19318,8 +19294,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_black-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms.rds
@@ -19328,12 +19304,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms
@@ -19342,8 +19318,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_other-cognitive_impairment_symptoms.txt
 
   ready-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder.rds
@@ -19352,12 +19328,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_other-rem_sleep_disorder
@@ -19366,8 +19342,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_other-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_ethnicity_white-alzheimer_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease.rds
@@ -19376,12 +19352,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_white-alzheimer_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_white-alzheimer_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_white-alzheimer_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-alzheimer_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-alzheimer_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_white-alzheimer_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_white-alzheimer_disease
@@ -19390,8 +19366,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_white-alzheimer_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_white-alzheimer_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_white-alzheimer_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_white-alzheimer_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_white-alzheimer_disease.txt
 
   ready-cohort_prevax-sub_ethnicity_white-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-any_dementia.rds
@@ -19400,12 +19376,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_white-any_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_white-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_white-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_white-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_white-any_dementia
@@ -19414,8 +19390,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_white-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_white-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_white-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_white-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_white-any_dementia.txt
 
   ready-cohort_prevax-sub_ethnicity_white-motor_neurone_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-motor_neurone_disease.rds
@@ -19424,12 +19400,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_white-motor_neurone_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_white-motor_neurone_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_white-motor_neurone_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-motor_neurone_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-motor_neurone_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_white-motor_neurone_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_white-motor_neurone_disease
@@ -19438,8 +19414,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_white-motor_neurone_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_white-motor_neurone_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_white-motor_neurone_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_white-motor_neurone_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_white-motor_neurone_disease.txt
 
   ready-cohort_prevax-sub_ethnicity_white-multiple_sclerosis:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-multiple_sclerosis.rds
@@ -19448,12 +19424,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_white-multiple_sclerosis.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_white-multiple_sclerosis.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_white-multiple_sclerosis
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-multiple_sclerosis.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-multiple_sclerosis.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_white-multiple_sclerosis:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_white-multiple_sclerosis
@@ -19462,8 +19438,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_white-multiple_sclerosis
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_white-multiple_sclerosis_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_white-multiple_sclerosis_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_white-multiple_sclerosis.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_white-multiple_sclerosis.txt
 
   ready-cohort_prevax-sub_ethnicity_white-parkinson_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease.rds
@@ -19472,12 +19448,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_white-parkinson_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_white-parkinson_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_white-parkinson_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-parkinson_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-parkinson_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_white-parkinson_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_white-parkinson_disease
@@ -19486,8 +19462,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_white-parkinson_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_white-parkinson_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_white-parkinson_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_white-parkinson_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_white-parkinson_disease.txt
 
   ready-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder.rds
@@ -19496,12 +19472,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_white-rem_sleep_disorder
@@ -19510,8 +19486,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_white-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_ethnicity_white-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_ethnicity_white-vascular_dementia.rds
@@ -19520,12 +19496,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_ethnicity_white-vascular_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_ethnicity_white-vascular_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_white-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_ethnicity_white-vascular_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_white-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_ethnicity_white-vascular_dementia
@@ -19534,8 +19510,8 @@ actions:
     - ready-cohort_prevax-sub_ethnicity_white-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_ethnicity_white-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_ethnicity_white-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_ethnicity_white-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_ethnicity_white-vascular_dementia.txt
 
   ready-cohort_unvax-sub_ethnicity_white-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_ethnicity_white-any_dementia.rds
@@ -19544,12 +19520,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_ethnicity_white-any_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_ethnicity_white-any_dementia.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_white-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_ethnicity_white-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_ethnicity_white-any_dementia.dta
 
   stata_cox_ipw-cohort_unvax-sub_ethnicity_white-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_ethnicity_white-any_dementia
@@ -19558,8 +19534,8 @@ actions:
     - ready-cohort_unvax-sub_ethnicity_white-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_ethnicity_white-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_ethnicity_white-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_ethnicity_white-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_ethnicity_white-any_dementia.txt
 
   ready-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder.rds
@@ -19568,12 +19544,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_ethnicity_white-rem_sleep_disorder
@@ -19582,8 +19558,8 @@ actions:
     - ready-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_ethnicity_white-rem_sleep_disorder.txt
 
   ready-cohort_vax-sub_ethnicity_white-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_ethnicity_white-vascular_dementia.rds
@@ -19592,12 +19568,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_ethnicity_white-vascular_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_ethnicity_white-vascular_dementia.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_white-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_ethnicity_white-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_ethnicity_white-vascular_dementia.dta
 
   stata_cox_ipw-cohort_vax-sub_ethnicity_white-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_ethnicity_white-vascular_dementia
@@ -19606,8 +19582,8 @@ actions:
     - ready-cohort_vax-sub_ethnicity_white-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_ethnicity_white-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_ethnicity_white-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_ethnicity_white-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_ethnicity_white-vascular_dementia.txt
 
   ready-cohort_prevax-sub_history_parkinson_false-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_history_parkinson_false-any_dementia.rds
@@ -19616,12 +19592,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_history_parkinson_false-any_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_history_parkinson_false-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_history_parkinson_false-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_history_parkinson_false-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_history_parkinson_false-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_history_parkinson_false-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_history_parkinson_false-any_dementia
@@ -19630,8 +19606,8 @@ actions:
     - ready-cohort_prevax-sub_history_parkinson_false-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_history_parkinson_false-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_history_parkinson_false-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_history_parkinson_false-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_history_parkinson_false-any_dementia.txt
 
   ready-cohort_unvax-sub_history_parkinson_false-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_history_parkinson_false-any_dementia.rds
@@ -19640,12 +19616,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_history_parkinson_false-any_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_history_parkinson_false-any_dementia.csv
     needs:
     - make_model_input-cohort_unvax-sub_history_parkinson_false-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_history_parkinson_false-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_history_parkinson_false-any_dementia.dta
 
   stata_cox_ipw-cohort_unvax-sub_history_parkinson_false-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_history_parkinson_false-any_dementia
@@ -19654,8 +19630,8 @@ actions:
     - ready-cohort_unvax-sub_history_parkinson_false-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_history_parkinson_false-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_history_parkinson_false-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_history_parkinson_false-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_history_parkinson_false-any_dementia.txt
 
   ready-cohort_prevax-sub_history_parkinson_true-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_history_parkinson_true-any_dementia.rds
@@ -19664,12 +19640,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_history_parkinson_true-any_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_history_parkinson_true-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_history_parkinson_true-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_history_parkinson_true-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_history_parkinson_true-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_history_parkinson_true-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_history_parkinson_true-any_dementia
@@ -19678,8 +19654,8 @@ actions:
     - ready-cohort_prevax-sub_history_parkinson_true-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_history_parkinson_true-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_history_parkinson_true-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_history_parkinson_true-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_history_parkinson_true-any_dementia.txt
 
   ready-cohort_prevax-sub_sex_female-alzheimer_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_female-alzheimer_disease.rds
@@ -19688,12 +19664,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_female-alzheimer_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_female-alzheimer_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_female-alzheimer_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_female-alzheimer_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_female-alzheimer_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_female-alzheimer_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_female-alzheimer_disease
@@ -19702,8 +19678,8 @@ actions:
     - ready-cohort_prevax-sub_sex_female-alzheimer_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_female-alzheimer_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_female-alzheimer_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_female-alzheimer_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_female-alzheimer_disease.txt
 
   ready-cohort_prevax-sub_sex_female-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_female-any_dementia.rds
@@ -19712,12 +19688,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_female-any_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_female-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_female-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_female-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_female-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_female-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_female-any_dementia
@@ -19726,8 +19702,8 @@ actions:
     - ready-cohort_prevax-sub_sex_female-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_female-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_female-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_female-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_female-any_dementia.txt
 
   ready-cohort_prevax-sub_sex_female-multiple_sclerosis:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_female-multiple_sclerosis.rds
@@ -19736,12 +19712,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_female-multiple_sclerosis.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_female-multiple_sclerosis.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_female-multiple_sclerosis
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_female-multiple_sclerosis.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_female-multiple_sclerosis.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_female-multiple_sclerosis:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_female-multiple_sclerosis
@@ -19750,8 +19726,8 @@ actions:
     - ready-cohort_prevax-sub_sex_female-multiple_sclerosis
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_female-multiple_sclerosis_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_female-multiple_sclerosis_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_female-multiple_sclerosis.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_female-multiple_sclerosis.txt
 
   ready-cohort_prevax-sub_sex_female-parkinson_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_female-parkinson_disease.rds
@@ -19760,12 +19736,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_female-parkinson_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_female-parkinson_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_female-parkinson_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_female-parkinson_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_female-parkinson_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_female-parkinson_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_female-parkinson_disease
@@ -19774,8 +19750,8 @@ actions:
     - ready-cohort_prevax-sub_sex_female-parkinson_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_female-parkinson_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_female-parkinson_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_female-parkinson_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_female-parkinson_disease.txt
 
   ready-cohort_prevax-sub_sex_female-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_female-rem_sleep_disorder.rds
@@ -19784,12 +19760,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_female-rem_sleep_disorder.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_female-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_female-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_female-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_female-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_female-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_female-rem_sleep_disorder
@@ -19798,8 +19774,8 @@ actions:
     - ready-cohort_prevax-sub_sex_female-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_female-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_female-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_female-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_female-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_sex_female-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_female-vascular_dementia.rds
@@ -19808,12 +19784,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_female-vascular_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_female-vascular_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_female-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_female-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_female-vascular_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_female-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_female-vascular_dementia
@@ -19822,8 +19798,8 @@ actions:
     - ready-cohort_prevax-sub_sex_female-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_female-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_female-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_female-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_female-vascular_dementia.txt
 
   ready-cohort_unvax-sub_sex_female-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_sex_female-any_dementia.rds
@@ -19832,12 +19808,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_sex_female-any_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_sex_female-any_dementia.csv
     needs:
     - make_model_input-cohort_unvax-sub_sex_female-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_sex_female-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_sex_female-any_dementia.dta
 
   stata_cox_ipw-cohort_unvax-sub_sex_female-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_sex_female-any_dementia
@@ -19846,8 +19822,8 @@ actions:
     - ready-cohort_unvax-sub_sex_female-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_sex_female-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_sex_female-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_sex_female-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_sex_female-any_dementia.txt
 
   ready-cohort_unvax-sub_sex_female-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_sex_female-rem_sleep_disorder.rds
@@ -19856,12 +19832,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_sex_female-rem_sleep_disorder.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_sex_female-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_unvax-sub_sex_female-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_sex_female-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_sex_female-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_unvax-sub_sex_female-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_sex_female-rem_sleep_disorder
@@ -19870,8 +19846,8 @@ actions:
     - ready-cohort_unvax-sub_sex_female-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_sex_female-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_sex_female-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_sex_female-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_sex_female-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_sex_male-alzheimer_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-alzheimer_disease.rds
@@ -19880,12 +19856,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_male-alzheimer_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_male-alzheimer_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_male-alzheimer_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_male-alzheimer_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_male-alzheimer_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_male-alzheimer_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_male-alzheimer_disease
@@ -19894,8 +19870,8 @@ actions:
     - ready-cohort_prevax-sub_sex_male-alzheimer_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_male-alzheimer_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_male-alzheimer_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_male-alzheimer_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_male-alzheimer_disease.txt
 
   ready-cohort_prevax-sub_sex_male-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-any_dementia.rds
@@ -19904,12 +19880,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_male-any_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_male-any_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_male-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_male-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_male-any_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_male-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_male-any_dementia
@@ -19918,8 +19894,8 @@ actions:
     - ready-cohort_prevax-sub_sex_male-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_male-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_male-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_male-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_male-any_dementia.txt
 
   ready-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms.rds
@@ -19928,12 +19904,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_male-cognitive_impairment_symptoms
@@ -19942,8 +19918,8 @@ actions:
     - ready-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_male-cognitive_impairment_symptoms.txt
 
   ready-cohort_prevax-sub_sex_male-multiple_sclerosis:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-multiple_sclerosis.rds
@@ -19952,12 +19928,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_male-multiple_sclerosis.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_male-multiple_sclerosis.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_male-multiple_sclerosis
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_male-multiple_sclerosis.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_male-multiple_sclerosis.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_male-multiple_sclerosis:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_male-multiple_sclerosis
@@ -19966,8 +19942,8 @@ actions:
     - ready-cohort_prevax-sub_sex_male-multiple_sclerosis
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_male-multiple_sclerosis_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_male-multiple_sclerosis_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_male-multiple_sclerosis.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_male-multiple_sclerosis.txt
 
   ready-cohort_prevax-sub_sex_male-parkinson_disease:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-parkinson_disease.rds
@@ -19976,12 +19952,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_male-parkinson_disease.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_male-parkinson_disease.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_male-parkinson_disease
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_male-parkinson_disease.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_male-parkinson_disease.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_male-parkinson_disease:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_male-parkinson_disease
@@ -19990,8 +19966,8 @@ actions:
     - ready-cohort_prevax-sub_sex_male-parkinson_disease
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_male-parkinson_disease_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_male-parkinson_disease_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_male-parkinson_disease.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_male-parkinson_disease.txt
 
   ready-cohort_prevax-sub_sex_male-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-rem_sleep_disorder.rds
@@ -20000,12 +19976,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_male-rem_sleep_disorder.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_male-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_male-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_male-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_male-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_male-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_male-rem_sleep_disorder
@@ -20014,8 +19990,8 @@ actions:
     - ready-cohort_prevax-sub_sex_male-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_male-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_male-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_male-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_male-rem_sleep_disorder.txt
 
   ready-cohort_prevax-sub_sex_male-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_prevax-sub_sex_male-vascular_dementia.rds
@@ -20024,12 +20000,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=1;28;197;365;714 --controls_per_case=20
       --total_event_threshold=20 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=model_output-cohort_prevax-sub_sex_male-vascular_dementia.csv
+      --age_spline=TRUE --save_analysis_ready=TRUE --run_analysis=FALSE --df_output=ready-cohort_prevax-sub_sex_male-vascular_dementia.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_male-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_prevax-sub_sex_male-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_prevax-sub_sex_male-vascular_dementia.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_male-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_prevax-sub_sex_male-vascular_dementia
@@ -20038,8 +20014,8 @@ actions:
     - ready-cohort_prevax-sub_sex_male-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_prevax-sub_sex_male-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_prevax-sub_sex_male-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_prevax-sub_sex_male-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_prevax-sub_sex_male-vascular_dementia.txt
 
   ready-cohort_unvax-sub_sex_male-rem_sleep_disorder:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_unvax-sub_sex_male-rem_sleep_disorder.rds
@@ -20048,12 +20024,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_unvax-sub_sex_male-rem_sleep_disorder.csv
+      --run_analysis=FALSE --df_output=ready-cohort_unvax-sub_sex_male-rem_sleep_disorder.csv
     needs:
     - make_model_input-cohort_unvax-sub_sex_male-rem_sleep_disorder
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_unvax-sub_sex_male-rem_sleep_disorder.csv.gz
+        analysis_ready: output/ready-cohort_unvax-sub_sex_male-rem_sleep_disorder.dta
 
   stata_cox_ipw-cohort_unvax-sub_sex_male-rem_sleep_disorder:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_unvax-sub_sex_male-rem_sleep_disorder
@@ -20062,8 +20038,8 @@ actions:
     - ready-cohort_unvax-sub_sex_male-rem_sleep_disorder
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_unvax-sub_sex_male-rem_sleep_disorder_median_fup.csv
-        stata_output: output/ready-cohort_unvax-sub_sex_male-rem_sleep_disorder_cox_model.txt
+        medianfup: output/stata_fup-cohort_unvax-sub_sex_male-rem_sleep_disorder.csv
+        stata_output: output/stata_model_output-cohort_unvax-sub_sex_male-rem_sleep_disorder.txt
 
   ready-cohort_vax-sub_sex_male-any_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_sex_male-any_dementia.rds
@@ -20072,12 +20048,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_sex_male-any_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_sex_male-any_dementia.csv
     needs:
     - make_model_input-cohort_vax-sub_sex_male-any_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_sex_male-any_dementia.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_sex_male-any_dementia.dta
 
   stata_cox_ipw-cohort_vax-sub_sex_male-any_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_sex_male-any_dementia
@@ -20086,8 +20062,8 @@ actions:
     - ready-cohort_vax-sub_sex_male-any_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_sex_male-any_dementia_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_sex_male-any_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_sex_male-any_dementia.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_sex_male-any_dementia.txt
 
   ready-cohort_vax-sub_sex_male-vascular_dementia:
     run: cox-ipw:v0.0.31 --df_input=model_input-cohort_vax-sub_sex_male-vascular_dementia.rds
@@ -20096,12 +20072,12 @@ actions:
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=1;28;197 --controls_per_case=20 --total_event_threshold=20
       --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --save_analysis_ready=TRUE
-      --run_analysis=FALSE --df_output=model_output-cohort_vax-sub_sex_male-vascular_dementia.csv
+      --run_analysis=FALSE --df_output=ready-cohort_vax-sub_sex_male-vascular_dementia.csv
     needs:
     - make_model_input-cohort_vax-sub_sex_male-vascular_dementia
     outputs:
       highly_sensitive:
-        analysis_ready: output/ready-cohort_vax-sub_sex_male-vascular_dementia.csv.gz
+        analysis_ready: output/ready-cohort_vax-sub_sex_male-vascular_dementia.dta
 
   stata_cox_ipw-cohort_vax-sub_sex_male-vascular_dementia:
     run: stata-mp:latest analysis/stata/cox_model.do cohort_vax-sub_sex_male-vascular_dementia
@@ -20110,8 +20086,8 @@ actions:
     - ready-cohort_vax-sub_sex_male-vascular_dementia
     outputs:
       moderately_sensitive:
-        medianfup: output/ready-cohort_vax-sub_sex_male-vascular_dementia_median_fup.csv
-        stata_output: output/ready-cohort_vax-sub_sex_male-vascular_dementia_cox_model.txt
+        medianfup: output/stata_fup-cohort_vax-sub_sex_male-vascular_dementia.csv
+        stata_output: output/stata_model_output-cohort_vax-sub_sex_male-vascular_dementia.txt
 
   ## Table 2 - prevax 
 
@@ -20508,6 +20484,7 @@ actions:
     - cox_ipw-cohort_vax-sub_covid_hospitalised-migraine
     - cox_ipw-cohort_vax-sub_covid_hospitalised-motor_neurone_disease
     - cox_ipw-cohort_vax-sub_covid_hospitalised-multiple_sclerosis
+    - cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease
     - cox_ipw-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome
     - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment_symptoms
     - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-lewy_body_dementia
@@ -20797,7 +20774,6 @@ actions:
     - stata_cox_ipw-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-alzheimer_disease
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-any_dementia
-    - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-vascular_dementia
     - stata_cox_ipw-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease
@@ -20912,7 +20888,6 @@ actions:
     - stata_cox_ipw-cohort_unvax-sub_covid_hospitalised-rem_sleep_disorder
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-alzheimer_disease
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-any_dementia
-    - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-rem_sleep_disorder
     - stata_cox_ipw-cohort_vax-sub_covid_hospitalised-vascular_dementia
     - stata_cox_ipw-cohort_prevax-sub_covid_nonhospitalised-alzheimer_disease
