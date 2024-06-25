@@ -667,7 +667,7 @@ actions_list <- splice(
   action(
     name = "make_model_output",
     run = "r:latest analysis/model/make_model_output.R",
-    needs = as.list(c(paste0("cox_ipw-", setdiff(active_analyses[!grepl("-unspecified_dementias|-other_dementias", active_analyses$name),]$name, stata$name)),
+    needs = as.list(c(paste0("cox_ipw-", setdiff(active_analyses[!grepl("-unspecified_dementias|-other_dementias|cohort_vax-sub_covid_hospitalised-parkinson_disease", active_analyses$name),]$name, stata$name)),
                     paste0("stata_cox_ipw-",stata$name))),
     moderately_sensitive = list(
       model_output = glue("output/model_output.csv"),
