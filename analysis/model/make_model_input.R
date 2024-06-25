@@ -59,65 +59,34 @@ for (i in 1:nrow(active_analyses)) {
   # Restrict to required variables -----------------------------------------------
   print('Restrict to required variables')
   
-  # For models with strata = NULL
-  if (active_analyses$strata[i] == "NULL") {
-    
-    input <- input[,unique(c("patient_id",
-                             "index_date",
-                             "end_date_exposure",
-                             "end_date_outcome",
-                             active_analyses$exposure[i], 
-                             active_analyses$outcome[i],
-                             unlist(strsplit(active_analyses$covariate_other[i], split = ";")),
-                             "sub_cat_covid19_hospital",
-                             "sub_bin_covid19_confirmed_history",
-                             "sub_bin_high_vascular_risk",
-                             "cov_cat_region",
-                             "cov_cat_sex",
-                             "cov_num_age",
-                             "cov_bin_history_cog_imp_sympt",
-                             "cov_bin_history_alzheimer_disease",
-                             "cov_bin_history_vascular_dementia",
-                             "cov_bin_history_lewy_body_dementia",
-                             "cov_bin_history_mnd",
-                             "cov_bin_history_ms",
-                             "cov_bin_history_any_dementia",
-                             "cov_bin_history_parkinson",
-                             "cov_bin_history_migraine",
-                             "cov_bin_history_parkinson_risk",
-                             "cov_bin_history_other_dementias",
-                             "cov_bin_history_unspecified_dementias",
-                             "cov_cat_ethnicity"))]
-    
-  } else {
-  
-  input <- input[,unique(c("patient_id",
-                           "index_date",
-                           "end_date_exposure",
-                           "end_date_outcome",
-                           active_analyses$exposure[i], 
-                           active_analyses$outcome[i],
-                           unlist(strsplit(active_analyses$strata[i], split = ";")),
-                           unlist(strsplit(active_analyses$covariate_other[i], split = ";")),
-                           "sub_cat_covid19_hospital",
-                           "sub_bin_covid19_confirmed_history",
-                           "sub_bin_high_vascular_risk",
-                           "cov_cat_sex",
-                           "cov_num_age",
-                           "cov_bin_history_cog_imp_sympt",
-                           "cov_bin_history_alzheimer_disease",
-                           "cov_bin_history_vascular_dementia",
-                           "cov_bin_history_lewy_body_dementia",
-                           "cov_bin_history_mnd",
-                           "cov_bin_history_ms",
-                           "cov_bin_history_any_dementia",
-                           "cov_bin_history_parkinson",
-                           "cov_bin_history_migraine",
-                           "cov_bin_history_parkinson_risk",
-                           "cov_bin_history_other_dementias",
-                           "cov_bin_history_unspecified_dementias",
-                           "cov_cat_ethnicity"))]
-  }
+  input_vars <- setdiff(unique(c("patient_id",
+                         "index_date",
+                         "end_date_exposure",
+                         "end_date_outcome",
+                         active_analyses$exposure[i], 
+                         active_analyses$outcome[i],
+                         unlist(strsplit(active_analyses$strata[i], split = ";")),
+                         unlist(strsplit(active_analyses$covariate_other[i], split = ";")),
+                         "sub_cat_covid19_hospital",
+                         "sub_bin_covid19_confirmed_history",
+                         "sub_bin_high_vascular_risk",
+                         "cov_cat_sex",
+                         "cov_num_age",
+                         "cov_bin_history_cog_imp_sympt",
+                         "cov_bin_history_alzheimer_disease",
+                         "cov_bin_history_vascular_dementia",
+                         "cov_bin_history_lewy_body_dementia",
+                         "cov_bin_history_mnd",
+                         "cov_bin_history_ms",
+                         "cov_bin_history_any_dementia",
+                         "cov_bin_history_parkinson",
+                         "cov_bin_history_migraine",
+                         "cov_bin_history_parkinson_risk",
+                         "cov_bin_history_other_dementias",
+                         "cov_bin_history_unspecified_dementias",
+                         "cov_cat_ethnicity")),"NULL")
+
+  input <- input[,input_vars]
   
   # Remove outcomes outside of follow-up time ------------------------------------
   print('Remove outcomes outside of follow-up time')
