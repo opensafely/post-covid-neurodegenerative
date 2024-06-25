@@ -20484,7 +20484,6 @@ actions:
     - cox_ipw-cohort_vax-sub_covid_hospitalised-migraine
     - cox_ipw-cohort_vax-sub_covid_hospitalised-motor_neurone_disease
     - cox_ipw-cohort_vax-sub_covid_hospitalised-multiple_sclerosis
-    - cox_ipw-cohort_vax-sub_covid_hospitalised-parkinson_disease
     - cox_ipw-cohort_vax-sub_covid_hospitalised-restless_leg_syndrome
     - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-cognitive_impairment_symptoms
     - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-lewy_body_dementia
