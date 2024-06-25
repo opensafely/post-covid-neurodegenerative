@@ -16,7 +16,7 @@ source("analysis/utility.R")
 # List files to be combined ----------------------------------------------------
 print('List files to be combined')
 
-files <- list.files(path = "output/", pattern = "ready-cohort_.*\\.txt$")
+files <- list.files(path = "output/", pattern = "stata_model_output-.*\\.txt")
 
 # Create empty master data frame -----------------------------------------------
 print('Create empty master data frame')
@@ -68,12 +68,12 @@ for (f in files) {
   # Add name -------------------------------------------------------------------
   print('Add name')
   
-  stata_model_output$name <- gsub(".txt","",gsub("ready-cohort_","",f))
+  stata_model_output$name <- gsub(".txt","",gsub("stata_model_output-","",f))
   
   # Add median fup -------------------------------------------------------------
   print('Add median fup')
   
-  median_fup <- readr::read_csv(file = paste0("output/",gsub("_cox_model.txt","_median_fup.csv",f)))
+  median_fup <- readr::read_csv(file = paste0("output/",gsub("_model_output","_fup",gsub(".txt",".csv",f))))
   
   median_fup <- dplyr::rename(median_fup,
                               "outcome_time_median" = "median_tte",
