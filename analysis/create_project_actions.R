@@ -24,6 +24,39 @@ cohorts <- unique(active_analyses$cohort)
 # Test Stata locally
 # run_stata <- c("cohort_prevax-main-vascular_dementia")
 
+#failed models 
+failed_models <- c(
+  "cohort_prevax-sub_age_18_39-lewy_body_dementia",
+  "cohort_prevax-sub_age_65_84-multiple_sclerosis",
+  "cohort_prevax-sub_history_cognitive_impairment_false-any_dementia",
+  "cohort_prevax-sub_history_cognitive_impairment_true-any_dementia",
+  "cohort_prevax-sub_history_parkinson_risk_false-parkinson_disease",
+  "cohort_prevax-sub_history_parkinson_risk_true-parkinson_disease",
+  "cohort_unvax-sub_age_18_39-alzheimer_disease",
+  "cohort_unvax-sub_age_18_39-lewy_body_dementia",
+  "cohort_unvax-sub_age_40_64-lewy_body_dementia",
+  "cohort_unvax-sub_age_65_84-rem_sleep_disorder",
+  "cohort_unvax-sub_bin_high_vascular_risk_false-lewy_body_dementia",
+  "cohort_unvax-sub_covid_history-lewy_body_dementia",
+  "cohort_unvax-sub_ethnicity_black-lewy_body_dementia",
+  "cohort_unvax-sub_ethnicity_mixed-lewy_body_dementia",
+  "cohort_unvax-sub_ethnicity_mixed-motor_neurone_disease",
+  "cohort_unvax-sub_ethnicity_other-lewy_body_dementia",
+  "cohort_unvax-sub_ethnicity_other-motor_neurone_disease",
+  "cohort_unvax-sub_history_cognitive_impairment_false-any_dementia",
+  "cohort_unvax-sub_history_cognitive_impairment_true-any_dementia",
+  "cohort_vax-sub_covid_hospitalised-parkinson_disease",
+  "cohort_vax-sub_age_18_39-lewy_body_dementia",
+  "cohort_vax-sub_age_18_39-vascular_dementia",
+  "cohort_vax-sub_ethnicity_mixed-lewy_body_dementia",
+  "cohort_vax-sub_history_cognitive_impairment_false-any_dementia",
+  "cohort_vax-sub_history_cognitive_impairment_true-any_dementia",
+  "cohort_vax-sub_history_parkinson_risk_false-parkinson_disease"
+)
+
+active_analyses <- active_analyses[!active_analyses$name %in% failed_models,]
+
+# Stata models
 run_stata <- c(
   "cohort_prevax-main-alzheimer_disease",
   "cohort_prevax-main-any_dementia",
@@ -123,7 +156,6 @@ run_stata <- c(
   "cohort_vax-sub_age_85_110-vascular_dementia",
   "cohort_vax-sub_bin_high_vascular_risk_true-vascular_dementia",
   "cohort_vax-sub_covid_hospitalised-alzheimer_disease",
-  #"cohort_vax-sub_covid_hospitalised-parkinson_disease", remove
   "cohort_vax-sub_covid_hospitalised-any_dementia",
   "cohort_vax-sub_covid_hospitalised-vascular_dementia",
   "cohort_vax-sub_covid_hospitalised-rem_sleep_disorder",
@@ -667,7 +699,7 @@ actions_list <- splice(
   action(
     name = "make_model_output",
     run = "r:latest analysis/model/make_model_output.R",
-    needs = as.list(c(paste0("cox_ipw-", setdiff(active_analyses[!grepl("-unspecified_dementias|-other_dementias|cohort_vax-sub_covid_hospitalised-parkinson_disease", active_analyses$name),]$name, stata$name)),
+    needs = as.list(c(paste0("cox_ipw-", setdiff(active_analyses[!grepl("-unspecified_dementias|-other_dementias", active_analyses$name),]$name, stata$name)),
                     paste0("stata_cox_ipw-",stata$name))),
     moderately_sensitive = list(
       model_output = glue("output/model_output.csv"),
