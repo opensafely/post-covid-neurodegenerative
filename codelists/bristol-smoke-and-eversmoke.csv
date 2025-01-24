@@ -1,0 +1,94 @@
+code,term
+1372.,(Trivial smoker - < 1 cig/day) or (occasional smoker)
+1373.,Light cigarette smoker (1-9 cigs/day)
+1374.,Moderate cigarette smoker (10-19 cigs/day)
+1375.,Heavy cigarette smoker (20-39 cigs/day)
+1376.,Very heavy cigarette smoker (40+ cigs/day)
+1377.,Ex-trivial smoker (<1/day)
+1378.,Ex-light smoker (1-9/day)
+1379.,Ex-moderate smoker (10-19/day)
+137A.,Ex-heavy smoker (20-39/day)
+137B.,Ex-very heavy smoker (40+/day)
+137F.,Ex-smoker - amount unknown
+137H.,Pipe smoker
+137J.,Cigar smoker
+137K.,Stopped smoking
+137M.,Rolls own cigarettes
+137N.,Ex-pipe smoker
+137O.,Ex-cigar smoker
+137P.,Smoker (& cigarette)
+137Q.,Smoking: [started] or [restarted]
+137R.,Smoker
+137T.,Date ceased smoking
+137l.,Ex roll-up cigarette smoker
+E251.,Tobacco dependence
+E2510,"Tobacco dependence, unspecified"
+E2511,"Tobacco dependence, continuous"
+E2512,"Tobacco dependence, episodic"
+E251z,Tobacco dependence NOS
+Eu17.,[X]Mental and behavioural disorder due to use of tobacco
+Eu170,[X]Mental & behav dis due to use tobacco: acute intoxication
+Eu171,[X]Mental and behav dis due to use of tobacco: harmful use
+Eu172,[X]Mental and behav dis due to use tobacco: dependence syndr
+Eu175,[X]Mental & behav dis due to use tobacco: psychotic disorder
+Eu176,[X]Mental and behav dis due to use tobacco: amnesic syndrome
+Eu177,[X]Men & beh dis due tobacco: resid & late-onset psychot dis
+Eu17y,[X]Men & behav dis due to use tobacco: oth men & behav dis
+Eu17z,[X]Ment & behav dis due use tobacco: unsp ment & behav dis
+H3101,Smokers' cough
+Ua2Cl,Smokes in bed
+Ub0p1,Time since stopped smoking
+Ub1na,Ex-smoker
+Ub1tR,Occasional cigarette smoker
+Ub1tS,Light cigarette smoker
+Ub1tT,Moderate cigarette smoker
+Ub1tU,Heavy cigarette smoker
+Ub1tV,Very heavy cigarette smoker
+Ub1tW,Chain smoker
+X20Qm,Smokers keratosis
+XE0oi,Trivial cigarette smoker (less than one cigarette/day)
+XE0oj,Ex-trivial cigarette smoker (<1/day)
+XE0ok,Ex-light cigarette smoker (1-9/day)
+XE0ol,Ex-moderate cigarette smoker (10-19/day)
+XE0om,Ex-heavy cigarette smoker (20-39/day)
+XE0on,Ex-very heavy cigarette smoker (40+/day)
+XE0op,Ex-cigarette smoker amount unknown
+XE0oq,Cigarette smoker
+XE0or,Smoking started
+XE1b4,Tobacco dependence (& [dependent smoker])
+Xa1bv,Ex-cigarette smoker
+XaBSp,Smoking restarted
+XaIIu,Smoking reduced
+XaIkW,Thinking about stopping smoking
+XaIkX,Ready to stop smoking
+XaIkY,Not interested in stopping smoking
+XaItg,Reason for restarting smoking
+XaJX2,Minutes from waking to first tobacco consumption
+XaLQh,Wants to stop smoking
+XaQ8V,Ex roll-up cigarette smoker
+XaQUB,Current smoker annual review
+XaQUI,Ex-smoker annual review
+XaQzw,Recently stopped smoking
+XaWNE,Failed attempt to stop smoking
+XaXP6,Stopped smoking during pregnancy
+XaXP8,Stopped smoking before pregnancy
+XaXP9,Smoker before confirmation of pregnancy
+XagO3,Occasional tobacco smoker
+Y0983,Smoking status at 4 weeks - Smoker
+Y0984,Smoking status at 4 weeks - Ex-smoker
+Y0994,Smoking status between 4 and 52 weeks - Smoker
+Y09a0,Smoking status at 52 weeks - Smoker
+Y1152,Smoke free at 6 weeks confirmed by CO reading
+Y1153,Smoke free at 12 weeks confirmed by CO reading
+Y19d7,Stop Smoking Medication Offered
+Y2869,Wants to stop smoking
+Y3985,Reduced Smoker
+Y6626,Ex cigar smoker
+Y6627,Ex pipe smoker
+Y6628,Ex smoker
+Y7110,Heavy smoker - 20-39 cigs/day
+Y7467,Light smoker - 1-9 cigs/day
+Y7677,Moderate smoker - 10-19 cigs/d
+Y9843,Very heavy smoker - 40+cigs/d
+YA602,Contented smoker
+ZV6D8,[V]Tobacco abuse counselling

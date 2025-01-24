@@ -1,0 +1,142 @@
+code,term
+10295004,Chronic viral hepatitis
+123604002,Toxic cirrhosis
+12368000,Secondary biliary cirrhosis
+128302006,Chronic hepatitis C
+1287007,Congenital absence of bile duct
+14223005,Esophageal varices without bleeding
+15999000,Mixed micro and macronodular cirrhosis
+173617001,Open operations on esophageal varices
+173621008,Open injection sclerotherapy to esophageal varices
+173639004,Fiberoptic esophagoscopy and injection sclerotherapy of varices
+173641003,Fiberoptic esophagoscopy and banding of esophageal varices
+173660005,Rigid esophagoscopy and injection sclerotherapy of varices
+173661009,Rigid esophagoscopy and banding of esophageal varices
+173679008,Balloon tamponade of esophagus
+174425003,Orthotopic liver transplant
+174426002,Heterotopic liver transplant
+174427006,Replacement of previous liver transplant
+1761006,Biliary cirrhosis
+17709002,Bleeding esophageal varices
+18027006,Transplantation of liver
+186628001,Hepatic coma due to viral hepatitis C
+186639003,Chronic viral hepatitis B without delta-agent
+195474004,Esophageal varices associated with another disorder
+195475003,"Esophageal varices with bleeding, associated with another disorder"
+195476002,"Esophageal varices without bleeding, associated with another disorder"
+197270009,Acute hepatic failure
+197275004,Subacute hepatic failure
+197279005,Cirrhosis and chronic liver disease
+197284004,Chronic active hepatitis
+197286002,Recurrent hepatitis
+197291001,Unilobular portal cirrhosis
+197293003,Diffuse nodular cirrhosis
+197294009,Fatty portal cirrhosis
+197296006,Capsular portal cirrhosis
+197299004,Pigmentary portal cirrhosis
+197300007,Pipestem portal cirrhosis
+197301006,Toxic portal cirrhosis
+197303009,Bacterial portal cirrhosis
+197305002,Syphilitic portal cirrhosis
+197310003,Biliary cirrhosis of children
+197316009,Portal fibrosis without cirrhosis
+197324004,Liver abscess and sequelae of chronic liver disease
+197359004,Toxic liver disease with chronic persistent hepatitis
+197360009,Toxic liver disease with chronic lobular hepatitis
+197361008,Toxic liver disease with chronic active hepatitis
+197362001,Toxic liver disease with fibrosis and cirrhosis of liver
+197368002,Hepatic granulomas in sarcoidosis
+197441003,Primary sclerosing cholangitis
+19943007,Cirrhosis of liver
+20415001,Progressive sclerosing poliodystrophy
+204781002,Congenital absence of hepatic ducts
+204782009,Atresia of hepatic ducts
+213153001,Liver transplant failure and rejection
+213230009,Hepatic failure as a complication of care
+213231008,Hepatorenal syndrome as a complication of care
+21861000,Micronodular cirrhosis
+226941000000100,Transplantation of liver cells
+235212007,Balloon tamponade of esophagus using Sengstaken-Blakemore tube
+235213002,Balloon tamponade of esophagus using Minnesota tube
+235458006,Exploration of liver transplant
+235869004,Chronic viral hepatitis B with hepatitis D
+235870003,Chronic non-A non-B hepatitis
+235875008,Alcoholic hepatitis
+235880004,Alcoholic fibrosis and sclerosis of liver
+235881000,Alcoholic hepatic failure
+235884008,Fulminant hepatic failure
+235885009,Subfulminant hepatic failure
+235886005,Chronic hepatic failure
+235889003,Drug-induced chronic hepatitis
+235895002,"Laennec's cirrhosis, non-alcoholic"
+235896001,Infectious cirrhosis
+235897005,Hypoxia-associated cirrhosis
+235898000,Pericellular fibrosis of congenital syphilis
+235899008,Hepatic sclerosis
+235900003,Portal and splenic vein sclerosis
+235901004,Hepatic fibrosis with hepatic sclerosis
+235902006,Intrahepatic phlebosclerosis and fibrosis
+235910007,Liver transplant disorder
+235911006,Liver transplant rejection
+235912004,Liver transplant failure
+235916001,Ichthyosis congenita with biliary atresia
+253807009,Intrahepatic biliary atresia
+265437009,Exploration of liver
+266468003,Cirrhosis - non-alcoholic
+266469006,Multilobular portal cirrhosis
+266470007,Cardiac portal cirrhosis
+266471006,Juvenile portal cirrhosis
+271440004,Cirrhosis secondary to cholestasis
+28670008,Esophageal varices
+307757001,Chronic alcoholic hepatitis
+308129003,Esophageal varices in cirrhosis of the liver
+309783001,Esophageal varices in alcoholic cirrhosis of the liver
+31712002,Primary biliary cholangitis
+31742004,Arteriohepatic dysplasia
+328383001,Chronic liver disease
+34736002,Chronic passive congestion of liver
+34742003,Portal hypertension
+362421000000102,Chronic hepatitis annual review
+3738000,Viral hepatitis
+400381000000101,[V]Assessment for liver transplant
+408335007,Autoimmune hepatitis
+40946000,Hepatic coma due to viral hepatitis
+41309000,Alcoholic liver damage
+413438002,Acute hepatic failure due to drugs
+417371000000102,[X]Esophageal varices in diseases classified elsewhere
+41889008,Chronic persistent hepatitis
+419531000000100,[X]Other chronic viral hepatitis
+419541000000109,"[X]Chronic viral hepatitis, unspecified"
+419728003,Portal cirrhosis
+420054005,Alcoholic cirrhosis
+426356008,Orthotopic transplantation of whole liver
+426841006,Fiberoptic endoscopic rubber band ligation of upper gastrointestinal tract varices
+427022004,Liver disease due to cystic fibrosis
+428198008,Transplantation of hepatocytes
+43904005,Macronodular cirrhosis
+444071000000104,[X]Unspecified viral hepatitis with coma
+464381000000109,[V]Liver transplanted
+470971000000107,[X]Other and unspecified cirrhosis of liver
+50325005,Alcoholic fatty liver
+51292008,Hepatorenal syndrome
+57339008,Chronic lobular hepatitis
+59927004,Hepatic failure
+6183001,Indian childhood cirrhosis
+61977001,Chronic type B viral hepatitis
+62484002,Hepatic fibrosis
+67364009,Ligation of esophageal varices
+68094008,Congenital hypoplasia of bile duct
+737297006,Transplanted liver present
+74669004,Cardiac cirrhosis
+76301009,Florid cirrhosis
+76783007,Chronic hepatitis
+773411000000107,Liver failure support management
+77480004,Congenital biliary atresia
+776981000000103,Cirrhosis associated with cystic fibrosis
+79607001,Congenital hepatic fibrosis
+79720007,Chronic nonalcoholic liver disease
+81675001,Chronic yellow atrophy of liver
+82821008,Congenital atresia of extrahepatic bile duct
+89580002,Cryptogenic cirrhosis
+91109007,Gastric varices
+9953008,Acute alcoholic liver disease
