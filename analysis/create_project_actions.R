@@ -12,6 +12,7 @@ defaults_list <- list(
   expectations = list(population_size = 1000L)
 )
 cohorts <- c("prevax","vax","unvax")
+
 # Create generic action function -----------------------------------------------
 
 action <- function(
@@ -81,25 +82,26 @@ generate_study_population <- function(cohort){
 
 # Create function to preprocess data -------------------------------------------
 
-preprocess_data <- function(cohort){
-  splice(
-    comment(glue("Preprocess data - {cohort}")),
-    action(
-      name = glue("preprocess_data_{cohort}"),
-      run = glue("r:latest analysis/preprocess/preprocess_data.R"),
-      arguments = c(cohort),
-      needs = list("generate_dataset_index_dates",glue("generate_study_population_{cohort}")),
-      moderately_sensitive = list(
-        describe = glue("output/describe_input_{cohort}_stage0.txt"),
-        describe_venn = glue("output/describe_venn_{cohort}.txt")
-      ),
-      highly_sensitive = list(
-        cohort = glue("output/input_{cohort}.rds"),
-        venn = glue("output/venn_{cohort}.rds")
-      )
-    )
-  )
-}
+# preprocess_data <- function(cohort){
+#   splice(
+#     comment(glue("Preprocess data - {cohort}")),
+#     action(
+#       name = glue("preprocess_data_{cohort}"),
+#       run = glue("r:latest analysis/preprocess/preprocess_data.R"),
+#       arguments = c(cohort),
+#       needs = list("generate_dataset_index_dates",glue("generate_study_population_{cohort}")),
+#       moderately_sensitive = list(
+#         describe = glue("output/describe_input_{cohort}_stage0.txt"),
+#         describe_venn = glue("output/describe_venn_{cohort}.txt")
+#       ),
+#       highly_sensitive = list(
+#         cohort = glue("output/input_{cohort}.rds"),
+#         venn = glue("output/venn_{cohort}.rds")
+#       )
+#     )
+#   )
+# }
+
 
 # Define and combine all actions into a list of actions ------------------------------0
 
@@ -144,16 +146,16 @@ actions_list <- splice(
                   function(x) generate_study_population(cohort = x)), 
            recursive = FALSE
     )
-  ),
+  )
   
   ## Preprocess data -----------------------------------------------------------
   
-  splice(
-    unlist(lapply(cohorts, 
-                  function(x) preprocess_data(cohort = x)), 
-           recursive = FALSE
-    )
-  )
+  # splice(
+  #   unlist(lapply(cohorts, 
+  #                 function(x) preprocess_data(cohort = x)), 
+  #          recursive = FALSE
+  #   )
+  # )
 )
 
 
