@@ -78,11 +78,9 @@ def last_matching_event_ec_snomed_before(codelist, start_date, where=True):
     )
 
 def matching_death_before(codelist, start_date, where=True):
-    conditions = [
-        getattr(ons_deaths, column_name).is_in(codelist)
-        for column_name in (["underlying_cause_of_death"] + [f"cause_of_death_{i:02d}" for i in range(1, 16)])
-    ]
-    return any_of(conditions) & ons_deaths.date.is_before(start_date)
+    return( 
+        ons_deaths.cause_of_death_is_in(codelist) & ons_deaths.date.is_before(start_date) 
+    )
 
 def last_matching_event_clinical_snomed_between(codelist, start_date, end_date, where=True):
     return(
@@ -153,11 +151,9 @@ def first_matching_event_ec_snomed_between(codelist, start_date, end_date, where
     )
 
 def matching_death_between(codelist, start_date, end_date, where=True):
-    conditions = [
-        getattr(ons_deaths, column_name).is_in(codelist)
-        for column_name in (["underlying_cause_of_death"] + [f"cause_of_death_{i:02d}" for i in range(1, 16)])
-    ]
-    return any_of(conditions) & ons_deaths.date.is_on_or_between(start_date, end_date)
+    return(
+        ons_deaths.cause_of_death_is_in(codelist) & ons_deaths.date.is_on_or_between(start_date, end_date)
+    )
 
 # filter a codelist based on whether its values included a specified set of allowed values (include)
 def filter_codes_by_category(codelist, include):
