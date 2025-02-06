@@ -76,13 +76,14 @@ core_covars <- c(
 
 ## Define project-specific covariates (e.g. neuro risk/histories) ----
 project_covars <- c(
-  "cov_bin_history_cis",
-  "cov_bin_history_dem_any",
-  "cov_bin_history_mnd",
-  "cov_bin_history_ms",
-  "cov_bin_history_migrane",
-  "cov_bin_history_park",
-  "cov_bin_history_park_risk"
+  "cov_bin_cis",
+  "cov_bin_dem_any",
+  "cov_bin_high_vasc_risk",
+  "cov_bin_mnd",
+  "cov_bin_ms",
+  "cov_bin_migrane",
+  "cov_bin_park",
+  "cov_bin_park_risk"
 )
 
 ## Combine covariates into a single string for analysis ----
@@ -113,12 +114,12 @@ park_risk_sub_out <- c("out_date_park")
 cis_sub_out       <- c("out_date_dem_any")
 park_sub_out      <- c("out_date_dem_any")
 vasc_risk_sub_out <- c(
-  "out_date_dem_alz",
-  "out_date_dem_vasc",
-  "out_date_dem_lb",
-  "out_date_dem_any",
-  "out_date_cis"
-)
+                       "out_date_dem_alz",
+                       "out_date_dem_vasc",
+                       "out_date_dem_lb",
+                       "out_date_dem_any",
+                       "out_date_cis"
+                      )
 
 # For each cohort ----
 
@@ -481,7 +482,7 @@ for (c in cohorts) {
 
   for (i in cis_sub_out) {
 
-    ## analysis: sub_history_cis_true ----
+    ## analysis: sub_cis_true ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -490,7 +491,7 @@ for (c in cohorts) {
       strata = strata,
       covariate_sex = covariate_sex,
       covariate_age = covariate_age,
-      covariate_other = gsub("cov_bin_history_dem_any;", "", all_covars),
+      covariate_other = gsub("cov_bin_cis;", "", all_covars),
       cox_start = cox_start,
       cox_stop = cox_stop,
       study_start = ifelse(c == "prevax", prevax_start, vax_unvax_start),
@@ -501,10 +502,10 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_history_cis_true"
+      analysis = "sub_cis_true"
     )
 
-    ## analysis: sub_history_cis_false ----
+    ## analysis: sub_cis_false ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -513,7 +514,7 @@ for (c in cohorts) {
       strata = strata,
       covariate_sex = covariate_sex,
       covariate_age = covariate_age,
-      covariate_other = gsub("cov_bin_history_dem_any;", "", all_covars),
+      covariate_other = gsub("cov_bin_cis;", "", all_covars),
       cox_start = cox_start,
       cox_stop = cox_stop,
       study_start = ifelse(c == "prevax", prevax_start, vax_unvax_start),
@@ -524,14 +525,14 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_history_cis_false"
+      analysis = "sub_cis_false"
     )
 
   }
 
   for (i in park_sub_out) {
 
-    ## analysis: sub_history_park_true ----
+    ## analysis: sub_park_true ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -540,7 +541,7 @@ for (c in cohorts) {
       strata = strata,
       covariate_sex = covariate_sex,
       covariate_age = covariate_age,
-      covariate_other = gsub("cov_bin_history_park;", "", all_covars),
+      covariate_other = gsub("cov_bin_park;", "", all_covars),
       cox_start = cox_start,
       cox_stop = cox_stop,
       study_start = ifelse(c == "prevax", prevax_start, vax_unvax_start),
@@ -551,10 +552,10 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_history_park_true"
+      analysis = "sub_park_true"
     )
 
-    ## analysis: sub_history_park_false ----
+    ## analysis: sub_park_false ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -563,7 +564,7 @@ for (c in cohorts) {
       strata = strata,
       covariate_sex = covariate_sex,
       covariate_age = covariate_age,
-      covariate_other = gsub("cov_bin_history_park;", "", all_covars),
+      covariate_other = gsub("cov_bin_park;", "", all_covars),
       cox_start = cox_start,
       cox_stop = cox_stop,
       study_start = ifelse(c == "prevax", prevax_start, vax_unvax_start),
@@ -574,7 +575,7 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_history_park_false"
+      analysis = "sub_park_false"
     )
   }
 
@@ -589,7 +590,7 @@ for (c in cohorts) {
       strata = strata,
       covariate_sex = covariate_sex,
       covariate_age = covariate_age,
-      covariate_other = gsub("cov_bin_hypertension;|cov_bin_diabetes;", "", all_covars),
+      covariate_other = gsub("cov_bin_high_vasc_risk;", "", all_covars),
       cox_start = cox_start,
       cox_stop = cox_stop,
       study_start = ifelse(c == "prevax", prevax_start, vax_unvax_start),
@@ -612,7 +613,7 @@ for (c in cohorts) {
       strata = strata,
       covariate_sex = covariate_sex,
       covariate_age = covariate_age,
-      covariate_other = gsub("cov_bin_hypertension;|cov_bin_diabetes;", "", all_covars),
+      covariate_other = gsub("cov_bin_high_vasc_risk;", "", all_covars),
       cox_start = cox_start,
       cox_stop = cox_stop,
       study_start = ifelse(c == "prevax", prevax_start, vax_unvax_start),
@@ -630,7 +631,7 @@ for (c in cohorts) {
 
   for (i in park_risk_sub_out) {
 
-    ## analysis: sub_history_park_risk_true ----
+    ## analysis: sub_park_risk_true ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -639,7 +640,7 @@ for (c in cohorts) {
       strata = strata,
       covariate_sex = covariate_sex,
       covariate_age = covariate_age,
-      covariate_other = gsub("cov_bin_history_park_risk;", "", all_covars),
+      covariate_other = gsub("cov_bin_park_risk;", "", all_covars),
       cox_start = cox_start,
       cox_stop = cox_stop,
       study_start = ifelse(c == "prevax", prevax_start, vax_unvax_start),
@@ -650,10 +651,10 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_history_park_risk_true"
+      analysis = "sub_park_risk_true"
     )
 
-    ## analysis: sub_history_park_risk_false ----
+    ## analysis: sub_park_risk_false ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -662,7 +663,7 @@ for (c in cohorts) {
       strata = strata,
       covariate_sex = covariate_sex,
       covariate_age = covariate_age,
-      covariate_other = gsub("cov_bin_history_park_risk;", "", all_covars),
+      covariate_other = gsub("cov_bin_park_risk;", "", all_covars),
       cox_start = cox_start,
       cox_stop = cox_stop,
       study_start = ifelse(c == "prevax", prevax_start, vax_unvax_start),
@@ -673,7 +674,7 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_history_park_risk_false"
+      analysis = "sub_park_risk_false"
     )
 
   }
@@ -687,8 +688,8 @@ df$name <- paste0(
   gsub("out_date_", "", df$outcome)
 )
 
-# Remove covariate according to each outcome -----
-print("Removing covariates according to each outcome")
+# # Remove covariate according to each outcome -----
+# print("Removing covariates according to each outcome")
 
 # Variables which only require removal of their own history from covariates
 clean_loop <- c("_cis", "_dem_any", "_park", "_ms", "_mnd", "_migraine")
@@ -696,14 +697,14 @@ clean_loop <- c("_cis", "_dem_any", "_park", "_ms", "_mnd", "_migraine")
 for (i in clean_loop) {
   df$covariate_other <- ifelse(
     df$outcome == paste0("out_date", i), 
-    gsub(paste0("cov_bin_history", i, ";"), "", df$covariate_other),
+    gsub(paste0("cov_bin", i, ";"), "", df$covariate_other),
     df$covariate_other)
 }
 
 # Parkinson disease requires removal of Parkinsons and any Dementia
 df$covariate_other <- ifelse(
   df$outcome == "out_date_park",
-  gsub("cov_bin_history_park;|cov_bin_history_dem_any;", "", df$covariate_other),
+  gsub("cov_bin_park;|cov_bin_dem_any;", "", df$covariate_other),
   df$covariate_other
 )
 
