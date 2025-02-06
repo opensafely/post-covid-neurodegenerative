@@ -1,4 +1,10 @@
 code,term
+100881000000108,GDS level 2 - very mild cognitive decline
+100891000000105,GDS level 3 - mild cognitive decline
+100901000000106,GDS level 4 - moderate cognitive decline
+100911000000108,GDS level 5 - moderately severe cognitive decline
+100921000000102,GDS level 6 - severe cognitive decline
+100931000000100,GDS level 7 - very severe cognitive decline
 1034921000000105,Memory: months of year in reverse unsuccessful
 1034931000000107,Memory: months of year in reverse unsuccessful 
 1036821000000108,Mild cognitive impairment review invitation
@@ -122,6 +128,8 @@ code,term
 165301001,Memory: important person not known
 165305005,Memory: count down unsuccessful
 165308007,Memory: address recall unsuccessful
+170231000000104,Referral to memory clinic
+174891000000105,Referral to memory clinic
 186561000000101,Disturbance of memory for order of events
 186771000000100,Disorientated in time
 190001000000109,Disturbance of memory for order of events
@@ -273,13 +281,21 @@ code,term
 395658001,Poor concentration
 401441000000106,[X]Other and unspecified symptoms and signs involving cognitive functions and awareness
 406124004,Lack of awareness
+407630006,Global Deterioration Scale level 2 - very mild cognitive decline
+407631005,Global Deterioration Scale level 3 - mild cognitive decline
+407632003,Global Deterioration Scale level 4 - moderate cognitive decline
+407633008,Global Deterioration Scale level 5 - moderately severe cognitive decline
+407634002,Global Deterioration Scale level 6 - severe cognitive decline
+407635001,Global Deterioration Scale level 7 - very severe cognitive decline
 408899008,Memory loss care
 408900003,Memory loss care education
 408901004,Memory loss care management
+408902006,Memory loss care assessment
 40917007,Clouded consciousness
 41171000000106,Mild cognitive disorder
 413088002,Poor visual sequential memory
 413089005,Poor auditory sequential memory
+415276009,Referral to memory clinic
 416106008,Disturbance of memory for order of events
 419621000000101,[X]Other/unspecified symptoms & signs involving cognitive functions & awareness
 419723007,Mentally dull
@@ -320,7 +336,9 @@ code,term
 78521000000105,Mild cognitive disorder
 80216008,Impaired cognition
 808311000000102,Poor short-term memory
+823961000000102,Referral to memory assessment service
 836301008,Amnestic mild cognitive disorder
+85701000000105,GDS level 6 - severe cognitive decline
 8684002,Disturbance in judgement
 88822006,Anterograde amnesia
 888271000000101,Mild cognitive impairment
@@ -336,5 +354,10 @@ code,term
 932281000000102,Disorder of attention
 938471000000100,Disorder of attention
 955351000000105,Cognitive communication disorder
+96021000000109,GDS level 2 - very mild cognitive decline
+96031000000106,GDS level 3 - mild cognitive decline
+96041000000102,GDS level 4 - moderate cognitive decline
+96051000000104,GDS level 5 - moderately severe cognitive decline
+96061000000101,GDS level 7 - very severe cognitive decline
 965711000000101,Cognitive communication disorder
 990531000000107,Memory impairment
