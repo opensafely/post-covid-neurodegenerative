@@ -11,14 +11,11 @@ defaults_list <- list(
   version      = "3.0",
   expectations = list(population_size = 1000L)
 )
-<<<<<<< Updated upstream
-cohorts <- c("prevax","vax","unvax")
-=======
+
 cohorts <- c("prevax", "vax", "unvax")
 describe_flag <- c("no_describe_print") #choose this to not print out describe*.txt files during preprocessing.R
 # describe_flag <- c("describe_print")   # choose this to print out describe*.txt files during preprocessing.R
 
->>>>>>> Stashed changes
 # Create generic action function -----------------------------------------------
 
 action <- function(
@@ -54,7 +51,7 @@ action <- function(
 
 # Create generic comment function ----------------------------------------------
 
-comment <- function(...){
+comment <- function(...) {
   list_comments <- list(...)
   comments      <- map(list_comments, ~paste0("## ", ., " ##"))
   comments
@@ -63,7 +60,7 @@ comment <- function(...){
 
 # Create function to convert comment "actions" in a yaml string into proper comments
 
-convert_comment_actions <-function(yaml.txt){
+convert_comment_actions <- function(yaml.txt) {
   yaml.txt %>%
     str_replace_all("\\\n(\\s*)\\'\\'\\:(\\s*)\\'", "\n\\1")  %>%
     # str_replace_all("\\\n(\\s*)\\'", "\n\\1") %>%
@@ -89,29 +86,6 @@ generate_study_population <- function(cohort) {
 
 # Create function to preprocess data -------------------------------------------
 
-<<<<<<< Updated upstream
-preprocess_data <- function(cohort){
-  splice(
-    comment(glue("Preprocess data - {cohort}")),
-    action(
-      name = glue("preprocess_data_{cohort}"),
-      run = glue("r:latest analysis/preprocess/preprocess_data.R"),
-      arguments = c(cohort),
-      needs = list("generate_dataset_index_dates",glue("generate_study_population_{cohort}")),
-      moderately_sensitive = list(
-        describe = glue("output/describe_input_{cohort}_stage0.txt"),
-        describe_venn = glue("output/describe_venn_{cohort}.txt")
-      ),
-      highly_sensitive = list(
-        cohort = glue("output/input_{cohort}.rds"),
-        venn = glue("output/venn_{cohort}.rds")
-      )
-    )
-  )
-}
-
-# Define and combine all actions into a list of actions ------------------------------0
-=======
 preprocess_data <- function(cohort, describe = "no_describe_print") {
   splice(
     comment(glue("Preprocess data - {cohort}, with {describe}")),
@@ -152,7 +126,6 @@ preprocess_data <- function(cohort, describe = "no_describe_print") {
 }
 
 # Define and combine all actions into a list of actions ------------------------
->>>>>>> Stashed changes
 
 actions_list <- splice(
 
@@ -197,6 +170,7 @@ actions_list <- splice(
     )
   ),
 
+
   # Preprocess data -----------------------------------------------------------
 
   splice(
@@ -204,18 +178,6 @@ actions_list <- splice(
                   function(x) preprocess_data(cohort = x, describe=describe_flag)), 
            recursive = FALSE
     )
-<<<<<<< Updated upstream
-  ),
-  
-  ## Preprocess data -----------------------------------------------------------
-  
-  splice(
-    unlist(lapply(cohorts, 
-                  function(x) preprocess_data(cohort = x)), 
-           recursive = FALSE
-    )
-=======
->>>>>>> Stashed changes
   )
 )
 
