@@ -180,7 +180,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Alzheimers
     tmp_out_date_dem_alz_gp = (
         first_matching_event_clinical_snomed_between(
-        dem_alz_snomed, index_date, end_date_out  
+        dem_alz_gp_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -205,7 +205,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Vascular Dementia
     tmp_out_date_dem_vasc_gp = (
         first_matching_event_clinical_snomed_between(
-        dem_vasc_snomed, index_date, end_date_out  
+        dem_vasc_gp_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -230,7 +230,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Lewy Body
     tmp_out_date_dem_lb_gp = (
         first_matching_event_clinical_snomed_between(
-        dem_lb_snomed, index_date, end_date_out  
+        dem_lb_gp_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -239,7 +239,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Other Dementia 
     tmp_out_date_dem_other_gp = (
         first_matching_event_clinical_snomed_between(
-        dem_other_snomed, index_date, end_date_out  
+        dem_other_gp_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -265,7 +265,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Unspecified Dementia
     tmp_out_date_dem_unspec_gp = (
         first_matching_event_clinical_snomed_between(
-        dem_unspec_snomed, index_date, end_date_out  
+        dem_unspec_gp_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -290,11 +290,11 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Any Dementia
     tmp_out_date_dem_any_gp = (
         first_matching_event_clinical_snomed_between(
-        dem_alz_snomed+
-        dem_vasc_snomed+
-        dem_lb_snomed+
-        dem_other_snomed+
-        dem_unspec_snomed, index_date, end_date_out  
+        dem_alz_gp_snomed+
+        dem_vasc_gp_snomed+
+        dem_lb_gp_snomed+
+        dem_other_gp_snomed+
+        dem_unspec_gp_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -327,7 +327,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Dementia risk conditions (Cognitive Impairment)
     tmp_out_date_cis_gp = (
         first_matching_event_clinical_snomed_between(
-        cis_snomed, index_date, end_date_out  
+        cis_gp_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -337,7 +337,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Parkinson’s disease
     tmp_out_date_park_gp = (
         first_matching_event_clinical_snomed_between(
-        park_snomed, index_date, end_date_out  
+        park_gp_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -363,7 +363,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## RLS
     tmp_out_date_rls_gp= (
         first_matching_event_clinical_snomed_between(
-        rls_snomed, index_date, end_date_out 
+        rls_gp_snomed, index_date, end_date_out 
         ).date
     )
 
@@ -372,7 +372,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## RSD
     tmp_out_date_rsd_gp= (
         first_matching_event_clinical_snomed_between(
-        rsd_snomed, index_date, end_date_out 
+        rsd_gp_snomed, index_date, end_date_out 
         ).date
     )
 
@@ -403,7 +403,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## MND
     tmp_out_date_mnd_gp= (
         first_matching_event_clinical_snomed_between(
-        mnd_snomed, index_date, end_date_out 
+        mnd_gp_snomed, index_date, end_date_out 
         ).date
     )
 
@@ -428,7 +428,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## MS
     tmp_out_date_ms_gp= (
         first_matching_event_clinical_snomed_between(
-        ms_snomed, index_date, end_date_out 
+        ms_gp_snomed, index_date, end_date_out 
         ).date
     )
 
@@ -459,7 +459,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Neurological condition (Migrane)
     tmp_out_date_migraine_gp= (
         first_matching_event_clinical_snomed_between(
-        migraine_snomed, index_date, end_date_out 
+        migraine_gp_snomed, index_date, end_date_out 
         ).date
     )
 
@@ -527,14 +527,14 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## Cognitive Impairment symptoms
         cov_bin_history_cis= (
             last_matching_event_clinical_snomed_before(
-            cis_snomed, index_date
+            cis_gp_snomed, index_date
             ).exists_for_patient()       
         ),
 
         ## History of Parkinsons
         cov_bin_history_park= (
             (last_matching_event_clinical_snomed_before(
-            park_snomed, index_date
+            park_gp_snomed, index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
             park_icd10, index_date
@@ -544,10 +544,10 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## History of Parkinson's Risk (REM Sleep Disorder/Restless Leg syndrome)
         cov_bin_history_park_risk= (
             (last_matching_event_clinical_snomed_before(
-            rls_snomed, index_date
+            rls_gp_snomed, index_date
             ).exists_for_patient()) |
             (last_matching_event_clinical_snomed_before(
-            rsd_snomed,  index_date
+            rsd_gp_snomed,  index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
             rsd_icd10,  index_date
@@ -557,11 +557,11 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## History of Any Dementia
         cov_bin_history_dem_any= (
             (last_matching_event_clinical_snomed_before(
-            dem_alz_snomed+
-            dem_lb_snomed+
-            dem_vasc_snomed+
-            dem_other_snomed+
-            dem_unspec_snomed, index_date
+            dem_alz_gp_snomed+
+            dem_lb_gp_snomed+
+            dem_vasc_gp_snomed+
+            dem_other_gp_snomed+
+            dem_unspec_gp_snomed, index_date
             ).exists_for_patient()) |
             ((last_matching_event_apc_before(
             dem_alz_icd10+
@@ -574,7 +574,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ##  History of Motor Neurone Disease
         cov_bin_history_mnd= (
             last_matching_event_clinical_snomed_before(
-            mnd_snomed, index_date
+            mnd_gp_snomed, index_date
             ).exists_for_patient()   |
             (last_matching_event_apc_before(
             mnd_icd10, index_date
@@ -584,7 +584,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## History of Multiple Sclerosis
         cov_bin_history_ms= (
             last_matching_event_clinical_snomed_before(
-            ms_snomed, index_date
+            ms_gp_snomed, index_date
             ).exists_for_patient() |
             (last_matching_event_apc_before(
             ms_icd10, index_date
@@ -594,7 +594,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## History of Migrane
         cov_bin_history_migraine= (
             last_matching_event_clinical_snomed_before(
-            migraine_snomed, index_date
+            migraine_gp_snomed, index_date
             )
         .exists_for_patient() |
             (last_matching_event_apc_before(
@@ -759,7 +759,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## COPD 
         cov_bin_copd=(
             (last_matching_event_clinical_ctv3_before(
-                copd_ctv3_clinical, index_date
+                copd_ctv3, index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
                 copd_icd10, index_date
