@@ -65,7 +65,7 @@ core_covars <- c(
   "cov_bin_carehome_status",
   "cov_bin_ckd",
   "cov_bin_copd",
-  # "cov_bin_dementia_combined",
+  # "cov_bin_any_dem",
   "cov_bin_depression",
   "cov_bin_diabetes",
   "cov_bin_healthcare_worker",

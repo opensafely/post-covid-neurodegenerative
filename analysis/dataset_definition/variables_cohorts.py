@@ -553,7 +553,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
 # DEFINE EXISTING NEURODEGENERATIVE CONDITION COHORT --------------------------------------------------------------
 
-        ## Cognitive Impairment symptoms
+        ## History of Cognitive Impairment symptoms
         cov_bin_cis= (
             last_matching_event_clinical_snomed_before(
             cis_gp_snomed, index_date
