@@ -688,15 +688,15 @@ df$name <- paste0(
   gsub("out_date_", "", df$outcome)
 )
 
-# # Remove covariate according to each outcome -----
-# print("Removing covariates according to each outcome")
+# Remove covariate according to each outcome -----
+print("Removing covariates according to each outcome")
 
 # Variables which only require removal of their own history from covariates
 clean_loop <- c("_cis", "_dem_any", "_park", "_ms", "_mnd", "_migraine")
 
 for (i in clean_loop) {
   df$covariate_other <- ifelse(
-    df$outcome == paste0("out_date", i), 
+    df$outcome == paste0("out_date", i),
     gsub(paste0("cov_bin", i, ";"), "", df$covariate_other),
     df$covariate_other)
 }
