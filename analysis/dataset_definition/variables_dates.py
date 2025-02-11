@@ -290,7 +290,7 @@ sevobese_group = (
     (bmi_value_temp >= 40)
 )
 
-# atrisk_group (at risk group) (??why the previous studies exlcuding asthma group)
+# atrisk_group (at risk group) (??why are the previous studies excluding asthma group)
 atrisk_group = (
     asthma_group   |
     resp_group     |

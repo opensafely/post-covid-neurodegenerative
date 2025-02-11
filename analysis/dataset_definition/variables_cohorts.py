@@ -48,7 +48,8 @@ from variable_helper_functions import (
 
 def generate_variables(index_date, end_date_exp, end_date_out):  
 
-    ## Define individual temporary variables (for exposures) first before using them in the dictionary
+    ## Define individual temporary variables (for exposures) first 
+    ## The define a dictionary with all exposures, outcomes, covariates, and other variables
 
         ### Covid
     tmp_exp_date_covid19_confirmed_sgss = (
@@ -546,10 +547,6 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         out_date_ms          = out_date_ms,         # Multiple Sclerosis
         out_date_neuro_other = out_date_neuro_other,# MS or MND
         out_date_migraine    = out_date_migraine,
-
-
-
-
 
 # DEFINE EXISTING NEURODEGENERATIVE CONDITION COHORT --------------------------------------------------------------
 

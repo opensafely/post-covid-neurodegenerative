@@ -1,30 +1,32 @@
 # Setup
 from ehrql import codelist_from_csv
 
-# Exposure(s)
+
+###########################
+#       Exposure(s)       #
+###########################
 
 # Covid
 covid_codes = codelist_from_csv(
     "codelists/user-RochelleKnight-confirmed-hospitalised-covid-19.csv",
     column="code"
 )
-
 covid_primary_care_positive_test = codelist_from_csv(
     "codelists/opensafely-covid-identification-in-primary-care-probable-covid-positive-test.csv",
     column="CTV3ID"
 )
-
 covid_primary_care_code = codelist_from_csv(
     "codelists/opensafely-covid-identification-in-primary-care-probable-covid-clinical-code.csv",
     column="CTV3ID"
 )
-
 covid_primary_care_sequalae = codelist_from_csv(
     "codelists/opensafely-covid-identification-in-primary-care-probable-covid-sequelae.csv",
     column="CTV3ID"
 )
 
-# Common covariate(s)
+###########################
+#   Common covariate(s)   #
+###########################
 
 # Ethnicity
 opensafely_ethnicity_codes_6 = codelist_from_csv(
@@ -377,9 +379,6 @@ hrt_dmd = codelist_from_csv(
     "codelists/user-elsie_horne-hrt_dmd.csv",
     column="dmd_id"
 )
-
-
-
 
 ###########################
 # Neurodegenerative codes #
