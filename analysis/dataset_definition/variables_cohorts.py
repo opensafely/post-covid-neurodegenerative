@@ -180,7 +180,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Alzheimers
     tmp_out_date_dem_alz_gp = (
         first_matching_event_clinical_snomed_between(
-        dem_alz_gp_snomed, index_date, end_date_out  
+        dem_alz_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -205,7 +205,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Vascular Dementia
     tmp_out_date_dem_vasc_gp = (
         first_matching_event_clinical_snomed_between(
-        dem_vasc_gp_snomed, index_date, end_date_out  
+        dem_vasc_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -230,7 +230,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Lewy Body
     tmp_out_date_dem_lb_gp = (
         first_matching_event_clinical_snomed_between(
-        dem_lb_gp_snomed, index_date, end_date_out  
+        dem_lb_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -239,7 +239,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Other Dementia 
     tmp_out_date_dem_other_gp = (
         first_matching_event_clinical_snomed_between(
-        dem_other_gp_snomed, index_date, end_date_out  
+        dem_other_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -265,7 +265,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Unspecified Dementia
     tmp_out_date_dem_unspec_gp = (
         first_matching_event_clinical_snomed_between(
-        dem_unspec_gp_snomed, index_date, end_date_out  
+        dem_unspec_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -290,11 +290,11 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Any Dementia
     tmp_out_date_dem_any_gp = (
         first_matching_event_clinical_snomed_between(
-        dem_alz_gp_snomed   +
-        dem_vasc_gp_snomed  +
-        dem_lb_gp_snomed    +
-        dem_other_gp_snomed +
-        dem_unspec_gp_snomed, index_date, end_date_out  
+        dem_alz_snomed   +
+        dem_vasc_snomed  +
+        dem_lb_snomed    +
+        dem_other_snomed +
+        dem_unspec_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -327,7 +327,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Dementia risk conditions (Cognitive Impairment)
     tmp_out_date_cis_gp = (
         first_matching_event_clinical_snomed_between(
-        cis_gp_snomed, index_date, end_date_out  
+        cis_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -337,7 +337,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Parkinson’s disease
     tmp_out_date_park_gp = (
         first_matching_event_clinical_snomed_between(
-        park_gp_snomed, index_date, end_date_out  
+        park_snomed, index_date, end_date_out  
         ).date
     )
 
@@ -363,7 +363,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## RLS
     tmp_out_date_rls_gp= (
         first_matching_event_clinical_snomed_between(
-        rls_gp_snomed, index_date, end_date_out 
+        rls_snomed, index_date, end_date_out 
         ).date
     )
 
@@ -372,7 +372,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## RSD
     tmp_out_date_rsd_gp= (
         first_matching_event_clinical_snomed_between(
-        rsd_gp_snomed, index_date, end_date_out 
+        rsd_snomed, index_date, end_date_out 
         ).date
     )
 
@@ -403,7 +403,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## MND
     tmp_out_date_mnd_gp= (
         first_matching_event_clinical_snomed_between(
-        mnd_gp_snomed, index_date, end_date_out 
+        mnd_snomed, index_date, end_date_out 
         ).date
     )
 
@@ -428,7 +428,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## MS
     tmp_out_date_ms_gp= (
         first_matching_event_clinical_snomed_between(
-        ms_gp_snomed, index_date, end_date_out 
+        ms_snomed, index_date, end_date_out 
         ).date
     )
 
@@ -459,7 +459,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Neurological condition (Migrane)
     tmp_out_date_migraine_gp= (
         first_matching_event_clinical_snomed_between(
-        migraine_gp_snomed, index_date, end_date_out 
+        migraine_snomed, index_date, end_date_out 
         ).date
     )
 
@@ -484,7 +484,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## Hypertension
     cov_bin_hypertension=(
         (last_matching_event_clinical_snomed_before(
-            hypertension_gp_snomed, index_date
+            hypertension_snomed, index_date
         ).exists_for_patient()) |
         (last_matching_event_clinical_ctv3_before(
             hypertension_ctv3, index_date
@@ -500,7 +500,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## Diabetes 
     cov_bin_diabetes=(
         (last_matching_event_clinical_snomed_before(
-            diabetes_gp_snomed, index_date
+            diabetes_snomed, index_date
         ).exists_for_patient()) |
         (last_matching_med_dmd_before(
             diabetes_drugs_dmd, index_date
@@ -556,14 +556,14 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## History of Cognitive Impairment symptoms
         cov_bin_cis= (
             last_matching_event_clinical_snomed_before(
-            cis_gp_snomed, index_date
+            cis_snomed, index_date
             ).exists_for_patient()       
         ),
 
         ## History of Parkinsons
         cov_bin_park= (
             (last_matching_event_clinical_snomed_before(
-            park_gp_snomed, index_date
+            park_snomed, index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
             park_icd10, index_date
@@ -573,10 +573,10 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## History of Parkinson's Risk (REM Sleep Disorder/Restless Leg syndrome)
         cov_bin_park_risk= (
             (last_matching_event_clinical_snomed_before(
-            rls_gp_snomed, index_date
+            rls_snomed, index_date
             ).exists_for_patient()) |
             (last_matching_event_clinical_snomed_before(
-            rsd_gp_snomed,  index_date
+            rsd_snomed,  index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
             rsd_icd10,  index_date
@@ -586,11 +586,11 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## History of Any Dementia
         cov_bin_dem_any= (
             (last_matching_event_clinical_snomed_before(
-            dem_alz_gp_snomed+
-            dem_lb_gp_snomed+
-            dem_vasc_gp_snomed+
-            dem_other_gp_snomed+
-            dem_unspec_gp_snomed, index_date
+            dem_alz_snomed+
+            dem_lb_snomed+
+            dem_vasc_snomed+
+            dem_other_snomed+
+            dem_unspec_snomed, index_date
             ).exists_for_patient()) |
             ((last_matching_event_apc_before(
             dem_alz_icd10+
@@ -603,7 +603,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ##  History of Motor Neurone Disease
         cov_bin_mnd= (
             last_matching_event_clinical_snomed_before(
-            mnd_gp_snomed, index_date
+            mnd_snomed, index_date
             ).exists_for_patient()   |
             (last_matching_event_apc_before(
             mnd_icd10, index_date
@@ -613,7 +613,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## History of Multiple Sclerosis
         cov_bin_ms= (
             last_matching_event_clinical_snomed_before(
-            ms_gp_snomed, index_date
+            ms_snomed, index_date
             ).exists_for_patient() |
             (last_matching_event_apc_before(
             ms_icd10, index_date
@@ -623,7 +623,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## History of Migrane
         cov_bin_migraine= (
             last_matching_event_clinical_snomed_before(
-            migraine_gp_snomed, index_date
+            migraine_snomed, index_date
             )
         .exists_for_patient() |
             (last_matching_event_apc_before(
@@ -659,10 +659,10 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         cov_cat_imd=case(
             when((addresses.for_patient_on(index_date).imd_rounded >= 0) & 
                  (addresses.for_patient_on(index_date).imd_rounded < int(32844 * 1 / 5))).then("1 (most deprived)"),
-            when( addresses.for_patient_on(index_date).imd_rounded < int(32844 * 2 / 5)).then("2"),
-            when( addresses.for_patient_on(index_date).imd_rounded < int(32844 * 3 / 5)).then("3"),
-            when( addresses.for_patient_on(index_date).imd_rounded < int(32844 * 4 / 5)).then("4"),
-            when( addresses.for_patient_on(index_date).imd_rounded < int(32844 * 5 / 5)).then("5 (least deprived)"),
+            when( addresses.for_patient_on(index_date).imd_rounded < int(32844 * 2 / 5 )).then("2"),
+            when( addresses.for_patient_on(index_date).imd_rounded < int(32844 * 3 / 5 )).then("3"),
+            when( addresses.for_patient_on(index_date).imd_rounded < int(32844 * 4 / 5 )).then("4"),
+            when( addresses.for_patient_on(index_date).imd_rounded < int(32844 * 5 / 5 )).then("5 (least deprived)"),
             otherwise="unknown",
         ),
 
@@ -695,7 +695,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## Obesity 
         cov_bin_obesity=(
             (last_matching_event_clinical_snomed_before(
-                bmi_obesity_gp_snomed, index_date
+                bmi_obesity_snomed, index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
                 bmi_obesity_icd10, index_date
@@ -723,7 +723,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## Acute myocardial infarction
         cov_bin_ami=(
             (last_matching_event_clinical_snomed_before(
-                ami_gp_snomed, index_date
+                ami_snomed, index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
                 ami_icd10 + ami_prior_icd10, index_date
@@ -733,7 +733,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## Liver disease
         cov_bin_liver_disease=(
             (last_matching_event_clinical_snomed_before(
-                liver_disease_gp_snomed, index_date
+                liver_disease_snomed, index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
                 liver_disease_icd10, index_date
@@ -743,7 +743,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## Chronic kidney disease
         cov_bin_ckd=(
             (last_matching_event_clinical_snomed_before(
-                ckd_gp_snomed, index_date
+                ckd_snomed, index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
                 ckd_icd10, index_date
@@ -753,7 +753,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## Cancer
         cov_bin_cancer=(
             (last_matching_event_clinical_snomed_before(
-                cancer_gp_snomed, index_date
+                cancer_snomed, index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
                 cancer_icd10, index_date
@@ -773,7 +773,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## Depression 
         cov_bin_depression=(
             (last_matching_event_clinical_snomed_before(
-                depression_gp_snomed, index_date
+                depression_snomed, index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
                 depression_icd10, index_date
@@ -789,7 +789,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## Ischaemic stroke
         cov_bin_stroke_isch= (
             (last_matching_event_clinical_snomed_before(
-                stroke_isch_gp_snomed, index_date
+                stroke_isch_snomed, index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
                 stroke_isch_icd10, index_date
@@ -852,7 +852,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ## Prostate cancer
         qa_bin_prostate_cancer=(
             (last_matching_event_clinical_snomed_before(
-                prostate_cancer_gp_snomed, index_date
+                prostate_cancer_snomed, index_date
             ).exists_for_patient()) |
             (last_matching_event_apc_before(
                 prostate_cancer_icd10, index_date
@@ -861,7 +861,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
         ## Pregnancy
         qa_bin_pregnancy=last_matching_event_clinical_snomed_before(
-            pregnancy_gp_snomed, index_date
+            pregnancy_snomed, index_date
         ).exists_for_patient(),
 
         ## Year of birth

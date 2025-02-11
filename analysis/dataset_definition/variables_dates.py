@@ -55,23 +55,23 @@ with open("output/study_dates.json") as f:
   study_dates = json.load(f)
 
 # Extracting all variables from the study_dates dictionary
-earliest_expec = study_dates["earliest_expec"]  # earliest expectation date for events
-ref_age_1 = study_dates["ref_age_1"]  # reference date for calculating age for phase 1 groups
-ref_age_2 = study_dates["ref_age_2"]  # reference date for calculating age for phase 2 groups
-ref_cev = study_dates["ref_cev"]  # reference date for calculating eligibility for phase 1 group 4 (CEV)
-ref_ar = study_dates["ref_ar"]  # reference date for calculating eligibility for phase 1 group 5 (at-risk)
-pandemic_start = study_dates["pandemic_start"]  # rough start date for pandemic in UK
-start_date = study_dates["start_date"]  # start of phase 1 vaccinations
-start_date_pfizer = study_dates["start_date_pfizer"]
-start_date_az = study_dates["start_date_az"]
-start_date_moderna = study_dates["start_date_moderna"]
-delta_date = study_dates["delta_date"]
-omicron_date = study_dates["omicron_date"]
-vax1_earliest = study_dates["vax1_earliest"]  # earliest expectation date for first vaccination
-vax2_earliest = study_dates["vax2_earliest"]  # earliest expectation date for 2nd vaccination
-vax3_earliest = study_dates["vax3_earliest"]  # earliest expectation date for 3rd vaccination
-all_eligible = study_dates["all_eligible"]  # all 18+ are eligible for vax on this date (protocol)
-end_date = study_dates["end_date"]  # last date of available vaccination data. NEED TO ALSO CHECK END DATES FOR OTHER DATA SOURCES
+earliest_expec      = study_dates["earliest_expec"]  # earliest expectation date for events
+ref_age_1           = study_dates["ref_age_1"]  # reference date for calculating age for phase 1 groups
+ref_age_2           = study_dates["ref_age_2"]  # reference date for calculating age for phase 2 groups
+ref_cev             = study_dates["ref_cev"]  # reference date for calculating eligibility for phase 1 group 4 (CEV)
+ref_ar              = study_dates["ref_ar"]  # reference date for calculating eligibility for phase 1 group 5 (at-risk)
+pandemic_start      = study_dates["pandemic_start"]  # rough start date for pandemic in UK
+start_date          = study_dates["start_date"]  # start of phase 1 vaccinations
+start_date_pfizer   = study_dates["start_date_pfizer"]
+start_date_az       = study_dates["start_date_az"]
+start_date_moderna  = study_dates["start_date_moderna"]
+delta_date          = study_dates["delta_date"]
+omicron_date        = study_dates["omicron_date"]
+vax1_earliest       = study_dates["vax1_earliest"]  # earliest expectation date for first vaccination
+vax2_earliest       = study_dates["vax2_earliest"]  # earliest expectation date for 2nd vaccination
+vax3_earliest       = study_dates["vax3_earliest"]  # earliest expectation date for 3rd vaccination
+all_eligible        = study_dates["all_eligible"]  # all 18+ are eligible for vax on this date (protocol)
+end_date            = study_dates["end_date"]  # last date of available vaccination data. NEED TO ALSO CHECK END DATES FOR OTHER DATA SOURCES
 
 # JCVI VARIABLES-------------------------------------------------------------------------------------------------------------------
 
@@ -292,16 +292,16 @@ sevobese_group = (
 
 # atrisk_group (at risk group) (??why the previous studies exlcuding asthma group)
 atrisk_group = (
-    asthma_group |
-    resp_group |
-    cns_group |
-    diab_group |
-    sevment_group |
-    chd_group |
-    ckd_group |
-    cld_group |
-    immuno_group |
-    spln_group |
+    asthma_group   |
+    resp_group     |
+    cns_group      |
+    diab_group     |
+    sevment_group  |
+    chd_group      |
+    ckd_group      |
+    cld_group      |
+    immuno_group   |
+    spln_group     |
     learndis_group |
     sevobese_group
 )
@@ -309,7 +309,7 @@ atrisk_group = (
 # longres_group (Patients in long-stay nursing and residential care)----------------------------
 longres_group = last_matching_event_clinical_snomed_before(
     longres_primis, start_date
-).exists_for_patient()
+).exists_for_patient() 
 
 # jcvi_group
 vax_cat_jcvi_group = case(
