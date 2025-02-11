@@ -29,28 +29,28 @@ df <- data.frame(
 )
 
 # Set constant values ----
-ipw <- TRUE
-age_spline <- TRUE
-exposure <- "exp_date_covid19_confirmed"
-strata <- "cov_cat_region"
-covariate_sex <- "cov_cat_sex"
-covariate_age <- "cov_num_age"
-cox_start <- "index_date"
-cox_stop <- "end_date_outcome"
-controls_per_case <- 20L
-total_event_threshold <- 50L
+ipw             <- TRUE
+age_spline      <- TRUE
+exposure        <- "exp_date_covid19_confirmed"
+strata          <- "cov_cat_region"
+covariate_sex   <- "cov_cat_sex"
+covariate_age   <- "cov_num_age"
+cox_start       <- "index_date"
+cox_stop        <- "end_date_outcome"
+controls_per_case       <- 20L
+total_event_threshold   <- 50L
 episode_event_threshold <- 5L
-covariate_threshold <- 5L
+covariate_threshold     <- 5L
 
 # Define dates ----
-study_dates <- fromJSON("output/study_dates.json")
-prevax_start <- study_dates$pandemic_start
+study_dates     <- fromJSON("output/study_dates.json")
+prevax_start    <- study_dates$pandemic_start
 vax_unvax_start <- study_dates$delta_date
-study_stop <- study_dates$omicron_date
+study_stop      <- study_dates$omicron_date
 
 # Define cut points ----
-prevax_cuts <- "1;28;197;365;714"
-vax_unvax_cuts <- "1;28;197"
+prevax_cuts    <- "1;28;183;365;730;1065;1582"
+vax_unvax_cuts <- "1;28;183;365;730;1065;1582"
 
 # Define covariates ----
 

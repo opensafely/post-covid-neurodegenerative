@@ -357,26 +357,26 @@ vax_date_eligible = case(
 
 # Define a dictionary of JCVI variables created above 
 jcvi_variables = dict(
-    vax_jcvi_age_1=vax_jcvi_age_1,  # Age on phase 1 reference date
-    vax_jcvi_age_2=vax_jcvi_age_2,  # Age on phase 2 reference date
-    preg_group=preg_group,  # Ongoing pregnancy as of the ref_cev
-    cev_group=cev_group,  # Clinically extremely vulnerable group
-    asthma_group=asthma_group,  # Asthma diagnosis and treatment history
-    resp_group=resp_group,  # Chronic Respiratory Disease other than asthma
-    cns_group=cns_group,  # Chronic Neurological Disease including Significant Learning Disorder
-    diab_group=diab_group,  # Diabetes diagnosis and treatment history
-    sevment_group=sevment_group,  # Severe mental illness 
-    chd_group=chd_group,  # Chronic heart disease 
-    ckd_group=ckd_group,  # Chronic kidney disease 
-    cld_group=cld_group,  # Chronic Liver disease
-    immuno_group=immuno_group,  # Immunosuppressed 
-    spln_group=spln_group,  # Asplenia or Dysfunction of the Spleen 
-    learndis_group=learndis_group,  # Wider Learning Disability
-    sevobese_group=sevobese_group,  # Severe obesity
-    atrisk_group=atrisk_group,  # Combined at-risk group
-    longres_group=longres_group,  # Patients in long-stay nursing and residential care
-    vax_cat_jcvi_group=vax_cat_jcvi_group, # jcvi_group
-    vax_date_eligible=vax_date_eligible, # Vaccination eligible date according to jcvi
+    vax_jcvi_age_1=vax_jcvi_age_1,          # Age on phase 1 reference date
+    vax_jcvi_age_2=vax_jcvi_age_2,          # Age on phase 2 reference date
+    preg_group=preg_group,                  # Ongoing pregnancy as of the ref_cev
+    cev_group=cev_group,                    # Clinically extremely vulnerable group
+    asthma_group       = asthma_group,      # Asthma diagnosis and treatment history
+    resp_group         = resp_group,        # Chronic Respiratory Disease other than asthma
+    cns_group          = cns_group,         # Chronic Neurological Disease including Significant Learning Disorder
+    diab_group         = diab_group,        # Diabetes diagnosis and treatment history
+    sevment_group      = sevment_group,     # Severe mental illness 
+    chd_group          = chd_group,         # Chronic heart disease 
+    ckd_group          = ckd_group,         # Chronic kidney disease 
+    cld_group          = cld_group,         # Chronic Liver disease
+    immuno_group       = immuno_group,      # Immunosuppressed 
+    spln_group         = spln_group,        # Asplenia or Dysfunction of the Spleen 
+    learndis_group     = learndis_group,    # Wider Learning Disability
+    sevobese_group     = sevobese_group,    # Severe obesity
+    atrisk_group       = atrisk_group,      # Combined at-risk group
+    longres_group      = longres_group,     # Patients in long-stay nursing and residential care
+    vax_cat_jcvi_group = vax_cat_jcvi_group, # jcvi_group
+    vax_date_eligible  = vax_date_eligible, # Vaccination eligible date according to jcvi
 )
 
 # PRELIMINARY DATE VARIABLES------------------------------------------------------------------------------------------------------------------------------------
@@ -542,17 +542,17 @@ vax_num_Moderna = (
 
 # Define a dictionary of preliminary date variables (Death, Vaccination) created above 
 prelim_date_variables = dict(
-    cens_date_death=death_date,
-    vax_date_covid_1=vax_date_covid_1,
-    vax_date_covid_2=vax_date_covid_2,
-    vax_date_covid_3=vax_date_covid_3,
-    vax_date_Pfizer_1=vax_date_Pfizer_1,
-    vax_date_Pfizer_2=vax_date_Pfizer_2,
-    vax_date_Pfizer_3=vax_date_Pfizer_3,
-    vax_date_AstraZeneca_1=vax_date_AstraZeneca_1,
-    vax_date_AstraZeneca_2=vax_date_AstraZeneca_2,
-    vax_date_AstraZeneca_3=vax_date_AstraZeneca_3,
-    vax_date_Moderna_1=vax_date_Moderna_1,
-    vax_date_Moderna_2=vax_date_Moderna_2,
-    vax_date_Moderna_3=vax_date_Moderna_3,
+    cens_date_death        = death_date,
+    vax_date_covid_1       = vax_date_covid_1,
+    vax_date_covid_2       = vax_date_covid_2,
+    vax_date_covid_3       = vax_date_covid_3,
+    vax_date_Pfizer_1      = vax_date_Pfizer_1,
+    vax_date_Pfizer_2      = vax_date_Pfizer_2,
+    vax_date_Pfizer_3      = vax_date_Pfizer_3,
+    vax_date_AstraZeneca_1 = vax_date_AstraZeneca_1,
+    vax_date_AstraZeneca_2 = vax_date_AstraZeneca_2,
+    vax_date_AstraZeneca_3 = vax_date_AstraZeneca_3,
+    vax_date_Moderna_1     = vax_date_Moderna_1,
+    vax_date_Moderna_2     = vax_date_Moderna_2,
+    vax_date_Moderna_3     = vax_date_Moderna_3,
 )
