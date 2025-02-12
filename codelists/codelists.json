@@ -162,12 +162,6 @@
       "downloaded_at": "2025-02-07 16:24:21.797270Z",
       "sha": "3d2f3998b71863a80b24d60f6f4282e14191ae13"
     },
-    "opensafely-hypertension.csv": {
-      "id": "opensafely/hypertension/2020-04-28",
-      "url": "https://www.opencodelists.org/codelist/opensafely/hypertension/2020-04-28/",
-      "downloaded_at": "2025-02-07 16:24:22.191049Z",
-      "sha": "b0d7bbf6ea767366db458bc6f6d37955ae331cc7"
-    },
     "opensafely-smoking-clear.csv": {
       "id": "opensafely/smoking-clear/2020-04-29",
       "url": "https://www.opencodelists.org/codelist/opensafely/smoking-clear/2020-04-29/",
