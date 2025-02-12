@@ -315,10 +315,6 @@ hypertension_snomed = codelist_from_csv(
     "codelists/nhsd-primary-care-domain-refsets-hyp_cod.csv",
     column="code"
 )
-hypertension_ctv3 = codelist_from_csv(
-    "codelists/opensafely-hypertension.csv",
-    column="CTV3ID"
-)
 
 # Diabetes
 diabetes_icd10 = codelist_from_csv(
