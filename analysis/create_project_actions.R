@@ -31,15 +31,15 @@ action <- function(
   )
   outputs[sapply(outputs, is.null)] <- NULL
 
-  action <- list(
-    run = paste(c(run, arguments), collapse = " "),
+  actions <- list(
+    run             = paste(c(run, arguments), collapse = " "),
     dummy_data_file = dummy_data_file,
     needs           = needs,
     outputs         = outputs
   )
-  action[sapply(action, is.null)] <- NULL
+  actions[sapply(actions, is.null)] <- NULL
 
-  action_list <- list(name = action)
+  action_list        <- list(name = actions)
   names(action_list) <- name
 
   action_list
@@ -49,7 +49,7 @@ action <- function(
 
 comment <- function(...) {
   list_comments <- list(...)
-  comments <- map(list_comments, ~paste0("## ", ., " ##"))
+  comments      <- map(list_comments, ~paste0("## ", ., " ##"))
   comments
 }
 
@@ -96,7 +96,7 @@ actions_list <- splice(
 
   ## Generate vaccination eligibility information ------------------------------
   comment("Generate vaccination eligibility information"),
-  
+
   action(
     name = glue("vax_eligibility_inputs"),
     run  = "r:latest analysis/dataset_definition/metadates.R",
