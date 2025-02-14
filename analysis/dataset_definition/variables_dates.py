@@ -1,26 +1,14 @@
 from ehrql import (
-    codelist_from_csv,
-    create_dataset,
     days,
     case,
     when,
     minimum_of,
-    maximum_of,
 )
 
 # Bring table definitions from the TPP backend 
 from ehrql.tables.tpp import ( 
     patients, 
-    practice_registrations, 
-    addresses, 
-    appointments, 
-    occupation_on_covid_vaccine_record,
     vaccinations,
-    sgss_covid_all_tests,
-    apcs, 
-    ec, 
-    clinical_events, 
-    medications, 
     ons_deaths,
 )
 
@@ -32,18 +20,7 @@ from datetime import date
 
 # Call functions from variable_helper_functions
 from variable_helper_functions import (
-    first_matching_event_clinical_ctv3_between,
-    first_matching_event_clinical_snomed_between,
-    first_matching_med_dmd_between,
-    first_matching_event_apc_between,
-    first_matching_event_ec_snomed_between,
-    matching_death_between,
-    last_matching_event_clinical_ctv3_before,
     last_matching_event_clinical_snomed_before,
-    last_matching_med_dmd_before,
-    last_matching_event_apc_before,
-    last_matching_event_ec_snomed_before,
-    matching_death_before,
     last_matching_event_clinical_snomed_between,
     last_matching_med_dmd_between,
 )
@@ -55,23 +32,14 @@ with open("output/study_dates.json") as f:
   study_dates = json.load(f)
 
 # Extracting all variables from the study_dates dictionary
-earliest_expec      = study_dates["earliest_expec"]  # earliest expectation date for events
-ref_age_1           = study_dates["ref_age_1"]  # reference date for calculating age for phase 1 groups
-ref_age_2           = study_dates["ref_age_2"]  # reference date for calculating age for phase 2 groups
-ref_cev             = study_dates["ref_cev"]  # reference date for calculating eligibility for phase 1 group 4 (CEV)
-ref_ar              = study_dates["ref_ar"]  # reference date for calculating eligibility for phase 1 group 5 (at-risk)
+ref_age_1           = study_dates["ref_age_1"]       # reference date for calculating age for phase 1 groups
+ref_age_2           = study_dates["ref_age_2"]       # reference date for calculating age for phase 2 groups
+ref_cev             = study_dates["ref_cev"]         # reference date for calculating eligibility for phase 1 group 4 (CEV)
+ref_ar              = study_dates["ref_ar"]          # reference date for calculating eligibility for phase 1 group 5 (at-risk)
 pandemic_start      = study_dates["pandemic_start"]  # rough start date for pandemic in UK
-start_date          = study_dates["start_date"]  # start of phase 1 vaccinations
-start_date_pfizer   = study_dates["start_date_pfizer"]
-start_date_az       = study_dates["start_date_az"]
-start_date_moderna  = study_dates["start_date_moderna"]
-delta_date          = study_dates["delta_date"]
-omicron_date        = study_dates["omicron_date"]
-vax1_earliest       = study_dates["vax1_earliest"]  # earliest expectation date for first vaccination
-vax2_earliest       = study_dates["vax2_earliest"]  # earliest expectation date for 2nd vaccination
-vax3_earliest       = study_dates["vax3_earliest"]  # earliest expectation date for 3rd vaccination
-all_eligible        = study_dates["all_eligible"]  # all 18+ are eligible for vax on this date (protocol)
-end_date            = study_dates["end_date"]  # last date of available vaccination data. NEED TO ALSO CHECK END DATES FOR OTHER DATA SOURCES
+vax1_earliest       = study_dates["vax1_earliest"]   # earliest expectation date for first vaccination
+vax2_earliest       = study_dates["vax2_earliest"]   # earliest expectation date for 2nd vaccination
+vax3_earliest       = study_dates["vax3_earliest"]   # earliest expectation date for 3rd vaccination
 
 # JCVI VARIABLES-------------------------------------------------------------------------------------------------------------------
 
@@ -308,7 +276,7 @@ atrisk_group = (
 
 # longres_group (Patients in long-stay nursing and residential care)----------------------------
 longres_group = last_matching_event_clinical_snomed_before(
-    longres_primis, start_date
+    longres_primis, vax1_earliest
 ).exists_for_patient() 
 
 # jcvi_group

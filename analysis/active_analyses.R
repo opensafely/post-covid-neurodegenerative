@@ -6,25 +6,25 @@ fs::dir_create(here::here("lib"))
 
 # Create empty data frame ----
 df <- data.frame(
-  cohort = character(),
-  exposure = character(),
-  outcome = character(),
-  ipw = logical(),
-  strata = character(),
-  covariate_sex = character(),
-  covariate_age = character(),
-  covariate_other = character(),
-  cox_start = character(),
-  cox_stop = character(),
-  study_start = character(),
-  study_stop = character(),
-  cut_points = character(),
-  controls_per_case = numeric(),
-  total_event_threshold = numeric(),
+  cohort           = character(),
+  exposure         = character(),
+  outcome          = character(),
+  ipw              = logical(),
+  strata           = character(),
+  covariate_sex    = character(),
+  covariate_age    = character(),
+  covariate_other  = character(),
+  cox_start        = character(),
+  cox_stop         = character(),
+  study_start      = character(),
+  study_stop       = character(),
+  cut_points       = character(),
+  controls_per_case       = numeric(),
+  total_event_threshold   = numeric(),
   episode_event_threshold = numeric(),
-  covariate_threshold = numeric(),
-  age_spline = logical(),
-  analysis = character(),
+  covariate_threshold     = numeric(),
+  age_spline       = logical(),
+  analysis         = character(),
   stringsAsFactors = FALSE
 )
 
@@ -32,7 +32,7 @@ df <- data.frame(
 ipw             <- TRUE
 age_spline      <- TRUE
 exposure        <- "exp_date_covid19_confirmed"
-strata          <- "cov_cat_region"
+strata          <- "strat_cat_region"
 covariate_sex   <- "cov_cat_sex"
 covariate_age   <- "cov_num_age"
 cox_start       <- "index_date"
@@ -46,32 +46,33 @@ covariate_threshold     <- 5L
 study_dates     <- fromJSON("output/study_dates.json")
 prevax_start    <- study_dates$pandemic_start
 vax_unvax_start <- study_dates$delta_date
-study_stop      <- study_dates$omicron_date
+study_stop      <- study_dates$lcd_date
 
 # Define cut points ----
 prevax_cuts    <- "1;28;183;365;730;1065;1582"
-vax_unvax_cuts <- "1;28;183;365;730;1065;1582"
+vax_unvax_cuts <- "1;28;183;365;730;1065"
 
 # Define covariates ----
 
 ## Core covariates (common across projects) ----
 core_covars <- c(
-  "cov_cat_ethnicity",
-  "cov_cat_imd",
-  "cov_cat_smoking_status",
-  "cov_num_consultation_rate",
   "cov_bin_ami",
   "cov_bin_cancer",
-  "cov_bin_carehome_status",
+  "cov_bin_carehome",
+  "cov_num_consrate2019",
   "cov_bin_ckd",
   "cov_bin_copd",
-  # "cov_bin_any_dem",
+  # "cov_bin_dementia", # A core covariate, not used in this protocol
   "cov_bin_depression",
   "cov_bin_diabetes",
-  "cov_bin_healthcare_worker",
+  "cov_cat_ethnicity",
+  "cov_bin_hcworker",
   "cov_bin_hypertension",
+  "cov_cat_imd",
   "cov_bin_liver_disease",
-  "cov_bin_obesity"
+  "cov_bin_obesity",
+  "cov_cat_smoking",
+  "cov_bin_stroke_isch"
 )
 
 ## Define project-specific covariates (e.g. neuro risk/histories) ----

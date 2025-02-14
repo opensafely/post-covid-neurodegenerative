@@ -1,15 +1,15 @@
 import operator
 from functools import reduce # for function building, e.g. any_of
 from ehrql.tables.tpp import (
-    patients, 
-    practice_registrations, 
-    addresses, 
-    appointments, 
-    occupation_on_covid_vaccine_record,
-    vaccinations,
-    sgss_covid_all_tests,
+    # patients, 
+    # practice_registrations, 
+    # addresses, 
+    # appointments, 
+    # occupation_on_covid_vaccine_record,
+    # vaccinations,
+    # sgss_covid_all_tests,
     apcs, 
-    ec, 
+    # ec, 
     clinical_events, 
     medications, 
     ons_deaths,

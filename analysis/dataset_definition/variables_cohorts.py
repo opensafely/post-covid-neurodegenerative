@@ -1,11 +1,8 @@
 from ehrql import (
-    codelist_from_csv,
-    create_dataset,
     days,
     case,
     when,
     minimum_of,
-    maximum_of,
 )
 # Bring table definitions from the TPP backend 
 from ehrql.tables.tpp import ( 
@@ -14,12 +11,9 @@ from ehrql.tables.tpp import (
     addresses, 
     appointments, 
     occupation_on_covid_vaccine_record,
-    vaccinations,
     sgss_covid_all_tests,
     apcs, 
-    ec, 
     clinical_events, 
-    medications, 
     ons_deaths,
 )
 
@@ -30,18 +24,13 @@ from codelists import *
 # Call functions from variable_helper_functions
 from variable_helper_functions import (
     ever_matching_event_clinical_ctv3_before,
-    first_matching_event_clinical_ctv3_between,
     first_matching_event_clinical_snomed_between,
-    first_matching_med_dmd_between,
     first_matching_event_apc_between,
-    first_matching_event_ec_snomed_between,
     matching_death_between,
     last_matching_event_clinical_ctv3_before,
     last_matching_event_clinical_snomed_before,
     last_matching_med_dmd_before,
     last_matching_event_apc_before,
-    last_matching_event_ec_snomed_before,
-    matching_death_before,
     filter_codes_by_category,
 )
 
@@ -51,8 +40,8 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## Define individual temporary variables (for exposures) first 
     ## The define a dictionary with all exposures, outcomes, covariates, and other variables
 
-        ### Covid
-    tmp_exp_date_covid19_confirmed_sgss = (
+    ### Covid
+    tmp_exp_date_covid_sgss = (
         sgss_covid_all_tests.where(
             sgss_covid_all_tests.specimen_taken_date.is_on_or_between(index_date, end_date_exp)
         )
@@ -62,7 +51,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         .specimen_taken_date
     )
 
-    tmp_exp_date_covid19_confirmed_gp = (
+    tmp_exp_date_covid_gp = (
         clinical_events.where(
             (clinical_events.ctv3_code.is_in(
                 covid_primary_care_code + 
@@ -75,7 +64,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         .date
     )
 
-    tmp_exp_date_covid19_confirmed_apc = (
+    tmp_exp_date_covid_apc = (
         apcs.where(
             ((apcs.primary_diagnosis.is_in(covid_codes)) | 
              (apcs.secondary_diagnosis.is_in(covid_codes))) & 
@@ -86,19 +75,19 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         .admission_date
     )
 
-    tmp_exp_covid19_confirmed_death = matching_death_between(covid_codes, index_date, end_date_exp)
+    tmp_exp_covid_death = matching_death_between(covid_codes, index_date, end_date_exp)
 
     tmp_exp_date_death = ons_deaths.date
 
-    tmp_exp_date_covid19_confirmed_death = case(
-        when(tmp_exp_covid19_confirmed_death).then(tmp_exp_date_death)
+    tmp_exp_date_covid_death = case(
+        when(tmp_exp_covid_death).then(tmp_exp_date_death)
     )
     
-    exp_date_covid19_confirmed=minimum_of(
-        tmp_exp_date_covid19_confirmed_sgss, 
-        tmp_exp_date_covid19_confirmed_gp,
-        tmp_exp_date_covid19_confirmed_apc,
-        tmp_exp_date_covid19_confirmed_death
+    exp_date_covid=minimum_of(
+        tmp_exp_date_covid_sgss, 
+        tmp_exp_date_covid_gp,
+        tmp_exp_date_covid_apc,
+        tmp_exp_date_covid_death
     )
 
     ## Define individual temporary variables (subgroup variables) first before using them in the dictionary
@@ -107,7 +96,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
     ### SGSS
 
-    tmp_sub_bin_priorcovid19_confirmed_sgss = (
+    tmp_sub_bin_covid_history_sgss = (
         sgss_covid_all_tests.where(
             sgss_covid_all_tests.specimen_taken_date.is_before(index_date)
         )
@@ -117,7 +106,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
     ### Primary care
 
-    tmp_sub_bin_priorcovid19_confirmed_gp = (
+    tmp_sub_bin_covid_history_gp = (
         clinical_events.where(
             (clinical_events.ctv3_code.is_in(
                 covid_primary_care_code + 
@@ -130,7 +119,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
     ### SUS
 
-    tmp_sub_bin_priorcovid19_confirmed_apc = (
+    tmp_sub_bin_covid_history_apc = (
         apcs.where(
             ((apcs.primary_diagnosis.is_in(covid_codes)) | (apcs.secondary_diagnosis.is_in(covid_codes))) & 
             (apcs.admission_date.is_before(index_date))
@@ -142,10 +131,10 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
     ### SUS
 
-    sub_date_covid19_hospital = (
+    tmp_sub_date_covid_hospital = (
         apcs.where(
             (apcs.primary_diagnosis.is_in(covid_codes)) & 
-            (apcs.admission_date.is_on_or_after(exp_date_covid19_confirmed))
+            (apcs.admission_date.is_on_or_after(exp_date_covid))
         )
         .sort_by(apcs.admission_date)
         .first_for_patient()
@@ -163,7 +152,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         (filter_codes_by_category(smoking_clear, include=["S", "E"])), index_date)
     
     ## 4. Consultation rate
-    tmp_cov_num_consultation_rate = appointments.where(
+    tmp_cov_num_consrate2019 = appointments.where(
         appointments.status.is_in([
             "Arrived",
             "In Progress",
@@ -171,8 +160,8 @@ def generate_variables(index_date, end_date_exp, end_date_out):
             "Visit",
             "Waiting",
             "Patient Walked Out",
-            ]) & appointments.start_date.is_on_or_between(index_date - days(365), index_date)
-            ).count_for_patient()    
+            ]) & appointments.start_date.is_on_or_between("2019-01-01", "2019-12-31")
+        ).count_for_patient()  
 
     ## 5. Neurodegenerative Primary/Secondary/Death Codes
     
@@ -517,13 +506,13 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
         ### Exposures----Covid-19
 
-        tmp_exp_date_covid19_confirmed_sgss  = tmp_exp_date_covid19_confirmed_sgss,
-        tmp_exp_date_covid19_confirmed_gp    = tmp_exp_date_covid19_confirmed_gp,
-        tmp_exp_date_covid19_confirmed_apc   = tmp_exp_date_covid19_confirmed_apc,
-        tmp_exp_date_death                   = tmp_exp_date_death,
-        tmp_exp_covid19_confirmed_death      = tmp_exp_covid19_confirmed_death,
-        tmp_exp_date_covid19_confirmed_death = tmp_exp_date_covid19_confirmed_death,       
-        exp_date_covid19_confirmed           = exp_date_covid19_confirmed,
+        tmp_exp_date_covid_sgss  = tmp_exp_date_covid_sgss,
+        tmp_exp_date_covid_gp    = tmp_exp_date_covid_gp,
+        tmp_exp_date_covid_apc   = tmp_exp_date_covid_apc,
+        tmp_exp_date_death       = tmp_exp_date_death,
+        tmp_exp_covid_death      = tmp_exp_covid_death,
+        tmp_exp_date_covid_death = tmp_exp_date_covid_death,       
+        exp_date_covid           = exp_date_covid,
 
 # Outcomes---------------------------------------------------------------------------------------------------
 
@@ -633,7 +622,6 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 # Covariates-------------------------------------------------------------------------------------------------  
 
         ## Age
-        cov_date_of_birth=patients.date_of_birth,
         cov_num_age=patients.age_on(index_date),
 
         ## Sex
@@ -661,16 +649,16 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ),
 
         ## Region
-        cov_cat_region=practice_registrations.for_patient_on(index_date).practice_nuts1_region_name,
+        strat_cat_region=practice_registrations.for_patient_on(index_date).practice_nuts1_region_name,
 
         ## Consultation rate (these codes can run locally but fail in GitHub action test, details see https://docs.opensafely.org/ehrql/reference/schemas/tpp/#appointments)
-        cov_num_consultation_rate=case(
-            when(tmp_cov_num_consultation_rate <= 365).then(tmp_cov_num_consultation_rate),
+        cov_num_consrate2019=case(
+            when(tmp_cov_num_consrate2019 <= 365).then(tmp_cov_num_consrate2019),
             otherwise=365,
         ),
 
         ## Smoking status
-        cov_cat_smoking_status= case(
+        cov_cat_smoking= case(
             when( tmp_most_recent_smoking_cat == "S").then("S"),
             when((tmp_most_recent_smoking_cat == "E") | ((tmp_most_recent_smoking_cat == "N") & (tmp_ever_smoked == True))).then("E"),
             when((tmp_most_recent_smoking_cat == "N") & (tmp_ever_smoked == False)).then("N"),
@@ -696,19 +684,13 @@ def generate_variables(index_date, end_date_exp, end_date_out):
             ).exists_for_patient()) 
         ),
 
-        ## Carer
-        cov_bin_carer=clinical_events.where(
-            (clinical_events.snomedct_code.is_in(carer_primis)) &
-            (clinical_events.date.is_before(index_date))
-        ).exists_for_patient(),
-
         ## Healthcare worker
-        cov_bin_healthcare_worker=occupation_on_covid_vaccine_record.where(
+        cov_bin_hcworker=occupation_on_covid_vaccine_record.where(
             (occupation_on_covid_vaccine_record.is_healthcare_worker == True)
         ).exists_for_patient(),
 
         ## Care home status
-        cov_bin_carehome_status=(
+        cov_bin_carehome=(
             addresses.for_patient_on(index_date).care_home_is_potential_match |
             addresses.for_patient_on(index_date).care_home_requires_nursing |
             addresses.for_patient_on(index_date).care_home_does_not_require_nursing
@@ -793,27 +775,27 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 # Others
     ## History of Covid-19 Combined
 
-        tmp_sub_bin_priorcovid19_confirmed_sgss = tmp_sub_bin_priorcovid19_confirmed_sgss,
-        tmp_sub_bin_priorcovid19_confirmed_gp   = tmp_sub_bin_priorcovid19_confirmed_gp,
-        tmp_sub_bin_priorcovid19_confirmed_apc  = tmp_sub_bin_priorcovid19_confirmed_apc,
-        sub_bin_covid19_confirmed_history=(
-            tmp_sub_bin_priorcovid19_confirmed_sgss |
-            tmp_sub_bin_priorcovid19_confirmed_gp   |
-            tmp_sub_bin_priorcovid19_confirmed_apc 
+        tmp_sub_bin_covid_history_sgss = tmp_sub_bin_covid_history_sgss,
+        tmp_sub_bin_covid_history_gp   = tmp_sub_bin_covid_history_gp,
+        tmp_sub_bin_covid_history_apc  = tmp_sub_bin_covid_history_apc,
+        sub_bin_covid_history = (
+            tmp_sub_bin_covid_history_sgss |
+            tmp_sub_bin_covid_history_gp   |
+            tmp_sub_bin_covid_history_apc 
         ),
 
     ## Covid_19 severity 
     
         # case(*when_thens, otherwise=None) the conditions are evaluated in order https://docs.opensafely.org/ehrql/reference/language/#case
-        sub_cat_covid19_hospital = case(
+        sub_cat_covid_hospital = case(
             when(
-                (exp_date_covid19_confirmed.is_not_null()) &
-                (sub_date_covid19_hospital.is_not_null()) &
-                ((sub_date_covid19_hospital - exp_date_covid19_confirmed).days >= 0) &
-                ((sub_date_covid19_hospital - exp_date_covid19_confirmed).days < 29)
+                (exp_date_covid.is_not_null()) &
+                (tmp_sub_date_covid_hospital.is_not_null()) &
+                ((tmp_sub_date_covid_hospital - exp_date_covid).days >= 0) &
+                ((tmp_sub_date_covid_hospital - exp_date_covid).days < 29)
                 ).then("hospitalised"),
-            when(exp_date_covid19_confirmed.is_not_null()).then("non_hospitalised"),
-            when(exp_date_covid19_confirmed.is_null()).then("no_infection")
+            when(exp_date_covid.is_not_null()).then("non_hospitalised"),
+            when(exp_date_covid.is_null()).then("no_infection")
         ),
 
     # Inclusion/exclusion variables ----------------------------------------------------------------------------------------------------
