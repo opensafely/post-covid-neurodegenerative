@@ -325,10 +325,10 @@ vax_date_eligible = case(
 
 # Define a dictionary of JCVI variables created above 
 jcvi_variables = dict(
-    vax_jcvi_age_1=vax_jcvi_age_1,          # Age on phase 1 reference date
-    vax_jcvi_age_2=vax_jcvi_age_2,          # Age on phase 2 reference date
-    preg_group=preg_group,                  # Ongoing pregnancy as of the ref_cev
-    cev_group=cev_group,                    # Clinically extremely vulnerable group
+    vax_jcvi_age_1     = vax_jcvi_age_1,    # Age on phase 1 reference date
+    vax_jcvi_age_2     = vax_jcvi_age_2,    # Age on phase 2 reference date
+    preg_grou          = preg_group,        # Ongoing pregnancy as of the ref_cev
+    cev_group          = cev_group,         # Clinically extremely vulnerable group
     asthma_group       = asthma_group,      # Asthma diagnosis and treatment history
     resp_group         = resp_group,        # Chronic Respiratory Disease other than asthma
     cns_group          = cns_group,         # Chronic Neurological Disease including Significant Learning Disorder
@@ -343,7 +343,7 @@ jcvi_variables = dict(
     sevobese_group     = sevobese_group,    # Severe obesity
     atrisk_group       = atrisk_group,      # Combined at-risk group
     longres_group      = longres_group,     # Patients in long-stay nursing and residential care
-    vax_cat_jcvi_group = vax_cat_jcvi_group, # jcvi_group
+    vax_cat_jcvi_group = vax_cat_jcvi_group,# jcvi_group
     vax_date_eligible  = vax_date_eligible, # Vaccination eligible date according to jcvi
 )
 

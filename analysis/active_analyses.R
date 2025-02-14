@@ -39,8 +39,8 @@ cox_start       <- "index_date"
 cox_stop        <- "end_date_outcome"
 controls_per_case       <- 20L
 total_event_threshold   <- 50L
-episode_event_threshold <- 5L
-covariate_threshold     <- 5L
+episode_event_threshold <-  5L
+covariate_threshold     <-  5L
 
 # Define dates ----
 study_dates     <- fromJSON("output/study_dates.json")
@@ -59,8 +59,8 @@ core_covars <- c(
   "cov_bin_ami",
   "cov_bin_cancer",
   "cov_bin_carehome",
-  "cov_num_consrate2019",
   "cov_bin_ckd",
+  "cov_num_consrate2019",
   "cov_bin_copd",
   # "cov_bin_dementia", # A core covariate, not used in this protocol
   "cov_bin_depression",
@@ -82,7 +82,7 @@ project_covars <- c(
   "cov_bin_high_vasc_risk",
   "cov_bin_mnd",
   "cov_bin_ms",
-  "cov_bin_migrane",
+  "cov_bin_migraine",
   "cov_bin_park",
   "cov_bin_park_risk"
 )
@@ -155,7 +155,7 @@ for (c in cohorts) {
       analysis = "main"
     )
 
-    ## analysis: sub_covid_hospitalised ----
+    ## analysis: sub_covidhospital_TRUE ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -175,10 +175,10 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_covid_hospitalised"
+      analysis = "sub_covidhospital_TRUE"
     )
 
-    ## analysis: sub_covid_nonhospitalised ----
+    ## analysis: sub_covidhospital_FALSE ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -198,10 +198,10 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_covid_nonhospitalised"
+      analysis = "sub_covidhospital_FALSE"
     )
 
-    ## analysis: sub_covid_history ----
+    ## analysis: sub_covidhistory ----
     if (c != "prevax") {
       df[nrow(df)+1, ] <- c(
         cohort = c,
@@ -222,7 +222,7 @@ for (c in cohorts) {
         episode_event_threshold = episode_event_threshold,
         covariate_threshold = covariate_threshold,
         age_spline = TRUE,
-        analysis = "sub_covid_history"
+        analysis = "sub_covidhistory"
       )
     }
 
@@ -483,7 +483,7 @@ for (c in cohorts) {
 
   for (i in cis_sub_out) {
 
-    ## analysis: sub_cis_true ----
+    ## analysis: sub_cis_TRUE ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -503,10 +503,10 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_cis_true"
+      analysis = "sub_cis_TRUE"
     )
 
-    ## analysis: sub_cis_false ----
+    ## analysis: sub_cis_FALSE ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -526,14 +526,14 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_cis_false"
+      analysis = "sub_cis_FALSE"
     )
 
   }
 
   for (i in park_sub_out) {
 
-    ## analysis: sub_park_true ----
+    ## analysis: sub_park_TRUE ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -553,10 +553,10 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_park_true"
+      analysis = "sub_park_TRUE"
     )
 
-    ## analysis: sub_park_false ----
+    ## analysis: sub_park_FALSE ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -576,13 +576,13 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_park_false"
+      analysis = "sub_park_FALSE"
     )
   }
 
   for (i in vasc_risk_sub_out) {
 
-    ## analysis: sub_bin_high_vasc_risk_true ----
+    ## analysis: sub_bin_high_vasc_risk_TRUE ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -602,10 +602,10 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_bin_high_vasc_risk_true"
+      analysis = "sub_bin_high_vasc_risk_TRUE"
     )
 
-    ## analysis: sub_bin_high_vasc_risk_false ----
+    ## analysis: sub_bin_high_vasc_risk_FALSE ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -625,14 +625,14 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_bin_high_vasc_risk_false"
+      analysis = "sub_bin_high_vasc_risk_FALSE"
     )
 
   }
 
   for (i in park_risk_sub_out) {
 
-    ## analysis: sub_park_risk_true ----
+    ## analysis: sub_park_risk_TRUE ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -652,10 +652,10 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_park_risk_true"
+      analysis = "sub_park_risk_TRUE"
     )
 
-    ## analysis: sub_park_risk_false ----
+    ## analysis: sub_park_risk_FALSE ----
     df[nrow(df)+1, ] <- c(
       cohort = c,
       exposure = exposure,
@@ -675,7 +675,7 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_park_risk_false"
+      analysis = "sub_park_risk_FALSE"
     )
 
   }
