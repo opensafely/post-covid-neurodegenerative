@@ -71,10 +71,10 @@ bmi_primis = codelist_from_csv(
 )
 
 # Carer codes
-carer_primis = codelist_from_csv(
-    "codelists/primis-covid19-vacc-uptake-carer.csv",
-    column="code"
-)
+# carer_primis = codelist_from_csv(
+#     "codelists/primis-covid19-vacc-uptake-carer.csv",
+#     column="code"
+# )
 
 # No longer a carer codes
 # notcarer_primis = codelist_from_csv(

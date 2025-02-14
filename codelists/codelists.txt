@@ -34,7 +34,7 @@ primis-covid19-vacc-uptake/astrx/v1
 primis-covid19-vacc-uptake/bmi/v1
 primis-covid19-vacc-uptake/bmi_stage/v1.2
 # primis-covid19-vacc-uptake/carehome/v1
-primis-covid19-vacc-uptake/carer/v1
+# primis-covid19-vacc-uptake/carer/v1
 primis-covid19-vacc-uptake/chd_cov/v1.2.1
 primis-covid19-vacc-uptake/ckd_cov/v1.2.1
 primis-covid19-vacc-uptake/ckd15/v1

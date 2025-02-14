@@ -210,12 +210,6 @@
       "downloaded_at": "2025-02-07 16:24:25.324576Z",
       "sha": "7fd744bb94c1789632247a3fc1780910f421b172"
     },
-    "primis-covid19-vacc-uptake-carer.csv": {
-      "id": "primis-covid19-vacc-uptake/carer/v1",
-      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/carer/v1/",
-      "downloaded_at": "2025-02-07 16:24:25.702588Z",
-      "sha": "e3526d8e7e1a3aaeeee29a3bb18c177243c218c6"
-    },
     "primis-covid19-vacc-uptake-chd_cov.csv": {
       "id": "primis-covid19-vacc-uptake/chd_cov/v1.2.1",
       "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/chd_cov/v1.2.1/",
