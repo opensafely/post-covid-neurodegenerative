@@ -31,7 +31,7 @@ df <- data.frame(
 # Set constant values ----
 ipw             <- TRUE
 age_spline      <- TRUE
-exposure        <- "exp_date_covid19_confirmed"
+exposure        <- "exp_date_covid"
 strata          <- "strat_cat_region"
 covariate_sex   <- "cov_cat_sex"
 covariate_age   <- "cov_num_age"
