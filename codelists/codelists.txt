@@ -25,7 +25,6 @@ opensafely/covid-identification-in-primary-care-probable-covid-positive-test/202
 opensafely/covid-identification-in-primary-care-probable-covid-sequelae/2020-07-16
 opensafely/current-copd/2020-05-06
 opensafely/ethnicity/2020-04-27
-opensafely/hypertension/2020-04-28
 opensafely/smoking-clear/2020-04-29
 opensafely/smoking-unclear/2020-04-29
 opensafely/symptoms-cognitive-impairment/7af0d32d
@@ -34,8 +33,8 @@ primis-covid19-vacc-uptake/astadm/v1
 primis-covid19-vacc-uptake/astrx/v1
 primis-covid19-vacc-uptake/bmi/v1
 primis-covid19-vacc-uptake/bmi_stage/v1.2
-primis-covid19-vacc-uptake/carehome/v1
-primis-covid19-vacc-uptake/carer/v1
+# primis-covid19-vacc-uptake/carehome/v1
+# primis-covid19-vacc-uptake/carer/v1
 primis-covid19-vacc-uptake/chd_cov/v1.2.1
 primis-covid19-vacc-uptake/ckd_cov/v1.2.1
 primis-covid19-vacc-uptake/ckd15/v1
@@ -44,15 +43,15 @@ primis-covid19-vacc-uptake/cld/v1
 primis-covid19-vacc-uptake/cns_cov/v1
 primis-covid19-vacc-uptake/diab/v1
 primis-covid19-vacc-uptake/dmres/v1
-primis-covid19-vacc-uptake/domcare/v1
-primis-covid19-vacc-uptake/eth2001/v1
+# primis-covid19-vacc-uptake/domcare/v1
+# primis-covid19-vacc-uptake/eth2001/v1
 primis-covid19-vacc-uptake/immdx_cov/v1
 primis-covid19-vacc-uptake/immrx/v1
 primis-covid19-vacc-uptake/learndis/v1 
 primis-covid19-vacc-uptake/longres/v1
 primis-covid19-vacc-uptake/nonshield/v1
-primis-covid19-vacc-uptake/notcarer/v1
-primis-covid19-vacc-uptake/nursehome/v1
+# primis-covid19-vacc-uptake/notcarer/v1
+# primis-covid19-vacc-uptake/nursehome/v1
 primis-covid19-vacc-uptake/preg/v1
 primis-covid19-vacc-uptake/pregdel/v1.2.1
 primis-covid19-vacc-uptake/resp_cov/v1

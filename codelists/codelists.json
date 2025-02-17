@@ -162,12 +162,6 @@
       "downloaded_at": "2025-02-03 14:53:19.586958Z",
       "sha": "3d2f3998b71863a80b24d60f6f4282e14191ae13"
     },
-    "opensafely-hypertension.csv": {
-      "id": "opensafely/hypertension/2020-04-28",
-      "url": "https://www.opencodelists.org/codelist/opensafely/hypertension/2020-04-28/",
-      "downloaded_at": "2025-02-03 14:53:19.951571Z",
-      "sha": "b0d7bbf6ea767366db458bc6f6d37955ae331cc7"
-    },
     "opensafely-smoking-clear.csv": {
       "id": "opensafely/smoking-clear/2020-04-29",
       "url": "https://www.opencodelists.org/codelist/opensafely/smoking-clear/2020-04-29/",
@@ -215,18 +209,6 @@
       "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/bmi_stage/v1.2/",
       "downloaded_at": "2025-02-03 14:53:22.926741Z",
       "sha": "7fd744bb94c1789632247a3fc1780910f421b172"
-    },
-    "primis-covid19-vacc-uptake-carehome.csv": {
-      "id": "primis-covid19-vacc-uptake/carehome/v1",
-      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/carehome/v1/",
-      "downloaded_at": "2025-02-03 14:53:23.386872Z",
-      "sha": "0543cdba73cfc6b892a94aad94beb7b4fd0ce8bb"
-    },
-    "primis-covid19-vacc-uptake-carer.csv": {
-      "id": "primis-covid19-vacc-uptake/carer/v1",
-      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/carer/v1/",
-      "downloaded_at": "2025-02-03 14:53:23.837836Z",
-      "sha": "e3526d8e7e1a3aaeeee29a3bb18c177243c218c6"
     },
     "primis-covid19-vacc-uptake-chd_cov.csv": {
       "id": "primis-covid19-vacc-uptake/chd_cov/v1.2.1",
@@ -276,18 +258,6 @@
       "downloaded_at": "2025-02-03 14:53:26.881819Z",
       "sha": "57682a6345da78472609f01f1ca065ace27fcb43"
     },
-    "primis-covid19-vacc-uptake-domcare.csv": {
-      "id": "primis-covid19-vacc-uptake/domcare/v1",
-      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/domcare/v1/",
-      "downloaded_at": "2025-02-03 14:53:27.307821Z",
-      "sha": "711f760dbd4869a8836a7bf6bfc062c1fc286095"
-    },
-    "primis-covid19-vacc-uptake-eth2001.csv": {
-      "id": "primis-covid19-vacc-uptake/eth2001/v1",
-      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/eth2001/v1/",
-      "downloaded_at": "2025-02-03 14:53:27.700447Z",
-      "sha": "2ff9aea91a05f41fe911a885eee50d2494247d58"
-    },
     "primis-covid19-vacc-uptake-immdx_cov.csv": {
       "id": "primis-covid19-vacc-uptake/immdx_cov/v1",
       "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/immdx_cov/v1/",
@@ -317,18 +287,6 @@
       "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/nonshield/v1/",
       "downloaded_at": "2025-02-03 14:53:30.014311Z",
       "sha": "fb1e019781d5a58c5512d71e9cd6cf47c05e72c5"
-    },
-    "primis-covid19-vacc-uptake-notcarer.csv": {
-      "id": "primis-covid19-vacc-uptake/notcarer/v1",
-      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/notcarer/v1/",
-      "downloaded_at": "2025-02-03 14:53:30.436221Z",
-      "sha": "94d7143d3baf5834ace777a28c88e8e5204955bb"
-    },
-    "primis-covid19-vacc-uptake-nursehome.csv": {
-      "id": "primis-covid19-vacc-uptake/nursehome/v1",
-      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/nursehome/v1/",
-      "downloaded_at": "2025-02-03 14:53:30.885062Z",
-      "sha": "91d03ec723ba5a6ab83b72d8307f68a5e4be2b4e"
     },
     "primis-covid19-vacc-uptake-preg.csv": {
       "id": "primis-covid19-vacc-uptake/preg/v1",
