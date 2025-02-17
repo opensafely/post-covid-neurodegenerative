@@ -106,13 +106,14 @@ df1 <- df %>%
   select(patient_id,
          starts_with("index_date"),
          starts_with("end_date_"),
-         contains("sub_"),              # Subgroups
-         contains("exp_"),              # Exposures
-         contains("out_"),              # Outcomes
-         contains("cov_"),              # Covariates
-         contains("inex_"),             # Inclusion/Exclusion
-         contains("cens_"),             # Censor
-         contains("qa_"),               # Quality assurance
+         contains("sub_"),   # Subgroups
+         contains("exp_"),   # Exposures
+         contains("out_"),   # Outcomes
+         contains("cov_"),   # Covariates
+         contains("strat_"), # Strata
+         contains("inex_"),  # Inclusion/Exclusion
+         contains("cens_"),  # Censor
+         contains("qa_"),    # Quality assurance
          contains("vax_date_eligible"), # Vaccination eligibility
          contains("vax_date_"),         # Vaccination dates and vax type
          contains("vax_cat_")           # Vaccination products
