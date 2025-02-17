@@ -6,25 +6,25 @@ fs::dir_create(here::here("lib"))
 
 # Create empty data frame ----
 df <- data.frame(
-  cohort = character(),
-  exposure = character(),
-  outcome = character(),
-  ipw = logical(),
-  strata = character(),
-  covariate_sex = character(),
-  covariate_age = character(),
-  covariate_other = character(),
-  cox_start = character(),
-  cox_stop = character(),
-  study_start = character(),
-  study_stop = character(),
-  cut_points = character(),
-  controls_per_case = numeric(),
-  total_event_threshold = numeric(),
+  cohort           = character(),
+  exposure         = character(),
+  outcome          = character(),
+  ipw              = logical(),
+  strata           = character(),
+  covariate_sex    = character(),
+  covariate_age    = character(),
+  covariate_other  = character(),
+  cox_start        = character(),
+  cox_stop         = character(),
+  study_start      = character(),
+  study_stop       = character(),
+  cut_points       = character(),
+  controls_per_case       = numeric(),
+  total_event_threshold   = numeric(),
   episode_event_threshold = numeric(),
-  covariate_threshold = numeric(),
-  age_spline = logical(),
-  analysis = character(),
+  covariate_threshold     = numeric(),
+  age_spline       = logical(),
+  analysis         = character(),
   stringsAsFactors = FALSE
 )
 
@@ -43,8 +43,8 @@ episode_event_threshold <- 5L
 covariate_threshold <- 5L
 
 # Define dates ----
-study_dates <- fromJSON("output/study_dates.json")
-prevax_start <- study_dates$pandemic_start
+study_dates     <- fromJSON("output/study_dates.json")
+prevax_start    <- study_dates$pandemic_start
 vax_unvax_start <- study_dates$delta_date
 study_stop <- study_dates$lcd_date
 
@@ -115,12 +115,12 @@ park_risk_sub_out <- c("out_date_park")
 cis_sub_out <- c("out_date_dem_any")
 park_sub_out <- c("out_date_dem_any")
 vasc_risk_sub_out <- c(
-  "out_date_dem_alz",
-  "out_date_dem_vasc",
-  "out_date_dem_lb",
-  "out_date_dem_any",
-  "out_date_cis"
-)
+                       "out_date_dem_alz",
+                       "out_date_dem_vasc",
+                       "out_date_dem_lb",
+                       "out_date_dem_any",
+                       "out_date_cis"
+                      )
 
 # For each cohort ----
 
