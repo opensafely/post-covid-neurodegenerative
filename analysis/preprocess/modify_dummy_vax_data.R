@@ -23,9 +23,9 @@ df <- df %>%
     missing_pfizer_2  = rbernoulli(nrow(.), p = 0.05),
     missing_az_2      = rbernoulli(nrow(.), p = 0.05),
     missing_moderna_2 = rbernoulli(nrow(.), p = 0.05),
-    missing_pfizer_3  = rbernoulli(nrow(.), p = 0.9),
-    missing_az_3      = rbernoulli(nrow(.), p = 0.9),
-    missing_moderna_3 = rbernoulli(nrow(.), p = 0.9)
+    missing_pfizer_3  = rbernoulli(nrow(.), p = 0.90),
+    missing_az_3      = rbernoulli(nrow(.), p = 0.90),
+    missing_moderna_3 = rbernoulli(nrow(.), p = 0.90)
   ) %>%
 
   #Set first jab date according to type and set others to NA

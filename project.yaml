@@ -72,8 +72,8 @@ actions:
     - generate_study_population_prevax
     outputs:
       highly_sensitive:
-        cohort: output/input_prevax.rds
-        venn: output/venn_prevax.rds
+        cohort: output/dataset_clean/input_prevax.rds
+        venn: output/dataset_clean/venn_prevax.rds
 
   ## Preprocess data - vax, with no_describe_print 
 
@@ -84,8 +84,8 @@ actions:
     - generate_study_population_vax
     outputs:
       highly_sensitive:
-        cohort: output/input_vax.rds
-        venn: output/venn_vax.rds
+        cohort: output/dataset_clean/input_vax.rds
+        venn: output/dataset_clean/venn_vax.rds
 
   ## Preprocess data - unvax, with no_describe_print 
 
@@ -96,6 +96,6 @@ actions:
     - generate_study_population_unvax
     outputs:
       highly_sensitive:
-        cohort: output/input_unvax.rds
-        venn: output/venn_unvax.rds
+        cohort: output/dataset_clean/input_unvax.rds
+        venn: output/dataset_clean/venn_unvax.rds
 

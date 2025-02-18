@@ -99,12 +99,12 @@ preprocess_data <- function(cohort, describe = "no_describe_print") {
           glue("generate_study_population_{cohort}")
         ),
         moderately_sensitive = list(
-          describe      = glue("output/describe_input_{cohort}_stage0.txt"),
-          describe_venn = glue("output/describe_venn_{cohort}.txt")
+          describe      = glue("output/describe/describe_input_{cohort}_stage0.txt"),
+          describe_venn = glue("output/describe/describe_venn_{cohort}.txt")
         ),
         highly_sensitive = list(
-          cohort = glue("output/input_{cohort}.rds"),
-          venn   = glue("output/venn_{cohort}.rds")
+          cohort = glue("output/dataset_clean/input_{cohort}.rds"),
+          venn   = glue("output/dataset_clean/venn_{cohort}.rds")
         )
       )
     } else { # Action to exclude describe*.txt files
@@ -117,8 +117,8 @@ preprocess_data <- function(cohort, describe = "no_describe_print") {
           glue("generate_study_population_{cohort}")
         ),
         highly_sensitive = list(
-          cohort = glue("output/input_{cohort}.rds"),
-          venn   = glue("output/venn_{cohort}.rds")
+          cohort = glue("output/dataset_clean/input_{cohort}.rds"),
+          venn   = glue("output/dataset_clean/venn_{cohort}.rds")
         )
       )
     }

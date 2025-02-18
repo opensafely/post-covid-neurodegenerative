@@ -84,9 +84,31 @@ if (Sys.getenv("OPENSAFELY_BACKEND") %in% c("", "expectations") &&
   message("Vaccine information overwritten successfully")
 }
 
+# Define describe output folder ------------------------------------------------
+print("Checking describe output folder")
+
+# setting up the sub directory
+desc_dir <- "output/describe/"
+
+# check if sub directory exists, create if not
+if (!file.exists(desc_dir)) {
+  dir.create(file.path(desc_dir))
+}
+
+# Define dataset_clean output folder ------------------------------------------------
+print("Checking dataset_clean output folder")
+
+# setting up the sub directory
+dacl_dir <- "output/dataset_clean/"
+
+# check if sub directory exists, create if not
+if (!file.exists(dacl_dir)) {
+  dir.create(file.path(dacl_dir))
+}
+
 # Describe data ----------------------------------------------------------------
 if (describe_flag == "describe_print") {
-  sink(paste0("output/describe_", cohort_name, ".txt"))
+  sink(paste0(desc_dir, "describe_", cohort_name, ".txt"))
   print(Hmisc::describe(df))
   sink()
   message("Cohort ", cohort_name, " description written successfully!")
@@ -123,13 +145,13 @@ df1[, colnames(df)[grepl("tmp_", colnames(df))]] <- NULL
 
 # Save input -------------------------------------------------------------------
 
-saveRDS(df1, file = paste0("output/input_",cohort_name,".rds"), compress = TRUE)
+saveRDS(df1, file = paste0(dacl_dir, "input_", cohort_name, ".rds"), compress = TRUE)
 message(paste("Input data saved successfully with N =", nrow(df1), "rows"))
 
 # Describe data ----------------------------------------------------------------
 
 if (describe_flag == "describe_print") {
-  sink(paste0("output/describe_input_", cohort_name, "_stage0.txt"))
+  sink(paste0(desc_dir, "describe_input_", cohort_name, "_stage0.txt"))
   print(Hmisc::describe(df1))
   sink()
 }
@@ -141,11 +163,11 @@ df2 <- df %>% select(starts_with(c("patient_id", "tmp_out_date", "out_date")))
 # Describe data outcomes -------------------------------------------------------
 
 if (describe_flag == "describe_print") {
-  sink(paste0("output/describe_venn_", cohort_name, ".txt"))
+  sink(paste0(desc_dir, "describe_venn_", cohort_name, ".txt"))
   print(Hmisc::describe(df2))
   sink()
 }
 
-saveRDS(df2, file = paste0("output/venn_", cohort_name, ".rds"), compress = TRUE)
+saveRDS(df2, file = paste0(dacl_dir, "venn_", cohort_name, ".rds"), compress = TRUE)
 
 message("Venn diagram data saved successfully")
