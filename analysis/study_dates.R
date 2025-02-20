@@ -20,7 +20,6 @@ study_dates <-
     ref_cev             = "2021-01-18", # reference date for calculating eligibility for phase 1 JCVI group 4 (CEV: clinically extremely vulnerable group)
     ref_ar              = "2021-02-15", # reference date for calculating eligibility for phase 1 JCVI group 5 (at-risk)
     pandemic_start      = "2020-01-01", # start date for pandemic in UK
-    start_date          = "2020-12-08", # start of phase 1 vaccinations
     mixed_vax_threshold = "2021-05-07", # date that courses of mixed vaccine products were permitted
     delta_date          = "2021-06-01", # date that Delta variant became dominant in the UK
     omicron_date        = "2021-12-14", # date that Omicron variant became dominant in the UK
