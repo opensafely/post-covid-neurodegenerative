@@ -21,7 +21,7 @@ def generate_dataset(index_date, end_date_exp, end_date_out):
 
 # Configure dummy data
 
-    dataset.configure_dummy_data(population_size=1000)
+    dataset.configure_dummy_data(population_size = 1000)
 
 # Import variables function
 
@@ -36,7 +36,7 @@ def generate_dataset(index_date, end_date_exp, end_date_out):
 
 # Extract date variables for later pipelines
 
-    @table_from_file("output/index_dates.csv.gz")
+    @table_from_file("output/dataset_definition/index_dates.csv.gz")
     
     class index_dates(PatientFrame):
     # Vaccine category and eligibility variables
@@ -67,20 +67,20 @@ def generate_dataset(index_date, end_date_exp, end_date_out):
         cens_date_death = Series(date)
 
     # Mapping all variables from index_dates to the dataset
-    dataset.vax_cat_jcvi_group = index_dates.vax_cat_jcvi_group
-    dataset.vax_date_eligible = index_dates.vax_date_eligible
-    dataset.vax_date_covid_1 = index_dates.vax_date_covid_1
-    dataset.vax_date_covid_2 = index_dates.vax_date_covid_2
-    dataset.vax_date_covid_3 = index_dates.vax_date_covid_3
-    dataset.vax_date_Pfizer_1 = index_dates.vax_date_Pfizer_1
-    dataset.vax_date_Pfizer_2 = index_dates.vax_date_Pfizer_2
-    dataset.vax_date_Pfizer_3 = index_dates.vax_date_Pfizer_3
+    dataset.vax_cat_jcvi_group     = index_dates.vax_cat_jcvi_group
+    dataset.vax_date_eligible      = index_dates.vax_date_eligible
+    dataset.vax_date_covid_1       = index_dates.vax_date_covid_1
+    dataset.vax_date_covid_2       = index_dates.vax_date_covid_2
+    dataset.vax_date_covid_3       = index_dates.vax_date_covid_3
+    dataset.vax_date_Pfizer_1      = index_dates.vax_date_Pfizer_1
+    dataset.vax_date_Pfizer_2      = index_dates.vax_date_Pfizer_2
+    dataset.vax_date_Pfizer_3      = index_dates.vax_date_Pfizer_3
     dataset.vax_date_AstraZeneca_1 = index_dates.vax_date_AstraZeneca_1
     dataset.vax_date_AstraZeneca_2 = index_dates.vax_date_AstraZeneca_2
     dataset.vax_date_AstraZeneca_3 = index_dates.vax_date_AstraZeneca_3
-    dataset.vax_date_Moderna_1 = index_dates.vax_date_Moderna_1
-    dataset.vax_date_Moderna_2 = index_dates.vax_date_Moderna_2
-    dataset.vax_date_Moderna_3 = index_dates.vax_date_Moderna_3
-    dataset.cens_date_death = index_dates.cens_date_death
+    dataset.vax_date_Moderna_1     = index_dates.vax_date_Moderna_1
+    dataset.vax_date_Moderna_2     = index_dates.vax_date_Moderna_2
+    dataset.vax_date_Moderna_3     = index_dates.vax_date_Moderna_3
+    dataset.cens_date_death        = index_dates.cens_date_death
 
     return dataset
