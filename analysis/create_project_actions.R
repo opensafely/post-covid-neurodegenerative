@@ -1,3 +1,5 @@
+# Load libraries ---------------------------------------------------------------
+
 library(tidyverse)
 library(yaml)
 library(here)
@@ -66,22 +68,22 @@ convert_comment_actions <- function(yaml.txt) {
 
 # Create function to generate study population ---------------------------------
 
-generate_study_population <- function(cohort) {
+generate_cohort <- function(cohort) {
   splice(
-    comment(glue("Generate study population - {cohort}")),
+    comment(glue("Generate cohort - {cohort}")),
     action(
-      name  = glue("generate_study_population_{cohort}"),
-      run   = glue("ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_{cohort}.py --output output/input_{cohort}.csv.gz"),
-      needs = list("generate_dataset_index_dates"),
+      name  = glue("generate_cohort_{cohort}"),
+      run   = glue("ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_{cohort}.py --output output/dataset_definition/input_{cohort}.csv.gz"),
+      needs = list("generate_dates"),
       highly_sensitive = list(
-        cohort = glue("output/input_{cohort}.csv.gz")
+        cohort = glue("output/dataset_definition/input_{cohort}.csv.gz")
       )
     )
   )
 }
 
 
-# Define and combine all actions into a list of actions ------------------------------0
+# Define and combine all actions into a list of actions ------------------------
 
 actions_list <- splice(
 
@@ -94,26 +96,26 @@ actions_list <- splice(
           "# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #"
   ),
 
-  ## Generate vaccination eligibility information ------------------------------
-  comment("Generate vaccination eligibility information"),
+  ## Define study dates --------------------------------------------------------
+  comment("Define study dates"),
 
   action(
-    name = glue("vax_eligibility_inputs"),
-    run  = "r:latest analysis/dataset_definition/metadates.R",
+    name = glue("study_dates"),
+    run  = "r:latest analysis/study_dates.R",
     highly_sensitive = list(
       study_dates_json = glue("output/study_dates.json")
     )
   ),
 
-  ## Generate index dates for all study cohorts ------------------------------------------
+  ## Generate index dates for all study cohorts --------------------------------
   comment("Generate dates for all cohorts"),
 
   action(
-    name  = "generate_dataset_index_dates",
-    run   = "ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_dates.py --output output/index_dates.csv.gz",
-    needs = list("vax_eligibility_inputs"),
+    name  = "generate_dates",
+    run   = "ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_dates.py --output output/dataset_definition/index_dates.csv.gz",
+    needs = list("study_dates"),
     highly_sensitive = list(
-      dataset = glue("output/index_dates.csv.gz")
+      dataset = glue("output/dataset_definition/index_dates.csv.gz")
     )
   ),
 
@@ -121,7 +123,7 @@ actions_list <- splice(
 
   splice(
     unlist(lapply(cohorts,
-                  function(x) generate_study_population(cohort = x)), 
+                  function(x) generate_cohort(cohort = x)),
            recursive = FALSE
     )
   )
