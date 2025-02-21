@@ -3,6 +3,7 @@
 library(magrittr)
 library(dplyr)
 library(tidyverse)
+library(here)
 library(lubridate)
 library(data.table)
 library(readr)
@@ -17,8 +18,8 @@ if (length(args) < 1) { # Which cohort to analyse
   cohort_name <- args[[1]]
 }
 
-if (length(args) < 2) { # Whether to print describe*.txt files
-  describe_flag <- "no_describe_print"
+if (length(args) < 2) { # Whether to create describe*.txt files
+  describe_flag <- "no_describe_print" #describe_print or no_describe_print
 } else {
   describe_flag <- args[[2]]
 }
@@ -26,7 +27,7 @@ if (length(args) < 2) { # Whether to print describe*.txt files
 
 # Get column names -------------------------------------------------------------
 
-all_cols <- fread(paste0("output/input_", cohort_name, ".csv.gz"),
+all_cols <- fread(paste0("output/dataset_definition/input_", cohort_name, ".csv.gz"),
                   header = TRUE, sep = ",", nrows = 0,
                   stringsAsFactors = FALSE) %>%
   names()
@@ -63,7 +64,7 @@ message("Column classes defined")
 
 # Read cohort dataset ----------------------------------------------------------
 
-df <- read_csv(paste0("output/input_", cohort_name, ".csv.gz"),
+df <- read_csv(paste0("output/dataset_definition/input_", cohort_name, ".csv.gz"),
                col_types = col_classes)
 
 message(paste("Dataset has been read successfully with N =", nrow(df), "rows"))
@@ -85,30 +86,30 @@ if (Sys.getenv("OPENSAFELY_BACKEND") %in% c("", "expectations") &&
 }
 
 # Define describe output folder ------------------------------------------------
-print("Checking describe output folder")
 
-# setting up the sub directory
-desc_dir <- "output/describe/"
+if (describe_flag == "describe_print") {
+  print("Creating output/describe directory")
 
-# check if sub directory exists, create if not
-if (!file.exists(desc_dir)) {
-  dir.create(file.path(desc_dir))
+  describe_dir <- "output/describe/"
+
+  # check if sub directory exists, create if not
+  fs::dir_create(here::here(describe_dir))
 }
 
 # Define dataset_clean output folder ------------------------------------------------
-print("Checking dataset_clean output folder")
+
+print("Creating output/dataset_clean output folder")
 
 # setting up the sub directory
-dacl_dir <- "output/dataset_clean/"
+dataclean_dir <- "output/dataset_clean/"
 
 # check if sub directory exists, create if not
-if (!file.exists(dacl_dir)) {
-  dir.create(file.path(dacl_dir))
-}
+fs::dir_create(here::here(dataclean_dir))
 
 # Describe data ----------------------------------------------------------------
+
 if (describe_flag == "describe_print") {
-  sink(paste0(desc_dir, "describe_", cohort_name, ".txt"))
+  sink(paste0(describe_dir, "describe_", cohort_name, ".txt"))
   print(Hmisc::describe(df))
   sink()
   message("Cohort ", cohort_name, " description written successfully!")
@@ -118,7 +119,7 @@ if (describe_flag == "describe_print") {
 
 # Remove records with missing patient id ---------------------------------------
 
-df <- df[!is.na(df$patient_id),]
+df <- df[!is.na(df$patient_id), ]
 
 message("All records with valid patient IDs retained.")
 
@@ -145,13 +146,13 @@ df1[, colnames(df)[grepl("tmp_", colnames(df))]] <- NULL
 
 # Save input -------------------------------------------------------------------
 
-saveRDS(df1, file = paste0(dacl_dir, "input_", cohort_name, ".rds"), compress = TRUE)
+saveRDS(df1, file = paste0(dataclean_dir, "input_", cohort_name, ".rds"), compress = TRUE)
 message(paste("Input data saved successfully with N =", nrow(df1), "rows"))
 
 # Describe data ----------------------------------------------------------------
 
 if (describe_flag == "describe_print") {
-  sink(paste0(desc_dir, "describe_input_", cohort_name, "_stage0.txt"))
+  sink(paste0(describe_dir, "describe_input_", cohort_name, "_stage0.txt"))
   print(Hmisc::describe(df1))
   sink()
 }
@@ -163,11 +164,11 @@ df2 <- df %>% select(starts_with(c("patient_id", "tmp_out_date", "out_date")))
 # Describe data outcomes -------------------------------------------------------
 
 if (describe_flag == "describe_print") {
-  sink(paste0(desc_dir, "describe_venn_", cohort_name, ".txt"))
+  sink(paste0(describe_dir, "describe_venn_", cohort_name, ".txt"))
   print(Hmisc::describe(df2))
   sink()
 }
 
-saveRDS(df2, file = paste0(dacl_dir, "venn_", cohort_name, ".rds"), compress = TRUE)
+saveRDS(df2, file = paste0(dataclean_dir, "venn_", cohort_name, ".rds"), compress = TRUE)
 
 message("Venn diagram data saved successfully")
