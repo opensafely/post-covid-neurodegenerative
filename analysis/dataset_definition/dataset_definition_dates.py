@@ -14,16 +14,18 @@ from ehrql.tables.tpp import (
 # create dataset to create dates for different cohorts
 
 dataset = create_dataset()
+
 dataset.define_population(
     patients.date_of_birth.is_not_null()
 )
+
 dataset.configure_dummy_data(population_size=1000)
 
 # Import study_dates dictionary
 
 from variables_dates import study_dates
 
-# Extracting all relevant variables from the study_dates dictionary
+# Extracting relevant dates from the study_dates dictionary
 
 pandemic_start     = study_dates["pandemic_start"]  # rough start date for pandemic in UK
 delta_date         = study_dates["delta_date"]
