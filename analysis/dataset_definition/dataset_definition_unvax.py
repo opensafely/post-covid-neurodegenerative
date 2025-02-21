@@ -9,18 +9,18 @@ from datetime import date
 @table_from_file("output/dataset_definition/index_dates.csv.gz")
 
 class index_dates(PatientFrame):
-    index_unvax = Series(date)
+    index_unvax        = Series(date)
     end_unvax_exposure = Series(date)
-    end_unvax_outcome = Series(date)
+    end_unvax_outcome  = Series(date)
 
-index_date = index_dates.index_unvax
+index_date        = index_dates.index_unvax
 end_date_exposure = index_dates.end_unvax_exposure
-end_date_outcome = index_dates.end_unvax_outcome
+end_date_outcome  = index_dates.end_unvax_outcome
 
 # Create dataset
 
 dataset = generate_dataset(index_date, end_date_exposure, end_date_outcome)
 
-dataset.index_date = index_date
+dataset.index_date        = index_date
 dataset.end_date_exposure = end_date_exposure
-dataset.end_date_outcome = end_date_outcome
+dataset.end_date_outcome  = end_date_outcome
