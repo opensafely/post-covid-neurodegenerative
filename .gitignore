@@ -15,5 +15,4 @@ venv/
 .Rproj.user
 tmp/*
 analysis/specify_paths.R
-analysis/extendedtable1.R
-analysis/table1_old.R
+*/*_mh.*
