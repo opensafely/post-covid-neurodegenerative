@@ -91,12 +91,6 @@ df <- aggregate(cbind(total, exposed) ~ characteristic + subcharacteristic,
                 data = df,
                 sum)
 
-# Try loading in plot_labels.csv
-print("Loading output/study_labels.csv")
-
-df_lab <- read.csv("output/study_labels.csv", header = TRUE)
-
-
 # Tidy care home characteristic ------------------------------------------------
 print("Remove extraneous information")
 
@@ -116,10 +110,6 @@ print("Sort characteristics")
 
 df <- df[order(df$subcharacteristic, decreasing = TRUE), ] # Basic sort from extendedtable, might need to clean up
 df <- df[order(df$characteristic), ]
-
-df$characteristic <- factor(df$characteristic,
-                            levels = df_lab$term,
-                            labels = df_lab$label)
 
 # Add in Median IQR
 print('Add median (IQR) age')
