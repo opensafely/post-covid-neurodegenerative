@@ -165,6 +165,17 @@ actions_list <- splice(
     )
   ),
 
+  ## Define study labels --------------------------------------------------------
+  comment("Define study labels"),
+
+  action(
+    name = glue("study_labels"),
+    run  = "r:latest analysis/study_labels.R",
+    highly_sensitive = list(
+      study_dates_json = glue("output/study_labels.csv")
+    )
+  ),
+
   ## Generate index dates for all study cohorts --------------------------------
   comment("Generate dates for all cohorts"),
 
