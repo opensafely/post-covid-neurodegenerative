@@ -837,7 +837,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         out_date_dem_other   = out_date_dem_other,  # Other Dementia
         out_date_dem_unspec  = out_date_dem_unspec, # Unspecified Dementia
         out_date_dem_any     = out_date_dem_any,    # Any Dementia
-        out_date_migraine    = out_date_migraine,
+        out_date_migraine    = out_date_migraine,   # Migraine
         out_date_mnd         = out_date_mnd,        # Motor Neurone Disease
         out_date_ms          = out_date_ms,         # Multiple Sclerosis
         out_date_neuro_other = out_date_neuro_other,# MS or MND

@@ -1,7 +1,7 @@
 ﻿term,label,analysis_group,ref
 prevax,Pre-vaccine availability (Jan 1 2020 - Jun 18 2021),,
-vax,Vaccinated (Jun 1 2021 - March 30 2024),,
-unvax,Unvaccinated (Jun 1 2021 - March 30 2024),,
+vax,Vaccinated (Jun 1 2021 - March April 2024),,
+unvax,Unvaccinated (Jun 1 2021 - April 30 2024),,
 main,All COVID-19,main,1
 sub_age_18_39,Age group: 18-39,age,1
 sub_age_40_64,Age group: 40-64,age,2
@@ -17,30 +17,19 @@ sub_ethnicity_white,Ethnicity: White,ethnicity,1
 sub_sex_female,Sex: Female,sex,1
 sub_sex_male,Sex: Male,sex,2
 sub_covid_history,History of COVID-19,history_exposure,1
-cov_bin_ami,Acute myocardial infarction ,,
-cov_bin_cancer,Cancer ,,
+cov_bin_ami,Acute myocardial infarction,,
+cov_bin_cancer,Cancer,,
 cov_bin_carehome,Care Home Resident,,
 cov_bin_ckd,Chronic kidney disease ,,
-
-ov_cat_consrate2019,GP consultations in 2019,,
-
-
-
-
-
-
-
-
-
-
+cov_cat_consrate2019,GP consultations in 2019,,
 cov_bin_copd,Chronic obstructive pulmonary disease ,,
-cov_bin_depression,Depression ,,
+cov_bin_depression,Depression,,
 cov_bin_diabetes,Diabetes,,
-cov_bin_hcworker,Healthcare worker ,,
-cov_bin_hypertension,Hypertension ,,
-cov_bin_liver_disease,Liver disease ,,
-cov_bin_obesity,Obesity ,,
-cov_bin_stroke_isch,Ischaemic stoike,,
+cov_bin_hcworker,Healthcare worker,,
+cov_bin_hypertension,Hypertension,,
+cov_bin_liver_disease,Liver disease,,
+cov_bin_obesity,Obesity,,
+cov_bin_stroke_isch,Ischaemic stoke,,
 cov_bin_cis,History of Cognitive Impairment Symptoms,,
 cov_bin_dem_any,History of Dementia (Any),,
 cov_bin_high_vasc_risk,History of High Vascular Risk,,
