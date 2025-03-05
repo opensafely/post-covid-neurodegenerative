@@ -11,65 +11,73 @@ actions:
   ## This file is created by create_project_actions.R 
   ## Edit and run create_project_actions.R to update the project.yaml 
   ## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-  ## Generate vaccination eligibility information 
+  ## Define study dates 
 
-  vax_eligibility_inputs:
-    run: r:latest analysis/dataset_definition/metadates.R
+  study_dates:
+    run: r:latest analysis/study_dates.R
     outputs:
       highly_sensitive:
         study_dates_json: output/study_dates.json
 
+  ## Define study labels 
+
+  study_labels:
+    run: r:latest analysis/study_labels.R
+    outputs:
+      highly_sensitive:
+        study_dates_json: output/study_labels.csv
+
   ## Generate dates for all cohorts 
 
-  generate_dataset_index_dates:
+  generate_dates:
     run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_dates.py
-      --output output/index_dates.csv.gz
+      --output output/dataset_definition/index_dates.csv.gz
     needs:
-    - vax_eligibility_inputs
+    - study_dates
     outputs:
       highly_sensitive:
-        dataset: output/index_dates.csv.gz
+        dataset: output/dataset_definition/index_dates.csv.gz
 
-  ## Generate study population - prevax 
+  ## Generate cohort - prevax 
 
-  generate_study_population_prevax:
+  generate_cohort_prevax:
     run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_prevax.py
-      --output output/input_prevax.csv.gz
+      --output output/dataset_definition/input_prevax.csv.gz
     needs:
-    - generate_dataset_index_dates
+    - generate_dates
     outputs:
       highly_sensitive:
-        cohort: output/input_prevax.csv.gz
+        cohort: output/dataset_definition/input_prevax.csv.gz
 
-  ## Generate study population - vax 
+  ## Generate cohort - vax 
 
-  generate_study_population_vax:
+  generate_cohort_vax:
     run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_vax.py
-      --output output/input_vax.csv.gz
+      --output output/dataset_definition/input_vax.csv.gz
     needs:
-    - generate_dataset_index_dates
+    - generate_dates
     outputs:
       highly_sensitive:
-        cohort: output/input_vax.csv.gz
+        cohort: output/dataset_definition/input_vax.csv.gz
 
-  ## Generate study population - unvax 
+  ## Generate cohort - unvax 
 
-  generate_study_population_unvax:
+  generate_cohort_unvax:
     run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_unvax.py
-      --output output/input_unvax.csv.gz
+      --output output/dataset_definition/input_unvax.csv.gz
     needs:
-    - generate_dataset_index_dates
+    - generate_dates
     outputs:
       highly_sensitive:
-        cohort: output/input_unvax.csv.gz
+        cohort: output/dataset_definition/input_unvax.csv.gz
 
   ## Preprocess data - prevax, with no_describe_print 
 
   preprocess_data_prevax:
     run: r:latest analysis/preprocess/preprocess_data.R prevax no_describe_print
     needs:
-    - generate_dataset_index_dates
-    - generate_study_population_prevax
+    - generate_dates
+    - generate_cohort_prevax
     outputs:
       highly_sensitive:
         cohort: output/dataset_clean/input_prevax.rds
@@ -80,8 +88,8 @@ actions:
   preprocess_data_vax:
     run: r:latest analysis/preprocess/preprocess_data.R vax no_describe_print
     needs:
-    - generate_dataset_index_dates
-    - generate_study_population_vax
+    - generate_dates
+    - generate_cohort_vax
     outputs:
       highly_sensitive:
         cohort: output/dataset_clean/input_vax.rds
@@ -92,8 +100,8 @@ actions:
   preprocess_data_unvax:
     run: r:latest analysis/preprocess/preprocess_data.R unvax no_describe_print
     needs:
-    - generate_dataset_index_dates
-    - generate_study_population_unvax
+    - generate_dates
+    - generate_cohort_unvax
     outputs:
       highly_sensitive:
         cohort: output/dataset_clean/input_unvax.rds

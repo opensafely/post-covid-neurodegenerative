@@ -92,9 +92,9 @@ df <- aggregate(cbind(total, exposed) ~ characteristic + subcharacteristic,
                 sum)
 
 # Try loading in plot_labels.csv
-print("Loading lib/plot_labels.csv")
+print("Loading output/study_labels.csv")
 
-df_lab <- read.csv("lib/plot_labels.csv", header = TRUE)
+df_lab <- read.csv("output/study_labels.csv", header = TRUE)
 
 
 # Tidy care home characteristic ------------------------------------------------
