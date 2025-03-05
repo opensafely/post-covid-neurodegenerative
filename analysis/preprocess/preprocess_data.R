@@ -81,7 +81,7 @@ df <- df %>%
 
 if (Sys.getenv("OPENSAFELY_BACKEND") %in% c("", "expectations") &&
  cohort_name %in% c("vax")) {
-  source("analysis/preprocess/modify_dummy_vax_data.R")
+  source("analysis/preprocess/modify_dummy_data.R")
   message("Vaccine information overwritten successfully")
 }
 
