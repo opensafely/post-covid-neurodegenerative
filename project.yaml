@@ -107,3 +107,36 @@ actions:
         cohort: output/dataset_clean/input_unvax.rds
         venn: output/dataset_clean/venn_unvax.rds
 
+  ## Table 1 - prevax 
+
+  table1_prevax:
+    run: r:latest analysis/table1.R prevax 18;40;65;85
+    needs:
+    - preprocess_data_prevax
+    outputs:
+      moderately_sensitive:
+        table1: output/table1/table1_prevax.csv
+        table1_midpoint6: output/table1/table1_prevax_midpoint6.csv
+
+  ## Table 1 - unvax 
+
+  table1_unvax:
+    run: r:latest analysis/table1.R unvax 18;40;65;85
+    needs:
+    - preprocess_data_unvax
+    outputs:
+      moderately_sensitive:
+        table1: output/table1/table1_unvax.csv
+        table1_midpoint6: output/table1/table1_unvax_midpoint6.csv
+
+  ## Table 1 - vax 
+
+  table1_vax:
+    run: r:latest analysis/table1.R vax 18;40;65;85
+    needs:
+    - preprocess_data_vax
+    outputs:
+      moderately_sensitive:
+        table1: output/table1/table1_vax.csv
+        table1_midpoint6: output/table1/table1_vax_midpoint6.csv
+

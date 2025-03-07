@@ -20,13 +20,21 @@ print("Specify arguments")
 
 args <- commandArgs(trailingOnly = TRUE)
 
-if (length(args) == 0) {
+if (length(args) <1) { # Which cohort to analyse
   cohort <- "vax"
 } else {
   cohort <- args[[1]]
 }
 
-table1_dir <- "output/table1/"
+if (length(args) < 2) { # The bounds to use for age cohorts
+  age_str <- "18;40;65;85" # vector of age bounds in form "XX;XX;XX"
+} else {
+  age_str <- args[[2]]
+}
+
+age_bounds <- as.numeric(stringr::str_split(as.vector(age_str), ";")[[1]])
+
+table1_dir <- "output/table1/" # output directory
 
 # Load data --------------------------------------------------------------------
 print("Load data")
@@ -39,18 +47,17 @@ print("Table 1 processing")
 # Remove people with history of COVID-19 ---------------------------------------
 print("Remove people with history of COVID-19")
 
-df <- df[df$sub_bin_covidhistory == FALSE, ] # Previously sub_bin_covid19_confirmed_history
+df <- df[df$sub_bin_covidhistory == FALSE, ] 
 
 # Create exposure indicator ----------------------------------------------------
 print("Create exposure indicator")
 
-df$exposed <- !is.na(df$exp_date_covid) # Previously exp_date_covid19_confirmed
+df$exposed <- !is.na(df$exp_date_covid) 
 
 # Define age groups ------------------------------------------------------------
 print("Define age groups")
 
-# df$cov_cat_age_group <- numerical_to_categorical(df$cov_num_age,c(18,30,40,50,60,70,80,90)) # See utility.R
-df$cov_cat_age_group <- numerical_to_categorical(df$cov_num_age,c(18,40,65,85)) # See utility.R
+df$cov_cat_age_group <- numerical_to_categorical(df$cov_num_age,age_bounds) # See utility.R
 df$cov_cat_age_group <- ifelse(df$cov_cat_age_group == "<=17", "", df$cov_cat_age_group) # for consistency in blanking out underage
 
 df$cov_cat_consrate2019 <- numerical_to_categorical(df$cov_num_consrate2019,c(1,6),zero_flag=TRUE)
@@ -66,7 +73,6 @@ df <- df[, c("patient_id",
              colnames(df)[grepl("strat_cat_", colnames(df))],
              colnames(df)[grepl("cov_bin_", colnames(df))]
             )]
-
 
 df$All <- "All"
 
@@ -94,16 +100,10 @@ df <- aggregate(cbind(total, exposed) ~ characteristic + subcharacteristic,
 # Tidy care home characteristic ------------------------------------------------
 print("Remove extraneous information")
 
-df <- df[df$subcharacteristic != FALSE, ] 
+df <- df[df$subcharacteristic != FALSE, ]
 df$subcharacteristic <- ifelse(df$subcharacteristic == "" | df$subcharacteristic == "unknown",
                                "Missing",
                                df$subcharacteristic)
-
-for (bin_char in df$characteristic[grepl("cov_bin_", df$characteristic)]) { 
-      df$subcharacteristic <- ifelse(df$characteristic == bin_char,
-                               df_lab[df_lab$term == bin_char, ]$label,
-                               df$subcharacteristic)
-}
 
 # Sort characteristics ---------------------------------------------------------
 print("Sort characteristics")
