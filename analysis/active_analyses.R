@@ -6,50 +6,50 @@ fs::dir_create(here::here("lib"))
 
 # Create empty data frame ----
 df <- data.frame(
-  cohort           = character(),
-  exposure         = character(),
-  outcome          = character(),
-  ipw              = logical(),
-  strata           = character(),
-  covariate_sex    = character(),
-  covariate_age    = character(),
-  covariate_other  = character(),
-  cox_start        = character(),
-  cox_stop         = character(),
-  study_start      = character(),
-  study_stop       = character(),
-  cut_points       = character(),
-  controls_per_case       = numeric(),
-  total_event_threshold   = numeric(),
+  cohort = character(),
+  exposure = character(),
+  outcome = character(),
+  ipw = logical(),
+  strata = character(),
+  covariate_sex = character(),
+  covariate_age = character(),
+  covariate_other = character(),
+  cox_start = character(),
+  cox_stop = character(),
+  study_start = character(),
+  study_stop = character(),
+  cut_points = character(),
+  controls_per_case = numeric(),
+  total_event_threshold = numeric(),
   episode_event_threshold = numeric(),
-  covariate_threshold     = numeric(),
-  age_spline       = logical(),
-  analysis         = character(),
+  covariate_threshold = numeric(),
+  age_spline = logical(),
+  analysis = character(),
   stringsAsFactors = FALSE
 )
 
 # Set constant values ----
-ipw             <- TRUE
-age_spline      <- TRUE
-exposure        <- "exp_date_covid"
-strata          <- "strat_cat_region"
-covariate_sex   <- "cov_cat_sex"
-covariate_age   <- "cov_num_age"
-cox_start       <- "index_date"
-cox_stop        <- "end_date_outcome"
-controls_per_case       <- 20L
-total_event_threshold   <- 50L
-episode_event_threshold <-  5L
-covariate_threshold     <-  5L
+ipw <- TRUE
+age_spline <- TRUE
+exposure <- "exp_date_covid"
+strata <- "strat_cat_region"
+covariate_sex <- "cov_cat_sex"
+covariate_age <- "cov_num_age"
+cox_start <- "index_date"
+cox_stop <- "end_date_outcome"
+controls_per_case <- 20L
+total_event_threshold <- 50L
+episode_event_threshold <- 5L
+covariate_threshold <- 5L
 
 # Define dates ----
-study_dates     <- fromJSON("output/study_dates.json")
-prevax_start    <- study_dates$pandemic_start
+study_dates <- fromJSON("output/study_dates.json")
+prevax_start <- study_dates$pandemic_start
 vax_unvax_start <- study_dates$delta_date
-study_stop      <- study_dates$lcd_date
+study_stop <- study_dates$lcd_date
 
 # Define cut points ----
-prevax_cuts    <- "1;28;183;365;730;1065;1582"
+prevax_cuts <- "1;28;183;365;730;1065;1582"
 vax_unvax_cuts <- "1;28;183;365;730;1065"
 
 # Define covariates ----
@@ -95,45 +95,43 @@ cohorts <- c("vax", "unvax", "prevax")
 
 # Specify outcomes ----
 outcomes_all <- c(
-  "out_date_dem_alz",           # Alzheimer's Disease
-  "out_date_dem_vasc",          # Vascular Dementia
-  "out_date_dem_lb",            # Lewy Body Dementia
-  "out_date_dem_other",         # Other Dementia
-  "out_date_dem_unspec",        # Unspecified Dementia
-  "out_date_dem_any",           # Any Dementia
-  "out_date_cis",               # Cognitive Impairment Symptoms
-  "out_date_park",              # Parkinson's Disease
-  "out_date_rls",               # Restless Leg Syndrome
-  "out_date_rsd",               # REM Sleep Disorder
-  "out_date_mnd",               # Motor Neurone Disease
-  "out_date_ms",                # Multiple Sclerosis
+  "out_date_dem_alz", # Alzheimer's Disease
+  "out_date_dem_vasc", # Vascular Dementia
+  "out_date_dem_lb", # Lewy Body Dementia
+  "out_date_dem_other", # Other Dementia
+  "out_date_dem_unspec", # Unspecified Dementia
+  "out_date_dem_any", # Any Dementia
+  "out_date_cis", # Cognitive Impairment Symptoms
+  "out_date_park", # Parkinson's Disease
+  "out_date_rls", # Restless Leg Syndrome
+  "out_date_rsd", # REM Sleep Disorder
+  "out_date_mnd", # Motor Neurone Disease
+  "out_date_ms", # Multiple Sclerosis
   "out_date_migraine"
 )
 
 ## Define more refined outcome groups ----
 park_risk_sub_out <- c("out_date_park")
-cis_sub_out       <- c("out_date_dem_any")
-park_sub_out      <- c("out_date_dem_any")
+cis_sub_out <- c("out_date_dem_any")
+park_sub_out <- c("out_date_dem_any")
 vasc_risk_sub_out <- c(
-                       "out_date_dem_alz",
-                       "out_date_dem_vasc",
-                       "out_date_dem_lb",
-                       "out_date_dem_any",
-                       "out_date_cis"
-                      )
+  "out_date_dem_alz",
+  "out_date_dem_vasc",
+  "out_date_dem_lb",
+  "out_date_dem_any",
+  "out_date_cis"
+)
 
 # For each cohort ----
 
 for (c in cohorts) {
-
   # For each outcome ----
 
   for (i in c(outcomes_all)) {
-
     # Define analyses ----
 
     ## analysis: main ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -156,7 +154,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_covidhospital_TRUE ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -179,7 +177,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_covidhospital_FALSE ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -203,7 +201,7 @@ for (c in cohorts) {
 
     ## analysis: sub_covidhistory ----
     if (c != "prevax") {
-      df[nrow(df)+1, ] <- c(
+      df[nrow(df) + 1, ] <- c(
         cohort = c,
         exposure = exposure,
         outcome = i,
@@ -227,7 +225,7 @@ for (c in cohorts) {
     }
 
     ## analysis: sub_sex_female ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -250,7 +248,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_sex_male ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -273,7 +271,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_age_18_39 ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -296,7 +294,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_age_40_64 ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -319,7 +317,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_age_65_84 ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -342,7 +340,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_age_85_110 ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -365,7 +363,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_ethnicity_white ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -388,7 +386,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_ethnicity_black ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -411,7 +409,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_ethnicity_mixed ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -434,7 +432,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_ethnicity_asian ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -453,11 +451,11 @@ for (c in cohorts) {
       episode_event_threshold = episode_event_threshold,
       covariate_threshold = covariate_threshold,
       age_spline = TRUE,
-      analysis = "sub_ethnicity_asian"
+      analysis = "sub_ethnicity_south_asian"
     )
 
     ## analysis: sub_ethnicity_other ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -478,13 +476,11 @@ for (c in cohorts) {
       age_spline = TRUE,
       analysis = "sub_ethnicity_other"
     )
-
   }
 
   for (i in cis_sub_out) {
-
     ## analysis: sub_cis_TRUE ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -507,7 +503,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_cis_FALSE ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -528,13 +524,11 @@ for (c in cohorts) {
       age_spline = TRUE,
       analysis = "sub_cis_FALSE"
     )
-
   }
 
   for (i in park_sub_out) {
-
     ## analysis: sub_park_TRUE ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -557,7 +551,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_park_FALSE ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -581,9 +575,8 @@ for (c in cohorts) {
   }
 
   for (i in vasc_risk_sub_out) {
-
     ## analysis: sub_bin_high_vasc_risk_TRUE ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -606,7 +599,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_bin_high_vasc_risk_FALSE ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -627,13 +620,11 @@ for (c in cohorts) {
       age_spline = TRUE,
       analysis = "sub_bin_high_vasc_risk_FALSE"
     )
-
   }
 
   for (i in park_risk_sub_out) {
-
     ## analysis: sub_park_risk_TRUE ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -656,7 +647,7 @@ for (c in cohorts) {
     )
 
     ## analysis: sub_park_risk_FALSE ----
-    df[nrow(df)+1, ] <- c(
+    df[nrow(df) + 1, ] <- c(
       cohort = c,
       exposure = exposure,
       outcome = i,
@@ -677,15 +668,16 @@ for (c in cohorts) {
       age_spline = TRUE,
       analysis = "sub_park_risk_FALSE"
     )
-
   }
-
 }
 
 # Add name for each analysis ----
 df$name <- paste0(
-  "cohort_", df$cohort, "-",
-  df$analysis, "-",
+  "cohort_",
+  df$cohort,
+  "-",
+  df$analysis,
+  "-",
   gsub("out_date_", "", df$outcome)
 )
 
@@ -699,7 +691,8 @@ for (i in clean_loop) {
   df$covariate_other <- ifelse(
     df$outcome == paste0("out_date", i),
     gsub(paste0("cov_bin", i, ";"), "", df$covariate_other),
-    df$covariate_other)
+    df$covariate_other
+  )
 }
 
 # Parkinson disease requires removal of Parkinsons and any Dementia
@@ -713,7 +706,7 @@ df$covariate_other <- ifelse(
 if (!dir.exists("lib")) {
   dir.create("lib")
 }
-if (length(unique(df$name))==nrow(df)) {
+if (length(unique(df$name)) == nrow(df)) {
   saveRDS(df, file = "lib/active_analyses.rds", compress = "gzip")
 } else {
   stop(paste0("ERROR: names must be unique in active analyses table"))
