@@ -78,8 +78,8 @@ def last_matching_event_ec_snomed_before(codelist, start_date, where=True):
     )
 
 def matching_death_before(codelist, start_date, where=True):
-    return( 
-        ons_deaths.cause_of_death_is_in(codelist) & ons_deaths.date.is_before(start_date) 
+    return(
+        ons_deaths.cause_of_death_is_in(codelist)  & ons_deaths.date.is_before(start_date)
     )
 
 def last_matching_event_clinical_snomed_between(codelist, start_date, end_date, where=True):

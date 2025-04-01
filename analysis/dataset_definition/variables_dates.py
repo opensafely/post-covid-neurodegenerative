@@ -20,8 +20,8 @@ from datetime import date
 
 # Call functions from variable_helper_functions
 from variable_helper_functions import (
-    last_matching_event_clinical_snomed_before,
     last_matching_event_clinical_snomed_between,
+    last_matching_event_clinical_snomed_before,
     last_matching_med_dmd_between,
 )
 
@@ -32,14 +32,14 @@ with open("output/study_dates.json") as f:
   study_dates = json.load(f)
 
 # Extracting all variables from the study_dates dictionary
-ref_age_1           = study_dates["ref_age_1"]       # reference date for calculating age for phase 1 groups
-ref_age_2           = study_dates["ref_age_2"]       # reference date for calculating age for phase 2 groups
-ref_cev             = study_dates["ref_cev"]         # reference date for calculating eligibility for phase 1 group 4 (CEV)
-ref_ar              = study_dates["ref_ar"]          # reference date for calculating eligibility for phase 1 group 5 (at-risk)
-pandemic_start      = study_dates["pandemic_start"]  # rough start date for pandemic in UK
-vax1_earliest       = study_dates["vax1_earliest"]   # earliest expectation date for first vaccination
-vax2_earliest       = study_dates["vax2_earliest"]   # earliest expectation date for 2nd vaccination
-vax3_earliest       = study_dates["vax3_earliest"]   # earliest expectation date for 3rd vaccination
+ref_age_1 = study_dates["ref_age_1"]  # reference date for calculating age for phase 1 groups
+ref_age_2 = study_dates["ref_age_2"]  # reference date for calculating age for phase 2 groups
+ref_cev = study_dates["ref_cev"]  # reference date for calculating eligibility for phase 1 group 4 (CEV)
+ref_ar = study_dates["ref_ar"]  # reference date for calculating eligibility for phase 1 group 5 (at-risk)
+pandemic_start = study_dates["pandemic_start"]  # rough start date for pandemic in UK
+vax1_earliest = study_dates["vax1_earliest"]  # earliest expectation date for first vaccination
+vax2_earliest = study_dates["vax2_earliest"]  # earliest expectation date for 2nd vaccination
+vax3_earliest = study_dates["vax3_earliest"]  # earliest expectation date for 3rd vaccination
 
 # JCVI VARIABLES-------------------------------------------------------------------------------------------------------------------
 
@@ -258,18 +258,18 @@ sevobese_group = (
     (bmi_value_temp >= 40)
 )
 
-# atrisk_group (at risk group) (??why are the previous studies excluding asthma group)
+# atrisk_group (at risk group) (??why the previous studies exlcuding asthma group)
 atrisk_group = (
-    asthma_group   |
-    resp_group     |
-    cns_group      |
-    diab_group     |
-    sevment_group  |
-    chd_group      |
-    ckd_group      |
-    cld_group      |
-    immuno_group   |
-    spln_group     |
+    asthma_group |
+    resp_group |
+    cns_group |
+    diab_group |
+    sevment_group |
+    chd_group |
+    ckd_group |
+    cld_group |
+    immuno_group |
+    spln_group |
     learndis_group |
     sevobese_group
 )
@@ -277,7 +277,7 @@ atrisk_group = (
 # longres_group (Patients in long-stay nursing and residential care)----------------------------
 longres_group = last_matching_event_clinical_snomed_before(
     longres_primis, vax1_earliest
-).exists_for_patient() 
+).exists_for_patient()
 
 # jcvi_group
 vax_cat_jcvi_group = case(
@@ -325,26 +325,26 @@ vax_date_eligible = case(
 
 # Define a dictionary of JCVI variables created above 
 jcvi_variables = dict(
-    vax_jcvi_age_1     = vax_jcvi_age_1,    # Age on phase 1 reference date
-    vax_jcvi_age_2     = vax_jcvi_age_2,    # Age on phase 2 reference date
-    preg_grou          = preg_group,        # Ongoing pregnancy as of the ref_cev
-    cev_group          = cev_group,         # Clinically extremely vulnerable group
-    asthma_group       = asthma_group,      # Asthma diagnosis and treatment history
-    resp_group         = resp_group,        # Chronic Respiratory Disease other than asthma
-    cns_group          = cns_group,         # Chronic Neurological Disease including Significant Learning Disorder
-    diab_group         = diab_group,        # Diabetes diagnosis and treatment history
-    sevment_group      = sevment_group,     # Severe mental illness 
-    chd_group          = chd_group,         # Chronic heart disease 
-    ckd_group          = ckd_group,         # Chronic kidney disease 
-    cld_group          = cld_group,         # Chronic Liver disease
-    immuno_group       = immuno_group,      # Immunosuppressed 
-    spln_group         = spln_group,        # Asplenia or Dysfunction of the Spleen 
-    learndis_group     = learndis_group,    # Wider Learning Disability
-    sevobese_group     = sevobese_group,    # Severe obesity
-    atrisk_group       = atrisk_group,      # Combined at-risk group
-    longres_group      = longres_group,     # Patients in long-stay nursing and residential care
-    vax_cat_jcvi_group = vax_cat_jcvi_group,# jcvi_group
-    vax_date_eligible  = vax_date_eligible, # Vaccination eligible date according to jcvi
+    vax_jcvi_age_1=vax_jcvi_age_1,  # Age on phase 1 reference date
+    vax_jcvi_age_2=vax_jcvi_age_2,  # Age on phase 2 reference date
+    preg_group=preg_group,  # Ongoing pregnancy as of the ref_cev
+    cev_group=cev_group,  # Clinically extremely vulnerable group
+    asthma_group=asthma_group,  # Asthma diagnosis and treatment history
+    resp_group=resp_group,  # Chronic Respiratory Disease other than asthma
+    cns_group=cns_group,  # Chronic Neurological Disease including Significant Learning Disorder
+    diab_group=diab_group,  # Diabetes diagnosis and treatment history
+    sevment_group=sevment_group,  # Severe mental illness 
+    chd_group=chd_group,  # Chronic heart disease 
+    ckd_group=ckd_group,  # Chronic kidney disease 
+    cld_group=cld_group,  # Chronic Liver disease
+    immuno_group=immuno_group,  # Immunosuppressed 
+    spln_group=spln_group,  # Asplenia or Dysfunction of the Spleen 
+    learndis_group=learndis_group,  # Wider Learning Disability
+    sevobese_group=sevobese_group,  # Severe obesity
+    atrisk_group=atrisk_group,  # Combined at-risk group
+    longres_group=longres_group,  # Patients in long-stay nursing and residential care
+    vax_cat_jcvi_group=vax_cat_jcvi_group, # jcvi_group
+    vax_date_eligible=vax_date_eligible, # Vaccination eligible date according to jcvi
 )
 
 # PRELIMINARY DATE VARIABLES------------------------------------------------------------------------------------------------------------------------------------
@@ -510,17 +510,17 @@ vax_num_Moderna = (
 
 # Define a dictionary of preliminary date variables (Death, Vaccination) created above 
 prelim_date_variables = dict(
-    cens_date_death        = death_date,
-    vax_date_covid_1       = vax_date_covid_1,
-    vax_date_covid_2       = vax_date_covid_2,
-    vax_date_covid_3       = vax_date_covid_3,
-    vax_date_Pfizer_1      = vax_date_Pfizer_1,
-    vax_date_Pfizer_2      = vax_date_Pfizer_2,
-    vax_date_Pfizer_3      = vax_date_Pfizer_3,
-    vax_date_AstraZeneca_1 = vax_date_AstraZeneca_1,
-    vax_date_AstraZeneca_2 = vax_date_AstraZeneca_2,
-    vax_date_AstraZeneca_3 = vax_date_AstraZeneca_3,
-    vax_date_Moderna_1     = vax_date_Moderna_1,
-    vax_date_Moderna_2     = vax_date_Moderna_2,
-    vax_date_Moderna_3     = vax_date_Moderna_3,
+    cens_date_death=death_date,
+    vax_date_covid_1=vax_date_covid_1,
+    vax_date_covid_2=vax_date_covid_2,
+    vax_date_covid_3=vax_date_covid_3,
+    vax_date_Pfizer_1=vax_date_Pfizer_1,
+    vax_date_Pfizer_2=vax_date_Pfizer_2,
+    vax_date_Pfizer_3=vax_date_Pfizer_3,
+    vax_date_AstraZeneca_1=vax_date_AstraZeneca_1,
+    vax_date_AstraZeneca_2=vax_date_AstraZeneca_2,
+    vax_date_AstraZeneca_3=vax_date_AstraZeneca_3,
+    vax_date_Moderna_1=vax_date_Moderna_1,
+    vax_date_Moderna_2=vax_date_Moderna_2,
+    vax_date_Moderna_3=vax_date_Moderna_3,
 )
