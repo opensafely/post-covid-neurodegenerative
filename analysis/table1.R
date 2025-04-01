@@ -34,8 +34,6 @@ if (length(args) < 2) { # The bounds to use for age cohorts
 
 age_bounds <- as.numeric(stringr::str_split(as.vector(age_str), ";")[[1]])
 
-table1_dir <- "output/table1/" # output directory
-
 # Load data --------------------------------------------------------------------
 print("Load data")
 
@@ -79,8 +77,11 @@ df$All <- "All"
 # Filter binary data
 
 for (colname in colnames(df)[grepl("cov_bin_", colnames(df))]) {
-  df[[colname]] <- sapply(df[[colname]], as.character)
+ df[[colname]] <- sapply(df[[colname]], as.character)
 }
+
+df <- df %>%
+  mutate(across(where(is.factor), as.character))
 
 # Aggregate data ---------------------------------------------------------------
 print("Aggregate data")
@@ -167,3 +168,4 @@ colnames(df) <- c("Characteristic",
 print("Save rounded Table 1")
 
 write.csv(df, paste0(table1_dir, "table1_", cohort, "_midpoint6.csv"), row.names = FALSE)
+
