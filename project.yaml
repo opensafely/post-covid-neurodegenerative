@@ -2,7 +2,7 @@ version: '3.0'
 
 expectations:
 
-  population_size: 1000
+  population_size: 5000
 
 actions:
 
@@ -62,4 +62,58 @@ actions:
     outputs:
       highly_sensitive:
         cohort: output/dataset_definition/input_unvax.csv.gz
+
+  ## Clean data - prevax, with describe = TRUE 
+
+  clean_data_prevax:
+    run: r:latest analysis/dataset_clean/dataset_clean.R prevax TRUE
+    needs:
+    - study_dates
+    - generate_cohort_prevax
+    outputs:
+      moderately_sensitive:
+        describe_raw: output/describe/prevax_raw.txt
+        describe_venn: output/describe/prevax_venn.txt
+        describe_preprocessed: output/describe/prevax_preprocessed.txt
+        flow: output/dataset_clean/flow_prevax.csv
+        flow_midpoint6: output/dataset_clean/flow_prevax_midpoint6.csv
+      highly_sensitive:
+        venn: output/dataset_clean/venn_prevax.rds
+        cohort_clean: output/dataset_clean/input_prevax_clean.rds
+
+  ## Clean data - vax, with describe = TRUE 
+
+  clean_data_vax:
+    run: r:latest analysis/dataset_clean/dataset_clean.R vax TRUE
+    needs:
+    - study_dates
+    - generate_cohort_vax
+    outputs:
+      moderately_sensitive:
+        describe_raw: output/describe/vax_raw.txt
+        describe_venn: output/describe/vax_venn.txt
+        describe_preprocessed: output/describe/vax_preprocessed.txt
+        flow: output/dataset_clean/flow_vax.csv
+        flow_midpoint6: output/dataset_clean/flow_vax_midpoint6.csv
+      highly_sensitive:
+        venn: output/dataset_clean/venn_vax.rds
+        cohort_clean: output/dataset_clean/input_vax_clean.rds
+
+  ## Clean data - unvax, with describe = TRUE 
+
+  clean_data_unvax:
+    run: r:latest analysis/dataset_clean/dataset_clean.R unvax TRUE
+    needs:
+    - study_dates
+    - generate_cohort_unvax
+    outputs:
+      moderately_sensitive:
+        describe_raw: output/describe/unvax_raw.txt
+        describe_venn: output/describe/unvax_venn.txt
+        describe_preprocessed: output/describe/unvax_preprocessed.txt
+        flow: output/dataset_clean/flow_unvax.csv
+        flow_midpoint6: output/dataset_clean/flow_unvax_midpoint6.csv
+      highly_sensitive:
+        venn: output/dataset_clean/venn_unvax.rds
+        cohort_clean: output/dataset_clean/input_unvax_clean.rds
 

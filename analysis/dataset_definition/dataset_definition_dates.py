@@ -19,19 +19,19 @@ dataset.define_population(
     patients.date_of_birth.is_not_null()
 )
 
-dataset.configure_dummy_data(population_size=1000)
+dataset.configure_dummy_data(population_size=5000)
 
 # Import study_dates dictionary
 
 from variables_dates import study_dates
 
-# Extracting relevant dates from the study_dates dictionary
+# Extracting all variables from the study_dates dictionary
 
-pandemic_start     = study_dates["pandemic_start"]  # rough start date for pandemic in UK
-delta_date         = study_dates["delta_date"]
-omicron_date       = study_dates["omicron_date"]
-all_eligible       = study_dates["all_eligible"]    # all 18+ are eligible for vax on this date (protocol)
-lcd_date           = study_dates["lcd_date"]        # last collection date for linked data (APCS; ONS_Deaths; SGSS_*)
+pandemic_start = study_dates["pandemic_start"]  # rough start date for pandemic in UK
+delta_date = study_dates["delta_date"]
+omicron_date = study_dates["omicron_date"]
+all_eligible = study_dates["all_eligible"]  # all 18+ are eligible for vax on this date (protocol)
+lcd_date = study_dates["lcd_date"] # last import date
 
 # Import preliminary date variables (death date, vax dates)
 
@@ -56,14 +56,14 @@ for var_name, var_value in jcvi_variables.items():
 dataset.index_prevax = minimum_of(pandemic_start, pandemic_start)
 
 dataset.end_prevax_exposure = minimum_of(
-    dataset.cens_date_death,
-    dataset.vax_date_covid_1,
-    dataset.vax_date_eligible,
+    dataset.cens_date_death, 
+    dataset.vax_date_covid_1, 
+    dataset.vax_date_eligible, 
     all_eligible
 )
 
 dataset.end_prevax_outcome = minimum_of(
-    dataset.cens_date_death,
+    dataset.cens_date_death, 
     lcd_date
 )
 
