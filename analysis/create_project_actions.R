@@ -27,12 +27,12 @@ cohorts <- unique(active_analyses$cohort)
 active_age <- active_analyses[grepl("_age_", active_analyses$name), ]$name
 age_str <- paste0(
   paste0(
-    unique(sub(".*_age_([0-9]+)_([0-9]+)-.*", "\\1", active_age)),
+    unique(sub(".*_age_([0-9]+)_([0-9]+).*", "\\1", active_age)),
     collapse = ";"
   ),
   ";",
   max(
-    as.numeric(unique(sub(".*_age_([0-9]+)_([0-9]+)-.*", "\\2", active_age))) +
+    as.numeric(unique(sub(".*_age_([0-9]+)_([0-9]+).*", "\\2", active_age))) +
       1
   )
 ) #create age vector in form "X;XX;XX;XX;XXX"
