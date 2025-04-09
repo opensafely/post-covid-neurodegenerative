@@ -107,12 +107,13 @@ print('Call quality assurance function')
 
 qa_results <- qa(inex_results$input, inex_results$flow, lcd_date)
 
-# Set reference levels for factors----------------------------------------------
+# Set reference levels for factors ---------------------------------------------
 print('Call reference function')
 
 input <- ref(qa_results$input)
 
-# Save flow data after Inclusion criteria---------------------------------------
+# Save flow data after Inclusion criteria --------------------------------------
+
 print('Saving flow data after Inclusion criteria')
 
 flow <- qa_results$flow
@@ -126,6 +127,7 @@ write.csv(
 )
 
 # Perform redaction-------------------------------------------------------------
+
 print('Performing redaction')
 
 flow$removed <- NULL
@@ -138,6 +140,7 @@ flow$removed_derived <- dplyr::lag(
 flow$N <- NULL
 
 # Save rounded flow data--------------------------------------------------------
+
 print('Saving rounded flow data after Inclusion criteria')
 
 write.csv(
@@ -147,6 +150,7 @@ write.csv(
 )
 
 # Save the dataset--------------------------------------------------------------
+
 print(
   'Saving dataset after preprocessing, applying inclusion criteria, quality assurance checks, and setting reference levels'
 )
