@@ -25,9 +25,28 @@ describe_data <- function(df, name) {
   message(paste0("output/describe/", name, ".txt written successfully."))
 }
 
+# Function for creating a median (iqr_low-iqr_high) string ----
+
+create_median_iqr_string <- function(x)
+  return(paste0(
+    quantile(x)[3],
+    " (",
+    quantile(x)[2],
+    "-",
+    quantile(x)[4],
+    ")"
+  ))
+
 # Function to convert numerical data to categorical data, following chosen bounds
 
-numerical_to_categorical <- function(x, bounds=c(1,100),zero_flag=FALSE,lower_limit = FALSE, upper_limit=FALSE, inclusive_bounds=FALSE)	{
+numerical_to_categorical <- function(
+  x,
+  bounds = c(1, 100),
+  zero_flag = FALSE,
+  lower_limit = FALSE,
+  upper_limit = FALSE,
+  inclusive_bounds = FALSE
+) {
   # x <- the numeric input vector
   # bounds <- a vector of bounds (must be ordered low->high)
   # zero_flag <- if TRUE, include an additional category for zero-values
@@ -37,9 +56,9 @@ numerical_to_categorical <- function(x, bounds=c(1,100),zero_flag=FALSE,lower_li
   #                if FALSE, create a category for greater than the last value
   # inclusive_bounds <- whether the bounds are inclusive or exclusive (assuming discrete values)
   #                     N.B. will assign borderline cases to upper boundary
-  N   <- length(bounds)
+  N <- length(bounds)
   gap <- ifelse(inclusive_bounds, 0, 1)
-  y   <- x
+  y <- x
 
   if (!lower_limit) {
     y <- ifelse(x <= bounds[1] - gap, sprintf("<=%d", bounds[1] - gap), y)
@@ -48,7 +67,11 @@ numerical_to_categorical <- function(x, bounds=c(1,100),zero_flag=FALSE,lower_li
     y <- ifelse(x == 0, sprintf("0"), y)
   }
   for (i1 in 1:(N - 1)) {
-    y <- ifelse(x >= bounds[i1] & x <= bounds[i1+1] - gap, sprintf("%d-%d", bounds[i1],bounds[i1+1] - gap), y)
+    y <- ifelse(
+      x >= bounds[i1] & x <= bounds[i1 + 1] - gap,
+      sprintf("%d-%d", bounds[i1], bounds[i1 + 1] - gap),
+      y
+    )
   }
   if (!upper_limit) {
     y <- ifelse(x >= bounds[N], sprintf("%d+", bounds[N]), y)
