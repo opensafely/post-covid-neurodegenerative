@@ -41,17 +41,6 @@ actions:
       highly_sensitive:
         cohort: output/dataset_definition/input_prevax.csv.gz
 
-  ## Generate cohort - vax 
-
-  generate_cohort_vax:
-    run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_vax.py
-      --output output/dataset_definition/input_vax.csv.gz
-    needs:
-    - generate_dates
-    outputs:
-      highly_sensitive:
-        cohort: output/dataset_definition/input_vax.csv.gz
-
   ## Generate cohort - unvax 
 
   generate_cohort_unvax:
@@ -62,6 +51,17 @@ actions:
     outputs:
       highly_sensitive:
         cohort: output/dataset_definition/input_unvax.csv.gz
+
+  ## Generate cohort - vax 
+
+  generate_cohort_vax:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_vax.py
+      --output output/dataset_definition/input_vax.csv.gz
+    needs:
+    - generate_dates
+    outputs:
+      highly_sensitive:
+        cohort: output/dataset_definition/input_vax.csv.gz
 
   ## Clean data - prevax, with describe = TRUE 
 
@@ -81,6 +81,24 @@ actions:
         venn: output/dataset_clean/venn_prevax.rds
         cohort_clean: output/dataset_clean/input_prevax_clean.rds
 
+  ## Clean data - unvax, with describe = TRUE 
+
+  clean_data_unvax:
+    run: r:latest analysis/dataset_clean/dataset_clean.R unvax TRUE
+    needs:
+    - study_dates
+    - generate_cohort_unvax
+    outputs:
+      moderately_sensitive:
+        describe_raw: output/describe/unvax_raw.txt
+        describe_venn: output/describe/unvax_venn.txt
+        describe_preprocessed: output/describe/unvax_preprocessed.txt
+        flow: output/dataset_clean/flow_unvax.csv
+        flow_midpoint6: output/dataset_clean/flow_unvax_midpoint6.csv
+      highly_sensitive:
+        venn: output/dataset_clean/venn_unvax.rds
+        cohort_clean: output/dataset_clean/input_unvax_clean.rds
+
   ## Clean data - vax, with describe = TRUE 
 
   clean_data_vax:
@@ -99,21 +117,36 @@ actions:
         venn: output/dataset_clean/venn_vax.rds
         cohort_clean: output/dataset_clean/input_vax_clean.rds
 
-  ## Clean data - unvax, with describe = TRUE 
+  ## Table 1 - prevax 
 
-  clean_data_unvax:
-    run: r:latest analysis/dataset_clean/dataset_clean.R unvax TRUE
+  table1_prevax:
+    run: r:latest analysis/table1/table1.R prevax 18;40;65;85;111
     needs:
-    - study_dates
-    - generate_cohort_unvax
+    - clean_data_prevax
     outputs:
       moderately_sensitive:
-        describe_raw: output/describe/unvax_raw.txt
-        describe_venn: output/describe/unvax_venn.txt
-        describe_preprocessed: output/describe/unvax_preprocessed.txt
-        flow: output/dataset_clean/flow_unvax.csv
-        flow_midpoint6: output/dataset_clean/flow_unvax_midpoint6.csv
-      highly_sensitive:
-        venn: output/dataset_clean/venn_unvax.rds
-        cohort_clean: output/dataset_clean/input_unvax_clean.rds
+        table1: output/table1/table1_prevax.csv
+        table1_midpoint6: output/table1/table1_prevax_midpoint6.csv
+
+  ## Table 1 - unvax 
+
+  table1_unvax:
+    run: r:latest analysis/table1/table1.R unvax 18;40;65;85;111
+    needs:
+    - clean_data_unvax
+    outputs:
+      moderately_sensitive:
+        table1: output/table1/table1_unvax.csv
+        table1_midpoint6: output/table1/table1_unvax_midpoint6.csv
+
+  ## Table 1 - vax 
+
+  table1_vax:
+    run: r:latest analysis/table1/table1.R vax 18;40;65;85;111
+    needs:
+    - clean_data_vax
+    outputs:
+      moderately_sensitive:
+        table1: output/table1/table1_vax.csv
+        table1_midpoint6: output/table1/table1_vax_midpoint6.csv
 
