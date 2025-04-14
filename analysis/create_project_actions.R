@@ -14,8 +14,30 @@ defaults_list <- list(
   expectations = list(population_size = 5000L)
 )
 
-cohorts <- c("prevax", "vax", "unvax")
-describe <- TRUE # This prints descriptive files for each dataset in the p
+active_analyses <- read_rds("lib/active_analyses.rds")
+active_analyses <- active_analyses[
+  order(
+    active_analyses$analysis,
+    active_analyses$cohort,
+    active_analyses$outcome
+  ),
+]
+cohorts <- unique(active_analyses$cohort)
+
+active_age <- active_analyses[grepl("_age_", active_analyses$name), ]$name
+age_str <- paste0(
+  paste0(
+    unique(sub(".*_age_([0-9]+)_([0-9]+).*", "\\1", active_age)),
+    collapse = ";"
+  ),
+  ";",
+  max(
+    as.numeric(unique(sub(".*_age_([0-9]+)_([0-9]+).*", "\\2", active_age))) +
+      1
+  )
+) #create age vector in form "X;XX;XX;XX;XXX"
+
+describe <- TRUE # This prints descriptive files for each dataset in the pipeline
 
 # Create generic action function -----------------------------------------------
 
@@ -141,6 +163,51 @@ clean_data <- function(cohort, describe = describe) {
   )
 }
 
+# Create function to make model input and run a model --------------------------
+
+apply_model_function <- function(
+  name,
+  cohort,
+  analysis,
+  ipw,
+  strata,
+  covariate_sex,
+  covariate_age,
+  covariate_other,
+  cox_start,
+  cox_stop,
+  study_start,
+  study_stop,
+  cut_points,
+  controls_per_case,
+  total_event_threshold,
+  episode_event_threshold,
+  covariate_threshold,
+  age_spline
+) {
+  splice(
+    action(
+      name = glue("make_model_input-{name}"),
+      run = glue("r:latest analysis/model/make_model_input.R {name}"),
+      needs = as.list(glue("clean_data_{cohort}")),
+      highly_sensitive = list(
+        model_input = glue("output/model/model_input-{name}.rds")
+      )
+    ),
+
+    action(
+      name = glue("cox_ipw-{name}"),
+      run = glue(
+        "cox-ipw:v0.0.37 --df_input=model/model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} --save_analysis_ready=FALSE --run_analysis=TRUE --df_output=model/model_output-{name}.csv"
+      ),
+      needs = list(glue("make_model_input-{name}")),
+      moderately_sensitive = list(
+        model_output = glue("output/model/model_output-{name}.csv")
+      )
+    )
+  )
+}
+
 # Define and combine all actions into a list of actions ------------------------
 
 actions_list <- splice(
@@ -193,9 +260,43 @@ actions_list <- splice(
       lapply(cohorts, function(x) clean_data(cohort = x, describe = describe)),
       recursive = FALSE
     )
+  ),
+
+  ## Run models ----------------------------------------------------------------
+  comment("Run models"),
+
+  splice(
+    unlist(
+      lapply(
+        1:nrow(active_analyses),
+        function(x)
+          apply_model_function(
+            name = active_analyses$name[x],
+            cohort = active_analyses$cohort[x],
+            analysis = active_analyses$analysis[x],
+            ipw = active_analyses$ipw[x],
+            strata = active_analyses$strata[x],
+            covariate_sex = active_analyses$covariate_sex[x],
+            covariate_age = active_analyses$covariate_age[x],
+            covariate_other = active_analyses$covariate_other[x],
+            cox_start = active_analyses$cox_start[x],
+            cox_stop = active_analyses$cox_stop[x],
+            study_start = active_analyses$study_start[x],
+            study_stop = active_analyses$study_stop[x],
+            cut_points = active_analyses$cut_points[x],
+            controls_per_case = active_analyses$controls_per_case[x],
+            total_event_threshold = active_analyses$total_event_threshold[x],
+            episode_event_threshold = active_analyses$episode_event_threshold[
+              x
+            ],
+            covariate_threshold = active_analyses$covariate_threshold[x],
+            age_spline = active_analyses$age_spline[x]
+          )
+      ),
+      recursive = FALSE
+    )
   )
 )
-
 
 # Combine actions into project list --------------------------------------------
 
