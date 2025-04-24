@@ -404,7 +404,7 @@ vax_num_covid = (
 # Pfizer BioNTech Vaccination (identified by vaccination_id.product_name: 28.COVID-19 mRNA Vaccine Comirnaty 30micrograms/0.3ml dose conc for susp for inj MDV (Pfizer))
 vax_date_Pfizer_1 = (
     vaccinations.where(
-    (vaccinations.vaccination_id ==28))
+    (vaccinations.product_name == "COVID-19 mRNA Vaccine Comirnaty 30micrograms/0.3ml dose conc for susp for inj MDV (Pfizer)"))
     .where(vaccinations.date.is_on_or_after(vax1_earliest))
     .sort_by(vaccinations.date)
     .first_for_patient()
@@ -413,7 +413,7 @@ vax_date_Pfizer_1 = (
 
 vax_date_Pfizer_2 = (
     vaccinations.where(
-    (vaccinations.vaccination_id ==28))
+    (vaccinations.product_name == "COVID-19 mRNA Vaccine Comirnaty 30micrograms/0.3ml dose conc for susp for inj MDV (Pfizer)"))
     .where(vaccinations.date > vax_date_Pfizer_1)  # Exclude the first date
     .sort_by(vaccinations.date)
     .first_for_patient()
@@ -422,7 +422,7 @@ vax_date_Pfizer_2 = (
 
 vax_date_Pfizer_3 = (
     vaccinations.where(
-    (vaccinations.vaccination_id ==28))
+    (vaccinations.product_name == "COVID-19 mRNA Vaccine Comirnaty 30micrograms/0.3ml dose conc for susp for inj MDV (Pfizer)"))
     .where(vaccinations.date > vax_date_Pfizer_2)  # Exclude the first and second date
     .sort_by(vaccinations.date)
     .first_for_patient()
@@ -431,7 +431,7 @@ vax_date_Pfizer_3 = (
 
 vax_num_Pfizer = (
     vaccinations.where(
-    (vaccinations.vaccination_id ==28))
+    (vaccinations.product_name == "COVID-19 mRNA Vaccine Comirnaty 30micrograms/0.3ml dose conc for susp for inj MDV (Pfizer)"))
     .sort_by(vaccinations.date)
     .count_for_patient()
 )
@@ -440,7 +440,7 @@ vax_num_Pfizer = (
 
 vax_date_AstraZeneca_1 = (
     vaccinations.where(
-    (vaccinations.vaccination_id ==49))
+    (vaccinations.product_name == "COVID-19 Vaccine Vaxzevria 0.5ml inj multidose vials (AstraZeneca)"))
     .where(vaccinations.date.is_on_or_after(vax1_earliest))
     .sort_by(vaccinations.date)
     .first_for_patient()
@@ -449,7 +449,7 @@ vax_date_AstraZeneca_1 = (
 
 vax_date_AstraZeneca_2 = (
     vaccinations.where(
-    (vaccinations.vaccination_id ==49))
+    (vaccinations.product_name == "COVID-19 Vaccine Vaxzevria 0.5ml inj multidose vials (AstraZeneca)"))
     .where(vaccinations.date > vax_date_AstraZeneca_1)  # Exclude the first date
     .sort_by(vaccinations.date)
     .first_for_patient()
@@ -458,7 +458,7 @@ vax_date_AstraZeneca_2 = (
 
 vax_date_AstraZeneca_3 = (
     vaccinations.where(
-    (vaccinations.vaccination_id ==49))
+    (vaccinations.product_name == "COVID-19 Vaccine Vaxzevria 0.5ml inj multidose vials (AstraZeneca)"))
     .where(vaccinations.date > vax_date_AstraZeneca_2)  # Exclude the first and second date
     .sort_by(vaccinations.date)
     .first_for_patient()
@@ -467,7 +467,7 @@ vax_date_AstraZeneca_3 = (
 
 vax_num_AstraZeneca = (
     vaccinations.where(
-    (vaccinations.vaccination_id ==49))
+    (vaccinations.product_name == "COVID-19 Vaccine Vaxzevria 0.5ml inj multidose vials (AstraZeneca)"))
     .sort_by(vaccinations.date)
     .count_for_patient()
 )
@@ -476,7 +476,7 @@ vax_num_AstraZeneca = (
 
 vax_date_Moderna_1 = (
     vaccinations.where(
-    (vaccinations.vaccination_id ==30))
+    (vaccinations.product_name == "COVID-19 mRNA Vaccine Spikevax (nucleoside modified) 0.1mg/0.5mL dose disp for inj MDV (Moderna)"))
     .where(vaccinations.date.is_on_or_after(vax1_earliest))
     .sort_by(vaccinations.date)
     .first_for_patient()
@@ -485,7 +485,7 @@ vax_date_Moderna_1 = (
 
 vax_date_Moderna_2 = (
     vaccinations.where(
-    (vaccinations.vaccination_id ==30))
+    (vaccinations.product_name == "COVID-19 mRNA Vaccine Spikevax (nucleoside modified) 0.1mg/0.5mL dose disp for inj MDV (Moderna)"))
     .where(vaccinations.date > vax_date_Moderna_1)  # Exclude the first date
     .sort_by(vaccinations.date)
     .first_for_patient()
@@ -494,7 +494,7 @@ vax_date_Moderna_2 = (
 
 vax_date_Moderna_3 = (
     vaccinations.where(
-    (vaccinations.vaccination_id ==30))
+    (vaccinations.product_name == "COVID-19 mRNA Vaccine Spikevax (nucleoside modified) 0.1mg/0.5mL dose disp for inj MDV (Moderna)"))
     .where(vaccinations.date > vax_date_Moderna_2)  # Exclude the first and second date
     .sort_by(vaccinations.date)
     .first_for_patient()
@@ -503,7 +503,7 @@ vax_date_Moderna_3 = (
 
 vax_num_Moderna = (
     vaccinations.where(
-    (vaccinations.vaccination_id ==30))
+    (vaccinations.product_name == "COVID-19 mRNA Vaccine Spikevax (nucleoside modified) 0.1mg/0.5mL dose disp for inj MDV (Moderna)"))
     .sort_by(vaccinations.date)
     .count_for_patient()
 )
