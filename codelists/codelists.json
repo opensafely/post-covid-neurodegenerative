@@ -156,11 +156,11 @@
       "downloaded_at": "2025-02-07 16:24:21.413649Z",
       "sha": "bab838b50e256ceef8b9d2f6ca1132491e522bda"
     },
-    "opensafely-ethnicity.csv": {
-      "id": "opensafely/ethnicity/2020-04-27",
-      "url": "https://www.opencodelists.org/codelist/opensafely/ethnicity/2020-04-27/",
-      "downloaded_at": "2025-02-07 16:24:21.797270Z",
-      "sha": "3d2f3998b71863a80b24d60f6f4282e14191ae13"
+    "opensafely-ethnicity-snomed-0removed.csv": {
+      "id": "opensafely/ethnicity-snomed-0removed/22911876",
+      "url": "https://www.opencodelists.org/codelist/opensafely/ethnicity-snomed-0removed/22911876/",
+      "downloaded_at": "2025-04-24 18:06:25.729968Z",
+      "sha": "d95a2f826299563aa57f6fa99009e6e13a65151b"
     },
     "opensafely-smoking-clear.csv": {
       "id": "opensafely/smoking-clear/2020-04-29",
