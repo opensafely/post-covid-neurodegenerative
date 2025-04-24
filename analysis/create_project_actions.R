@@ -14,8 +14,30 @@ defaults_list <- list(
   expectations = list(population_size = 5000L)
 )
 
-cohorts <- c("prevax", "vax", "unvax")
-describe <- TRUE # This prints descriptive files for each dataset in the p
+active_analyses <- read_rds("lib/active_analyses.rds")
+active_analyses <- active_analyses[
+  order(
+    active_analyses$analysis,
+    active_analyses$cohort,
+    active_analyses$outcome
+  ),
+]
+cohorts <- unique(active_analyses$cohort)
+
+active_age <- active_analyses[grepl("_age_", active_analyses$name), ]$name
+age_str <- paste0(
+  paste0(
+    unique(sub(".*_age_([0-9]+)_([0-9]+).*", "\\1", active_age)),
+    collapse = ";"
+  ),
+  ";",
+  max(
+    as.numeric(unique(sub(".*_age_([0-9]+)_([0-9]+).*", "\\2", active_age))) +
+      1
+  )
+) #create age vector in form "X;XX;XX;XX;XXX"
+
+describe <- TRUE # This prints descriptive files for each dataset in the pipeline
 
 # Create generic action function -----------------------------------------------
 
@@ -71,9 +93,9 @@ convert_comment_actions <- function(yaml.txt) {
 
 generate_cohort <- function(cohort) {
   splice(
-    comment(glue("Generate cohort - {cohort}")),
+    comment(glue("Generate input_{cohort}")),
     action(
-      name = glue("generate_cohort_{cohort}"),
+      name = glue("generate_input_{cohort}"),
       run = glue(
         "ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_{cohort}.py --output output/dataset_definition/input_{cohort}.csv.gz"
       ),
@@ -89,16 +111,16 @@ generate_cohort <- function(cohort) {
 
 clean_data <- function(cohort, describe = describe) {
   splice(
-    comment(glue("Clean data - {cohort}, with describe = {describe}")),
+    comment(glue("Generate input_{cohort}_clean, with describe = {describe}")),
     if (isTRUE(describe)) {
       # Action to include describe*.txt files
       action(
-        name = glue("clean_data_{cohort}"),
+        name = glue("generate_input_{cohort}_clean"),
         run = glue("r:latest analysis/dataset_clean/dataset_clean.R"),
         arguments = c(c(cohort), c(describe)),
         needs = list(
           "study_dates",
-          glue("generate_cohort_{cohort}")
+          glue("generate_input_{cohort}")
         ),
         moderately_sensitive = list(
           describe_raw = glue("output/describe/{cohort}_raw.txt"),
@@ -106,40 +128,41 @@ clean_data <- function(cohort, describe = describe) {
           describe_preprocessed = glue(
             "output/describe/{cohort}_preprocessed.txt"
           ),
-          flow = glue("output/dataset_clean/flow_{cohort}.csv"),
+          flow = glue("output/dataset_clean/flow-cohort_{cohort}.csv"),
           flow_midpoint6 = glue(
-            "output/dataset_clean/flow_{cohort}_midpoint6.csv"
+            "output/dataset_clean/flow-cohort_{cohort}-midpoint6.csv"
           )
         ),
         highly_sensitive = list(
-          venn = glue("output/dataset_clean/venn_{cohort}.rds"),
+          venn = glue("output/dataset_clean/venn-cohort_{cohort}.rds"),
           cohort_clean = glue("output/dataset_clean/input_{cohort}_clean.rds")
         )
       )
     } else {
       # Action to exclude describe*.txt files
       action(
-        name = glue("clean_data_{cohort}"),
+        name = glue("generate_input_{cohort}_clean"),
         run = glue("r:latest analysis/dataset_clean/dataset_clean.R"),
         arguments = c(c(cohort), c(describe)),
         needs = list(
           "study_dates",
-          glue("generate_cohort_{cohort}")
+          glue("generate_input_{cohort}")
         ),
         moderately_sensitive = list(
-          flow = glue("output/dataset_clean/flow_{cohort}.csv"),
+          flow = glue("output/dataset_clean/flow-cohort_{cohort}.csv"),
           flow_midpoint6 = glue(
-            "output/dataset_clean/flow_{cohort}_midpoint6.csv"
+            "output/dataset_clean/flow-cohort_{cohort}-midpoint6.csv"
           )
         ),
         highly_sensitive = list(
-          venn = glue("output/dataset_clean/venn_{cohort}.rds"),
+          venn = glue("output/dataset_clean/venn-cohort_{cohort}.rds"),
           cohort_clean = glue("output/dataset_clean/input_{cohort}_clean.rds")
         )
       )
     }
   )
 }
+
 
 # Define and combine all actions into a list of actions ------------------------
 
@@ -195,7 +218,6 @@ actions_list <- splice(
     )
   )
 )
-
 
 # Combine actions into project list --------------------------------------------
 
