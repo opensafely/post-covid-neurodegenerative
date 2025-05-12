@@ -40,9 +40,11 @@ No clinical, policy or safety conclusions must be drawn from the contents of thi
     -   Modelling scripts are in the [`model`](./analysis/model/) directory:
         -   [`make_model_input.R`](analysis/model/make_model_input.R) works with the output of [`dataset_clean`](./analysis/dataset_clean/) to prepare suitable data subsets for Cox analysis. Combines each outcome and subgroup in one formatted .rds file.
         -   [`fn-prepare_model_input.R`](analysis/model/fn-prepare_model_input.R) is a companion function to `make_model_input.R` which handles the interaction with `active_analyses.rds`.
-        -   [`cox-ipw`](https://github.com/opensafely-actions/cox-ipw/) is a reusable action which uses the output of `make_model_input.R` to fit a Cox model to the data.
-        -   [`make_model_output.R`](analysis/model/make_model_output.R) combines all the Cox results in one formatted .csv file.
-        -   [`make_aer_input.R`](analysis/aer/make_aer_input.R) generates summary statistics by age and sex required for AER (Absolute Excess Risk) estimation for each outcome (using the model input files for the main analysis generated from [`make_model_input`](analysis/model/make_model_input.R)).
+        -   [`cox-ipw`](https://github.com/opensafely-actions/cox-ipw/) is a reusable action which uses the output of `make_model_input.R` to fit a Cox model to the data. (NB: It is not a file in the server)
+
+    -   Output scripts are in the [`make_output`](./analysis/make_output/) directory:
+        -   [`make_model_output.R`](analysis/make_output/make_model_output.R) combines all the Cox results in one formatted .csv file.
+        -   [`make_aer_input.R`](analysis/make_output/make_aer_input.R) generates summary statistics by age and sex required for AER (Absolute Excess Risk) estimation for each outcome (using the model input files for the main analysis generated from [`make_model_input`](analysis/model/make_model_input.R)).
 
 -   The [`active_analyses`](lib/active_analyses.rds) contains a list of active analyses.
 

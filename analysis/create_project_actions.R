@@ -39,6 +39,11 @@ age_str <- paste0(
 
 describe <- TRUE # This prints descriptive files for each dataset in the pipeline
 
+# List of models excluded from model output generation
+
+# excluded_models <- c(
+# )
+
 # Create generic action function -----------------------------------------------
 
 action <- function(
@@ -163,6 +168,130 @@ clean_data <- function(cohort, describe = describe) {
   )
 }
 
+# Create function for table1 --------------------------------------------
+
+table1 <- function(cohort, ages = "18;40;60;80", preex = "All") {
+  splice(
+    if (preex == "All") {
+      comment(glue("Generate table1_cohort_{cohort}"))
+    } else {
+      comment(glue("Generate table1_cohort_{cohort}-preex_{preex}"))
+    },
+    if (preex == "All") {
+      action(
+        name = glue("table1-cohort_{cohort}"),
+        run = "r:latest analysis/table1/table1.R",
+        arguments = c(c(cohort), c(ages)),
+        needs = list(glue("generate_input_{cohort}_clean")),
+        moderately_sensitive = list(
+          table1 = glue("output/table1/table1_{cohort}.csv"),
+          table1_midpoint6 = glue(
+            "output/table1/table1_{cohort}_midpoint6.csv"
+          )
+        )
+      )
+    } else {
+      action(
+        name = glue("table1-cohort_{cohort}-preex_{preex}"),
+        run = "r:latest analysis/table1/table1.R",
+        arguments = c(c(cohort), c(ages), c(preex)),
+        needs = list(glue("generate_input_{cohort}_clean")),
+        moderately_sensitive = list(
+          table1 = glue(
+            "output/table1/table1-cohort_{cohort}-preex_{preex}.csv"
+          ),
+          table1_midpoint6 = glue(
+            "output/table1/table1-cohort_{cohort}-preex_{preex}-midpoint6.csv"
+          )
+        )
+      )
+    }
+  )
+}
+
+# Create function to make model input and run a model --------------------------
+
+apply_model_function <- function(
+  name,
+  cohort,
+  analysis,
+  ipw,
+  strata,
+  covariate_sex,
+  covariate_age,
+  covariate_other,
+  cox_start,
+  cox_stop,
+  study_start,
+  study_stop,
+  cut_points,
+  controls_per_case,
+  total_event_threshold,
+  episode_event_threshold,
+  covariate_threshold,
+  age_spline
+) {
+  splice(
+    action(
+      name = glue("make_model_input-{name}"),
+      run = glue("r:latest analysis/model/make_model_input.R {name}"),
+      needs = as.list(glue("generate_input_{cohort}_clean")),
+      highly_sensitive = list(
+        model_input = glue("output/model/model_input-{name}.rds")
+      )
+    ),
+    action(
+      name = glue("cox_ipw-{name}"),
+      run = glue(
+        "cox-ipw:v0.0.37 --df_input=model/model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} --save_analysis_ready=FALSE --run_analysis=TRUE --df_output=model/model_output-{name}.csv"
+      ),
+      needs = list(glue("make_model_input-{name}")),
+      moderately_sensitive = list(
+        model_output = glue("output/model/model_output-{name}.csv")
+      )
+    )
+  )
+}
+
+# Create function to make Table 2 ----------------------------------------------
+
+table2 <- function(cohort, subgroup) {
+  table2_names <- gsub(
+    "out_date_",
+    "",
+    unique(
+      active_analyses[
+        active_analyses$cohort ==
+          {
+            cohort
+          },
+      ]$name
+    )
+  )
+
+  table2_names <- table2_names[
+    grepl("-main", table2_names) |
+      grepl(paste0("-sub_", subgroup), table2_names)
+  ]
+
+  splice(
+    comment(glue("Generate table2-cohort_{cohort}-sub_{subgroup}")),
+    action(
+      name = glue("table2-cohort_{cohort}-sub_{subgroup}"),
+      run = "r:latest analysis/table2/table2.R",
+      arguments = c(cohort, subgroup),
+      needs = c(as.list(paste0("make_model_input-", table2_names))),
+      moderately_sensitive = list(
+        table2 = glue(
+          "output/table2/table2-cohort_{cohort}-sub_{subgroup}.csv"
+        ),
+        table2_midpoint6 = glue(
+          "output/table2/table2-cohort_{cohort}-sub_{subgroup}-midpoint6.csv"
+        )
+      )
+    )
+  )
+}
 
 # Define and combine all actions into a list of actions ------------------------
 
@@ -215,6 +344,101 @@ actions_list <- splice(
     unlist(
       lapply(cohorts, function(x) clean_data(cohort = x, describe = describe)),
       recursive = FALSE
+    )
+  ),
+
+  ## Table 1 -------------------------------------------------------------------
+
+  splice(
+    unlist(
+      lapply(
+        unique(active_analyses$cohort),
+        function(x) table1(cohort = x, ages = age_str, preex = "All")
+      ),
+      recursive = FALSE
+    )
+  ),
+
+  ## Run models ----------------------------------------------------------------
+  comment("Run models"),
+
+  splice(
+    unlist(
+      lapply(
+        1:nrow(active_analyses),
+        function(x)
+          apply_model_function(
+            name = active_analyses$name[x],
+            cohort = active_analyses$cohort[x],
+            analysis = active_analyses$analysis[x],
+            ipw = active_analyses$ipw[x],
+            strata = active_analyses$strata[x],
+            covariate_sex = active_analyses$covariate_sex[x],
+            covariate_age = active_analyses$covariate_age[x],
+            covariate_other = active_analyses$covariate_other[x],
+            cox_start = active_analyses$cox_start[x],
+            cox_stop = active_analyses$cox_stop[x],
+            study_start = active_analyses$study_start[x],
+            study_stop = active_analyses$study_stop[x],
+            cut_points = active_analyses$cut_points[x],
+            controls_per_case = active_analyses$controls_per_case[x],
+            total_event_threshold = active_analyses$total_event_threshold[x],
+            episode_event_threshold = active_analyses$episode_event_threshold[
+              x
+            ],
+            covariate_threshold = active_analyses$covariate_threshold[x],
+            age_spline = active_analyses$age_spline[x]
+          )
+      ),
+      recursive = FALSE
+    )
+  ),
+
+  ## Table 2 -------------------------------------------------------------------
+
+  splice(
+    unlist(
+      lapply(
+        cohorts,
+        function(x) table2(cohort = x, subgroup = "covidhospital")
+      ),
+      recursive = FALSE
+    )
+  ),
+
+  ## Model output --------------------------------------------------------------
+
+  action(
+    name = "make_model_output",
+    run = "r:latest analysis/make_output/make_model_output.R",
+    needs = as.list(c(
+      paste0(
+        "cox_ipw-",
+        active_analyses$name[!(active_analyses$name %in% excluded_models)]
+      )
+    )),
+    moderately_sensitive = list(
+      model_output = glue("output/make_output/model_output.csv"),
+      model_output_midpoint6 = glue(
+        "output/make_output/model_output_midpoint6.csv"
+      )
+    )
+  ),
+
+  ## Make absolute excess risk (AER) input
+
+  comment("Make absolute excess risk (AER) input"),
+
+  action(
+    name = "make_aer_input",
+    run = "r:latest analysis/aer/make_aer_input.R main",
+    needs = as.list(paste0(
+      "make_model_input-",
+      active_analyses[grepl("-main", active_analyses$name), ]$name
+    )),
+    moderately_sensitive = list(
+      aer_input = glue("output/aer/aer_input-main.csv"),
+      aer_input_midpoint6 = glue("output/aer/aer_input-main-midpoint6.csv")
     )
   )
 )
