@@ -161,6 +161,7 @@ input <- input %>%
     index_date,
     starts_with("end_date_"),
     starts_with("sub_"), # Subgroups
+    starts_with("sup_"), # Supporting variable
     starts_with("exp_"), # Exposures
     starts_with("out_"), # Outcomes
     starts_with("cov_"), # Covariates
