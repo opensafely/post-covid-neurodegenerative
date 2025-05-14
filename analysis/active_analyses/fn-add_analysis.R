@@ -2,7 +2,6 @@
 add_analysis <- function(
   cohort,
   outcome,
-  preex,
   analysis_name,
   covariate_other,
   age_spline

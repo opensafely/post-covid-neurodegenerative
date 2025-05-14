@@ -146,7 +146,6 @@ for (c in cohorts) {
     df[nrow(df) + 1, ] <- add_analysis(
       cohort = c,
       outcome = i,
-      preex = p,
       analysis_name = "main",
       covariate_other = covariate_other,
       age_spline = TRUE
@@ -172,7 +171,6 @@ for (c in cohorts) {
       df[nrow(df) + 1, ] <- add_analysis(
         cohort = c,
         outcome = i,
-        preex = p,
         analysis_name = sub,
         covariate_other = adjusted_covariate_other,
         age_spline = ifelse(grepl("sub_age", sub), FALSE, TRUE)
@@ -184,7 +182,6 @@ for (c in cohorts) {
       df[nrow(df) + 1, ] <- add_analysis(
         cohort = c,
         outcome = i,
-        preex = p,
         analysis_name = sub,
         covariate_other = gsub("cov_bin_cis;", "", covariate_other),
         age_spline = TRUE
@@ -196,7 +193,6 @@ for (c in cohorts) {
       df[nrow(df) + 1, ] <- add_analysis(
         cohort = c,
         outcome = i,
-        preex = p,
         analysis_name = sub,
         covariate_other = gsub("cov_bin_park;", "", covariate_other),
         age_spline = TRUE
@@ -209,7 +205,6 @@ for (c in cohorts) {
       df[nrow(df) + 1, ] <- add_analysis(
         cohort = c,
         outcome = i,
-        preex = p,
         analysis_name = sub,
         covariate_other = gsub("cov_bin_high_vasc_risk;", "", covariate_other),
         age_spline = TRUE
@@ -221,7 +216,6 @@ for (c in cohorts) {
       df[nrow(df) + 1, ] <- add_analysis(
         cohort = c,
         outcome = i,
-        preex = p,
         analysis_name = sub,
         covariate_other = gsub("cov_bin_park_risk;", "", covariate_other),
         age_spline = TRUE
