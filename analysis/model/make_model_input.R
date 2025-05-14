@@ -95,33 +95,33 @@ if (grepl("sub_covidhospital", analysis)) {
   ))
   str_covidhosp_cens <- ifelse(covidhosp, "non_hospitalised", "hospitalised")
   df <- df %>%
-  dplyr::mutate(
-    end_date_outcome = as.Date(
-      ifelse(
-        sub_cat_covidhospital == str_covidhosp_cens,
-        exp_date - 1,
-        end_date_outcome
+    dplyr::mutate(
+      end_date_outcome = as.Date(
+        ifelse(
+          sub_cat_covidhospital == str_covidhosp_cens,
+          exp_date - 1,
+          end_date_outcome
+        ),
+        origin = .Date(0)
       ),
-      origin = .Date(0)
-    ),
-    exp_date = as.Date(
-      ifelse(
-        sub_cat_covidhospital == str_covidhosp_cens,
-        NA_Date_,
-        exp_date
+      exp_date = as.Date(
+        ifelse(
+          sub_cat_covidhospital == str_covidhosp_cens,
+          NA_Date_,
+          exp_date
+        ),
+        origin = .Date(0)
       ),
-      origin = .Date(0)
-    ),
-    out_date = as.Date(
-      ifelse(
-        out_date > end_date_outcome,
-        NA_Date_,
-        out_date
-      ),
-      origin = .Date(0)
-    )
-  ) %>%
-  dplyr::filter(end_date_outcome >= index_date)
+      out_date = as.Date(
+        ifelse(
+          out_date > end_date_outcome,
+          NA_Date_,
+          out_date
+        ),
+        origin = .Date(0)
+      )
+    ) %>%
+    dplyr::filter(end_date_outcome >= index_date)
 }
 
 # Make model input: sub_sex_* ------------------------------------------------
