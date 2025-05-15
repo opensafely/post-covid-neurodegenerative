@@ -34,9 +34,7 @@ print('Load active analyses')
 
 active_analyses <- readr::read_rds("lib/active_analyses.rds")
 
-table2_names <- gsub(
-  "out_date_",
-  "",
+table2_names <-
   unique(
     active_analyses[
       active_analyses$cohort ==
@@ -45,7 +43,6 @@ table2_names <- gsub(
         },
     ]$name
   )
-)
 
 table2_names <- table2_names[
   grepl("-main", table2_names) |
@@ -95,23 +92,6 @@ for (i in 1:nrow(active_analyses)) {
     "end_date_outcome"
   )]
 
-  # Remove exposures and outcomes outside follow-up ----------------------------
-  print("Remove exposures and outcomes outside follow-up")
-
-  df <- df %>%
-    dplyr::mutate(
-      exposure = replace(
-        exp_date,
-        which(exp_date > end_date_exposure | exp_date < index_date),
-        NA
-      ),
-      outcome = replace(
-        out_date,
-        which(out_date > end_date_outcome | out_date < index_date),
-        NA
-      )
-    )
-
   ## Make exposed subset -------------------------------------------------------
   print('Make exposed subset')
 
@@ -120,16 +100,12 @@ for (i in 1:nrow(active_analyses)) {
     c("patient_id", "exp_date", "out_date", "end_date_outcome")
   ]
 
+  exposed <- exposed[exposed$exp_date <= exposed$end_date_outcome, ]
+
   exposed <- exposed %>%
     dplyr::mutate(
-      fup_start = exp_date,
-      fup_end = min(end_date_outcome, out_date, na.rm = TRUE)
+      person_days = as.numeric((end_date_outcome - exp_date)) + 1
     )
-
-  exposed <- exposed[exposed$fup_start <= exposed$fup_end, ]
-
-  exposed <- exposed %>%
-    dplyr::mutate(person_days = as.numeric((fup_end - fup_start)) + 1)
 
   ## Make unexposed subset -----------------------------------------------------
   print('Make unexposed subset')
@@ -145,14 +121,16 @@ for (i in 1:nrow(active_analyses)) {
   unexposed <- unexposed %>%
     dplyr::mutate(
       fup_start = index_date,
-      fup_end = min(exp_date - 1, end_date_outcome, out_date, na.rm = TRUE),
+      fup_end = pmin(exp_date - 1, end_date_outcome, na.rm = TRUE),
       out_date = replace(out_date, which(out_date > fup_end), NA)
     )
 
   unexposed <- unexposed[unexposed$fup_start <= unexposed$fup_end, ]
 
   unexposed <- unexposed %>%
-    dplyr::mutate(person_days = as.numeric((fup_end - fup_start)) + 1)
+    dplyr::mutate(
+      person_days = as.numeric((fup_end - fup_start)) + 1
+    )
 
   ## Append to table 2 ---------------------------------------------------------
   print('Append to table 2')
@@ -164,10 +142,15 @@ for (i in 1:nrow(active_analyses)) {
     outcome = active_analyses$outcome[i],
     analysis = active_analyses$analysis[i],
     unexposed_person_days = sum(unexposed$person_days),
-    unexposed_events = nrow(unexposed[!is.na(unexposed$out_date), ]),
+    unexposed_events = nrow(unexposed[
+      !is.na(unexposed$out_date),
+    ]),
     exposed_person_days = sum(exposed$person_days, na.rm = TRUE),
-    exposed_events = nrow(exposed[!is.na(exposed$out_date), ]),
-    total_person_days = sum(unexposed$person_days) + sum(exposed$person_days),
+    exposed_events = nrow(exposed[
+      !is.na(exposed$out_date),
+    ]),
+    total_person_days = sum(unexposed$person_days) +
+      sum(exposed$person_days, na.rm = TRUE),
     total_events = nrow(unexposed[!is.na(unexposed$out_date), ]) +
       nrow(exposed[!is.na(exposed$out_date), ]),
     day0_events = nrow(exposed[
