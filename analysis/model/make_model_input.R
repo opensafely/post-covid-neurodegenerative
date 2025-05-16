@@ -20,7 +20,7 @@ print("Specify arguments")
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
-  name <- "cohort_prevax-sub_covidhospital_FALSE-mnd"
+  name <- "cohort_unvax-sub_high_vasc_risk_TRUE-dem_any"
 } else {
   name <- args[[1]]
 }
@@ -67,6 +67,12 @@ if (grepl("preex", name)) {
   )
   df <- pmi$input[pmi$input$sup_bin_preex == preex, ]
 } else {
+  # remove subgroup from analysis string
+  analysis <- gsub(
+    "-.*",
+    "",
+    analysis
+  )
   df <- pmi$input
 }
 
@@ -178,8 +184,17 @@ if (grepl("sub_cis_", analysis)) {
   df <- df[df$cov_bin_cis == cis, ]
 }
 
-# Make model input: sub_park_* --------------------------------------------------
-if (grepl("sub_park_", analysis)) {
+# Make model input: sub_park_risk_* --------------------------------------------
+if (grepl("sub_park_risk_", analysis)) {
+  check_for_subgroup <- TRUE
+  park_risk <- as.logical(gsub(
+    ".*sub_park_risk_",
+    "",
+    analysis
+  ))
+  df <- df[df$cov_bin_park_risk == park_risk, ]
+} else if (grepl("sub_park_", analysis)) {
+  # Make model input: sub_park_* -----
   check_for_subgroup <- TRUE
   park <- as.logical(gsub(
     ".*sub_park_",
@@ -189,18 +204,7 @@ if (grepl("sub_park_", analysis)) {
   df <- df[df$cov_bin_park == park, ]
 }
 
-# Make model input: sub_park_risk_* --------------------------------------------------
-if (grepl("sub_park_risk_", analysis)) {
-  check_for_subgroup <- TRUE
-  park_risk <- as.logical(gsub(
-    ".*sub_park_risk_",
-    "",
-    analysis
-  ))
-  df <- df[df$cov_bin_park_risk == park_risk, ]
-}
-
-# Make model input: sub_high_vasc_risk_* --------------------------------------------------
+# Make model input: sub_high_vasc_risk_* ---------------------------------------
 if (grepl("sub_high_vasc_risk_", analysis)) {
   check_for_subgroup <- TRUE
   high_vasc_risk <- as.logical(gsub(
