@@ -76,8 +76,8 @@ subgroups_park_risk <- c(
 )
 
 subgroups_high_vasc_risk <- c(
-  "sub_bin_high_vasc_risk_TRUE",
-  "sub_bin_high_vasc_risk_FALSE"
+  "sub_high_vasc_risk_TRUE",
+  "sub_high_vasc_risk_FALSE"
 )
 
 # Define covariates ----
@@ -211,6 +211,7 @@ for (c in cohorts) {
       )
     }
   }
+  
   for (i in outcomes_park_risk) {
     for (sub in subgroups_park_risk) {
       df[nrow(df) + 1, ] <- add_analysis(
