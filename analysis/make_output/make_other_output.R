@@ -5,7 +5,7 @@ library(magrittr)
 library(data.table)
 library(tidyr)
 
-# Define make_aer_input output folder ------------------------------------------
+# Define make_output output folder ------------------------------------------
 print("Creating output/make_output output folder")
 
 makeout_dir <- "output/make_output/"
