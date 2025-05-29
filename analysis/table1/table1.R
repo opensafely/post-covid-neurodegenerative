@@ -179,14 +179,13 @@ df$percent_midpoint6_derived <- paste0(
     df$characteristic == "All",
     "",
     paste0(
-      "(",
       round(
         100 *
           (df$total_midpoint6 /
             df[df$characteristic == "All", "total_midpoint6"]),
         1
       ),
-      "%)"
+      "%"
     )
   )
 )
