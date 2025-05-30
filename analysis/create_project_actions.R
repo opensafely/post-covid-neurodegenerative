@@ -24,7 +24,7 @@ active_analyses <- active_analyses[
 ]
 cohorts <- unique(active_analyses$cohort)
 analyses <- unique(grep("^main", active_analyses$analysis, value = TRUE))
-subgroups <- unique(str_match(active_analyses$analysis, "^(.*?)(?:_(?:TRUE|FALSE|white|black|asian|mixed|other|female|male|\\d+_\\d+))?$")[,2])
+subgroups <- unique(str_extract(active_analyses$analysis, "^main|sub_[^_]+"))
 active_age <- active_analyses[grepl("_age_", active_analyses$name), ]$name
 age_str <- paste0(
   paste0(

@@ -14607,10 +14607,10 @@ actions:
         model_output: output/make_output/model_output-sub_ethnicity.csv
         model_output_midpoint6: output/make_output/model_output-sub_ethnicity-midpoint6.csv
 
-  ## Generate model_output-sub_high_vasc_risk 
+  ## Generate model_output-sub_high 
 
-  make_model_output-sub_high_vasc_risk:
-    run: r:v2 analysis/make_output/make_model_output.R sub_high_vasc_risk
+  make_model_output-sub_high:
+    run: r:v2 analysis/make_output/make_model_output.R sub_high
     needs:
     - cox_ipw-cohort_prevax-sub_high_vasc_risk_FALSE-cis
     - cox_ipw-cohort_prevax-sub_high_vasc_risk_FALSE-dem_alz
@@ -14644,8 +14644,8 @@ actions:
     - cox_ipw-cohort_vax-sub_high_vasc_risk_TRUE-dem_vasc
     outputs:
       moderately_sensitive:
-        model_output: output/make_output/model_output-sub_high_vasc_risk.csv
-        model_output_midpoint6: output/make_output/model_output-sub_high_vasc_risk-midpoint6.csv
+        model_output: output/make_output/model_output-sub_high.csv
+        model_output_midpoint6: output/make_output/model_output-sub_high-midpoint6.csv
 
   ## Generate model_output-sub_park 
 
@@ -14668,22 +14668,6 @@ actions:
       moderately_sensitive:
         model_output: output/make_output/model_output-sub_park.csv
         model_output_midpoint6: output/make_output/model_output-sub_park-midpoint6.csv
-
-  ## Generate model_output-sub_park_risk 
-
-  make_model_output-sub_park_risk:
-    run: r:v2 analysis/make_output/make_model_output.R sub_park_risk
-    needs:
-    - cox_ipw-cohort_prevax-sub_park_risk_FALSE-park
-    - cox_ipw-cohort_unvax-sub_park_risk_FALSE-park
-    - cox_ipw-cohort_vax-sub_park_risk_FALSE-park
-    - cox_ipw-cohort_prevax-sub_park_risk_TRUE-park
-    - cox_ipw-cohort_unvax-sub_park_risk_TRUE-park
-    - cox_ipw-cohort_vax-sub_park_risk_TRUE-park
-    outputs:
-      moderately_sensitive:
-        model_output: output/make_output/model_output-sub_park_risk.csv
-        model_output_midpoint6: output/make_output/model_output-sub_park_risk-midpoint6.csv
 
   ## Generate model_output-sub_sex 
 
