@@ -343,7 +343,7 @@ make_model_output <- function(subgroup) {
           "cox_ipw-",
           active_analyses$name[
             !(active_analyses$name %in% excluded_models) &
-              str_detect(active_analyses$analysis, subgroup)
+              str_detect(active_analyses$analysis, paste0(subgroup,"(?=[_-]|$)"))
           ]
         )
       )),
