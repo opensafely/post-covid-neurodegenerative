@@ -23,7 +23,8 @@ active_analyses <- active_analyses[
   ),
 ]
 cohorts <- unique(active_analyses$cohort)
-
+analyses <- unique(grep("^main", active_analyses$analysis, value = TRUE))
+subgroups <- unique(str_match(active_analyses$analysis, "^(.*?)(?:_(?:TRUE|FALSE|white|black|asian|mixed|other|female|male|\\d+_\\d+))?$")[,2])
 active_age <- active_analyses[grepl("_age_", active_analyses$name), ]$name
 age_str <- paste0(
   paste0(
@@ -326,6 +327,36 @@ venn <- function(cohort, analyses = "") {
   )
 }
 
+# Create funtion for making model outputs --------------------------------------
+
+make_model_output <- function(subgroup) {
+  splice(
+    comment(glue("Generate model_output-{subgroup}")),
+    action(
+      name = glue(
+        "make_model_output-{subgroup}"
+      ),
+      run = "r:v2 analysis/make_output/make_model_output.R",
+      arguments = c(subgroup),
+      needs = as.list(c(
+        paste0(
+          "cox_ipw-",
+          active_analyses$name[
+            !(active_analyses$name %in% excluded_models) &
+              str_detect(active_analyses$analysis, subgroup)
+          ]
+        )
+      )),
+      moderately_sensitive = list(
+        model_output = glue("output/make_output/model_output-{subgroup}.csv"),
+        model_output_midpoint6 = glue(
+          "output/make_output/model_output-{subgroup}-midpoint6.csv"
+        )
+      )
+    )
+  )
+}
+
 # Create funtion for making combined table/venn outputs ------------------------
 
 make_other_output <- function(action_name, cohort, subgroup = "") {
@@ -359,10 +390,11 @@ make_other_output <- function(action_name, cohort, subgroup = "") {
         cohort_names,
         sub_str
       ))),
-      moderately_sensitive = list(
-        table1_output_midpoint6 = glue(
+      moderately_sensitive = setNames(
+        list(glue(
           "output/make_output/{action_name}{sub_str}_output_midpoint6.csv"
-        )
+        )),
+        glue("{action_name}_output_midpoint6")
       )
     )
   )
@@ -519,20 +551,10 @@ actions_list <- splice(
 
   ## Model output --------------------------------------------------------------
 
-  action(
-    name = "make_model_output",
-    run = "r:v2 analysis/make_output/make_model_output.R",
-    needs = as.list(c(
-      paste0(
-        "cox_ipw-",
-        active_analyses$name[!(active_analyses$name %in% excluded_models)]
-      )
-    )),
-    moderately_sensitive = list(
-      model_output = glue("output/make_output/model_output.csv"),
-      model_output_midpoint6 = glue(
-        "output/make_output/model_output_midpoint6.csv"
-      )
+  splice(
+    unlist(
+      lapply(subgroups, function(x) make_model_output(subgroup = x)),
+      recursive = FALSE
     )
   ),
 
