@@ -64,7 +64,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
     ## Exposures-------------------------------------------------------------------------------------------
 
-    ### Covid
+    ### COVID-19
     tmp_exp_date_covid_sgss = (
         sgss_covid_all_tests.where(
             sgss_covid_all_tests.specimen_taken_date.is_on_or_between(index_date, end_date_exp)
@@ -74,7 +74,6 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         .first_for_patient()
         .specimen_taken_date
     )
-
     tmp_exp_date_covid_gp = (
         clinical_events.where(
             (clinical_events.ctv3_code.is_in(
@@ -87,7 +86,6 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         .first_for_patient()
         .date
     )
-
     tmp_exp_date_covid_apc = (
         apcs.where(
             ((apcs.primary_diagnosis.is_in(covid_codes)) | 
@@ -98,23 +96,19 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         .first_for_patient()
         .admission_date
     )
-
     tmp_exp_covid_death = matching_death_between(covid_codes, index_date, end_date_exp)
-
     tmp_exp_date_death = ons_deaths.date
-
     tmp_exp_date_covid_death = case(
         when(tmp_exp_covid_death).then(tmp_exp_date_death)
     )
     
-    exp_date_covid=minimum_of(
+    exp_date_covid = minimum_of(
         tmp_exp_date_covid_sgss, 
         tmp_exp_date_covid_gp,
         tmp_exp_date_covid_apc,
         tmp_exp_date_covid_death
     )
 
-    
     ## Quality assurance-----------------------------------------------------------------------------------
 
     ### Prostate cancer
@@ -481,13 +475,16 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     cov_cat_sex = patients.sex
 
     ### Ethnicity
-    cov_cat_ethnicity = (
-        clinical_events.where(
-            clinical_events.ctv3_code.is_in(opensafely_ethnicity_codes_6)
-        )
+    tmp_cov_cat_ethnicity = (
+        clinical_events.where(clinical_events.snomedct_code.is_in(ethnicity_snomed))
+        .where(clinical_events.date.is_on_or_before(index_date))
         .sort_by(clinical_events.date)
         .last_for_patient()
-        .ctv3_code.to_category(opensafely_ethnicity_codes_6)
+        .snomedct_code
+    )
+
+    cov_cat_ethnicity = tmp_cov_cat_ethnicity.to_category(
+        ethnicity_snomed
     )
 
     ### Deprivation
@@ -507,7 +504,8 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         .ctv3_code.to_category(smoking_clear)
     )
     tmp_ever_smoked = ever_matching_event_clinical_ctv3_before(
-        (filter_codes_by_category(smoking_clear, include=["S", "E"])), index_date)
+        (filter_codes_by_category(smoking_clear, include=["S", "E"])), index_date
+        ).exists_for_patient()
 
     cov_cat_smoking = case(
         when(tmp_most_recent_smoking_cat == "S").then("S"),
@@ -598,7 +596,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ).exists_for_patient())
     )
 
-    ### Diabetes (Also used for high vascular risk covariate) 
+    ### Diabetes (Also used for high vascular risk covariate)
     cov_bin_diabetes = (
         (last_matching_event_clinical_snomed_before(
             diabetes_snomed, index_date
@@ -756,18 +754,16 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         .where(sgss_covid_all_tests.is_positive)
         .exists_for_patient()
     )
-
     tmp_sub_bin_covidhistory_gp = (
         clinical_events.where(
             (clinical_events.ctv3_code.is_in(
-                covid_primary_care_code          + 
+                covid_primary_care_code + 
                 covid_primary_care_positive_test + 
                 covid_primary_care_sequalae)) &
             clinical_events.date.is_before(index_date)
         )
         .exists_for_patient()
     )
-
     tmp_sub_bin_covidhistory_apc = (
         apcs.where(
             ((apcs.primary_diagnosis.is_in(covid_codes)) | (apcs.secondary_diagnosis.is_in(covid_codes))) & 
@@ -778,10 +774,9 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
     sub_bin_covidhistory = (
         tmp_sub_bin_covidhistory_sgss |
-        tmp_sub_bin_covidhistory_gp   |
+        tmp_sub_bin_covidhistory_gp |
         tmp_sub_bin_covidhistory_apc
     )
-
 
     ### COVID-19 severity
     tmp_sub_date_covidhospital = (
@@ -798,8 +793,8 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         when(
             (exp_date_covid.is_not_null()) &
             (tmp_sub_date_covidhospital.is_not_null()) &
-            ((tmp_sub_date_covidhospital - exp_date_covid).days >=  0) &
-            ((tmp_sub_date_covidhospital - exp_date_covid).days  < 29)
+            ((tmp_sub_date_covidhospital - exp_date_covid).days >= 0) &
+            ((tmp_sub_date_covidhospital - exp_date_covid).days < 29)
             ).then("hospitalised"),
         when(exp_date_covid.is_not_null()).then("non_hospitalised"),
         when(exp_date_covid.is_null()).then("no_infection")
@@ -811,23 +806,23 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## Combine the variables into the final dictionary
     dynamic_variables = dict(
 
-# Inclusion/exclusion criteria--------------------------------------------------------------------------------
+        # Inclusion/exclusion criteria--------------------------------------------------------------------------------
         inex_bin_6m_reg = inex_bin_6m_reg,
         inex_bin_alive  = inex_bin_alive,
 
-# Censoring criteria------------------------------------------------------------------------------------------
+        # Censoring criteria------------------------------------------------------------------------------------------
         cens_date_dereg = cens_date_dereg,
 
-# Exposures---------------------------------------------------------------------------------------------------
+        # Exposures---------------------------------------------------------------------------------------------------
         exp_date_covid = exp_date_covid,
 
-# Quality assurance-------------------------------------------------------------------------------------------
+        # Quality assurance-------------------------------------------------------------------------------------------
         qa_bin_prostate_cancer = qa_bin_prostate_cancer,
         qa_bin_pregnancy       = qa_bin_pregnancy,
         qa_num_birth_year      = qa_num_birth_year,
         qa_bin_hrtcocp         = qa_bin_hrtcocp,
 
-# Outcomes----------------------------------------------------------------------------------------------------
+        # Outcomes----------------------------------------------------------------------------------------------------
 
         ### ---First recording of the outcome in during the study period
         out_date_cis         = out_date_cis,        # Cognitive Impairment Symptoms
@@ -898,10 +893,10 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         # RLD gap
         tmp_out_date_rsd_death         = tmp_out_date_rsd_death,         # REM Sleep Disorder
 
-### Strata----------------------------------------------------------------------------------------------------
+        ### Strata----------------------------------------------------------------------------------------------------
         strat_cat_region = strat_cat_region,
 
-### Core covariates-------------------------------------------------------------------------------------------
+        ### Core covariates-------------------------------------------------------------------------------------------
         cov_num_age           = cov_num_age,
         cov_cat_sex           = cov_cat_sex,
 
@@ -923,7 +918,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         cov_cat_smoking       = cov_cat_smoking,
         cov_bin_stroke_isch   = cov_bin_stroke_isch,
 
-### Project specific covariates----------------------------------------------------------------------------------
+        ### Project specific covariates----------------------------------------------------------------------------------
         cov_bin_cis            = cov_bin_cis,
         cov_bin_dem_any        = cov_bin_dem_any,
         cov_bin_high_vasc_risk = cov_bin_high_vasc_risk,
@@ -933,7 +928,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         cov_bin_park           = cov_bin_park,
         cov_bin_park_risk      = cov_bin_park_risk,
         
-### Subgroups-----------------------------------------------------------------------------------------------------
+        ### Subgroups-----------------------------------------------------------------------------------------------------
         sub_bin_covidhistory  = sub_bin_covidhistory,
         sub_cat_covidhospital = sub_cat_covidhospital
     ) 

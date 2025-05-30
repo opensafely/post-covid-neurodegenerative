@@ -9,7 +9,10 @@ from ehrql import (
 
 from ehrql.tables.tpp import ( 
     patients, 
+    practice_registrations,
 )
+
+from datetime import date
 
 # create dataset to create dates for different cohorts
 
@@ -53,10 +56,20 @@ for var_name, var_value in jcvi_variables.items():
 
 ## Prevax
 
-dataset.index_prevax = minimum_of(pandemic_start, pandemic_start)
+dataset.index_prevax = minimum_of(date.fromisoformat(pandemic_start), date.fromisoformat(pandemic_start))
+
+cens_date_dereg_prevax = (
+    practice_registrations.where(practice_registrations.end_date.is_not_null())
+    .where(practice_registrations.end_date.is_on_or_after(dataset.index_prevax))
+    .sort_by(practice_registrations.end_date)
+    .first_for_patient()
+    .end_date
+)
 
 dataset.end_prevax_exposure = minimum_of(
     dataset.cens_date_death, 
+    cens_date_dereg_prevax,
+    lcd_date,
     dataset.vax_date_covid_1, 
     dataset.vax_date_eligible, 
     all_eligible
@@ -64,6 +77,7 @@ dataset.end_prevax_exposure = minimum_of(
 
 dataset.end_prevax_outcome = minimum_of(
     dataset.cens_date_death, 
+    cens_date_dereg_prevax,
     lcd_date
 )
 
@@ -71,16 +85,27 @@ dataset.end_prevax_outcome = minimum_of(
 
 dataset.index_vax = maximum_of(
     dataset.vax_date_covid_2 + days(14),
-    delta_date
+    date.fromisoformat(delta_date)
+)
+
+cens_date_dereg_vax = (
+    practice_registrations.where(practice_registrations.end_date.is_not_null())
+    .where(practice_registrations.end_date.is_on_or_after(dataset.index_vax))
+    .sort_by(practice_registrations.end_date)
+    .first_for_patient()
+    .end_date
 )
 
 dataset.end_vax_exposure = minimum_of(
     dataset.cens_date_death, 
+    cens_date_dereg_vax,
+    lcd_date,
     omicron_date
 )
 
 dataset.end_vax_outcome = minimum_of(
     dataset.cens_date_death, 
+    cens_date_dereg_vax,
     lcd_date
 )
 
@@ -88,16 +113,27 @@ dataset.end_vax_outcome = minimum_of(
 
 dataset.index_unvax = maximum_of(
     dataset.vax_date_eligible + days(84),
-    delta_date
+    date.fromisoformat(delta_date)
+)
+
+cens_date_dereg_unvax = (
+    practice_registrations.where(practice_registrations.end_date.is_not_null())
+    .where(practice_registrations.end_date.is_on_or_after(dataset.index_unvax))
+    .sort_by(practice_registrations.end_date)
+    .first_for_patient()
+    .end_date
 )
 
 dataset.end_unvax_exposure = minimum_of(
     dataset.cens_date_death, 
+    cens_date_dereg_unvax,
+    lcd_date, 
     omicron_date, 
     dataset.vax_date_covid_1
 )
 
 dataset.end_unvax_outcome = minimum_of(
     dataset.cens_date_death, 
+    cens_date_dereg_unvax,
     lcd_date
 )

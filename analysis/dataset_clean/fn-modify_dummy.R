@@ -5,6 +5,12 @@ modify_dummy <- function(df, cohort) {
   # Set seed -------------------------------------------------------------------
   set.seed(1)
 
+  pandemic_start <- as.Date(
+    study_dates$pandemic_start,
+    format = "%Y-%m-%d",
+    origin = "1970-01-01"
+  )
+
   # Modifying vax-specific variables
 
   if (cohort == "vax") {
@@ -289,33 +295,30 @@ modify_dummy <- function(df, cohort) {
       ## Inclusion/Exclusion modifications
 
       # Inclusion criteria: Did not receive a vaccination prior to 08-12-2020 (i.e., the start of the vaccination
-      mutate(modify_vax_start = rbernoulli(nrow(.), p = 0.002)) %>%
       mutate(across(
         vax_date_covid_1,
         ~ if_else(
-          modify_vax_start,
+          runif(n()) < 0.002,
           as.Date("01-12-2020"),
           .x
         )
       )) %>%
 
       # Inclusion criteria: Did not receive a second dose vaccination before their first dose vaccination
-      mutate(modify_vax2_then_vax1 = rbernoulli(nrow(.), p = 0.002)) %>%
       mutate(across(
         vax_date_covid_1,
         ~ if_else(
-          modify_vax2_then_vax1,
+          runif(n()) < 0.002,
           vax_date_covid_2 + 10,
           .x
         )
       )) %>%
 
       # Inclusion criteria: Did not receive a second dose vaccination less than three weeks after their first dose
-      mutate(modify_vax2_near_vax1 = rbernoulli(nrow(.), p = 0.002)) %>%
       mutate(across(
         vax_date_covid_2,
         ~ if_else(
-          modify_vax2_near_vax1,
+          runif(n()) < 0.002,
           vax_date_covid_1 + 15,
           .x
         )
@@ -386,16 +389,12 @@ modify_dummy <- function(df, cohort) {
       )
   }
 
-  ## Modifying variables across cohorts
-
-  ## inex_bin_alive ----------------------------------------------------------
+  ## Modifying variables across cohorts ----------------------------------------
 
   df <- df %>%
 
     ## Alive on the index date
     mutate(inex_bin_alive = rbernoulli(nrow(.), p = 0.99)) %>%
-
-    # could also modify cens_date_death to match
 
     ## Registered for a minimum of 6 months prior to index date
     mutate(inex_bin_6m_reg = rbernoulli(nrow(.), p = 0.99)) %>%
@@ -404,12 +403,12 @@ modify_dummy <- function(df, cohort) {
     mutate(
       cov_num_age = sample(
         c(
-          sample(1:17, round(nrow(.) * 0.02), replace = TRUE), # Number <18
-          sample(110:120, round(nrow(.) * 0.02), replace = TRUE), # Number >110
+          sample(1:17, round(nrow(.) * 0.02), replace = TRUE), # Proportion <18
+          sample(111:120, round(nrow(.) * 0.02), replace = TRUE), # Proportion >110
           sample(18:110, nrow(.) - round(nrow(.) * 0.02) * 2, replace = TRUE)
         )
       )
-    ) %>% # Remainder
+    ) %>%
 
     ## Recalculate birth year based on new age
     mutate(
@@ -420,10 +419,10 @@ modify_dummy <- function(df, cohort) {
     ## Sex
     mutate(
       cov_cat_sex = sample(
-        x = c("female", "male", "intersex", "unknown"), # %49% Female, 49% Male, 1% Intersex, 1% missing
+        x = c("female", "male", "intersex", "unknown"),
         size = nrow(.),
         replace = TRUE,
-        prob = c(0.49, 0.49, 0.01, 0.01)
+        prob = c(0.49, 0.49, 0.01, 0.01) # %49% Female, 49% Male, 1% Intersex, 1% missing
       )
     ) %>%
 
@@ -441,44 +440,93 @@ modify_dummy <- function(df, cohort) {
           "West Midlands",
           "Yorkshire and The Humber",
           ""
-        ), # 11% for each area, %1 Missing
+        ),
         size = nrow(.),
         replace = TRUE,
-        prob = c(rep(0.11, 9), 0.01)
+        prob = c(rep(0.11, 9), 0.01) # 11% for each area, %1 Missing
       )
     ) %>%
 
     ## IMD
     mutate(
       cov_cat_imd = sample(
-        x = c("1 (most deprived)", "2", "3", "4", "5 (least deprived)", NA), # 19.5% for each area, 2.5% missing
+        x = c("1 (most deprived)", "2", "3", "4", "5 (least deprived)", NA),
         size = nrow(.),
         replace = TRUE,
-        prob = c(rep(0.195, 5), 0.025)
+        prob = c(rep(0.195, 5), 0.025) # 19.5% for each area, 2.5% missing
       )
     ) %>%
 
+    ## Outcome dates
+    mutate(across(
+      starts_with("out_date_"),
+      ~ as.Date(
+        ifelse(
+          runif(n()) < 0.5, # 15% for each outcome
+          index_date +
+            round(
+              (lcd_date - index_date) * runif(n(), min = 0, max = 1)
+            ),
+          NA_Date_
+        ),
+        format = "%Y-%m-%d",
+        origin = "1970-01-01"
+      )
+    )) %>%
+
+    ## Exposure date
+    mutate(across(
+      exp_date_covid,
+      ~ as.Date(
+        ifelse(
+          runif(n()) < 0.50, # 50% With COVID
+          sample(
+            seq(pandemic_start, lcd_date, by = "day"),
+            n(),
+            replace = TRUE
+          ),
+          NA_Date_
+        ),
+        format = "%Y-%m-%d",
+        origin = "1970-01-01"
+      )
+    )) %>%
+
+    ## Update Covid Hospital proportions
+    mutate(
+      sub_cat_covidhospital = sample(
+        x = c("non_hospitalised", "hospitalised"),
+        size = nrow(.),
+        replace = TRUE,
+        prob = rep(0.5, 2)
+      )
+    ) %>%
+
+    mutate(across(
+      sub_cat_covidhospital,
+      ~ if_else(is.na(exp_date_covid), "no_infection", .x)
+    )) %>%
+
     ## Prior Covid History
-    mutate(sub_bin_covidhistory = rbernoulli(nrow(.), p = 0.95)) %>%
+    mutate(sub_bin_covidhistory = rbernoulli(nrow(.), p = 0.05)) %>%
 
     # Quality assurance: Year of birth is missing
-    mutate(modify_birth_miss = rbernoulli(nrow(.), p = 0.002)) %>%
     mutate(across(
       qa_num_birth_year,
       ~ if_else(
-        modify_birth_miss,
-        as.numeric(""), #probably a cleaner way to do this
+        runif(n()) < 0.002,
+        as.numeric(""),
         .x
       )
     )) %>%
 
-    # Quality assurance: Year of birth is after year of death or patient only has year of death
+    # Quality assurance: Year of birth is before year of death
     mutate(modify_birth_then = rbernoulli(nrow(.), p = 0.002)) %>%
     mutate(across(
       qa_num_birth_year,
       ~ if_else(
         modify_birth_then,
-        2022,
+        2024,
         .x
       )
     )) %>%
@@ -487,28 +535,26 @@ modify_dummy <- function(df, cohort) {
       cens_date_death,
       ~ if_else(
         modify_birth_then,
-        as.Date("02-03-2023"),
+        as.Date("2023-03-02"),
         .x
       )
     )) %>%
 
-    # Quality assurance: Year of birth exceeds current date
-    mutate(modify_birth_invalid = rbernoulli(nrow(.), p = 0.005)) %>%
+    # Quality assurance: Year of birth is before today
     mutate(across(
       qa_num_birth_year,
       ~ if_else(
-        modify_birth_invalid,
+        runif(n()) < 0.005,
         as.numeric(format(Sys.Date() + 1000, "%Y")),
         .x
       )
     )) %>%
 
-    # Quality assurance: Date of death is invalid (after current date)
-    mutate(modify_death_invalid = rbernoulli(nrow(.), p = 0.002)) %>%
+    # Quality assurance: Date of death before today
     mutate(across(
       cens_date_death,
       ~ if_else(
-        modify_death_invalid,
+        runif(n()) < 0.002,
         Sys.Date() + 42,
         .x
       )
@@ -518,7 +564,6 @@ modify_dummy <- function(df, cohort) {
     mutate(qa_bin_pregnancy = rbernoulli(nrow(.), p = 0.005)) %>%
 
     # Quality assurance: HRT or COCP meds for men
-
     mutate(qa_bin_hrtcocp = rbernoulli(nrow(.), p = 0.005)) %>%
 
     # Quality assurance: Prostate cancer codes for women
