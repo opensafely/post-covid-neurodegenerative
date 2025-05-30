@@ -13961,7 +13961,7 @@ actions:
     - table2-cohort_vax-sub_covidhospital
     outputs:
       moderately_sensitive:
-        table2_output_midpoint6: output/make_output/table2-sub_covidhospital_output_midpoint6.csv
+        table1_output_midpoint6: output/make_output/table2-sub_covidhospital_output_midpoint6.csv
 
   ## Generate venn-cohort_prevax 
 
@@ -14045,12 +14045,10 @@ actions:
     - venn-cohort_vax
     outputs:
       moderately_sensitive:
-        venn_output_midpoint6: output/make_output/venn_output_midpoint6.csv
+        table1_output_midpoint6: output/make_output/venn_output_midpoint6.csv
 
-  ## Generate model_output-main 
-
-  make_model_output-main:
-    run: r:v2 analysis/make_output/make_model_output.R main
+  make_model_output:
+    run: r:v2 analysis/make_output/make_model_output.R
     needs:
     - cox_ipw-cohort_prevax-main-cis
     - cox_ipw-cohort_prevax-main-dem_alz
@@ -14091,16 +14089,6 @@ actions:
     - cox_ipw-cohort_vax-main-park
     - cox_ipw-cohort_vax-main-rls
     - cox_ipw-cohort_vax-main-rsd
-    outputs:
-      moderately_sensitive:
-        model_output: output/make_output/model_output-main.csv
-        model_output_midpoint6: output/make_output/model_output-main-midpoint6.csv
-
-  ## Generate model_output-sub_age 
-
-  make_model_output-sub_age:
-    run: r:v2 analysis/make_output/make_model_output.R sub_age
-    needs:
     - cox_ipw-cohort_prevax-sub_age_18_39-cis
     - cox_ipw-cohort_prevax-sub_age_18_39-dem_alz
     - cox_ipw-cohort_prevax-sub_age_18_39-dem_any
@@ -14257,32 +14245,12 @@ actions:
     - cox_ipw-cohort_vax-sub_age_85_110-park
     - cox_ipw-cohort_vax-sub_age_85_110-rls
     - cox_ipw-cohort_vax-sub_age_85_110-rsd
-    outputs:
-      moderately_sensitive:
-        model_output: output/make_output/model_output-sub_age.csv
-        model_output_midpoint6: output/make_output/model_output-sub_age-midpoint6.csv
-
-  ## Generate model_output-sub_cis 
-
-  make_model_output-sub_cis:
-    run: r:v2 analysis/make_output/make_model_output.R sub_cis
-    needs:
     - cox_ipw-cohort_prevax-sub_cis_FALSE-dem_any
     - cox_ipw-cohort_unvax-sub_cis_FALSE-dem_any
     - cox_ipw-cohort_vax-sub_cis_FALSE-dem_any
     - cox_ipw-cohort_prevax-sub_cis_TRUE-dem_any
     - cox_ipw-cohort_unvax-sub_cis_TRUE-dem_any
     - cox_ipw-cohort_vax-sub_cis_TRUE-dem_any
-    outputs:
-      moderately_sensitive:
-        model_output: output/make_output/model_output-sub_cis.csv
-        model_output_midpoint6: output/make_output/model_output-sub_cis-midpoint6.csv
-
-  ## Generate model_output-sub_covidhistory 
-
-  make_model_output-sub_covidhistory:
-    run: r:v2 analysis/make_output/make_model_output.R sub_covidhistory
-    needs:
     - cox_ipw-cohort_unvax-sub_covidhistory-cis
     - cox_ipw-cohort_unvax-sub_covidhistory-dem_alz
     - cox_ipw-cohort_unvax-sub_covidhistory-dem_any
@@ -14309,16 +14277,6 @@ actions:
     - cox_ipw-cohort_vax-sub_covidhistory-park
     - cox_ipw-cohort_vax-sub_covidhistory-rls
     - cox_ipw-cohort_vax-sub_covidhistory-rsd
-    outputs:
-      moderately_sensitive:
-        model_output: output/make_output/model_output-sub_covidhistory.csv
-        model_output_midpoint6: output/make_output/model_output-sub_covidhistory-midpoint6.csv
-
-  ## Generate model_output-sub_covidhospital 
-
-  make_model_output-sub_covidhospital:
-    run: r:v2 analysis/make_output/make_model_output.R sub_covidhospital
-    needs:
     - cox_ipw-cohort_prevax-sub_covidhospital_FALSE-cis
     - cox_ipw-cohort_prevax-sub_covidhospital_FALSE-dem_alz
     - cox_ipw-cohort_prevax-sub_covidhospital_FALSE-dem_any
@@ -14397,16 +14355,6 @@ actions:
     - cox_ipw-cohort_vax-sub_covidhospital_TRUE-park
     - cox_ipw-cohort_vax-sub_covidhospital_TRUE-rls
     - cox_ipw-cohort_vax-sub_covidhospital_TRUE-rsd
-    outputs:
-      moderately_sensitive:
-        model_output: output/make_output/model_output-sub_covidhospital.csv
-        model_output_midpoint6: output/make_output/model_output-sub_covidhospital-midpoint6.csv
-
-  ## Generate model_output-sub_ethnicity 
-
-  make_model_output-sub_ethnicity:
-    run: r:v2 analysis/make_output/make_model_output.R sub_ethnicity
-    needs:
     - cox_ipw-cohort_prevax-sub_ethnicity_asian-cis
     - cox_ipw-cohort_prevax-sub_ethnicity_asian-dem_alz
     - cox_ipw-cohort_prevax-sub_ethnicity_asian-dem_any
@@ -14602,16 +14550,6 @@ actions:
     - cox_ipw-cohort_vax-sub_ethnicity_white-park
     - cox_ipw-cohort_vax-sub_ethnicity_white-rls
     - cox_ipw-cohort_vax-sub_ethnicity_white-rsd
-    outputs:
-      moderately_sensitive:
-        model_output: output/make_output/model_output-sub_ethnicity.csv
-        model_output_midpoint6: output/make_output/model_output-sub_ethnicity-midpoint6.csv
-
-  ## Generate model_output-sub_high_vasc_risk 
-
-  make_model_output-sub_high_vasc_risk:
-    run: r:v2 analysis/make_output/make_model_output.R sub_high_vasc_risk
-    needs:
     - cox_ipw-cohort_prevax-sub_high_vasc_risk_FALSE-cis
     - cox_ipw-cohort_prevax-sub_high_vasc_risk_FALSE-dem_alz
     - cox_ipw-cohort_prevax-sub_high_vasc_risk_FALSE-dem_any
@@ -14642,16 +14580,6 @@ actions:
     - cox_ipw-cohort_vax-sub_high_vasc_risk_TRUE-dem_any
     - cox_ipw-cohort_vax-sub_high_vasc_risk_TRUE-dem_lb
     - cox_ipw-cohort_vax-sub_high_vasc_risk_TRUE-dem_vasc
-    outputs:
-      moderately_sensitive:
-        model_output: output/make_output/model_output-sub_high_vasc_risk.csv
-        model_output_midpoint6: output/make_output/model_output-sub_high_vasc_risk-midpoint6.csv
-
-  ## Generate model_output-sub_park 
-
-  make_model_output-sub_park:
-    run: r:v2 analysis/make_output/make_model_output.R sub_park
-    needs:
     - cox_ipw-cohort_prevax-sub_park_FALSE-dem_any
     - cox_ipw-cohort_unvax-sub_park_FALSE-dem_any
     - cox_ipw-cohort_vax-sub_park_FALSE-dem_any
@@ -14664,32 +14592,6 @@ actions:
     - cox_ipw-cohort_prevax-sub_park_TRUE-dem_any
     - cox_ipw-cohort_unvax-sub_park_TRUE-dem_any
     - cox_ipw-cohort_vax-sub_park_TRUE-dem_any
-    outputs:
-      moderately_sensitive:
-        model_output: output/make_output/model_output-sub_park.csv
-        model_output_midpoint6: output/make_output/model_output-sub_park-midpoint6.csv
-
-  ## Generate model_output-sub_park_risk 
-
-  make_model_output-sub_park_risk:
-    run: r:v2 analysis/make_output/make_model_output.R sub_park_risk
-    needs:
-    - cox_ipw-cohort_prevax-sub_park_risk_FALSE-park
-    - cox_ipw-cohort_unvax-sub_park_risk_FALSE-park
-    - cox_ipw-cohort_vax-sub_park_risk_FALSE-park
-    - cox_ipw-cohort_prevax-sub_park_risk_TRUE-park
-    - cox_ipw-cohort_unvax-sub_park_risk_TRUE-park
-    - cox_ipw-cohort_vax-sub_park_risk_TRUE-park
-    outputs:
-      moderately_sensitive:
-        model_output: output/make_output/model_output-sub_park_risk.csv
-        model_output_midpoint6: output/make_output/model_output-sub_park_risk-midpoint6.csv
-
-  ## Generate model_output-sub_sex 
-
-  make_model_output-sub_sex:
-    run: r:v2 analysis/make_output/make_model_output.R sub_sex
-    needs:
     - cox_ipw-cohort_prevax-sub_sex_female-cis
     - cox_ipw-cohort_prevax-sub_sex_female-dem_alz
     - cox_ipw-cohort_prevax-sub_sex_female-dem_any
@@ -14770,8 +14672,8 @@ actions:
     - cox_ipw-cohort_vax-sub_sex_male-rsd
     outputs:
       moderately_sensitive:
-        model_output: output/make_output/model_output-sub_sex.csv
-        model_output_midpoint6: output/make_output/model_output-sub_sex-midpoint6.csv
+        model_output: output/make_output/model_output.csv
+        model_output_midpoint6: output/make_output/model_output_midpoint6.csv
 
   ## Make absolute excess risk (AER) input 
 
