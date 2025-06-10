@@ -390,11 +390,10 @@ make_other_output <- function(action_name, cohort, subgroup = "") {
         cohort_names,
         sub_str
       ))),
-      moderately_sensitive = setNames(
-        list(glue(
+      moderately_sensitive = list(
+        table1_output_midpoint6 = glue(
           "output/make_output/{action_name}{sub_str}_output_midpoint6.csv"
-        )),
-        glue("{action_name}_output_midpoint6")
+        )
       )
     )
   )
@@ -551,10 +550,20 @@ actions_list <- splice(
 
   ## Model output --------------------------------------------------------------
 
-  splice(
-    unlist(
-      lapply(subgroups, function(x) make_model_output(subgroup = x)),
-      recursive = FALSE
+  action(
+    name = "make_model_output",
+    run = "r:v2 analysis/make_output/make_model_output.R",
+    needs = as.list(c(
+      paste0(
+        "cox_ipw-",
+        active_analyses$name[!(active_analyses$name %in% excluded_models)]
+      )
+    )),
+    moderately_sensitive = list(
+      model_output = glue("output/make_output/model_output.csv"),
+      model_output_midpoint6 = glue(
+        "output/make_output/model_output_midpoint6.csv"
+      )
     )
   ),
 
