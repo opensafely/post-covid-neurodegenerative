@@ -451,12 +451,12 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
     ## Combined RLS and RSD
 
-    tmp_out_date_park_risk_gp = minimum_of(
+    tmp_out_date_parkrisk_gp = minimum_of(
         tmp_out_date_rls_gp,
         tmp_out_date_rsd_gp
     )
 
-    out_date_park_risk = minimum_of(
+    out_date_parkrisk = minimum_of(
         out_date_rls,
         out_date_rsd
     )
@@ -686,7 +686,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     )
 
     ## High Vascular Risk
-    cov_bin_high_vasc_risk=(
+    cov_bin_highvascrisk=(
         cov_bin_hypertension | cov_bin_diabetes
     )
 
@@ -732,7 +732,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     )
 
     ## History of Parkinson's Risk (REM Sleep Disorder/Restless Leg syndrome)
-    cov_bin_park_risk= (
+    cov_bin_parkrisk= (
         (last_matching_event_clinical_snomed_before(
         rls_snomed, index_date
         ).exists_for_patient()) |
@@ -837,7 +837,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         out_date_ms          = out_date_ms,         # Multiple Sclerosis
         out_date_neuro_other = out_date_neuro_other,# MS or MND
         out_date_park        = out_date_park,       # Parkinson's Disease
-        out_date_park_risk   = out_date_park_risk,  # combo of RSD and RLS (not fully sure if needed)
+        out_date_parkrisk   = out_date_parkrisk,  # combo of RSD and RLS (not fully sure if needed)
         out_date_rls         = out_date_rls,        # Restless Leg Syndrome
         out_date_rsd         = out_date_rsd,        # REM Sleep Disorder
 
@@ -854,7 +854,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         tmp_out_date_ms_gp          = tmp_out_date_ms_gp,         # Multiple Sclerosis
         tmp_out_date_neuro_other_gp = tmp_out_date_neuro_other_gp,# MS or MND
         tmp_out_date_park_gp        = tmp_out_date_park_gp,       # Parkinson's Disease
-        tmp_out_date_park_risk_gp   = tmp_out_date_park_risk_gp,  # combo of RSD and RLS (not fully sure if needed)
+        tmp_out_date_parkrisk_gp   = tmp_out_date_parkrisk_gp,  # combo of RSD and RLS (not fully sure if needed)
         tmp_out_date_rls_gp         = tmp_out_date_rls_gp,        # Restless Leg Syndrome
         tmp_out_date_rsd_gp         = tmp_out_date_rsd_gp,        # REM Sleep Disorder
 
@@ -871,7 +871,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         tmp_out_date_ms_apc          = tmp_out_date_ms_apc,         # Multiple Sclerosis
         tmp_out_date_neuro_other_apc = tmp_out_date_neuro_other_apc,# MS or MND
         tmp_out_date_park_apc        = tmp_out_date_park_apc,       # Parkinson's Disease
-        tmp_out_date_park_risk_apc   = tmp_out_date_rsd_apc,        # combo of RSD and RLS (but only RSD here)
+        tmp_out_date_parkrisk_apc   = tmp_out_date_rsd_apc,        # combo of RSD and RLS (but only RSD here)
         # RLD gap
         tmp_out_date_rsd_apc         = tmp_out_date_rsd_apc,        # REM Sleep Disorder
 
@@ -889,7 +889,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         tmp_out_date_ms_death          = tmp_out_date_ms_death,          # Multiple Sclerosis
         tmp_out_date_neuro_other_death = tmp_out_date_neuro_other_death, # MS or MND
         tmp_out_date_park_death        = tmp_out_date_park_death,        # Parkinson's Disease
-        tmp_out_date_park_risk_death   = tmp_out_date_rsd_death,         # combo of RSD and RLS (but only RSD here)
+        tmp_out_date_parkrisk_death   = tmp_out_date_rsd_death,         # combo of RSD and RLS (but only RSD here)
         # RLD gap
         tmp_out_date_rsd_death         = tmp_out_date_rsd_death,         # REM Sleep Disorder
 
@@ -921,12 +921,12 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ### Project specific covariates----------------------------------------------------------------------------------
         cov_bin_cis            = cov_bin_cis,
         cov_bin_dem_any        = cov_bin_dem_any,
-        cov_bin_high_vasc_risk = cov_bin_high_vasc_risk,
+        cov_bin_highvascrisk = cov_bin_highvascrisk,
         cov_bin_mnd            = cov_bin_mnd,
         cov_bin_ms             = cov_bin_ms,
         cov_bin_migraine       = cov_bin_migraine,
         cov_bin_park           = cov_bin_park,
-        cov_bin_park_risk      = cov_bin_park_risk,
+        cov_bin_parkrisk      = cov_bin_parkrisk,
         
         ### Subgroups-----------------------------------------------------------------------------------------------------
         sub_bin_covidhistory  = sub_bin_covidhistory,

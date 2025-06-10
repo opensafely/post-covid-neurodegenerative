@@ -37,9 +37,9 @@ prepare_model_input <- function(name) {
     "cov_cat_sex",
     "cov_cat_ethnicity",
     "cov_bin_cis",
-    "cov_bin_park_risk",
+    "cov_bin_parkrisk",
     "cov_bin_park",
-    "cov_bin_high_vasc_risk",
+    "cov_bin_highvascrisk",
     unlist(strsplit(active_analyses$covariate_other, split = ";")),
     c(grep("sub_", colnames(input), value = TRUE)) #sub_cat_covidhospital, sub_cat_covidhistory, and other subgroups
   ))

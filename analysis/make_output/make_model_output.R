@@ -8,6 +8,17 @@ print('Source common functions')
 
 source("analysis/utility.R")
 
+# Specify arguments ------------------------------------------------------------
+print("Specify arguments")
+
+args <- commandArgs(trailingOnly = TRUE)
+
+if (length(args) == 0) {
+  subgroup <- "main"
+} else {
+  subgroup <- args[[1]]
+}
+
 # Define model output folder ---------------------------------------
 print("Creating output/model output folder")
 
@@ -113,7 +124,7 @@ df <- df[, c(
   "source"
 )]
 
-readr::write_csv(df, paste0(makeout_dir, "model_output.csv"))
+readr::write_csv(df, paste0(makeout_dir, "model_output-", subgroup, ".csv"))
 
 # Perform redaction ------------------------------------------------------------
 print('Perform redaction')
@@ -126,4 +137,7 @@ df[, c("N_total", "N_exposed", "N_events")] <- NULL
 # Save model output ------------------------------------------------------------
 print('Save model output')
 
-readr::write_csv(df, paste0(makeout_dir, "model_output_midpoint6.csv"))
+readr::write_csv(
+  df,
+  paste0(makeout_dir, "model_output-", subgroup, "-midpoint6.csv")
+)
