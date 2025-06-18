@@ -327,7 +327,7 @@ venn <- function(cohort, analyses = "") {
   )
 }
 
-# Create funtion for making model outputs --------------------------------------
+# Create function for making model outputs --------------------------------------
 
 make_model_output <- function(subgroup) {
   splice(
@@ -343,7 +343,10 @@ make_model_output <- function(subgroup) {
           "cox_ipw-",
           active_analyses$name[
             !(active_analyses$name %in% excluded_models) &
-              str_detect(active_analyses$analysis, paste0(subgroup,"(?=[_-]|$)"))
+              str_detect(
+                active_analyses$analysis,
+                paste0(subgroup, "(?=[_-]|$)")
+              )
           ]
         )
       )),
@@ -357,7 +360,7 @@ make_model_output <- function(subgroup) {
   )
 }
 
-# Create funtion for making combined table/venn outputs ------------------------
+# Create function for making combined table/venn outputs ------------------------
 
 make_other_output <- function(action_name, cohort, subgroup = "") {
   cohort_names <- stringr::str_split(as.vector(cohort), ";")[[1]]

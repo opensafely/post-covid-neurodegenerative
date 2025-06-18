@@ -18,8 +18,6 @@ outcomes_all <- c(
   "out_date_dem_alz", # Alzheimer's Disease
   "out_date_dem_vasc", # Vascular Dementia
   "out_date_dem_lb", # Lewy Body Dementia
-  "out_date_dem_other", # Other Dementia
-  "out_date_dem_unspec", # Unspecified Dementia
   "out_date_dem_any", # Any Dementia
   "out_date_cis", # Cognitive Impairment Symptoms
   "out_date_park", # Parkinson's Disease
@@ -211,7 +209,7 @@ for (c in cohorts) {
       )
     }
   }
-  
+
   for (i in outcomes_parkrisk) {
     for (sub in subgroups_parkrisk) {
       df[nrow(df) + 1, ] <- add_analysis(
