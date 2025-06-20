@@ -18,8 +18,6 @@ outcomes_all <- c(
   "out_date_dem_alz", # Alzheimer's Disease
   "out_date_dem_vasc", # Vascular Dementia
   "out_date_dem_lb", # Lewy Body Dementia
-  "out_date_dem_other", # Other Dementia
-  "out_date_dem_unspec", # Unspecified Dementia
   "out_date_dem_any", # Any Dementia
   "out_date_cis", # Cognitive Impairment Symptoms
   "out_date_park", # Parkinson's Disease
@@ -33,8 +31,8 @@ outcomes_all <- c(
 ## Define more refined outcome groups ----
 outcomes_cis <- c("out_date_dem_any")
 outcomes_park <- c("out_date_dem_any")
-outcomes_park_risk <- c("out_date_park")
-outcomes_high_vasc_risk <- c(
+outcomes_parkrisk <- c("out_date_park")
+outcomes_highvascrisk <- c(
   "out_date_dem_alz",
   "out_date_dem_vasc",
   "out_date_dem_lb",
@@ -70,14 +68,14 @@ subgroups_park <- c(
   "sub_park_FALSE"
 )
 
-subgroups_park_risk <- c(
-  "sub_park_risk_TRUE",
-  "sub_park_risk_FALSE"
+subgroups_parkrisk <- c(
+  "sub_parkrisk_TRUE",
+  "sub_parkrisk_FALSE"
 )
 
-subgroups_high_vasc_risk <- c(
-  "sub_high_vasc_risk_TRUE",
-  "sub_high_vasc_risk_FALSE"
+subgroups_highvascrisk <- c(
+  "sub_highvascrisk_TRUE",
+  "sub_highvascrisk_FALSE"
 )
 
 # Define covariates ----
@@ -105,12 +103,12 @@ core_covars <- c(
 project_covars <- c(
   "cov_bin_cis",
   "cov_bin_dem_any",
-  "cov_bin_high_vasc_risk",
+  "cov_bin_highvascrisk",
   "cov_bin_mnd",
   "cov_bin_ms",
   "cov_bin_migraine",
   "cov_bin_park",
-  "cov_bin_park_risk"
+  "cov_bin_parkrisk"
 )
 
 covariate_other <- paste0(c(core_covars, project_covars), collapse = ";")
@@ -200,25 +198,25 @@ for (c in cohorts) {
     }
   }
 
-  for (i in outcomes_high_vasc_risk) {
-    for (sub in subgroups_high_vasc_risk) {
+  for (i in outcomes_highvascrisk) {
+    for (sub in subgroups_highvascrisk) {
       df[nrow(df) + 1, ] <- add_analysis(
         cohort = c,
         outcome = i,
         analysis_name = sub,
-        covariate_other = gsub("cov_bin_high_vasc_risk;", "", covariate_other),
+        covariate_other = gsub("cov_bin_highvascrisk;", "", covariate_other),
         age_spline = TRUE
       )
     }
   }
-  
-  for (i in outcomes_park_risk) {
-    for (sub in subgroups_park_risk) {
+
+  for (i in outcomes_parkrisk) {
+    for (sub in subgroups_parkrisk) {
       df[nrow(df) + 1, ] <- add_analysis(
         cohort = c,
         outcome = i,
         analysis_name = sub,
-        covariate_other = gsub("cov_bin_park_risk;", "", covariate_other),
+        covariate_other = gsub("cov_bin_parkrisk;", "", covariate_other),
         age_spline = TRUE
       )
     }
