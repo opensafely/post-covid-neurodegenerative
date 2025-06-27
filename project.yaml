@@ -73,12 +73,10 @@ actions:
     outputs:
       moderately_sensitive:
         describe_raw: output/describe/prevax_raw.txt
-        describe_venn: output/describe/prevax_venn.txt
         describe_preprocessed: output/describe/prevax_preprocessed.txt
         flow: output/dataset_clean/flow-cohort_prevax.csv
         flow_midpoint6: output/dataset_clean/flow-cohort_prevax-midpoint6.csv
       highly_sensitive:
-        venn: output/dataset_clean/venn-cohort_prevax.rds
         cohort_clean: output/dataset_clean/input_prevax_clean.rds
 
   ## Generate input_unvax_clean, with describe = TRUE 
@@ -91,12 +89,10 @@ actions:
     outputs:
       moderately_sensitive:
         describe_raw: output/describe/unvax_raw.txt
-        describe_venn: output/describe/unvax_venn.txt
         describe_preprocessed: output/describe/unvax_preprocessed.txt
         flow: output/dataset_clean/flow-cohort_unvax.csv
         flow_midpoint6: output/dataset_clean/flow-cohort_unvax-midpoint6.csv
       highly_sensitive:
-        venn: output/dataset_clean/venn-cohort_unvax.rds
         cohort_clean: output/dataset_clean/input_unvax_clean.rds
 
   ## Generate input_vax_clean, with describe = TRUE 
@@ -109,12 +105,10 @@ actions:
     outputs:
       moderately_sensitive:
         describe_raw: output/describe/vax_raw.txt
-        describe_venn: output/describe/vax_venn.txt
         describe_preprocessed: output/describe/vax_preprocessed.txt
         flow: output/dataset_clean/flow-cohort_vax.csv
         flow_midpoint6: output/dataset_clean/flow-cohort_vax-midpoint6.csv
       highly_sensitive:
-        venn: output/dataset_clean/venn-cohort_vax.rds
         cohort_clean: output/dataset_clean/input_vax_clean.rds
 
   ## Generate table1_cohort_prevax 

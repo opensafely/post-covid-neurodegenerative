@@ -129,7 +129,7 @@ clean_data <- function(cohort, describe = describe) {
         ),
         moderately_sensitive = list(
           describe_raw = glue("output/describe/{cohort}_raw.txt"),
-          describe_venn = glue("output/describe/{cohort}_venn.txt"),
+          # describe_venn = glue("output/describe/{cohort}_venn.txt"),
           describe_preprocessed = glue(
             "output/describe/{cohort}_preprocessed.txt"
           ),
@@ -139,7 +139,7 @@ clean_data <- function(cohort, describe = describe) {
           )
         ),
         highly_sensitive = list(
-          venn = glue("output/dataset_clean/venn-cohort_{cohort}.rds"),
+          # venn = glue("output/dataset_clean/venn-cohort_{cohort}.rds"),
           cohort_clean = glue("output/dataset_clean/input_{cohort}_clean.rds")
         )
       )
@@ -160,7 +160,7 @@ clean_data <- function(cohort, describe = describe) {
           )
         ),
         highly_sensitive = list(
-          venn = glue("output/dataset_clean/venn-cohort_{cohort}.rds"),
+          # venn = glue("output/dataset_clean/venn-cohort_{cohort}.rds"),
           cohort_clean = glue("output/dataset_clean/input_{cohort}_clean.rds")
         )
       )
