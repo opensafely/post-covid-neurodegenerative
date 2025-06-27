@@ -63,6 +63,8 @@ No clinical, policy or safety conclusions must be drawn from the contents of thi
         -   [`make_other_output.R`](./analysis/model/make_other_output.R) combines cohort-specific outputs (e.g. the table1 outputs) into 1 .csv file
         -   [`make_aer_input.R`](./analysis/make_output/make_aer_input.R) generates summary statistics by age and sex required for AER (Absolute Excess Risk) estimation for each outcome (using the model input files for the main analysis generated from [`make_model_input`](analysis/model/make_model_input.R))
 
+    - Post release scripts for tidying up the outputs are in the ['post_release'](./analysis/post_release/) directory. They are not run on through the project.yaml file on OpenSAFELY, but run locally in order to prepare tables and figures for publication.
+
     These scripts are in the [`analysis`](./analysis) directory, but are not accessed when the repository is run on a job server
         
     -   [`create_project_actions.R`](./analysis/create_project_actions.R) is the function which creates the [`project.yaml`](./project.yaml), the list of actions which can be run in OpenSAFELY (NB: this is not accessed during the core pipeline run)
