@@ -25,7 +25,9 @@ preprocess <- function(cohort, describe) {
     grep("_num", all_cols, value = TRUE),
     grep("vax_jcvi_age_", all_cols, value = TRUE)
   )
-  date_cols <- grep("_date", all_cols, value = TRUE)
+  date_cols <- grep("^(?!tmp).*_date", all_cols, perl = TRUE, value = TRUE)
+  tmp_cols <- grep("tmp_", all_cols, value = TRUE)
+
   message("Column classes identified")
 
   col_classes <- setNames(
@@ -33,9 +35,13 @@ preprocess <- function(cohort, describe) {
       rep("c", length(cat_cols)),
       rep("l", length(bin_cols)),
       rep("d", length(num_cols)),
-      rep("D", length(date_cols))
+      rep("D", length(date_cols)),
+      rep("NULL", length(tmp_cols))
     ),
-    all_cols[match(c(cat_cols, bin_cols, num_cols, date_cols), all_cols)]
+    all_cols[match(
+      c(cat_cols, bin_cols, num_cols, date_cols, tmp_cols),
+      all_cols
+    )]
   )
   message("Column classes defined")
 
@@ -84,10 +90,10 @@ preprocess <- function(cohort, describe) {
   message("All records with valid patient IDs retained.")
 
   # Make Venn diagram input dataset ----
-  print('Make Venn diagram input dataset')
-
-  venn <- input %>%
-    select(starts_with(c("patient_id", "tmp_out_date", "out_date")))
+  # print('Make Venn diagram input dataset')
+  #
+  # venn <- input %>%
+  #   select(starts_with(c("patient_id", "tmp_out_date", "out_date")))
 
   # Restrict columns ----
   print('Restrict columns')
@@ -113,12 +119,12 @@ preprocess <- function(cohort, describe) {
   print('Describe files')
 
   if (isTRUE(describe)) {
-    describe_data(df = venn, name = paste0(cohort, "_venn"))
+    # describe_data(df = venn, name = paste0(cohort, "_venn"))
     describe_data(df = input, name = paste0(cohort, "_preprocessed"))
   }
 
   # Return data ----
   print('Return data')
-
-  return(list(venn = venn, input = input))
+  return(list(input = input)) #replace with line below if doing venn
+  # return(list(venn = venn, input = input))
 }

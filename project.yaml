@@ -73,12 +73,10 @@ actions:
     outputs:
       moderately_sensitive:
         describe_raw: output/describe/prevax_raw.txt
-        describe_venn: output/describe/prevax_venn.txt
         describe_preprocessed: output/describe/prevax_preprocessed.txt
         flow: output/dataset_clean/flow-cohort_prevax.csv
         flow_midpoint6: output/dataset_clean/flow-cohort_prevax-midpoint6.csv
       highly_sensitive:
-        venn: output/dataset_clean/venn-cohort_prevax.rds
         cohort_clean: output/dataset_clean/input_prevax_clean.rds
 
   ## Generate input_unvax_clean, with describe = TRUE 
@@ -91,12 +89,10 @@ actions:
     outputs:
       moderately_sensitive:
         describe_raw: output/describe/unvax_raw.txt
-        describe_venn: output/describe/unvax_venn.txt
         describe_preprocessed: output/describe/unvax_preprocessed.txt
         flow: output/dataset_clean/flow-cohort_unvax.csv
         flow_midpoint6: output/dataset_clean/flow-cohort_unvax-midpoint6.csv
       highly_sensitive:
-        venn: output/dataset_clean/venn-cohort_unvax.rds
         cohort_clean: output/dataset_clean/input_unvax_clean.rds
 
   ## Generate input_vax_clean, with describe = TRUE 
@@ -109,12 +105,10 @@ actions:
     outputs:
       moderately_sensitive:
         describe_raw: output/describe/vax_raw.txt
-        describe_venn: output/describe/vax_venn.txt
         describe_preprocessed: output/describe/vax_preprocessed.txt
         flow: output/dataset_clean/flow-cohort_vax.csv
         flow_midpoint6: output/dataset_clean/flow-cohort_vax-midpoint6.csv
       highly_sensitive:
-        venn: output/dataset_clean/venn-cohort_vax.rds
         cohort_clean: output/dataset_clean/input_vax_clean.rds
 
   ## Generate table1_cohort_prevax 
@@ -12008,84 +12002,6 @@ actions:
     outputs:
       moderately_sensitive:
         table2_output_midpoint6: output/make_output/table2-sub_covidhospital_output_midpoint6.csv
-
-  ## Generate venn-cohort_prevax 
-
-  venn-cohort_prevax:
-    run: r:v2 analysis/venn/venn.R prevax
-    needs:
-    - generate_input_prevax_clean
-    - make_model_input-cohort_prevax-main-cis
-    - make_model_input-cohort_prevax-main-dem_alz
-    - make_model_input-cohort_prevax-main-dem_any
-    - make_model_input-cohort_prevax-main-dem_lb
-    - make_model_input-cohort_prevax-main-dem_vasc
-    - make_model_input-cohort_prevax-main-migraine
-    - make_model_input-cohort_prevax-main-mnd
-    - make_model_input-cohort_prevax-main-ms
-    - make_model_input-cohort_prevax-main-park
-    - make_model_input-cohort_prevax-main-rls
-    - make_model_input-cohort_prevax-main-rsd
-    outputs:
-      moderately_sensitive:
-        venn: output/venn/venn-cohort_prevax.csv
-        venn_midpoint6: output/venn/venn-cohort_prevax-midpoint6.csv
-
-  ## Generate venn-cohort_unvax 
-
-  venn-cohort_unvax:
-    run: r:v2 analysis/venn/venn.R unvax
-    needs:
-    - generate_input_unvax_clean
-    - make_model_input-cohort_unvax-main-cis
-    - make_model_input-cohort_unvax-main-dem_alz
-    - make_model_input-cohort_unvax-main-dem_any
-    - make_model_input-cohort_unvax-main-dem_lb
-    - make_model_input-cohort_unvax-main-dem_vasc
-    - make_model_input-cohort_unvax-main-migraine
-    - make_model_input-cohort_unvax-main-mnd
-    - make_model_input-cohort_unvax-main-ms
-    - make_model_input-cohort_unvax-main-park
-    - make_model_input-cohort_unvax-main-rls
-    - make_model_input-cohort_unvax-main-rsd
-    outputs:
-      moderately_sensitive:
-        venn: output/venn/venn-cohort_unvax.csv
-        venn_midpoint6: output/venn/venn-cohort_unvax-midpoint6.csv
-
-  ## Generate venn-cohort_vax 
-
-  venn-cohort_vax:
-    run: r:v2 analysis/venn/venn.R vax
-    needs:
-    - generate_input_vax_clean
-    - make_model_input-cohort_vax-main-cis
-    - make_model_input-cohort_vax-main-dem_alz
-    - make_model_input-cohort_vax-main-dem_any
-    - make_model_input-cohort_vax-main-dem_lb
-    - make_model_input-cohort_vax-main-dem_vasc
-    - make_model_input-cohort_vax-main-migraine
-    - make_model_input-cohort_vax-main-mnd
-    - make_model_input-cohort_vax-main-ms
-    - make_model_input-cohort_vax-main-park
-    - make_model_input-cohort_vax-main-rls
-    - make_model_input-cohort_vax-main-rsd
-    outputs:
-      moderately_sensitive:
-        venn: output/venn/venn-cohort_vax.csv
-        venn_midpoint6: output/venn/venn-cohort_vax-midpoint6.csv
-
-  ## Generate make-venn-output 
-
-  make-venn-output:
-    run: r:v2 analysis/make_output/make_other_output.R venn prevax;unvax;vax
-    needs:
-    - venn-cohort_prevax
-    - venn-cohort_unvax
-    - venn-cohort_vax
-    outputs:
-      moderately_sensitive:
-        venn_output_midpoint6: output/make_output/venn_output_midpoint6.csv
 
   ## Generate model_output-main 
 
