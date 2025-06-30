@@ -534,23 +534,23 @@ actions_list <- splice(
 
   ## Venn data -----------------------------------------------------------------
 
-  splice(
-    unlist(
-      lapply(
-        unique(active_analyses$cohort),
-        function(x) venn(cohort = x)
-      ),
-      recursive = FALSE
-    )
-  ),
+  # splice(
+  #   unlist(
+  #     lapply(
+  #       unique(active_analyses$cohort),
+  #       function(x) venn(cohort = x)
+  #     ),
+  #     recursive = FALSE
+  #   )
+  # ),
 
-  splice(
-    make_other_output(
-      action_name = "venn",
-      cohort = paste0(cohorts, collapse = ";"),
-      subgroup = ""
-    )
-  ),
+  # splice(
+  #   make_other_output(
+  #     action_name = "venn",
+  #     cohort = paste0(cohorts, collapse = ";"),
+  #     subgroup = ""
+  #   )
+  # ),
 
   ## Model output --------------------------------------------------------------
 
