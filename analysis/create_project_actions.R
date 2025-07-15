@@ -38,7 +38,7 @@ age_str <- paste0(
   )
 ) #create age vector in form "X;XX;XX;XX;XXX"
 
-describe <- TRUE # This prints descriptive files for each dataset in the pipeline
+describe <- FALSE # This prints descriptive files for each dataset in the pipeline
 
 # List of models excluded from model output generation
 
@@ -484,7 +484,7 @@ actions_list <- splice(
     unlist(
       lapply(
         1:nrow(active_analyses),
-        function(x)
+        function(x) {
           apply_model_function(
             name = active_analyses$name[x],
             cohort = active_analyses$cohort[x],
@@ -507,6 +507,7 @@ actions_list <- splice(
             covariate_threshold = active_analyses$covariate_threshold[x],
             age_spline = active_analyses$age_spline[x]
           )
+        }
       ),
       recursive = FALSE
     )
