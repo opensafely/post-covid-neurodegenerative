@@ -1,16 +1,8 @@
-# Define post_release output folder ------------------------------------------
-output_folder <- "output/post_release" # Folder to save the transformed datasets
-
-# Ensure output folder exists
-if (!dir.exists(output_folder)) {
-    dir.create(output_folder)
-}
-
 # Load data --------------------------------------------------------------------
 print("Load data")
 
 df <- readr::read_csv(
-    "output/make_output/table2-sub_covidhospital_output_midpoint6.csv",
+    path_table2,
     show_col_types = FALSE
 )
 
@@ -108,6 +100,16 @@ df <- df[, c(
 df$analysis <- gsub(".*(?=preex)", "", df$analysis, perl = TRUE)
 
 # Define factor levels for sorting
+df$outcome_label <- factor(
+    df$outcome_label,
+    levels = c(
+        "Pneumonia",
+        "Asthma",
+        "Chronic obstructive pulmonary disease",
+        "Pulmonary fibrosis"
+    )
+)
+
 df$analysis <- factor(df$analysis, levels = c("preex_FALSE", "preex_TRUE"))
 
 df$covid19_severity <- factor(
@@ -120,7 +122,7 @@ df$covid19_severity <- factor(
 )
 
 # Order the rows
-df <- df[order(df$analysis, df$outcome_label, df$covid19_severity), ]
+df <- df[order(df$outcome_label, df$analysis, df$covid19_severity), ]
 
 df <- tidyr::pivot_wider(
     df,
@@ -183,7 +185,8 @@ df <- dplyr::rename(
     "COVID-19 severity" = "covid19_severity"
 )
 
+
 # Save table -------------------------------------------------------------------
 print("Save table")
 
-readr::write_csv(df, "output/post_release/table2_severity.csv", na = "-")
+readr::write_csv(df, paste0(output_folder, "/table2_severity.csv"), na = "-")
