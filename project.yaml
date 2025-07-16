@@ -63,49 +63,43 @@ actions:
       highly_sensitive:
         cohort: output/dataset_definition/input_vax.csv.gz
 
-  ## Generate input_prevax_clean, with describe = TRUE 
+  ## Generate input_prevax_clean, with describe = FALSE 
 
   generate_input_prevax_clean:
-    run: r:v2 analysis/dataset_clean/dataset_clean.R prevax TRUE
+    run: r:v2 analysis/dataset_clean/dataset_clean.R prevax FALSE
     needs:
     - study_dates
     - generate_input_prevax
     outputs:
       moderately_sensitive:
-        describe_raw: output/describe/prevax_raw.txt
-        describe_preprocessed: output/describe/prevax_preprocessed.txt
         flow: output/dataset_clean/flow-cohort_prevax.csv
         flow_midpoint6: output/dataset_clean/flow-cohort_prevax-midpoint6.csv
       highly_sensitive:
         cohort_clean: output/dataset_clean/input_prevax_clean.rds
 
-  ## Generate input_unvax_clean, with describe = TRUE 
+  ## Generate input_unvax_clean, with describe = FALSE 
 
   generate_input_unvax_clean:
-    run: r:v2 analysis/dataset_clean/dataset_clean.R unvax TRUE
+    run: r:v2 analysis/dataset_clean/dataset_clean.R unvax FALSE
     needs:
     - study_dates
     - generate_input_unvax
     outputs:
       moderately_sensitive:
-        describe_raw: output/describe/unvax_raw.txt
-        describe_preprocessed: output/describe/unvax_preprocessed.txt
         flow: output/dataset_clean/flow-cohort_unvax.csv
         flow_midpoint6: output/dataset_clean/flow-cohort_unvax-midpoint6.csv
       highly_sensitive:
         cohort_clean: output/dataset_clean/input_unvax_clean.rds
 
-  ## Generate input_vax_clean, with describe = TRUE 
+  ## Generate input_vax_clean, with describe = FALSE 
 
   generate_input_vax_clean:
-    run: r:v2 analysis/dataset_clean/dataset_clean.R vax TRUE
+    run: r:v2 analysis/dataset_clean/dataset_clean.R vax FALSE
     needs:
     - study_dates
     - generate_input_vax
     outputs:
       moderately_sensitive:
-        describe_raw: output/describe/vax_raw.txt
-        describe_preprocessed: output/describe/vax_preprocessed.txt
         flow: output/dataset_clean/flow-cohort_vax.csv
         flow_midpoint6: output/dataset_clean/flow-cohort_vax-midpoint6.csv
       highly_sensitive:
