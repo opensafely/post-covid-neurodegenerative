@@ -51,10 +51,17 @@ if (length(unique(df$analysis)) > 1) {
 df$outcome_label <- factor(
   df$outcome_label,
   levels = c(
-    "Pneumonia",
-    "Asthma",
-    "Chronic obstructive pulmonary disease",
-    "Pulmonary fibrosis"
+    "Alzheimer's Disease",
+    "Vascular Dementia",
+    "Lewy Body Dementia",
+    "Any Dementia",
+    "Cognitive Impairment Symptoms",
+    "Parkinson's Disease",
+    "Restless Leg Syndrome",
+    "REM Sleep Disorder",
+    "Motor Neurone Disease",
+    "Multiple Sclerosis",
+    "Migraine"
   )
 )
 

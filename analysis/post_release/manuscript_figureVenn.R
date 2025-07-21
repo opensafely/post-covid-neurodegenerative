@@ -1,3 +1,7 @@
+# Comment out after release is ready
+release = "output/"
+path_venn <- paste0(release, "make_output/venn_output_midpoint6.csv")
+
 # Create directory -------------------------------------------------------------
 print("Create directory")
 
