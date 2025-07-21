@@ -1,7 +1,11 @@
+# Comment out these two lines once table is in the right format
+path_table2 = "C:\\Users\\pp24053\\Documents\\GitHub\\post-covid-neurodegenerative\\output\\make_output\\table2-sub_covidhospital_output_midpoint6.csv"
+output_folder = "output\\post_release\\"
+
 # Load data --------------------------------------------------------------------
 print("Load data")
 
-df <- read_csv("output/plot_model_output.csv")
+df <- read_csv("output/post_release/plot_model_output.csv")
 
 # Filter data ------------------------------------------------------------------
 print("Filter data")
@@ -73,12 +77,8 @@ df <- df %>%
   mutate(
     weeks = case_when(
       term == "days0_1" ~ "Day 0",
-      term == "days1_7" ~ "Week 1, without day 0",
-      term == "days7_14" ~ "Week 2",
-      term == "days14_28" ~ "Weeks 3-4",
-      term == "days28_56" ~ "Weeks 5-8",
-      term == "days56_84" ~ "Weeks 9-12",
-      term == "days84_183" ~ "Weeks 13-26",
+      term == "days1_28" ~ "Weeks 1-4, without day 0",
+      term == "days28_183" ~ "Weeks 5-26",
       term == "days183_365" ~ "Weeks 27-52",
       term == "days365_730" ~ "Weeks 53-104",
       term == "days730_1065" ~ "Weeks 105-152",
@@ -90,12 +90,8 @@ df <- df %>%
 # Define the desired order for the 'weeks' factor
 weeks_levels <- c(
   "Day 0",
-  "Week 1, without day 0",
-  "Week 2",
-  "Weeks 3-4",
-  "Weeks 5-8",
-  "Weeks 9-12",
-  "Weeks 13-26",
+  "Weeks 1-4, without day 0",
+  "Weeks 5-26",
   "Weeks 27-52",
   "Weeks 53-104",
   "Weeks 105-152",
@@ -105,20 +101,27 @@ weeks_levels <- c(
 # Convert 'weeks' to a factor with specified levels
 df$weeks <- factor(df$weeks, levels = weeks_levels)
 
-# Can change this bit for sub-group analyses
-df$subgroup <- sub("_preex.*", "", df$analysis)
-df$analysis <- gsub(".*(?=preex)", "", df$analysis, perl = TRUE)
+# # Can change this bit for sub-group analyses
+# df$subgroup <- sub("_preex.*", "", df$analysis)
+# df$analysis <- gsub(".*(?=preex)", "", df$analysis, perl = TRUE)
 
 # Define factor levels for sorting
-df$analysis <- factor(df$analysis, levels = c("preex_FALSE", "preex_TRUE"))
+# df$analysis <- factor(df$analysis, levels = c("preex_FALSE", "preex_TRUE"))
 
 df$outcome_label <- factor(
   df$outcome_label,
   levels = c(
-    "Pneumonia",
-    "Asthma",
-    "Chronic obstructive pulmonary disease",
-    "Pulmonary fibrosis"
+    "Alzheimer's Disease",
+    "Vascular Dementia",
+    "Lewy Body Dementia",
+    "Any Dementia",
+    "Cognitive Impairment Symptoms",
+    "Parkinson's Disease",
+    "Restless Leg Syndrome",
+    "REM Sleep Disorder",
+    "Motor Neurone Disease",
+    "Multiple Sclerosis",
+    "Migraine"
   )
 )
 
@@ -129,7 +132,7 @@ df <- df[order(df$analysis, df$outcome_label, df$weeks), ]
 print("Pivot table")
 
 df <- df[, c(
-  "subgroup",
+  # "subgroup",
   "analysis",
   "cohort",
   "outcome_label",
@@ -145,12 +148,17 @@ df <- tidyr::pivot_wider(
 
 # Tidy table -------------------------------------------------------------------
 df <- df %>%
-  arrange(subgroup, outcome_label, analysis, weeks)
+  arrange(
+    # subgroup,
+    outcome_label,
+    analysis,
+    weeks
+  )
 
 # Reorder columns -------------------------------------------------------------
 df <- df %>%
   dplyr::select(
-    subgroup,
+    # subgroup,
     outcome_label,
     analysis,
     weeks,
