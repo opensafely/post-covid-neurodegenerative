@@ -3,7 +3,10 @@ plot_hr <- function(outcomes, outcome_group) {
   # Load data --------------------------------------------------------------------
   print("Load data")
 
-  df <- readr::read_csv("output/plot_model_output.csv", show_col_types = FALSE)
+  df <- readr::read_csv(
+    "output/post_release/plot_model_output.csv",
+    show_col_types = FALSE
+  )
 
   df <- df[!is.na(df$hr), ]
 
@@ -28,8 +31,8 @@ plot_hr <- function(outcomes, outcome_group) {
   ]
 
   df <- df[!(df$term %in% c("days_pre", "days0_1")), ]
-  df$preex <- sub(".*?(?=preex_)", "", df$analysis, perl = TRUE)
-  df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
+  # df$preex <- sub(".*?(?=preex_)", "", df$analysis, perl = TRUE)
+  # df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
 
   # Make columns numeric ---------------------------------------------------------
   print("Make columns numeric")
@@ -53,15 +56,15 @@ plot_hr <- function(outcomes, outcome_group) {
     all.x = TRUE
   )
   df <- dplyr::rename(df, "outcome_label" = "label")
-
-  df <- merge(
-    df,
-    plot_labels[, c("term", "label")],
-    by.x = "preex",
-    by.y = "term",
-    all.x = TRUE
-  )
-  df <- dplyr::rename(df, "preex_label" = "label")
+  #
+  #   df <- merge(
+  #     df,
+  #     plot_labels[, c("term", "label")],
+  #     by.x = "preex",
+  #     by.y = "term",
+  #     all.x = TRUE
+  #   )
+  #   df <- dplyr::rename(df, "preex_label" = "label")
 
   df <- merge(
     df,
@@ -77,7 +80,7 @@ plot_hr <- function(outcomes, outcome_group) {
 
   df$facet_label <- ifelse(
     df$ref == 1,
-    paste0(df$outcome_label, "\n\n", df$preex_label, "\n\n", df$analysis_label),
+    paste0(df$outcome_label, "\n\n", df$analysis_label), # "\n\n", df$preex_label,
     df$analysis_label
   )
 
@@ -116,11 +119,11 @@ plot_hr <- function(outcomes, outcome_group) {
       "outcome",
       "analysis",
       "ref",
-      "preex",
+      # "preex",
       "facet_label"
     )])
     facet_info <- facet_info[
-      order(facet_info$outcome, facet_info$preex, facet_info$ref),
+      order(facet_info$outcome, facet_info$ref), # facet_info$preex,
     ]
     facet_info$facet_order <- 1:nrow(facet_info)
 
@@ -140,6 +143,7 @@ plot_hr <- function(outcomes, outcome_group) {
     df_plot <- merge(df_plot, facet_info)
 
     # Plot data ------------------------------------------------------------------
+    print("Plot data")
     print("Plot data")
 
     p <- ggplot2::ggplot(
@@ -182,8 +186,7 @@ plot_hr <- function(outcomes, outcome_group) {
         plot.background = ggplot2::element_rect(
           fill = "white",
           colour = "white"
-        ),
-        axis.text.x = ggplot2::element_text(angle = 50, vjust = 1, hjust = 1)
+        )
       )
 
     if (grepl("history_exposure", i)) {
@@ -209,9 +212,9 @@ plot_hr <- function(outcomes, outcome_group) {
           trans = "log"
         ) +
         ggplot2::scale_x_continuous(
-          lim = c(0, 1162),
-          breaks = seq(0, 1162, 112),
-          labels = seq(0, 1162, 112) / 7
+          limits = c(0, 1456),
+          breaks = c(0, 182, 364, 546, 728, 910, 1092, 1274, 1456),
+          labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
@@ -224,9 +227,9 @@ plot_hr <- function(outcomes, outcome_group) {
           trans = "log"
         ) +
         ggplot2::scale_x_continuous(
-          lim = c(0, 1162),
-          breaks = seq(0, 1162, 112),
-          labels = seq(0, 1162, 112) / 7
+          limits = c(0, 1456),
+          breaks = c(0, 182, 364, 546, 728, 910, 1092, 1274, 1456),
+          labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(ncol = 1, byrow = TRUE))
@@ -239,9 +242,9 @@ plot_hr <- function(outcomes, outcome_group) {
           trans = "log"
         ) +
         ggplot2::scale_x_continuous(
-          lim = c(0, 1162),
-          breaks = seq(0, 1162, 112),
-          labels = seq(0, 1162, 112) / 7
+          limits = c(0, 1456),
+          breaks = c(0, 182, 364, 546, 728, 910, 1092, 1274, 1456),
+          labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
@@ -262,6 +265,8 @@ plot_hr <- function(outcomes, outcome_group) {
   }
 }
 
-plot_hr("pneumonia", "pneumonia")
-plot_hr(c("asthma", "copd"), "asthma_copd")
-plot_hr("pf", "pf")
+plot_hr(c("dem_alz", "dem_vasc"), "alz_vasc")
+plot_hr(c("dem_lb", "dem_any"), "lb_any")
+plot_hr(c("cis", "park"), "cis_park")
+plot_hr(c("rls", "rsd"), "rls_rsd")
+plot_hr(c("mnd", "ms", "migraine"), "mnd_ms_migraine")

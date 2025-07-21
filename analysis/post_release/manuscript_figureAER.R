@@ -10,20 +10,20 @@ plot_aer <- function(outcomes, outcome_group) {
   print("Filter data")
 
   df <- df[df$outcome %in% outcomes, ]
-  df$preex <- sub(".*?(?=preex_)", "", df$analysis, perl = TRUE)
-  df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
+  # df$preex <- sub(".*?(?=preex_)", "", df$analysis, perl = TRUE)
+  # df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
 
   # Format aer_age ---------------------------------------------------------------
   print("Format aer_age")
 
   df$aer_age <- factor(
     df$aer_age,
-    levels = c("18_39", "40_59", "60_79", "80_110", "overall"),
+    levels = c("18_39", "40_64", "65_84", "85_110", "overall"),
     labels = c(
       "Age group: 18-39",
-      "Age group: 40-59",
-      "Age group: 60-79",
-      "Age group: 80-110",
+      "Age group: 40-64",
+      "Age group: 65-84",
+      "Age group: 85-110",
       "Combined"
     )
   )
@@ -51,14 +51,14 @@ plot_aer <- function(outcomes, outcome_group) {
   )
   df <- dplyr::rename(df, "outcome_label" = "label")
 
-  df <- merge(
-    df,
-    plot_labels[, c("term", "label")],
-    by.x = "preex",
-    by.y = "term",
-    all.x = TRUE
-  )
-  df <- dplyr::rename(df, "preex_label" = "label")
+  # df <- merge(
+  #   df,
+  #   plot_labels[, c("term", "label")],
+  #   by.x = "preex",
+  #   by.y = "term",
+  #   all.x = TRUE
+  # )
+  # df <- dplyr::rename(df, "preex_label" = "label")
 
   df <- merge(
     df,
@@ -86,14 +86,14 @@ plot_aer <- function(outcomes, outcome_group) {
 
   facet_info <- unique(df[, c(
     "outcome_label",
-    "preex",
-    "preex_label",
+    # "preex",
+    # "preex_label",
     "cohort_label"
   )])
   facet_info <- facet_info[
     order(
       facet_info$outcome_label,
-      facet_info$preex,
+      # facet_info$preex,
       facet_info$cohort_label
     ),
   ]
@@ -108,10 +108,10 @@ plot_aer <- function(outcomes, outcome_group) {
         facet_info[j, ]$outcome_label,
         paste0(rep(" ", j), collapse = "")
       ),
-      "\n\n",
-      facet_info[j, ]$cohort_label,
-      "\n\n",
-      facet_info[j, ]$preex_label
+      "\n",
+      facet_info[j, ]$cohort_label
+      # ,"\n\n",
+      # facet_info[j, ]$preex_label
     )
   }
 
@@ -192,6 +192,9 @@ plot_aer <- function(outcomes, outcome_group) {
     scale = 1
   )
 }
-plot_aer("pneumonia", "pneumonia")
-plot_aer(c("asthma", "copd"), "asthma_copd")
-plot_aer("pf", "pf")
+
+plot_aer(c("dem_alz", "dem_vasc"), "alz_vasc")
+plot_aer(c("dem_lb", "dem_any"), "lb_any")
+plot_aer(c("cis", "park"), "cis_park")
+plot_aer(c("rls", "rsd"), "rls_rsd")
+plot_aer(c("mnd", "ms", "migraine"), "mnd_ms_migraine")

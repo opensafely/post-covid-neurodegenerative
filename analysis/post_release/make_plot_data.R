@@ -3,7 +3,7 @@ print("Load model output")
 
 # List all CSV files matching the pattern
 file_list <- list.files(
-  path = path_release,
+  path = "output/make_output/", #old line: path_release,
   pattern = "^model_output-.*-midpoint6\\.csv$",
   full.names = TRUE
 )
@@ -13,4 +13,4 @@ df <- file_list %>%
   lapply(read_csv, show_col_types = FALSE) %>%
   bind_rows()
 
-  readr::write_csv(df, "output/plot_model_output.csv")
+  readr::write_csv(df, "output/post_release/plot_model_output.csv")

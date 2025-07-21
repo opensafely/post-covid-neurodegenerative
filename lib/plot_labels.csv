@@ -1,0 +1,66 @@
+﻿term,label,analysis_group,ref
+prevax,Pre-vaccination (Jan 1 2020 - Jun 18 2021),,
+vax,Vaccinated (Jun 1 2021 - Dec 14 2021),,
+unvax,Unvaccinated (Jun 1 2021 - Dec 14 2021),,
+main,All COVID-19,main,1
+All,All,,
+dem_alz,Alzheimer's Disease,,
+dem_vasc,Vascular Dementia,,
+dem_lb,Lewy Body Dementia,,
+dem_any,Any Dementia,,
+cis,Cognitive Impairment Symptoms,,
+park,Parkinson's Disease,,
+rls,Restless Leg Syndrome,,
+rsd,REM Sleep Disorder,,
+mnd,Motor Neurone Disease,,
+ms,Multiple Sclerosis,,
+migraine,Migraine,,
+sub_age_18_39,Age group: 18-39,age,1
+sub_age_40_64,Age group: 40-64,age,2
+sub_age_65_84,Age group: 65-84,age,3
+sub_age_85_110,Age group: 85-110,age,4
+sub_cis_TRUE,History of cognitive impairment,cis,1
+sub_cis_FALSE,No history of cognitive impairment,cis,2
+sub_covidhistory,History of COVID-19,history_exposure,1
+sub_covidhospital_TRUE,Hospitalised COVID-19,main,2
+sub_covidhospital_FALSE,Non-hospitalised COVID-19,main,3
+sub_ethnicity_asian,Ethnicity: South Asian,ethnicity,2
+sub_ethnicity_black,Ethnicity: Black,ethnicity,3
+sub_ethnicity_mixed,Ethnicity: Mixed,ethnicity,4
+sub_ethnicity_other,Ethnicity: Other,ethnicity,5
+sub_ethnicity_white,Ethnicity: White,ethnicity,1
+sub_highvascrisk_TRUE,History of hypertension and/or diabetes,highvascrisk,1
+sub_highvascrisk_FALSE,No history of either hypertension or diabetes,highvascrisk,2
+sub_park_TRUE,History of Parkinson’s disease,park,1
+sub_park_FALSE,No history of Parkinson’s disease,park,2
+sub_parkrisk_TRUE,History of Parkinson’s risk conditions,parkrisk,1
+sub_parkrisk_FALSE,No history of  Parkinson’s risk conditions,parkrisk,2
+sub_sex_female,Sex: Female,sex,1
+sub_sex_male,Sex: Male,sex,2
+cov_bin_ami,Acute myocardial infarction,,
+cov_bin_cancer,Cancer,,
+cov_bin_carehome,Care Home Resident,,
+cov_bin_ckd,Chronic kidney disease ,,
+cov_cat_consrate2019,GP consultations in 2019,,
+cov_bin_copd,Chronic obstructive pulmonary disease ,,
+cov_bin_depression,Depression,,
+cov_bin_diabetes,Diabetes,,
+cov_bin_hcworker,Healthcare worker,,
+cov_bin_hypertension,Hypertension,,
+cov_bin_liver_disease,Liver disease,,
+cov_bin_obesity,Obesity,,
+cov_bin_stroke_isch,Ischaemic stoke,,
+cov_bin_cis,History of Cognitive Impairment Symptoms,,
+cov_bin_dem_any,History of Dementia (Any),,
+cov_bin_highvascrisk,History of High Vascular Risk,,
+cov_bin_mnd,History of Motor Neurone Disease,,
+cov_bin_ms,History of Multiple Sclerosis,,
+cov_bin_migraine,History of Migraine,,
+cov_bin_park,History of Parkinson's,,
+cov_bin_parkrisk,History of Parkinson's Risk Factors,,
+cov_cat_age_group,"Age, years",,
+cov_cat_sex,Sex,,
+cov_cat_ethnicity,Ethnicity,,
+cov_cat_imd,Index of multiple deprivation quintile,,
+cov_cat_smoking,Smoking status,,
+strat_cat_region,Region,,
