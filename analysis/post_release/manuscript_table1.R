@@ -1,3 +1,7 @@
+# Comment out these two lines once table is in the right format
+path_table1 = "C:\\Users\\pp24053\\Documents\\GitHub\\post-covid-neurodegenerative\\output\\make_output\\table1_output_midpoint6.csv"
+output_folder = "output\\post_release\\"
+
 # Load data --------------------------------------------------------------------
 print("Load data")
 
@@ -8,24 +12,6 @@ colnames(df) <- gsub(" \\[.*?\\]", "", colnames(df))
 
 # Define ID columns
 id_vars <- c("Characteristic", "Subcharacteristic")
-
-# Subset preex_FALSE and preex_TRUE columns ------------------------------------
-print("Split tables")
-
-preex_false_cols <- grep("preex_FALSE$", names(df), value = TRUE)
-preex_true_cols <- grep("preex_TRUE$", names(df), value = TRUE)
-
-df_false <- df[, c(id_vars, preex_false_cols)]
-df_true <- df[, c(id_vars, preex_true_cols)]
-
-# Clean column names to standard form ------------------------------------------
-clean_names <- function(df, preex_flag) {
-  names(df) <- gsub(paste0("-", preex_flag, "$"), "", names(df)) # Remove suffix
-  return(df)
-}
-
-df_false <- clean_names(df_false, "preex_FALSE")
-df_true <- clean_names(df_true, "preex_TRUE")
 
 # Combine N and % columns ------------------------------------------------------
 combine_n_pct <- function(df) {
@@ -54,8 +40,8 @@ combine_n_pct <- function(df) {
   return(df)
 }
 
-df_false <- combine_n_pct(df_false)
-df_true <- combine_n_pct(df_true)
+df <- combine_n_pct(df)
+
 
 # Reorder columns to match: N (%), Diagnoses per cohort ------------------------
 reorder_cols <- function(df) {
@@ -71,19 +57,13 @@ reorder_cols <- function(df) {
   )]
 }
 
-df_false <- reorder_cols(df_false)
-df_true <- reorder_cols(df_true)
+df <- reorder_cols(df)
 
 # Save output ------------------------------------------------------------------
 print("Save tables")
 
 readr::write_csv(
-  df_false,
-  paste0(output_folder, "/table1_preex_false.csv"),
-  na = "-"
-)
-readr::write_csv(
-  df_true,
-  paste0(output_folder, "/table1_preex_true.csv"),
+  df,
+  paste0(output_folder, "/table1.csv"),
   na = "-"
 )
