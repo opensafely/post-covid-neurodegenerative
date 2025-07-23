@@ -42,7 +42,11 @@ describe <- FALSE # This prints descriptive files for each dataset in the pipeli
 
 # List of models excluded from model output generation
 
-excluded_models <- c("")
+excluded_models <- c(
+  "cohort_vax-sub_age_18_39-dem_lb",
+  "cohort_unvax-sub_age_18_39-dem_lb",
+  "cohort_prevax-sub_age_18_39-dem_lb"
+)
 
 # Create generic action function -----------------------------------------------
 

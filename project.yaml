@@ -12129,7 +12129,6 @@ actions:
     - cox_ipw-cohort_prevax-sub_age_18_39-cis
     - cox_ipw-cohort_prevax-sub_age_18_39-dem_alz
     - cox_ipw-cohort_prevax-sub_age_18_39-dem_any
-    - cox_ipw-cohort_prevax-sub_age_18_39-dem_lb
     - cox_ipw-cohort_prevax-sub_age_18_39-dem_vasc
     - cox_ipw-cohort_prevax-sub_age_18_39-migraine
     - cox_ipw-cohort_prevax-sub_age_18_39-mnd
@@ -12140,7 +12139,6 @@ actions:
     - cox_ipw-cohort_unvax-sub_age_18_39-cis
     - cox_ipw-cohort_unvax-sub_age_18_39-dem_alz
     - cox_ipw-cohort_unvax-sub_age_18_39-dem_any
-    - cox_ipw-cohort_unvax-sub_age_18_39-dem_lb
     - cox_ipw-cohort_unvax-sub_age_18_39-dem_vasc
     - cox_ipw-cohort_unvax-sub_age_18_39-migraine
     - cox_ipw-cohort_unvax-sub_age_18_39-mnd
@@ -12151,7 +12149,6 @@ actions:
     - cox_ipw-cohort_vax-sub_age_18_39-cis
     - cox_ipw-cohort_vax-sub_age_18_39-dem_alz
     - cox_ipw-cohort_vax-sub_age_18_39-dem_any
-    - cox_ipw-cohort_vax-sub_age_18_39-dem_lb
     - cox_ipw-cohort_vax-sub_age_18_39-dem_vasc
     - cox_ipw-cohort_vax-sub_age_18_39-migraine
     - cox_ipw-cohort_vax-sub_age_18_39-mnd
