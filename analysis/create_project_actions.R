@@ -116,6 +116,27 @@ generate_cohort <- function(cohort) {
   )
 }
 
+# Create function to run code diagnostics on a particular variable -------------
+
+check_outcome <- function(outcome, cohort) {
+  cohort_names <- stringr::str_split(as.vector(cohort), ";")[[1]]
+  splice(
+    comment(glue("Run check_outcome_{outcome}")),
+    action(
+      name = glue("check_outcome_{outcome}"),
+      run = glue("r:v2 analysis/code_diagnostics/diagnose_outcome.R"),
+      arguments = c(outcome),
+      needs = c(as.list(paste0(
+        "generate_input_",
+        cohort_names
+      ))),
+      moderately_sensitive = list(
+        describe_outcome = glue("output/code_diagnostics/{outcome}.txt")
+      )
+    )
+  )
+}
+
 # Create function to clean data -------------------------------------------------
 
 clean_data <- function(cohort, describe = describe) {
@@ -450,6 +471,18 @@ actions_list <- splice(
       lapply(cohorts, function(x) generate_cohort(cohort = x)),
       recursive = FALSE
     )
+  ),
+
+  ## Run code diagnostics a particular outcome ---------------------------------
+
+  # All RSD outcomes
+  splice(
+    check_outcome(outcome = "rsd_gp", cohort = paste0(cohorts, collapse = ";"))
+  ),
+
+  # Just RSD GP data
+  splice(
+    check_outcome(outcome = "rsd", cohort = paste0(cohorts, collapse = ";"))
   ),
 
   ## Clean data -----------------------------------------------------------
