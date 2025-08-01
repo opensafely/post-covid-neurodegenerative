@@ -67,8 +67,8 @@ for (cohort in cohorts) {
 
   col_classes <- setNames(
     c(
-      rep("c", length(id_cols)),
-      rep("D", length(out_cols))
+      rep("character", length(id_cols)),
+      rep("Date", length(out_cols))
     ),
     all_cols[match(
       c(id_cols, out_cols),
@@ -79,11 +79,12 @@ for (cohort in cohorts) {
 
   print('Load cohort dataset')
 
-  input <- read_csv(
+  input <- fread(
     file_path,
-    col_select = c(id_cols, out_cols),
-    col_types = col_classes
+    select = c(id_cols, out_cols),
+    colClasses = col_classes
   )
+
   message(paste0(
     "Dataset has been read successfully with N = ",
     nrow(input),
