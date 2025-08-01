@@ -16,13 +16,18 @@ library(stats)
 args <- commandArgs(trailingOnly = TRUE)
 print(length(args))
 if (length(args) == 0) {
-  outcome <- "rsd"
+  outcome <- "rsd" # outcome of interest (matches any columns containing this string)
+  cohorts <- c("prevax", "unvax", "vax") # cohorts to examine (can use "vax" or "prevax;vax;unvax" to specify single or multiple columns)
 } else {
   outcome <- args[[1]]
+  if (length(args) < 2) {
+    cohorts <- c("prevax", "unvax", "vax")
+  } else {
+    cohorts <- stringr::str_split(as.vector(args[[2]]), ";")[[1]]
+  } # allows both a single cohort or multiple cohorts to be specified
 }
 
-# Cohorts to check
-cohorts <- c("prevax", "unvax", "vax")
+cohort_str <- paste0("-", paste0(cohorts, collapse = "_"))
 
 # Define clean dataset output folder -------------------------------------------
 print("Creating output/code_diagnostics output folder")
@@ -33,7 +38,7 @@ dir_create(here::here(codediag_dir))
 # Define output text file ------------------------------------------------------
 print("creating output text file")
 
-out_file <- paste0(codediag_dir, outcome, ".txt")
+out_file <- paste0(codediag_dir, outcome, cohort_str, ".txt")
 
 # Start txt file ---------------------------------------------------------------
 sink(out_file)
@@ -67,8 +72,8 @@ for (cohort in cohorts) {
 
   col_classes <- setNames(
     c(
-      rep("character", length(id_cols)),
-      rep("Date", length(out_cols))
+      rep("c", length(id_cols)),
+      rep("D", length(out_cols))
     ),
     all_cols[match(
       c(id_cols, out_cols),
@@ -78,11 +83,16 @@ for (cohort in cohorts) {
   message("Column classes defined")
 
   print('Load cohort dataset')
-
-  input <- fread(
+  #
+  #   input <- fread(
+  #     file_path,
+  #     select = c(id_cols, out_cols),
+  #     colClasses = col_classes
+  #   )
+  input <- read_csv(
     file_path,
-    select = c(id_cols, out_cols),
-    colClasses = col_classes
+    col_select = c(id_cols, out_cols),
+    col_types = col_classes
   )
 
   message(paste0(

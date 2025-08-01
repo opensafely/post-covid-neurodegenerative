@@ -120,18 +120,21 @@ generate_cohort <- function(cohort) {
 
 check_outcome <- function(outcome, cohort) {
   cohort_names <- stringr::str_split(as.vector(cohort), ";")[[1]]
+  cohort_str <- paste0("-", paste0(cohort_names, collapse = "_"))
   splice(
-    comment(glue("Run check_outcome_{outcome}")),
+    comment(glue("Run check_outcome_{outcome}{cohort_str}")),
     action(
-      name = glue("check_outcome_{outcome}"),
+      name = glue("check_outcome_{outcome}{cohort_str}"),
       run = glue("r:v2 analysis/code_diagnostics/diagnose_outcome.R"),
-      arguments = c(outcome),
+      arguments = c(c(outcome), c(cohort)),
       needs = c(as.list(paste0(
         "generate_input_",
         cohort_names
       ))),
       moderately_sensitive = list(
-        describe_outcome = glue("output/code_diagnostics/{outcome}.txt")
+        describe_outcome = glue(
+          "output/code_diagnostics/{outcome}{cohort_str}.txt"
+        )
       )
     )
   )

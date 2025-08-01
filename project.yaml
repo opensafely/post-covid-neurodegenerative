@@ -63,17 +63,15 @@ actions:
       highly_sensitive:
         cohort: output/dataset_definition/input_vax.csv.gz
 
-  ## Run check_outcome_rsd 
+  ## Run check_outcome_rsd-vax 
 
-  check_outcome_rsd:
-    run: r:v2 analysis/code_diagnostics/diagnose_outcome.R rsd
+  check_outcome_rsd-vax:
+    run: r:v2 analysis/code_diagnostics/diagnose_outcome.R rsd vax
     needs:
-    - generate_input_prevax
-    - generate_input_unvax
     - generate_input_vax
     outputs:
       moderately_sensitive:
-        describe_outcome: output/code_diagnostics/rsd.txt
+        describe_outcome: output/code_diagnostics/rsd-vax.txt
 
   ## Generate input_prevax_clean, with describe = FALSE 
 
