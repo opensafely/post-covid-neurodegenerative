@@ -16,7 +16,7 @@ study_dates <-
   list(
     earliest_expec = "1900-01-01", # earliest date limit for project
     ref_age_1 = "2021-03-31", # reference date for calculating age for phase 1 JCVI groups
-    ref_age_2 = "2021-07-01", # reference date for calculating age forfor phase 2 JCVI groups
+    ref_age_2 = "2021-07-01", # reference date for calculating age for phase 2 JCVI groups
     ref_cev = "2021-01-18", # reference date for calculating eligibility for phase 1 JCVI group 4 (CEV: clinically extremely vulnerable group)
     ref_ar = "2021-02-15", # reference date for calculating eligibility for phase 1 JCVI group 5 (at-risk)
     pandemic_start = "2020-01-01", # start date for pandemic in UK

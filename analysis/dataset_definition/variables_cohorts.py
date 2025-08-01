@@ -837,7 +837,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         out_date_ms          = out_date_ms,         # Multiple Sclerosis
         out_date_neuro_other = out_date_neuro_other,# MS or MND
         out_date_park        = out_date_park,       # Parkinson's Disease
-        out_date_parkrisk   = out_date_parkrisk,  # combo of RSD and RLS (not fully sure if needed)
+        out_date_parkrisk    = out_date_parkrisk,   # combo of RSD and RLS 
         out_date_rls         = out_date_rls,        # Restless Leg Syndrome
         out_date_rsd         = out_date_rsd,        # REM Sleep Disorder
 
@@ -854,7 +854,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         tmp_out_date_ms_gp          = tmp_out_date_ms_gp,         # Multiple Sclerosis
         tmp_out_date_neuro_other_gp = tmp_out_date_neuro_other_gp,# MS or MND
         tmp_out_date_park_gp        = tmp_out_date_park_gp,       # Parkinson's Disease
-        tmp_out_date_parkrisk_gp   = tmp_out_date_parkrisk_gp,  # combo of RSD and RLS (not fully sure if needed)
+        tmp_out_date_parkrisk_gp    = tmp_out_date_parkrisk_gp,   # combo of RSD and RLS
         tmp_out_date_rls_gp         = tmp_out_date_rls_gp,        # Restless Leg Syndrome
         tmp_out_date_rsd_gp         = tmp_out_date_rsd_gp,        # REM Sleep Disorder
 
