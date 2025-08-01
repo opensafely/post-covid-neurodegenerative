@@ -477,11 +477,6 @@ actions_list <- splice(
 
   # All RSD outcomes
   splice(
-    check_outcome(outcome = "rsd_gp", cohort = paste0(cohorts, collapse = ";"))
-  ),
-
-  # Just RSD GP data
-  splice(
     check_outcome(outcome = "rsd", cohort = paste0(cohorts, collapse = ";"))
   ),
 
