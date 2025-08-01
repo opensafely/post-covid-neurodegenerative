@@ -11,6 +11,7 @@ library(skimr)
 library(fs)
 library(base)
 library(stats)
+library(vroom)
 
 # Process input arguments ----------------------------------------------------
 args <- commandArgs(trailingOnly = TRUE)
@@ -83,13 +84,8 @@ for (cohort in cohorts) {
   message("Column classes defined")
 
   print('Load cohort dataset')
-  #
-  #   input <- fread(
-  #     file_path,
-  #     select = c(id_cols, out_cols),
-  #     colClasses = col_classes
-  #   )
-  input <- read_csv(
+
+  input <- vroom(
     file_path,
     col_select = c(id_cols, out_cols),
     col_types = col_classes
