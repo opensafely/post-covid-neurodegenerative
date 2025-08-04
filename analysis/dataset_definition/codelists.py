@@ -460,6 +460,12 @@ rsd_icd10 = codelist_from_csv(
   column = "code",
 )
 
+# Additional temporary REM sleep disorder (RSD)
+rsd_snomed_new = codelist_from_csv(
+  "codelists/bristol-rem-sleep-disorder-snomed-ct-v13.csv",
+  column = "code",
+)
+
 # Migraine
 migraine_snomed = codelist_from_csv(
   "codelists/bristol-migraine-snomed-ct-v13.csv",
