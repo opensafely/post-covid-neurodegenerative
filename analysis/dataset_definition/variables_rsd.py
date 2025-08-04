@@ -1,20 +1,11 @@
 from ehrql import (
-    days,
     case,
     when,
-    minimum_of,
+    minimum_of
 )
 # Bring table definitions from the TPP backend 
 from ehrql.tables.tpp import ( 
-    patients, 
-    practice_registrations, 
-    addresses, 
-    appointments, 
-    occupation_on_covid_vaccine_record,
-    sgss_covid_all_tests,
-    apcs, 
-    clinical_events, 
-    ons_deaths,
+    ons_deaths
 )
 
 # Codelists from codelists.py (which pulls all variables from the codelist folder)
@@ -23,15 +14,9 @@ from codelists import *
 
 # Call functions from variable_helper_functions
 from variable_helper_functions import (
-    ever_matching_event_clinical_ctv3_before,
     first_matching_event_clinical_snomed_between,
     first_matching_event_apc_between,
-    matching_death_between,
-    last_matching_event_clinical_ctv3_before,
-    last_matching_event_clinical_snomed_before,
-    last_matching_med_dmd_before,
-    last_matching_event_apc_before,
-    filter_codes_by_category,
+    matching_death_between
 )
 
 
