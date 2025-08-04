@@ -1,4 +1,4 @@
-from dataset_definition_rsd import generate_dataset_rsd
+from dataset_definition_rsd_cohorts import generate_dataset_rsd
 
 from ehrql.query_language import table_from_file, PatientFrame, Series
 

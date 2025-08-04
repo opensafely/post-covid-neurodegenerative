@@ -27,7 +27,7 @@ def generate_dataset_rsd(index_date, end_date_exp, end_date_out):
 
     from variables_rsd import generate_rsd
 
-    variables = generate_variables(index_date, end_date_exp, end_date_out)
+    variables = generate_rsd(index_date, end_date_exp, end_date_out)
 
     # Assign each variable to the dataset
 
