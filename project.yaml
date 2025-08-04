@@ -66,47 +66,59 @@ actions:
   ## Generate input_rsd_prevax 
 
   generate_input_rsd_prevax:
-    run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_rsd_prevax.py
-      --output output/dataset_definition/input_rsd_prevax.csv.gz
+    run: ehrql:v1 generate-dataset analysis/dataset_definition_rsd/dataset_definition_rsd_prevax.py
+      --output output/dataset_definition_rsd/input_rsd_prevax.csv.gz
     needs:
     - generate_dates
     outputs:
       highly_sensitive:
-        cohort: output/dataset_definition/input_rsd_prevax.csv.gz
+        cohort: output/dataset_definition_rsd/input_rsd_prevax.csv.gz
 
   ## Generate input_rsd_unvax 
 
   generate_input_rsd_unvax:
-    run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_rsd_unvax.py
-      --output output/dataset_definition/input_rsd_unvax.csv.gz
+    run: ehrql:v1 generate-dataset analysis/dataset_definition_rsd/dataset_definition_rsd_unvax.py
+      --output output/dataset_definition_rsd/input_rsd_unvax.csv.gz
     needs:
     - generate_dates
     outputs:
       highly_sensitive:
-        cohort: output/dataset_definition/input_rsd_unvax.csv.gz
+        cohort: output/dataset_definition_rsd/input_rsd_unvax.csv.gz
 
   ## Generate input_rsd_vax 
 
   generate_input_rsd_vax:
-    run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_rsd_vax.py
-      --output output/dataset_definition/input_rsd_vax.csv.gz
+    run: ehrql:v1 generate-dataset analysis/dataset_definition_rsd/dataset_definition_rsd_vax.py
+      --output output/dataset_definition_rsd/input_rsd_vax.csv.gz
     needs:
     - generate_dates
     outputs:
       highly_sensitive:
-        cohort: output/dataset_definition/input_rsd_vax.csv.gz
+        cohort: output/dataset_definition_rsd/input_rsd_vax.csv.gz
 
-  ## Run check_outcome_rsd-rsd_prevax_rsd_unvax_rsd_vax 
+  ## Run check_outcome_rsd-prevax_unvax_vax 
 
-  check_outcome_rsd-rsd_prevax_rsd_unvax_rsd_vax:
-    run: r:v2 analysis/code_diagnostics/diagnose_outcome.R rsd rsd_prevax;rsd_unvax;rsd_vax
+  check_outcome_rsd-prevax_unvax_vax:
+    run: r:v2 analysis/code_diagnostics/diagnose_outcome.R rsd prevax;unvax;vax
+    needs:
+    - generate_input_prevax
+    - generate_input_unvax
+    - generate_input_vax
+    outputs:
+      moderately_sensitive:
+        describe_outcome: output/code_diagnostics/rsd-prevax_unvax_vax.txt
+
+  ## Run check_outcome_rsd_rsd-prevax_unvax_vax 
+
+  check_outcome_rsd_rsd-prevax_unvax_vax:
+    run: r:v2 analysis/code_diagnostics/diagnose_outcome.R rsd prevax;unvax;vax rsd
     needs:
     - generate_input_rsd_prevax
     - generate_input_rsd_unvax
     - generate_input_rsd_vax
     outputs:
       moderately_sensitive:
-        describe_outcome: output/code_diagnostics/rsd-rsd_prevax_rsd_unvax_rsd_vax.txt
+        describe_outcome: output/code_diagnostics/rsd_rsd-prevax_unvax_vax.txt
 
   ## Generate input_prevax_clean, with describe = FALSE 
 

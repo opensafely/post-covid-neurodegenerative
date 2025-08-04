@@ -9,11 +9,11 @@ from ehrql.tables.tpp import (
 )
 
 # Codelists from codelists.py (which pulls all variables from the codelist folder)
-from codelists import *
+from codelists_rsd import *
 
 
 # Call functions from variable_helper_functions
-from variable_helper_functions import (
+from variable_rsd_helper_functions import (
     first_matching_event_clinical_snomed_between,
     first_matching_event_apc_between,
     matching_death_between
@@ -22,7 +22,7 @@ from variable_helper_functions import (
 
 def generate_rsd(index_date, end_date_exp, end_date_out):  
 
-# Defining jsut the rsd variables
+# Defining just the rsd variables
 
     ## RSD
     tmp_out_date_rsd_gp= (
