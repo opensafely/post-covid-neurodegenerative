@@ -476,11 +476,20 @@ actions_list <- splice(
     )
   ),
 
+  ## Generate RSD study population --------------------------------------------
+
+  splice(
+    unlist(
+      lapply(paste0("rsd_",cohorts), function(x) generate_cohort(cohort = x)),
+      recursive = FALSE
+    )
+  ),
+
   ## Run code diagnostics a particular outcome ---------------------------------
 
   # All RSD outcomes
   splice(
-    check_outcome(outcome = "rsd", cohort = paste0(cohorts, collapse = ";"))
+    check_outcome(outcome = "rsd", cohort = paste0(paste0("rsd_",cohorts), collapse = ";"))
   ),
 
   ## Clean data -----------------------------------------------------------
