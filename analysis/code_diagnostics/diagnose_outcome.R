@@ -141,6 +141,4 @@ for (cohort in cohorts) {
 }
 sink()
 
-message(paste0(
-  "File closed"
-))
+message(paste0(out_file, " closed"))
