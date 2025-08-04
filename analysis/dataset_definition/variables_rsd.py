@@ -83,13 +83,14 @@ def generate_rsd(index_date, end_date_exp, end_date_out):
         out_date_rsd         = out_date_rsd,        # REM Sleep Disorder
 
         ## Tmp GP
-        tmp_out_date_rsd_gp         = tmp_out_date_rsd_gp,        # REM Sleep Disorder
+        tmp_out_date_rsd_gp         = tmp_out_date_rsd_gp,              # REM Sleep Disorder
+        tmp_out_date_rsd_gp_new     = tmp_out_date_rsd_gp_new,          # REM Sleep Disorder
 
         ## Tmp APC
-        tmp_out_date_rsd_apc         = tmp_out_date_rsd_apc,        # REM Sleep Disorder
+        tmp_out_date_rsd_apc         = tmp_out_date_rsd_apc,            # REM Sleep Disorder
 
         ## Tmp Death
-        tmp_out_date_rsd_death         = tmp_out_date_rsd_death,         # REM Sleep Disorder
+        tmp_out_date_rsd_death         = tmp_out_date_rsd_death,        # REM Sleep Disorder
     ) 
     
     return dynamic_variables
