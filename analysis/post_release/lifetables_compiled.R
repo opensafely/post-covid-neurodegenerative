@@ -1,7 +1,7 @@
-# Comment out when ready
-release <- "output/" # Specify path to release directory
-path_aer_input <- paste0(release, "make_output/aer_input-main-midpoint6.csv")
-source("analysis/post_release/fn-lifetable.R")
+# # Comment out when ready
+# release <- "output/" # Specify path to release directory
+# path_aer_input <- paste0(release, "make_output/aer_input-main-midpoint6.csv")
+# source("analysis/post_release/fn-lifetable.R")
 
 # Specify parameters -----------------------------------------------------------
 print('Specify parameters')

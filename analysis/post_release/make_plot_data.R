@@ -1,9 +1,12 @@
 # Load model output --------------------------------------------------------------------
 print("Load model output")
 
+# release <- "C:\\Users\\pp24053\\OneDrive - University of Bristol\\Documents - grp-EHR\\Projects\\post-covid-events\\post-covid-neurodegenerative\\release", # Specify path to release directory
+
 # List all CSV files matching the pattern
 file_list <- list.files(
-  path = "output/make_output/", #old line: path_release,
+  # path = paste0(release,"20250804/"),
+  path = path_release,
   pattern = "^model_output-.*-midpoint6\\.csv$",
   full.names = TRUE
 )
@@ -13,4 +16,4 @@ df <- file_list %>%
   lapply(read_csv, show_col_types = FALSE) %>%
   bind_rows()
 
-  readr::write_csv(df, "output/post_release/plot_model_output.csv")
+  readr::write_csv(df, paste0(release,"output/post_release/plot_model_output.csv")) # CHECK THIS
