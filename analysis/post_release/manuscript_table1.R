@@ -1,6 +1,6 @@
-# Comment out these two lines once table is in the right format
-path_table1 = "C:\\Users\\pp24053\\Documents\\GitHub\\post-covid-neurodegenerative\\output\\make_output\\table1_output_midpoint6.csv"
-output_folder = "output\\post_release\\"
+# # Comment out these two lines once table is in the right format
+# path_table1 = "C:\\Users\\pp24053\\Documents\\GitHub\\post-covid-neurodegenerative\\output\\make_output\\table1_output_midpoint6.csv"
+# output_folder = "output\\post_release\\"
 
 # Load data --------------------------------------------------------------------
 print("Load data")
