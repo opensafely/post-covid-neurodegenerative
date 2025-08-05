@@ -116,24 +116,51 @@ generate_cohort <- function(cohort) {
   )
 }
 
+# Create function to generate rsd study population ---------------------------------
+
+generate_rsd_cohort <- function(cohort) {
+  splice(
+    comment(glue("Generate input_rsd_{cohort}")),
+    action(
+      name = glue("generate_input_rsd_{cohort}"),
+      run = glue(
+        "ehrql:v1 generate-dataset analysis/dataset_definition_rsd/dataset_definition_rsd_{cohort}.py --output output/dataset_definition_rsd/input_rsd_{cohort}.csv.gz"
+      ),
+      needs = list("generate_dates"),
+      highly_sensitive = list(
+        cohort = glue("output/dataset_definition_rsd/input_rsd_{cohort}.csv.gz")
+      )
+    )
+  )
+}
+
 # Create function to run code diagnostics on a particular variable -------------
 
-check_outcome <- function(outcome, cohort) {
+check_outcome <- function(outcome, cohort, dd_group = "") {
   cohort_names <- stringr::str_split(as.vector(cohort), ";")[[1]]
   cohort_str <- paste0("-", paste0(cohort_names, collapse = "_"))
+  if (dd_group != "") {
+    dd_group_str <- paste0("_", dd_group)
+  } else{dd_group_str <-""}
   splice(
-    comment(glue("Run check_outcome_{outcome}{cohort_str}")),
+    comment(glue("Run check_outcome_{outcome}{dd_group_str}{cohort_str}")),
     action(
-      name = glue("check_outcome_{outcome}{cohort_str}"),
+      name = glue("check_outcome_{outcome}{dd_group_str}{cohort_str}"),
       run = glue("r:v2 analysis/code_diagnostics/diagnose_outcome.R"),
-      arguments = c(c(outcome), c(cohort)),
+      arguments = unlist(lapply(
+        list(c(outcome, cohort, dd_group)),
+        function(x) {
+          x[x != ""]
+        }
+      )),
       needs = c(as.list(paste0(
-        "generate_input_",
+        "generate_input",
+        dd_group_str,"_",
         cohort_names
       ))),
       moderately_sensitive = list(
         describe_outcome = glue(
-          "output/code_diagnostics/{outcome}{cohort_str}.txt"
+          "output/code_diagnostics/{outcome}{dd_group_str}{cohort_str}.txt"
         )
       )
     )
@@ -476,11 +503,29 @@ actions_list <- splice(
     )
   ),
 
+  ## Generate RSD study population --------------------------------------------
+
+  splice(
+    unlist(
+      lapply(cohorts, function(x) generate_rsd_cohort(cohort = x)),
+      recursive = FALSE
+    )
+  ),
+
   ## Run code diagnostics a particular outcome ---------------------------------
 
-  # All RSD outcomes
+  # All RSD outcomes in core dataset
   splice(
     check_outcome(outcome = "rsd", cohort = paste0(cohorts, collapse = ";"))
+  ),
+
+  # All RSD outcomes in rsd dataset
+  splice(
+    check_outcome(
+      outcome = "rsd",
+      cohort = paste0(cohorts, collapse = ";"),
+      dd_group = "rsd"
+    )
   ),
 
   ## Clean data -----------------------------------------------------------
