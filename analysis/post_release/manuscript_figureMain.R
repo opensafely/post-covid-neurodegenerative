@@ -75,11 +75,17 @@ plot_hr <- function(outcomes, outcome_group) {
   )
   df <- dplyr::rename(df, "analysis_label" = "label")
 
+  # Find which plot the facet label should be on ---------------------------------
+  df <- df %>%
+    group_by(outcome, analysis_group) %>%
+    mutate(is_min_ref = ref == min(ref, na.rm = TRUE)) %>%
+    ungroup()
+
   # Add facet labels -------------------------------------------------------------
   print("Add facet labels")
 
   df$facet_label <- ifelse(
-    df$ref == 1,
+    df$is_min_ref,
     paste0(df$outcome_label, "\n\n", df$analysis_label), # "\n\n", df$preex_label,
     df$analysis_label
   )
@@ -270,3 +276,7 @@ plot_hr(c("dem_lb", "dem_any"), "lb_any")
 plot_hr(c("cis", "park"), "cis_park")
 plot_hr(c("rls", "rsd"), "rls_rsd")
 plot_hr(c("mnd", "ms", "migraine"), "mnd_ms_migraine")
+
+# Here for testing
+outcomes <- c("dem_alz", "dem_vasc")
+outcome_group <- "alz_vasc"
