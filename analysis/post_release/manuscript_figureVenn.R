@@ -41,6 +41,8 @@ for (i in 1:nrow(df)) {
     n123 = df[i, ]$gp_apc_death,
     category = c("Primary care", "Secondary care", "Death registry"),
     col = "white",
+    euler.d = FALSE,
+    scaled = FALSE,
     fill = c("#1b9e77", "#d95f02", "#7570b3"),
     print.mode = c("raw", "percent"),
     sigdigs = 3
