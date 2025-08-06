@@ -30,7 +30,7 @@ source("analysis/utility.R")
 print('Make post-release directory')
 
 dir.create("output/post_release/", recursive = TRUE, showWarnings = FALSE)
-output_folder <- "output/post_release"
+output_folder <- "output/post_release/"
 
 # Make master plot file --------------------------------------------------------
 print('Make master plot file')
