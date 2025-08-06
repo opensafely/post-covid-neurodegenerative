@@ -24,7 +24,7 @@ combine_n_pct <- function(df) {
       df[[combined_col]] <- ifelse(
         tolower(df$Subcharacteristic) %in% c("all", "median (iqr)"),
         df[[n_col]], # show only N
-        paste0(df[[n_col]], " ", df[[pct_col]]) # combine N and (%)
+        paste0(df[[n_col]], " (", df[[pct_col]], ")") # combine N and (%)
       )
     }
   }
