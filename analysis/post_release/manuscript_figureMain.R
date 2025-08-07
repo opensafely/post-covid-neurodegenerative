@@ -150,7 +150,6 @@ plot_hr <- function(outcomes, outcome_group) {
 
     # Plot data ------------------------------------------------------------------
     print("Plot data")
-    print("Plot data")
 
     p <- ggplot2::ggplot(
       data = df_plot,
