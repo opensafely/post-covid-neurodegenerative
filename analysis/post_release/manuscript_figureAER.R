@@ -126,7 +126,7 @@ plot_aer <- function(outcomes, outcome_group) {
   print("Plot data")
 
   ggplot2::ggplot(
-    data = df[df$days < 197, ],
+    data = df[df$days < 365, ],
     mapping = ggplot2::aes(
       x = days / 7,
       y = cumulative_difference_absolute_excess_risk * 100,
@@ -136,14 +136,14 @@ plot_aer <- function(outcomes, outcome_group) {
   ) +
     ggplot2::geom_line() +
     ggplot2::scale_x_continuous(
-      lim = c(0, 28),
-      breaks = seq(0, 28, 4),
-      labels = seq(0, 28, 4)
+      lim = c(0, 52),
+      breaks = seq(0, 52, 4),
+      labels = seq(0, 52, 4)
     ) +
     ggplot2::scale_y_continuous(
-      lim = c(0, 2),
-      breaks = seq(0, 2, 0.5),
-      labels = seq(0, 2, 0.5)
+      lim = c(0, 5),
+      breaks = seq(0, 5, 0.5),
+      labels = seq(0, 5, 0.5)
     ) +
     ggplot2::scale_color_manual(
       values = c("#006d2c", "#31a354", "#74c476", "#bae4b3", "#000000"),
