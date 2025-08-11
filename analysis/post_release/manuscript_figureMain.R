@@ -34,7 +34,7 @@ plot_hr <- function(outcomes, outcome_group) {
   # df$preex <- sub(".*?(?=preex_)", "", df$analysis, perl = TRUE)
   # df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
 
-  # Experimental high/low checks (otherwise just removess error_bar out of bounds) 
+  # Experimental high/low checks (otherwise just removess error_bar out of bounds)
 
   # df$conf_low <- ifelse(
   #   df$conf_low >= 0.25,
@@ -220,9 +220,9 @@ plot_hr <- function(outcomes, outcome_group) {
           trans = "log"
         ) +
         ggplot2::scale_x_continuous(
-          lim = c(0, 156),
-          breaks = seq(0, 156, 14),
-          labels = seq(0, 156, 14) / 7
+          lim = c(0, 1000),
+          breaks = seq(0, 1000, 182),
+          labels = seq(0, 1000, 182) / 7
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(ncol = 1, byrow = TRUE))
