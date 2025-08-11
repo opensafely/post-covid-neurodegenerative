@@ -34,6 +34,20 @@ plot_hr <- function(outcomes, outcome_group) {
   # df$preex <- sub(".*?(?=preex_)", "", df$analysis, perl = TRUE)
   # df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
 
+  # Experimental high/low checks (otherwise just removess error_bar out of bounds) 
+
+  # df$conf_low <- ifelse(
+  #   df$conf_low >= 0.25,
+  #   df$conf_low,
+  #   0.25
+  # )
+
+  # df$conf_high <- ifelse(
+  #   df$conf_high <= 20,
+  #   df$conf_high,
+  #   20
+  # )
+
   # Make columns numeric ---------------------------------------------------------
   print("Make columns numeric")
 
@@ -161,7 +175,11 @@ plot_hr <- function(outcomes, outcome_group) {
       ) +
       ggplot2::geom_point(position = ggplot2::position_dodge(width = 0)) +
       ggplot2::geom_errorbar(
-        mapping = ggplot2::aes(ymin = conf_low, ymax = conf_high, width = 0),
+        mapping = ggplot2::aes(
+          ymin = conf_low,
+          ymax = conf_high,
+          width = 0
+        ),
         position = ggplot2::position_dodge(width = 0)
       ) +
       ggplot2::geom_line(position = ggplot2::position_dodge(width = 0)) +
@@ -202,9 +220,9 @@ plot_hr <- function(outcomes, outcome_group) {
           trans = "log"
         ) +
         ggplot2::scale_x_continuous(
-          lim = c(0, 84),
-          breaks = seq(0, 84, 14),
-          labels = seq(0, 84, 14) / 7
+          lim = c(0, 156),
+          breaks = seq(0, 156, 14),
+          labels = seq(0, 156, 14) / 7
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(ncol = 1, byrow = TRUE))
@@ -270,12 +288,13 @@ plot_hr <- function(outcomes, outcome_group) {
   }
 }
 
-plot_hr(c("dem_alz", "dem_vasc"), "alz_vasc")
-plot_hr(c("dem_lb", "dem_any"), "lb_any")
-plot_hr(c("cis", "park"), "cis_park")
-plot_hr(c("rls", "rsd"), "rls_rsd")
-plot_hr(c("mnd", "ms", "migraine"), "mnd_ms_migraine")
+plot_hr(c("dem_any", "cis"), "dem+cis")
+plot_hr(c("park", "rls", "rsd"), "park+risk")
+plot_hr(c("dem_any", "cis", "park", "rls", "rsd"), "core_neuro")
+
+plot_hr(c("dem_alz", "dem_vasc", "dem_lb"), "dem_subgroups")
+plot_hr(c("mnd", "ms", "migraine"), "other_neuro")
 
 # Here for testing
-outcomes <- c("dem_alz", "dem_vasc")
-outcome_group <- "alz_vasc"
+outcomes <- c("dem_any", "cis")
+outcome_group <- "dem_any"
