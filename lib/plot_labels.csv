@@ -7,8 +7,8 @@ All,All,,
 dem_alz,Alzheimer's Disease,,
 dem_vasc,Vascular Dementia,,
 dem_lb,Lewy Body Dementia,,
-dem_any,Any Dementia,,
-cis,Cognitive Impairment Symptoms,,
+dem_any,Dementia,,
+cis,Cognitive Impairment,,
 park,Parkinson's Disease,,
 rls,Restless Leg Syndrome,,
 rsd,REM Sleep Disorder,,
@@ -34,7 +34,7 @@ sub_highvascrisk_FALSE,No history of either hypertension or diabetes,highvascris
 sub_park_TRUE,History of Parkinson’s disease,park,1
 sub_park_FALSE,No history of Parkinson’s disease,park,2
 sub_parkrisk_TRUE,History of Parkinson’s risk conditions,parkrisk,1
-sub_parkrisk_FALSE,No history of  Parkinson’s risk conditions,parkrisk,2
+sub_parkrisk_FALSE,No history of Parkinson’s risk conditions,parkrisk,2
 sub_sex_female,Sex: Female,sex,1
 sub_sex_male,Sex: Male,sex,2
 cov_bin_ami,Acute myocardial infarction,,
