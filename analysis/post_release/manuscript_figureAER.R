@@ -193,8 +193,15 @@ plot_aer <- function(outcomes, outcome_group) {
   )
 }
 
-plot_aer(c("dem_alz", "dem_vasc"), "alz_vasc")
-plot_aer(c("dem_lb", "dem_any"), "lb_any")
-plot_aer(c("cis", "park"), "cis_park")
-plot_aer(c("rls", "rsd"), "rls_rsd")
-plot_aer(c("mnd", "ms", "migraine"), "mnd_ms_migraine")
+
+plot_aer(c("dem_any", "cis"), "dem+cis")
+plot_aer(c("park", "rls", "rsd"), "park+risk")
+plot_aer(c("dem_alz", "dem_vasc", "dem_lb"), "dem_subgroups")
+plot_aer(c("mnd", "ms", "migraine"), "other_neuro")
+
+# Previous Plot set
+# plot_aer(c("dem_alz", "dem_vasc"), "alz_vasc")
+# plot_aer(c("dem_lb", "dem_any"), "lb_any")
+# plot_aer(c("cis", "park"), "cis_park")
+# plot_aer(c("rls", "rsd"), "rls_rsd")
+# plot_aer(c("mnd", "ms", "migraine"), "mnd_ms_migraine")
