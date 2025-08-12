@@ -91,10 +91,16 @@
       "sha": "a4d2f006f9077dad42c4bf56344903f6a1d1e809"
     },
     "bristol-rem-sleep-behaviour-disorder-snomed-ct-v13.csv": {
-      "id": "bristol/rem-sleep-behaviour-disorder-snomed-ct-v13/74416d43",
-      "url": "https://www.opencodelists.org/codelist/bristol/rem-sleep-behaviour-disorder-snomed-ct-v13/74416d43/",
-      "downloaded_at": "2025-08-04 12:32:53.203856Z",
-      "sha": "a4d2f006f9077dad42c4bf56344903f6a1d1e809"
+      "id": "bristol/rem-sleep-behaviour-disorder-snomed-ct-v13/1d81603d",
+      "url": "https://www.opencodelists.org/codelist/bristol/rem-sleep-behaviour-disorder-snomed-ct-v13/1d81603d/",
+      "downloaded_at": "2025-08-12 14:32:40.296800Z",
+      "sha": "2eab796e173c403f2cee9fc8552badb749d75717"
+    },
+    "bristol-rem-sleep-behaviour-disorder-ctv3.csv": {
+      "id": "bristol/rem-sleep-behaviour-disorder-ctv3/46c15336",
+      "url": "https://www.opencodelists.org/codelist/bristol/rem-sleep-behaviour-disorder-ctv3/46c15336/",
+      "downloaded_at": "2025-08-12 14:32:41.179240Z",
+      "sha": "0ac2db11dc345368e9c289cbd104efb21ba989ba"
     },
     "bristol-restless-leg-syndrome-snomed-ct-v13.csv": {
       "id": "bristol/restless-leg-syndrome-snomed-ct-v13/1b8ad40b",

@@ -13,7 +13,8 @@ bristol/parkinsons-disease-icd10-v13/66b92daa
 bristol/parkinsons-disease-snomed-ct-v13/7fc8a0df
 bristol/rem-sleep-disorder-icd10-v13/349a4740
 bristol/rem-sleep-disorder-snomed-ct-v13/4da9ba75
-bristol/rem-sleep-behaviour-disorder-snomed-ct-v13/74416d43
+bristol/rem-sleep-behaviour-disorder-snomed-ct-v13/1d81603d
+bristol/rem-sleep-behaviour-disorder-ctv3/46c15336
 bristol/restless-leg-syndrome-snomed-ct-v13/1b8ad40b
 bristol/smoke-and-eversmoke/16ff650f
 bristol/unspecified-dementia-icd10-v13/0d4660ae
