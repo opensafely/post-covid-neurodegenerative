@@ -36,17 +36,17 @@ plot_hr <- function(outcomes, outcome_group) {
 
   # Experimental high/low checks (otherwise just removess error_bar out of bounds)
 
-  # df$conf_low <- ifelse(
-  #   df$conf_low >= 0.25,
-  #   df$conf_low,
-  #   0.25
-  # )
+  df$conf_low <- ifelse(
+    df$conf_low >= 0.25,
+    df$conf_low,
+    0.25
+  )
 
-  # df$conf_high <- ifelse(
-  #   df$conf_high <= 20,
-  #   df$conf_high,
-  #   20
-  # )
+  df$conf_high <- ifelse(
+    df$conf_high <= 32,
+    df$conf_high,
+    32
+  )
 
   # Make columns numeric ---------------------------------------------------------
   print("Make columns numeric")
@@ -215,7 +215,7 @@ plot_hr <- function(outcomes, outcome_group) {
     if (grepl("history_exposure", i)) {
       p +
         ggplot2::scale_y_continuous(
-          lim = c(0.25, 20),
+          lim = c(0.25, 32),
           breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
           trans = "log"
         ) +
@@ -230,7 +230,7 @@ plot_hr <- function(outcomes, outcome_group) {
     } else if (facet_cols == 1) {
       p +
         ggplot2::scale_y_continuous(
-          lim = c(0.25, 20),
+          lim = c(0.25, 32),
           breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
           trans = "log"
         ) +
@@ -245,7 +245,7 @@ plot_hr <- function(outcomes, outcome_group) {
     } else if (facet_cols == 2) {
       p +
         ggplot2::scale_y_continuous(
-          lim = c(0.25, 20),
+          lim = c(0.25, 32),
           breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
           trans = "log"
         ) +
@@ -260,7 +260,7 @@ plot_hr <- function(outcomes, outcome_group) {
     } else {
       p +
         ggplot2::scale_y_continuous(
-          lim = c(0.25, 20),
+          lim = c(0.25, 32),
           breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
           trans = "log"
         ) +
