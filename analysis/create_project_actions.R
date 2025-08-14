@@ -141,7 +141,9 @@ check_outcome <- function(outcome, cohort, dd_group = "") {
   cohort_str <- paste0("-", paste0(cohort_names, collapse = "_"))
   if (dd_group != "") {
     dd_group_str <- paste0("_", dd_group)
-  } else{dd_group_str <-""}
+  } else {
+    dd_group_str <- ""
+  }
   splice(
     comment(glue("Run check_outcome_{outcome}{dd_group_str}{cohort_str}")),
     action(
@@ -155,7 +157,8 @@ check_outcome <- function(outcome, cohort, dd_group = "") {
       )),
       needs = c(as.list(paste0(
         "generate_input",
-        dd_group_str,"_",
+        dd_group_str,
+        "_",
         cohort_names
       ))),
       moderately_sensitive = list(
@@ -518,6 +521,7 @@ actions_list <- splice(
   splice(
     check_outcome(outcome = "rsd", cohort = paste0(cohorts, collapse = ";"))
   ),
+  check_outcome(outcome = "rsd", cohort = "prevax"),
 
   # All RSD outcomes in rsd dataset
   splice(
@@ -527,6 +531,7 @@ actions_list <- splice(
       dd_group = "rsd"
     )
   ),
+  check_outcome(outcome = "rsd", cohort = "prevax", dd_group = "rsd"),
 
   ## Clean data -----------------------------------------------------------
 

@@ -18,3 +18,8 @@ rsd_snomed_new = codelist_from_csv(
   "codelists/bristol-rem-sleep-behaviour-disorder-snomed-ct-v13.csv",
   column = "code",
 )
+
+rsd_ctv3 = codelist_from_csv(
+  "codelists/bristol-rem-sleep-behaviour-disorder-ctv3.csv",
+  column = "code",
+)

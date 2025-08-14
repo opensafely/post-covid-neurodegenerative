@@ -108,6 +108,16 @@ actions:
       moderately_sensitive:
         describe_outcome: output/code_diagnostics/rsd-prevax_unvax_vax.txt
 
+  ## Run check_outcome_rsd-prevax 
+
+  check_outcome_rsd-prevax:
+    run: r:v2 analysis/code_diagnostics/diagnose_outcome.R rsd prevax
+    needs:
+    - generate_input_prevax
+    outputs:
+      moderately_sensitive:
+        describe_outcome: output/code_diagnostics/rsd-prevax.txt
+
   ## Run check_outcome_rsd_rsd-prevax_unvax_vax 
 
   check_outcome_rsd_rsd-prevax_unvax_vax:
@@ -119,6 +129,16 @@ actions:
     outputs:
       moderately_sensitive:
         describe_outcome: output/code_diagnostics/rsd_rsd-prevax_unvax_vax.txt
+
+  ## Run check_outcome_rsd_rsd-prevax 
+
+  check_outcome_rsd_rsd-prevax:
+    run: r:v2 analysis/code_diagnostics/diagnose_outcome.R rsd prevax rsd
+    needs:
+    - generate_input_rsd_prevax
+    outputs:
+      moderately_sensitive:
+        describe_outcome: output/code_diagnostics/rsd_rsd-prevax.txt
 
   ## Generate input_prevax_clean, with describe = FALSE 
 
