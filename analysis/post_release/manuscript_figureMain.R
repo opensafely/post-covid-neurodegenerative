@@ -1,12 +1,14 @@
-# Define the plotting function --------------------------------------------------
+# Define the plotting function -------------------------------------------------
 plot_hr <- function(outcomes, outcome_group) {
-  # Load data --------------------------------------------------------------------
+  # Load data ------------------------------------------------------------------
   print("Load data")
 
   df <- readr::read_csv(
     "output/post_release/plot_model_output.csv",
     show_col_types = FALSE
   )
+
+  # Error Processing -----------------------------------------------------------
 
   df[
     !is.na(df$error),
@@ -16,7 +18,7 @@ plot_hr <- function(outcomes, outcome_group) {
 
   df <- df[!is.na(df$hr), ]
 
-  # Filter data ------------------------------------------------------------------
+  # Filter data ----------------------------------------------------------------
   print("Filter data")
 
   df <- df[
@@ -54,7 +56,7 @@ plot_hr <- function(outcomes, outcome_group) {
     )
   }
 
-  # Make columns numeric ---------------------------------------------------------
+  # Make columns numeric -------------------------------------------------------
   print("Make columns numeric")
 
   df <- df %>%
@@ -87,7 +89,7 @@ plot_hr <- function(outcomes, outcome_group) {
     32
   )
 
-  # Add plot labels ---------------------------------------------------------
+  # Add plot labels ------------------------------------------------------------
   print("Add plot labels")
 
   plot_labels <- readr::read_csv("lib/plot_labels.csv", show_col_types = FALSE)
@@ -119,13 +121,13 @@ plot_hr <- function(outcomes, outcome_group) {
   )
   df <- dplyr::rename(df, "analysis_label" = "label")
 
-  # Find which plot the facet label should be on ---------------------------------
+  # Find which plot the facet label should be on -------------------------------
   df <- df %>%
     group_by(outcome, analysis_group) %>%
     mutate(is_min_ref = ref == min(ref, na.rm = TRUE)) %>%
     ungroup()
 
-  # Add facet labels -------------------------------------------------------------
+  # Add facet labels -----------------------------------------------------------
   print("Add facet labels")
 
   df$facet_label <- ifelse(
@@ -134,18 +136,18 @@ plot_hr <- function(outcomes, outcome_group) {
     df$analysis_label
   )
 
-  # Iterate over plots -----------------------------------------------------------
+  # Iterate over plots ---------------------------------------------------------
   print("Iterate over plots")
 
   for (i in unique(df$analysis_group)) {
     message(paste0(i))
 
-    # Restrict to plot data ------------------------------------------------------
+    # Restrict to plot data ----------------------------------------------------
     print("Restrict to plot data")
 
     df_plot <- df[df$analysis_group == i, ]
 
-    # Update labels --------------------------------------------------------------
+    # Update labels ------------------------------------------------------------
 
     if (grepl("history_exposure", i)) {
       print("Update labels")
@@ -157,12 +159,12 @@ plot_hr <- function(outcomes, outcome_group) {
       df_plot <- df_plot[df_plot$cohort != "prevax", ]
     }
 
-    # Calculate number of facet cols ---------------------------------------------
+    # Calculate number of facet cols -------------------------------------------
     print("Calculate number of facet col")
 
     facet_cols <- length(unique(df_plot$analysis))
 
-    # Generate facet info --------------------------------------------------------
+    # Generate facet info ------------------------------------------------------
     print("Generate facet info")
 
     facet_info <- unique(df_plot[, c(
@@ -192,12 +194,12 @@ plot_hr <- function(outcomes, outcome_group) {
 
     df_plot <- merge(df_plot, facet_info)
 
-    # Find Error bars at edge of graph -------------------------------------------
+    # Find Error bars at edge of graph -----------------------------------------
 
     df_ub <- df_plot[df_plot$conf_high == 32.1, ] # find confidence intervals at limits (set by code above)
     df_lb <- df_plot[df_plot$conf_low == 0.249, ] # find confidence intervals at limits (set by code above)
 
-    # Plot data ------------------------------------------------------------------
+    # Plot data ----------------------------------------------------------------
     print("Plot data")
 
     p <- ggplot2::ggplot(
@@ -242,7 +244,7 @@ plot_hr <- function(outcomes, outcome_group) {
             color = cohort
           ),
           shape = 13,
-          size = 3,
+          size = 2,
           show.legend = FALSE,
           position = ggplot2::position_dodge(width = 0)
         )
@@ -257,7 +259,7 @@ plot_hr <- function(outcomes, outcome_group) {
             color = cohort
           ),
           shape = 13,
-          size = 3,
+          size = 2,
           show.legend = FALSE,
           position = ggplot2::position_dodge(width = 0)
         )
@@ -341,7 +343,7 @@ plot_hr <- function(outcomes, outcome_group) {
       plot_width <- 297
     }
 
-    # Save plot ------------------------------------------------------------------
+    # Save plot ----------------------------------------------------------------
     print("Save plot")
 
     ggplot2::ggsave(
@@ -355,6 +357,7 @@ plot_hr <- function(outcomes, outcome_group) {
   }
 }
 
+# Outcome Groupings to plot ----------------------------------------------------
 plot_hr(c("dem_any", "cis"), "dem+cis")
 plot_hr(c("park", "rls", "rsd"), "park+risk")
 plot_hr(c("dem_any", "cis", "park", "rls", "rsd"), "core_neuro")
