@@ -8,6 +8,12 @@ plot_hr <- function(outcomes, outcome_group) {
     show_col_types = FALSE
   )
 
+  df[
+    !is.na(df$error),
+    c("term", "model", "outcome_time_median", "hr", "conf_low", "conf_high")
+  ] <-
+    list("days_-1", "mdl_max_adj", -1, 1, 1, 1)
+
   df <- df[!is.na(df$hr), ]
 
   # Filter data ------------------------------------------------------------------
@@ -34,6 +40,29 @@ plot_hr <- function(outcomes, outcome_group) {
   # df$preex <- sub(".*?(?=preex_)", "", df$analysis, perl = TRUE)
   # df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
 
+  # Neurodegenerative-specific catch
+  if ("dem_lb" %in% outcomes) {
+    df[nrow(df) + 1, ] <- list(
+      "prevax",
+      "sub_age_18_39",
+      "dem_lb",
+      -1,
+      "days_1",
+      1,
+      1,
+      1
+    )
+  }
+
+  # Make columns numeric ---------------------------------------------------------
+  print("Make columns numeric")
+
+  df <- df %>%
+    dplyr::mutate_at(
+      c("outcome_time_median", "hr", "conf_low", "conf_high"),
+      as.numeric
+    )
+
   # Experimental high/low checks (otherwise just removess error_bar out of bounds)
 
   df$conf_low <- ifelse(
@@ -57,15 +86,6 @@ plot_hr <- function(outcomes, outcome_group) {
     df$hr,
     32
   )
-
-  # Make columns numeric ---------------------------------------------------------
-  print("Make columns numeric")
-
-  df <- df %>%
-    dplyr::mutate_at(
-      c("outcome_time_median", "hr", "conf_low", "conf_high"),
-      as.numeric
-    )
 
   # Add plot labels ---------------------------------------------------------
   print("Add plot labels")
