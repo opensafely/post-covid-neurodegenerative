@@ -39,12 +39,22 @@ plot_hr <- function(outcomes, outcome_group) {
   df$conf_low <- ifelse(
     df$conf_low >= 0.25,
     df$conf_low,
-    0.25
+    0.249
   )
 
   df$conf_high <- ifelse(
     df$conf_high <= 32,
     df$conf_high,
+    32.1
+  )
+  df$hr <- ifelse(
+    df$hr >= 0.25,
+    df$hr,
+    0.25
+  )
+  df$hr <- ifelse(
+    df$hr <= 32,
+    df$hr,
     32
   )
 
@@ -162,6 +172,11 @@ plot_hr <- function(outcomes, outcome_group) {
 
     df_plot <- merge(df_plot, facet_info)
 
+    # Find Error bars at edge of graph -------------------------------------------
+
+    df_ub <- df_plot[df_plot$conf_high == 32.1, ] # find confidence intervals at limits (set by code above)
+    df_lb <- df_plot[df_plot$conf_low == 0.249, ] # find confidence intervals at limits (set by code above)
+
     # Plot data ------------------------------------------------------------------
     print("Plot data")
 
@@ -195,7 +210,39 @@ plot_hr <- function(outcomes, outcome_group) {
       ggplot2::labs(
         x = "\nWeeks since COVID-19 diagnosis",
         y = "Hazard ratio and 95% confidence interval\n"
-      ) +
+      )
+
+    if (nrow(df_ub) > 0) {
+      p <- p +
+        ggplot2::geom_point(
+          data = df_ub,
+          mapping = ggplot2::aes(
+            x = outcome_time_median,
+            y = conf_high - 0.1,
+            color = cohort
+          ),
+          shape = 13,
+          size = 3,
+          show.legend = FALSE,
+          position = ggplot2::position_dodge(width = 0)
+        )
+    }
+    if (nrow(df_lb) > 0) {
+      p <- p +
+        ggplot2::geom_point(
+          data = df_lb,
+          mapping = ggplot2::aes(
+            x = outcome_time_median,
+            y = conf_low + 0.001,
+            color = cohort
+          ),
+          shape = 13,
+          size = 3,
+          show.legend = FALSE,
+          position = ggplot2::position_dodge(width = 0)
+        )
+    }
+    p <- p +
       ggplot2::theme_minimal() +
       ggplot2::theme(
         panel.grid.major.x = ggplot2::element_blank(),
@@ -215,7 +262,7 @@ plot_hr <- function(outcomes, outcome_group) {
     if (grepl("history_exposure", i)) {
       p +
         ggplot2::scale_y_continuous(
-          lim = c(0.25, 32),
+          lim = c(0.249, 32.1),
           breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
           trans = "log"
         ) +
@@ -230,7 +277,7 @@ plot_hr <- function(outcomes, outcome_group) {
     } else if (facet_cols == 1) {
       p +
         ggplot2::scale_y_continuous(
-          lim = c(0.25, 32),
+          lim = c(0.249, 32.1),
           breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
           trans = "log"
         ) +
@@ -245,7 +292,7 @@ plot_hr <- function(outcomes, outcome_group) {
     } else if (facet_cols == 2) {
       p +
         ggplot2::scale_y_continuous(
-          lim = c(0.25, 32),
+          lim = c(0.249, 32.1),
           breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
           trans = "log"
         ) +
@@ -260,7 +307,7 @@ plot_hr <- function(outcomes, outcome_group) {
     } else {
       p +
         ggplot2::scale_y_continuous(
-          lim = c(0.25, 32),
+          lim = c(0.249, 32.1),
           breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
           trans = "log"
         ) +
@@ -283,7 +330,7 @@ plot_hr <- function(outcomes, outcome_group) {
       width = plot_width,
       unit = "mm",
       dpi = 300,
-      scale = 0.8
+      scale = 0.8 # 0.8 originally
     )
   }
 }
