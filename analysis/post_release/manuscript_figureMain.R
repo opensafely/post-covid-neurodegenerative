@@ -56,6 +56,10 @@ plot_hr <- function(outcomes, outcome_group) {
     )
   }
 
+  if (outcome_group %in% c("dem+cis", "dem_subgroups")) {
+    df <- df[!(df$analysis == "sub_age_18_39"), ]
+  }
+
   # Make columns numeric -------------------------------------------------------
   print("Make columns numeric")
 
