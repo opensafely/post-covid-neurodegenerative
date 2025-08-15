@@ -18,6 +18,11 @@ plot_hr <- function(outcomes, outcome_group) {
 
   df <- df[!is.na(df$hr), ]
 
+  # Set Upper Bound and Lower Bound limits -------------------------------------
+
+  ub <- 32
+  lb <- 0.25
+
   # Filter data ----------------------------------------------------------------
   print("Filter data")
 
@@ -69,28 +74,28 @@ plot_hr <- function(outcomes, outcome_group) {
       as.numeric
     )
 
-  # Experimental high/low checks (otherwise just removess error_bar out of bounds)
+  # High/low value checks ------------------------------------------------------
 
   df$conf_low <- ifelse(
-    df$conf_low >= 0.25,
+    df$conf_low >= lb,
     df$conf_low,
-    0.249
+    lb - 0.001
   )
 
   df$conf_high <- ifelse(
-    df$conf_high <= 32,
+    df$conf_high <= ub,
     df$conf_high,
-    32.1
+    ub + 0.1
   )
   df$hr <- ifelse(
-    df$hr >= 0.25,
+    df$hr >= lb,
     df$hr,
-    0.25
+    lb
   )
   df$hr <- ifelse(
-    df$hr <= 32,
+    df$hr <= ub,
     df$hr,
-    32
+    ub
   )
 
   # Add plot labels ------------------------------------------------------------
@@ -200,8 +205,8 @@ plot_hr <- function(outcomes, outcome_group) {
 
     # Find Error bars at edge of graph -----------------------------------------
 
-    df_ub <- df_plot[df_plot$conf_high == 32.1, ] # find confidence intervals at limits (set by code above)
-    df_lb <- df_plot[df_plot$conf_low == 0.249, ] # find confidence intervals at limits (set by code above)
+    df_ub <- df_plot[df_plot$conf_high == ub + 0.1, ] # find confidence intervals at limits (set by code above)
+    df_lb <- df_plot[df_plot$conf_low == lb - 0.001, ] # find confidence intervals at limits (set by code above)
 
     # Plot data ----------------------------------------------------------------
     print("Plot data")
@@ -288,7 +293,7 @@ plot_hr <- function(outcomes, outcome_group) {
     if (grepl("history_exposure", i)) {
       p +
         ggplot2::scale_y_continuous(
-          lim = c(0.249, 32.1),
+          lim = c(lb - 0.001, ub + 0.1),
           breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
           trans = "log"
         ) +
@@ -303,7 +308,7 @@ plot_hr <- function(outcomes, outcome_group) {
     } else if (facet_cols == 1) {
       p +
         ggplot2::scale_y_continuous(
-          lim = c(0.249, 32.1),
+          lim = c(lb - 0.001, ub + 0.1),
           breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
           trans = "log"
         ) +
@@ -318,7 +323,7 @@ plot_hr <- function(outcomes, outcome_group) {
     } else if (facet_cols == 2) {
       p +
         ggplot2::scale_y_continuous(
-          lim = c(0.249, 32.1),
+          lim = c(lb - 0.001, ub + 0.1),
           breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
           trans = "log"
         ) +
@@ -330,10 +335,10 @@ plot_hr <- function(outcomes, outcome_group) {
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(ncol = 1, byrow = TRUE))
       plot_width <- 297 * 0.7
-    } else {
+    } else if (facet_cols == 3) {
       p +
         ggplot2::scale_y_continuous(
-          lim = c(0.249, 32.1),
+          lim = c(lb - 0.001, ub + 0.1),
           breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
           trans = "log"
         ) +
@@ -341,6 +346,21 @@ plot_hr <- function(outcomes, outcome_group) {
           limits = c(0, 1456),
           breaks = c(0, 182, 364, 546, 728, 910, 1092, 1274, 1456),
           labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
+        ) +
+        ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
+        ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
+      plot_width <- 297
+    } else {
+      p +
+        ggplot2::scale_y_continuous(
+          lim = c(lb - 0.001, ub + 0.1),
+          breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
+          trans = "log"
+        ) +
+        ggplot2::scale_x_continuous(
+          limits = c(0, 1456),
+          breaks = c(0, 364, 728, 1092, 1456),
+          labels = c("0", "52", "104", "156", "208")
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
