@@ -11936,6 +11936,18 @@ actions:
       moderately_sensitive:
         model_output: output/model/model_output-cohort_vax-sub_sex_male-rsd.csv
 
+  ## Generate make-flow-output 
+
+  make-flow-output:
+    run: r:v2 analysis/make_output/make_other_output.R flow prevax;unvax;vax
+    needs:
+    - generate_input_prevax_clean
+    - generate_input_unvax_clean
+    - generate_input_vax_clean
+    outputs:
+      moderately_sensitive:
+        flow_output_midpoint6: output/make_output/flow_output_midpoint6.csv
+
   ## Generate table2-cohort_prevax-sub_covidhospital 
 
   table2-cohort_prevax-sub_covidhospital:
