@@ -58,16 +58,25 @@ print('Add output from each cohort')
 
 for (i in cohorts) {
   # load input
-  tmp <- readr::read_csv(paste0(
-    "output/",
-    output,
-    "/",
-    output,
-    "-cohort_",
-    i,
-    sub_str,
-    "-midpoint6.csv"
-  ))
+  if (output == "flow") {
+    tmp <- readr::read_csv(paste0(
+      "output/dataset_clean/flow-cohort_",
+      i,
+      "-midpoint6.csv"
+    ))
+    tmp$flow <- 1:nrow(tmp)
+  } else {
+    tmp <- readr::read_csv(paste0(
+      "output/",
+      output,
+      "/",
+      output,
+      "-cohort_",
+      i,
+      sub_str,
+      "-midpoint6.csv"
+    ))
+  }
 
   # create column for cohort
   tmp$cohort <- i
