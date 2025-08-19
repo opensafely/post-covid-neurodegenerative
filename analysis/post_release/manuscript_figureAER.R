@@ -13,6 +13,27 @@ plot_aer <- function(outcomes, outcome_group) {
   # df$preex <- sub(".*?(?=preex_)", "", df$analysis, perl = TRUE)
   # df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
 
+  # reindex dataframe
+  rownames(df) <- 1:nrow(df)
+
+  # Add in any missing outcome (for plotting purposes)
+  for (o in outcomes) {
+    for (c in c("prevax", "unvax", "vax")) {
+      if (nrow(df[(df$cohort == c) & (df$outcome == o), ]) == 0) {
+        df[nrow(df) + 1, ] <- list(
+          "main",
+          o,
+          c,
+          -1,
+          TRUE,
+          "overall",
+          "overall",
+          -1
+        )
+      }
+    }
+  }
+
   # Format aer_age ---------------------------------------------------------------
   print("Format aer_age")
 
@@ -198,6 +219,10 @@ plot_aer(c("dem_any", "cis"), "dem+cis")
 plot_aer(c("park", "rls", "rsd"), "park+risk")
 plot_aer(c("dem_alz", "dem_vasc", "dem_lb"), "dem_subgroups")
 plot_aer(c("mnd", "ms", "migraine"), "other_neuro")
+
+# For debugging purposes
+outcomes <- c("park", "rls", "rsd")
+outcome_group <- "park+risk"
 
 # Previous Plot set
 # plot_aer(c("dem_alz", "dem_vasc"), "alz_vasc")
