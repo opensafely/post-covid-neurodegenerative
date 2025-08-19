@@ -70,7 +70,9 @@ plot_poster_hr <- function(outcomes, outcome_group) {
   # df$preex <- sub(".*?(?=preex_)", "", df$analysis, perl = TRUE)
   # df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
 
-  # Neurodegenerative-specific catch
+  # Neurodegenerative-specific catches
+
+  # adding in Lewy Body 18-39 results
   if ("dem_lb" %in% outcomes) {
     df[nrow(df) + 1, ] <- list(
       "prevax",
@@ -84,6 +86,38 @@ plot_poster_hr <- function(outcomes, outcome_group) {
     )
   }
 
+  # removing a specific unconverged result
+  df[
+    df$outcome == "dem_any" &
+      df$analysis == "sub_covidhospital_TRUE" &
+      df$cohort == "unvax",
+  ] <- list(
+    "unvax",
+    "sub_covidhospital_TRUE",
+    "dem_any",
+    -1,
+    "days_1",
+    1,
+    1,
+    1
+  )
+
+  df[
+    df$outcome == "dem_any" &
+      df$analysis == "sub_age_85_110" &
+      df$cohort == "unvax",
+  ] <- list(
+    "unvax",
+    "sub_age_85_110",
+    "dem_any",
+    -1,
+    "days_1",
+    1,
+    1,
+    1
+  )
+
+  # removing all 18-39 subgroubs (counteracts first catch, but allows easy pivot if we do want it)
   if (outcome_group %in% c("dem+cis", "dem_subgroups")) {
     df <- df[!(df$analysis == "sub_age_18_39"), ]
   }
