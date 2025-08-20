@@ -350,6 +350,21 @@ plot_hr <- function(outcomes, outcome_group) {
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
       plot_width <- 297
+    } else if (facet_cols > 3) {
+      p +
+        ggplot2::scale_y_continuous(
+          lim = c(lb - 0.001, ub + 0.1),
+          breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
+          trans = "log"
+        ) +
+        ggplot2::scale_x_continuous(
+          limits = c(0, 1456),
+          breaks = c(0, 182, 364, 546, 728, 910, 1092, 1274, 1456),
+          labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
+        ) +
+        ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
+        ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
+      plot_width <- 297 * 1.5
     } else {
       p +
         ggplot2::scale_y_continuous(
@@ -367,12 +382,20 @@ plot_hr <- function(outcomes, outcome_group) {
       plot_width <- 297
     }
 
+    if (length(unique(df_plot$outcome)) == 5) {
+      plot_height <- 300
+    } else if (length(unique(df_plot$outcome)) == 1) {
+      plot_height <- 150
+    } else {
+      plot_height <- 210
+    }
+
     # Save plot ----------------------------------------------------------------
     print("Save plot")
 
     ggplot2::ggsave(
       paste0("output/post_release/figure_", i, "_", outcome_group, ".png"),
-      height = 210,
+      height = plot_height,
       width = plot_width,
       unit = "mm",
       dpi = 300,
