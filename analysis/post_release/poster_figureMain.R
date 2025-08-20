@@ -117,9 +117,10 @@ plot_poster_hr <- function(outcomes, outcome_group) {
     1
   )
 
-  # removing all 18-39 subgroubs (counteracts first catch, but allows easy pivot if we do want it)
+  # removing all 18-39 and 40-64 subgroups (counteracts first catch, but allows easy pivot if we do want it)
   if (outcome_group %in% c("dem+cis", "dem_subgroups")) {
     df <- df[!(df$analysis == "sub_age_18_39"), ]
+    df <- df[!(df$analysis == "sub_age_40_64"), ]
   }
 
   # Make columns numeric -------------------------------------------------------
@@ -360,7 +361,7 @@ plot_poster_hr <- function(outcomes, outcome_group) {
           labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
-        ggplot2::guides(color = ggplot2::guide_legend(ncol = 1, byrow = TRUE))
+        ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
       plot_width <- 297 * 0.7
     } else if (facet_cols == 3) {
       p +
@@ -374,8 +375,8 @@ plot_poster_hr <- function(outcomes, outcome_group) {
           breaks = c(0, 182, 364, 546, 728, 910, 1092, 1274, 1456),
           labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
         ) +
-        ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
-        ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
+        ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) #+
+      ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
       plot_width <- 297
     }
 
@@ -406,11 +407,11 @@ plot_poster_hr <- function(outcomes, outcome_group) {
           outcome_group,
           ".png"
         ),
-        height = 150,
+        height = 180,
         width = plot_width,
         unit = "mm",
         dpi = 1000,
-        scale = 0.8 # 0.8 originally
+        scale = 0.7 # 0.8 originally
       )
     }
   }
