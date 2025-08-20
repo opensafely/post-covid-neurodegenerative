@@ -386,6 +386,8 @@ plot_hr <- function(outcomes, outcome_group) {
       plot_height <- 300
     } else if (length(unique(df_plot$outcome)) == 1) {
       plot_height <- 150
+      # p <- p +
+      # ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
     } else {
       plot_height <- 210
     }
@@ -415,3 +417,5 @@ plot_hr(c("mnd", "ms", "migraine"), "other_neuro")
 # Here for testing
 outcomes <- c("dem_any", "cis")
 outcome_group <- "dem_any"
+outcomes <- c("mnd", "ms", "migraine")
+outcome_group <- "other_neuro"
