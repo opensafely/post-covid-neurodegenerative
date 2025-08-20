@@ -46,9 +46,13 @@ df <- file_list %>%
   lapply(read_csv, show_col_types = FALSE) %>%
   bind_rows()
 
+# Define bounds for checking --------------------------------------------------
+lb <- 0.25
+ub <- 32
+
 # Find relevant rows ----------------------------------------------------------
 print('Filtering dataframe')
-df <- df[df$hr < 0.25 | df$hr > 32, ] # HR range restriction
+df <- df[df$hr < lb | df$hr > ub | df$conf_low < lb | df$conf_high > ub, ] # HR range restriction
 df <- df[!(df$term %in% c("days_pre", "days0_1")), ] # Term restriction
 df <- df[!is.na(df$name), ] #NA filtering
 
