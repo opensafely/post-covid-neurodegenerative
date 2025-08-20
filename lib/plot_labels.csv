@@ -4,16 +4,16 @@ vax,Vaccinated (Jun 1 2021 - Dec 14 2021),,
 unvax,Unvaccinated (Jun 1 2021 - Dec 14 2021),,
 main,All COVID-19,main,1
 All,All,,
-dem_alz,Alzheimer's Disease,,
-dem_vasc,Vascular Dementia,,
-dem_lb,Lewy Body Dementia,,
+dem_alz,Alzheimer's disease,,
+dem_vasc,Vascular dementia,,
+dem_lb,Lewy body dementia,,
 dem_any,Dementia,,
-cis,Cognitive Impairment,,
-park,Parkinson's Disease,,
-rls,Restless Leg Syndrome,,
-rsd,REM Sleep Disorder,,
-mnd,Motor Neurone Disease,,
-ms,Multiple Sclerosis,,
+cis,Cognitive impairment,,
+park,Parkinson's disease,,
+rls,Restless leg syndrome,,
+rsd,REM sleep disorder,,
+mnd,Motor neurone disease,,
+ms,Multiple sclerosis,,
 migraine,Migraine,,
 sub_age_18_39,Age group: 18-39,age,1
 sub_age_40_64,Age group: 40-64,age,2
@@ -24,11 +24,11 @@ sub_cis_FALSE,No history of cognitive impairment,cis,2
 sub_covidhistory,History of COVID-19,history_exposure,1
 sub_covidhospital_TRUE,Hospitalised COVID-19,main,2
 sub_covidhospital_FALSE,Non-hospitalised COVID-19,main,3
-sub_ethnicity_asian,Ethnicity: South Asian,ethnicity,2
-sub_ethnicity_black,Ethnicity: Black,ethnicity,3
-sub_ethnicity_mixed,Ethnicity: Mixed,ethnicity,4
-sub_ethnicity_other,Ethnicity: Other,ethnicity,5
-sub_ethnicity_white,Ethnicity: White,ethnicity,1
+sub_ethnicity_asian,Asian*,ethnicity,2
+sub_ethnicity_black,Black**,ethnicity,3
+sub_ethnicity_mixed,Mixed,ethnicity,4
+sub_ethnicity_other,Other,ethnicity,5
+sub_ethnicity_white,White,ethnicity,1
 sub_highvascrisk_TRUE,History of hypertension and/or diabetes,highvascrisk,1
 sub_highvascrisk_FALSE,No history of either hypertension or diabetes,highvascrisk,2
 sub_park_TRUE,History of Parkinson’s disease,park,1
