@@ -14,22 +14,22 @@ No clinical, policy or safety conclusions must be drawn from the contents of thi
 -   Detailed protocols are in the [`protocol`](./protocol/) folder.
 
     - [`post-covid-events-neurodegenerative`](protocol/post-covid-events-neurodegenerative.pdf) contains the outcome-specific elements necessary to implement [`post-covid-events-ehrql`](protocol/post-covid-events-ehrql.pdf).
-
+ide
 -   If you are interested in how we defined our code lists, look at [`codelists/codelists.txt`](.codelists/codelists.txt) for the full list, or any of the *.csv files in the [`codelists`](./codelists) folder.
 
--   Analyses scripts are in the [`analysis`](./analysis) directory:
+-   The following scripts are in the [`analysis`](./analysis) directory. All of them are used in the core pipeline except for [`create_project_actions.R`](.analysis/create_project_actions.R) and those in the [`analyses`] folder, which are run prior to the pipeine:
 
-    -   [`create_project_actions.R`](.analysis/create_project_actions.R) is the function which creates the [`project.yaml`](./project.yaml), the list of actions which can be run in OpenSAFELY
+    -   [`create_project_actions.R`](.analysis/create_project_actions.R) is the function which creates the [`project.yaml`](./project.yaml), the list of actions which can be run in OpenSAFELY (NB: this is not accessed during the core pipeline run)
     -   [`utility.R`](.analysis/utility.R) contains some generic functions which are used throughout the pipeline e.g. a rounding function, a display function, a type conversion function
     -   [`study_dates.R`](.analysis/study_dates.R) creates [`output/study_dates.json`](.output/study_dates.json) which stores the date-specific metadata (e.g. the start dates of the phases of the study, vaccine dates)
 
-    -   Active Analyses scripts are in the [`active_analyses`](.analysis/active_analyses/) directory:
+    -   Active analyses scripts are in the [`active_analyses`](.analysis/active_analyses/) directory (NB: these are not accessed during the core pipeline run):
         -   [`active_analyses.R`](.analysis/active_analyses/active_analyses.R) creates [`active_analyses`](lib/active_analyses.rds), the list of analyses to be run
         -   [`fn-add_analyses.R`](.analysis/active_analyses/fn-add_analyses.R) a companion function to `active_analyses` to cleanly add new rows to the analyses file
 
     -   Dataset definition scripts are in the [`dataset_definition`](./analysis/dataset_definition/) directory:
         -   [`variable_helper_fuctions`](.analysis/dataset_definition/variable_helper_functions.py) defines ehrQL functions that generate variables
-        -   ['codelists.py'](.analysis/dataset_definition/codelists.py) creates codelist variables that can be accessed by [`variables_cohorts`](.analysis/variables_cohorts.py)
+        -   [`codelists.py'](.analysis/dataset_definition/codelists.py) creates codelist variables that can be accessed by [`variables_cohorts`](.analysis/variables_cohorts.py)
         -   [`variables_cohorts`](.analysis/variables_cohorts.py) uses the helper functions to create a dictionary of variables for cohort definitions
         -   [`variables_dates`](.analysis/dataset_definition/variables_dates.py) creates a dictionary of variables for calculating study start dates and end dates
         -   [`dataset_definition_dates`](.analysis/dataset_definition/dataset_definition_dates.py) generates a dataset with all required dates for each cohort (e.g., index and end dates), which are further described in the protocol. This script imports all variables generated from [`variables_dates`](.analysis/dataset_definition/variables_dates.py).
@@ -65,13 +65,13 @@ No clinical, policy or safety conclusions must be drawn from the contents of thi
         -   [`make_other_output.R`](analysis/model/make_other_output.R) combines cohort-specific outputs (e.g. the table1 outputs) into 1 .csv file.
         -   [`make_aer_input.R`](analysis/make_output/make_aer_input.R) generates summary statistics by age and sex required for AER (Absolute Excess Risk) estimation for each outcome (using the model input files for the main analysis generated from [`make_model_input`](analysis/model/make_model_input.R)).
         
-        
+-   Other useful files include the following:        
 
--   The [`active_analyses`](lib/active_analyses.rds) contains a list of active analyses.
+    -   The [`lib/active_analyses.rds`](lib/active_analyses.rds) contains a list of active analyses. To edit this file, alter either [`./analysis/active_analyses.R`](.analysis/active_analyses/active_analyses.R) or [`fn-add_analyses.R`](.analysis/active_analyses/fn-add_analyses.R).
 
--   The [`project.yaml`](./project.yaml) defines run-order and dependencies for all the analysis scripts. This file should not be edited directly. To make changes to the yaml, edit and run the [`create_project_actions.R`](analysis/create_project_actions.R) script which generates all the actions.
+    -   The [`project.yaml`](./project.yaml) defines run-order and dependencies for all the analysis scripts. This file should not be edited directly. To make changes to the yaml, edit and run the [`create_project_actions.R`](analysis/create_project_actions.R) script which generates all the actions.
 
--   Descriptive and Model outputs, including figures and tables are in the [`released_outputs`](./release_outputs) directory.
+-   Combined model and descriptive outputs, including figures and tables are in the [`output/make_output`](./output/make_output) directory.
 
 ## Running the pipeline after alterations
 
