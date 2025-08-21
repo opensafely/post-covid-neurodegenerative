@@ -17,15 +17,10 @@ No clinical, policy or safety conclusions must be drawn from the contents of thi
 ide
 -   If you are interested in how we defined our code lists, look at [`codelists/codelists.txt`](.codelists/codelists.txt) for the full list, or any of the *.csv files in the [`codelists`](./codelists) folder.
 
--   The following scripts are in the [`analysis`](./analysis) directory. All of them are used in the core pipeline except for [`create_project_actions.R`](.analysis/create_project_actions.R) and those in the [`analyses`] folder, which are run prior to the pipeine:
+-   The following scripts are in the [`analysis`](./analysis) directory:
 
-    -   [`create_project_actions.R`](.analysis/create_project_actions.R) is the function which creates the [`project.yaml`](./project.yaml), the list of actions which can be run in OpenSAFELY (NB: this is not accessed during the core pipeline run)
     -   [`utility.R`](.analysis/utility.R) contains some generic functions which are used throughout the pipeline e.g. a rounding function, a display function, a type conversion function
     -   [`study_dates.R`](.analysis/study_dates.R) creates [`output/study_dates.json`](.output/study_dates.json) which stores the date-specific metadata (e.g. the start dates of the phases of the study, vaccine dates)
-
-    -   Active analyses scripts are in the [`active_analyses`](.analysis/active_analyses/) directory (NB: these are not accessed during the core pipeline run):
-        -   [`active_analyses.R`](.analysis/active_analyses/active_analyses.R) creates [`active_analyses`](lib/active_analyses.rds), the list of analyses to be run
-        -   [`fn-add_analyses.R`](.analysis/active_analyses/fn-add_analyses.R) a companion function to `active_analyses` to cleanly add new rows to the analyses file
 
     -   Dataset definition scripts are in the [`dataset_definition`](./analysis/dataset_definition/) directory:
         -   [`variable_helper_fuctions`](.analysis/dataset_definition/variable_helper_functions.py) defines ehrQL functions that generate variables
@@ -64,6 +59,15 @@ ide
         -   [`make_model_output.R`](analysis/make_output/make_model_output.R) combines all the Cox results in one formatted .csv file per subgroup.
         -   [`make_other_output.R`](analysis/model/make_other_output.R) combines cohort-specific outputs (e.g. the table1 outputs) into 1 .csv file.
         -   [`make_aer_input.R`](analysis/make_output/make_aer_input.R) generates summary statistics by age and sex required for AER (Absolute Excess Risk) estimation for each outcome (using the model input files for the main analysis generated from [`make_model_input`](analysis/model/make_model_input.R)).
+
+    These scripts are in the [`analysis`](./analysis) directory, but are not accessed when the respoitory is run on a job server.
+        
+    -   [`create_project_actions.R`](.analysis/create_project_actions.R) is the function which creates the [`project.yaml`](./project.yaml), the list of actions which can be run in OpenSAFELY (NB: this is not accessed during the core pipeline run)
+
+    -   Active analyses scripts are in the [`active_analyses`](.analysis/active_analyses/) directory (NB: these are not accessed during the core pipeline run):
+        -   [`active_analyses.R`](.analysis/active_analyses/active_analyses.R) creates [`active_analyses`](lib/active_analyses.rds), the list of analyses to be run
+        -   [`fn-add_analyses.R`](.analysis/active_analyses/fn-add_analyses.R) a companion function to `active_analyses` to cleanly add new rows to the analyses file
+
         
 -   Other useful files include the following:        
 
