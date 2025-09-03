@@ -34,18 +34,20 @@ print('Load active analyses')
 
 active_analyses <- readr::read_rds("lib/active_analyses.rds")
 
-# List available model outputs -------------------------------------------------
+# List available model outputs -----------------------------------------------
 print('List available model outputs')
 
-files_R <- list.files(model_dir, pattern = "model_output-")
+files <- list.files(model_dir, pattern = "model_output-")
 
-# Combine R model output -------------------------------------------------------
-print('Combine R model output')
+# Combine model output (R, and Stata if available) -------------------------------------------------------
+print('Combine model output')
 
 df <- NULL
 
-for (i in files_R) {
+for (i in files) {
   ## Load model output
+  print('Load model output')
+
   tmp <- readr::read_csv(paste0(model_dir, i))
 
   ## Handle errors
@@ -76,7 +78,10 @@ for (i in files_R) {
   }
 
   ## Add source file name
-  tmp$name <- gsub("model_output-", "", gsub(".csv", "", i))
+  tmp$name <- gsub("^(stata_)?model_output-", "", gsub("\\.csv", "", i))
+
+  ## Add source column (R vs Stata)
+  tmp$source <- ifelse(grepl("^stata_model_output", i), "Stata", "R")
 
   ## Append to master dataframe
   df <- plyr::rbind.fill(df, tmp)
@@ -85,7 +90,9 @@ for (i in files_R) {
 # Add details from active analyses ---------------------------------------------
 print('Add details from active analyses')
 
-df[, c("exposure", "outcome")] <- NULL
+if (any(names(df) %in% c("exposure", "outcome"))) {
+  df <- df[, !(names(df) %in% c("exposure", "outcome"))]
+}
 
 df <- merge(
   df,
@@ -95,8 +102,6 @@ df <- merge(
 )
 
 df$outcome <- gsub("out_date_", "", df$outcome)
-
-df$source <- "R"
 
 # Save model output ------------------------------------------------------------
 print('Save model output')
