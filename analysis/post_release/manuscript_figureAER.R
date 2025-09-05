@@ -125,7 +125,7 @@ plot_aer <- function(outcomes, outcome_group) {
     facet_info[j, ]$facet_label <- paste0(
       ifelse(
         facet_info[j, ]$cohort_label ==
-          "Pre-vaccination (Jan 1 2020 - Jun 18 2021)",
+          "Pre-vaccination (Jan 1 2020 - Dec 14 2021)",
         facet_info[j, ]$outcome_label,
         paste0(rep(" ", j), collapse = "")
       ),
@@ -171,7 +171,7 @@ plot_aer <- function(outcomes, outcome_group) {
       labels = levels(df$aer_age)
     ) +
     ggplot2::scale_linetype_manual(
-      values = c("solid", "longdash", "solid"),
+      values = c("dotted", "longdash", "solid"), # options: solid, dashed, dotted, dotdash, longdash, twodash
       labels = levels(df$aer_sex)
     ) +
     ggplot2::labs(
@@ -209,7 +209,7 @@ plot_aer <- function(outcomes, outcome_group) {
     height = 210,
     width = 297,
     unit = "mm",
-    dpi = 300,
+    dpi = 1000,
     scale = 1
   )
 }
