@@ -56,7 +56,7 @@ df <- df[df$hr < lb | df$hr > ub | df$conf_low < lb | df$conf_high > ub, ] # HR 
 df <- df[!(df$term %in% c("days_pre", "days0_1")), ] # Term restriction
 df <- df[!is.na(df$name), ] #NA filtering
 
-unconverged_list <- unique(df$name)
+unconverged_list <- sprintf('"%s"', unique(df$name))
 
 # Save list of models ---------------------------------------------------------
 print("Saving .txt list of models")
