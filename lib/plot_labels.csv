@@ -1,5 +1,5 @@
-﻿term,label,analysis_group,ref
-prevax,Pre-vaccination (Jan 1 2020 - Jun 18 2021),,
+term,label,analysis_group,ref
+prevax,Pre-vaccination (Jan 1 2020 - Dec 14 2021),,
 vax,Vaccinated (Jun 1 2021 - Dec 14 2021),,
 unvax,Unvaccinated (Jun 1 2021 - Dec 14 2021),,
 main,All COVID-19,main,1
