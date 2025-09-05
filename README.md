@@ -48,9 +48,9 @@ No clinical, policy or safety conclusions must be drawn from the contents of thi
         -   [`fn-prepare_model_input.R`](./analysis/model/fn-prepare_model_input.R) is a companion function to [`make_model_input.R`](./analysis/model/make_model_input.R) which handles the interaction with [`active_analyses.rds`](lib/active_analyses.rds)
         -   [`fn-check_vitals.R`](./analysis/model/fn-check_vitals.R) is a companion function that checks the input dataset for [`make_model_input.R`](./analysis/model/make_model_input.R) is formatted correctly
         -   [`cox-ipw`](https://github.com/opensafely-actions/cox-ipw/) is a reusable action which uses the output of [`make_model_input.R`](./analysis/model/make_model_input.R) to fit a Cox model to the data. (NB: It is not a file in the server)
-        -   [`cox_model.do`](./analysis/model/cox_model.do) is a Stata script that runs the Cox model in instances where [`cox-ipw`](https://github.com/opensafely-actions/cox-ipw/) failed to converge (specified by the user in [`create_project_actions.R`](./analysis/create_project_actions.R))   
+        -   [`cox_model.do`](./analysis/model/cox_model.do) is a Stata script used to rerun Cox models in Stata when they fail to converge in R (i.e.,  [`cox-ipw`](https://github.com/opensafely-actions/cox-ipw/)), specified by the user in [`create_project_actions.R`](./analysis/create_project_actions.R)
 
-    -   Extra files for [`cox_model.do`](./analysis/model/cox_model.do) are in the [`extra_ados`](./analysis/extra_ados/) directory
+    -   Extra files that suppport the Cox regression command in Stata for [`cox_model.do`](./analysis/model/cox_model.do) are in the [`extra_ados`](./analysis/extra_ados/) directory
     
     -   Table 2 scripts are in the [`table2`](./analysis/table2/) directory:
         -   This directory contains a single script:  [`table2.R`](./analysis/table2/table2.R). This script works with the output of [`dataset_clean`](./analysis/dataset_clean/) to calculate pre- and post-exposure event counts and person days of follow-up for all outcomes and subgroups
