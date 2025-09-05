@@ -48,6 +48,118 @@ excluded_models <- c(
   "cohort_prevax-sub_age_18_39-dem_lb"
 )
 
+stata_models <- c(
+  "cohort_prevax-main-dem_any",
+  "cohort_prevax-main-dem_lb",
+  "cohort_prevax-main-migraine",
+  "cohort_unvax-main-dem_alz",
+  "cohort_unvax-main-dem_vasc",
+  "cohort_unvax-main-migraine",
+  "cohort_unvax-main-rls",
+  "cohort_unvax-main-rsd",
+  "cohort_vax-main-dem_lb",
+  "cohort_prevax-sub_age_18_39-migraine",
+  "cohort_prevax-sub_age_40_64-dem_alz",
+  "cohort_prevax-sub_age_40_64-dem_vasc",
+  "cohort_prevax-sub_age_40_64-mnd",
+  "cohort_prevax-sub_age_65_84-rls",
+  "cohort_unvax-sub_age_18_39-migraine",
+  "cohort_unvax-sub_age_18_39-rls",
+  "cohort_unvax-sub_age_40_64-migraine",
+  "cohort_unvax-sub_age_40_64-rls",
+  "cohort_unvax-sub_age_40_64-rsd",
+  "cohort_unvax-sub_age_65_84-rsd",
+  "cohort_unvax-sub_age_85_110-dem_any",
+  "cohort_vax-sub_age_18_39-migraine",
+  "cohort_vax-sub_age_18_39-rls",
+  "cohort_vax-sub_age_40_64-dem_alz",
+  "cohort_vax-sub_age_40_64-dem_vasc",
+  "cohort_vax-sub_age_65_84-dem_vasc",
+  "cohort_vax-sub_age_85_110-rsd",
+  "cohort_unvax-sub_cis_FALSE-dem_any",
+  "cohort_unvax-sub_cis_TRUE-dem_any",
+  "cohort_vax-sub_cis_FALSE-dem_any",
+  "cohort_unvax-sub_covidhistory-migraine",
+  "cohort_vax-sub_covidhistory-dem_vasc",
+  "cohort_vax-sub_covidhistory-migraine",
+  "cohort_vax-sub_covidhistory-park",
+  "cohort_prevax-sub_covidhospital_FALSE-dem_any",
+  "cohort_prevax-sub_covidhospital_FALSE-dem_lb",
+  "cohort_prevax-sub_covidhospital_FALSE-migraine",
+  "cohort_prevax-sub_covidhospital_FALSE-rls",
+  "cohort_prevax-sub_covidhospital_TRUE-migraine",
+  "cohort_prevax-sub_covidhospital_TRUE-ms",
+  "cohort_prevax-sub_covidhospital_TRUE-rls",
+  "cohort_prevax-sub_covidhospital_TRUE-rsd",
+  "cohort_unvax-sub_covidhospital_FALSE-migraine",
+  "cohort_unvax-sub_covidhospital_FALSE-rls",
+  "cohort_unvax-sub_covidhospital_TRUE-dem_alz",
+  "cohort_unvax-sub_covidhospital_TRUE-dem_any",
+  "cohort_unvax-sub_covidhospital_TRUE-migraine",
+  "cohort_unvax-sub_covidhospital_TRUE-rsd",
+  "cohort_vax-sub_covidhospital_FALSE-dem_lb",
+  "cohort_vax-sub_covidhospital_FALSE-dem_vasc",
+  "cohort_vax-sub_covidhospital_FALSE-mnd",
+  "cohort_vax-sub_covidhospital_TRUE-dem_alz",
+  "cohort_vax-sub_covidhospital_TRUE-dem_vasc",
+  "cohort_vax-sub_covidhospital_TRUE-migraine",
+  "cohort_vax-sub_covidhospital_TRUE-ms",
+  "cohort_vax-sub_covidhospital_TRUE-park",
+  "cohort_vax-sub_covidhospital_TRUE-rsd",
+  "cohort_prevax-sub_ethnicity_asian-dem_alz",
+  "cohort_prevax-sub_ethnicity_asian-migraine",
+  "cohort_prevax-sub_ethnicity_asian-rls",
+  "cohort_prevax-sub_ethnicity_black-dem_alz",
+  "cohort_prevax-sub_ethnicity_black-dem_any",
+  "cohort_prevax-sub_ethnicity_black-dem_vasc",
+  "cohort_prevax-sub_ethnicity_black-migraine",
+  "cohort_prevax-sub_ethnicity_mixed-migraine",
+  "cohort_prevax-sub_ethnicity_mixed-rsd",
+  "cohort_prevax-sub_ethnicity_other-dem_any",
+  "cohort_prevax-sub_ethnicity_other-migraine",
+  "cohort_prevax-sub_ethnicity_white-dem_lb",
+  "cohort_unvax-sub_ethnicity_asian-migraine",
+  "cohort_unvax-sub_ethnicity_asian-rsd",
+  "cohort_unvax-sub_ethnicity_black-migraine",
+  "cohort_unvax-sub_ethnicity_black-rsd",
+  "cohort_unvax-sub_ethnicity_mixed-migraine",
+  "cohort_unvax-sub_ethnicity_white-dem_alz",
+  "cohort_unvax-sub_ethnicity_white-dem_any",
+  "cohort_unvax-sub_ethnicity_white-migraine",
+  "cohort_unvax-sub_ethnicity_white-rls",
+  "cohort_vax-sub_ethnicity_asian-dem_alz",
+  "cohort_vax-sub_ethnicity_asian-dem_any",
+  "cohort_vax-sub_ethnicity_asian-migraine",
+  "cohort_vax-sub_ethnicity_asian-rsd",
+  "cohort_vax-sub_ethnicity_black-migraine",
+  "cohort_vax-sub_ethnicity_black-rsd",
+  "cohort_vax-sub_ethnicity_mixed-cis",
+  "cohort_vax-sub_ethnicity_mixed-migraine",
+  "cohort_vax-sub_ethnicity_white-dem_lb",
+  "cohort_vax-sub_ethnicity_white-rls",
+  "cohort_prevax-sub_highvascrisk_FALSE-dem_any",
+  "cohort_prevax-sub_highvascrisk_FALSE-dem_vasc",
+  "cohort_unvax-sub_highvascrisk_FALSE-dem_any",
+  "cohort_unvax-sub_highvascrisk_TRUE-dem_vasc",
+  "cohort_vax-sub_highvascrisk_FALSE-dem_vasc",
+  "cohort_prevax-sub_park_FALSE-dem_any",
+  "cohort_unvax-sub_park_FALSE-dem_any",
+  "cohort_prevax-sub_parkrisk_TRUE-park",
+  "cohort_prevax-sub_sex_female-dem_any",
+  "cohort_prevax-sub_sex_female-rls",
+  "cohort_prevax-sub_sex_male-dem_lb",
+  "cohort_prevax-sub_sex_male-dem_vasc",
+  "cohort_prevax-sub_sex_male-rls",
+  "cohort_unvax-sub_sex_female-rls",
+  "cohort_unvax-sub_sex_male-dem_any",
+  "cohort_unvax-sub_sex_male-rsd",
+  "cohort_vax-sub_sex_male-mnd",
+  "cohort_vax-sub_sex_male-rls"
+)
+
+# These are currently based on manual check from outputs released on 2025-08-04, leave empty if no models need Stata
+stata <- active_analyses[active_analyses$name %in% stata_models, ]
+
 # Create generic action function -----------------------------------------------
 
 action <- function(
@@ -297,6 +409,49 @@ apply_model_function <- function(
   )
 }
 
+# Create function to make Stata models -----------------------------------------
+
+apply_stata_model_function <- function(
+  name,
+  cohort,
+  analysis,
+  ipw,
+  strata,
+  covariate_sex,
+  covariate_age,
+  covariate_other,
+  cox_start,
+  cox_stop,
+  study_start,
+  study_stop,
+  cut_points,
+  controls_per_case,
+  total_event_threshold,
+  episode_event_threshold,
+  covariate_threshold,
+  age_spline
+) {
+  splice(
+    action(
+      name = glue("ready-{name}"),
+      run = glue(
+        "cox-ipw:v0.0.37 --df_input=model/model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} --save_analysis_ready=model/ready-{name}.dta --run_analysis=FALSE --df_output=model/model_output-{name}.csv"
+      ),
+      needs = list(glue("make_model_input-{name}")),
+      highly_sensitive = list(ready = glue("output/model/ready-{name}.dta"))
+    ),
+    action(
+      name = glue("stata_cox_ipw-{name}"),
+      run = "stata-mp:latest analysis/model/cox_model.do",
+      arguments = c(name, cut_points, study_start),
+      needs = c(as.list(glue("ready-{name}"))),
+      moderately_sensitive = list(
+        model_output = glue("output/model/stata_model_output-{name}.csv")
+      )
+    )
+  )
+}
+
 # Create function to make Table 2 ----------------------------------------------
 
 table2 <- function(cohort, subgroup) {
@@ -399,14 +554,25 @@ make_model_output <- function(subgroup) {
       needs = as.list(c(
         paste0(
           "cox_ipw-",
-          active_analyses$name[
-            !(active_analyses$name %in% excluded_models) &
-              str_detect(
-                active_analyses$analysis,
-                paste0(subgroup, "(?=[_-]|$)")
-              )
-          ]
-        )
+          setdiff(
+            active_analyses$name[str_detect(
+              active_analyses$analysis,
+              paste0(subgroup, "(?=[_-]|$)")
+            )],
+            c(stata$name, excluded_models)
+          )
+        ),
+        if (
+          length(stata_models) > 0 &&
+            any(str_detect(stata$analysis, subgroup))
+        ) {
+          paste0(
+            "stata_cox_ipw-",
+            stata$name[str_detect(stata$analysis, subgroup)]
+          )
+        } else {
+          character(0)
+        }
       )),
       moderately_sensitive = list(
         model_output = glue("output/make_output/model_output-{subgroup}.csv"),
@@ -600,6 +766,42 @@ actions_list <- splice(
       recursive = FALSE
     )
   ),
+
+  # Stata models (only if stata_models not empty) ------------------------------
+  if (length(stata_models) > 0) {
+    splice(
+      unlist(
+        lapply(
+          1:nrow(stata),
+          function(x) {
+            apply_stata_model_function(
+              name = stata$name[x],
+              cohort = stata$cohort[x],
+              analysis = stata$analysis[x],
+              ipw = stata$ipw[x],
+              strata = stata$strata[x],
+              covariate_sex = stata$covariate_sex[x],
+              covariate_age = stata$covariate_age[x],
+              covariate_other = stata$covariate_other[x],
+              cox_start = stata$cox_start[x],
+              cox_stop = stata$cox_stop[x],
+              study_start = stata$study_start[x],
+              study_stop = stata$study_stop[x],
+              cut_points = stata$cut_points[x],
+              controls_per_case = stata$controls_per_case[x],
+              total_event_threshold = stata$total_event_threshold[x],
+              episode_event_threshold = stata$episode_event_threshold[x],
+              covariate_threshold = stata$covariate_threshold[x],
+              age_spline = stata$age_spline[x]
+            )
+          }
+        ),
+        recursive = FALSE
+      )
+    )
+  } else {
+    list()
+  },
 
   ## Flow ----------------------------------------------------------------------
 
