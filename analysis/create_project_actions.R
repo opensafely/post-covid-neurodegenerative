@@ -157,7 +157,7 @@ stata_models <- c(
   "cohort_vax-sub_sex_male-rls"
 )
 
-# These are currently based on manual check from outputs released on 2025-XX-XX, leave empty if no models need Stata
+# These are currently based on manual check from outputs released on 2025-08-04, leave empty if no models need Stata
 stata <- active_analyses[active_analyses$name %in% stata_models, ]
 
 # Create generic action function -----------------------------------------------
