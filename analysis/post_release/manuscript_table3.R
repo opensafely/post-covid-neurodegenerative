@@ -111,16 +111,16 @@ df$weeks <- factor(df$weeks, levels = weeks_levels)
 df$outcome_label <- factor(
   df$outcome_label,
   levels = c(
-    "Alzheimer's Disease",
-    "Vascular Dementia",
-    "Lewy Body Dementia",
+    "Alzheimer's disease",
+    "Vascular dementia",
+    "Lewy body dementia",
     "Dementia",
-    "Cognitive Impairment",
-    "Parkinson's Disease",
-    "Restless Leg Syndrome",
-    "REM Sleep Disorder",
-    "Motor Neurone Disease",
-    "Multiple Sclerosis",
+    "Cognitive impairment",
+    "Parkinson's disease",
+    "Restless leg syndrome",
+    "REM sleep disorder",
+    "Motor neurone disease",
+    "Multiple sclerosis",
     "Migraine"
   )
 )
