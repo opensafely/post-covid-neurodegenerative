@@ -55,7 +55,7 @@ plot_aer <- function(outcomes, outcome_group) {
   df$aer_sex <- factor(
     df$aer_sex,
     levels = c("Female", "Male", "overall"),
-    labels = c("Sex: Female", "Sex: Male", "Combined")
+    labels = c("Sex: Female", "Sex: Male      ", "Combined")
   )
 
   # Add plot labels --------------------------------------------------------------
@@ -146,13 +146,14 @@ plot_aer <- function(outcomes, outcome_group) {
   # Plot data --------------------------------------------------------------------
   print("Plot data")
 
-  ggplot2::ggplot(
+  p <- ggplot2::ggplot(
     data = df[df$days < 365, ],
     mapping = ggplot2::aes(
       x = days / 7,
       y = cumulative_difference_absolute_excess_risk * 100,
       color = aer_age,
-      linetype = aer_sex
+      linetype = aer_sex,
+      size = aer_sex
     )
   ) +
     ggplot2::geom_line() +
@@ -168,11 +169,18 @@ plot_aer <- function(outcomes, outcome_group) {
     ) +
     ggplot2::scale_color_manual(
       values = c("#006d2c", "#31a354", "#74c476", "#bae4b3", "#000000"),
-      labels = levels(df$aer_age)
+      labels = levels(df$aer_age)[1:4],
+      breaks = levels(df$aer_age)[1:4]
     ) +
     ggplot2::scale_linetype_manual(
-      values = c("dotted", "longdash", "solid"), # options: solid, dashed, dotted, dotdash, longdash, twodash
-      labels = levels(df$aer_sex)
+      values = c("solid", "42", "11"), # options: solid, dashed, dotted, dotdash, longdash, twodash
+      labels = levels(df$aer_sex),
+      breaks = levels(df$aer_sex)
+    ) +
+    ggplot2::scale_size_manual(
+      values = c(0.7, 0.8, 1.5), # Make the third element (dotted) thicker
+      labels = levels(df$aer_sex),
+      breaks = levels(df$aer_sex)
     ) +
     ggplot2::labs(
       x = "Weeks since COVID-19 diagnosis",
