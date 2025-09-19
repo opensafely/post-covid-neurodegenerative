@@ -183,8 +183,8 @@ df <- dplyr::rename(
   df,
   "Characteristic" = "characteristic",
   "Age Group" = "cov_cat_age_group",
-  "Total outcome count [midpoint6_derived]" = "total_midpoint6",
-  "COVID-19 diagnoses [midpoint6_derived]" = "exposed_midpoint6"
+  "Total outcome count [midpoint6]" = "total_midpoint6",
+  "COVID-19 diagnoses [midpoint6]" = "exposed_midpoint6"
 )
 
 # Save Table Age -----------------------------------------------------------------
