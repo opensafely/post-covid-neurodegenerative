@@ -15,10 +15,10 @@ rsd,REM sleep disorder,,
 mnd,Motor neurone disease,,
 ms,Multiple sclerosis,,
 migraine,Migraine,,
-sub_age_18_39,Age group: 18-39,age,1
-sub_age_40_64,Age group: 40-64,age,2
-sub_age_65_84,Age group: 65-84,age,3
-sub_age_85_110,Age group: 85-110,age,4
+sub_age_18_39,18-39,age,1
+sub_age_40_64,40-64,age,2
+sub_age_65_84,65-84,age,3
+sub_age_85_110,85-110,age,4
 sub_cis_TRUE,History of cognitive impairment,cis,1
 sub_cis_FALSE,No history of cognitive impairment,cis,2
 sub_covidhistory,History of COVID-19,history_exposure,1
@@ -40,9 +40,9 @@ sub_sex_male,Sex: Male,sex,2
 cov_bin_ami,Acute myocardial infarction,,
 cov_bin_cancer,Cancer,,
 cov_bin_carehome,Care Home Resident,,
-cov_bin_ckd,Chronic kidney disease ,,
+cov_bin_ckd,Chronic kidney disease,,
 cov_cat_consrate2019,GP consultations in 2019,,
-cov_bin_copd,Chronic obstructive pulmonary disease ,,
+cov_bin_copd,Chronic obstructive pulmonary disease,,
 cov_bin_depression,Depression,,
 cov_bin_diabetes,Diabetes,,
 cov_bin_hcworker,Healthcare worker,,
@@ -50,14 +50,14 @@ cov_bin_hypertension,Hypertension,,
 cov_bin_liver_disease,Liver disease,,
 cov_bin_obesity,Obesity,,
 cov_bin_stroke_isch,Ischaemic stoke,,
-cov_bin_cis,History of Cognitive Impairment Symptoms,,
-cov_bin_dem_any,History of Dementia (Any),,
-cov_bin_highvascrisk,History of High Vascular Risk,,
-cov_bin_mnd,History of Motor Neurone Disease,,
-cov_bin_ms,History of Multiple Sclerosis,,
-cov_bin_migraine,History of Migraine,,
+cov_bin_cis,History of cognitive impairment,,
+cov_bin_dem_any,History of dementia (any),,
+cov_bin_highvascrisk,History of high vascular risk,,
+cov_bin_mnd,History of motor neurone disease,,
+cov_bin_ms,History of multiple sclerosis,,
+cov_bin_migraine,History of migraine,,
 cov_bin_park,History of Parkinson's,,
-cov_bin_parkrisk,History of Parkinson's Risk Factors,,
+cov_bin_parkrisk,History of Parkinson's risk factors,,
 cov_cat_age_group,"Age, years",,
 cov_cat_sex,Sex,,
 cov_cat_ethnicity,Ethnicity,,
