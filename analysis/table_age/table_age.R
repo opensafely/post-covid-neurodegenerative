@@ -31,7 +31,7 @@ args <- commandArgs(trailingOnly = TRUE)
 print(length(args))
 
 if (length(args) == 0) {
-  cohort <- "unvax"
+  cohort <- "vax"
   age_str <- "40;45;55;60;65"
   preex <- "All" # "All", TRUE, or FALSE
 } else {
@@ -66,7 +66,7 @@ df <- df[df$sub_bin_covidhistory == FALSE, ]
 # Create exposure indicator ----------------------------------------------------
 print("Create exposure indicator")
 
-df$exposed <- !is.na(df$exp_date_covid)
+df$exposed <- !is.na(df$exp_date_covid) # Do I add extra restrictions here to be within cohort limits?
 
 # Select for pre-existing conditions -------------------------------------------
 print("Select for pre-existing conditions")
@@ -90,7 +90,7 @@ df <- df %>%
   mutate(across(
     matches("out_date*"),
     ~ if_else(
-      !is.na(.x) & .x >= index_date & .x <= study_dates$lcd_date,
+      !is.na(.x) & .x >= index_date & .x <= study_dates$lcd_date, # Are these the right bounds to use?
       TRUE,
       FALSE
     )
@@ -136,12 +136,15 @@ df$subcharacteristic <- ifelse(
   df$subcharacteristic
 )
 
+df <- df[df$subcharacteristic != FALSE, ] # Remove False version of outcomes
+df %>% select(-one_of(c("subcharacteristic"))) # Remove subcharacteristic column
+
 # Aggregate data ---------------------------------------------------------------
 
 print("Aggregate data")
 
 df <- df %>%
-  group_by(cov_cat_age_group, characteristic) %>%
+  group_by(cov_cat_age_group, characteristic) %>% # Create summary statistic for each combination of age group and outcome
   summarise(
     exposed = sum(exposed, na.rm = TRUE),
     total = sum(total, na.rm = TRUE),
@@ -166,11 +169,10 @@ write.csv(
 # Perform redaction ------------------------------------------------------------
 print("Perform redaction")
 
-df <- df[df$characteristic != FALSE, ] # Remove False binary data
 df$total_midpoint6 <- roundmid_any(df$total)
 df$exposed_midpoint6 <- roundmid_any(df$exposed)
 
-# Calculate column percentages -------------------------------------------------
+# Renaming columns -------------------------------------------------
 
 df <- df[, c(
   "characteristic",
