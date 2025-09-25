@@ -230,6 +230,54 @@ actions:
       moderately_sensitive:
         table1_output_midpoint6: output/make_output/table1_output_midpoint6.csv
 
+  ## Generate table_age_cohort_prevax 
+
+  table_age-cohort_prevax:
+    run: 'r:v2 analysis/table_age/table_age.R prevax 40;45;50;55;60;65 '
+    needs:
+    - study_dates
+    - generate_input_prevax_clean
+    outputs:
+      moderately_sensitive:
+        table_age: output/table_age/table_age-cohort_prevax.csv
+        table_age_midpoint6: output/table_age/table_age-cohort_prevax-midpoint6.csv
+
+  ## Generate table_age_cohort_unvax 
+
+  table_age-cohort_unvax:
+    run: 'r:v2 analysis/table_age/table_age.R unvax 40;45;50;55;60;65 '
+    needs:
+    - study_dates
+    - generate_input_unvax_clean
+    outputs:
+      moderately_sensitive:
+        table_age: output/table_age/table_age-cohort_unvax.csv
+        table_age_midpoint6: output/table_age/table_age-cohort_unvax-midpoint6.csv
+
+  ## Generate table_age_cohort_vax 
+
+  table_age-cohort_vax:
+    run: 'r:v2 analysis/table_age/table_age.R vax 40;45;50;55;60;65 '
+    needs:
+    - study_dates
+    - generate_input_vax_clean
+    outputs:
+      moderately_sensitive:
+        table_age: output/table_age/table_age-cohort_vax.csv
+        table_age_midpoint6: output/table_age/table_age-cohort_vax-midpoint6.csv
+
+  ## Generate make-table_age-output 
+
+  make-table_age-output:
+    run: r:v2 analysis/make_output/make_other_output.R table_age prevax;unvax;vax
+    needs:
+    - table_age-cohort_prevax
+    - table_age-cohort_unvax
+    - table_age-cohort_vax
+    outputs:
+      moderately_sensitive:
+        table_age_output_midpoint6: output/make_output/table_age_output_midpoint6.csv
+
   ## Run models 
 
   make_model_input-cohort_prevax-main-cis:
