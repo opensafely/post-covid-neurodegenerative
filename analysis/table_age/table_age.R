@@ -66,7 +66,7 @@ df <- df[df$sub_bin_covidhistory == FALSE, ]
 # Create exposure indicator ----------------------------------------------------
 print("Create exposure indicator")
 
-df$exposed <- !is.na(df$exp_date_covid) # Do I add extra restrictions here to be within cohort limits?
+df$exposed <- !is.na(df$exp_date_covid)
 
 # Select for pre-existing conditions -------------------------------------------
 print("Select for pre-existing conditions")
@@ -90,7 +90,7 @@ df <- df %>%
   mutate(across(
     matches("out_date*"),
     ~ if_else(
-      !is.na(.x) & .x >= index_date & .x <= study_dates$lcd_date, # Are these the right bounds to use?
+      !is.na(.x) & .x >= index_date & .x <= study_dates$lcd_date,
       TRUE,
       FALSE
     )
