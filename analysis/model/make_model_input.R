@@ -158,6 +158,11 @@ if (grepl("sub_age_", analysis) == TRUE) {
   ]
 }
 
+# Age exclusions for dementia/Parkinson's outcomes ---------------------------
+if ((grepl("-dem_", name) == TRUE) | (grepl("-park$", name) == TRUE)) {
+  df <- df[df$cov_num_age >= 50, ]
+}
+
 # Make model input: sub_ethnicity_* ------------------------------------------
 if (grepl("sub_ethnicity_", analysis) == TRUE) {
   check_for_subgroup <- TRUE
@@ -196,7 +201,7 @@ if (grepl("sub_parkrisk_", analysis)) {
 }
 
 # Make model input: sub_park_* -----
-if (grepl("sub_park_", analysis)) { 
+if (grepl("sub_park_", analysis)) {
   check_for_subgroup <- TRUE
   park <- as.logical(gsub(
     ".*sub_park_",
