@@ -15,7 +15,7 @@ qa <- function(input, flow, lcd_date) {
 
   input <- input[
     !is.na(input$qa_num_birth_year) &
-      (input$qa_num_birth_year <= lcd_date),
+      (input$qa_num_birth_year < format(Sys.Date(),"%Y")),
   ]
   flow[nrow(flow) + 1, ] <- c(
     "Quality assurance: Year of birth is before today (implemented using last data collection date)",
@@ -25,7 +25,7 @@ qa <- function(input, flow, lcd_date) {
 
   input <- input[
     (!is.na(input$cens_date_death) &
-      (input$cens_date_death <= lcd_date)) |
+      (input$cens_date_death < format(Sys.Date(),"%Y-%m-%d"))) |
       is.na(input$cens_date_death),
   ]
   flow[nrow(flow) + 1, ] <- c(
