@@ -158,11 +158,6 @@ if (grepl("sub_age_", analysis) == TRUE) {
   ]
 }
 
-# Age exclusions for dementia/Parkinson's outcomes ---------------------------
-if ((grepl("-dem_", name) == TRUE) | (grepl("-park$", name) == TRUE)) {
-  df <- df[df$cov_num_age >= 50, ]
-}
-
 # Make model input: sub_ethnicity_* ------------------------------------------
 if (grepl("sub_ethnicity_", analysis) == TRUE) {
   check_for_subgroup <- TRUE
@@ -225,6 +220,12 @@ if (grepl("sub_highvascrisk_", analysis)) {
 # Stop code if no subgroup/main analysis was correctly selected
 if (isFALSE(check_for_subgroup)) {
   stop(paste0("Input: ", name, " did not undergo any subgroup filtering!"))
+}
+
+
+# Age exclusions for dementia/Parkinson's outcomes ---------------------------
+if ((grepl("-dem_", name) == TRUE) | (grepl("-park$", name) == TRUE)) {
+  df <- df[df$cov_num_age >= 50, ]
 }
 
 # Save model output
