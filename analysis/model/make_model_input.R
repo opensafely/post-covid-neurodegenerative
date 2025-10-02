@@ -196,7 +196,7 @@ if (grepl("sub_parkrisk_", analysis)) {
 }
 
 # Make model input: sub_park_* -----
-if (grepl("sub_park_", analysis)) { 
+if (grepl("sub_park_", analysis)) {
   check_for_subgroup <- TRUE
   park <- as.logical(gsub(
     ".*sub_park_",
@@ -220,6 +220,12 @@ if (grepl("sub_highvascrisk_", analysis)) {
 # Stop code if no subgroup/main analysis was correctly selected
 if (isFALSE(check_for_subgroup)) {
   stop(paste0("Input: ", name, " did not undergo any subgroup filtering!"))
+}
+
+
+# Age exclusions for dementia/Parkinson's outcomes ---------------------------
+if ((grepl("-dem_", name) == TRUE) | (grepl("-park$", name) == TRUE)) {
+  df <- df[df$cov_num_age >= 50, ]
 }
 
 # Save model output
