@@ -57,8 +57,7 @@ excluded_models <- c(
   "cohort_prevax-sub_age_18_49-dem_alz",
   "cohort_vax-sub_age_18_49-park",
   "cohort_unvax-sub_age_18_49-park",
-  "cohort_prevax-sub_age_18_49-park",
-  "cohort_unvax-sub_highvascrisk_FALSE-dem_any"
+  "cohort_prevax-sub_age_18_49-park"
 )
 
 stata_models <- c(
@@ -152,6 +151,7 @@ stata_models <- c(
   "cohort_vax-sub_ethnicity_white-rls",
   "cohort_prevax-sub_highvascrisk_FALSE-dem_any",
   "cohort_prevax-sub_highvascrisk_FALSE-dem_vasc",
+  "cohort_unvax-sub_highvascrisk_FALSE-dem_any",
   "cohort_unvax-sub_highvascrisk_TRUE-dem_vasc",
   "cohort_vax-sub_highvascrisk_FALSE-dem_vasc",
   "cohort_prevax-sub_park_FALSE-dem_any",
