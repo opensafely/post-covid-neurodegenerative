@@ -1,4 +1,5 @@
 from ehrql import (
+    claim_permissions,
     create_dataset,
 )
 # Bring table definitions from the TPP backend 
@@ -9,6 +10,8 @@ from ehrql.tables.tpp import (
 from ehrql.query_language import table_from_file, PatientFrame, Series
 
 from datetime import date
+
+claim_permissions("appointments")
 
 # Create dataset
 
