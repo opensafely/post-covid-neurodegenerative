@@ -255,6 +255,20 @@ df$covariate_other <- ifelse(
   df$covariate_other
 )
 
+# # noday0 processing ---------------------------------------------------------
+df_noday0 <- df
+df_noday0$analysis <- paste0(df_noday0$analysis, "_noday0") # update analysis names
+df_noday0$cut_points <- gsub("1;", "", df_noday0$cut_points) # update cut points
+df_noday0$name <- paste0(
+  "cohort_",
+  df_noday0$cohort,
+  "-",
+  df_noday0$analysis,
+  "-",
+  gsub("out_date_", "", df_noday0$outcome)
+) # update model names
+df[nrow(df) + 1:nrow(df_noday0), ] <- df_noday0 # update main analysis list
+
 # Check names are unique and save active analyses list ----
 if (!dir.exists("lib")) {
   dir.create("lib")
