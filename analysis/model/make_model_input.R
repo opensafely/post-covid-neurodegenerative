@@ -31,6 +31,8 @@ analysis <- gsub(
   name
 )
 
+check_for_noday0 <- (grepl("noday0", analysis))
+
 # Define model output folder ---------------------------------------
 print("Creating output/model output folder")
 
@@ -228,7 +230,14 @@ if ((grepl("-dem_", name) == TRUE) | (grepl("-park$", name) == TRUE)) {
   df <- df[df$cov_num_age >= 50, ]
 }
 
-# Save model output
+# Make model input: noday0 ---------------------------------------------------
+if (check_for_noday0) {
+  df <- df[
+    is.na(df$exp_date) | is.na(df$out_date) | df$exp_date != df$out_date,
+  ]
+}
+
+# Save model output ----------------------------------------------------------
 df <- df %>%
   dplyr::select(tidyselect::all_of(pmi$keep))
 
