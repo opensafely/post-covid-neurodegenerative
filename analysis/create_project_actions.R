@@ -25,6 +25,8 @@ active_analyses <- active_analyses[
 cohorts <- unique(active_analyses$cohort)
 analyses <- unique(grep("^main", active_analyses$analysis, value = TRUE))
 subgroups <- unique(str_extract(active_analyses$analysis, "^main|sub_[^_]+"))
+subgroups_noday0 <- paste0(subgroups, "_noday0")
+subgroups_all <- c(subgroups, subgroups_noday0)
 active_age <- active_analyses[grepl("_age_", active_analyses$name), ]$name
 age_str <- paste0(
   paste0(
@@ -495,6 +497,24 @@ apply_stata_model_function <- function(
 # Create function to make Table 2 ----------------------------------------------
 
 table2 <- function(cohort, subgroup) {
+  if (grepl("_noday0", subgroup)) {
+    noday0_str <- "_noday0"
+    noday0_flag <- TRUE
+    subgroup <- gsub("_noday0", "", subgroup)
+  } else {
+    noday0_str <- ""
+    noday0_flag <- FALSE
+  }
+  if (subgroup == "All" | subgroup == "") {
+    sub_str <- ""
+  } else {
+    if (grepl("preex", subgroup)) {
+      sub_str <- paste0("-", subgroup)
+    } else {
+      sub_str <- paste0("-sub_", subgroup)
+    }
+  }
+
   table2_names <- gsub(
     "out_date_",
     "",
@@ -509,23 +529,28 @@ table2 <- function(cohort, subgroup) {
   )
 
   table2_names <- table2_names[
-    grepl("-main", table2_names) |
-      grepl(paste0("-sub_", subgroup), table2_names)
+    (grepl("-main", table2_names) |
+      grepl(paste0("-sub_", subgroup), table2_names)) &
+      if_else(
+        grepl("_noday0", table2_names) == noday0_flag,
+        TRUE,
+        FALSE
+      )
   ]
 
   splice(
-    comment(glue("Generate table2-cohort_{cohort}-sub_{subgroup}")),
+    comment(glue("Generate table2-cohort_{cohort}-sub_{subgroup}{noday0_str}")),
     action(
-      name = glue("table2-cohort_{cohort}-sub_{subgroup}"),
+      name = glue("table2-cohort_{cohort}-sub_{subgroup}{noday0_str}"),
       run = "r:v2 analysis/table2/table2.R",
-      arguments = c(cohort, subgroup),
+      arguments = c(cohort, paste0(subgroup, noday0_str)),
       needs = c(as.list(paste0("make_model_input-", table2_names))),
       moderately_sensitive = list(
         table2 = glue(
-          "output/table2/table2-cohort_{cohort}-sub_{subgroup}.csv"
+          "output/table2/table2-cohort_{cohort}-sub_{subgroup}{noday0_str}.csv"
         ),
         table2_midpoint6 = glue(
-          "output/table2/table2-cohort_{cohort}-sub_{subgroup}-midpoint6.csv"
+          "output/table2/table2-cohort_{cohort}-sub_{subgroup}{noday0_str}-midpoint6.csv"
         )
       )
     )
@@ -535,6 +560,15 @@ table2 <- function(cohort, subgroup) {
 # Create function to make Venn data --------------------------------------------
 
 venn <- function(cohort, analyses = "") {
+  if (grepl("_noday0", analyses)) {
+    noday0_str <- "_noday0"
+    noday0_flag <- TRUE
+    analyses <- gsub("_noday0", "", analyses)
+  } else {
+    noday0_str <- ""
+    noday0_flag <- FALSE
+  }
+
   if (analyses == "") {
     analyses_str <- ""
     analyses <- "main"
@@ -550,19 +584,27 @@ venn <- function(cohort, analyses = "") {
     unique(
       active_analyses[
         active_analyses$cohort == cohort &
-          grepl(analyses, active_analyses$analysis),
+          grepl(analyses, active_analyses$analysis) &
+          if_else(
+            grepl("_noday0", active_analyses$analysis) == noday0_flag,
+            TRUE,
+            FALSE
+          ),
       ]$name
     )
   )
 
   splice(
-    comment(glue("Generate venn-cohort_{cohort}{analyses_str}")),
+    comment(glue("Generate venn-cohort_{cohort}{analyses_str}{noday0_str}")),
     action(
-      name = glue("venn-cohort_{cohort}{analyses_str}"),
+      name = glue("venn-cohort_{cohort}{analyses_str}{noday0_str}"),
       run = "r:v2 analysis/venn/venn.R",
-      arguments = lapply(list(c(cohort, analyses_input)), function(x) {
-        x[x != ""]
-      }),
+      arguments = unlist(lapply(
+        list(c(cohort, paste0(analyses_input, noday0_str))),
+        function(x) {
+          x[x != ""]
+        }
+      )),
       needs = c(
         as.list(glue("generate_input_{cohort}_clean")),
         as.list(paste0(
@@ -571,9 +613,11 @@ venn <- function(cohort, analyses = "") {
         ))
       ),
       moderately_sensitive = list(
-        venn = glue("output/venn/venn-cohort_{cohort}{analyses_str}.csv"),
+        venn = glue(
+          "output/venn/venn-cohort_{cohort}{analyses_str}{noday0_str}.csv"
+        ),
         venn_midpoint6 = glue(
-          "output/venn/venn-cohort_{cohort}{analyses_str}-midpoint6.csv"
+          "output/venn/venn-cohort_{cohort}{analyses_str}{noday0_str}-midpoint6.csv"
         )
       )
     )
@@ -583,41 +627,73 @@ venn <- function(cohort, analyses = "") {
 # Create function for making model outputs --------------------------------------
 
 make_model_output <- function(subgroup) {
+  if (grepl("_noday0", subgroup)) {
+    noday0_str <- "_noday0"
+    subgroup <- gsub("_noday0", "", subgroup)
+    noday0_flag <- TRUE
+  } else {
+    noday0_str <- ""
+    noday0_flag <- FALSE
+  }
+
   splice(
-    comment(glue("Generate model_output-{subgroup}")),
+    comment(glue("Generate model_output-{subgroup}{noday0_str}")),
     action(
       name = glue(
-        "make_model_output-{subgroup}"
+        "make_model_output-{subgroup}{noday0_str}"
       ),
       run = "r:v2 analysis/make_output/make_model_output.R",
-      arguments = c(subgroup),
+      arguments = c(paste0(subgroup, noday0_str)),
       needs = as.list(c(
         paste0(
           "cox_ipw-",
           setdiff(
-            active_analyses$name[str_detect(
-              active_analyses$analysis,
-              paste0(subgroup, "(?=[_-]|$)")
-            )],
+            active_analyses$name[
+              str_detect(
+                active_analyses$analysis,
+                paste0(subgroup, "(?=[_-]|$)")
+              ) &
+                if_else(
+                  grepl("_noday0", active_analyses$analysis) == noday0_flag,
+                  TRUE,
+                  FALSE
+                )
+            ],
             c(stata$name, excluded_models)
           )
         ),
         if (
           length(stata_models) > 0 &&
-            any(str_detect(stata$analysis, subgroup))
+            any(
+              str_detect(stata$analysis, subgroup) &
+                if_else(
+                  grepl("_noday0", stata$analysis) == noday0_flag,
+                  TRUE,
+                  FALSE
+                )
+            )
         ) {
           paste0(
             "stata_cox_ipw-",
-            stata$name[str_detect(stata$analysis, subgroup)]
+            stata$name[
+              str_detect(stata$analysis, subgroup) &
+                if_else(
+                  grepl("_noday0", stata$analysis) == noday0_flag,
+                  TRUE,
+                  FALSE
+                )
+            ]
           )
         } else {
           character(0)
         }
       )),
       moderately_sensitive = list(
-        model_output = glue("output/make_output/model_output-{subgroup}.csv"),
+        model_output = glue(
+          "output/make_output/model_output-{subgroup}{noday0_str}.csv"
+        ),
         model_output_midpoint6 = glue(
-          "output/make_output/model_output-{subgroup}-midpoint6.csv"
+          "output/make_output/model_output-{subgroup}{noday0_str}-midpoint6.csv"
         )
       )
     )
@@ -628,8 +704,16 @@ make_model_output <- function(subgroup) {
 
 make_other_output <- function(action_name, cohort, subgroup = "") {
   cohort_names <- stringr::str_split(as.vector(cohort), ";")[[1]]
+  if (grepl("_noday0", subgroup)) {
+    noday0_str <- "_noday0"
+    subgroup <- gsub("_noday0", "", subgroup)
+  } else {
+    noday0_str <- ""
+  }
   if (subgroup == "All" | subgroup == "") {
     sub_str <- ""
+  } else if (subgroup == "main") {
+    sub_str <- "-main"
   } else {
     if (grepl("preex", subgroup)) {
       sub_str <- paste0("-", subgroup)
@@ -639,13 +723,13 @@ make_other_output <- function(action_name, cohort, subgroup = "") {
   }
 
   splice(
-    comment(glue("Generate make-{action_name}{sub_str}-output")),
+    comment(glue("Generate make-{action_name}{sub_str}{noday0_str}-output")),
     action(
-      name = glue("make-{action_name}{sub_str}-output"),
+      name = glue("make-{action_name}{sub_str}{noday0_str}-output"),
       run = "r:v2 analysis/make_output/make_other_output.R",
       arguments = unlist(lapply(
         list(
-          c(action_name, cohort, subgroup)
+          c(action_name, cohort, paste0(subgroup, noday0_str))
         ),
         function(x) {
           x[x != ""]
@@ -658,13 +742,13 @@ make_other_output <- function(action_name, cohort, subgroup = "") {
           paste0(action_name, "-cohort_")
         ),
         cohort_names,
-        ifelse(action_name == "flow", "_clean", sub_str)
+        ifelse(action_name == "flow", "_clean", paste0(sub_str, noday0_str))
       ))),
       moderately_sensitive = setNames(
         list(glue(
-          "output/make_output/{action_name}{sub_str}_output_midpoint6.csv"
+          "output/make_output/{action_name}{sub_str}{noday0_str}_output_midpoint6.csv"
         )),
-        glue("{action_name}_output_midpoint6")
+        glue("{action_name}{noday0_str}_output_midpoint6")
       )
     )
   )
@@ -893,6 +977,24 @@ actions_list <- splice(
     )
   ),
 
+  splice(
+    unlist(
+      lapply(
+        cohorts,
+        function(x) table2(cohort = x, subgroup = "covidhospital_noday0")
+      ),
+      recursive = FALSE
+    )
+  ),
+
+  splice(
+    make_other_output(
+      action_name = "table2",
+      cohort = paste0(cohorts, collapse = ";"),
+      subgroup = "covidhospital_noday0"
+    )
+  ),
+
   ## Venn data -----------------------------------------------------------------
 
   splice(
@@ -913,11 +1015,29 @@ actions_list <- splice(
     )
   ),
 
+  splice(
+    unlist(
+      lapply(
+        unique(active_analyses$cohort),
+        function(x) venn(cohort = x, analyses = "main_noday0")
+      ),
+      recursive = FALSE
+    )
+  ),
+
+  splice(
+    make_other_output(
+      action_name = "venn",
+      cohort = paste0(cohorts, collapse = ";"),
+      subgroup = "main_noday0"
+    )
+  ),
+
   ## Model output --------------------------------------------------------------
 
   splice(
     unlist(
-      lapply(subgroups, function(x) make_model_output(subgroup = x)),
+      lapply(subgroups_all, function(x) make_model_output(subgroup = x)),
       recursive = FALSE
     )
   ),
@@ -927,11 +1047,30 @@ actions_list <- splice(
   comment("Make absolute excess risk (AER) input"),
 
   action(
+    name = "make_aer_input_noday0",
+    run = "r:v2 analysis/make_output/make_aer_input.R main_noday0",
+    needs = as.list(paste0(
+      "make_model_input-",
+      active_analyses[
+        grepl("main_noday0", active_analyses$analysis),
+      ]$name
+    )),
+    moderately_sensitive = list(
+      aer_input = glue("output/make_output/aer_input-main_noday0.csv"),
+      aer_input_midpoint6 = glue(
+        "output/make_output/aer_input-main_noday0-midpoint6.csv"
+      )
+    )
+  ),
+
+  action(
     name = "make_aer_input",
     run = "r:v2 analysis/make_output/make_aer_input.R main",
     needs = as.list(paste0(
       "make_model_input-",
-      active_analyses[grepl("-main", active_analyses$name), ]$name
+      active_analyses[
+        "main" == active_analyses$analysis,
+      ]$name
     )),
     moderately_sensitive = list(
       aer_input = glue("output/make_output/aer_input-main.csv"),
