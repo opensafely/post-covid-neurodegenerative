@@ -38,8 +38,17 @@ cohorts <- stringr::str_split(as.vector(cohorts), ";")[[1]]
 # Generate output/saving string ------------------------------------------------
 print('Generate strings')
 
+if (grepl("_noday0", subgroup)) {
+  noday0_str <- "_noday0"
+  subgroup <- gsub("_noday0", "", subgroup)
+} else {
+  noday0_str <- ""
+}
+
 if (subgroup == "All" | subgroup == "") {
   sub_str <- ""
+} else if (subgroup == "main") {
+  sub_str <- "-main"
 } else {
   if (grepl("preex", subgroup)) {
     sub_str <- paste0("-", subgroup)
@@ -74,6 +83,7 @@ for (i in cohorts) {
       "-cohort_",
       i,
       sub_str,
+      noday0_str,
       "-midpoint6.csv"
     ))
   }

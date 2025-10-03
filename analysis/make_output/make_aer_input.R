@@ -22,10 +22,21 @@ print('Specify arguments')
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
-    analysis <- "main"
+  analysis <- "main"
 } else {
-    analysis <- args[[1]]
+  analysis <- args[[1]]
 }
+
+# noday0 processing ------------------------------------------------------------
+if (grepl("_noday0", analysis)) {
+  noday0_str <- "_noday0"
+  noday0_flag <- TRUE
+  analysis <- gsub("_noday0", "", analysis)
+} else {
+  noday0_str <- ""
+  noday0_flag <- FALSE
+}
+
 
 # Load active analyses ---------------------------------------------------------
 print('Load active analyses')
@@ -37,16 +48,21 @@ print('Extracting age boundaries')
 
 active_age <- active_analyses[grepl("_age_", active_analyses$name), ]$name
 age_grp <- unique(sub(
-    ".*_age_([0-9]+)_([0-9]+).*",
-    "\\1_\\2",
-    active_age
+  ".*_age_([0-9]+)_([0-9]+).*",
+  "\\1_\\2",
+  active_age
 ))
 
 # Format active analyses -------------------------------------------------------
 print('Format active analyses')
 
 active_analyses <- active_analyses[
-    grepl(analysis, active_analyses$analysis),
+  grepl(analysis, active_analyses$analysis) &
+    if_else(
+      grepl("_noday0", active_analyses$analysis) == noday0_flag,
+      TRUE,
+      FALSE
+    ),
 ]
 
 active_analyses$outcome <- gsub("out_date_", "", active_analyses$outcome)
@@ -55,133 +71,133 @@ active_analyses$outcome <- gsub("out_date_", "", active_analyses$outcome)
 print('Make empty AER input')
 
 input <- data.frame(
-    aer_sex = character(),
-    aer_age = character(),
-    analysis = character(),
-    cohort = character(),
-    outcome = character(),
-    unexposed_person_days = numeric(),
-    unexposed_events = numeric(),
-    total_exposed = numeric(),
-    sample_size = numeric()
+  aer_sex = character(),
+  aer_age = character(),
+  analysis = character(),
+  cohort = character(),
+  outcome = character(),
+  unexposed_person_days = numeric(),
+  unexposed_events = numeric(),
+  total_exposed = numeric(),
+  sample_size = numeric()
 )
 
 # Record number of events and person days for each active analysis -------------
 print('Record number of events and person days for each active analysis')
 
 for (i in 1:nrow(active_analyses)) {
-    ## Load data -----------------------------------------------------------------
-    print(paste0("Load data for ", active_analyses$name[i]))
+  ## Load data -----------------------------------------------------------------
+  print(paste0("Load data for ", active_analyses$name[i]))
 
-    model_input <- read_rds(paste0(
-        "output/model/model_input-",
-        active_analyses$name[i],
-        ".rds"
-    ))
-    model_input <- model_input[, c(
+  model_input <- read_rds(paste0(
+    "output/model/model_input-",
+    active_analyses$name[i],
+    ".rds"
+  ))
+  model_input <- model_input[, c(
+    "patient_id",
+    "index_date",
+    "exp_date",
+    "out_date",
+    "end_date_exposure",
+    "end_date_outcome",
+    "cov_cat_sex",
+    "cov_num_age"
+  )]
+
+  for (sex in c("Female", "Male")) {
+    for (age in age_grp) {
+      ## Identify AER groupings ------------------------------------------------
+      print(paste0(
+        "Identify AER groupings for sex: ",
+        sex,
+        "; ages: ",
+        age
+      ))
+
+      min_age <- as.numeric(gsub("_.*", "", age))
+      max_age <- as.numeric(gsub(".*_", "", age))
+
+      ## Filter data -----------------------------------------------------------
+      print("Filter data")
+
+      df <- model_input[
+        model_input$cov_cat_sex == sex &
+          model_input$cov_num_age >= min_age &
+          model_input$cov_num_age < (max_age + 1),
+      ]
+
+      ## Make exposed subset ---------------------------------------------------
+      print('Make exposed subset')
+
+      exposed <- df[
+        !is.na(df$exp_date),
+        c("patient_id", "exp_date", "end_date_outcome")
+      ]
+
+      exposed <- exposed[exposed$exp_date <= exposed$end_date_outcome, ]
+
+      exposed <- exposed %>%
+        dplyr::mutate(
+          person_days = as.numeric((end_date_outcome - exp_date)) + 1
+        )
+
+      ## Make unexposed subset -------------------------------------------------
+      print('Make unexposed subset')
+
+      unexposed <- df[, c(
         "patient_id",
         "index_date",
         "exp_date",
         "out_date",
-        "end_date_exposure",
-        "end_date_outcome",
-        "cov_cat_sex",
-        "cov_num_age"
-    )]
+        "end_date_outcome"
+      )]
 
-    for (sex in c("Female", "Male")) {
-        for (age in age_grp) {
-            ## Identify AER groupings ------------------------------------------------
-            print(paste0(
-                "Identify AER groupings for sex: ",
-                sex,
-                "; ages: ",
-                age
-            ))
+      unexposed <- unexposed %>%
+        dplyr::mutate(
+          fup_start = index_date,
+          fup_end = pmin(
+            exp_date - 1,
+            end_date_outcome,
+            na.rm = TRUE
+          ),
+          out_date = replace(out_date, which(out_date > fup_end), NA)
+        )
 
-            min_age <- as.numeric(gsub("_.*", "", age))
-            max_age <- as.numeric(gsub(".*_", "", age))
+      unexposed <- unexposed[unexposed$fup_start <= unexposed$fup_end, ]
 
-            ## Filter data -----------------------------------------------------------
-            print("Filter data")
+      unexposed <- unexposed %>%
+        dplyr::mutate(
+          person_days = as.numeric((fup_end - fup_start)) + 1
+        )
 
-            df <- model_input[
-                model_input$cov_cat_sex == sex &
-                    model_input$cov_num_age >= min_age &
-                    model_input$cov_num_age < (max_age + 1),
-            ]
+      ## Append to AER input ---------------------------------------------------
+      print('Append to AER input')
 
-            ## Make exposed subset ---------------------------------------------------
-            print('Make exposed subset')
-
-            exposed <- df[
-                !is.na(df$exp_date),
-                c("patient_id", "exp_date", "end_date_outcome")
-            ]
-
-            exposed <- exposed[exposed$exp_date <= exposed$end_date_outcome, ]
-
-            exposed <- exposed %>%
-                dplyr::mutate(
-                    person_days = as.numeric((end_date_outcome - exp_date)) + 1
-                )
-
-            ## Make unexposed subset -------------------------------------------------
-            print('Make unexposed subset')
-
-            unexposed <- df[, c(
-                "patient_id",
-                "index_date",
-                "exp_date",
-                "out_date",
-                "end_date_outcome"
-            )]
-
-            unexposed <- unexposed %>%
-                dplyr::mutate(
-                    fup_start = index_date,
-                    fup_end = pmin(
-                        exp_date - 1,
-                        end_date_outcome,
-                        na.rm = TRUE
-                    ),
-                    out_date = replace(out_date, which(out_date > fup_end), NA)
-                )
-
-            unexposed <- unexposed[unexposed$fup_start <= unexposed$fup_end, ]
-
-            unexposed <- unexposed %>%
-                dplyr::mutate(
-                    person_days = as.numeric((fup_end - fup_start)) + 1
-                )
-
-            ## Append to AER input ---------------------------------------------------
-            print('Append to AER input')
-
-            input[nrow(input) + 1, ] <- c(
-                aer_sex = sex,
-                aer_age = age,
-                analysis = active_analyses$analysis[i],
-                cohort = active_analyses$cohort[i],
-                outcome = active_analyses$outcome[i],
-                unexposed_person_days = sum(unexposed$person_days),
-                unexposed_events = nrow(unexposed[
-                    !is.na(unexposed$out_date),
-                ]),
-                total_exposed = nrow(exposed),
-                sample_size = nrow(df)
-            )
-        }
+      input[nrow(input) + 1, ] <- c(
+        aer_sex = sex,
+        aer_age = age,
+        analysis = active_analyses$analysis[i],
+        cohort = active_analyses$cohort[i],
+        outcome = active_analyses$outcome[i],
+        unexposed_person_days = sum(unexposed$person_days),
+        unexposed_events = nrow(unexposed[
+          !is.na(unexposed$out_date),
+        ]),
+        total_exposed = nrow(exposed),
+        sample_size = nrow(df)
+      )
     }
+  }
 }
 
 # Save AER input ---------------------------------------------------------------
 print('Save AER input')
 
 write.csv(
-    input,
-    paste0(makeout_dir, "aer_input-", analysis, ".csv"),
-    row.names = FALSE
+  input,
+  paste0(makeout_dir, "aer_input-", analysis, noday0_str, ".csv"),
+  row.names = FALSE
 )
 
 # Perform redaction ------------------------------------------------------------
@@ -196,7 +212,7 @@ input[, c("unexposed_events", "total_exposed", "sample_size")] <- NULL
 print('Save rounded AER input')
 
 write.csv(
-    input,
-    paste0(makeout_dir, "aer_input-", analysis, "-midpoint6.csv"),
-    row.names = FALSE
+  input,
+  paste0(makeout_dir, "aer_input-", analysis, noday0_str, "-midpoint6.csv"),
+  row.names = FALSE
 )

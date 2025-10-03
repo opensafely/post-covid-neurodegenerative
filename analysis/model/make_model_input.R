@@ -20,7 +20,7 @@ print("Specify arguments")
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
-  name <- "cohort_unvax-sub_highvascrisk_TRUE-dem_any"
+  name <- "cohort_unvax-sub_highvascrisk_TRUE_noday0-dem_any"
 } else {
   name <- args[[1]]
 }
@@ -31,7 +31,10 @@ analysis <- gsub(
   name
 )
 
-check_for_noday0 <- (grepl("noday0", analysis))
+check_for_noday0 <- (grepl("_noday0", analysis))
+if (check_for_noday0) {
+  analysis <- gsub("_noday0", "", analysis)
+}
 
 # Define model output folder ---------------------------------------
 print("Creating output/model output folder")

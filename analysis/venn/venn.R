@@ -28,9 +28,22 @@ if (length(args) == 0) {
   cohort <- args[[1]]
   if (length(args) < 2 || args[[2]] == "") {
     analyses <- "main"
+    analyses_str <- ""
   } else {
     analyses <- args[[2]]
+    analyses_str <- paste0("-", analyses)
   }
+}
+
+
+# Process strings -------------------------------------------------------------
+if (grepl("_noday0", analyses)) {
+  noday0_str <- "_noday0"
+  noday0_flag <- TRUE
+  analyses <- gsub("_noday0", "", analyses)
+} else {
+  noday0_str <- ""
+  noday0_flag <- FALSE
 }
 
 # Identify outcomes ------------------------------------------------------------
@@ -41,7 +54,12 @@ active_analyses <- readr::read_rds("lib/active_analyses.rds")
 names <- unique(
   active_analyses[
     active_analyses$cohort == cohort &
-      grepl(analyses, active_analyses$analysis),
+      grepl(analyses, active_analyses$analysis) &
+      if_else(
+        grepl("_noday0", active_analyses$analysis) == noday0_flag,
+        TRUE,
+        FALSE
+      ),
   ]$name
 )
 
@@ -226,15 +244,10 @@ for (NAME in names) {
 # Save Venn data -----------------------------------------------------------------
 print('Save Venn data')
 
-if (length(args) < 2 || args[[2]] == "") {
-  analyses_str <- ""
-} else {
-  analyses_str <- paste0("-", analyses)
-}
 
 write.csv(
   df,
-  paste0(venn_dir, "venn-cohort_", cohort, analyses_str, ".csv"),
+  paste0(venn_dir, "venn-cohort_", cohort, analyses_str, noday0_str, ".csv"),
   row.names = FALSE
 )
 
@@ -264,6 +277,7 @@ write.csv(
     "venn-cohort_",
     cohort,
     analyses_str,
+    noday0_str,
     "-midpoint6.csv"
   ),
   row.names = FALSE
