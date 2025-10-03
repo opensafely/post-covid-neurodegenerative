@@ -2,6 +2,7 @@
 print('Load packages')
 
 library(magrittr)
+library(dplyr)
 
 # Source common functions ------------------------------------------------------
 print('Source common functions')
@@ -19,7 +20,17 @@ if (length(args) == 0) {
   subgroup <- args[[1]]
 }
 
-# Define model output folder ---------------------------------------
+# Noday0 processing ------------------------------------------------------------
+if (grepl("_noday0", subgroup)) {
+  noday0_str <- "_noday0"
+  subgroup <- gsub("_noday0", "", subgroup)
+  noday0_flag <- TRUE
+} else {
+  noday0_str <- ""
+  noday0_flag <- FALSE
+}
+
+# Define model output folder ---------------------------------------------------
 print("Creating output/model output folder")
 
 # setting up the sub directory
@@ -37,9 +48,18 @@ active_analyses <- readr::read_rds("lib/active_analyses.rds")
 # List available model outputs -----------------------------------------------
 print('List available model outputs')
 
-files <- list.files(model_dir, pattern = "model_output-")
+files <- list.files(
+  model_dir,
+  pattern = paste0("model_output-.*", subgroup, ".*")
+) # subgroup filtering
+files <- intersect(files, paste0("model_output-", active_analyses$name, ".csv")) # only include models currently in active_analyses
+files <- files[if_else(
+  grepl("_noday0", files) == noday0_flag,
+  TRUE,
+  FALSE
+)] # noday0 processing
 
-# Combine model output (R, and Stata if available) -------------------------------------------------------
+# Combine model output (R, and Stata if available) -----------------------------
 print('Combine model output')
 
 df <- NULL
@@ -129,7 +149,10 @@ df <- df[, c(
   "source"
 )]
 
-readr::write_csv(df, paste0(makeout_dir, "model_output-", subgroup, ".csv"))
+readr::write_csv(
+  df,
+  paste0(makeout_dir, "model_output-", subgroup, noday0_str, ".csv")
+)
 
 # Perform redaction ------------------------------------------------------------
 print('Perform redaction')
@@ -144,5 +167,5 @@ print('Save model output')
 
 readr::write_csv(
   df,
-  paste0(makeout_dir, "model_output-", subgroup, "-midpoint6.csv")
+  paste0(makeout_dir, "model_output-", subgroup, noday0_str, "-midpoint6.csv")
 )

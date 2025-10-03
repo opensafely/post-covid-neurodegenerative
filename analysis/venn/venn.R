@@ -24,6 +24,7 @@ args <- commandArgs(trailingOnly = TRUE)
 if (length(args) == 0) {
   cohort <- "prevax"
   analyses <- "main"
+  analyses_str <- ""
 } else {
   cohort <- args[[1]]
   if (length(args) < 2 || args[[2]] == "") {
@@ -41,6 +42,7 @@ if (grepl("_noday0", analyses)) {
   noday0_str <- "_noday0"
   noday0_flag <- TRUE
   analyses <- gsub("_noday0", "", analyses)
+  analyses_str <- gsub("_noday0", "", analyses_str)
 } else {
   noday0_str <- ""
   noday0_flag <- FALSE

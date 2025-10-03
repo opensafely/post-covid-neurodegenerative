@@ -131,6 +131,13 @@ print('Save output')
 
 readr::write_csv(
   df,
-  paste0(makeout_dir, "/", output, sub_str, "_output_midpoint6.csv"),
+  paste0(
+    makeout_dir,
+    "/",
+    output,
+    sub_str,
+    noday0_str,
+    "_output_midpoint6.csv"
+  ),
   na = "-"
 )
