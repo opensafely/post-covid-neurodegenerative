@@ -58,11 +58,7 @@ print('Format active analyses')
 
 active_analyses <- active_analyses[
   grepl(analysis, active_analyses$analysis) &
-    if_else(
-      grepl("_noday0", active_analyses$analysis) == noday0_flag,
-      TRUE,
-      FALSE
-    ),
+    grepl("_noday0", active_analyses$analysis) == noday0_flag,
 ]
 
 active_analyses$outcome <- gsub("out_date_", "", active_analyses$outcome)

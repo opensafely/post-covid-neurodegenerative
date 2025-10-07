@@ -531,11 +531,7 @@ table2 <- function(cohort, subgroup) {
   table2_names <- table2_names[
     (grepl("-main", table2_names) |
       grepl(paste0("-sub_", subgroup), table2_names)) &
-      if_else(
-        grepl("_noday0", table2_names) == noday0_flag,
-        TRUE,
-        FALSE
-      )
+      grepl("_noday0", table2_names) == noday0_flag
   ]
 
   splice(
@@ -585,11 +581,7 @@ venn <- function(cohort, analyses = "") {
       active_analyses[
         active_analyses$cohort == cohort &
           grepl(analyses, active_analyses$analysis) &
-          if_else(
-            grepl("_noday0", active_analyses$analysis) == noday0_flag,
-            TRUE,
-            FALSE
-          ),
+          grepl("_noday0", active_analyses$analysis) == noday0_flag,
       ]$name
     )
   )
@@ -653,11 +645,7 @@ make_model_output <- function(subgroup) {
                 active_analyses$analysis,
                 paste0(subgroup, "(?=[_-]|$)")
               ) &
-                if_else(
-                  grepl("_noday0", active_analyses$analysis) == noday0_flag,
-                  TRUE,
-                  FALSE
-                )
+                (grepl("_noday0", active_analyses$analysis) == noday0_flag)
             ],
             c(stata$name, excluded_models)
           )
@@ -666,22 +654,14 @@ make_model_output <- function(subgroup) {
           length(stata_models) > 0 &&
             any(
               str_detect(stata$analysis, subgroup) &
-                if_else(
-                  grepl("_noday0", stata$analysis) == noday0_flag,
-                  TRUE,
-                  FALSE
-                )
+                (grepl("_noday0", stata$analysis) == noday0_flag)
             )
         ) {
           paste0(
             "stata_cox_ipw-",
             stata$name[
               str_detect(stata$analysis, subgroup) &
-                if_else(
-                  grepl("_noday0", stata$analysis) == noday0_flag,
-                  TRUE,
-                  FALSE
-                )
+                (grepl("_noday0", stata$analysis) == noday0_flag)
             ]
           )
         } else {
@@ -861,8 +841,9 @@ actions_list <- splice(
     unlist(
       lapply(
         unique(active_analyses$cohort),
-        function(x)
+        function(x) {
           table_age(cohort = x, ages = "40;45;50;55;60;65", preex = "")
+        }
       ),
       recursive = FALSE
     )

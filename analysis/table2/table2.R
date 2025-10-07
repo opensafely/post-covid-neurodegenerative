@@ -58,11 +58,7 @@ table2_names <-
 table2_names <- table2_names[
   (grepl("-main", table2_names) |
     grepl(paste0("-sub_", subgroup), table2_names)) &
-    if_else(
-      grepl("_noday0", table2_names) == noday0_flag,
-      TRUE,
-      FALSE
-    )
+    grepl("_noday0", table2_names) == noday0_flag
 ]
 
 active_analyses <- active_analyses[active_analyses$name %in% table2_names, ]

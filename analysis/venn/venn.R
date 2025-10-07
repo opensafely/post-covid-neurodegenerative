@@ -32,7 +32,7 @@ if (length(args) == 0) {
     analyses_str <- ""
   } else {
     analyses <- args[[2]]
-    analyses_str <- paste0("-", analyses)
+    analyses_str <- paste0("-", analyses) # Preserves the string with `-` if any analyses are specified (e.g. `-main`)
   }
 }
 
@@ -57,11 +57,7 @@ names <- unique(
   active_analyses[
     active_analyses$cohort == cohort &
       grepl(analyses, active_analyses$analysis) &
-      if_else(
-        grepl("_noday0", active_analyses$analysis) == noday0_flag,
-        TRUE,
-        FALSE
-      ),
+      grepl("_noday0", table2_names) == noday0_flag,
   ]$name
 )
 
