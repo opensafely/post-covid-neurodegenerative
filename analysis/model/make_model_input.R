@@ -31,8 +31,8 @@ analysis <- gsub(
   name
 )
 
-check_for_noday0 <- (grepl("_noday0", analysis))
-if (check_for_noday0) {
+noday0_flag  <- (grepl("_noday0", analysis))
+if (noday0_flag ) {
   analysis <- gsub("_noday0", "", analysis)
 }
 
@@ -234,7 +234,7 @@ if ((grepl("-dem_", name) == TRUE) | (grepl("-park$", name) == TRUE)) {
 }
 
 # Make model input: noday0 ---------------------------------------------------
-if (check_for_noday0) {
+if (noday0_flag) {
   df <- df[
     is.na(df$exp_date) | is.na(df$out_date) | df$exp_date != df$out_date,
   ]
