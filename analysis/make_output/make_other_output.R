@@ -46,14 +46,14 @@ if (grepl("_noday0", subgroup)) {
 }
 
 if (subgroup == "All" | subgroup == "") {
-  sub_str <- ""
+  sub_str <- "" # if no subgroup is specified, don't have anything in the filename
 } else if (subgroup == "main") {
-  sub_str <- "-main"
+  sub_str <- "-main" # if main is specified, use -main in the filename
 } else {
   if (grepl("preex", subgroup)) {
     sub_str <- paste0("-", subgroup)
   } else {
-    sub_str <- paste0("-sub_", subgroup)
+    sub_str <- paste0("-sub_", subgroup) # if any other subgroup is specified, use -sub_{subgroup} in the filename
   }
 }
 
