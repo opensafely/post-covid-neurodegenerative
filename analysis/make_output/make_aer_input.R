@@ -21,14 +21,14 @@ print('Specify arguments')
 
 args <- commandArgs(trailingOnly = TRUE)
 
-if (length(args) == 0) {
-  analysis <- "main"
+if (length(args) == 0 || args[[1]] == "main" || args[[1]] == "_noday0") {
+  analysis <- "main" # explicitly process all main analyses the same way
 } else {
   analysis <- args[[1]]
 }
 
 # noday0 processing ------------------------------------------------------------
-if (grepl("_noday0", analysis)) {
+if (grepl("_noday0", analysis) || args[[1]] == "_noday0") {
   noday0_str <- "_noday0"
   noday0_flag <- TRUE
   analysis <- gsub("_noday0", "", analysis)
