@@ -28,7 +28,7 @@ if (length(args) == 0) {
   analyses_str <- ""
 } else {
   cohort <- args[[1]] # cohort specified
-  if (length(args) < 2 || args[[2]] == "") {
+  if (length(args) < 2 || args[[2]] == "" || args[[2]] == "_noday0") {
     # no analyses specified (or blank)
     analyses <- "main"
     analyses_str <- ""
@@ -39,7 +39,7 @@ if (length(args) == 0) {
 }
 
 # Process strings -------------------------------------------------------------
-if (grepl("_noday0", analyses)) {
+if (grepl("_noday0", analyses) || args[[2]] == "_noday0") {
   noday0_str <- "_noday0"
   noday0_flag <- TRUE
   analyses <- gsub("_noday0", "", analyses)

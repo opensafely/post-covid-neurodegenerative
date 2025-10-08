@@ -1003,7 +1003,7 @@ actions_list <- splice(
     unlist(
       lapply(
         unique(active_analyses$cohort),
-        function(x) venn(cohort = x, analyses = "main_noday0")
+        function(x) venn(cohort = x, analyses = "_noday0")
       ),
       recursive = FALSE
     )
@@ -1013,7 +1013,7 @@ actions_list <- splice(
     make_other_output(
       action_name = "venn",
       cohort = paste0(cohorts, collapse = ";"),
-      subgroup = "main_noday0"
+      subgroup = "_noday0"
     )
   ),
 

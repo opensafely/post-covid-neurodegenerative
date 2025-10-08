@@ -24060,10 +24060,10 @@ actions:
       moderately_sensitive:
         venn_output_midpoint6: output/make_output/venn_output_midpoint6.csv
 
-  ## Generate venn-cohort_prevax-main_noday0 
+  ## Generate venn-cohort_prevax_noday0 
 
-  venn-cohort_prevax-main_noday0:
-    run: r:v2 analysis/venn/venn.R prevax main_noday0
+  venn-cohort_prevax_noday0:
+    run: r:v2 analysis/venn/venn.R prevax _noday0
     needs:
     - generate_input_prevax_clean
     - make_model_input-cohort_prevax-main_noday0-cis
@@ -24079,13 +24079,13 @@ actions:
     - make_model_input-cohort_prevax-main_noday0-rsd
     outputs:
       moderately_sensitive:
-        venn: output/venn/venn-cohort_prevax-main_noday0.csv
-        venn_midpoint6: output/venn/venn-cohort_prevax-main_noday0-midpoint6.csv
+        venn: output/venn/venn-cohort_prevax_noday0.csv
+        venn_midpoint6: output/venn/venn-cohort_prevax_noday0-midpoint6.csv
 
-  ## Generate venn-cohort_unvax-main_noday0 
+  ## Generate venn-cohort_unvax_noday0 
 
-  venn-cohort_unvax-main_noday0:
-    run: r:v2 analysis/venn/venn.R unvax main_noday0
+  venn-cohort_unvax_noday0:
+    run: r:v2 analysis/venn/venn.R unvax _noday0
     needs:
     - generate_input_unvax_clean
     - make_model_input-cohort_unvax-main_noday0-cis
@@ -24101,13 +24101,13 @@ actions:
     - make_model_input-cohort_unvax-main_noday0-rsd
     outputs:
       moderately_sensitive:
-        venn: output/venn/venn-cohort_unvax-main_noday0.csv
-        venn_midpoint6: output/venn/venn-cohort_unvax-main_noday0-midpoint6.csv
+        venn: output/venn/venn-cohort_unvax_noday0.csv
+        venn_midpoint6: output/venn/venn-cohort_unvax_noday0-midpoint6.csv
 
-  ## Generate venn-cohort_vax-main_noday0 
+  ## Generate venn-cohort_vax_noday0 
 
-  venn-cohort_vax-main_noday0:
-    run: r:v2 analysis/venn/venn.R vax main_noday0
+  venn-cohort_vax_noday0:
+    run: r:v2 analysis/venn/venn.R vax _noday0
     needs:
     - generate_input_vax_clean
     - make_model_input-cohort_vax-main_noday0-cis
@@ -24123,20 +24123,20 @@ actions:
     - make_model_input-cohort_vax-main_noday0-rsd
     outputs:
       moderately_sensitive:
-        venn: output/venn/venn-cohort_vax-main_noday0.csv
-        venn_midpoint6: output/venn/venn-cohort_vax-main_noday0-midpoint6.csv
+        venn: output/venn/venn-cohort_vax_noday0.csv
+        venn_midpoint6: output/venn/venn-cohort_vax_noday0-midpoint6.csv
 
-  ## Generate make-venn-main_noday0-output 
+  ## Generate make-venn_noday0-output 
 
-  make-venn-main_noday0-output:
-    run: r:v2 analysis/make_output/make_other_output.R venn prevax;unvax;vax main_noday0
+  make-venn_noday0-output:
+    run: r:v2 analysis/make_output/make_other_output.R venn prevax;unvax;vax _noday0
     needs:
-    - venn-cohort_prevax-main_noday0
-    - venn-cohort_unvax-main_noday0
-    - venn-cohort_vax-main_noday0
+    - venn-cohort_prevax_noday0
+    - venn-cohort_unvax_noday0
+    - venn-cohort_vax_noday0
     outputs:
       moderately_sensitive:
-        venn_noday0_output_midpoint6: output/make_output/venn-main_noday0_output_midpoint6.csv
+        venn_noday0_output_midpoint6: output/make_output/venn_noday0_output_midpoint6.csv
 
   ## Generate model_output-main 
 
