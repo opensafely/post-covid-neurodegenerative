@@ -22,20 +22,21 @@ print('Specify arguments')
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
+  # no inputs specified
   cohort <- "prevax"
   analyses <- "main"
   analyses_str <- ""
 } else {
-  cohort <- args[[1]]
+  cohort <- args[[1]] # cohort specified
   if (length(args) < 2 || args[[2]] == "") {
+    # no analyses specified (or blank)
     analyses <- "main"
     analyses_str <- ""
   } else {
-    analyses <- args[[2]]
+    analyses <- args[[2]] # analyses specified
     analyses_str <- paste0("-", analyses) # Preserves the string with `-` if any analyses are specified (e.g. `-main`)
   }
 }
-
 
 # Process strings -------------------------------------------------------------
 if (grepl("_noday0", analyses)) {
@@ -57,7 +58,7 @@ names <- unique(
   active_analyses[
     active_analyses$cohort == cohort &
       grepl(analyses, active_analyses$analysis) &
-      grepl("_noday0", table2_names) == noday0_flag,
+      grepl("_noday0", active_analyses$analysis) == noday0_flag,
   ]$name
 )
 
