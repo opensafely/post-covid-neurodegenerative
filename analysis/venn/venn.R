@@ -22,15 +22,31 @@ print('Specify arguments')
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
+  # no inputs specified
   cohort <- "prevax"
   analyses <- "main"
+  analyses_str <- ""
 } else {
-  cohort <- args[[1]]
-  if (length(args) < 2 || args[[2]] == "") {
+  cohort <- args[[1]] # cohort specified
+  if (length(args) < 2 || args[[2]] == "" || args[[2]] == "_noday0") {
+    # no analyses specified (or blank)
     analyses <- "main"
+    analyses_str <- ""
   } else {
-    analyses <- args[[2]]
+    analyses <- args[[2]] # analyses specified
+    analyses_str <- paste0("-", analyses) # Preserves the string with `-` if any analyses are specified (e.g. `-main`)
   }
+}
+
+# Process strings -------------------------------------------------------------
+if (grepl("_noday0", analyses) || args[[2]] == "_noday0") {
+  noday0_str <- "_noday0"
+  noday0_flag <- TRUE
+  analyses <- gsub("_noday0", "", analyses)
+  analyses_str <- gsub("_noday0", "", analyses_str)
+} else {
+  noday0_str <- ""
+  noday0_flag <- FALSE
 }
 
 # Identify outcomes ------------------------------------------------------------
@@ -41,7 +57,8 @@ active_analyses <- readr::read_rds("lib/active_analyses.rds")
 names <- unique(
   active_analyses[
     active_analyses$cohort == cohort &
-      grepl(analyses, active_analyses$analysis),
+      grepl(analyses, active_analyses$analysis) &
+      grepl("_noday0", active_analyses$analysis) == noday0_flag,
   ]$name
 )
 
@@ -226,15 +243,10 @@ for (NAME in names) {
 # Save Venn data -----------------------------------------------------------------
 print('Save Venn data')
 
-if (length(args) < 2 || args[[2]] == "") {
-  analyses_str <- ""
-} else {
-  analyses_str <- paste0("-", analyses)
-}
 
 write.csv(
   df,
-  paste0(venn_dir, "venn-cohort_", cohort, analyses_str, ".csv"),
+  paste0(venn_dir, "venn-cohort_", cohort, analyses_str, noday0_str, ".csv"),
   row.names = FALSE
 )
 
@@ -264,6 +276,7 @@ write.csv(
     "venn-cohort_",
     cohort,
     analyses_str,
+    noday0_str,
     "-midpoint6.csv"
   ),
   row.names = FALSE

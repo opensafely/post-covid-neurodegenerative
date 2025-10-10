@@ -29,6 +29,17 @@ if (length(args) == 0) {
   subgroup <- args[[2]]
 }
 
+# Noday0 processing ------------------------------------------------------------
+if (grepl("_noday0", subgroup)) {
+  noday0_str <- "_noday0"
+  noday0_flag <- TRUE
+  subgroup <- gsub("_noday0", "", subgroup)
+} else {
+  noday0_str <- ""
+  noday0_flag <- FALSE
+}
+
+
 # Load active analyses ---------------------------------------------------------
 print('Load active analyses')
 
@@ -45,8 +56,9 @@ table2_names <-
   )
 
 table2_names <- table2_names[
-  grepl("-main", table2_names) |
-    grepl(paste0("-sub_", subgroup), table2_names)
+  (grepl("-main", table2_names) |
+    grepl(paste0("-sub_", subgroup), table2_names)) &
+    grepl("_noday0", table2_names) == noday0_flag
 ]
 
 active_analyses <- active_analyses[active_analyses$name %in% table2_names, ]
@@ -168,7 +180,15 @@ print('Save Table 2')
 
 write.csv(
   table2,
-  paste0(table2_dir, "table2-cohort_", cohort, "-sub_", subgroup, ".csv"),
+  paste0(
+    table2_dir,
+    "table2-cohort_",
+    cohort,
+    "-sub_",
+    subgroup,
+    noday0_str,
+    ".csv"
+  ),
   row.names = FALSE
 )
 
@@ -220,6 +240,7 @@ write.csv(
     cohort,
     "-sub_",
     subgroup,
+    noday0_str,
     "-midpoint6.csv"
   ),
   row.names = FALSE

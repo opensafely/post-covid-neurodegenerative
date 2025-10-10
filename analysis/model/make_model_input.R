@@ -20,7 +20,7 @@ print("Specify arguments")
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
-  name <- "cohort_unvax-sub_highvascrisk_TRUE-dem_any"
+  name <- "cohort_unvax-sub_highvascrisk_TRUE_noday0-dem_any"
 } else {
   name <- args[[1]]
 }
@@ -30,6 +30,11 @@ analysis <- gsub(
   "",
   name
 )
+
+noday0_flag  <- (grepl("_noday0", analysis))
+if (noday0_flag ) {
+  analysis <- gsub("_noday0", "", analysis)
+}
 
 # Define model output folder ---------------------------------------
 print("Creating output/model output folder")
@@ -228,7 +233,14 @@ if ((grepl("-dem_", name) == TRUE) | (grepl("-park$", name) == TRUE)) {
   df <- df[df$cov_num_age >= 50, ]
 }
 
-# Save model output
+# Make model input: noday0 ---------------------------------------------------
+if (noday0_flag) {
+  df <- df[
+    is.na(df$exp_date) | is.na(df$out_date) | df$exp_date != df$out_date,
+  ]
+}
+
+# Save model output ----------------------------------------------------------
 df <- df %>%
   dplyr::select(tidyselect::all_of(pmi$keep))
 

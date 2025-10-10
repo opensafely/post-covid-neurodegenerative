@@ -38,13 +38,22 @@ cohorts <- stringr::str_split(as.vector(cohorts), ";")[[1]]
 # Generate output/saving string ------------------------------------------------
 print('Generate strings')
 
+if (grepl("_noday0", subgroup)) {
+  noday0_str <- "_noday0"
+  subgroup <- gsub("_noday0", "", subgroup)
+} else {
+  noday0_str <- ""
+}
+
 if (subgroup == "All" | subgroup == "") {
-  sub_str <- ""
+  sub_str <- "" # if no subgroup is specified, don't have anything in the filename
+} else if (subgroup == "main") {
+  sub_str <- "-main" # if main is specified, use -main in the filename
 } else {
   if (grepl("preex", subgroup)) {
     sub_str <- paste0("-", subgroup)
   } else {
-    sub_str <- paste0("-sub_", subgroup)
+    sub_str <- paste0("-sub_", subgroup) # if any other subgroup is specified, use -sub_{subgroup} in the filename
   }
 }
 
@@ -74,6 +83,7 @@ for (i in cohorts) {
       "-cohort_",
       i,
       sub_str,
+      noday0_str,
       "-midpoint6.csv"
     ))
   }
@@ -121,6 +131,13 @@ print('Save output')
 
 readr::write_csv(
   df,
-  paste0(makeout_dir, "/", output, sub_str, "_output_midpoint6.csv"),
+  paste0(
+    makeout_dir,
+    "/",
+    output,
+    sub_str,
+    noday0_str,
+    "_output_midpoint6.csv"
+  ),
   na = "-"
 )
