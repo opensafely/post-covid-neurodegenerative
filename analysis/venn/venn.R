@@ -39,7 +39,7 @@ if (length(args) == 0) {
 }
 
 # Process strings -------------------------------------------------------------
-if (grepl("_noday0", analyses) || args[[2]] == "_noday0") {
+if (grepl("_noday0", analyses) || (!is.na(args[2]) && args[[2]] == "_noday0")) {
   noday0_str <- "_noday0"
   noday0_flag <- TRUE
   analyses <- gsub("_noday0", "", analyses)
