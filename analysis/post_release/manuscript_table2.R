@@ -16,12 +16,12 @@ colnames(df) <- gsub("_midpoint6", "", colnames(df))
 print("Keep totals")
 
 totals <- df %>%
-  filter(grepl("main", analysis)) %>%
+  filter(grepl("main", analysis)) %>% # was "main"
   distinct(cohort, analysis, sample_size) %>%
   pivot_wider(names_from = cohort, values_from = sample_size) %>%
   rename_with(~ paste0("event_personyears_", .x), .cols = -analysis) %>%
   mutate(
-    analysis = gsub("main_", "", analysis),
+    analysis = gsub("main_", "", analysis), # was "main_"
     outcome_label = "N"
   )
 # Convert all event_personyears_* columns in totals to character
@@ -33,7 +33,10 @@ totals[cols_to_convert] <- lapply(totals[cols_to_convert], as.character)
 print("Filter data")
 
 df <- df[
-  grepl("main|sub_covidhospital", df$analysis),
+  grepl(
+    "main|sub_covidhospital",
+    df$analysis
+  ), #was "main|sub_covidhospital"
   c(
     "cohort",
     "analysis",
@@ -47,12 +50,12 @@ df <- df[
 ]
 
 df$events <- ifelse(
-  grepl("main", df$analysis),
+  grepl("main", df$analysis), # was "main"
   df$unexposed_events,
   df$exposed_events
 )
 df$person_days <- ifelse(
-  grepl("main", df$analysis),
+  grepl("main", df$analysis), # was "main"
   df$unexposed_person_days,
   df$exposed_person_days
 )

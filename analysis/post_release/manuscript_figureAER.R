@@ -4,7 +4,7 @@ plot_aer <- function(outcomes, outcome_group) {
   print('Load data')
 
   df <- read.csv("output/post_release/lifetables_compiled.csv")
-  df <- df[df$day0 == TRUE, ]
+  df <- df[df$day0 == FALSE, ]
 
   # Filter data ------------------------------------------------------------------
   print("Filter data")
@@ -39,10 +39,10 @@ plot_aer <- function(outcomes, outcome_group) {
 
   df$aer_age <- factor(
     df$aer_age,
-    levels = c("18_39", "40_64", "65_84", "85_110", "overall"),
+    levels = c("18_49", "50_64", "65_84", "85_110", "overall"), # was 40_64 18_39
     labels = c(
-      "Age group: 18-39",
-      "Age group: 40-64",
+      "Age group: 18-49",
+      "Age group: 50-64",
       "Age group: 65-84",
       "Age group: 85-110",
       "Combined"

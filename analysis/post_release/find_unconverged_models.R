@@ -35,7 +35,7 @@ output_folder <- "output/post_release/"
 # Find all model files ---------------------------------------------------------
 print('Collecting list of models')
 file_list <- list.files(
-  path = paste0(release, "20250804\\"),
+  path = paste0(release, "20251103_noday0\\"),
   pattern = "^model_output-.*-midpoint6\\.csv$",
   full.names = TRUE
 )

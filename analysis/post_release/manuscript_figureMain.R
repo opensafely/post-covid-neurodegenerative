@@ -48,21 +48,23 @@ plot_hr <- function(outcomes, outcome_group) {
   # df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
 
   # Neurodegenerative-specific catch
-  if ("dem_lb" %in% outcomes) {
-    df[nrow(df) + 1, ] <- list(
-      "prevax",
-      "sub_age_18_39",
-      "dem_lb",
-      -1,
-      "days_1",
-      1,
-      1,
-      1
-    )
+  for (d in c("dem_any", "dem_alz", "dem_vasc", "dem_lb", "park")) {
+    if (d %in% outcomes) {
+      df[nrow(df) + 1, ] <- list(
+        "prevax",
+        "sub_age_18_49",
+        d,
+        -1,
+        "days_1",
+        1,
+        1,
+        1
+      )
+    }
   }
 
   if (outcome_group %in% c("dem+cis", "dem_subgroups")) {
-    df <- df[!(df$analysis == "sub_age_18_39"), ]
+    df <- df[!(df$analysis == "sub_age_18_49"), ] # was 18_39
   }
 
   # Make columns numeric -------------------------------------------------------

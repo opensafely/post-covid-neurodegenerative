@@ -76,8 +76,9 @@ print("Tidy term")
 df <- df %>%
   mutate(
     weeks = case_when(
-      term == "days0_1" ~ "Day 0",
-      term == "days1_28" ~ "Weeks 1-4, without day 0",
+      # term == "days0_1" ~ "Day 0",
+      # term == "days1_28" ~ "Weeks 1-4, without day 0",
+      term == "days0_28" ~ "Weeks 1-4, without day 0",
       term == "days28_183" ~ "Weeks 5-26",
       term == "days183_365" ~ "Weeks 27-52",
       term == "days365_730" ~ "Weeks 53-104",
@@ -89,7 +90,7 @@ df <- df %>%
 
 # Define the desired order for the 'weeks' factor
 weeks_levels <- c(
-  "Day 0",
+  # "Day 0",
   "Weeks 1-4, without day 0",
   "Weeks 5-26",
   "Weeks 27-52",

@@ -3,6 +3,7 @@ prevax,Pre-vaccination (Jan 1 2020 - Dec 14 2021),,
 vax,Vaccinated (Jun 1 2021 - Dec 14 2021),,
 unvax,Unvaccinated (Jun 1 2021 - Dec 14 2021),,
 main,All COVID-19,main,1
+main_noday0,All COVID-19,main_noday0,1
 All,All,,
 dem_alz,Alzheimer's disease,,
 dem_vasc,Vascular dementia,,
@@ -15,15 +16,23 @@ rsd,REM sleep disorder,,
 mnd,Motor neurone disease,,
 ms,Multiple sclerosis,,
 migraine,Migraine,,
-sub_age_18_49,18-49,age,1
-sub_age_50_64,50-64,age,2
+sub_age_18_39,18-49,age,1
+sub_age_40_64,40-64,age,2
 sub_age_65_84,65-84,age,3
 sub_age_85_110,85-110,age,4
+sub_age_18_49_noday0,18-49,age,1
+sub_age_50_64_noday0,50-64,age,2
+sub_age_65_84_noday0,65-84,age,3
+sub_age_85_110_noday0,85-110,age,4
 sub_cis_TRUE,History of cognitive impairment,cis,1
 sub_cis_FALSE,No history of cognitive impairment,cis,2
+sub_cis_TRUE_noday0,History of cognitive impairment,cis,1
+sub_cis_FALSE_noday0,No history of cognitive impairment,cis,2
 sub_covidhistory,History of COVID-19,history_exposure,1
 sub_covidhospital_TRUE,Hospitalised COVID-19,main,2
 sub_covidhospital_FALSE,Non-hospitalised COVID-19,main,3
+sub_covidhospital_TRUE_noday0,Hospitalised COVID-19,main,2
+sub_covidhospital_FALSE_noday0,Non-hospitalised COVID-19,main,3
 sub_ethnicity_asian,Asian*,ethnicity,2
 sub_ethnicity_black,Black**,ethnicity,3
 sub_ethnicity_mixed,Mixed,ethnicity,4
