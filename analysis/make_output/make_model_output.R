@@ -52,7 +52,14 @@ files <- list.files(
   model_dir,
   pattern = paste0("model_output-.*", subgroup, ".*")
 ) # subgroup filtering
-files <- intersect(files, paste0("model_output-", active_analyses$name, ".csv")) # only include models currently in active_analyses
+files <- intersect(
+  files,
+  paste0(
+    c("model_output-", "stata_model_output-"),
+    rep(active_analyses$name, each = 2),
+    ".csv"
+  )
+) # only include models currently in active_analyses
 files <- files[grepl("_noday0", files) == noday0_flag] # noday0 processing
 
 # Combine model output (R, and Stata if available) -----------------------------
