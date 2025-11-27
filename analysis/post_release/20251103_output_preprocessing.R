@@ -56,16 +56,20 @@ for (f in original_files) {
   input_path <- file.path(original_dir, f)
   output_path <- file.path(output_dir, new_name)
 
-  # Read CSV
-  df <- read.csv(input_path, stringsAsFactors = FALSE)
+  if (grepl("table1", f)) {
+    file.copy(input_path, output_path, overwrite = TRUE)
+  } else {
+    # Read CSV
+    df <- read.csv(input_path, stringsAsFactors = FALSE)
 
-  # Remove `_noday0` inside data (applies to all character fields)
-  df[] <- lapply(df, function(x) {
-    if (is.character(x)) gsub("_noday0", "", x) else x
-  })
+    # Remove `_noday0` inside data (applies to all character fields)
+    df[] <- lapply(df, function(x) {
+      if (is.character(x)) gsub("_noday0", "", x) else x
+    })
 
-  # Write modified CSV to target
-  write.csv(df, output_path, row.names = FALSE)
+    # Write modified CSV to target
+    write.csv(df, output_path, row.names = FALSE)
+  }
 }
 
 # move files over (non model)
