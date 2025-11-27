@@ -232,6 +232,9 @@ plot_aer(c("mnd", "ms", "migraine"), "other_neuro")
 outcomes <- c("park", "rls", "rsd")
 outcome_group <- "park+risk"
 
+outcomes <- c("dem_any", "cis")
+outcome_group <- "dem+cis"
+
 # Previous Plot set
 # plot_aer(c("dem_alz", "dem_vasc"), "alz_vasc")
 # plot_aer(c("dem_lb", "dem_any"), "lb_any")
