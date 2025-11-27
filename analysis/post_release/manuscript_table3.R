@@ -178,6 +178,25 @@ df <- dplyr::rename(
   "Unvaccinated cohort" = "unvax"
 )
 
+
+df <- df %>%
+  mutate(across(
+    where(is.list),
+    ~ {
+      vapply(
+        .x,
+        function(el) {
+          if (is.null(el) || length(el) == 0) {
+            NA_character_
+          } else {
+            paste(el, collapse = "; ")
+          }
+        },
+        FUN.VALUE = character(1)
+      )
+    }
+  ))
+
 # Save table -------------------------------------------------------------------
 print("Save table")
 
