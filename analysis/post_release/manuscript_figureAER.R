@@ -163,9 +163,9 @@ plot_aer <- function(outcomes, outcome_group) {
       labels = seq(0, 52, 4)
     ) +
     ggplot2::scale_y_continuous(
-      lim = c(0, 5),
-      breaks = seq(0, 5, 0.5),
-      labels = seq(0, 5, 0.5)
+      lim = c(0, 7),
+      breaks = seq(0, 7, 0.5),
+      labels = seq(0, 7, 0.5)
     ) +
     ggplot2::scale_color_manual(
       values = c("#006d2c", "#31a354", "#74c476", "#bae4b3", "#000000"),
