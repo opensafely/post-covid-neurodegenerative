@@ -188,7 +188,15 @@ plot_hr <- function(outcomes, outcome_group) {
     facet_info <- facet_info[
       order(facet_info$outcome, facet_info$ref), # facet_info$preex,
     ]
+
     facet_info$facet_order <- 1:nrow(facet_info)
+    if (outcome_group == "dem_subgroups") {
+      facet_info$facet_order <- c(
+        1:(nrow(facet_info) / 3),
+        (2 * nrow(facet_info) / 3 + 1):nrow(facet_info),
+        (nrow(facet_info) / 3 + 1):(2 * nrow(facet_info) / 3)
+      )
+    }
 
     facet_info$facet_label2 <- ""
     for (j in 1:nrow(facet_info)) {
