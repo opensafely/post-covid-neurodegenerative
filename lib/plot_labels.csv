@@ -24,10 +24,10 @@ sub_cis_FALSE,No history of cognitive impairment,cis,2
 sub_covidhistory,History of COVID-19,history_exposure,1
 sub_covidhospital_TRUE,Hospitalised COVID-19,main,2
 sub_covidhospital_FALSE,Non-hospitalised COVID-19,main,3
-sub_ethnicity_asian,Asian*,ethnicity,2
-sub_ethnicity_black,Black**,ethnicity,3
+sub_ethnicity_asian,Asian or Asian British,ethnicity,2
+sub_ethnicity_black,Black or Black British,ethnicity,3
 sub_ethnicity_mixed,Mixed,ethnicity,4
-sub_ethnicity_other,Other,ethnicity,5
+sub_ethnicity_other,Chinese or Other Ethnic Groups,ethnicity,5
 sub_ethnicity_white,White,ethnicity,1
 sub_highvascrisk_TRUE,History of hypertension and/or diabetes,highvascrisk,1
 sub_highvascrisk_FALSE,No history of either hypertension or diabetes,highvascrisk,2
