@@ -34,29 +34,44 @@ df <- df[
 df$term <- factor(
   df$term,
   levels = c(
-    "days0_1",
-    "days1_28",
-    "days28_365",
+    "days0_28",
+    "days28_183",
+    "days183_365",
     "days365_730",
-    "days730_1095",
-    "days1095_1460",
-    "days1460_1979"
+    "days730_1065",
+    "days1065_1582"
   ),
   ordered = TRUE
 )
+
+df <- unique(df) # remove duplicates
+
 df_wide <- df %>%
-  select(cohort, analysis, outcome, term, N_events_midpoint6) %>%
+  select(cohort, analysis, outcome, term, source, N_events_midpoint6) %>%
   tidyr::pivot_wider(
     names_from = term,
-    values_from = N_events_midpoint6
+    values_from = N_events_midpoint6,
+    id_cols = c('cohort', 'analysis', 'outcome', 'source')
   ) %>%
   # reorder columns based on term factor levels
   select(
     cohort,
     analysis,
     outcome,
+    source,
     all_of(levels(df$term))
   )
+
+df_wide["Total_Sum"] <- df_wide["days0_28"] +
+  df_wide["days28_183"] +
+  df_wide["days183_365"] +
+  df_wide["days365_730"] +
+  df_wide["days730_1065"] +
+  df_wide["days1065_1582"]
+df_wide["Year1_Sum"] <- df_wide["days0_28"] +
+  df_wide["days28_183"] +
+  df_wide["days183_365"]
+df_wide["6month_Sum"] <- df_wide["days0_28"] + df_wide["days28_183"]
 
 readr::write_csv(df_wide, "output/post_release/events_per_interval_wide.csv")
 
@@ -74,11 +89,8 @@ print(df_filtered)
 df_filtered %>%
   arrange(cohort, analysis)
 
-# Identify columns that start with "days"
-#day_cols <- grep("^days", names(df_wide), value = TRUE)
-# Only include columns that start with "days" but are not "days0_1"
-day_cols <- grep("^days(?!0_1)", names(df_wide), value = TRUE, perl = TRUE)
-# Exclude days0_1 and days1_28
+# Only include columns that start with "days"
+day_cols <- grep("^days", names(df_wide), value = TRUE, perl = TRUE)
 # day_cols <- grep("^days", names(df_wide), value = TRUE)
 # day_cols <- setdiff(day_cols, c("days0_1", "days1_28"))
 # For each row, find the columns corresponding to the 4 lowest values
