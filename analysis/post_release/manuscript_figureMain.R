@@ -63,7 +63,8 @@ plot_hr <- function(outcomes, outcome_group) {
     }
   }
 
-  if (outcome_group %in% c("dem+cis", "dem_subgroups")) {
+  if (outcome_group %in% c("dem_subgroups")) {
+    # "dem+cis",
     df <- df[!(df$analysis == "sub_age_18_49"), ] # was 18_39
   }
 
