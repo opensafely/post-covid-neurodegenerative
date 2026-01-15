@@ -79,6 +79,8 @@ excluded_models <- c(
 
 stata_models <- c(
   "cohort_prevax-main_noday0-migraine",
+  "cohort_prevax-main_noday0-mnd",
+  "cohort_unvax-main_noday0-dem_alz",
   "cohort_unvax-main_noday0-migraine",
   "cohort_unvax-main_noday0-rls",
   "cohort_prevax-sub_age_18_49_noday0-migraine",
