@@ -15,7 +15,19 @@ df <- file_list %>%
   lapply(read_csv, show_col_types = FALSE) %>%
   bind_rows()
 
+# Find analyses with <12 midpoint6 events at any timepoint
+low_event_list <- unique(na.omit(df[df$N_events_midpoint6 < 12, ]$name)) # find list
+
+df_filtered <- df[!(df$name %in% low_event_list), ] # apply reduction
+
+# Save list of removed files
+sink('output/post_release/removed_models_low_events.txt')
+print(low_event_list)
+sink() #close external connection to file
+
+
+# Save dataset
 readr::write_csv(
-  df,
+  df_filtered,
   "output/post_release/plot_model_output.csv"
 )
