@@ -70,7 +70,10 @@ No clinical, policy or safety conclusions must be drawn from the contents of thi
     -   Active analyses scripts are in the [`active_analyses`](./analysis/active_analyses/) directory (NB: these are not accessed during the core pipeline run):
         -   [`active_analyses.R`](./analysis/active_analyses/active_analyses.R) creates [`lib/active_analyses`](./lib/active_analyses.rds), the list of analyses to be run
         -   [`fn-add_analysis.R`](./analysis/active_analyses/fn-add_analysis.R) a companion function to [`active_analyses.R`](./analysis/active_analyses/active_analyses.R) to cleanly add new rows to the analyses file
+        
+    -   Archived scripts for no-longer-needed actions (e.g. used to investigate bugs) can be found in the [`archive`](./analysis/archive) directory. Read [`README_archive`](./analysis/archive/README_analysis) for more details. 
 
+    -   Scripts for processing and plotting the final outputs can be found on the `post-release` branch, in the [`post-release`](./analysis/post-release) directory. 
         
 -   Other useful files include the following:        
 
