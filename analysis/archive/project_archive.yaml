@@ -1,0 +1,235 @@
+version: '3.0'
+
+expectations:
+
+  population_size: 5000
+
+actions:
+
+  ## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+  ## DO NOT EDIT project.yaml DIRECTLY 
+  ## This file is created by create_project_actions.R 
+  ## Edit and run create_project_actions.R to update the project.yaml 
+  ## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+  ## Define study dates 
+
+  study_dates:
+    run: r:v2 analysis/study_dates.R
+    outputs:
+      highly_sensitive:
+        study_dates_json: output/study_dates.json
+
+  ## Generate dates for all cohorts 
+
+  generate_dates:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_dates.py
+      --output output/dataset_definition/index_dates.csv.gz
+    needs:
+    - study_dates
+    outputs:
+      highly_sensitive:
+        dataset: output/dataset_definition/index_dates.csv.gz
+
+  ## Generate input_prevax 
+
+  generate_input_prevax:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_prevax.py
+      --output output/dataset_definition/input_prevax.csv.gz
+    needs:
+    - generate_dates
+    outputs:
+      highly_sensitive:
+        cohort: output/dataset_definition/input_prevax.csv.gz
+
+  ## Generate input_unvax 
+
+  generate_input_unvax:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_unvax.py
+      --output output/dataset_definition/input_unvax.csv.gz
+    needs:
+    - generate_dates
+    outputs:
+      highly_sensitive:
+        cohort: output/dataset_definition/input_unvax.csv.gz
+
+  ## Generate input_vax 
+
+  generate_input_vax:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_vax.py
+      --output output/dataset_definition/input_vax.csv.gz
+    needs:
+    - generate_dates
+    outputs:
+      highly_sensitive:
+        cohort: output/dataset_definition/input_vax.csv.gz
+
+  ## Generate input_rsd_prevax 
+
+  generate_input_rsd_prevax:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition_rsd/dataset_definition_rsd_prevax.py
+      --output output/dataset_definition_rsd/input_rsd_prevax.csv.gz
+    needs:
+    - generate_dates
+    outputs:
+      highly_sensitive:
+        cohort: output/dataset_definition_rsd/input_rsd_prevax.csv.gz
+
+  ## Generate input_rsd_unvax 
+
+  generate_input_rsd_unvax:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition_rsd/dataset_definition_rsd_unvax.py
+      --output output/dataset_definition_rsd/input_rsd_unvax.csv.gz
+    needs:
+    - generate_dates
+    outputs:
+      highly_sensitive:
+        cohort: output/dataset_definition_rsd/input_rsd_unvax.csv.gz
+
+  ## Generate input_rsd_vax 
+
+  generate_input_rsd_vax:
+    run: ehrql:v1 generate-dataset analysis/dataset_definition_rsd/dataset_definition_rsd_vax.py
+      --output output/dataset_definition_rsd/input_rsd_vax.csv.gz
+    needs:
+    - generate_dates
+    outputs:
+      highly_sensitive:
+        cohort: output/dataset_definition_rsd/input_rsd_vax.csv.gz
+
+  ## Run check_outcome_rsd-prevax_unvax_vax 
+
+  check_outcome_rsd-prevax_unvax_vax:
+    run: r:v2 analysis/code_diagnostics/diagnose_outcome.R rsd prevax;unvax;vax
+    needs:
+    - generate_input_prevax
+    - generate_input_unvax
+    - generate_input_vax
+    outputs:
+      moderately_sensitive:
+        describe_outcome: output/code_diagnostics/rsd-prevax_unvax_vax.txt
+
+  ## Run check_outcome_rsd-prevax 
+
+  check_outcome_rsd-prevax:
+    run: r:v2 analysis/code_diagnostics/diagnose_outcome.R rsd prevax
+    needs:
+    - generate_input_prevax
+    outputs:
+      moderately_sensitive:
+        describe_outcome: output/code_diagnostics/rsd-prevax.txt
+
+  ## Run check_outcome_rsd_rsd-prevax_unvax_vax 
+
+  check_outcome_rsd_rsd-prevax_unvax_vax:
+    run: r:v2 analysis/code_diagnostics/diagnose_outcome.R rsd prevax;unvax;vax rsd
+    needs:
+    - generate_input_rsd_prevax
+    - generate_input_rsd_unvax
+    - generate_input_rsd_vax
+    outputs:
+      moderately_sensitive:
+        describe_outcome: output/code_diagnostics/rsd_rsd-prevax_unvax_vax.txt
+
+  ## Run check_outcome_rsd_rsd-prevax 
+
+  check_outcome_rsd_rsd-prevax:
+    run: r:v2 analysis/code_diagnostics/diagnose_outcome.R rsd prevax rsd
+    needs:
+    - generate_input_rsd_prevax
+    outputs:
+      moderately_sensitive:
+        describe_outcome: output/code_diagnostics/rsd_rsd-prevax.txt
+
+  ## Generate input_prevax_clean, with describe = FALSE 
+
+  generate_input_prevax_clean:
+    run: r:v2 analysis/dataset_clean/dataset_clean.R prevax FALSE
+    needs:
+    - study_dates
+    - generate_input_prevax
+    outputs:
+      moderately_sensitive:
+        flow: output/dataset_clean/flow-cohort_prevax.csv
+        flow_midpoint6: output/dataset_clean/flow-cohort_prevax-midpoint6.csv
+      highly_sensitive:
+        venn: output/dataset_clean/venn-cohort_prevax.rds
+        cohort_clean: output/dataset_clean/input_prevax_clean.rds
+
+  ## Generate input_unvax_clean, with describe = FALSE 
+
+  generate_input_unvax_clean:
+    run: r:v2 analysis/dataset_clean/dataset_clean.R unvax FALSE
+    needs:
+    - study_dates
+    - generate_input_unvax
+    outputs:
+      moderately_sensitive:
+        flow: output/dataset_clean/flow-cohort_unvax.csv
+        flow_midpoint6: output/dataset_clean/flow-cohort_unvax-midpoint6.csv
+      highly_sensitive:
+        venn: output/dataset_clean/venn-cohort_unvax.rds
+        cohort_clean: output/dataset_clean/input_unvax_clean.rds
+
+  ## Generate input_vax_clean, with describe = FALSE 
+
+  generate_input_vax_clean:
+    run: r:v2 analysis/dataset_clean/dataset_clean.R vax FALSE
+    needs:
+    - study_dates
+    - generate_input_vax
+    outputs:
+      moderately_sensitive:
+        flow: output/dataset_clean/flow-cohort_vax.csv
+        flow_midpoint6: output/dataset_clean/flow-cohort_vax-midpoint6.csv
+      highly_sensitive:
+        venn: output/dataset_clean/venn-cohort_vax.rds
+        cohort_clean: output/dataset_clean/input_vax_clean.rds
+
+  ## Generate table_age_cohort_prevax 
+
+  table_age-cohort_prevax:
+    run: 'r:v2 analysis/table_age/table_age.R prevax 40;45;50;55;60;65 '
+    needs:
+    - study_dates
+    - generate_input_prevax_clean
+    outputs:
+      moderately_sensitive:
+        table_age: output/table_age/table_age-cohort_prevax.csv
+        table_age_midpoint6: output/table_age/table_age-cohort_prevax-midpoint6.csv
+
+  ## Generate table_age_cohort_unvax 
+
+  table_age-cohort_unvax:
+    run: 'r:v2 analysis/table_age/table_age.R unvax 40;45;50;55;60;65 '
+    needs:
+    - study_dates
+    - generate_input_unvax_clean
+    outputs:
+      moderately_sensitive:
+        table_age: output/table_age/table_age-cohort_unvax.csv
+        table_age_midpoint6: output/table_age/table_age-cohort_unvax-midpoint6.csv
+
+  ## Generate table_age_cohort_vax 
+
+  table_age-cohort_vax:
+    run: 'r:v2 analysis/table_age/table_age.R vax 40;45;50;55;60;65 '
+    needs:
+    - study_dates
+    - generate_input_vax_clean
+    outputs:
+      moderately_sensitive:
+        table_age: output/table_age/table_age-cohort_vax.csv
+        table_age_midpoint6: output/table_age/table_age-cohort_vax-midpoint6.csv
+
+  ## Generate make-table_age-output 
+
+  make-table_age-output:
+    run: r:v2 analysis/make_output/make_other_output.R table_age prevax;unvax;vax
+    needs:
+    - table_age-cohort_prevax
+    - table_age-cohort_unvax
+    - table_age-cohort_vax
+    outputs:
+      moderately_sensitive:
+        table_age_output_midpoint6: output/make_output/table_age_output_midpoint6.csv
+
