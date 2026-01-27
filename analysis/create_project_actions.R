@@ -25,8 +25,7 @@ active_analyses <- active_analyses[
 cohorts <- unique(active_analyses$cohort)
 analyses <- unique(grep("^main", active_analyses$analysis, value = TRUE))
 subgroups <- unique(str_extract(active_analyses$analysis, "^main|sub_[^_]+"))
-subgroups_noday0 <- paste0(subgroups, "_noday0")
-subgroups_all <- c(subgroups, subgroups_noday0)
+subgroups <- paste0(subgroups, "_noday0")
 active_age <- active_analyses[grepl("_age_", active_analyses$name), ]$name
 age_str <- paste0(
   paste0(
@@ -45,21 +44,6 @@ describe <- FALSE # This prints descriptive files for each dataset in the pipeli
 # List of models excluded from model output generation
 
 excluded_models <- c(
-  "cohort_vax-sub_age_18_49-dem_lb",
-  "cohort_unvax-sub_age_18_49-dem_lb",
-  "cohort_prevax-sub_age_18_49-dem_lb",
-  "cohort_vax-sub_age_18_49-dem_vasc",
-  "cohort_unvax-sub_age_18_49-dem_vasc",
-  "cohort_prevax-sub_age_18_49-dem_vasc",
-  "cohort_vax-sub_age_18_49-dem_any",
-  "cohort_unvax-sub_age_18_49-dem_any",
-  "cohort_prevax-sub_age_18_49-dem_any",
-  "cohort_vax-sub_age_18_49-dem_alz",
-  "cohort_unvax-sub_age_18_49-dem_alz",
-  "cohort_prevax-sub_age_18_49-dem_alz",
-  "cohort_vax-sub_age_18_49-park",
-  "cohort_unvax-sub_age_18_49-park",
-  "cohort_prevax-sub_age_18_49-park",
   "cohort_vax-sub_age_18_49_noday0-dem_lb",
   "cohort_unvax-sub_age_18_49_noday0-dem_lb",
   "cohort_prevax-sub_age_18_49_noday0-dem_lb",
@@ -863,7 +847,7 @@ actions_list <- splice(
 
   splice(
     unlist(
-      lapply(subgroups_all, function(x) make_model_output(subgroup = x)),
+      lapply(subgroups, function(x) make_model_output(subgroup = x)),
       recursive = FALSE
     )
   ),
