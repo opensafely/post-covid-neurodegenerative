@@ -18,11 +18,6 @@ print("Creating output/dataset_clean output folder")
 dataclean_dir <- "output/dataset_clean/"
 dir_create(here::here(dataclean_dir))
 
-# Specify redaction threshold --------------------------------------------------
-print('Specify redaction threshold')
-
-threshold <- 6
-
 # Load json file containing vax study dates ------------------------------------
 print('Load json file containing vax study dates')
 
@@ -131,7 +126,7 @@ write.csv(
 print('Performing redaction')
 
 flow$removed <- NULL
-flow$N_midpoint6 <- roundmid_any(flow$N, to = threshold)
+flow$N_midpoint6 <- roundmid_any(flow$N)
 flow$removed_derived <- dplyr::lag(
   flow$N_midpoint6,
   default = dplyr::first(flow$N_midpoint6)
