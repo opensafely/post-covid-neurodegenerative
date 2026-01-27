@@ -215,60 +215,6 @@ generate_cohort <- function(cohort) {
   )
 }
 
-# Create function to generate rsd study population ---------------------------------
-
-generate_rsd_cohort <- function(cohort) {
-  splice(
-    comment(glue("Generate input_rsd_{cohort}")),
-    action(
-      name = glue("generate_input_rsd_{cohort}"),
-      run = glue(
-        "ehrql:v1 generate-dataset analysis/dataset_definition_rsd/dataset_definition_rsd_{cohort}.py --output output/dataset_definition_rsd/input_rsd_{cohort}.csv.gz"
-      ),
-      needs = list("generate_dates"),
-      highly_sensitive = list(
-        cohort = glue("output/dataset_definition_rsd/input_rsd_{cohort}.csv.gz")
-      )
-    )
-  )
-}
-
-# Create function to run code diagnostics on a particular variable -------------
-
-check_outcome <- function(outcome, cohort, dd_group = "") {
-  cohort_names <- stringr::str_split(as.vector(cohort), ";")[[1]]
-  cohort_str <- paste0("-", paste0(cohort_names, collapse = "_"))
-  if (dd_group != "") {
-    dd_group_str <- paste0("_", dd_group)
-  } else {
-    dd_group_str <- ""
-  }
-  splice(
-    comment(glue("Run check_outcome_{outcome}{dd_group_str}{cohort_str}")),
-    action(
-      name = glue("check_outcome_{outcome}{dd_group_str}{cohort_str}"),
-      run = glue("r:v2 analysis/code_diagnostics/diagnose_outcome.R"),
-      arguments = unlist(lapply(
-        list(c(outcome, cohort, dd_group)),
-        function(x) {
-          x[x != ""]
-        }
-      )),
-      needs = c(as.list(paste0(
-        "generate_input",
-        dd_group_str,
-        "_",
-        cohort_names
-      ))),
-      moderately_sensitive = list(
-        describe_outcome = glue(
-          "output/code_diagnostics/{outcome}{dd_group_str}{cohort_str}.txt"
-        )
-      )
-    )
-  )
-}
-
 # Create function to clean data -------------------------------------------------
 
 clean_data <- function(cohort, describe = describe) {
@@ -346,34 +292,6 @@ table1 <- function(cohort, ages = "18;40;60;80", preex = "All") {
         ),
         table1_midpoint6 = glue(
           "output/table1/table1-cohort_{cohort}{preex_str}-midpoint6.csv"
-        )
-      )
-    )
-  )
-}
-
-
-# Create function for table_age --------------------------------------------
-
-table_age <- function(cohort, ages = "18;40;60;80", preex = "All") {
-  if (preex == "All" | preex == "") {
-    preex_str <- ""
-  } else {
-    preex_str <- paste0("-preex_", preex)
-  }
-  splice(
-    comment(glue("Generate table_age_cohort_{cohort}{preex_str}")),
-    action(
-      name = glue("table_age-cohort_{cohort}{preex_str}"),
-      run = "r:v2 analysis/table_age/table_age.R",
-      arguments = c(c(cohort), c(ages), c(preex)),
-      needs = list("study_dates", glue("generate_input_{cohort}_clean")),
-      moderately_sensitive = list(
-        table_age = glue(
-          "output/table_age/table_age-cohort_{cohort}{preex_str}.csv"
-        ),
-        table_age_midpoint6 = glue(
-          "output/table_age/table_age-cohort_{cohort}{preex_str}-midpoint6.csv"
         )
       )
     )
@@ -755,33 +673,6 @@ actions_list <- splice(
     )
   ),
 
-  ## Generate RSD study population --------------------------------------------
-
-  splice(
-    unlist(
-      lapply(cohorts, function(x) generate_rsd_cohort(cohort = x)),
-      recursive = FALSE
-    )
-  ),
-
-  ## Run code diagnostics a particular outcome ---------------------------------
-
-  # All RSD outcomes in core dataset
-  splice(
-    check_outcome(outcome = "rsd", cohort = paste0(cohorts, collapse = ";"))
-  ),
-  check_outcome(outcome = "rsd", cohort = "prevax"),
-
-  # All RSD outcomes in rsd dataset
-  splice(
-    check_outcome(
-      outcome = "rsd",
-      cohort = paste0(cohorts, collapse = ";"),
-      dd_group = "rsd"
-    )
-  ),
-  check_outcome(outcome = "rsd", cohort = "prevax", dd_group = "rsd"),
-
   ## Clean data -----------------------------------------------------------
 
   splice(
@@ -806,28 +697,6 @@ actions_list <- splice(
   splice(
     make_other_output(
       action_name = "table1",
-      cohort = paste0(cohorts, collapse = ";"),
-      subgroup = ""
-    )
-  ),
-
-  ## Table Age -------------------------------------------------------------------
-
-  splice(
-    unlist(
-      lapply(
-        unique(active_analyses$cohort),
-        function(x) {
-          table_age(cohort = x, ages = "40;45;50;55;60;65", preex = "")
-        }
-      ),
-      recursive = FALSE
-    )
-  ),
-
-  splice(
-    make_other_output(
-      action_name = "table_age",
       cohort = paste0(cohorts, collapse = ";"),
       subgroup = ""
     )
