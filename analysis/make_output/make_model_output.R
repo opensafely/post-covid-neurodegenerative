@@ -163,7 +163,8 @@ print('Perform redaction')
 df$N_total_midpoint6 <- roundmid_any(df$N_total)
 df$N_exposed_midpoint6 <- roundmid_any(df$N_exposed)
 df$N_events_midpoint6 <- roundmid_any(df$N_events)
-df[, c("N_total", "N_exposed", "N_events")] <- NULL
+df$person_time_total_midpoint6 <- roundmid_any(df$person_time_total)
+df[, c("N_total", "N_exposed", "N_events", "person_time_total")] <- NULL
 
 # Save model output ------------------------------------------------------------
 print('Save model output')
