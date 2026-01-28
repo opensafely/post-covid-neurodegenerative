@@ -13407,51 +13407,6 @@ actions:
       moderately_sensitive:
         flow_output_midpoint6: output/make_output/flow_output_midpoint6.csv
 
-  ## Generate table2-cohort_prevax-sub_covidhospital 
-
-  table2-cohort_prevax-sub_covidhospital:
-    run: r:v2 analysis/table2/table2.R prevax covidhospital
-    needs:
-    - make_model_input-
-    outputs:
-      moderately_sensitive:
-        table2: output/table2/table2-cohort_prevax-sub_covidhospital.csv
-        table2_midpoint6: output/table2/table2-cohort_prevax-sub_covidhospital-midpoint6.csv
-
-  ## Generate table2-cohort_unvax-sub_covidhospital 
-
-  table2-cohort_unvax-sub_covidhospital:
-    run: r:v2 analysis/table2/table2.R unvax covidhospital
-    needs:
-    - make_model_input-
-    outputs:
-      moderately_sensitive:
-        table2: output/table2/table2-cohort_unvax-sub_covidhospital.csv
-        table2_midpoint6: output/table2/table2-cohort_unvax-sub_covidhospital-midpoint6.csv
-
-  ## Generate table2-cohort_vax-sub_covidhospital 
-
-  table2-cohort_vax-sub_covidhospital:
-    run: r:v2 analysis/table2/table2.R vax covidhospital
-    needs:
-    - make_model_input-
-    outputs:
-      moderately_sensitive:
-        table2: output/table2/table2-cohort_vax-sub_covidhospital.csv
-        table2_midpoint6: output/table2/table2-cohort_vax-sub_covidhospital-midpoint6.csv
-
-  ## Generate make-table2-sub_covidhospital-output 
-
-  make-table2-sub_covidhospital-output:
-    run: r:v2 analysis/make_output/make_other_output.R table2 prevax;unvax;vax covidhospital
-    needs:
-    - table2-cohort_prevax-sub_covidhospital
-    - table2-cohort_unvax-sub_covidhospital
-    - table2-cohort_vax-sub_covidhospital
-    outputs:
-      moderately_sensitive:
-        table2_output_midpoint6: output/make_output/table2-sub_covidhospital_output_midpoint6.csv
-
   ## Generate table2-cohort_prevax-sub_covidhospital_noday0 
 
   table2-cohort_prevax-sub_covidhospital_noday0:
@@ -13592,54 +13547,6 @@ actions:
     outputs:
       moderately_sensitive:
         table2_noday0_output_midpoint6: output/make_output/table2-sub_covidhospital_noday0_output_midpoint6.csv
-
-  ## Generate venn-cohort_prevax 
-
-  venn-cohort_prevax:
-    run: r:v2 analysis/venn/venn.R prevax
-    needs:
-    - generate_input_prevax_clean
-    - make_model_input-cohort_
-    outputs:
-      moderately_sensitive:
-        venn: output/venn/venn-cohort_prevax.csv
-        venn_midpoint6: output/venn/venn-cohort_prevax-midpoint6.csv
-
-  ## Generate venn-cohort_unvax 
-
-  venn-cohort_unvax:
-    run: r:v2 analysis/venn/venn.R unvax
-    needs:
-    - generate_input_unvax_clean
-    - make_model_input-cohort_
-    outputs:
-      moderately_sensitive:
-        venn: output/venn/venn-cohort_unvax.csv
-        venn_midpoint6: output/venn/venn-cohort_unvax-midpoint6.csv
-
-  ## Generate venn-cohort_vax 
-
-  venn-cohort_vax:
-    run: r:v2 analysis/venn/venn.R vax
-    needs:
-    - generate_input_vax_clean
-    - make_model_input-cohort_
-    outputs:
-      moderately_sensitive:
-        venn: output/venn/venn-cohort_vax.csv
-        venn_midpoint6: output/venn/venn-cohort_vax-midpoint6.csv
-
-  ## Generate make-venn-output 
-
-  make-venn-output:
-    run: r:v2 analysis/make_output/make_other_output.R venn prevax;unvax;vax
-    needs:
-    - venn-cohort_prevax
-    - venn-cohort_unvax
-    - venn-cohort_vax
-    outputs:
-      moderately_sensitive:
-        venn_output_midpoint6: output/make_output/venn_output_midpoint6.csv
 
   ## Generate venn-cohort_prevax_noday0 
 
@@ -14379,13 +14286,4 @@ actions:
       moderately_sensitive:
         aer_input: output/make_output/aer_input-main_noday0.csv
         aer_input_midpoint6: output/make_output/aer_input-main_noday0-midpoint6.csv
-
-  make_aer_input:
-    run: r:v2 analysis/make_output/make_aer_input.R main
-    needs:
-    - make_model_input-
-    outputs:
-      moderately_sensitive:
-        aer_input: output/make_output/aer_input-main.csv
-        aer_input_midpoint6: output/make_output/aer_input-main-midpoint6.csv
 

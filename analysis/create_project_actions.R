@@ -773,24 +773,6 @@ actions_list <- splice(
     unlist(
       lapply(
         cohorts,
-        function(x) table2(cohort = x, subgroup = "covidhospital")
-      ),
-      recursive = FALSE
-    )
-  ),
-
-  splice(
-    make_other_output(
-      action_name = "table2",
-      cohort = paste0(cohorts, collapse = ";"),
-      subgroup = "covidhospital"
-    )
-  ),
-
-  splice(
-    unlist(
-      lapply(
-        cohorts,
         function(x) table2(cohort = x, subgroup = "covidhospital_noday0")
       ),
       recursive = FALSE
@@ -806,24 +788,6 @@ actions_list <- splice(
   ),
 
   ## Venn data -----------------------------------------------------------------
-
-  splice(
-    unlist(
-      lapply(
-        unique(active_analyses$cohort),
-        function(x) venn(cohort = x)
-      ),
-      recursive = FALSE
-    )
-  ),
-
-  splice(
-    make_other_output(
-      action_name = "venn",
-      cohort = paste0(cohorts, collapse = ";"),
-      subgroup = ""
-    )
-  ),
 
   splice(
     unlist(
@@ -869,23 +833,6 @@ actions_list <- splice(
       aer_input = glue("output/make_output/aer_input-main_noday0.csv"),
       aer_input_midpoint6 = glue(
         "output/make_output/aer_input-main_noday0-midpoint6.csv"
-      )
-    )
-  ),
-
-  action(
-    name = "make_aer_input",
-    run = "r:v2 analysis/make_output/make_aer_input.R main",
-    needs = as.list(paste0(
-      "make_model_input-",
-      active_analyses[
-        "main" == active_analyses$analysis,
-      ]$name
-    )),
-    moderately_sensitive = list(
-      aer_input = glue("output/make_output/aer_input-main.csv"),
-      aer_input_midpoint6 = glue(
-        "output/make_output/aer_input-main-midpoint6.csv"
       )
     )
   )
