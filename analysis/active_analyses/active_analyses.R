@@ -228,7 +228,7 @@ for (c in cohorts) {
 df_noday0 <- df
 df_noday0$analysis <- paste0(df_noday0$analysis, "_noday0") # update analysis names
 df_noday0$cut_points <- gsub("1;", "", df_noday0$cut_points) # update cut points
-df[nrow(df) + 1:nrow(df_noday0), ] <- df_noday0 # update main analysis list
+df <- df_noday0 # update main analysis list to be just noday0
 
 # Add name for each analysis ----
 df$name <- paste0(
