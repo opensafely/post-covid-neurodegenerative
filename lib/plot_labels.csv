@@ -35,8 +35,8 @@ sub_park_TRUE,History of Parkinson’s disease,park,1
 sub_park_FALSE,No history of Parkinson’s disease,park,2
 sub_parkrisk_TRUE,History of Parkinson’s risk conditions,parkrisk,1
 sub_parkrisk_FALSE,No history of Parkinson’s risk conditions,parkrisk,2
-sub_sex_female,Sex: Female,sex,1
-sub_sex_male,Sex: Male,sex,2
+sub_sex_female,Female,sex,1
+sub_sex_male,Male,sex,2
 cov_bin_ami,Acute myocardial infarction,,
 cov_bin_cancer,Cancer,,
 cov_bin_carehome,Care Home Resident,,
