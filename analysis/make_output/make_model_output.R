@@ -15,7 +15,7 @@ print("Specify arguments")
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
-  subgroup <- "main"
+  subgroup <- "main_noday0"
 } else {
   subgroup <- args[[1]]
 }
@@ -50,7 +50,7 @@ print('List available model outputs')
 
 files <- list.files(
   model_dir,
-  pattern = paste0("model_output-.*", subgroup, ".*")
+  pattern = paste0("model_output-.*", subgroup, "(_.*)?$")
 ) # subgroup filtering
 files <- intersect(
   files,

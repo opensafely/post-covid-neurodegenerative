@@ -528,7 +528,10 @@ make_model_output <- function(subgroup) {
         if (
           length(stata_models) > 0 &&
             any(
-              str_detect(stata$analysis, subgroup) &
+              str_detect(
+                stata$analysis,
+                paste0(subgroup, "(?=[_-]|$)")
+              ) &
                 (grepl("_noday0", stata$analysis) == noday0_flag)
             )
         ) {
@@ -536,7 +539,10 @@ make_model_output <- function(subgroup) {
             "stata_cox_ipw-",
             setdiff(
               stata$name[
-                str_detect(stata$analysis, subgroup) &
+                str_detect(
+                  stata$analysis,
+                  paste0(subgroup, "(?=[_-]|$)")
+                ) &
                   (grepl("_noday0", stata$analysis) == noday0_flag)
               ],
               excluded_models

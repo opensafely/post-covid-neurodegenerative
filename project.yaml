@@ -14146,7 +14146,6 @@ actions:
     - cox_ipw-cohort_prevax-sub_park_TRUE_noday0-dem_any
     - cox_ipw-cohort_unvax-sub_park_TRUE_noday0-dem_any
     - cox_ipw-cohort_vax-sub_park_TRUE_noday0-dem_any
-    - stata_cox_ipw-cohort_prevax-sub_parkrisk_TRUE_noday0-park
     outputs:
       moderately_sensitive:
         model_output: output/make_output/model_output-sub_park_noday0.csv
