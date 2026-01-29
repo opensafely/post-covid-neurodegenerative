@@ -953,8 +953,8 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         cov_bin_migraine       = cov_bin_migraine,
         cov_bin_park           = cov_bin_park,
         cov_bin_parkrisk      = cov_bin_parkrisk,
-        cov_bin_rls            = cov_bin_rls
-        cov_bin_rsd            = cov_bin_rsd
+        cov_bin_rls            = cov_bin_rls,
+        cov_bin_rsd            = cov_bin_rsd,
         
         ### Subgroups-----------------------------------------------------------------------------------------------------
         sub_bin_covidhistory  = sub_bin_covidhistory,
