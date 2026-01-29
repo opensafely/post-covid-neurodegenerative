@@ -12,6 +12,7 @@ from ehrql.tables.tpp import (
     appointments, 
     occupation_on_covid_vaccine_record,
     sgss_covid_all_tests,
+    ethnicity_from_sus,
     apcs, 
     clinical_events, 
     ons_deaths,
