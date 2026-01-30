@@ -16,7 +16,7 @@ library(gridExtra)
 # Specify paths for processing -------------------------------------------------
 print('Specify paths')
 
-release <- "C:\\Users\\pp24053\\OneDrive - University of Bristol\\Documents - grp-EHR\\Projects\\post-covid-events\\post-covid-neurodegenerative\\release\\" # Specify path to release directory
+source("analysis/specify_paths.R") # includes path to release folder
 
 original_dir <- paste0(
   release,
