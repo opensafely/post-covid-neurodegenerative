@@ -181,7 +181,7 @@ for (c in cohorts) {
         cohort = c,
         outcome = i,
         analysis_name = sub,
-        covariate_other = gsub("cov_bin_cis;", "", covariate_other),
+        covariate_other = gsub("cov_bin_cis(;|$)", "", covariate_other),
         age_spline = TRUE
       )
     }
@@ -192,7 +192,7 @@ for (c in cohorts) {
         cohort = c,
         outcome = i,
         analysis_name = sub,
-        covariate_other = gsub("cov_bin_park;", "", covariate_other),
+        covariate_other = gsub("cov_bin_park(;|$)", "", covariate_other),
         age_spline = TRUE
       )
     }
@@ -204,7 +204,11 @@ for (c in cohorts) {
         cohort = c,
         outcome = i,
         analysis_name = sub,
-        covariate_other = gsub("cov_bin_highvascrisk;", "", covariate_other),
+        covariate_other = gsub(
+          "cov_bin_highvascrisk(;|$)",
+          "",
+          covariate_other
+        ),
         age_spline = TRUE
       )
     }
@@ -216,7 +220,7 @@ for (c in cohorts) {
         cohort = c,
         outcome = i,
         analysis_name = sub,
-        covariate_other = gsub("cov_bin_parkrisk;", "", covariate_other),
+        covariate_other = gsub("cov_bin_parkrisk(;|$)", "", covariate_other),
         age_spline = TRUE
       )
     }
@@ -228,7 +232,7 @@ for (c in cohorts) {
 df_noday0 <- df
 df_noday0$analysis <- paste0(df_noday0$analysis, "_noday0") # update analysis names
 df_noday0$cut_points <- gsub("1;", "", df_noday0$cut_points) # update cut points
-df[nrow(df) + 1:nrow(df_noday0), ] <- df_noday0 # update main analysis list
+df <- df_noday0 # update main analysis list to be just noday0
 
 # Add name for each analysis ----
 df$name <- paste0(
@@ -244,22 +248,41 @@ df$name <- paste0(
 print("Removing covariates according to each outcome")
 
 # Variables which require removal of their own history from covariates
-clean_loop <- c("_cis", "_dem_any", "_park", "_ms", "_mnd", "_migraine")
+clean_loop <- c("_cis", "_park", "_ms", "_mnd", "_migraine")
 
 for (i in clean_loop) {
   df$covariate_other <- ifelse(
     df$outcome == paste0("out_date", i),
-    gsub(paste0("cov_bin", i, ";"), "", df$covariate_other),
+    gsub(paste0("cov_bin", i, "(;|$)"), "", df$covariate_other),
     df$covariate_other
   )
 }
 
-# Parkinson disease requires removal of Parkinsons and any Dementia
+# Variables which require the removal of Any Dementia
+dem_loop <- c("_dem_any", "_dem_alz", "_dem_lb", "_dem_vasc", "_park")
+for (i in dem_loop) {
+  df$covariate_other <- ifelse(
+    df$outcome == paste0("out_date", i),
+    gsub("cov_bin_dem_any(;|$)", "", df$covariate_other),
+    df$covariate_other
+  )
+}
+
+# Replace parkrisk history with rsd for the rls outcome, and vice-versa (i.e. to remove only own history)
 df$covariate_other <- ifelse(
-  df$outcome == "out_date_park",
-  gsub("cov_bin_park;|cov_bin_dem_any;", "", df$covariate_other),
+  df$outcome == "out_date_rsd",
+  gsub("cov_bin_parkrisk", "cov_bin_rls", df$covariate_other),
   df$covariate_other
 )
+
+df$covariate_other <- ifelse(
+  df$outcome == "out_date_rls",
+  gsub("cov_bin_parkrisk", "cov_bin_rsd", df$covariate_other),
+  df$covariate_other
+)
+
+# Ensure no trailing ; at the end of the list
+df$covariate_other <- gsub(";$", "", df$covariate_other)
 
 # Check names are unique and save active analyses list ----
 if (!dir.exists("lib")) {

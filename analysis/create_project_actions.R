@@ -25,8 +25,7 @@ active_analyses <- active_analyses[
 cohorts <- unique(active_analyses$cohort)
 analyses <- unique(grep("^main", active_analyses$analysis, value = TRUE))
 subgroups <- unique(str_extract(active_analyses$analysis, "^main|sub_[^_]+"))
-subgroups_noday0 <- paste0(subgroups, "_noday0")
-subgroups_all <- c(subgroups, subgroups_noday0)
+subgroups <- paste0(subgroups, "_noday0")
 active_age <- active_analyses[grepl("_age_", active_analyses$name), ]$name
 age_str <- paste0(
   paste0(
@@ -45,21 +44,6 @@ describe <- FALSE # This prints descriptive files for each dataset in the pipeli
 # List of models excluded from model output generation
 
 excluded_models <- c(
-  "cohort_vax-sub_age_18_49-dem_lb",
-  "cohort_unvax-sub_age_18_49-dem_lb",
-  "cohort_prevax-sub_age_18_49-dem_lb",
-  "cohort_vax-sub_age_18_49-dem_vasc",
-  "cohort_unvax-sub_age_18_49-dem_vasc",
-  "cohort_prevax-sub_age_18_49-dem_vasc",
-  "cohort_vax-sub_age_18_49-dem_any",
-  "cohort_unvax-sub_age_18_49-dem_any",
-  "cohort_prevax-sub_age_18_49-dem_any",
-  "cohort_vax-sub_age_18_49-dem_alz",
-  "cohort_unvax-sub_age_18_49-dem_alz",
-  "cohort_prevax-sub_age_18_49-dem_alz",
-  "cohort_vax-sub_age_18_49-park",
-  "cohort_unvax-sub_age_18_49-park",
-  "cohort_prevax-sub_age_18_49-park",
   "cohort_vax-sub_age_18_49_noday0-dem_lb",
   "cohort_unvax-sub_age_18_49_noday0-dem_lb",
   "cohort_prevax-sub_age_18_49_noday0-dem_lb",
@@ -544,7 +528,10 @@ make_model_output <- function(subgroup) {
         if (
           length(stata_models) > 0 &&
             any(
-              str_detect(stata$analysis, subgroup) &
+              str_detect(
+                stata$analysis,
+                paste0(subgroup, "(?=[_-]|$)")
+              ) &
                 (grepl("_noday0", stata$analysis) == noday0_flag)
             )
         ) {
@@ -552,7 +539,10 @@ make_model_output <- function(subgroup) {
             "stata_cox_ipw-",
             setdiff(
               stata$name[
-                str_detect(stata$analysis, subgroup) &
+                str_detect(
+                  stata$analysis,
+                  paste0(subgroup, "(?=[_-]|$)")
+                ) &
                   (grepl("_noday0", stata$analysis) == noday0_flag)
               ],
               excluded_models
@@ -789,24 +779,6 @@ actions_list <- splice(
     unlist(
       lapply(
         cohorts,
-        function(x) table2(cohort = x, subgroup = "covidhospital")
-      ),
-      recursive = FALSE
-    )
-  ),
-
-  splice(
-    make_other_output(
-      action_name = "table2",
-      cohort = paste0(cohorts, collapse = ";"),
-      subgroup = "covidhospital"
-    )
-  ),
-
-  splice(
-    unlist(
-      lapply(
-        cohorts,
         function(x) table2(cohort = x, subgroup = "covidhospital_noday0")
       ),
       recursive = FALSE
@@ -822,24 +794,6 @@ actions_list <- splice(
   ),
 
   ## Venn data -----------------------------------------------------------------
-
-  splice(
-    unlist(
-      lapply(
-        unique(active_analyses$cohort),
-        function(x) venn(cohort = x)
-      ),
-      recursive = FALSE
-    )
-  ),
-
-  splice(
-    make_other_output(
-      action_name = "venn",
-      cohort = paste0(cohorts, collapse = ";"),
-      subgroup = ""
-    )
-  ),
 
   splice(
     unlist(
@@ -863,7 +817,7 @@ actions_list <- splice(
 
   splice(
     unlist(
-      lapply(subgroups_all, function(x) make_model_output(subgroup = x)),
+      lapply(subgroups, function(x) make_model_output(subgroup = x)),
       recursive = FALSE
     )
   ),
@@ -885,23 +839,6 @@ actions_list <- splice(
       aer_input = glue("output/make_output/aer_input-main_noday0.csv"),
       aer_input_midpoint6 = glue(
         "output/make_output/aer_input-main_noday0-midpoint6.csv"
-      )
-    )
-  ),
-
-  action(
-    name = "make_aer_input",
-    run = "r:v2 analysis/make_output/make_aer_input.R main",
-    needs = as.list(paste0(
-      "make_model_input-",
-      active_analyses[
-        "main" == active_analyses$analysis,
-      ]$name
-    )),
-    moderately_sensitive = list(
-      aer_input = glue("output/make_output/aer_input-main.csv"),
-      aer_input_midpoint6 = glue(
-        "output/make_output/aer_input-main-midpoint6.csv"
       )
     )
   )

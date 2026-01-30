@@ -12,6 +12,7 @@ from ehrql.tables.tpp import (
     appointments, 
     occupation_on_covid_vaccine_record,
     sgss_covid_all_tests,
+    ethnicity_from_sus,
     apcs, 
     clinical_events, 
     ons_deaths,
@@ -32,6 +33,7 @@ from variable_helper_functions import (
     last_matching_med_dmd_before,
     last_matching_event_apc_before,
     filter_codes_by_category,
+    get_latest_ethnicity,
 )
 
 
@@ -475,17 +477,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     cov_cat_sex = patients.sex
 
     ### Ethnicity
-    tmp_cov_cat_ethnicity = (
-        clinical_events.where(clinical_events.snomedct_code.is_in(ethnicity_snomed))
-        .where(clinical_events.date.is_on_or_before(index_date))
-        .sort_by(clinical_events.date)
-        .last_for_patient()
-        .snomedct_code
-    )
-
-    cov_cat_ethnicity = tmp_cov_cat_ethnicity.to_category(
-        ethnicity_snomed
-    )
+    cov_cat_ethnicity = get_latest_ethnicity(index_date,ethnicity_snomed, grouping=6)
 
     ### Deprivation
     cov_cat_imd = case(
@@ -743,6 +735,23 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         rsd_icd10,  index_date
         ).exists_for_patient()) 
     )
+    
+    ## History of Restless Leg syndrome
+    cov_bin_rls= (
+        (last_matching_event_clinical_snomed_before(
+        rls_snomed, index_date
+        ).exists_for_patient())
+    )
+    
+    ## History of REM Sleep Disorder
+    cov_bin_rsd= (
+        (last_matching_event_clinical_snomed_before(
+        rsd_snomed,  index_date
+        ).exists_for_patient()) |
+        (last_matching_event_apc_before(
+        rsd_icd10,  index_date
+        ).exists_for_patient()) 
+    )
 
     ## Subgroups-------------------------------------------------------------------------------------------
 
@@ -927,6 +936,8 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         cov_bin_migraine       = cov_bin_migraine,
         cov_bin_park           = cov_bin_park,
         cov_bin_parkrisk      = cov_bin_parkrisk,
+        cov_bin_rls            = cov_bin_rls,
+        cov_bin_rsd            = cov_bin_rsd,
         
         ### Subgroups-----------------------------------------------------------------------------------------------------
         sub_bin_covidhistory  = sub_bin_covidhistory,
