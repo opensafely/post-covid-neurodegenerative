@@ -320,7 +320,7 @@ vax_date_eligible = case(
     when((vax_cat_jcvi_group == "12") & (vax_jcvi_age_2 >= 23) & (vax_jcvi_age_2 < 25)).then(date(2021, 6, 15)),
     when((vax_cat_jcvi_group == "12") & (vax_jcvi_age_2 >= 21) & (vax_jcvi_age_2 < 23)).then(date(2021, 6, 16)),
     when((vax_cat_jcvi_group == "12") & (vax_jcvi_age_2 >= 18) & (vax_jcvi_age_2 < 21)).then(date(2021, 6, 18)),
-    otherwise=date(2100, 12, 31)  # Default if no other criteria are met
+    otherwise=date(2021, 6, 18)  # Default if no other criteria are met
 )
 
 # Define a dictionary of JCVI variables created above 
