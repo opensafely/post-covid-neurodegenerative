@@ -1,5 +1,4 @@
-# # Comment out these two lines once table is in the right format
-# path_table2 = "C:\\Users\\pp24053\\Documents\\GitHub\\post-covid-neurodegenerative\\output\\make_output\\table2-sub_covidhospital_output_midpoint6.csv"
+# # Comment out this line once table is in the right format
 # output_folder = "output\\post_release\\"
 
 # Load data --------------------------------------------------------------------
