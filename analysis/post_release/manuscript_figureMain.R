@@ -419,12 +419,13 @@ plot_hr <- function(outcomes, outcome_group) {
 
 # Outcome Groupings to plot ----------------------------------------------------
 plot_hr(c("dem_any", "cis"), "dem+cis")
-plot_hr(c("park", "rls", "rsd"), "park+risk")
-plot_hr(c("dem_any", "cis", "park", "rls", "rsd"), "core_neuro")
 
-plot_hr(c("dem_alz", "dem_vasc", "dem_lb"), "dem_subgroups")
+plot_hr(c("park", "rls", "rsd"), "park+risk")
 plot_hr(c("dem_alz", "dem_vasc"), "dem_sub_common")
 plot_hr(c("mnd", "ms", "migraine"), "other_neuro")
+
+plot_hr(c("dem_alz", "dem_vasc", "dem_lb"), "dem_subgroups")
+plot_hr(c("dem_any", "cis", "park", "rls", "rsd"), "core_neuro")
 
 # Here for testing
 outcomes <- c("dem_any", "cis")
