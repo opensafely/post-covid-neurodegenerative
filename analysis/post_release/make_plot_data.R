@@ -5,7 +5,7 @@ print("Load model output")
 
 # List all CSV files matching the pattern
 file_list <- list.files(
-  path = paste0(release, "20250129_noday0\\"),
+  path = paste0(release, "20260129_noday0\\"),
   pattern = "^model_output-.*-midpoint6\\.csv$",
   full.names = TRUE
 )
