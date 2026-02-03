@@ -163,19 +163,19 @@ def get_latest_ethnicity(
 
         if grouping == 6:
             latest_ethnicity_from_codes = case(
-                when(latest_ethnicity_from_codes_category_num == "1").then("1"), # White
-                when(latest_ethnicity_from_codes_category_num == "2").then("2"), # Mixed
-                when(latest_ethnicity_from_codes_category_num == "3").then("3"), # Asian or Asian British
-                when(latest_ethnicity_from_codes_category_num == "4").then("4"), # Black or Black British
-                when(latest_ethnicity_from_codes_category_num == "5").then("5"), # Chinese or Other Ethnic group
+                when(latest_ethnicity_from_codes_category_num == "1").then("White"),
+                when(latest_ethnicity_from_codes_category_num == "2").then("Mixed"),
+                when(latest_ethnicity_from_codes_category_num == "3").then("Asian"), # Asian or Asian British
+                when(latest_ethnicity_from_codes_category_num == "4").then("Black"), # Black or Black British
+                when(latest_ethnicity_from_codes_category_num == "5").then("Other"), # Chinese or Other Ethnic group
             )
 
             ethnicity_sus = case(
-                when(ethnicity_from_sus.code.is_in(["A", "B", "C"])).then("1"),
-                when(ethnicity_from_sus.code.is_in(["D", "E", "F", "G"])).then("2"),
-                when(ethnicity_from_sus.code.is_in(["H", "J", "K", "L"])).then("3"),
-                when(ethnicity_from_sus.code.is_in(["M", "N", "P"])).then("4"),
-                when(ethnicity_from_sus.code.is_in(["R", "S"])).then("5"),
+                when(ethnicity_from_sus.code.is_in(["A", "B", "C"])).then("White"),
+                when(ethnicity_from_sus.code.is_in(["D", "E", "F", "G"])).then("Mixed"),
+                when(ethnicity_from_sus.code.is_in(["H", "J", "K", "L"])).then("Asian"),
+                when(ethnicity_from_sus.code.is_in(["M", "N", "P"])).then("Black"),
+                when(ethnicity_from_sus.code.is_in(["R", "S"])).then("Other"),
             )
         elif grouping == 16:
             latest_ethnicity_from_codes = case(
