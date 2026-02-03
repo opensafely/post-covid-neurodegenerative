@@ -53,7 +53,7 @@ inex <- function(
   )
 
   flow[nrow(flow) + 1, ] <- c(
-    "Inclusion criteria: Known IMD at index", # code currently only handles quintiles or deciles
+    "Inclusion criteria: Known IMD at index",
     nrow(input)
   )
   print(flow[nrow(flow), ])
