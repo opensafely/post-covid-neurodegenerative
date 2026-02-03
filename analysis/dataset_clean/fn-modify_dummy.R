@@ -450,10 +450,16 @@ modify_dummy <- function(df, cohort) {
     ## IMD
     mutate(
       cov_cat_imd = sample(
-        x = c("1 (most deprived)", "2", "3", "4", "5 (least deprived)", NA),
+        x = c(setdiff(unique(df$cov_cat_imd), "unknown"), NA),
         size = nrow(.),
         replace = TRUE,
-        prob = c(rep(0.195, 5), 0.025) # 19.5% for each area, 2.5% missing
+        prob = c(
+          rep(
+            (1 - 0.025) / length(setdiff(unique(df$cov_cat_imd), "unknown")),
+            length(setdiff(unique(df$cov_cat_imd), "unknown"))
+          ),
+          0.025
+        )
       )
     ) %>%
 

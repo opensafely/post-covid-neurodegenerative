@@ -2,6 +2,7 @@ import operator
 from ehrql import case, when
 from functools import reduce # for function building, e.g. any_of
 from ehrql.tables.tpp import (
+    addresses,
     apcs, 
     clinical_events, 
     emergency_care_attendances,
@@ -162,19 +163,19 @@ def get_latest_ethnicity(
 
         if grouping == 6:
             latest_ethnicity_from_codes = case(
-                when(latest_ethnicity_from_codes_category_num == "1").then("1"), # White
-                when(latest_ethnicity_from_codes_category_num == "2").then("2"), # Mixed
-                when(latest_ethnicity_from_codes_category_num == "3").then("3"), # Asian or Asian British
-                when(latest_ethnicity_from_codes_category_num == "4").then("4"), # Black or Black British
-                when(latest_ethnicity_from_codes_category_num == "5").then("5"), # Chinese or Other Ethnic group
+                when(latest_ethnicity_from_codes_category_num == "1").then("White"),
+                when(latest_ethnicity_from_codes_category_num == "2").then("Mixed"),
+                when(latest_ethnicity_from_codes_category_num == "3").then("Asian"), # Asian or Asian British
+                when(latest_ethnicity_from_codes_category_num == "4").then("Black"), # Black or Black British
+                when(latest_ethnicity_from_codes_category_num == "5").then("Other"), # Chinese or Other Ethnic group
             )
 
             ethnicity_sus = case(
-                when(ethnicity_from_sus.code.is_in(["A", "B", "C"])).then("1"),
-                when(ethnicity_from_sus.code.is_in(["D", "E", "F", "G"])).then("2"),
-                when(ethnicity_from_sus.code.is_in(["H", "J", "K", "L"])).then("3"),
-                when(ethnicity_from_sus.code.is_in(["M", "N", "P"])).then("4"),
-                when(ethnicity_from_sus.code.is_in(["R", "S"])).then("5"),
+                when(ethnicity_from_sus.code.is_in(["A", "B", "C"])).then("White"),
+                when(ethnicity_from_sus.code.is_in(["D", "E", "F", "G"])).then("Mixed"),
+                when(ethnicity_from_sus.code.is_in(["H", "J", "K", "L"])).then("Asian"),
+                when(ethnicity_from_sus.code.is_in(["M", "N", "P"])).then("Black"),
+                when(ethnicity_from_sus.code.is_in(["R", "S"])).then("Other"),
             )
         elif grouping == 16:
             latest_ethnicity_from_codes = case(
@@ -226,6 +227,33 @@ def get_latest_ethnicity(
         )
 
         return ethnicity_combined
+      
+def get_imd(index_date, groups=5, max_imd=32844):
+    step = max_imd / groups
+    whens = []
+
+    imd = addresses.for_patient_on(index_date).imd_rounded
+
+    for i in range(groups):
+        lower = int(step * i)
+        upper = int(step * (i + 1))
+
+        if i == 0:
+            label = "1 (most deprived)"
+        elif i == groups - 1:
+            label = f"{groups} (least deprived)"
+        else:
+            label = str(i + 1)
+
+        condition = (imd >= lower) & (imd < upper)
+        whens.append(when(condition).then(label))
+
+    imd_grouped=case(
+        *whens,
+        otherwise="unknown",
+    )
+
+    return imd_grouped
 
 # filter a codelist based on whether its values included a specified set of allowed values (include)
 def filter_codes_by_category(codelist, include):

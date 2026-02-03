@@ -37,10 +37,21 @@ inex <- function(
   )
   print(flow[nrow(flow), ])
 
+  imd_max <- max(
+    as.integer(sub(" .*", "", unique(input$cov_cat_imd))),
+    na.rm = TRUE
+  )
+  imd_levels <- c(
+    "1 (most deprived)",
+    as.character(seq(2, imd_max)),
+    sprintf("%i (least deprived)", imd_max)
+  )
   input <- subset(
     input,
-    cov_cat_imd %in% c("1 (most deprived)", "2", "3", "4", "5 (least deprived)")
+    cov_cat_imd %in%
+      imd_levels
   )
+
   flow[nrow(flow) + 1, ] <- c(
     "Inclusion criteria: Known IMD at index",
     nrow(input)
