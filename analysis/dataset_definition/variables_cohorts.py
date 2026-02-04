@@ -34,6 +34,7 @@ from variable_helper_functions import (
     last_matching_event_apc_before,
     filter_codes_by_category,
     get_latest_ethnicity,
+    get_imd,
 )
 
 
@@ -480,15 +481,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     cov_cat_ethnicity = get_latest_ethnicity(index_date,ethnicity_snomed, grouping=6)
 
     ### Deprivation
-    cov_cat_imd = case(
-        when((addresses.for_patient_on(index_date).imd_rounded >= 0) & 
-                (addresses.for_patient_on(index_date).imd_rounded < int(32844 * 1 / 5))).then("1 (most deprived)"),
-        when(addresses.for_patient_on(index_date).imd_rounded < int(32844 * 2 / 5)).then("2"),
-        when(addresses.for_patient_on(index_date).imd_rounded < int(32844 * 3 / 5)).then("3"),
-        when(addresses.for_patient_on(index_date).imd_rounded < int(32844 * 4 / 5)).then("4"),
-        when(addresses.for_patient_on(index_date).imd_rounded < int(32844 * 5 / 5)).then("5 (least deprived)"),
-        otherwise="unknown",
-    )
+    cov_cat_imd = get_imd(index_date, groups=10, max_imd=32844)
 
     ### Smoking status
     tmp_most_recent_smoking_cat = (
