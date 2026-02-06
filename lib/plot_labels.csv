@@ -27,19 +27,19 @@ sub_covidhospital_FALSE,Non-hospitalised COVID-19,main,3
 sub_ethnicity_asian,Asian or Asian British,ethnicity,2
 sub_ethnicity_black,Black or Black British,ethnicity,3
 sub_ethnicity_mixed,Mixed,ethnicity,4
-sub_ethnicity_other,Chinese or Other Ethnic Groups,ethnicity,5
+sub_ethnicity_other,Chinese or other ethnic groups,ethnicity,5
 sub_ethnicity_white,White,ethnicity,1
 sub_highvascrisk_TRUE,History of hypertension and/or diabetes,highvascrisk,1
 sub_highvascrisk_FALSE,No history of either hypertension or diabetes,highvascrisk,2
-sub_park_TRUE,History of Parkinson’s disease,park,1
-sub_park_FALSE,No history of Parkinson’s disease,park,2
-sub_parkrisk_TRUE,History of Parkinson’s risk conditions,parkrisk,1
-sub_parkrisk_FALSE,No history of Parkinson’s risk conditions,parkrisk,2
+sub_park_TRUE,History of Parkinson's disease,park,1
+sub_park_FALSE,No history of Parkinson's disease,park,2
+sub_parkrisk_TRUE,History of Parkinson's risk conditions,parkrisk,1
+sub_parkrisk_FALSE,No history of Parkinson's risk conditions,parkrisk,2
 sub_sex_female,Female,sex,1
 sub_sex_male,Male,sex,2
 cov_bin_ami,Acute myocardial infarction,,
 cov_bin_cancer,Cancer,,
-cov_bin_carehome,Care Home Resident,,
+cov_bin_carehome,Care home resident,,
 cov_bin_ckd,Chronic kidney disease,,
 cov_cat_consrate2019,GP consultations in 2019,,
 cov_bin_copd,Chronic obstructive pulmonary disease,,
@@ -58,9 +58,11 @@ cov_bin_ms,History of multiple sclerosis,,
 cov_bin_migraine,History of migraine,,
 cov_bin_park,History of Parkinson's,,
 cov_bin_parkrisk,History of Parkinson's risk factors,,
+cov_bin_rls,History of restless leg syndrome,,
+cov_bin_rsd,History of REM sleep disorder,,
 cov_cat_age_group,"Age, years",,
 cov_cat_sex,Sex,,
 cov_cat_ethnicity,Ethnicity,,
-cov_cat_imd,Index of multiple deprivation quintile,,
+cov_cat_imd,Index of multiple deprivation (2019) decile,,
 cov_cat_smoking,Smoking status,,
 strat_cat_region,Region,,
