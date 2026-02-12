@@ -13970,7 +13970,6 @@ actions:
     - cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-ms
     - cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-park
     - cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-rls
-    - cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-rsd
     - cox_ipw-cohort_vax-sub_ethnicity_black_noday0-cis
     - cox_ipw-cohort_vax-sub_ethnicity_black_noday0-dem_alz
     - cox_ipw-cohort_vax-sub_ethnicity_black_noday0-dem_any

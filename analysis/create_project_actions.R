@@ -58,7 +58,8 @@ excluded_models <- c(
   "cohort_prevax-sub_age_18_49_noday0-dem_alz",
   "cohort_vax-sub_age_18_49_noday0-park",
   "cohort_unvax-sub_age_18_49_noday0-park",
-  "cohort_prevax-sub_age_18_49_noday0-park"
+  "cohort_prevax-sub_age_18_49_noday0-park",
+  "cohort_unvax-sub_ethnicity_black_noday0-rsd"
 )
 
 stata_models <- c(
