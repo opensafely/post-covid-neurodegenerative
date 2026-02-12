@@ -13011,6 +13011,30 @@ actions:
       moderately_sensitive:
         model_output: output/model/stata_model_output-cohort_unvax-sub_ethnicity_black_noday0-migraine.csv
 
+  ready-cohort_unvax-sub_ethnicity_black_noday0-rsd:
+    run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_unvax-sub_ethnicity_black_noday0-rsd.rds
+      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
+      --covariate_sex=cov_cat_sex --covariate_age=cov_num_age --covariate_other=cov_cat_imd;cov_num_consrate2019;cov_bin_hcworker;cov_cat_smoking;cov_bin_carehome;cov_bin_obesity;cov_bin_ami;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_depression;cov_bin_copd;cov_bin_stroke_isch;cov_bin_cis;cov_bin_dem_any;cov_bin_highvascrisk;cov_bin_mnd;cov_bin_ms;cov_bin_migraine;cov_bin_park;cov_bin_rls
+      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
+      --study_stop=2025-05-31 --cut_points=28;183;365;730;1095;1460 --controls_per_case=20
+      --total_event_threshold=50 --episode_event_threshold=5 --covariate_threshold=5
+      --age_spline=TRUE --save_analysis_ready=model/ready-cohort_unvax-sub_ethnicity_black_noday0-rsd.dta
+      --run_analysis=FALSE --df_output=model/model_output-cohort_unvax-sub_ethnicity_black_noday0-rsd.csv
+    needs:
+    - make_model_input-cohort_unvax-sub_ethnicity_black_noday0-rsd
+    outputs:
+      highly_sensitive:
+        ready: output/model/ready-cohort_unvax-sub_ethnicity_black_noday0-rsd.dta
+
+  stata_cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-rsd:
+    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_ethnicity_black_noday0-rsd
+      28;183;365;730;1095;1460 2021-06-01
+    needs:
+    - ready-cohort_unvax-sub_ethnicity_black_noday0-rsd
+    outputs:
+      moderately_sensitive:
+        model_output: output/model/stata_model_output-cohort_unvax-sub_ethnicity_black_noday0-rsd.csv
+
   ready-cohort_vax-sub_ethnicity_black_noday0-migraine:
     run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_vax-sub_ethnicity_black_noday0-migraine.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
@@ -13970,7 +13994,6 @@ actions:
     - cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-ms
     - cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-park
     - cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-rls
-    - cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-rsd
     - cox_ipw-cohort_vax-sub_ethnicity_black_noday0-cis
     - cox_ipw-cohort_vax-sub_ethnicity_black_noday0-dem_alz
     - cox_ipw-cohort_vax-sub_ethnicity_black_noday0-dem_any
@@ -14080,6 +14103,7 @@ actions:
     - stata_cox_ipw-cohort_prevax-sub_ethnicity_black_noday0-dem_any
     - stata_cox_ipw-cohort_prevax-sub_ethnicity_black_noday0-migraine
     - stata_cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-migraine
+    - stata_cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-rsd
     - stata_cox_ipw-cohort_vax-sub_ethnicity_black_noday0-migraine
     - stata_cox_ipw-cohort_prevax-sub_ethnicity_mixed_noday0-migraine
     - stata_cox_ipw-cohort_prevax-sub_ethnicity_mixed_noday0-rsd

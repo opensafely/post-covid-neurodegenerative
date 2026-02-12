@@ -112,6 +112,7 @@ stata_models <- c(
   "cohort_prevax-sub_ethnicity_other_noday0-migraine",
   "cohort_unvax-sub_ethnicity_asian_noday0-migraine",
   "cohort_unvax-sub_ethnicity_black_noday0-migraine",
+  "cohort_unvax-sub_ethnicity_black_noday0-rsd",
   "cohort_unvax-sub_ethnicity_mixed_noday0-migraine",
   "cohort_unvax-sub_ethnicity_white_noday0-dem_alz",
   "cohort_unvax-sub_ethnicity_white_noday0-migraine",
