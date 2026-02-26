@@ -112,20 +112,6 @@ if (output == "table1") {
   )
 }
 
-# table_age-specific processing ---------------------------------------------------
-if (output == "table_age") {
-  print("table_age processing")
-  df <- pivot_wider(
-    df,
-    names_from = "cohort",
-    values_from = c(
-      "Total outcome count [midpoint6]",
-      "COVID-19 diagnoses [midpoint6]"
-    ),
-    names_vary = "slowest"
-  )
-}
-
 # Save output ------------------------------------------------------------------
 print('Save output')
 
