@@ -68,6 +68,11 @@ plot_hr <- function(outcomes, outcome_group) {
     df <- df[!(df$analysis == "sub_age_18_49"), ] # was 18_39
   }
 
+  # High-outcome number catch (only plot a main graph)
+  if (length(outcomes) > 5) {
+    df <- df[df$analysis == "main", ]
+  }
+
   # Make columns numeric -------------------------------------------------------
   print("Make columns numeric")
 
@@ -175,6 +180,10 @@ plot_hr <- function(outcomes, outcome_group) {
     print("Calculate number of facet col")
 
     facet_cols <- length(unique(df_plot$analysis))
+
+    if (length(outcomes) > 5) {
+      facet_cols <- ceiling(length(outcomes) / 2)
+    }
 
     # Generate facet info ------------------------------------------------------
     print("Generate facet info")
@@ -423,6 +432,10 @@ plot_hr(c("dem_any", "cis"), "dem+cis")
 plot_hr(c("park", "rls", "rsd"), "park+risk")
 plot_hr(c("dem_alz", "dem_vasc"), "dem_sub_common")
 plot_hr(c("mnd", "ms", "migraine"), "other_neuro")
+plot_hr(
+  c("dem_alz", "dem_vasc", "park", "rls", "rsd", "mnd", "ms", "migraine"),
+  "secondary"
+)
 
 plot_hr(c("dem_alz", "dem_vasc", "dem_lb"), "dem_subgroups")
 plot_hr(c("dem_any", "cis", "park", "rls", "rsd"), "core_neuro")
