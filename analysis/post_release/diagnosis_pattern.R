@@ -38,8 +38,9 @@ df$term <- factor(
     "days28_183",
     "days183_365",
     "days365_730",
-    "days730_1065",
-    "days1065_1582"
+    "days730_1095",
+    "days1095_1460",
+    "days1460_1979"
   ),
   ordered = TRUE
 )
@@ -66,8 +67,9 @@ df_wide["Total_Sum"] <- df_wide["days0_28"] +
   df_wide["days28_183"] +
   df_wide["days183_365"] +
   df_wide["days365_730"] +
-  df_wide["days730_1065"] +
-  df_wide["days1065_1582"]
+  df_wide["days730_1095"] +
+  df_wide["days1095_1460"] +
+  df_wide["days1460_1979"]
 df_wide["Year1_Sum"] <- df_wide["days0_28"] +
   df_wide["days28_183"] +
   df_wide["days183_365"]

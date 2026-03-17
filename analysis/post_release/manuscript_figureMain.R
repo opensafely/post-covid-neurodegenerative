@@ -68,6 +68,17 @@ plot_hr <- function(outcomes, outcome_group) {
     df <- df[!(df$analysis == "sub_age_18_49"), ] # was 18_39
   }
 
+  # Remove underpowered analyses groups
+  df <- df[
+    !(df$analysis %in%
+      c(
+        "sub_ethnicity_black",
+        "sub_ethnicity_mixed",
+        "sub_ethnicity_other",
+        "sub_parkrisk_TRUE"
+      )),
+  ]
+
   # High-outcome number catch (only plot a main graph)
   if (length(outcomes) > 5) {
     df <- df[df$analysis == "main", ]
@@ -182,7 +193,7 @@ plot_hr <- function(outcomes, outcome_group) {
     facet_cols <- length(unique(df_plot$analysis))
 
     if (length(outcomes) > 5) {
-      facet_cols <- ceiling(length(outcomes) / 2)
+      facet_cols <- 2 # ceiling(length(outcomes) / 2)
     }
 
     # Generate facet info ------------------------------------------------------
@@ -206,6 +217,10 @@ plot_hr <- function(outcomes, outcome_group) {
         (2 * nrow(facet_info) / 3 + 1):nrow(facet_info),
         (nrow(facet_info) / 3 + 1):(2 * nrow(facet_info) / 3)
       )
+    }
+
+    if (outcome_group == "secondary") {
+      facet_info$facet_order <- c(1, 2, 6, 7, 8, 3, 4, 5)
     }
 
     facet_info$facet_label2 <- ""
@@ -259,7 +274,7 @@ plot_hr <- function(outcomes, outcome_group) {
         values = c("#d2ac47", "#58764c", "#0018a8")
       ) +
       ggplot2::labs(
-        x = "\nWeeks since COVID-19 diagnosis",
+        x = "\nYears since COVID-19 diagnosis",
         y = "Hazard ratio and 95% confidence interval\n"
       )
 
@@ -318,9 +333,9 @@ plot_hr <- function(outcomes, outcome_group) {
           trans = "log"
         ) +
         ggplot2::scale_x_continuous(
-          lim = c(0, 1000),
-          breaks = seq(0, 1000, 182),
-          labels = seq(0, 1000, 182) / 7
+          lim = c(0, 1500),
+          breaks = seq(0, 1500, 182),
+          labels = seq(0, 1500, 182) / 364
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(ncol = 1, byrow = TRUE))
@@ -333,12 +348,38 @@ plot_hr <- function(outcomes, outcome_group) {
           trans = "log"
         ) +
         ggplot2::scale_x_continuous(
-          limits = c(0, 1456),
-          breaks = c(0, 182, 364, 546, 728, 910, 1092, 1274, 1456),
-          labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
+          limits = c(0, 1820),
+          breaks = c(
+            0,
+            182,
+            364,
+            546,
+            728,
+            910,
+            1092,
+            1274,
+            1456,
+            1638,
+            1820,
+            2002
+          ),
+          labels = c(
+            "0",
+            "0.5",
+            "1",
+            "1.5",
+            "2",
+            "2.5",
+            "3",
+            "3.5",
+            "4",
+            "4.5",
+            "5",
+            "5.5"
+          )
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
-        ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
+        ggplot2::guides(color = ggplot2::guide_legend(ncol = 1, byrow = TRUE))
       plot_width <- 297 * 0.5
     } else if (facet_cols == 2) {
       p +
@@ -348,9 +389,35 @@ plot_hr <- function(outcomes, outcome_group) {
           trans = "log"
         ) +
         ggplot2::scale_x_continuous(
-          limits = c(0, 1456),
-          breaks = c(0, 182, 364, 546, 728, 910, 1092, 1274, 1456),
-          labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
+          limits = c(0, 1820),
+          breaks = c(
+            0,
+            182,
+            364,
+            546,
+            728,
+            910,
+            1092,
+            1274,
+            1456,
+            1638,
+            1820,
+            2002
+          ),
+          labels = c(
+            "0",
+            "0.5",
+            "1",
+            "1.5",
+            "2",
+            "2.5",
+            "3",
+            "3.5",
+            "4",
+            "4.5",
+            "5",
+            "5.5"
+          )
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(ncol = 1, byrow = TRUE))
@@ -363,9 +430,35 @@ plot_hr <- function(outcomes, outcome_group) {
           trans = "log"
         ) +
         ggplot2::scale_x_continuous(
-          limits = c(0, 1456),
-          breaks = c(0, 182, 364, 546, 728, 910, 1092, 1274, 1456),
-          labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
+          limits = c(0, 1820),
+          breaks = c(
+            0,
+            182,
+            364,
+            546,
+            728,
+            910,
+            1092,
+            1274,
+            1456,
+            1638,
+            1820,
+            2002
+          ),
+          labels = c(
+            "0",
+            "0.5",
+            "1",
+            "1.5",
+            "2",
+            "2.5",
+            "3",
+            "3.5",
+            "4",
+            "4.5",
+            "5",
+            "5.5"
+          )
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
@@ -378,9 +471,35 @@ plot_hr <- function(outcomes, outcome_group) {
           trans = "log"
         ) +
         ggplot2::scale_x_continuous(
-          limits = c(0, 1456),
-          breaks = c(0, 182, 364, 546, 728, 910, 1092, 1274, 1456),
-          labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
+          limits = c(0, 1820),
+          breaks = c(
+            0,
+            182,
+            364,
+            546,
+            728,
+            910,
+            1092,
+            1274,
+            1456,
+            1638,
+            1820,
+            2002
+          ),
+          labels = c(
+            "0",
+            "0.5",
+            "1",
+            "1.5",
+            "2",
+            "2.5",
+            "3",
+            "3.5",
+            "4",
+            "4.5",
+            "5",
+            "5.5"
+          )
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
@@ -394,15 +513,15 @@ plot_hr <- function(outcomes, outcome_group) {
         ) +
         ggplot2::scale_x_continuous(
           limits = c(0, 1456),
-          breaks = c(0, 364, 728, 1092, 1456),
-          labels = c("0", "52", "104", "156", "208")
+          breaks = c(0, 364, 728, 1092, 1456, 1820, 2184),
+          labels = c("0", "1", "2", "3", "4", "5", "6")
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
       plot_width <- 297
     }
 
-    if (length(unique(df_plot$outcome)) == 5) {
+    if (length(unique(df_plot$outcome)) >= 5) {
       plot_height <- 300
     } else if (length(unique(df_plot$outcome)) == 1) {
       plot_height <- 150
@@ -445,3 +564,16 @@ outcomes <- c("dem_any", "cis")
 outcome_group <- "dem_any"
 outcomes <- c("mnd", "ms", "migraine")
 outcome_group <- "other_neuro"
+outcomes <- c("park", "rls", "rsd")
+outcome_group <- "park+risk"
+outcomes <- c(
+  "dem_alz",
+  "dem_vasc",
+  "park",
+  "rls",
+  "rsd",
+  "mnd",
+  "ms",
+  "migraine"
+)
+outcome_group <- "secondary"
