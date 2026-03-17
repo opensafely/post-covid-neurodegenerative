@@ -22,6 +22,17 @@ prepare_model_input <- function(name) {
     "_clean.rds"
   ))
 
+  # Filter out histories -------------------------------------------------------
+
+  outcome <- gsub("out_date_", "", active_analyses$outcome)
+  if (grepl("dem", outcome)) {
+    cov_history <- "cov_bin_dem_any"
+  } else {
+    cov_history <- paste("cov_bin_", outcome, sep = "")
+  }
+
+  input <- input[input[, cov_history] == FALSE, ]
+
   # Restrict to required variables for dataset preparation ---------------------
   print("Restrict to required variables for dataset preparation")
 
