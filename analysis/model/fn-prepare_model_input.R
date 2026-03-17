@@ -33,6 +33,10 @@ prepare_model_input <- function(name) {
 
   input <- input[input[, cov_history] == FALSE, ]
 
+  if (grepl("park", outcome)) {
+    input <- input[input[, "cov_bin_dem_any"] == FALSE, ]
+  }
+
   # Restrict to required variables for dataset preparation ---------------------
   print("Restrict to required variables for dataset preparation")
 
