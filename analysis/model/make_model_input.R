@@ -31,8 +31,8 @@ analysis <- gsub(
   name
 )
 
-noday0_flag  <- (grepl("_noday0", analysis))
-if (noday0_flag ) {
+noday0_flag <- (grepl("_noday0", analysis))
+if (noday0_flag) {
   analysis <- gsub("_noday0", "", analysis)
 }
 

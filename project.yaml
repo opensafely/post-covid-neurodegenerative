@@ -1,4 +1,4 @@
-version: '3.0'
+version: '5.0'
 
 expectations:
 
@@ -14309,4 +14309,23 @@ actions:
       moderately_sensitive:
         aer_input: output/make_output/aer_input-main_noday0.csv
         aer_input_midpoint6: output/make_output/aer_input-main_noday0-midpoint6.csv
+
+  ## Make event interval count 
+
+  make_event_interval_count:
+    run: r:v2 analysis/make_output/make_event_interval_count.R
+    needs:
+    - make_model_output-main_noday0
+    - make_model_output-sub_age_noday0
+    - make_model_output-sub_cis_noday0
+    - make_model_output-sub_covidhistory_noday0
+    - make_model_output-sub_covidhospital_noday0
+    - make_model_output-sub_ethnicity_noday0
+    - make_model_output-sub_highvascrisk_noday0
+    - make_model_output-sub_park_noday0
+    - make_model_output-sub_parkrisk_noday0
+    - make_model_output-sub_sex_noday0
+    outputs:
+      moderately_sensitive:
+        event_interval_midpoint6: output/make_output/events_per_interval_midpoint6.csv
 

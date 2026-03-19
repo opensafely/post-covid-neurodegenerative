@@ -10,7 +10,7 @@ library(dplyr)
 # Specify defaults -------------------------------------------------------------
 
 defaults_list <- list(
-  version = "3.0",
+  version = "5.0",
   expectations = list(population_size = 5000L)
 )
 
@@ -841,6 +841,19 @@ actions_list <- splice(
       aer_input_midpoint6 = glue(
         "output/make_output/aer_input-main_noday0-midpoint6.csv"
       )
+    )
+  ),
+
+  ## Make event interval count -------------------------------------------------
+
+  comment("Make event interval count"),
+
+  action(
+    name = "make_event_interval_count",
+    run = "r:v2 analysis/make_output/make_event_interval_count.R",
+    needs = as.list(paste0("make_model_output-", subgroups)),
+    moderately_sensitive = list(
+      event_interval_midpoint6 = "output/make_output/events_per_interval_midpoint6.csv"
     )
   )
 )
