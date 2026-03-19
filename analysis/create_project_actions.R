@@ -10,7 +10,7 @@ library(dplyr)
 # Specify defaults -------------------------------------------------------------
 
 defaults_list <- list(
-  version = "3.0",
+  version = "5.0",
   expectations = list(population_size = 5000L)
 )
 
