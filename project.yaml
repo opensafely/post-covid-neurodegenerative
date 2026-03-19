@@ -11875,7 +11875,7 @@ actions:
         ready: output/model/ready-cohort_prevax-main_noday0-migraine.dta
 
   stata_cox_ipw-cohort_prevax-main_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-main_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-main_noday0-migraine
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-main_noday0-migraine
@@ -11899,8 +11899,8 @@ actions:
         ready: output/model/ready-cohort_prevax-main_noday0-mnd.dta
 
   stata_cox_ipw-cohort_prevax-main_noday0-mnd:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-main_noday0-mnd
-      28;183;365;730;1095;1460;1979 2020-01-01
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-main_noday0-mnd 28;183;365;730;1095;1460;1979
+      2020-01-01
     needs:
     - ready-cohort_prevax-main_noday0-mnd
     outputs:
@@ -11923,7 +11923,7 @@ actions:
         ready: output/model/ready-cohort_unvax-main_noday0-dem_alz.dta
 
   stata_cox_ipw-cohort_unvax-main_noday0-dem_alz:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-main_noday0-dem_alz
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-main_noday0-dem_alz
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-main_noday0-dem_alz
@@ -11947,7 +11947,7 @@ actions:
         ready: output/model/ready-cohort_unvax-main_noday0-migraine.dta
 
   stata_cox_ipw-cohort_unvax-main_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-main_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-main_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-main_noday0-migraine
@@ -11971,8 +11971,8 @@ actions:
         ready: output/model/ready-cohort_unvax-main_noday0-rls.dta
 
   stata_cox_ipw-cohort_unvax-main_noday0-rls:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-main_noday0-rls
-      28;183;365;730;1095;1460 2021-06-01
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-main_noday0-rls 28;183;365;730;1095;1460
+      2021-06-01
     needs:
     - ready-cohort_unvax-main_noday0-rls
     outputs:
@@ -11995,7 +11995,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_age_18_49_noday0-migraine.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_18_49_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_age_18_49_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_age_18_49_noday0-migraine
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_age_18_49_noday0-migraine
@@ -12019,7 +12019,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_age_18_49_noday0-rls.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_18_49_noday0-rls:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_age_18_49_noday0-rls
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_age_18_49_noday0-rls
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_age_18_49_noday0-rls
@@ -12043,7 +12043,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_age_18_49_noday0-migraine.dta
 
   stata_cox_ipw-cohort_unvax-sub_age_18_49_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_age_18_49_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_age_18_49_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_age_18_49_noday0-migraine
@@ -12067,7 +12067,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_age_18_49_noday0-rls.dta
 
   stata_cox_ipw-cohort_unvax-sub_age_18_49_noday0-rls:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_age_18_49_noday0-rls
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_age_18_49_noday0-rls
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_age_18_49_noday0-rls
@@ -12091,7 +12091,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_age_18_49_noday0-migraine.dta
 
   stata_cox_ipw-cohort_vax-sub_age_18_49_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_age_18_49_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_age_18_49_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_age_18_49_noday0-migraine
@@ -12115,7 +12115,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_age_50_64_noday0-dem_alz.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_50_64_noday0-dem_alz:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_age_50_64_noday0-dem_alz
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_age_50_64_noday0-dem_alz
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_age_50_64_noday0-dem_alz
@@ -12139,7 +12139,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_age_50_64_noday0-dem_vasc.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_50_64_noday0-dem_vasc:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_age_50_64_noday0-dem_vasc
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_age_50_64_noday0-dem_vasc
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_age_50_64_noday0-dem_vasc
@@ -12163,7 +12163,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_age_50_64_noday0-mnd.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_50_64_noday0-mnd:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_age_50_64_noday0-mnd
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_age_50_64_noday0-mnd
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_age_50_64_noday0-mnd
@@ -12187,7 +12187,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_age_50_64_noday0-migraine.dta
 
   stata_cox_ipw-cohort_unvax-sub_age_50_64_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_age_50_64_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_age_50_64_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_age_50_64_noday0-migraine
@@ -12211,7 +12211,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_age_50_64_noday0-rsd.dta
 
   stata_cox_ipw-cohort_unvax-sub_age_50_64_noday0-rsd:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_age_50_64_noday0-rsd
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_age_50_64_noday0-rsd
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_age_50_64_noday0-rsd
@@ -12235,7 +12235,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_age_50_64_noday0-dem_alz.dta
 
   stata_cox_ipw-cohort_vax-sub_age_50_64_noday0-dem_alz:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_age_50_64_noday0-dem_alz
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_age_50_64_noday0-dem_alz
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_age_50_64_noday0-dem_alz
@@ -12259,7 +12259,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_age_50_64_noday0-dem_vasc.dta
 
   stata_cox_ipw-cohort_vax-sub_age_50_64_noday0-dem_vasc:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_age_50_64_noday0-dem_vasc
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_age_50_64_noday0-dem_vasc
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_age_50_64_noday0-dem_vasc
@@ -12283,7 +12283,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_age_50_64_noday0-park.dta
 
   stata_cox_ipw-cohort_vax-sub_age_50_64_noday0-park:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_age_50_64_noday0-park
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_age_50_64_noday0-park
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_age_50_64_noday0-park
@@ -12307,7 +12307,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_age_65_84_noday0-rls.dta
 
   stata_cox_ipw-cohort_prevax-sub_age_65_84_noday0-rls:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_age_65_84_noday0-rls
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_age_65_84_noday0-rls
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_age_65_84_noday0-rls
@@ -12331,7 +12331,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_age_85_110_noday0-rsd.dta
 
   stata_cox_ipw-cohort_vax-sub_age_85_110_noday0-rsd:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_age_85_110_noday0-rsd
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_age_85_110_noday0-rsd
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_age_85_110_noday0-rsd
@@ -12355,7 +12355,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_covidhistory_noday0-migraine.dta
 
   stata_cox_ipw-cohort_unvax-sub_covidhistory_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_covidhistory_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_covidhistory_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_covidhistory_noday0-migraine
@@ -12379,7 +12379,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_covidhistory_noday0-dem_alz.dta
 
   stata_cox_ipw-cohort_vax-sub_covidhistory_noday0-dem_alz:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_covidhistory_noday0-dem_alz
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_covidhistory_noday0-dem_alz
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_covidhistory_noday0-dem_alz
@@ -12403,7 +12403,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_covidhistory_noday0-dem_vasc.dta
 
   stata_cox_ipw-cohort_vax-sub_covidhistory_noday0-dem_vasc:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_covidhistory_noday0-dem_vasc
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_covidhistory_noday0-dem_vasc
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_covidhistory_noday0-dem_vasc
@@ -12427,7 +12427,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_covidhistory_noday0-migraine.dta
 
   stata_cox_ipw-cohort_vax-sub_covidhistory_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_covidhistory_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_covidhistory_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_covidhistory_noday0-migraine
@@ -12451,7 +12451,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_covidhospital_FALSE_noday0-migraine.dta
 
   stata_cox_ipw-cohort_prevax-sub_covidhospital_FALSE_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_covidhospital_FALSE_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_covidhospital_FALSE_noday0-migraine
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_covidhospital_FALSE_noday0-migraine
@@ -12475,7 +12475,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_covidhospital_FALSE_noday0-migraine.dta
 
   stata_cox_ipw-cohort_unvax-sub_covidhospital_FALSE_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_covidhospital_FALSE_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_covidhospital_FALSE_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_covidhospital_FALSE_noday0-migraine
@@ -12499,7 +12499,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_covidhospital_FALSE_noday0-rls.dta
 
   stata_cox_ipw-cohort_unvax-sub_covidhospital_FALSE_noday0-rls:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_covidhospital_FALSE_noday0-rls
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_covidhospital_FALSE_noday0-rls
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_covidhospital_FALSE_noday0-rls
@@ -12523,7 +12523,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_covidhospital_FALSE_noday0-mnd.dta
 
   stata_cox_ipw-cohort_vax-sub_covidhospital_FALSE_noday0-mnd:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_covidhospital_FALSE_noday0-mnd
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_covidhospital_FALSE_noday0-mnd
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_covidhospital_FALSE_noday0-mnd
@@ -12547,7 +12547,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_covidhospital_TRUE_noday0-migraine.dta
 
   stata_cox_ipw-cohort_prevax-sub_covidhospital_TRUE_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_covidhospital_TRUE_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_covidhospital_TRUE_noday0-migraine
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_covidhospital_TRUE_noday0-migraine
@@ -12571,7 +12571,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_covidhospital_TRUE_noday0-ms.dta
 
   stata_cox_ipw-cohort_prevax-sub_covidhospital_TRUE_noday0-ms:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_covidhospital_TRUE_noday0-ms
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_covidhospital_TRUE_noday0-ms
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_covidhospital_TRUE_noday0-ms
@@ -12595,7 +12595,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_covidhospital_TRUE_noday0-rls.dta
 
   stata_cox_ipw-cohort_prevax-sub_covidhospital_TRUE_noday0-rls:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_covidhospital_TRUE_noday0-rls
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_covidhospital_TRUE_noday0-rls
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_covidhospital_TRUE_noday0-rls
@@ -12619,7 +12619,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_covidhospital_TRUE_noday0-rsd.dta
 
   stata_cox_ipw-cohort_prevax-sub_covidhospital_TRUE_noday0-rsd:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_covidhospital_TRUE_noday0-rsd
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_covidhospital_TRUE_noday0-rsd
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_covidhospital_TRUE_noday0-rsd
@@ -12643,7 +12643,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz.dta
 
   stata_cox_ipw-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz
@@ -12667,7 +12667,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_any.dta
 
   stata_cox_ipw-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_any:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_covidhospital_TRUE_noday0-dem_any
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_covidhospital_TRUE_noday0-dem_any
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_any
@@ -12691,7 +12691,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_covidhospital_TRUE_noday0-migraine.dta
 
   stata_cox_ipw-cohort_unvax-sub_covidhospital_TRUE_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_covidhospital_TRUE_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_covidhospital_TRUE_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_covidhospital_TRUE_noday0-migraine
@@ -12715,7 +12715,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_covidhospital_TRUE_noday0-rsd.dta
 
   stata_cox_ipw-cohort_unvax-sub_covidhospital_TRUE_noday0-rsd:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_covidhospital_TRUE_noday0-rsd
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_covidhospital_TRUE_noday0-rsd
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_covidhospital_TRUE_noday0-rsd
@@ -12739,7 +12739,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_covidhospital_TRUE_noday0-migraine.dta
 
   stata_cox_ipw-cohort_vax-sub_covidhospital_TRUE_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_covidhospital_TRUE_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_covidhospital_TRUE_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_covidhospital_TRUE_noday0-migraine
@@ -12763,7 +12763,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_covidhospital_TRUE_noday0-ms.dta
 
   stata_cox_ipw-cohort_vax-sub_covidhospital_TRUE_noday0-ms:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_covidhospital_TRUE_noday0-ms
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_covidhospital_TRUE_noday0-ms
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_covidhospital_TRUE_noday0-ms
@@ -12787,7 +12787,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_covidhospital_TRUE_noday0-rsd.dta
 
   stata_cox_ipw-cohort_vax-sub_covidhospital_TRUE_noday0-rsd:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_covidhospital_TRUE_noday0-rsd
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_covidhospital_TRUE_noday0-rsd
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_covidhospital_TRUE_noday0-rsd
@@ -12811,7 +12811,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_ethnicity_asian_noday0-dem_alz.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_asian_noday0-dem_alz:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_ethnicity_asian_noday0-dem_alz
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_ethnicity_asian_noday0-dem_alz
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_ethnicity_asian_noday0-dem_alz
@@ -12835,7 +12835,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_ethnicity_asian_noday0-migraine.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_asian_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_ethnicity_asian_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_ethnicity_asian_noday0-migraine
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_ethnicity_asian_noday0-migraine
@@ -12859,7 +12859,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_ethnicity_asian_noday0-rls.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_asian_noday0-rls:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_ethnicity_asian_noday0-rls
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_ethnicity_asian_noday0-rls
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_ethnicity_asian_noday0-rls
@@ -12883,7 +12883,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_ethnicity_asian_noday0-migraine.dta
 
   stata_cox_ipw-cohort_unvax-sub_ethnicity_asian_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_ethnicity_asian_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_ethnicity_asian_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_ethnicity_asian_noday0-migraine
@@ -12907,7 +12907,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_ethnicity_asian_noday0-dem_any.dta
 
   stata_cox_ipw-cohort_vax-sub_ethnicity_asian_noday0-dem_any:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_ethnicity_asian_noday0-dem_any
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_ethnicity_asian_noday0-dem_any
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_ethnicity_asian_noday0-dem_any
@@ -12931,7 +12931,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_ethnicity_asian_noday0-migraine.dta
 
   stata_cox_ipw-cohort_vax-sub_ethnicity_asian_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_ethnicity_asian_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_ethnicity_asian_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_ethnicity_asian_noday0-migraine
@@ -12955,7 +12955,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_ethnicity_black_noday0-dem_any.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_black_noday0-dem_any:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_ethnicity_black_noday0-dem_any
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_ethnicity_black_noday0-dem_any
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_ethnicity_black_noday0-dem_any
@@ -12979,7 +12979,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_ethnicity_black_noday0-migraine.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_black_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_ethnicity_black_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_ethnicity_black_noday0-migraine
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_ethnicity_black_noday0-migraine
@@ -13003,7 +13003,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_ethnicity_black_noday0-migraine.dta
 
   stata_cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_ethnicity_black_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_ethnicity_black_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_ethnicity_black_noday0-migraine
@@ -13027,7 +13027,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_ethnicity_black_noday0-rsd.dta
 
   stata_cox_ipw-cohort_unvax-sub_ethnicity_black_noday0-rsd:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_ethnicity_black_noday0-rsd
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_ethnicity_black_noday0-rsd
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_ethnicity_black_noday0-rsd
@@ -13051,7 +13051,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_ethnicity_black_noday0-migraine.dta
 
   stata_cox_ipw-cohort_vax-sub_ethnicity_black_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_ethnicity_black_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_ethnicity_black_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_ethnicity_black_noday0-migraine
@@ -13075,7 +13075,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_ethnicity_mixed_noday0-migraine.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_mixed_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_ethnicity_mixed_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_ethnicity_mixed_noday0-migraine
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_ethnicity_mixed_noday0-migraine
@@ -13099,7 +13099,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_ethnicity_mixed_noday0-rsd.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_mixed_noday0-rsd:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_ethnicity_mixed_noday0-rsd
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_ethnicity_mixed_noday0-rsd
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_ethnicity_mixed_noday0-rsd
@@ -13123,7 +13123,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_ethnicity_mixed_noday0-migraine.dta
 
   stata_cox_ipw-cohort_unvax-sub_ethnicity_mixed_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_ethnicity_mixed_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_ethnicity_mixed_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_ethnicity_mixed_noday0-migraine
@@ -13147,7 +13147,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_ethnicity_mixed_noday0-migraine.dta
 
   stata_cox_ipw-cohort_vax-sub_ethnicity_mixed_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_ethnicity_mixed_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_ethnicity_mixed_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_ethnicity_mixed_noday0-migraine
@@ -13171,7 +13171,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_ethnicity_other_noday0-dem_any.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_other_noday0-dem_any:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_ethnicity_other_noday0-dem_any
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_ethnicity_other_noday0-dem_any
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_ethnicity_other_noday0-dem_any
@@ -13195,7 +13195,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_ethnicity_other_noday0-migraine.dta
 
   stata_cox_ipw-cohort_prevax-sub_ethnicity_other_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_ethnicity_other_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_ethnicity_other_noday0-migraine
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_ethnicity_other_noday0-migraine
@@ -13219,7 +13219,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_ethnicity_white_noday0-dem_alz.dta
 
   stata_cox_ipw-cohort_unvax-sub_ethnicity_white_noday0-dem_alz:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_ethnicity_white_noday0-dem_alz
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_ethnicity_white_noday0-dem_alz
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_ethnicity_white_noday0-dem_alz
@@ -13243,7 +13243,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_ethnicity_white_noday0-migraine.dta
 
   stata_cox_ipw-cohort_unvax-sub_ethnicity_white_noday0-migraine:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_ethnicity_white_noday0-migraine
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_ethnicity_white_noday0-migraine
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_ethnicity_white_noday0-migraine
@@ -13267,7 +13267,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_ethnicity_white_noday0-rls.dta
 
   stata_cox_ipw-cohort_unvax-sub_ethnicity_white_noday0-rls:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_ethnicity_white_noday0-rls
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_ethnicity_white_noday0-rls
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_ethnicity_white_noday0-rls
@@ -13291,7 +13291,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_highvascrisk_FALSE_noday0-dem_any.dta
 
   stata_cox_ipw-cohort_prevax-sub_highvascrisk_FALSE_noday0-dem_any:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_highvascrisk_FALSE_noday0-dem_any
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_highvascrisk_FALSE_noday0-dem_any
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_highvascrisk_FALSE_noday0-dem_any
@@ -13315,7 +13315,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_parkrisk_TRUE_noday0-park.dta
 
   stata_cox_ipw-cohort_prevax-sub_parkrisk_TRUE_noday0-park:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_parkrisk_TRUE_noday0-park
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_parkrisk_TRUE_noday0-park
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_parkrisk_TRUE_noday0-park
@@ -13339,7 +13339,7 @@ actions:
         ready: output/model/ready-cohort_prevax-sub_sex_female_noday0-rls.dta
 
   stata_cox_ipw-cohort_prevax-sub_sex_female_noday0-rls:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_prevax-sub_sex_female_noday0-rls
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_prevax-sub_sex_female_noday0-rls
       28;183;365;730;1095;1460;1979 2020-01-01
     needs:
     - ready-cohort_prevax-sub_sex_female_noday0-rls
@@ -13363,7 +13363,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_sex_female_noday0-rls.dta
 
   stata_cox_ipw-cohort_unvax-sub_sex_female_noday0-rls:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_sex_female_noday0-rls
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_sex_female_noday0-rls
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_sex_female_noday0-rls
@@ -13387,7 +13387,7 @@ actions:
         ready: output/model/ready-cohort_unvax-sub_sex_male_noday0-dem_any.dta
 
   stata_cox_ipw-cohort_unvax-sub_sex_male_noday0-dem_any:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_unvax-sub_sex_male_noday0-dem_any
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_unvax-sub_sex_male_noday0-dem_any
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_unvax-sub_sex_male_noday0-dem_any
@@ -13411,7 +13411,7 @@ actions:
         ready: output/model/ready-cohort_vax-sub_sex_male_noday0-mnd.dta
 
   stata_cox_ipw-cohort_vax-sub_sex_male_noday0-mnd:
-    run: stata-mp:latest analysis/model/cox_model.do cohort_vax-sub_sex_male_noday0-mnd
+    run: stata-mp:v2 analysis/model/cox_model.do cohort_vax-sub_sex_male_noday0-mnd
       28;183;365;730;1095;1460 2021-06-01
     needs:
     - ready-cohort_vax-sub_sex_male_noday0-mnd
