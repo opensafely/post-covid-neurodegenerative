@@ -10,8 +10,7 @@ library(dplyr)
 # Specify defaults -------------------------------------------------------------
 
 defaults_list <- list(
-  version = "5.0",
-  expectations = list(population_size = 5000L)
+  version = "5.0"
 )
 
 active_analyses <- read_rds("lib/active_analyses.rds")
@@ -360,7 +359,7 @@ apply_stata_model_function <- function(
     ),
     action(
       name = glue("stata_cox_ipw-{name}"),
-      run = "stata-mp:latest analysis/model/cox_model.do",
+      run = "stata-mp:v1 analysis/model/cox_model.do",
       arguments = c(name, cut_points, study_start),
       needs = c(as.list(glue("ready-{name}"))),
       moderately_sensitive = list(
