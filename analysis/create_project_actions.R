@@ -359,7 +359,7 @@ apply_stata_model_function <- function(
     ),
     action(
       name = glue("stata_cox_ipw-{name}"),
-      run = "stata-mp:v2 analysis/model/cox_model.do",
+      run = "stata-mp:v1 analysis/model/cox_model.do",
       arguments = c(name, cut_points, study_start),
       needs = c(as.list(glue("ready-{name}"))),
       moderately_sensitive = list(
