@@ -58,15 +58,7 @@ excluded_models <- c(
   "cohort_vax-sub_age_18_49_noday0-park",
   "cohort_unvax-sub_age_18_49_noday0-park",
   "cohort_prevax-sub_age_18_49_noday0-park",
-  "cohort_unvax-sub_ethnicity_mixed_noday0-dem_lb",
-  "cohort_vax-sub_age_50_64_noday0-dem_vasc",
-  "cohort_vax-sub_age_85_110_noday0-rsd",
-  "cohort_vax-sub_covidhistory_noday0-dem_vasc",
-  "cohort_prevax-sub_covidhospital_TRUE_noday0-ms",
-  "cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz",
-  "cohort_vax-sub_covidhospital_TRUE_noday0-ms",
-  "cohort_prevax-sub_ethnicity_other_noday0-dem_any",
-  "cohort_unvax-sub_ethnicity_white_noday0-dem_alz"
+  "cohort_unvax-sub_ethnicity_mixed_noday0-dem_lb"
 )
 
 stata_models <- c(
