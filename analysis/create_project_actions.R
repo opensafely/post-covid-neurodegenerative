@@ -58,7 +58,15 @@ excluded_models <- c(
   "cohort_vax-sub_age_18_49_noday0-park",
   "cohort_unvax-sub_age_18_49_noday0-park",
   "cohort_prevax-sub_age_18_49_noday0-park",
-  "cohort_unvax-sub_ethnicity_mixed_noday0-dem_lb"
+  "cohort_unvax-sub_ethnicity_mixed_noday0-dem_lb",
+  "cohort_vax-sub_age_50_64_noday0-dem_vasc",
+  "cohort_vax-sub_age_85_110_noday0-rsd",
+  "cohort_vax-sub_covidhistory_noday0-dem_vasc",
+  "cohort_prevax-sub_covidhospital_TRUE_noday0-ms",
+  "cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz",
+  "cohort_vax-sub_covidhospital_TRUE_noday0-ms",
+  "cohort_prevax-sub_ethnicity_other_noday0-dem_any",
+  "cohort_unvax-sub_ethnicity_white_noday0-dem_alz"
 )
 
 stata_models <- c(
@@ -79,27 +87,21 @@ stata_models <- c(
   "cohort_unvax-sub_age_50_64_noday0-rsd",
   "cohort_vax-sub_age_18_49_noday0-migraine",
   "cohort_vax-sub_age_50_64_noday0-dem_alz",
-  # "cohort_vax-sub_age_50_64_noday0-dem_vasc",
   "cohort_vax-sub_age_50_64_noday0-park",
-  # "cohort_vax-sub_age_85_110_noday0-rsd",
   "cohort_unvax-sub_covidhistory_noday0-migraine",
   "cohort_vax-sub_covidhistory_noday0-dem_alz",
-  # "cohort_vax-sub_covidhistory_noday0-dem_vasc",
   "cohort_vax-sub_covidhistory_noday0-migraine",
   "cohort_prevax-sub_covidhospital_FALSE_noday0-migraine",
   "cohort_prevax-sub_covidhospital_TRUE_noday0-migraine",
-  # "cohort_prevax-sub_covidhospital_TRUE_noday0-ms",
   "cohort_prevax-sub_covidhospital_TRUE_noday0-rls",
   "cohort_prevax-sub_covidhospital_TRUE_noday0-rsd",
   "cohort_unvax-sub_covidhospital_FALSE_noday0-migraine",
   "cohort_unvax-sub_covidhospital_FALSE_noday0-rls",
-  # "cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz",
   "cohort_unvax-sub_covidhospital_TRUE_noday0-dem_any",
   "cohort_unvax-sub_covidhospital_TRUE_noday0-migraine",
   "cohort_unvax-sub_covidhospital_TRUE_noday0-rsd",
   "cohort_vax-sub_covidhospital_FALSE_noday0-mnd",
   "cohort_vax-sub_covidhospital_TRUE_noday0-migraine",
-  # "cohort_vax-sub_covidhospital_TRUE_noday0-ms",
   "cohort_vax-sub_covidhospital_TRUE_noday0-rsd",
   "cohort_prevax-sub_ethnicity_asian_noday0-dem_alz",
   "cohort_prevax-sub_ethnicity_asian_noday0-migraine",
@@ -108,13 +110,11 @@ stata_models <- c(
   "cohort_prevax-sub_ethnicity_black_noday0-migraine",
   "cohort_prevax-sub_ethnicity_mixed_noday0-migraine",
   "cohort_prevax-sub_ethnicity_mixed_noday0-rsd",
-  # "cohort_prevax-sub_ethnicity_other_noday0-dem_any",
   "cohort_prevax-sub_ethnicity_other_noday0-migraine",
   "cohort_unvax-sub_ethnicity_asian_noday0-migraine",
   "cohort_unvax-sub_ethnicity_black_noday0-migraine",
   "cohort_unvax-sub_ethnicity_black_noday0-rsd",
   "cohort_unvax-sub_ethnicity_mixed_noday0-migraine",
-  # "cohort_unvax-sub_ethnicity_white_noday0-dem_alz",
   "cohort_unvax-sub_ethnicity_white_noday0-migraine",
   "cohort_unvax-sub_ethnicity_white_noday0-rls",
   "cohort_vax-sub_ethnicity_asian_noday0-dem_any",
@@ -129,7 +129,7 @@ stata_models <- c(
   "cohort_vax-sub_sex_male_noday0-mnd"
 )
 
-# These are currently based on manual check from outputs released on 2025-08-04, leave empty if no models need Stata
+# Leave empty if no models need Stata
 stata <- active_analyses[active_analyses$name %in% stata_models, ]
 
 # Create generic action function -----------------------------------------------
