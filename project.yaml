@@ -12239,30 +12239,6 @@ actions:
       moderately_sensitive:
         model_output: output/model/stata_model_output-cohort_vax-sub_age_50_64_noday0-dem_alz.csv
 
-  ready-cohort_vax-sub_age_50_64_noday0-dem_vasc:
-    run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_vax-sub_age_50_64_noday0-dem_vasc.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
-      --covariate_sex=cov_cat_sex --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_imd;cov_num_consrate2019;cov_bin_hcworker;cov_cat_smoking;cov_bin_carehome;cov_bin_obesity;cov_bin_ami;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_depression;cov_bin_copd;cov_bin_stroke_isch;cov_bin_cis;cov_bin_highvascrisk;cov_bin_mnd;cov_bin_ms;cov_bin_migraine;cov_bin_park;cov_bin_parkrisk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2025-05-31 --cut_points=28;183;365;730;1095;1460 --controls_per_case=20
-      --total_event_threshold=50 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=model/ready-cohort_vax-sub_age_50_64_noday0-dem_vasc.dta
-      --run_analysis=FALSE --df_output=model/model_output-cohort_vax-sub_age_50_64_noday0-dem_vasc.csv
-    needs:
-    - make_model_input-cohort_vax-sub_age_50_64_noday0-dem_vasc
-    outputs:
-      highly_sensitive:
-        ready: output/model/ready-cohort_vax-sub_age_50_64_noday0-dem_vasc.dta
-
-  stata_cox_ipw-cohort_vax-sub_age_50_64_noday0-dem_vasc:
-    run: stata-mp:v1 analysis/model/cox_model.do cohort_vax-sub_age_50_64_noday0-dem_vasc
-      28;183;365;730;1095;1460 2021-06-01
-    needs:
-    - ready-cohort_vax-sub_age_50_64_noday0-dem_vasc
-    outputs:
-      moderately_sensitive:
-        model_output: output/model/stata_model_output-cohort_vax-sub_age_50_64_noday0-dem_vasc.csv
-
   ready-cohort_vax-sub_age_50_64_noday0-park:
     run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_vax-sub_age_50_64_noday0-park.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
@@ -12311,30 +12287,6 @@ actions:
       moderately_sensitive:
         model_output: output/model/stata_model_output-cohort_prevax-sub_age_65_84_noday0-rls.csv
 
-  ready-cohort_vax-sub_age_85_110_noday0-rsd:
-    run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_vax-sub_age_85_110_noday0-rsd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
-      --covariate_sex=cov_cat_sex --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_imd;cov_num_consrate2019;cov_bin_hcworker;cov_cat_smoking;cov_bin_carehome;cov_bin_obesity;cov_bin_ami;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_depression;cov_bin_copd;cov_bin_stroke_isch;cov_bin_cis;cov_bin_dem_any;cov_bin_highvascrisk;cov_bin_mnd;cov_bin_ms;cov_bin_migraine;cov_bin_park;cov_bin_rls
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2025-05-31 --cut_points=28;183;365;730;1095;1460 --controls_per_case=20
-      --total_event_threshold=50 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=FALSE --save_analysis_ready=model/ready-cohort_vax-sub_age_85_110_noday0-rsd.dta
-      --run_analysis=FALSE --df_output=model/model_output-cohort_vax-sub_age_85_110_noday0-rsd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_age_85_110_noday0-rsd
-    outputs:
-      highly_sensitive:
-        ready: output/model/ready-cohort_vax-sub_age_85_110_noday0-rsd.dta
-
-  stata_cox_ipw-cohort_vax-sub_age_85_110_noday0-rsd:
-    run: stata-mp:v1 analysis/model/cox_model.do cohort_vax-sub_age_85_110_noday0-rsd
-      28;183;365;730;1095;1460 2021-06-01
-    needs:
-    - ready-cohort_vax-sub_age_85_110_noday0-rsd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model/stata_model_output-cohort_vax-sub_age_85_110_noday0-rsd.csv
-
   ready-cohort_unvax-sub_covidhistory_noday0-migraine:
     run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_unvax-sub_covidhistory_noday0-migraine.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
@@ -12382,30 +12334,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model/stata_model_output-cohort_vax-sub_covidhistory_noday0-dem_alz.csv
-
-  ready-cohort_vax-sub_covidhistory_noday0-dem_vasc:
-    run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_vax-sub_covidhistory_noday0-dem_vasc.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
-      --covariate_sex=cov_cat_sex --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_imd;cov_num_consrate2019;cov_bin_hcworker;cov_cat_smoking;cov_bin_carehome;cov_bin_obesity;cov_bin_ami;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_depression;cov_bin_copd;cov_bin_stroke_isch;cov_bin_cis;cov_bin_highvascrisk;cov_bin_mnd;cov_bin_ms;cov_bin_migraine;cov_bin_park;cov_bin_parkrisk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2025-05-31 --cut_points=28;183;365;730;1095;1460 --controls_per_case=20
-      --total_event_threshold=50 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=model/ready-cohort_vax-sub_covidhistory_noday0-dem_vasc.dta
-      --run_analysis=FALSE --df_output=model/model_output-cohort_vax-sub_covidhistory_noday0-dem_vasc.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covidhistory_noday0-dem_vasc
-    outputs:
-      highly_sensitive:
-        ready: output/model/ready-cohort_vax-sub_covidhistory_noday0-dem_vasc.dta
-
-  stata_cox_ipw-cohort_vax-sub_covidhistory_noday0-dem_vasc:
-    run: stata-mp:v1 analysis/model/cox_model.do cohort_vax-sub_covidhistory_noday0-dem_vasc
-      28;183;365;730;1095;1460 2021-06-01
-    needs:
-    - ready-cohort_vax-sub_covidhistory_noday0-dem_vasc
-    outputs:
-      moderately_sensitive:
-        model_output: output/model/stata_model_output-cohort_vax-sub_covidhistory_noday0-dem_vasc.csv
 
   ready-cohort_vax-sub_covidhistory_noday0-migraine:
     run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_vax-sub_covidhistory_noday0-migraine.rds
@@ -12551,30 +12479,6 @@ actions:
       moderately_sensitive:
         model_output: output/model/stata_model_output-cohort_prevax-sub_covidhospital_TRUE_noday0-migraine.csv
 
-  ready-cohort_prevax-sub_covidhospital_TRUE_noday0-ms:
-    run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_prevax-sub_covidhospital_TRUE_noday0-ms.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
-      --covariate_sex=cov_cat_sex --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_imd;cov_num_consrate2019;cov_bin_hcworker;cov_cat_smoking;cov_bin_carehome;cov_bin_obesity;cov_bin_ami;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_depression;cov_bin_copd;cov_bin_stroke_isch;cov_bin_cis;cov_bin_dem_any;cov_bin_highvascrisk;cov_bin_mnd;cov_bin_migraine;cov_bin_park;cov_bin_parkrisk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2025-05-31 --cut_points=28;183;365;730;1095;1460;1979 --controls_per_case=20
-      --total_event_threshold=50 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=model/ready-cohort_prevax-sub_covidhospital_TRUE_noday0-ms.dta
-      --run_analysis=FALSE --df_output=model/model_output-cohort_prevax-sub_covidhospital_TRUE_noday0-ms.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_covidhospital_TRUE_noday0-ms
-    outputs:
-      highly_sensitive:
-        ready: output/model/ready-cohort_prevax-sub_covidhospital_TRUE_noday0-ms.dta
-
-  stata_cox_ipw-cohort_prevax-sub_covidhospital_TRUE_noday0-ms:
-    run: stata-mp:v1 analysis/model/cox_model.do cohort_prevax-sub_covidhospital_TRUE_noday0-ms
-      28;183;365;730;1095;1460;1979 2020-01-01
-    needs:
-    - ready-cohort_prevax-sub_covidhospital_TRUE_noday0-ms
-    outputs:
-      moderately_sensitive:
-        model_output: output/model/stata_model_output-cohort_prevax-sub_covidhospital_TRUE_noday0-ms.csv
-
   ready-cohort_prevax-sub_covidhospital_TRUE_noday0-rls:
     run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_prevax-sub_covidhospital_TRUE_noday0-rls.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
@@ -12622,30 +12526,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model/stata_model_output-cohort_prevax-sub_covidhospital_TRUE_noday0-rsd.csv
-
-  ready-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz:
-    run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
-      --covariate_sex=cov_cat_sex --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_imd;cov_num_consrate2019;cov_bin_hcworker;cov_cat_smoking;cov_bin_carehome;cov_bin_obesity;cov_bin_ami;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_depression;cov_bin_copd;cov_bin_stroke_isch;cov_bin_cis;cov_bin_highvascrisk;cov_bin_mnd;cov_bin_ms;cov_bin_migraine;cov_bin_park;cov_bin_parkrisk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2025-05-31 --cut_points=28;183;365;730;1095;1460 --controls_per_case=20
-      --total_event_threshold=50 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=model/ready-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz.dta
-      --run_analysis=FALSE --df_output=model/model_output-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz
-    outputs:
-      highly_sensitive:
-        ready: output/model/ready-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz.dta
-
-  stata_cox_ipw-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz:
-    run: stata-mp:v1 analysis/model/cox_model.do cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz
-      28;183;365;730;1095;1460 2021-06-01
-    needs:
-    - ready-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz
-    outputs:
-      moderately_sensitive:
-        model_output: output/model/stata_model_output-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz.csv
 
   ready-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_any:
     run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_any.rds
@@ -12742,30 +12622,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model/stata_model_output-cohort_vax-sub_covidhospital_TRUE_noday0-migraine.csv
-
-  ready-cohort_vax-sub_covidhospital_TRUE_noday0-ms:
-    run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_vax-sub_covidhospital_TRUE_noday0-ms.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
-      --covariate_sex=cov_cat_sex --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_imd;cov_num_consrate2019;cov_bin_hcworker;cov_cat_smoking;cov_bin_carehome;cov_bin_obesity;cov_bin_ami;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_depression;cov_bin_copd;cov_bin_stroke_isch;cov_bin_cis;cov_bin_dem_any;cov_bin_highvascrisk;cov_bin_mnd;cov_bin_migraine;cov_bin_park;cov_bin_parkrisk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2025-05-31 --cut_points=28;183;365;730;1095;1460 --controls_per_case=20
-      --total_event_threshold=50 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=model/ready-cohort_vax-sub_covidhospital_TRUE_noday0-ms.dta
-      --run_analysis=FALSE --df_output=model/model_output-cohort_vax-sub_covidhospital_TRUE_noday0-ms.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covidhospital_TRUE_noday0-ms
-    outputs:
-      highly_sensitive:
-        ready: output/model/ready-cohort_vax-sub_covidhospital_TRUE_noday0-ms.dta
-
-  stata_cox_ipw-cohort_vax-sub_covidhospital_TRUE_noday0-ms:
-    run: stata-mp:v1 analysis/model/cox_model.do cohort_vax-sub_covidhospital_TRUE_noday0-ms
-      28;183;365;730;1095;1460 2021-06-01
-    needs:
-    - ready-cohort_vax-sub_covidhospital_TRUE_noday0-ms
-    outputs:
-      moderately_sensitive:
-        model_output: output/model/stata_model_output-cohort_vax-sub_covidhospital_TRUE_noday0-ms.csv
 
   ready-cohort_vax-sub_covidhospital_TRUE_noday0-rsd:
     run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_vax-sub_covidhospital_TRUE_noday0-rsd.rds
@@ -13151,30 +13007,6 @@ actions:
       moderately_sensitive:
         model_output: output/model/stata_model_output-cohort_vax-sub_ethnicity_mixed_noday0-migraine.csv
 
-  ready-cohort_prevax-sub_ethnicity_other_noday0-dem_any:
-    run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_prevax-sub_ethnicity_other_noday0-dem_any.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
-      --covariate_sex=cov_cat_sex --covariate_age=cov_num_age --covariate_other=cov_cat_imd;cov_num_consrate2019;cov_bin_hcworker;cov_cat_smoking;cov_bin_carehome;cov_bin_obesity;cov_bin_ami;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_depression;cov_bin_copd;cov_bin_stroke_isch;cov_bin_cis;cov_bin_highvascrisk;cov_bin_mnd;cov_bin_ms;cov_bin_migraine;cov_bin_park;cov_bin_parkrisk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2025-05-31 --cut_points=28;183;365;730;1095;1460;1979 --controls_per_case=20
-      --total_event_threshold=50 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=model/ready-cohort_prevax-sub_ethnicity_other_noday0-dem_any.dta
-      --run_analysis=FALSE --df_output=model/model_output-cohort_prevax-sub_ethnicity_other_noday0-dem_any.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_ethnicity_other_noday0-dem_any
-    outputs:
-      highly_sensitive:
-        ready: output/model/ready-cohort_prevax-sub_ethnicity_other_noday0-dem_any.dta
-
-  stata_cox_ipw-cohort_prevax-sub_ethnicity_other_noday0-dem_any:
-    run: stata-mp:v1 analysis/model/cox_model.do cohort_prevax-sub_ethnicity_other_noday0-dem_any
-      28;183;365;730;1095;1460;1979 2020-01-01
-    needs:
-    - ready-cohort_prevax-sub_ethnicity_other_noday0-dem_any
-    outputs:
-      moderately_sensitive:
-        model_output: output/model/stata_model_output-cohort_prevax-sub_ethnicity_other_noday0-dem_any.csv
-
   ready-cohort_prevax-sub_ethnicity_other_noday0-migraine:
     run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_prevax-sub_ethnicity_other_noday0-migraine.rds
       --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
@@ -13198,30 +13030,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model/stata_model_output-cohort_prevax-sub_ethnicity_other_noday0-migraine.csv
-
-  ready-cohort_unvax-sub_ethnicity_white_noday0-dem_alz:
-    run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_unvax-sub_ethnicity_white_noday0-dem_alz.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=strat_cat_region
-      --covariate_sex=cov_cat_sex --covariate_age=cov_num_age --covariate_other=cov_cat_imd;cov_num_consrate2019;cov_bin_hcworker;cov_cat_smoking;cov_bin_carehome;cov_bin_obesity;cov_bin_ami;cov_bin_liver_disease;cov_bin_ckd;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_depression;cov_bin_copd;cov_bin_stroke_isch;cov_bin_cis;cov_bin_highvascrisk;cov_bin_mnd;cov_bin_ms;cov_bin_migraine;cov_bin_park;cov_bin_parkrisk
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2025-05-31 --cut_points=28;183;365;730;1095;1460 --controls_per_case=20
-      --total_event_threshold=50 --episode_event_threshold=5 --covariate_threshold=5
-      --age_spline=TRUE --save_analysis_ready=model/ready-cohort_unvax-sub_ethnicity_white_noday0-dem_alz.dta
-      --run_analysis=FALSE --df_output=model/model_output-cohort_unvax-sub_ethnicity_white_noday0-dem_alz.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_ethnicity_white_noday0-dem_alz
-    outputs:
-      highly_sensitive:
-        ready: output/model/ready-cohort_unvax-sub_ethnicity_white_noday0-dem_alz.dta
-
-  stata_cox_ipw-cohort_unvax-sub_ethnicity_white_noday0-dem_alz:
-    run: stata-mp:v1 analysis/model/cox_model.do cohort_unvax-sub_ethnicity_white_noday0-dem_alz
-      28;183;365;730;1095;1460 2021-06-01
-    needs:
-    - ready-cohort_unvax-sub_ethnicity_white_noday0-dem_alz
-    outputs:
-      moderately_sensitive:
-        model_output: output/model/stata_model_output-cohort_unvax-sub_ethnicity_white_noday0-dem_alz.csv
 
   ready-cohort_unvax-sub_ethnicity_white_noday0-migraine:
     run: cox-ipw:v0.0.37 --df_input=model/model_input-cohort_unvax-sub_ethnicity_white_noday0-migraine.rds
@@ -13807,10 +13615,8 @@ actions:
     - stata_cox_ipw-cohort_unvax-sub_age_50_64_noday0-migraine
     - stata_cox_ipw-cohort_unvax-sub_age_50_64_noday0-rsd
     - stata_cox_ipw-cohort_vax-sub_age_50_64_noday0-dem_alz
-    - stata_cox_ipw-cohort_vax-sub_age_50_64_noday0-dem_vasc
     - stata_cox_ipw-cohort_vax-sub_age_50_64_noday0-park
     - stata_cox_ipw-cohort_prevax-sub_age_65_84_noday0-rls
-    - stata_cox_ipw-cohort_vax-sub_age_85_110_noday0-rsd
     outputs:
       moderately_sensitive:
         model_output: output/make_output/model_output-sub_age_noday0.csv
@@ -13857,7 +13663,6 @@ actions:
     - cox_ipw-cohort_vax-sub_covidhistory_noday0-rsd
     - stata_cox_ipw-cohort_unvax-sub_covidhistory_noday0-migraine
     - stata_cox_ipw-cohort_vax-sub_covidhistory_noday0-dem_alz
-    - stata_cox_ipw-cohort_vax-sub_covidhistory_noday0-dem_vasc
     - stata_cox_ipw-cohort_vax-sub_covidhistory_noday0-migraine
     outputs:
       moderately_sensitive:
@@ -13925,15 +13730,12 @@ actions:
     - stata_cox_ipw-cohort_unvax-sub_covidhospital_FALSE_noday0-rls
     - stata_cox_ipw-cohort_vax-sub_covidhospital_FALSE_noday0-mnd
     - stata_cox_ipw-cohort_prevax-sub_covidhospital_TRUE_noday0-migraine
-    - stata_cox_ipw-cohort_prevax-sub_covidhospital_TRUE_noday0-ms
     - stata_cox_ipw-cohort_prevax-sub_covidhospital_TRUE_noday0-rls
     - stata_cox_ipw-cohort_prevax-sub_covidhospital_TRUE_noday0-rsd
-    - stata_cox_ipw-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz
     - stata_cox_ipw-cohort_unvax-sub_covidhospital_TRUE_noday0-dem_any
     - stata_cox_ipw-cohort_unvax-sub_covidhospital_TRUE_noday0-migraine
     - stata_cox_ipw-cohort_unvax-sub_covidhospital_TRUE_noday0-rsd
     - stata_cox_ipw-cohort_vax-sub_covidhospital_TRUE_noday0-migraine
-    - stata_cox_ipw-cohort_vax-sub_covidhospital_TRUE_noday0-ms
     - stata_cox_ipw-cohort_vax-sub_covidhospital_TRUE_noday0-rsd
     outputs:
       moderately_sensitive:
@@ -14012,7 +13814,6 @@ actions:
     - cox_ipw-cohort_unvax-sub_ethnicity_mixed_noday0-cis
     - cox_ipw-cohort_unvax-sub_ethnicity_mixed_noday0-dem_alz
     - cox_ipw-cohort_unvax-sub_ethnicity_mixed_noday0-dem_any
-    - cox_ipw-cohort_unvax-sub_ethnicity_mixed_noday0-dem_lb
     - cox_ipw-cohort_unvax-sub_ethnicity_mixed_noday0-dem_vasc
     - cox_ipw-cohort_unvax-sub_ethnicity_mixed_noday0-mnd
     - cox_ipw-cohort_unvax-sub_ethnicity_mixed_noday0-ms
@@ -14105,9 +13906,7 @@ actions:
     - stata_cox_ipw-cohort_prevax-sub_ethnicity_mixed_noday0-rsd
     - stata_cox_ipw-cohort_unvax-sub_ethnicity_mixed_noday0-migraine
     - stata_cox_ipw-cohort_vax-sub_ethnicity_mixed_noday0-migraine
-    - stata_cox_ipw-cohort_prevax-sub_ethnicity_other_noday0-dem_any
     - stata_cox_ipw-cohort_prevax-sub_ethnicity_other_noday0-migraine
-    - stata_cox_ipw-cohort_unvax-sub_ethnicity_white_noday0-dem_alz
     - stata_cox_ipw-cohort_unvax-sub_ethnicity_white_noday0-migraine
     - stata_cox_ipw-cohort_unvax-sub_ethnicity_white_noday0-rls
     outputs:
