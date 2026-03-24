@@ -15,12 +15,12 @@ print("Specify arguments")
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
-  subgroup <- "main_noday0"
+  subgroup <- "main_noday0_collapsed"
 } else {
   subgroup <- args[[1]]
 }
 
-# Noday0 processing ------------------------------------------------------------
+# Input String processing ------------------------------------------------------------
 if (grepl("_noday0", subgroup)) {
   noday0_str <- "_noday0"
   subgroup <- gsub("_noday0", "", subgroup)
@@ -29,6 +29,16 @@ if (grepl("_noday0", subgroup)) {
   noday0_str <- ""
   noday0_flag <- FALSE
 }
+
+if (grepl("_collapsed", subgroup)) {
+  collapsed_str <- "_collapsed"
+  subgroup <- gsub("_collapsed", "", subgroup)
+  collapsed_flag <- TRUE
+} else {
+  collapsed_str <- ""
+  collapsed_flag <- FALSE
+}
+
 
 # Define model output folder ---------------------------------------------------
 print("Creating output/model output folder")
@@ -61,6 +71,7 @@ files <- intersect(
   )
 ) # only include models currently in active_analyses
 files <- files[grepl("_noday0", files) == noday0_flag] # noday0 processing
+files <- files[grepl("_collapsed", files) == collapsed_flag] # collapsed processing
 
 # Combine model output (R, and Stata if available) -----------------------------
 print('Combine model output')
@@ -154,7 +165,14 @@ df <- df[, c(
 
 readr::write_csv(
   df,
-  paste0(makeout_dir, "model_output-", subgroup, noday0_str, ".csv")
+  paste0(
+    makeout_dir,
+    "model_output-",
+    subgroup,
+    noday0_str,
+    collapsed_str,
+    ".csv"
+  )
 )
 
 # Perform redaction ------------------------------------------------------------
@@ -171,5 +189,12 @@ print('Save model output')
 
 readr::write_csv(
   df,
-  paste0(makeout_dir, "model_output-", subgroup, noday0_str, "-midpoint6.csv")
+  paste0(
+    makeout_dir,
+    "model_output-",
+    subgroup,
+    noday0_str,
+    collapsed_str,
+    "-midpoint6.csv"
+  )
 )
