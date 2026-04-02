@@ -20,7 +20,7 @@ print("Specify arguments")
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
-  name <- "cohort_unvax-sub_highvascrisk_TRUE_noday0-dem_any"
+  name <- "cohort_unvax-sub_highvascrisk_TRUE_noday0_collapsed-dem_any"
 } else {
   name <- args[[1]]
 }
@@ -34,6 +34,11 @@ analysis <- gsub(
 noday0_flag <- (grepl("_noday0", analysis))
 if (noday0_flag) {
   analysis <- gsub("_noday0", "", analysis)
+}
+
+collapsed_flag <- (grepl("_collapsed", analysis))
+if (collapsed_flag) {
+  analysis <- gsub("_collapsed", "", analysis)
 }
 
 # Define model output folder ---------------------------------------

@@ -244,6 +244,26 @@ df$name <- paste0(
   gsub("out_date_", "", df$outcome)
 )
 
+# Collapsed time period processing ------------------------------------------
+df_collapsed <- df
+df_collapsed$analysis <- paste0(df_collapsed$analysis, "_collapsed") # update analysis names
+df_collapsed$cut_points <- gsub(
+  "28;183;365;730;1095;1460",
+  "28;730;1460",
+  df_collapsed$cut_points
+) # update cut points
+df <- rbind(df, df_collapsed) # update main analysis list to have noday0 and noday0_collapsed
+
+# Add name for each analysis ----
+df$name <- paste0(
+  "cohort_",
+  df$cohort,
+  "-",
+  df$analysis,
+  "-",
+  gsub("out_date_", "", df$outcome)
+)
+
 # Remove covariates according to each outcome -----
 print("Removing covariates according to each outcome")
 
