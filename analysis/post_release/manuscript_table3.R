@@ -84,6 +84,8 @@ df <- df %>%
       term == "days730_1095" ~ "Years 2-3",
       term == "days1095_1460" ~ "Years 3-4",
       term == "days1460_1979" ~ "Years 4-5.5",
+      term == "days28_730" ~ "Week 5 - Year 2", #collapsed
+      term == "days730_1460" ~ "Years 2-4", #collapsed
       TRUE ~ NA_character_
     )
   )
@@ -97,7 +99,9 @@ weeks_levels <- c(
   "Years 1-2",
   "Years 2-3",
   "Years 3-4",
-  "Years 4-5.5"
+  "Years 4-5.5",
+  "Week 5 - Year 2", #collapsed
+  "Years 2-4" #collapsed
 )
 
 # Convert 'weeks' to a factor with specified levels

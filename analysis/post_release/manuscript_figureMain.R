@@ -81,7 +81,7 @@ plot_hr <- function(outcomes, outcome_group) {
 
   # High-outcome number catch (only plot a main graph)
   if (length(outcomes) > 5) {
-    df <- df[df$analysis == "main", ]
+    df <- df[grepl("main", df$analysis), ] # preserve main and main_collapsed
   }
 
   # Make columns numeric -------------------------------------------------------
@@ -122,6 +122,19 @@ plot_hr <- function(outcomes, outcome_group) {
 
   plot_labels <- readr::read_csv("lib/plot_labels.csv", show_col_types = FALSE)
 
+  # POTENTIALLY TEMPORARY (DEALING WITH COLLAPSED COLUMNS) ---------------------
+  plot_labels <- plot_labels %>%
+    bind_rows(
+      plot_labels %>%
+        filter(!is.na(analysis_group)) %>%
+        mutate(
+          term = paste0(term, "_collapsed"),
+          label = paste0(label, " (Collapsed)"),
+          analysis_group = paste0(analysis_group, "_collapsed")
+        )
+    )
+
+  # Merge plot labels with existing dataframe ----------------------------------
   df <- merge(
     df,
     plot_labels[, c("term", "label")],

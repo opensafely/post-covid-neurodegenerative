@@ -40,7 +40,9 @@ df$term <- factor(
     "days365_730",
     "days730_1095",
     "days1095_1460",
-    "days1460_1979"
+    "days1460_1979",
+    "days28_730",
+    "days730_1460"
   ),
   ordered = TRUE
 )
