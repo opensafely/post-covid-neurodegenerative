@@ -1,6 +1,6 @@
 library(dplyr)
 library(tidyr)
-library(read)
+library(readr)
 # Load data --------------------------------------------------------------------
 print("Load data")
 
@@ -17,18 +17,8 @@ df <- file_list %>%
   lapply(read_csv, show_col_types = FALSE) %>%
   bind_rows()
 
-# # Find analyses with <12 midpoint6 events at any timepoint
-# low_event_list <- unique(na.omit(df[df$N_events_midpoint6 < 12, ]$name)) # find list
-
-# df_filtered <- df[!(df$name %in% low_event_list), ] # apply reduction
-
-# Alternative load
-# df <- readr::read_csv(
-#   "output/post_release/plot_model_output.csv",
-#   show_col_types = FALSE
-# )
-
 df <- df[!is.na(df$hr), ]
+df <- df[!grepl("_collapsed", df$analysis), ] # remove collapsed
 
 # Filter data ------------------------------------------------------------------
 print("Filter data")
@@ -37,6 +27,7 @@ df <- df[
   df$model == "mdl_max_adj" &
     grepl("days", df$term),
   c(
+    "name",
     "cohort",
     "analysis",
     "outcome",
@@ -61,9 +52,9 @@ df$term <- factor(
     "days365_730",
     "days730_1095",
     "days1095_1460",
-    "days1460_1979",
-    "days28_730",
-    "days730_1460"
+    "days1460_1979"
+    # "days28_730", #don't keep collapsed
+    # "days730_1460"  #don't keep collapsed
   ),
   ordered = TRUE
 )
@@ -71,14 +62,15 @@ df$term <- factor(
 df <- unique(df) # remove duplicates
 
 df_wide <- df %>%
-  select(cohort, analysis, outcome, term, source, N_events_midpoint6) %>%
+  select(name, cohort, analysis, outcome, term, source, N_events_midpoint6) %>%
   tidyr::pivot_wider(
     names_from = term,
     values_from = N_events_midpoint6,
-    id_cols = c('cohort', 'analysis', 'outcome', 'source')
+    id_cols = c('name', 'cohort', 'analysis', 'outcome', 'source')
   ) %>%
   # reorder columns based on term factor levels
   select(
+    name,
     cohort,
     analysis,
     outcome,
@@ -86,16 +78,23 @@ df_wide <- df %>%
     all_of(levels(df$term))
   )
 
-df_wide["Total_Sum"] <- df_wide["days0_28"] +
-  df_wide["days28_183"] +
-  df_wide["days183_365"] +
-  df_wide["days365_730"] +
-  df_wide["days730_1095"] +
-  df_wide["days1095_1460"] +
-  df_wide["days1460_1979"]
-df_wide["Year1_Sum"] <- df_wide["days0_28"] +
-  df_wide["days28_183"] +
-  df_wide["days183_365"]
-df_wide["6month_Sum"] <- df_wide["days0_28"] + df_wide["days28_183"]
+# Find collapsible models ------------------------------------------------------
 
-readr::write_csv(df_wide, "output/post_release/events_per_interval_wide.csv")
+# Only keep models <12 at some point in first year
+df_filt <- df_wide[
+  df_wide$days0_28 < 12 | df_wide$days28_183 < 12 | df_wide$days183_365 < 12,
+]
+
+# Keep only models in main manuscript/supplement
+df_filt <- df_filt[
+  df_filt$analysis == "main" |
+    grepl("covidhospital", df_filt$analysis) |
+    grepl("park_risk", df_filt$analysis) |
+    df_filt$outcome == "cis" |
+    df_filt$outcome == "dem_any",
+]
+
+
+# Save Output ------------------------------------------------------------------
+
+readr::write_csv(df_filt, "output/post_release/find_collapsible_models.csv")
