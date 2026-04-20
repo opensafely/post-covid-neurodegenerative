@@ -298,19 +298,24 @@ collapsed_list = c(
   "cohort_unvax-sub_sex_male_noday0-dem_any"
 )
 
-df_collapsedyear <- df[df$name %in% collapsed_list, ]
-df_collapsedyear$analysis <- paste0(df_collapsedyear$analysis, "_collapsedyear") # update analysis names
-df_collapsedyear$cut_points <- gsub(
-  "28;183;365;730;1095;1460",
-  "365;730;1460",
-  df_collapsedyear$cut_points
-) # update cut points
-df_collapsedyear$name <- sub(
-  "-([^-]*)$",
-  "_collapsedyear-\\1",
-  df_collapsedyear$name
-)
-df <- rbind(df, df_collapsedyear) # update main analysis list to have noday0 and noday0_collapsed
+if (length(collapsed_list > 0)) {
+  df_collapsedyear <- df[df$name %in% collapsed_list, ]
+  df_collapsedyear$analysis <- paste0(
+    df_collapsedyear$analysis,
+    "_collapsedyear"
+  ) # update analysis names
+  df_collapsedyear$cut_points <- gsub(
+    "28;183;365;730;1095;1460",
+    "365;730;1460",
+    df_collapsedyear$cut_points
+  ) # update cut points
+  df_collapsedyear$name <- sub(
+    "-([^-]*)$",
+    "_collapsedyear-\\1",
+    df_collapsedyear$name
+  )
+  df <- rbind(df, df_collapsedyear) # update main analysis list to have noday0 and noday0_collapsed
+}
 
 # Add name for each analysis ----
 df$name <- paste0(
