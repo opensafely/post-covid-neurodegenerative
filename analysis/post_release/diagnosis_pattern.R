@@ -3,10 +3,30 @@ library(tidyr)
 # Load data --------------------------------------------------------------------
 print("Load data")
 
-df <- readr::read_csv(
-  "output/post_release/plot_model_output.csv",
-  show_col_types = FALSE
+source("analysis/specify_paths.R")
+# List all CSV files matching the pattern
+file_list <- list.files(
+  path = paste0(release, "20260416_noday0\\"),
+  pattern = "^model_output-.*-midpoint6\\.csv$",
+  full.names = TRUE
 )
+
+# Read and combine all CSV files into one data frame
+df <- file_list %>%
+  lapply(read_csv, show_col_types = FALSE) %>%
+  bind_rows()
+
+# # Find analyses with <12 midpoint6 events at any timepoint
+# low_event_list <- unique(na.omit(df[df$N_events_midpoint6 < 12, ]$name)) # find list
+
+# df_filtered <- df[!(df$name %in% low_event_list), ] # apply reduction
+
+# Alternative load
+# df <- readr::read_csv(
+#   "output/post_release/plot_model_output.csv",
+#   show_col_types = FALSE
+# )
+
 df <- df[!is.na(df$hr), ]
 
 # Filter data ------------------------------------------------------------------
@@ -78,63 +98,3 @@ df_wide["Year1_Sum"] <- df_wide["days0_28"] +
 df_wide["6month_Sum"] <- df_wide["days0_28"] + df_wide["days28_183"]
 
 readr::write_csv(df_wide, "output/post_release/events_per_interval_wide.csv")
-
-#
-# # Identify cohorts and analyses with N_total_midpoint6 < 4,000,000 ----
-# df_filtered <- df %>%
-#   filter(
-#     source == "R",
-#     N_total_midpoint6 < 4000000
-#   ) %>%
-#   distinct(cohort, analysis)
-#
-# # View the result
-# print(df_filtered)
-#
-# df_filtered %>%
-#   arrange(cohort, analysis)
-#
-# # Only include columns that start with "days"
-# day_cols <- grep("^days", names(df_wide), value = TRUE, perl = TRUE)
-# # day_cols <- grep("^days", names(df_wide), value = TRUE)
-# # day_cols <- setdiff(day_cols, c("days0_1", "days1_28"))
-# # For each row, find the columns corresponding to the 4 lowest values
-# df_ranked <- df_wide %>%
-#   rowwise() %>%
-#   mutate(
-#     lowest_days_1 = day_cols[order(c_across(all_of(day_cols)))[1]],
-#     lowest_days_2 = day_cols[order(c_across(all_of(day_cols)))[2]],
-#     lowest_days_3 = day_cols[order(c_across(all_of(day_cols)))[3]],
-#     lowest_days_4 = day_cols[order(c_across(all_of(day_cols)))[4]]
-#   ) %>%
-#   ungroup()
-#
-# # View relevant results
-# df_ranked %>%
-#   select(
-#     cohort,
-#     analysis,
-#     outcome,
-#     lowest_days_1,
-#     lowest_days_2,
-#     lowest_days_3,
-#     lowest_days_4
-#   )
-#
-# # Combine all lowest_days_* columns into one long column
-# summary_lowest <- df_ranked %>%
-#   select(starts_with("lowest_days")) %>%
-#   pivot_longer(
-#     cols = everything(),
-#     names_to = "rank_position",
-#     values_to = "days_column"
-#   ) %>%
-#   group_by(rank_position, days_column) %>%
-#   summarise(count = n(), .groups = "drop") %>%
-#   arrange(rank_position, desc(count))
-#
-# summary_lowest
-#
-#
-# # View the result
-# print(df_wide, n = 30)
