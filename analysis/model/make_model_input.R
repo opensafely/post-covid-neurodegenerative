@@ -20,7 +20,7 @@ print("Specify arguments")
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
-  name <- "cohort_unvax-sub_highvascrisk_TRUE_noday0_collapsed-dem_any"
+  name <- "cohort_unvax-sub_highvascrisk_TRUE_noday0_collapsedyear-dem_any"
 } else {
   name <- args[[1]]
 }
@@ -34,6 +34,11 @@ analysis <- gsub(
 noday0_flag <- (grepl("_noday0", analysis))
 if (noday0_flag) {
   analysis <- gsub("_noday0", "", analysis)
+}
+
+collapsedyear_flag <- (grepl("_collapsedyear", analysis))
+if (collapsedyear_flag) {
+  analysis <- gsub("_collapsedyear", "", analysis)
 }
 
 collapsed_flag <- (grepl("_collapsed", analysis))
