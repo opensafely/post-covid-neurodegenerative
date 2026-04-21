@@ -2,15 +2,29 @@ library(dplyr)
 library(tidyr)
 library(readr)
 library(stringr)
+# Load Active Analyses ---------------------------------------------------------
+active_analyses <- read_rds("lib/active_analyses.rds")
+subgroups <- unique(sub(
+  "_(?:TRUE|FALSE|male|female|white|black|other|mixed|asian|[0-9]{2,3}_[0-9]{2,3})(?=_|$)",
+  "",
+  unique(active_analyses$analysis),
+  perl = TRUE
+))
+subgroups <- subgroups[!grepl("collapsed", subgroups)]
+
+
 # Load data --------------------------------------------------------------------
 print("Load data")
 
 # List all CSV files matching the pattern
-file_list <- list.files(
-  path = "output/make_output/",
-  pattern = "^model_output-.*-midpoint6\\.csv$",
-  full.names = TRUE
+file_list <- paste0(
+  "output/make_output/",
+  "make_model_output-",
+  subgroups,
+  "-midpoint6.csv$"
 )
+
+file_list <- file_list[!grepl("collapsed", file_list)]
 
 # Read and combine all CSV files into one data frame
 df <- file_list %>%
