@@ -903,7 +903,10 @@ actions_list <- splice(
   action(
     name = "make_event_interval_count",
     run = "r:v2 analysis/make_output/make_event_interval_count.R",
-    needs = as.list(paste0("make_model_output-", subgroups)),
+    needs = as.list(paste0(
+      "make_model_output-",
+      subgroups[!grepl("collapsed", subgroups)]
+    )),
     moderately_sensitive = list(
       event_interval_midpoint6 = "output/make_output/events_per_interval_midpoint6.csv"
     )
