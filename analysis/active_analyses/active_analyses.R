@@ -245,14 +245,17 @@ df$name <- paste0(
 )
 
 # Collapsed time period processing ------------------------------------------
-# df_collapsed <- df
-# df_collapsed$analysis <- paste0(df_collapsed$analysis, "_collapsed") # update analysis names
-# df_collapsed$cut_points <- gsub(
-#   "28;183;365;730;1095;1460",
-#   "28;730;1460",
-#   df_collapsed$cut_points
-# ) # update cut points
-# df <- rbind(df, df_collapsed) # update main analysis list to have noday0 and noday0_collapsed
+collapsed_flag <- FALSE
+if (collapsed_flag) {
+  df_collapsed <- df
+  df_collapsed$analysis <- paste0(df_collapsed$analysis, "_collapsed") # update analysis names
+  df_collapsed$cut_points <- gsub(
+    "28;183;365;730;1095;1460",
+    "28;730;1460",
+    df_collapsed$cut_points
+  ) # update cut points
+  df <- rbind(df, df_collapsed) # update main analysis list to have noday0 and noday0_collapsed
+}
 
 # Collapsed_year processing
 collapsed_list = c(
