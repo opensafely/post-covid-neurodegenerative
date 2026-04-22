@@ -12,19 +12,16 @@ subgroups <- unique(sub(
 ))
 subgroups <- subgroups[!grepl("collapsed", subgroups)]
 
-
 # Load data --------------------------------------------------------------------
 print("Load data")
 
 # List all CSV files matching the pattern
 file_list <- paste0(
   "output/make_output/",
-  "make_model_output-",
+  "model_output-",
   subgroups,
-  "-midpoint6.csv$"
+  "-midpoint6.csv"
 )
-
-file_list <- file_list[!grepl("collapsed", file_list)]
 
 # Read and combine all CSV files into one data frame
 df <- file_list %>%
