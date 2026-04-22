@@ -15,7 +15,7 @@ print("Specify arguments")
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
-  subgroup <- "main_noday0_collapsed"
+  subgroup <- "sub_park_noday0_collapsedyear"
 } else {
   subgroup <- args[[1]]
 }
@@ -30,7 +30,16 @@ if (grepl("_noday0", subgroup)) {
   noday0_flag <- FALSE
 }
 
-if (grepl("_collapsed", subgroup)) {
+if (grepl("_collapsedyear", subgroup)) {
+  collapsedyear_str <- "_collapsedyear"
+  subgroup <- gsub("_collapsedyear", "", subgroup)
+  collapsedyear_flag <- TRUE
+} else {
+  collapsedyear_str <- ""
+  collapsedyear_flag <- FALSE
+}
+
+if (grepl("_collapsed$", subgroup)) {
   collapsed_str <- "_collapsed"
   subgroup <- gsub("_collapsed", "", subgroup)
   collapsed_flag <- TRUE
@@ -71,7 +80,8 @@ files <- intersect(
   )
 ) # only include models currently in active_analyses
 files <- files[grepl("_noday0", files) == noday0_flag] # noday0 processing
-files <- files[grepl("_collapsed", files) == collapsed_flag] # collapsed processing
+files <- files[grepl("_collapsed$", files) == collapsed_flag] # collapsed processing
+files <- files[grepl("_collapsedyear", files) == collapsedyear_flag] # collapsed processing
 
 # Combine model output (R, and Stata if available) -----------------------------
 print('Combine model output')
@@ -171,6 +181,7 @@ readr::write_csv(
     subgroup,
     noday0_str,
     collapsed_str,
+    collapsedyear_str,
     ".csv"
   )
 )
@@ -195,6 +206,7 @@ readr::write_csv(
     subgroup,
     noday0_str,
     collapsed_str,
+    collapsedyear_str,
     "-midpoint6.csv"
   )
 )

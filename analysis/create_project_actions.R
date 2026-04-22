@@ -23,11 +23,12 @@ active_analyses <- active_analyses[
 ]
 cohorts <- unique(active_analyses$cohort)
 analyses <- unique(grep("^main", active_analyses$analysis, value = TRUE))
-subgroups <- unique(str_extract(active_analyses$analysis, "^main|sub_[^_]+"))
-subgroups <- c(
-  paste0(subgroups, "_noday0"),
-  paste0(subgroups, "_noday0_collapsed")
-)
+subgroups <- unique(sub(
+  "_(?:TRUE|FALSE|male|female|white|black|other|mixed|asian|[0-9]{2,3}_[0-9]{2,3})(?=_|$)",
+  "",
+  unique(active_analyses$analysis),
+  perl = TRUE
+))
 active_age <- active_analyses[grepl("_age_", active_analyses$name), ]$name
 age_str <- paste0(
   paste0(
@@ -508,8 +509,9 @@ venn <- function(cohort, analyses = "") {
 # Create function for making model outputs --------------------------------------
 
 make_model_output <- function(subgroup) {
+  subgroup_str <- subgroup
+
   if (grepl("_noday0", subgroup)) {
-    noday0_str <- "_noday0"
     subgroup <- gsub("_noday0", "", subgroup)
     noday0_flag <- TRUE
   } else {
@@ -518,79 +520,100 @@ make_model_output <- function(subgroup) {
   }
 
   if (grepl("_collapsed", subgroup)) {
-    collapsed_str <- "_collapsed"
-    subgroup <- gsub("_collapsed", "", subgroup)
     collapsed_flag <- TRUE
+    if (grepl("_collapsedyear", subgroup)) {
+      year_flag <- TRUE
+      subgroup <- gsub("_collapsedyear", "", subgroup)
+    } else {
+      year_flag <- FALSE
+      subgroup <- gsub("_collapsed", "", subgroup)
+    }
   } else {
-    collapsed_str <- ""
     collapsed_flag <- FALSE
+    year_flag <- FALSE
   }
 
-  splice(
-    comment(glue(
-      "Generate model_output-{subgroup}{noday0_str}{collapsed_str}"
-    )),
-    action(
-      name = glue(
-        "make_model_output-{subgroup}{noday0_str}{collapsed_str}"
-      ),
-      run = "r:v2 analysis/make_output/make_model_output.R",
-      arguments = c(paste0(subgroup, noday0_str, collapsed_str)),
-      needs = as.list(c(
-        paste0(
-          "cox_ipw-",
-          setdiff(
-            active_analyses$name[
-              str_detect(
-                active_analyses$analysis,
-                paste0(subgroup, "(?=[_-]|$)")
-              ) &
-                (grepl("_noday0", active_analyses$analysis) == noday0_flag) &
-                (grepl("_collapsed", active_analyses$analysis) ==
-                  collapsed_flag)
-            ],
-            c(stata$name, excluded_models)
-          )
+  if (
+    length(active_analyses$name[
+      str_detect(
+        active_analyses$analysis,
+        paste0(subgroup, "(?=[_-]|$)")
+      ) &
+        (grepl("_noday0", active_analyses$analysis) == noday0_flag) &
+        (grepl("_collapsed", active_analyses$analysis) == collapsed_flag) &
+        (grepl("year", active_analyses$analysis) == year_flag)
+    ]) >
+      0
+  ) {
+    splice(
+      comment(glue(
+        "Generate model_output-{subgroup_str}"
+      )),
+      action(
+        name = glue(
+          "make_model_output-{subgroup_str}"
         ),
-        if (
-          length(stata_models) > 0 &&
-            any(
-              str_detect(
-                stata$analysis,
-                paste0(subgroup, "(?=[_-]|$)")
-              ) &
-                (grepl("_noday0", stata$analysis) == noday0_flag) &
-                (grepl("_collapsed", stata$analysis) == collapsed_flag)
-            )
-        ) {
+        run = "r:v2 analysis/make_output/make_model_output.R",
+        arguments = subgroup_str,
+        needs = as.list(c(
           paste0(
-            "stata_cox_ipw-",
+            "cox_ipw-",
             setdiff(
-              stata$name[
+              active_analyses$name[
+                str_detect(
+                  active_analyses$analysis,
+                  paste0(subgroup, "(?=[_-]|$)")
+                ) &
+                  (grepl("_noday0", active_analyses$analysis) == noday0_flag) &
+                  (grepl("_collapsed", active_analyses$analysis) ==
+                    collapsed_flag) &
+                  (grepl("year", active_analyses$analysis) == year_flag)
+              ],
+              c(stata$name, excluded_models)
+            )
+          ),
+          if (
+            length(stata_models) > 0 &&
+              any(
                 str_detect(
                   stata$analysis,
                   paste0(subgroup, "(?=[_-]|$)")
                 ) &
                   (grepl("_noday0", stata$analysis) == noday0_flag) &
-                  (grepl("_collapsed", stata$analysis) == collapsed_flag)
-              ],
-              excluded_models
+                  (grepl("_collapsed", stata$analysis) == collapsed_flag) &
+                  (grepl("year", stata$analysis) == year_flag)
+              )
+          ) {
+            paste0(
+              "stata_cox_ipw-",
+              setdiff(
+                stata$name[
+                  str_detect(
+                    stata$analysis,
+                    paste0(subgroup, "(?=[_-]|$)")
+                  ) &
+                    (grepl("_noday0", stata$analysis) == noday0_flag) &
+                    (grepl("_collapsed", stata$analysis) == collapsed_flag) &
+                    (grepl("year", stata$analysis) == year_flag)
+                ],
+                excluded_models
+              )
             )
+          } else {
+            character(0)
+          }
+        )),
+        moderately_sensitive = list(
+          model_output = glue(
+            "output/make_output/model_output-{subgroup_str}.csv"
+          ),
+          model_output_midpoint6 = glue(
+            "output/make_output/model_output-{subgroup_str}-midpoint6.csv"
           )
-        } else {
-          character(0)
-        }
-      )),
-      moderately_sensitive = list(
-        model_output = glue(
-          "output/make_output/model_output-{subgroup}{noday0_str}{collapsed_str}.csv"
-        ),
-        model_output_midpoint6 = glue(
-          "output/make_output/model_output-{subgroup}{noday0_str}{collapsed_str}-midpoint6.csv"
         )
       )
     )
-  )
+  }
 }
 
 # Create function for making combined table/venn outputs ------------------------
@@ -880,7 +903,10 @@ actions_list <- splice(
   action(
     name = "make_event_interval_count",
     run = "r:v2 analysis/make_output/make_event_interval_count.R",
-    needs = as.list(paste0("make_model_output-", subgroups)),
+    needs = as.list(paste0(
+      "make_model_output-",
+      subgroups[!grepl("collapsed", subgroups)]
+    )),
     moderately_sensitive = list(
       event_interval_midpoint6 = "output/make_output/events_per_interval_midpoint6.csv"
     )
