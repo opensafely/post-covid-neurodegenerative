@@ -298,6 +298,7 @@ collapsed_list = c(
   "cohort_vax-sub_ethnicity_mixed_noday0-cis",
   "cohort_vax-sub_ethnicity_other_noday0-cis",
   "cohort_vax-sub_park_TRUE_noday0-dem_any",
+  "cohort_prevax-sub_parkrisk_TRUE_noday0-park",
   "cohort_unvax-sub_sex_male_noday0-dem_any"
 )
 
