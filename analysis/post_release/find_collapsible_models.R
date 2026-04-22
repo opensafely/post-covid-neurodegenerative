@@ -89,7 +89,7 @@ df_filt <- df_wide[
 df_filt <- df_filt[
   df_filt$analysis == "main" |
     grepl("covidhospital", df_filt$analysis) |
-    grepl("park_risk", df_filt$analysis) |
+    grepl("parkrisk", df_filt$analysis) |
     df_filt$outcome == "cis" |
     df_filt$outcome == "dem_any",
 ]
