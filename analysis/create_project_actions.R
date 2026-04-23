@@ -110,6 +110,7 @@ stata_models <- c(
   "cohort_unvax-sub_covidhospital_FALSE_noday0-migraine",
   "cohort_unvax-sub_covidhospital_FALSE_noday0-rls",
   "cohort_unvax-sub_covidhospital_TRUE_noday0-dem_any",
+  "cohort_unvax-sub_covidhospital_TRUE_noday0-cis",
   "cohort_unvax-sub_covidhospital_TRUE_noday0-migraine",
   "cohort_unvax-sub_covidhospital_TRUE_noday0-rsd",
   "cohort_vax-sub_covidhospital_FALSE_noday0-mnd",
