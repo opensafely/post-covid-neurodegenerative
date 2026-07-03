@@ -29,8 +29,8 @@ sub_ethnicity_black,Black or Black British,ethnicity,3
 sub_ethnicity_mixed,Mixed,ethnicity,4
 sub_ethnicity_other,Chinese or other ethnic groups,ethnicity,5
 sub_ethnicity_white,White,ethnicity,1
-sub_highvascrisk_TRUE,History of hypertension and/or diabetes,highvascrisk,1
-sub_highvascrisk_FALSE,No history of either hypertension or diabetes,highvascrisk,2
+sub_highvascrisk_TRUE,History of high vascular risk,highvascrisk,1
+sub_highvascrisk_FALSE,No history of high vascular risk,highvascrisk,2
 sub_park_TRUE,History of Parkinson's disease,park,1
 sub_park_FALSE,No history of Parkinson's disease,park,2
 sub_parkrisk_TRUE,History of Parkinson's risk conditions,parkrisk,1
