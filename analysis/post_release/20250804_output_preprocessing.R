@@ -1,0 +1,91 @@
+# a script for removing the "_noday0" strings from filenames and internal variables to allow the data to be processed by the same post_release scripts as other outputs.
+
+# Load libraries ---------------------------------------------------------------
+print('Load libraries')
+
+library(magrittr)
+library(tidyverse)
+library(purrr)
+library(data.table)
+library(tidyverse)
+library(svglite)
+library(VennDiagram)
+library(grid)
+library(gridExtra)
+
+# Specify paths for processing -------------------------------------------------
+print('Specify paths')
+
+source("analysis/specify_paths.R") # includes path to release folder
+
+original_dir <- paste0(
+  release,
+  "20250804/"
+)
+
+output_dir <- paste0(
+  release,
+  "20250804_processed/"
+)
+
+files_to_exclude <- c() #not excluding any files here
+
+#Create Folder -----------------------------------------------------------------
+print("Create folder")
+print('Make output directory')
+dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+
+
+# Source functions -------------------------------------------------------------
+print('Source functions')
+
+source("analysis/utility.R")
+
+
+# Generate list of files in folder ---------------------------------------------
+print("Generating file list")
+original_files <- setdiff(list.files(original_dir), files_to_exclude)
+
+# Iterating through files ------------------------------------------------------
+
+for (f in original_files) {
+  # Full input/output paths
+  input_path <- file.path(original_dir, f)
+  output_path <- file.path(output_dir, f)
+
+  if (grepl("table1", f)) {
+    file.copy(input_path, output_path, overwrite = TRUE)
+  } else {
+    # Read CSV
+    df <- read.csv(input_path, stringsAsFactors = FALSE)
+
+    # rename person_time_total in model df (N.B. - this is just for code compatibility, doesn't actually apply rounding)
+    if ("person_time_total" %in% names(df)) {
+      df <- df %>%
+        rename(
+          "person_time_total_midpoint6" = "person_time_total"
+        )
+    }
+
+    # rename unexposed_person_days in aer df (N.B. - this is just for code compatibility, doesn't actually apply rounding)
+    if ("unexposed_person_days" %in% names(df)) {
+      df <- df %>%
+        rename(
+          "unexposed_person_days_midpoint6" = "unexposed_person_days"
+        )
+    }
+
+    # Renaming the age boundaries (again, doesn't change the age boundaries - just makes the plotting fluid)
+    df[] <- lapply(df, function(x) {
+      if (is.character(x)) gsub("18_39", "18_49", x) else x
+      if (is.character(x)) gsub("40_64", "50_64", x) else x
+    })
+
+    # Write modified CSV to target
+    write.csv(df, output_path, row.names = FALSE)
+  }
+}
+
+# move files over (non model)
+# move model files over
+# open each file and edit
