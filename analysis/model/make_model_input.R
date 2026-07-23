@@ -31,8 +31,8 @@ analysis <- gsub(
   name
 )
 
-noday0_flag  <- (grepl("_noday0", analysis))
-if (noday0_flag ) {
+noday0_flag <- (grepl("_noday0", analysis))
+if (noday0_flag) {
   analysis <- gsub("_noday0", "", analysis)
 }
 
@@ -53,7 +53,7 @@ pmi <- prepare_model_input(name)
 # Restrict to required population -------------------------------------------
 print('Restrict to required population')
 
-# Creating a pre-existing condition variable where appropriate
+# Creating a pre-existing condition variable where appropriate (carried over from other similar repositories, e.g. post-covid-respiratory)
 if (grepl("preex", name)) {
   # True false indicator of preex
   preex <- as.logical(
