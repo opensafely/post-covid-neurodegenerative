@@ -293,8 +293,9 @@ modify_dummy <- function(df, cohort) {
       select(-starts_with("missing"), -matches("vaccine_\\d_type")) %>%
 
       ## Inclusion/Exclusion modifications
+      # Ensuring that each inex criteria is triggered for a small proportion of the dummy data
 
-      # Inclusion criteria: Did not receive a vaccination prior to 08-12-2020 (i.e., the start of the vaccination
+      # Inclusion criteria: Did not receive a vaccination prior to 08-12-2020 (i.e., the start of the vaccination)
       mutate(across(
         vax_date_covid_1,
         ~ if_else(
@@ -342,8 +343,6 @@ modify_dummy <- function(df, cohort) {
           .x
         )
       ))
-
-    # Inclusion criteria: Index date is before cohort end date
   } else if (cohort == "unvax") {
     # Modifying unvax-specific variables
 
@@ -355,7 +354,6 @@ modify_dummy <- function(df, cohort) {
         vax_date_covid_1 = case_when(
           # Shift all dates after 2021-12-10 one year earlier
           vax_date_covid_1 > as.Date("2021-12-10") ~ vax_date_covid_1 - 360,
-
           # Boost early vaccine dates by randomly pulling some later values earlier
           TRUE ~ vax_date_covid_1
         )
@@ -378,7 +376,7 @@ modify_dummy <- function(df, cohort) {
             "02",
             "01",
             "99"
-          ), # 8.25 for each group, 1.6% for missing
+          ), # 8.2% for each group, 1.6% for missing
           size = nrow(.),
           replace = TRUE,
           prob = c(
@@ -403,8 +401,8 @@ modify_dummy <- function(df, cohort) {
     mutate(
       cov_num_age = sample(
         c(
-          sample(1:17, round(nrow(.) * 0.02), replace = TRUE), # Proportion <18
-          sample(111:120, round(nrow(.) * 0.02), replace = TRUE), # Proportion >110
+          sample(1:17, round(nrow(.) * 0.02), replace = TRUE), # Set 2% of population aged <18
+          sample(111:120, round(nrow(.) * 0.02), replace = TRUE), # Set 2% of population aged >110
           sample(18:110, nrow(.) - round(nrow(.) * 0.02) * 2, replace = TRUE)
         )
       )
@@ -458,7 +456,7 @@ modify_dummy <- function(df, cohort) {
             (1 - 0.025) / length(setdiff(unique(df$cov_cat_imd), "unknown")),
             length(setdiff(unique(df$cov_cat_imd), "unknown"))
           ),
-          0.025
+          0.025 #2.5% missing, otherwise distribute across number of IMD levels
         )
       )
     ) %>%
@@ -468,7 +466,7 @@ modify_dummy <- function(df, cohort) {
       starts_with("out_date_"),
       ~ as.Date(
         ifelse(
-          runif(n()) < 0.5, # 15% for each outcome
+          runif(n()) < 0.5, # 50% with outcome
           index_date +
             round(
               (lcd_date - index_date) * runif(n(), min = 0, max = 1)
@@ -504,7 +502,7 @@ modify_dummy <- function(df, cohort) {
         x = c("non_hospitalised", "hospitalised"),
         size = nrow(.),
         replace = TRUE,
-        prob = rep(0.5, 2)
+        prob = rep(0.5, 2) #50% hospitalised, 50% non-hospitalised
       )
     ) %>%
 

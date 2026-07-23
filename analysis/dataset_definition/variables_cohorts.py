@@ -528,16 +528,6 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         (occupation_on_covid_vaccine_record.is_healthcare_worker == True)
     ).exists_for_patient()
 
-    ### Dementia (A core protocol covariate, but not used in this protocol)
-    # cov_bin_dementia = (
-    #     (last_matching_event_clinical_snomed_before(
-    #         dementia_snomed + dementia_vascular_snomed, index_date
-    #     ).exists_for_patient()) |
-    #     (last_matching_event_apc_before(
-    #         dementia_icd10 + dementia_vascular_icd10, index_date
-    #     ).exists_for_patient())
-    # )
-
     ### Liver disease
     cov_bin_liver_disease = (
         (last_matching_event_clinical_snomed_before(
@@ -861,10 +851,10 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         tmp_out_date_rsd_gp         = tmp_out_date_rsd_gp,        # REM Sleep Disorder
 
         ## Tmp APC
-        # CIS gap
+        # No CIS APC data
         tmp_out_date_dem_alz_apc     = tmp_out_date_dem_alz_apc,    # Alzheimer's Disease
         tmp_out_date_dem_vasc_apc    = tmp_out_date_dem_vasc_apc,   # Vascular Dementia
-        # Lewy Body Gap
+        # No Lewy Body APC data
         tmp_out_date_dem_other_apc   = tmp_out_date_dem_other_apc,  # Other Dementia
         tmp_out_date_dem_unspec_apc  = tmp_out_date_dem_unspec_apc, # Unspecified Dementia
         tmp_out_date_dem_any_apc     = tmp_out_date_dem_any_apc,    # Any Dementia
@@ -874,15 +864,15 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         tmp_out_date_neuro_other_apc = tmp_out_date_neuro_other_apc,# MS or MND
         tmp_out_date_park_apc        = tmp_out_date_park_apc,       # Parkinson's Disease
         tmp_out_date_parkrisk_apc   = tmp_out_date_rsd_apc,        # combo of RSD and RLS (but only RSD here)
-        # RLD gap
+        # No RLD APC data
         tmp_out_date_rsd_apc         = tmp_out_date_rsd_apc,        # REM Sleep Disorder
 
 
         ## Tmp Death
-        # CIS gap       
+        # No CIS death data       
         tmp_out_date_dem_alz_death     = tmp_out_date_dem_alz_death,    # Alzheimer's Disease
         tmp_out_date_dem_vasc_death    = tmp_out_date_dem_vasc_death,   # Vascular Dementia
-        # Lewy Body Gap
+        # No Lewy Body death data
         tmp_out_date_dem_other_death   = tmp_out_date_dem_other_death,  # Other Dementia
         tmp_out_date_dem_unspec_death  = tmp_out_date_dem_unspec_death, # Unspecified Dementia
         tmp_out_date_dem_any_death     = tmp_out_date_dem_any_death,    # Any Dementia
@@ -892,7 +882,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         tmp_out_date_neuro_other_death = tmp_out_date_neuro_other_death, # MS or MND
         tmp_out_date_park_death        = tmp_out_date_park_death,        # Parkinson's Disease
         tmp_out_date_parkrisk_death   = tmp_out_date_rsd_death,         # combo of RSD and RLS (but only RSD here)
-        # RLD gap
+        # No RLD death data
         tmp_out_date_rsd_death         = tmp_out_date_rsd_death,         # REM Sleep Disorder
 
         ### Strata----------------------------------------------------------------------------------------------------
@@ -908,7 +898,6 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         cov_bin_ckd           = cov_bin_ckd,
         cov_num_consrate2019  = cov_num_consrate2019,
         cov_bin_copd          = cov_bin_copd,
-        # cov_bin_dementia = cov_bin_dementia,
         cov_bin_depression    = cov_bin_depression,
         cov_bin_diabetes      = cov_bin_diabetes,
         cov_cat_ethnicity     = cov_cat_ethnicity,

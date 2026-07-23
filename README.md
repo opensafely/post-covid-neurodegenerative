@@ -1,6 +1,6 @@
 # post-covid-neurodegenerative
 
-[View on OpenSAFELY](https://jobs.opensafely.org/repo/https%253A%252F%252Fgithub.com%252Fopensafely%252Fpost-covid-neurodegenerative/)
+[View on OpenSAFELY](https://jobs.opensafely.org/investigating-events-following-covid-19/post-covid-neurodegenerative-v3/)
 
 Details of the purpose and any published outputs from this project can be found at the link above.
 
@@ -13,7 +13,8 @@ No clinical, policy or safety conclusions must be drawn from the contents of thi
 
 -   Detailed protocols are in the [`protocol`](./protocol/) folder:
 
-    - [`post-covid-events-neurodegenerative`](protocol/post-covid-events-neurodegenerative.pdf) contains the outcome-specific elements necessary to implement [`post-covid-events-ehrql`](protocol/post-covid-events-ehrql.pdf)
+    - [`post-covid-events-neurodegenerative`](protocol/post-covid-events-neurodegenerative.pdf) contains the outcome-specific elements necessary to implement [`post-covid-events-ehrql`](protocol/post-covid-events-ehrql.pdf). Any deviations to these protocols will be listed in the final manuscript.
+    - [`devaiations.txt`](protocol/deviations.txt) contains any deviations taken from the protocol.
 
 -   If you are interested in how we defined our code lists, look at [`codelists/codelists.txt`](./codelists/codelists.txt) for the full list, or any of the *.csv files in the [`codelists`](./codelists) folder
 
@@ -63,7 +64,7 @@ No clinical, policy or safety conclusions must be drawn from the contents of thi
         -   [`make_other_output.R`](./analysis/model/make_other_output.R) combines cohort-specific outputs (e.g. the table1 outputs) into 1 .csv file
         -   [`make_aer_input.R`](./analysis/make_output/make_aer_input.R) generates summary statistics by age and sex required for AER (Absolute Excess Risk) estimation for each outcome (using the model input files for the main analysis generated from [`make_model_input`](analysis/model/make_model_input.R))
 
-    - Post release scripts for tidying up the outputs are in the ['post_release'](./analysis/post_release/) directory. They are not run on through the project.yaml file on OpenSAFELY, but run locally in order to prepare tables and figures for publication.
+    - Post release scripts for tidying up the outputs are in the ['post_release'](./analysis/post_release/) directory. They are not run on through the project.yaml file on OpenSAFELY, but run locally in order to prepare tables and figures for publication. In order to run these scripts, please download the latest copy of the data
 
     These scripts are in the [`analysis`](./analysis) directory, but are not accessed when the repository is run on a job server
         
@@ -75,7 +76,7 @@ No clinical, policy or safety conclusions must be drawn from the contents of thi
         
     -   Archived scripts for no-longer-needed actions (e.g. used to investigate bugs) can be found in the [`archive`](./analysis/archive) directory. Read [`README_archive`](./analysis/archive/README_analysis) for more details. 
 
-    -   Scripts for processing and plotting the final outputs can be found on the `post-release` branch, in the [`post-release`](./analysis/post-release) directory. 
+    -   Scripts for processing and plotting the final outputs can be found on the `post-release` branch, in the [`post-release`](./analysis/post-release) directory. In order to run these files, please download the latest version of the data from [OpenSAFELY](https://jobs.opensafely.org/investigating-events-following-covid-19/post-covid-neurodegenerative-v3/), and then follow the instructions in the post-release [`ReadMe`](./analysis/post-release/ReadMe.MD) file.
         
 -   Other useful files include the following:        
 
