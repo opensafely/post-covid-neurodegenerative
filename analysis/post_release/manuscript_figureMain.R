@@ -1,3 +1,5 @@
+# manuscript_figureMain.R - a script to generate the main figures for the manuscript, which visualize the hazard ratios and confidence intervals of various neurological outcomes across different cohorts (prevax, vax, unvax) and time periods since COVID-19 infection.
+
 # Define the plotting function -------------------------------------------------
 plot_hr <- function(outcomes, outcome_group) {
   # Load data ------------------------------------------------------------------
@@ -20,8 +22,8 @@ plot_hr <- function(outcomes, outcome_group) {
 
   # Set Upper Bound and Lower Bound limits -------------------------------------
 
-  ub <- 32
-  lb <- 0.25
+  ub <- 16
+  lb <- 0.5
 
   # Filter data ----------------------------------------------------------------
   print("Filter data")
@@ -63,21 +65,24 @@ plot_hr <- function(outcomes, outcome_group) {
     }
   }
 
-  if (outcome_group %in% c("dem_subgroups")) {
-    # "dem+cis",
-    df <- df[!(df$analysis == "sub_age_18_49"), ] # was 18_39
-  }
-
-  # Remove underpowered analyses groups
+  # remove models with collapsedyear equivalent
   df <- df[
-    !(df$analysis %in%
-      c(
-        "sub_ethnicity_black",
-        "sub_ethnicity_mixed",
-        "sub_ethnicity_other",
-        "sub_parkrisk_TRUE"
+    !paste0(df$cohort, df$outcome, df$analysis) %in%
+      unique(sub(
+        "_collapsedyear$",
+        "",
+        paste0(df$cohort, df$outcome, df$analysis)[grepl(
+          "_collapsedyear$",
+          paste0(df$cohort, df$outcome, df$analysis)
+        )]
       )),
   ]
+  #remove "_collapsedyear" from model names that remain
+  df$analysis <- sub("_collapsedyear$", "", df$analysis)
+
+  if (outcome_group %in% c("dem_subgroups")) {
+    df <- df[!(df$analysis == "sub_age_18_49"), ] # was 18_39
+  }
 
   # High-outcome number catch (only plot a main graph)
   if (length(outcomes) > 5) {
@@ -122,18 +127,6 @@ plot_hr <- function(outcomes, outcome_group) {
 
   plot_labels <- readr::read_csv("lib/plot_labels.csv", show_col_types = FALSE)
 
-  # POTENTIALLY TEMPORARY (DEALING WITH COLLAPSED COLUMNS) ---------------------
-  plot_labels <- plot_labels %>%
-    bind_rows(
-      plot_labels %>%
-        filter(!is.na(analysis_group)) %>%
-        mutate(
-          term = paste0(term, "_collapsed"),
-          label = paste0(label, " (Collapsed)"),
-          analysis_group = paste0(analysis_group, "_collapsed")
-        )
-    )
-
   # Merge plot labels with existing dataframe ----------------------------------
   df <- merge(
     df,
@@ -143,15 +136,6 @@ plot_hr <- function(outcomes, outcome_group) {
     all.x = TRUE
   )
   df <- dplyr::rename(df, "outcome_label" = "label")
-  #
-  #   df <- merge(
-  #     df,
-  #     plot_labels[, c("term", "label")],
-  #     by.x = "preex",
-  #     by.y = "term",
-  #     all.x = TRUE
-  #   )
-  #   df <- dplyr::rename(df, "preex_label" = "label")
 
   df <- merge(
     df,
@@ -171,11 +155,22 @@ plot_hr <- function(outcomes, outcome_group) {
   # Add facet labels -----------------------------------------------------------
   print("Add facet labels")
 
-  df$facet_label <- ifelse(
-    df$is_min_ref,
-    paste0(df$outcome_label, "\n\n", df$analysis_label), # "\n\n", df$preex_label,
-    df$analysis_label
-  )
+  if (outcome_group == "secondaryfull") {
+    df$facet_label <- ifelse(
+      df$is_min_ref,
+      paste0(df$outcome_label),
+      df$analysis_label
+    )
+  } else {
+    df$facet_label <- ifelse(
+      df$is_min_ref,
+      paste0(df$outcome_label, "\n\n", df$analysis_label),
+      df$analysis_label
+    )
+  }
+
+  # Remove NA analysis groups
+  df <- df[!(is.na(df$analysis_group)), ]
 
   # Iterate over plots ---------------------------------------------------------
   print("Iterate over plots")
@@ -206,7 +201,7 @@ plot_hr <- function(outcomes, outcome_group) {
     facet_cols <- length(unique(df_plot$analysis))
 
     if (length(outcomes) > 5) {
-      facet_cols <- 2 # ceiling(length(outcomes) / 2)
+      facet_cols <- 3
     }
 
     # Generate facet info ------------------------------------------------------
@@ -220,7 +215,7 @@ plot_hr <- function(outcomes, outcome_group) {
       "facet_label"
     )])
     facet_info <- facet_info[
-      order(facet_info$outcome, facet_info$ref), # facet_info$preex,
+      order(facet_info$outcome, facet_info$ref),
     ]
 
     facet_info$facet_order <- 1:nrow(facet_info)
@@ -234,6 +229,10 @@ plot_hr <- function(outcomes, outcome_group) {
 
     if (outcome_group == "secondary") {
       facet_info$facet_order <- c(1, 2, 6, 7, 8, 3, 4, 5)
+    }
+
+    if (outcome_group == "secondaryfull") {
+      facet_info$facet_order <- c(1, 3, 2, 7, 8, 9, 4, 5, 6)
     }
 
     facet_info$facet_label2 <- ""
@@ -280,7 +279,7 @@ plot_hr <- function(outcomes, outcome_group) {
       ggplot2::scale_color_manual(
         breaks = c("prevax", "vax", "unvax"),
         labels = c(
-          "Pre-vaccination (Jan 1 2020 - Dec 14 2021)",
+          "Pre-vaccination (Jan 1 2020 - Jun 18 2021)",
           "Vaccinated (Jun 1 2021 - Dec 14 2021)",
           "Unvaccinated (Jun 1 2021 - Dec 14 2021)"
         ),
@@ -535,11 +534,9 @@ plot_hr <- function(outcomes, outcome_group) {
     }
 
     if (length(unique(df_plot$outcome)) >= 5) {
-      plot_height <- 300
+      plot_height <- 350
     } else if (length(unique(df_plot$outcome)) == 1) {
       plot_height <- 150
-      # p <- p +
-      # ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
     } else {
       plot_height <- 210
     }
@@ -553,7 +550,7 @@ plot_hr <- function(outcomes, outcome_group) {
       width = plot_width,
       unit = "mm",
       dpi = 300,
-      scale = 0.8 # 0.8 originally
+      scale = 0.8
     )
   }
 }
@@ -568,13 +565,27 @@ plot_hr(
   c("dem_alz", "dem_vasc", "park", "rls", "rsd", "mnd", "ms", "migraine"),
   "secondary"
 )
+plot_hr(
+  c(
+    "dem_alz",
+    "dem_vasc",
+    "dem_lb",
+    "park",
+    "rls",
+    "rsd",
+    "mnd",
+    "ms",
+    "migraine"
+  ),
+  "secondaryfull"
+)
 
 plot_hr(c("dem_alz", "dem_vasc", "dem_lb"), "dem_subgroups")
 plot_hr(c("dem_any", "cis", "park", "rls", "rsd"), "core_neuro")
 
-# Here for testing
+# Lines for testing and debugging
 outcomes <- c("dem_any", "cis")
-outcome_group <- "dem_any"
+outcome_group <- "dem+cis"
 outcomes <- c("mnd", "ms", "migraine")
 outcome_group <- "other_neuro"
 outcomes <- c("park", "rls", "rsd")
@@ -582,6 +593,7 @@ outcome_group <- "park+risk"
 outcomes <- c(
   "dem_alz",
   "dem_vasc",
+  "dem_lb",
   "park",
   "rls",
   "rsd",
@@ -589,4 +601,4 @@ outcomes <- c(
   "ms",
   "migraine"
 )
-outcome_group <- "secondary"
+outcome_group <- "secondaryfull"

@@ -1,3 +1,5 @@
+# poster_figureMain.R - a script to generate the main figures for the poster, which visualize the hazard ratios and confidence intervals of various neurological outcomes across different cohorts (prevax, vax, unvax) and time periods since COVID-19 infection.
+
 # Load libraries ---------------------------------------------------------------
 print('Load libraries')
 
@@ -44,7 +46,7 @@ plot_poster_hr <- function(outcomes, outcome_group) {
   # Set Upper Bound and Lower Bound limits -------------------------------------
 
   ub <- 16
-  lb <- 0.25
+  lb <- 0.5
 
   # Filter data ----------------------------------------------------------------
   print("Filter data")
@@ -67,60 +69,56 @@ plot_poster_hr <- function(outcomes, outcome_group) {
   ]
 
   df <- df[!(df$term %in% c("days_pre", "days0_1")), ]
-  # df$preex <- sub(".*?(?=preex_)", "", df$analysis, perl = TRUE)
-  # df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
 
-  # Neurodegenerative-specific catches
-
-  # adding in Lewy Body 18-39 results
-  if ("dem_lb" %in% outcomes) {
-    df[nrow(df) + 1, ] <- list(
-      "prevax",
-      "sub_age_18_39",
-      "dem_lb",
-      -1,
-      "days_1",
-      1,
-      1,
-      1
-    )
+  # Neurodegenerative-specific catch
+  for (d in c("dem_any", "dem_alz", "dem_vasc", "dem_lb", "park")) {
+    if (d %in% outcomes) {
+      df[nrow(df) + 1, ] <- list(
+        "prevax",
+        "sub_age_18_49",
+        d,
+        -1,
+        "days_1",
+        1,
+        1,
+        1
+      )
+    }
   }
 
-  # removing a specific unconverged result
-  df[
-    df$outcome == "dem_any" &
-      df$analysis == "sub_covidhospital_TRUE" &
-      df$cohort == "unvax",
-  ] <- list(
-    "unvax",
-    "sub_covidhospital_TRUE",
-    "dem_any",
-    -1,
-    "days_1",
-    1,
-    1,
-    1
-  )
+  ## combining collapsedyear and non-collapsed models.
 
-  df[
-    df$outcome == "dem_any" &
-      df$analysis == "sub_age_85_110" &
-      df$cohort == "unvax",
-  ] <- list(
-    "unvax",
-    "sub_age_85_110",
-    "dem_any",
-    -1,
-    "days_1",
-    1,
-    1,
-    1
-  )
+  # remove models with collapsedyear equivalent
+  df <- df[
+    !paste0(df$cohort, df$outcome, df$analysis) %in%
+      unique(sub(
+        "_collapsedyear$",
+        "",
+        paste0(df$cohort, df$outcome, df$analysis)[grepl(
+          "_collapsedyear$",
+          paste0(df$cohort, df$outcome, df$analysis)
+        )]
+      )),
+  ]
+  # remove "_collapsedyear" from model names that remain
+  df$analysis <- sub("_collapsedyear$", "", df$analysis)
 
-  # removing all 18-39 and 40-64 subgroups (counteracts first catch, but allows easy pivot if we do want it)
-  if (outcome_group %in% c("dem+cis", "dem_subgroups")) {
-    df <- df[!(df$analysis == "sub_age_18_39"), ]
-    df <- df[!(df$analysis == "sub_age_40_64"), ]
+  if (outcome_group %in% c("dem_subgroups")) {
+    df <- df[!(df$analysis == "sub_age_18_49"), ] 
+  }
+
+  # Make columns numeric -------------------------------------------------------
+  print("Make columns numeric")
+
+  df <- df %>%
+    dplyr::mutate_at(
+      c("outcome_time_median", "hr", "conf_low", "conf_high"),
+      as.numeric
+    )
+
+  # High-outcome number catch (only plot a main graph)
+  if (length(outcomes) > 5) {
+    df <- df[grepl("main", df$analysis), ] # preserve main and main_collapsed
   }
 
   # Make columns numeric -------------------------------------------------------
@@ -169,15 +167,6 @@ plot_poster_hr <- function(outcomes, outcome_group) {
     all.x = TRUE
   )
   df <- dplyr::rename(df, "outcome_label" = "label")
-  #
-  #   df <- merge(
-  #     df,
-  #     plot_labels[, c("term", "label")],
-  #     by.x = "preex",
-  #     by.y = "term",
-  #     all.x = TRUE
-  #   )
-  #   df <- dplyr::rename(df, "preex_label" = "label")
 
   df <- merge(
     df,
@@ -197,11 +186,19 @@ plot_poster_hr <- function(outcomes, outcome_group) {
   # Add facet labels -----------------------------------------------------------
   print("Add facet labels")
 
-  df$facet_label <- ifelse(
-    df$is_min_ref,
-    paste0(df$outcome_label, "\n\n", df$analysis_label), # "\n\n", df$preex_label,
-    df$analysis_label
-  )
+  if (outcome_group == "secondaryfull") {
+    df$facet_label <- ifelse(
+      df$is_min_ref,
+      paste0(df$outcome_label), 
+      df$analysis_label
+    )
+  } else {
+    df$facet_label <- ifelse(
+      df$is_min_ref,
+      paste0(df$outcome_label, "\n\n", df$analysis_label),
+      df$analysis_label
+    )
+  }
 
   # Iterate over plots ---------------------------------------------------------
   print("Iterate over plots")
@@ -231,6 +228,10 @@ plot_poster_hr <- function(outcomes, outcome_group) {
 
     facet_cols <- length(unique(df_plot$analysis))
 
+    if (length(outcomes) > 5) {
+      facet_cols <- 3 
+    }
+
     # Generate facet info ------------------------------------------------------
     print("Generate facet info")
 
@@ -242,9 +243,20 @@ plot_poster_hr <- function(outcomes, outcome_group) {
       "facet_label"
     )])
     facet_info <- facet_info[
-      order(facet_info$outcome, facet_info$ref), # facet_info$preex,
+      order(facet_info$outcome, facet_info$ref),
     ]
     facet_info$facet_order <- 1:nrow(facet_info)
+    if (outcome_group == "dem_subgroups") {
+      facet_info$facet_order <- c(
+        1:(nrow(facet_info) / 3),
+        (2 * nrow(facet_info) / 3 + 1):nrow(facet_info),
+        (nrow(facet_info) / 3 + 1):(2 * nrow(facet_info) / 3)
+      )
+    }
+
+    if (outcome_group == "secondaryfull") {
+      facet_info$facet_order <- c(1, 3, 2, 7, 8, 9, 4, 5, 6)
+    }
 
     facet_info$facet_label2 <- ""
     for (j in 1:nrow(facet_info)) {
@@ -290,14 +302,14 @@ plot_poster_hr <- function(outcomes, outcome_group) {
       ggplot2::scale_color_manual(
         breaks = c("prevax", "vax", "unvax"),
         labels = c(
-          "Pre-vaccination (Jan 1 2020 - Dec 14 2021)",
+          "Pre-vaccination (Jan 1 2020 - Jun 18 2021)",
           "Vaccinated (Jun 1 2021 - Dec 14 2021)",
           "Unvaccinated (Jun 1 2021 - Dec 14 2021)"
         ),
         values = c("#d2ac47", "#58764c", "#0018a8")
       ) +
       ggplot2::labs(
-        x = "\nWeeks since COVID-19 diagnosis",
+        x = "\nYears since COVID-19 diagnosis",
         y = "Hazard ratio and 95% confidence interval\n"
       )
 
@@ -347,8 +359,7 @@ plot_poster_hr <- function(outcomes, outcome_group) {
           colour = "white"
         )
       )
-
-    if (facet_cols == 2) {
+    if (facet_cols == 1) {
       p +
         ggplot2::scale_y_continuous(
           lim = c(lb - 0.001, ub + 0.1),
@@ -356,9 +367,76 @@ plot_poster_hr <- function(outcomes, outcome_group) {
           trans = "log"
         ) +
         ggplot2::scale_x_continuous(
-          limits = c(0, 1456),
-          breaks = c(0, 182, 364, 546, 728, 910, 1092, 1274, 1456),
-          labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
+          limits = c(0, 1820),
+          breaks = c(
+            0,
+            182,
+            364,
+            546,
+            728,
+            910,
+            1092,
+            1274,
+            1456,
+            1638,
+            1820,
+            2002
+          ),
+          labels = c(
+            "0",
+            "0.5",
+            "1",
+            "1.5",
+            "2",
+            "2.5",
+            "3",
+            "3.5",
+            "4",
+            "4.5",
+            "5",
+            "5.5"
+          )
+        ) +
+        ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
+        ggplot2::guides(color = ggplot2::guide_legend(ncol = 1, byrow = TRUE))
+      plot_width <- 297 * 0.5
+    } else if (facet_cols == 2) {
+      p +
+        ggplot2::scale_y_continuous(
+          lim = c(lb - 0.001, ub + 0.1),
+          breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
+          trans = "log"
+        ) +
+        ggplot2::scale_x_continuous(
+          limits = c(0, 1820),
+          breaks = c(
+            0,
+            182,
+            364,
+            546,
+            728,
+            910,
+            1092,
+            1274,
+            1456,
+            1638,
+            1820,
+            2002
+          ),
+          labels = c(
+            "0",
+            "0.5",
+            "1",
+            "1.5",
+            "2",
+            "2.5",
+            "3",
+            "3.5",
+            "4",
+            "4.5",
+            "5",
+            "5.5"
+          )
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
         ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
@@ -371,12 +449,94 @@ plot_poster_hr <- function(outcomes, outcome_group) {
           trans = "log"
         ) +
         ggplot2::scale_x_continuous(
-          limits = c(0, 1456),
-          breaks = c(0, 182, 364, 546, 728, 910, 1092, 1274, 1456),
-          labels = c("0", "26", "52", "78", "104", "130", "156", "182", "208")
+          limits = c(0, 1820),
+          breaks = c(
+            0,
+            182,
+            364,
+            546,
+            728,
+            910,
+            1092,
+            1274,
+            1456,
+            1638,
+            1820,
+            2002
+          ),
+          labels = c(
+            "0",
+            "0.5",
+            "1",
+            "1.5",
+            "2",
+            "2.5",
+            "3",
+            "3.5",
+            "4",
+            "4.5",
+            "5",
+            "5.5"
+          )
         ) +
         ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) #+
       ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
+      plot_width <- 297 * 0.85
+    } else if (facet_cols > 3) {
+      p +
+        ggplot2::scale_y_continuous(
+          lim = c(lb - 0.001, ub + 0.1),
+          breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
+          trans = "log"
+        ) +
+        ggplot2::scale_x_continuous(
+          limits = c(0, 1820),
+          breaks = c(
+            0,
+            182,
+            364,
+            546,
+            728,
+            910,
+            1092,
+            1274,
+            1456,
+            1638,
+            1820,
+            2002
+          ),
+          labels = c(
+            "0",
+            "0.5",
+            "1",
+            "1.5",
+            "2",
+            "2.5",
+            "3",
+            "3.5",
+            "4",
+            "4.5",
+            "5",
+            "5.5"
+          )
+        ) +
+        ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
+        ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
+      plot_width <- 297 * 1.5
+    } else {
+      p +
+        ggplot2::scale_y_continuous(
+          lim = c(lb - 0.001, ub + 0.1),
+          breaks = c(0.25, 0.5, 1, 2, 4, 8, 16, 32),
+          trans = "log"
+        ) +
+        ggplot2::scale_x_continuous(
+          limits = c(0, 1456),
+          breaks = c(0, 364, 728, 1092, 1456, 1820, 2184),
+          labels = c("0", "1", "2", "3", "4", "5", "6")
+        ) +
+        ggplot2::facet_wrap(~ factor(facet_label2), ncol = facet_cols) +
+        ggplot2::guides(color = ggplot2::guide_legend(nrow = 1, byrow = TRUE))
       plot_width <- 297
     }
 
@@ -396,7 +556,7 @@ plot_poster_hr <- function(outcomes, outcome_group) {
         width = plot_width,
         unit = "mm",
         dpi = 1000,
-        scale = 0.8 # 0.8 originally
+        scale = 0.8 
       )
     } else {
       ggplot2::ggsave(
@@ -411,7 +571,7 @@ plot_poster_hr <- function(outcomes, outcome_group) {
         width = plot_width,
         unit = "mm",
         dpi = 1000,
-        scale = 0.7 # 0.8 originally
+        scale = 0.7 
       )
     }
   }
@@ -419,7 +579,11 @@ plot_poster_hr <- function(outcomes, outcome_group) {
 
 # Outcome Groupings to plot ----------------------------------------------------
 plot_poster_hr(c("dem_any", "cis"), "dem+cis")
+plot_poster_hr(
+  c("dem_alz", "dem_vasc", "park", "rls", "rsd", "migraine"),
+  "secondary"
+)
 
 # Here for testing
 outcomes <- c("dem_any", "cis")
-outcome_group <- "dem_any"
+outcome_group <- "dem+cis"
