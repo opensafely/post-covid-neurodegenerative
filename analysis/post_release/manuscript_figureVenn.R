@@ -1,6 +1,4 @@
-# # Comment out after release is ready
-# release = "output/"
-# path_venn <- paste0(release, "make_output/venn_output_midpoint6.csv")
+# manuscript_figureVenn.R - a script to generate Venn diagrams for the manuscript, which visualize the overlap of events across primary care, secondary care, and death registry data sources for specified outcomes and cohorts.
 
 # Create directory -------------------------------------------------------------
 print("Create directory")

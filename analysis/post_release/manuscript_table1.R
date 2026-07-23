@@ -1,6 +1,4 @@
-# # Comment out these two lines once table is in the right format
-# path_table1 = "C:\\Users\\pp24053\\Documents\\GitHub\\post-covid-neurodegenerative\\output\\make_output\\table1_output_midpoint6.csv"
-# output_folder = "output\\post_release\\"
+# manuscript_table1.R - a script to generate Table 1 for the manuscript, which summarizes the characteristics of the study population across different cohorts (prevax, vax, unvax).
 
 # Load data --------------------------------------------------------------------
 print("Load data")

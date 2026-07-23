@@ -1,3 +1,5 @@
+# run_post_release.R - a script to run all post-release analyses, including generating all tables and figures for the manuscript.
+
 # Load libraries ---------------------------------------------------------------
 print('Load libraries')
 

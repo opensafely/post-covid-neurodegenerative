@@ -1,5 +1,4 @@
-# # Comment out this line once table is in the right format
-# output_folder = "output\\post_release\\"
+# manuscript_table3.R - a script to generate Table 3 for the manuscript, which summarizes the hazard ratios and confidence intervals for various neurological outcomes across different cohorts (prevax, vax, unvax) and time periods since COVID-19 infection.
 
 # Load data --------------------------------------------------------------------
 print("Load data")
@@ -75,46 +74,34 @@ print("Tidy term")
 df <- df %>%
   mutate(
     weeks = case_when(
-      # term == "days0_1" ~ "Day 0",
-      # term == "days1_28" ~ "Weeks 1-4, without day 0",
-      term == "days0_28" ~ "Weeks 1-4, without day 0",
+      term == "days0_28" ~ "Weeks 1-4",
       term == "days28_183" ~ "Weeks 5-26",
       term == "days183_365" ~ "Weeks 27-52",
       term == "days365_730" ~ "Years 1-2",
       term == "days730_1095" ~ "Years 2-3",
       term == "days1095_1460" ~ "Years 3-4",
       term == "days1460_1979" ~ "Years 4-5.5",
-      term == "days28_730" ~ "Week 5-Year 2", #collapsed
-      term == "days730_1460" ~ "Years 2-4", #collapsed
       term == "days0_365" ~ "Years 0-1", #collapsed
+      term == "days730_1460" ~ "Years 2-4", #collapsed
       TRUE ~ NA_character_
     )
   )
 
-# Define the desired order for the 'weeks' factor
+# Define the desired order for the 'weeks/years' factor
 weeks_levels <- c(
-  # "Day 0",
-  "Weeks 1-4, without day 0",
+  "Weeks 1-4",
   "Weeks 5-26",
   "Weeks 27-52",
   "Years 1-2",
   "Years 2-3",
   "Years 3-4",
   "Years 4-5.5",
-  "Week 5-Year 2", #collapsed
-  "Years 2-4", #collapsed
-  "Years 0-1"
+  "Years 0-1", #collapsed
+  "Years 2-4" #collapsed
 )
 
 # Convert 'weeks' to a factor with specified levels
 df$weeks <- factor(df$weeks, levels = weeks_levels)
-
-# # Can change this bit for sub-group analyses
-# df$subgroup <- sub("_preex.*", "", df$analysis)
-# df$analysis <- gsub(".*(?=preex)", "", df$analysis, perl = TRUE)
-
-# Define factor levels for sorting
-# df$analysis <- factor(df$analysis, levels = c("preex_FALSE", "preex_TRUE"))
 
 df$outcome_label <- factor(
   df$outcome_label,
@@ -184,7 +171,6 @@ df <- dplyr::rename(
   "Vaccinated cohort" = "vax",
   "Unvaccinated cohort" = "unvax"
 )
-
 
 df <- df %>%
   mutate(across(

@@ -1,3 +1,5 @@
+# diagnosis_pattern.R - a script to diagnose the pattern of post-release analysis outputs, specifically focusing on event counts across different time intervals.
+
 library(dplyr)
 library(tidyr)
 library(read)
@@ -16,17 +18,6 @@ file_list <- list.files(
 df <- file_list %>%
   lapply(read_csv, show_col_types = FALSE) %>%
   bind_rows()
-
-# # Find analyses with <12 midpoint6 events at any timepoint
-# low_event_list <- unique(na.omit(df[df$N_events_midpoint6 < 12, ]$name)) # find list
-
-# df_filtered <- df[!(df$name %in% low_event_list), ] # apply reduction
-
-# Alternative load
-# df <- readr::read_csv(
-#   "output/post_release/plot_model_output.csv",
-#   show_col_types = FALSE
-# )
 
 df <- df[!is.na(df$hr), ]
 

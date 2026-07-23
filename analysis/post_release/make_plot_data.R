@@ -1,7 +1,9 @@
+# make_plot_data.R - a script to load model output CSV files, combine them into a single data frame, and save the combined dataset for plotting purposes.
+
 # Load model output --------------------------------------------------------------------
 print("Load model output")
 
-# List all CSV files matching the pattern
+# List all CSV files matching the pattern (2 landmark dataset paths are listed below)
 file_list <- list.files(
   path = paste0(release, "20260429_noday0\\"), #DATAPAST2
   # path = paste0(release, "20250804_processed\\"), #DATAPAST1

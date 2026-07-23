@@ -1,4 +1,4 @@
-# Function for making life tables that requires two inputs:
+# fn-lifetable.R - Function for making life tables that requires two inputs:
 # (1) model_output
 # (2) aer_input [adapted Table 2 with age and sex groupings]
 

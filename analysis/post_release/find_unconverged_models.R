@@ -1,3 +1,5 @@
+# find_unconverged_models.R - a script to identify models that have not converged based on their hazard ratios and confidence intervals.
+
 # Load libraries ---------------------------------------------------------------
 print('Load libraries')
 

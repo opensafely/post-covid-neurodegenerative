@@ -1,7 +1,4 @@
-# # Comment out when ready
-# release <- "output/" # Specify path to release directory
-# path_aer_input <- paste0(release, "make_output/aer_input-main-midpoint6.csv")
-# source("analysis/post_release/fn-lifetable.R")
+# lifetables_compiled.R - a script to compile life tables from model output and AER input, and calculate overall AER.
 
 # Specify parameters -----------------------------------------------------------
 print('Specify parameters')

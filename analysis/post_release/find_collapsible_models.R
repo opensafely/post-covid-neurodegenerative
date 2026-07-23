@@ -1,3 +1,5 @@
+# find_collapsible_models.R - a script to identify models that should be collapsed based on event counts across different time intervals.
+
 library(dplyr)
 library(tidyr)
 library(readr)
@@ -53,8 +55,6 @@ df$term <- factor(
     "days730_1095",
     "days1095_1460",
     "days1460_1979"
-    # "days28_730", #don't keep collapsed
-    # "days730_1460"  #don't keep collapsed
   ),
   ordered = TRUE
 )
@@ -93,7 +93,6 @@ df_filt <- df_filt[
     df_filt$outcome == "cis" |
     df_filt$outcome == "dem_any",
 ]
-
 
 # Save Output ------------------------------------------------------------------
 

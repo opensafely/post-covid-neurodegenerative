@@ -1,3 +1,5 @@
+# manuscript_tableAER.R - a script to generate Table AER for the manuscript, which summarizes the absolute excess risk of various neurological outcomes across different cohorts (prevax, vax, unvax) and time periods since COVID-19 infection.
+
 # Specify parameters -----------------------------------------------------------
 print('Specify parameters')
 

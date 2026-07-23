@@ -1,6 +1,4 @@
-# # Comment out these two lines once table is in the right format
-# path_table2 = "C:\\Users\\pp24053\\Documents\\GitHub\\post-covid-neurodegenerative\\output\\make_output\\table2-sub_covidhospital_output_midpoint6.csv"
-# output_folder = "output\\post_release\\"
+# manuscript_table2.R - a script to generate Table 2 for the manuscript, which summarizes the incidence rates of various neurological outcomes across different cohorts (prevax, vax, unvax) and COVID-19 severity levels.
 
 # Load data --------------------------------------------------------------------
 print("Load data")
@@ -16,12 +14,12 @@ colnames(df) <- gsub("_midpoint6", "", colnames(df))
 print("Keep totals")
 
 totals <- df %>%
-  filter(grepl("main", analysis)) %>% # was "main"
+  filter(grepl("main", analysis)) %>% 
   distinct(cohort, analysis, sample_size) %>%
   pivot_wider(names_from = cohort, values_from = sample_size) %>%
   rename_with(~ paste0("event_personyears_", .x), .cols = -analysis) %>%
   mutate(
-    analysis = gsub("main_", "", analysis), # was "main_"
+    analysis = gsub("main_", "", analysis), 
     outcome_label = "N"
   )
 # Convert all event_personyears_* columns in totals to character
@@ -36,7 +34,7 @@ df <- df[
   grepl(
     "main|sub_covidhospital",
     df$analysis
-  ), #was "main|sub_covidhospital"
+  ), 
   c(
     "cohort",
     "analysis",
@@ -50,12 +48,12 @@ df <- df[
 ]
 
 df$events <- ifelse(
-  grepl("main", df$analysis), # was "main"
+  grepl("main", df$analysis),
   df$unexposed_events,
   df$exposed_events
 )
 df$person_days <- ifelse(
-  grepl("main", df$analysis), # was "main"
+  grepl("main", df$analysis),
   df$unexposed_person_days,
   df$exposed_person_days
 )

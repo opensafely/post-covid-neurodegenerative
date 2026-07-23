@@ -1,3 +1,5 @@
+# manuscript_figureAER.R - a script to generate Figure AER for the manuscript, which visualizes the cumulative difference in absolute risk over time for specified outcomes and cohorts.
+
 # Define the plotting function --------------------------------------------------
 plot_aer <- function(outcomes, outcome_group) {
   # Load data --------------------------------------------------------------------
@@ -10,8 +12,6 @@ plot_aer <- function(outcomes, outcome_group) {
   print("Filter data")
 
   df <- df[df$outcome %in% outcomes, ]
-  # df$preex <- sub(".*?(?=preex_)", "", df$analysis, perl = TRUE)
-  # df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
 
   # reindex dataframe
   rownames(df) <- 1:nrow(df)
@@ -39,7 +39,7 @@ plot_aer <- function(outcomes, outcome_group) {
 
   df$aer_age <- factor(
     df$aer_age,
-    levels = c("18_49", "50_64", "65_84", "85_110", "overall"), # was 40_64 18_39
+    levels = c("18_49", "50_64", "65_84", "85_110", "overall"),
     labels = c(
       "Age group: 18-49",
       "Age group: 50-64",
@@ -72,15 +72,6 @@ plot_aer <- function(outcomes, outcome_group) {
   )
   df <- dplyr::rename(df, "outcome_label" = "label")
 
-  # df <- merge(
-  #   df,
-  #   plot_labels[, c("term", "label")],
-  #   by.x = "preex",
-  #   by.y = "term",
-  #   all.x = TRUE
-  # )
-  # df <- dplyr::rename(df, "preex_label" = "label")
-
   df <- merge(
     df,
     plot_labels[, c("term", "label")],
@@ -107,14 +98,11 @@ plot_aer <- function(outcomes, outcome_group) {
 
   facet_info <- unique(df[, c(
     "outcome_label",
-    # "preex",
-    # "preex_label",
     "cohort_label"
   )])
   facet_info <- facet_info[
     order(
       facet_info$outcome_label,
-      # facet_info$preex,
       facet_info$cohort_label
     ),
   ]
@@ -131,8 +119,6 @@ plot_aer <- function(outcomes, outcome_group) {
       ),
       "\n",
       facet_info[j, ]$cohort_label
-      # ,"\n\n",
-      # facet_info[j, ]$preex_label
     )
   }
 
@@ -203,12 +189,6 @@ plot_aer <- function(outcomes, outcome_group) {
     ) +
     ggplot2::facet_wrap(~ factor(facet_label), ncol = 3, scales = "free_x")
 
-  # Save plot --------------------------------------------------------------------
-  #print("Save plot")
-
-  #ggplot2::ggsave("output/post_release/figureAER.eps",
-  #                height = 210, width = 297, unit = "mm", dpi = 600, scale = 1)
-
   # Save plot ------------------------------------------------------------------
   print("Save plot")
 
@@ -228,16 +208,9 @@ plot_aer(c("park", "rls", "rsd"), "park+risk")
 plot_aer(c("dem_alz", "dem_vasc", "dem_lb"), "dem_subgroups")
 plot_aer(c("mnd", "ms", "migraine"), "other_neuro")
 
-# For debugging purposes
+# Examples to run for debugging purposes
 outcomes <- c("park", "rls", "rsd")
 outcome_group <- "park+risk"
 
 outcomes <- c("dem_any", "cis")
 outcome_group <- "dem+cis"
-
-# Previous Plot set
-# plot_aer(c("dem_alz", "dem_vasc"), "alz_vasc")
-# plot_aer(c("dem_lb", "dem_any"), "lb_any")
-# plot_aer(c("cis", "park"), "cis_park")
-# plot_aer(c("rls", "rsd"), "rls_rsd")
-# plot_aer(c("mnd", "ms", "migraine"), "mnd_ms_migraine")
