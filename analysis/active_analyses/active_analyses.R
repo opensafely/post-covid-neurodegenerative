@@ -244,6 +244,93 @@ df$name <- paste0(
   gsub("out_date_", "", df$outcome)
 )
 
+# Collapsed time period processing ------------------------------------------
+collapsed_flag <- FALSE
+if (collapsed_flag) {
+  df_collapsed <- df
+  df_collapsed$analysis <- paste0(df_collapsed$analysis, "_collapsed") # update analysis names
+  df_collapsed$cut_points <- gsub(
+    "28;183;365;730;1095;1460",
+    "28;730;1460",
+    df_collapsed$cut_points
+  ) # update cut points
+  df <- rbind(df, df_collapsed) # update main analysis list to combine noday0 and noday0_collapsed
+}
+
+# Collapsed_year processing -------------------------------------------------
+collapsed_list = c(
+  "cohort_prevax-main_noday0-dem_lb",
+  "cohort_prevax-main_noday0-mnd",
+  "cohort_unvax-main_noday0-dem_alz",
+  "cohort_unvax-main_noday0-ms",
+  "cohort_unvax-main_noday0-rls",
+  "cohort_vax-main_noday0-dem_lb",
+  "cohort_vax-main_noday0-mnd",
+  "cohort_vax-main_noday0-ms",
+  "cohort_unvax-sub_age_85_110_noday0-dem_any",
+  "cohort_vax-sub_age_50_64_noday0-dem_any",
+  "cohort_vax-sub_covidhistory_noday0-dem_any",
+  "cohort_prevax-sub_covidhospital_FALSE_noday0-dem_lb",
+  "cohort_prevax-sub_covidhospital_FALSE_noday0-mnd",
+  "cohort_prevax-sub_covidhospital_TRUE_noday0-rls",
+  "cohort_unvax-sub_covidhospital_FALSE_noday0-dem_any",
+  "cohort_unvax-sub_covidhospital_FALSE_noday0-ms",
+  "cohort_unvax-sub_covidhospital_FALSE_noday0-rls",
+  "cohort_unvax-sub_covidhospital_FALSE_noday0-rsd",
+  "cohort_unvax-sub_covidhospital_TRUE_noday0-dem_any",
+  "cohort_unvax-sub_covidhospital_TRUE_noday0-migraine",
+  "cohort_unvax-sub_covidhospital_TRUE_noday0-rsd",
+  "cohort_vax-sub_covidhospital_FALSE_noday0-dem_lb",
+  "cohort_vax-sub_covidhospital_FALSE_noday0-mnd",
+  "cohort_vax-sub_covidhospital_FALSE_noday0-ms",
+  "cohort_vax-sub_covidhospital_TRUE_noday0-dem_alz",
+  "cohort_vax-sub_covidhospital_TRUE_noday0-dem_vasc",
+  "cohort_vax-sub_covidhospital_TRUE_noday0-migraine",
+  "cohort_vax-sub_covidhospital_TRUE_noday0-park",
+  "cohort_prevax-sub_ethnicity_black_noday0-cis",
+  "cohort_prevax-sub_ethnicity_black_noday0-dem_any",
+  "cohort_prevax-sub_ethnicity_mixed_noday0-cis",
+  "cohort_prevax-sub_ethnicity_other_noday0-cis",
+  "cohort_unvax-sub_ethnicity_asian_noday0-cis",
+  "cohort_unvax-sub_ethnicity_black_noday0-cis",
+  "cohort_vax-sub_ethnicity_asian_noday0-dem_any",
+  "cohort_vax-sub_ethnicity_black_noday0-cis",
+  "cohort_vax-sub_ethnicity_mixed_noday0-cis",
+  "cohort_vax-sub_ethnicity_other_noday0-cis",
+  "cohort_vax-sub_park_TRUE_noday0-dem_any",
+  "cohort_prevax-sub_parkrisk_TRUE_noday0-park",
+  "cohort_unvax-sub_sex_male_noday0-dem_any"
+)
+
+if (length(collapsed_list > 0)) {
+  df_collapsedyear <- df[df$name %in% collapsed_list, ]
+  df_collapsedyear$analysis <- paste0(
+    df_collapsedyear$analysis,
+    "_collapsedyear"
+  ) # update analysis names
+  df_collapsedyear$cut_points <- gsub(
+    "28;183;365;730;1095;1460",
+    "365;730;1460",
+    df_collapsedyear$cut_points
+  ) # update cut points
+  df_collapsedyear$name <- sub(
+    "-([^-]*)$",
+    "_collapsedyear-\\1",
+    df_collapsedyear$name
+  )
+  df <- rbind(df, df_collapsedyear) # update main analysis list to include both noday0 and noday0_collapsed
+}
+
+# Add name for each analysis ----
+df$name <- paste0(
+  "cohort_",
+  df$cohort,
+  "-",
+  df$analysis,
+  "-",
+  gsub("out_date_", "", df$outcome)
+)
+
 # Remove covariates according to each outcome -----
 print("Removing covariates according to each outcome")
 
@@ -281,7 +368,7 @@ df$covariate_other <- ifelse(
   df$covariate_other
 )
 
-# Ensure no trailing ; at the end of the list
+# Ensure no trailing ; at the end of any list
 df$covariate_other <- gsub(";$", "", df$covariate_other)
 
 # Check names are unique and save active analyses list ----
