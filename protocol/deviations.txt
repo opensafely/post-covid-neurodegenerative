@@ -1,0 +1,10 @@
+Deviations from protocol
+The following alterations were made from the pre-specified protocol (https://github.com/opensafely/post-covid-neurodegenerative):
+•	The following subgroups were restricted to only include dementia and cognitive impairment as outcomes due to low event counts: COVID-19 severity, age group, sex, ethnicity, and high vascular risk.
+•	If there were less than 12 events in any of the first three time periods (i.e. 0-4 weeks, 5-26 weeks, 27-52 weeks), we used a single time period (i.e., 1 year) instead. We also collapsed the 2-3 and 3-4 year periods into 2-4 years. The full set of outputs, including the models without the collapsed time periods, can be found at https://jobs.opensafely.org/investigating-events-following-covid-19/post-covid-neurodegenerative-v3/outputs. Models with low counts should be interpreted with extreme caution.
+•	An error in the original protocol listed Wales and Scotland as regions for analysis, as the protocol states elsewhere that only English GP data will be included. Additionally, the “Midlands” region was separated into “East Midlands” and “West Midlands”, and the “North East and Yorkshire” region was separated into “North East” and “Yorkshire and the Humber”. 
+•	The initial protocol used CTV3 labels for ethnicity, which were updated to fit with the SNOMED-CT codelists combined with SUS secondary care data that were used for this work (“South Asian” became “Asian or Asian British”, “Black” became “Black or Black British”, “Other” became “Chinese or Other Ethnic Group”).  
+•	The age groups 18-39 and 40-64 were updated to be 18-49 and 50-64 to better reflect clinically important ages for neurodegenerative outcomes.
+•	The outcomes Parkinson’s disease and dementia (including its subtypes) were excluded for the age group 18-49 due to low event counts.
+•	The end date was extended from April 30th 2024 to May 31st 2025, to allow for the increased data available at runtime. Cox regression time periods were also updated accordingly.
+•	People with outcomes on ‘day 0’ were removed from the analysis. 
