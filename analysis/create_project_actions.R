@@ -128,7 +128,7 @@ stata_models <- c(
   "cohort_vax-sub_sex_male_noday0-mnd"
 )
 
-# These are currently based on manual check from outputs released on 2025-08-04, leave empty if no models need Stata
+# These are based on models which did not converge the first time they were run, leave empty if no models need Stata
 stata <- active_analyses[active_analyses$name %in% stata_models, ]
 
 # Create generic action function -----------------------------------------------
@@ -154,8 +154,8 @@ action <- function(
     needs = needs,
     outputs = outputs
   )
-  actions[sapply(actions, is.null)] <- NULL
 
+  actions[sapply(actions, is.null)] <- NULL
   action_list <- list(name = actions)
   names(action_list) <- name
 
@@ -169,7 +169,6 @@ comment <- function(...) {
   comments <- map(list_comments, ~ paste0("## ", ., " ##"))
   comments
 }
-
 
 # Create function to convert comment "actions" in a yaml string into proper comments
 
