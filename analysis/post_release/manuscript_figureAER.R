@@ -34,6 +34,22 @@ plot_aer <- function(outcomes, outcome_group) {
     }
   }
 
+  # Remove 18-49 for Dementia/Parkinson's
+  for (d in c("dem_any", "dem_alz", "dem_vasc", "dem_lb", "park")) {
+    if (d %in% outcomes) {
+      df.loc[df['aer_age'] == "18_49", ] <- list(
+        "prevax",
+        "sub_age_18_49",
+        d,
+        -1,
+        "days_1",
+        1,
+        1,
+        1
+      )
+    }
+  }
+
   # Format aer_age ---------------------------------------------------------------
   print("Format aer_age")
 
@@ -41,7 +57,7 @@ plot_aer <- function(outcomes, outcome_group) {
     df$aer_age,
     levels = c("18_49", "50_64", "65_84", "85_110", "overall"),
     labels = c(
-      "Age group: 18-49",
+      "Age group: 18-49\n(Cognitive impairment only)", # adjust this if looking at other conditions
       "Age group: 50-64",
       "Age group: 65-84",
       "Age group: 85-110",
@@ -87,7 +103,7 @@ plot_aer <- function(outcomes, outcome_group) {
   df$cohort_label <- factor(
     df$cohort_label,
     levels = c(
-      "Pre-vaccination (Jan 1 2020 - Dec 14 2021)",
+      "Pre-vaccination (Jan 1 2020 - Jun 18 2021)",
       "Vaccinated (Jun 1 2021 - Dec 14 2021)",
       "Unvaccinated (Jun 1 2021 - Dec 14 2021)"
     )
