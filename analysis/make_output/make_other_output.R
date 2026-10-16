@@ -74,6 +74,16 @@ for (i in cohorts) {
       "-midpoint6.csv"
     ))
     tmp$flow <- 1:nrow(tmp)
+  } else if (output == "table1_hospitalised") {
+    tmp <- readr::read_csv(paste0(
+      "output/table1/",
+      output,
+      "-cohort_",
+      i,
+      sub_str,
+      noday0_str,
+      "-midpoint6.csv"
+    ))
   } else {
     tmp <- readr::read_csv(paste0(
       "output/",
@@ -107,6 +117,23 @@ if (output == "table1") {
       "N [midpoint6_derived]",
       "(%) [midpoint6_derived]",
       "COVID-19 diagnoses [midpoint6]"
+    ),
+    names_vary = "slowest"
+  )
+}
+
+# table1_hospitalised-specific processing ---------------------------------------------------
+if (output == "table1_hospitalised") {
+  print("table1 processing")
+  df <- pivot_wider(
+    df,
+    names_from = "cohort",
+    values_from = c(
+      "N [midpoint6]",
+      "N (COVID-19 Hospitalised) [midpoint6]",
+      "% (COVID-19 Hospitalised) [midpoint6_derived]",
+      "N (COVID-19 Non-hospitalised) [midpoint6]",
+      "% (COVID-19 Non-hospitalised) [midpoint6_derived]",
     ),
     names_vary = "slowest"
   )

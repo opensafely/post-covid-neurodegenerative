@@ -149,6 +149,51 @@ actions:
       moderately_sensitive:
         table1_output_midpoint6: output/make_output/table1_output_midpoint6.csv
 
+  ## Generate table1_hospitalised_cohort_prevax 
+
+  table1_hospitalised-cohort_prevax:
+    run: 'r:v2 analysis/table1/table1_hospitalised.R prevax 18;50;65;85;111 '
+    needs:
+    - generate_input_prevax_clean
+    outputs:
+      moderately_sensitive:
+        table1_hosp: output/table1/table1_hospitalised-cohort_prevax.csv
+        table1_hosp_midpoint6: output/table1/table1_hospitalised-cohort_prevax-midpoint6.csv
+
+  ## Generate table1_hospitalised_cohort_unvax 
+
+  table1_hospitalised-cohort_unvax:
+    run: 'r:v2 analysis/table1/table1_hospitalised.R unvax 18;50;65;85;111 '
+    needs:
+    - generate_input_unvax_clean
+    outputs:
+      moderately_sensitive:
+        table1_hosp: output/table1/table1_hospitalised-cohort_unvax.csv
+        table1_hosp_midpoint6: output/table1/table1_hospitalised-cohort_unvax-midpoint6.csv
+
+  ## Generate table1_hospitalised_cohort_vax 
+
+  table1_hospitalised-cohort_vax:
+    run: 'r:v2 analysis/table1/table1_hospitalised.R vax 18;50;65;85;111 '
+    needs:
+    - generate_input_vax_clean
+    outputs:
+      moderately_sensitive:
+        table1_hosp: output/table1/table1_hospitalised-cohort_vax.csv
+        table1_hosp_midpoint6: output/table1/table1_hospitalised-cohort_vax-midpoint6.csv
+
+  ## Generate make-table1_hospitalised-output 
+
+  make-table1_hospitalised-output:
+    run: r:v2 analysis/make_output/make_other_output.R table1_hospitalised prevax;unvax;vax
+    needs:
+    - table1_hospitalised-cohort_prevax
+    - table1_hospitalised-cohort_unvax
+    - table1_hospitalised-cohort_vax
+    outputs:
+      moderately_sensitive:
+        table1_hospitalised_output_midpoint6: output/make_output/table1_hospitalised_output_midpoint6.csv
+
   ## Run models 
 
   make_model_input-cohort_prevax-main_noday0-cis:

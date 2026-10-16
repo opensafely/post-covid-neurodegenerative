@@ -296,6 +296,33 @@ table1 <- function(cohort, ages = "18;40;60;80", preex = "All") {
   )
 }
 
+# Create function for table1_hosp --------------------------------------------
+
+table1_hospitalised <- function(cohort, ages = "18;40;60;80", preex = "All") {
+  if (preex == "All" | preex == "") {
+    preex_str <- ""
+  } else {
+    preex_str <- paste0("-preex_", preex)
+  }
+  splice(
+    comment(glue("Generate table1_hospitalised_cohort_{cohort}{preex_str}")),
+    action(
+      name = glue("table1_hospitalised-cohort_{cohort}{preex_str}"),
+      run = "r:v2 analysis/table1/table1_hospitalised.R",
+      arguments = c(c(cohort), c(ages), c(preex)),
+      needs = list(glue("generate_input_{cohort}_clean")),
+      moderately_sensitive = list(
+        table1_hosp = glue(
+          "output/table1/table1_hospitalised-cohort_{cohort}{preex_str}.csv"
+        ),
+        table1_hosp_midpoint6 = glue(
+          "output/table1/table1_hospitalised-cohort_{cohort}{preex_str}-midpoint6.csv"
+        )
+      )
+    )
+  )
+}
+
 # Create function to make model input and run a model --------------------------
 
 apply_model_function <- function(
@@ -740,6 +767,26 @@ actions_list <- splice(
   splice(
     make_other_output(
       action_name = "table1",
+      cohort = paste0(cohorts, collapse = ";"),
+      subgroup = ""
+    )
+  ),
+
+  ## Table 1 -------------------------------------------------------------------
+
+  splice(
+    unlist(
+      lapply(
+        unique(active_analyses$cohort),
+        function(x) table1_hospitalised(cohort = x, ages = age_str, preex = "")
+      ),
+      recursive = FALSE
+    )
+  ),
+
+  splice(
+    make_other_output(
+      action_name = "table1_hospitalised",
       cohort = paste0(cohorts, collapse = ";"),
       subgroup = ""
     )
