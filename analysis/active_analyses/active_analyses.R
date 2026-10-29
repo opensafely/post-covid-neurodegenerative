@@ -254,11 +254,11 @@ if (collapsed_flag) {
     "28;730;1460",
     df_collapsed$cut_points
   ) # update cut points
-  df <- rbind(df, df_collapsed) # update main analysis list to combine noday0 and noday0_collapsed
+  df <- rbind(df, df_collapsed) # update main analysis list to have noday0 and noday0_collapsed
 }
 
-# Collapsed_year processing -------------------------------------------------
-collapsed_list = c(
+# Collapsed_year processing
+collapsed_list <- c(
   "cohort_prevax-main_noday0-dem_lb",
   "cohort_prevax-main_noday0-mnd",
   "cohort_unvax-main_noday0-dem_alz",
@@ -318,7 +318,7 @@ if (length(collapsed_list > 0)) {
     "_collapsedyear-\\1",
     df_collapsedyear$name
   )
-  df <- rbind(df, df_collapsedyear) # update main analysis list to include both noday0 and noday0_collapsed
+  df <- rbind(df, df_collapsedyear) # update main analysis list to have noday0 and noday0_collapsed
 }
 
 # Add name for each analysis ----

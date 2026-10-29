@@ -200,7 +200,9 @@ cols <- c(
   "day0_events",
   "total_exposed",
   "unexposed_events",
-  "exposed_events"
+  "exposed_events",
+  "unexposed_person_days",
+  "exposed_person_days"
 )
 new_names <- paste0(cols, "_midpoint6")
 
@@ -212,17 +214,20 @@ table2[new_names] <- lapply(
 table2$total_events_midpoint6_derived <- table2$unexposed_events_midpoint6 +
   table2$exposed_events_midpoint6
 
+table2$total_person_days_midpoint6_derived <- table2$unexposed_person_days_midpoint6 +
+  table2$exposed_person_days_midpoint6
+
 table2 <- table2[, c(
   "name",
   "cohort",
   "exposure",
   "outcome",
   "analysis",
-  "unexposed_person_days",
+  "unexposed_person_days_midpoint6",
   "unexposed_events_midpoint6",
-  "exposed_person_days",
+  "exposed_person_days_midpoint6",
   "exposed_events_midpoint6",
-  "total_person_days",
+  "total_person_days_midpoint6_derived",
   "total_events_midpoint6_derived",
   "day0_events_midpoint6",
   "total_exposed_midpoint6",

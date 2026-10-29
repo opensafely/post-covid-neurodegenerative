@@ -42,6 +42,16 @@ df <- file_list %>%
   ) %>%
   bind_rows()
 
+# # Find analyses with <12 midpoint6 events at any timepoint
+# low_event_list <- unique(na.omit(df[df$N_events_midpoint6 < 12, ]$name)) # find list
+#
+# df_filtered <- df[!(df$name %in% low_event_list), ] # apply reduction
+#
+# # Save list of removed files
+# sink('output/make_output/removed_models_low_events.txt')
+# print(low_event_list)
+# sink() #close external connection to file
+
 # Filter data ------------------------------------------------------------------
 print("Filter data")
 
@@ -61,9 +71,7 @@ df <- df[
 days_list <- unique(df$term[grepl("days", df$term)])
 
 sorted_days <- days_list[order(sapply(days_list, function(x) {
-  if (x == "days_pre") {
-    return(-1)
-  } # Ensure 'pre' is always first
+  if (x == "days_pre") return(-1) # Ensure 'pre' is always first
   as.numeric(str_extract(x, "\\d+")) # Extract the first number
 }))]
 
@@ -104,21 +112,23 @@ df_wide["Total"] <- rowSums(
 )
 
 # Later sums
+# df_wide["days0_28A"] <- df_wide["days0_28"]
 df_wide["days28_365_derived"] <- df_wide["days28_183"] + df_wide["days183_365"]
-
 df_wide["days365_1460_derived"] <- df_wide["days365_730"] +
   df_wide["days730_1095"] +
   df_wide["days1095_1460"]
-
+# df_wide["days0_28B"] <- df_wide["days0_28"]
 df_wide["days28_730_derived"] <- df_wide["days28_183"] +
   df_wide["days183_365"] +
   df_wide["days365_730"]
 df_wide["days730_1460_derived"] <- df_wide["days730_1095"] +
   df_wide["days1095_1460"]
-
+# df_wide["days0_28C"] <- df_wide["days0_28"]
+# df_wide["days28_183C"] <- df_wide["days28_183"]
 df_wide["days183_730_derived"] <- df_wide["days183_365"] +
   df_wide["days365_730"]
-
+# df_wide["days730_1460_derived"] <- df_wide["days730_1095"] +
+# df_wide["days1095_1460"]
 
 readr::write_csv(
   df_wide,

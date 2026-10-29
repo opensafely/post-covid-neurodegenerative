@@ -1,6 +1,7 @@
 from ehrql import (
     days,
     case,
+    claim_permissions,
     when,
     minimum_of,
 )
@@ -36,6 +37,9 @@ from variable_helper_functions import (
     get_latest_ethnicity,
     get_imd,
 )
+
+# Claim permissions to allow dataset definition to import tables in dummy data
+claim_permissions("sgss_covid_all_tests", "occupation_on_covid_vaccine_record")
 
 
 def generate_variables(index_date, end_date_exp, end_date_out):  

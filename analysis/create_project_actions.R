@@ -10,8 +10,7 @@ library(dplyr)
 # Specify defaults -------------------------------------------------------------
 
 defaults_list <- list(
-  version = "3.0",
-  expectations = list(population_size = 5000L)
+  version = "5.0"
 )
 
 active_analyses <- read_rds("lib/active_analyses.rds")
@@ -24,8 +23,12 @@ active_analyses <- active_analyses[
 ]
 cohorts <- unique(active_analyses$cohort)
 analyses <- unique(grep("^main", active_analyses$analysis, value = TRUE))
-subgroups <- unique(str_extract(active_analyses$analysis, "^main|sub_[^_]+"))
-subgroups <- paste0(subgroups, "_noday0")
+subgroups <- unique(sub(
+  "_(?:TRUE|FALSE|male|female|white|black|other|mixed|asian|[0-9]{2,3}_[0-9]{2,3})(?=_|$)",
+  "",
+  unique(active_analyses$analysis),
+  perl = TRUE
+))
 active_age <- active_analyses[grepl("_age_", active_analyses$name), ]$name
 age_str <- paste0(
   paste0(
@@ -58,7 +61,24 @@ excluded_models <- c(
   "cohort_prevax-sub_age_18_49_noday0-dem_alz",
   "cohort_vax-sub_age_18_49_noday0-park",
   "cohort_unvax-sub_age_18_49_noday0-park",
-  "cohort_prevax-sub_age_18_49_noday0-park"
+  "cohort_prevax-sub_age_18_49_noday0-park",
+  "cohort_unvax-sub_ethnicity_mixed_noday0-dem_lb",
+  "cohort_vax-sub_age_18_49_noday0_collapsed-dem_lb",
+  "cohort_unvax-sub_age_18_49_noday0_collapsed-dem_lb",
+  "cohort_prevax-sub_age_18_49_noday0_collapsed-dem_lb",
+  "cohort_vax-sub_age_18_49_noday0_collapsed-dem_vasc",
+  "cohort_unvax-sub_age_18_49_noday0_collapsed-dem_vasc",
+  "cohort_prevax-sub_age_18_49_noday0_collapsed-dem_vasc",
+  "cohort_vax-sub_age_18_49_noday0_collapsed-dem_any",
+  "cohort_unvax-sub_age_18_49_noday0_collapsed-dem_any",
+  "cohort_prevax-sub_age_18_49_noday0_collapsed-dem_any",
+  "cohort_vax-sub_age_18_49_noday0_collapsed-dem_alz",
+  "cohort_unvax-sub_age_18_49_noday0_collapsed-dem_alz",
+  "cohort_prevax-sub_age_18_49_noday0_collapsed-dem_alz",
+  "cohort_vax-sub_age_18_49_noday0_collapsed-park",
+  "cohort_unvax-sub_age_18_49_noday0_collapsed-park",
+  "cohort_prevax-sub_age_18_49_noday0_collapsed-park",
+  "cohort_unvax-sub_ethnicity_mixed_noday0_collapsed-dem_lb"
 )
 
 stata_models <- c(
@@ -79,27 +99,22 @@ stata_models <- c(
   "cohort_unvax-sub_age_50_64_noday0-rsd",
   "cohort_vax-sub_age_18_49_noday0-migraine",
   "cohort_vax-sub_age_50_64_noday0-dem_alz",
-  "cohort_vax-sub_age_50_64_noday0-dem_vasc",
   "cohort_vax-sub_age_50_64_noday0-park",
-  "cohort_vax-sub_age_85_110_noday0-rsd",
   "cohort_unvax-sub_covidhistory_noday0-migraine",
   "cohort_vax-sub_covidhistory_noday0-dem_alz",
-  "cohort_vax-sub_covidhistory_noday0-dem_vasc",
   "cohort_vax-sub_covidhistory_noday0-migraine",
   "cohort_prevax-sub_covidhospital_FALSE_noday0-migraine",
   "cohort_prevax-sub_covidhospital_TRUE_noday0-migraine",
-  "cohort_prevax-sub_covidhospital_TRUE_noday0-ms",
   "cohort_prevax-sub_covidhospital_TRUE_noday0-rls",
   "cohort_prevax-sub_covidhospital_TRUE_noday0-rsd",
   "cohort_unvax-sub_covidhospital_FALSE_noday0-migraine",
   "cohort_unvax-sub_covidhospital_FALSE_noday0-rls",
-  "cohort_unvax-sub_covidhospital_TRUE_noday0-dem_alz",
   "cohort_unvax-sub_covidhospital_TRUE_noday0-dem_any",
+  "cohort_unvax-sub_covidhospital_TRUE_noday0-cis",
   "cohort_unvax-sub_covidhospital_TRUE_noday0-migraine",
   "cohort_unvax-sub_covidhospital_TRUE_noday0-rsd",
   "cohort_vax-sub_covidhospital_FALSE_noday0-mnd",
   "cohort_vax-sub_covidhospital_TRUE_noday0-migraine",
-  "cohort_vax-sub_covidhospital_TRUE_noday0-ms",
   "cohort_vax-sub_covidhospital_TRUE_noday0-rsd",
   "cohort_prevax-sub_ethnicity_asian_noday0-dem_alz",
   "cohort_prevax-sub_ethnicity_asian_noday0-migraine",
@@ -108,12 +123,11 @@ stata_models <- c(
   "cohort_prevax-sub_ethnicity_black_noday0-migraine",
   "cohort_prevax-sub_ethnicity_mixed_noday0-migraine",
   "cohort_prevax-sub_ethnicity_mixed_noday0-rsd",
-  "cohort_prevax-sub_ethnicity_other_noday0-dem_any",
   "cohort_prevax-sub_ethnicity_other_noday0-migraine",
   "cohort_unvax-sub_ethnicity_asian_noday0-migraine",
   "cohort_unvax-sub_ethnicity_black_noday0-migraine",
+  "cohort_unvax-sub_ethnicity_black_noday0-rsd",
   "cohort_unvax-sub_ethnicity_mixed_noday0-migraine",
-  "cohort_unvax-sub_ethnicity_white_noday0-dem_alz",
   "cohort_unvax-sub_ethnicity_white_noday0-migraine",
   "cohort_unvax-sub_ethnicity_white_noday0-rls",
   "cohort_vax-sub_ethnicity_asian_noday0-dem_any",
@@ -128,7 +142,6 @@ stata_models <- c(
   "cohort_vax-sub_sex_male_noday0-mnd"
 )
 
-# These are based on models which did not converge the first time they were run, leave empty if no models need Stata
 stata <- active_analyses[active_analyses$name %in% stata_models, ]
 
 # Create generic action function -----------------------------------------------
@@ -358,7 +371,7 @@ apply_stata_model_function <- function(
     ),
     action(
       name = glue("stata_cox_ipw-{name}"),
-      run = "stata-mp:latest analysis/model/cox_model.do",
+      run = "stata-mp:v1 analysis/model/cox_model.do",
       arguments = c(name, cut_points, study_start),
       needs = c(as.list(glue("ready-{name}"))),
       moderately_sensitive = list(
@@ -405,7 +418,8 @@ table2 <- function(cohort, subgroup) {
   table2_names <- table2_names[
     (grepl("-main", table2_names) |
       grepl(paste0("-sub_", subgroup), table2_names)) &
-      grepl("_noday0", table2_names) == noday0_flag
+      grepl("_noday0", table2_names) == noday0_flag &
+      !grepl("_collapsed", table2_names) # collapsed and non-collapsed models will produce same output
   ]
 
   splice(
@@ -455,7 +469,8 @@ venn <- function(cohort, analyses = "") {
       active_analyses[
         active_analyses$cohort == cohort &
           grepl(analyses, active_analyses$analysis) &
-          grepl("_noday0", active_analyses$analysis) == noday0_flag,
+          grepl("_noday0", active_analyses$analysis) == noday0_flag &
+          !grepl("_collapsed", active_analyses$analysis), # collapsed and non-collapsed models will produce same output,
       ]$name
     )
   )
@@ -493,8 +508,9 @@ venn <- function(cohort, analyses = "") {
 # Create function for making model outputs --------------------------------------
 
 make_model_output <- function(subgroup) {
+  subgroup_str <- subgroup
+
   if (grepl("_noday0", subgroup)) {
-    noday0_str <- "_noday0"
     subgroup <- gsub("_noday0", "", subgroup)
     noday0_flag <- TRUE
   } else {
@@ -502,65 +518,101 @@ make_model_output <- function(subgroup) {
     noday0_flag <- FALSE
   }
 
-  splice(
-    comment(glue("Generate model_output-{subgroup}{noday0_str}")),
-    action(
-      name = glue(
-        "make_model_output-{subgroup}{noday0_str}"
-      ),
-      run = "r:v2 analysis/make_output/make_model_output.R",
-      arguments = c(paste0(subgroup, noday0_str)),
-      needs = as.list(c(
-        paste0(
-          "cox_ipw-",
-          setdiff(
-            active_analyses$name[
-              str_detect(
-                active_analyses$analysis,
-                paste0(subgroup, "(?=[_-]|$)")
-              ) &
-                (grepl("_noday0", active_analyses$analysis) == noday0_flag)
-            ],
-            c(stata$name, excluded_models)
-          )
+  if (grepl("_collapsed", subgroup)) {
+    collapsed_flag <- TRUE
+    if (grepl("_collapsedyear", subgroup)) {
+      year_flag <- TRUE
+      subgroup <- gsub("_collapsedyear", "", subgroup)
+    } else {
+      year_flag <- FALSE
+      subgroup <- gsub("_collapsed", "", subgroup)
+    }
+  } else {
+    collapsed_flag <- FALSE
+    year_flag <- FALSE
+  }
+
+  if (
+    length(active_analyses$name[
+      str_detect(
+        active_analyses$analysis,
+        paste0(subgroup, "(?=[_-]|$)")
+      ) &
+        (grepl("_noday0", active_analyses$analysis) == noday0_flag) &
+        (grepl("_collapsed", active_analyses$analysis) == collapsed_flag) &
+        (grepl("year", active_analyses$analysis) == year_flag)
+    ]) >
+      0
+  ) {
+    splice(
+      comment(glue(
+        "Generate model_output-{subgroup_str}"
+      )),
+      action(
+        name = glue(
+          "make_model_output-{subgroup_str}"
         ),
-        if (
-          length(stata_models) > 0 &&
-            any(
-              str_detect(
-                stata$analysis,
-                paste0(subgroup, "(?=[_-]|$)")
-              ) &
-                (grepl("_noday0", stata$analysis) == noday0_flag)
-            )
-        ) {
+        run = "r:v2 analysis/make_output/make_model_output.R",
+        arguments = subgroup_str,
+        needs = as.list(c(
           paste0(
-            "stata_cox_ipw-",
+            "cox_ipw-",
             setdiff(
-              stata$name[
+              active_analyses$name[
+                str_detect(
+                  active_analyses$analysis,
+                  paste0(subgroup, "(?=[_-]|$)")
+                ) &
+                  (grepl("_noday0", active_analyses$analysis) == noday0_flag) &
+                  (grepl("_collapsed", active_analyses$analysis) ==
+                    collapsed_flag) &
+                  (grepl("year", active_analyses$analysis) == year_flag)
+              ],
+              c(stata$name, excluded_models)
+            )
+          ),
+          if (
+            length(stata_models) > 0 &&
+              any(
                 str_detect(
                   stata$analysis,
                   paste0(subgroup, "(?=[_-]|$)")
                 ) &
-                  (grepl("_noday0", stata$analysis) == noday0_flag)
-              ],
-              excluded_models
+                  (grepl("_noday0", stata$analysis) == noday0_flag) &
+                  (grepl("_collapsed", stata$analysis) == collapsed_flag) &
+                  (grepl("year", stata$analysis) == year_flag)
+              )
+          ) {
+            paste0(
+              "stata_cox_ipw-",
+              setdiff(
+                stata$name[
+                  str_detect(
+                    stata$analysis,
+                    paste0(subgroup, "(?=[_-]|$)")
+                  ) &
+                    (grepl("_noday0", stata$analysis) == noday0_flag) &
+                    (grepl("_collapsed", stata$analysis) == collapsed_flag) &
+                    (grepl("year", stata$analysis) == year_flag)
+                ],
+                excluded_models
+              )
             )
+          } else {
+            character(0)
+          }
+        )),
+        moderately_sensitive = list(
+          model_output = glue(
+            "output/make_output/model_output-{subgroup_str}.csv"
+          ),
+          model_output_midpoint6 = glue(
+            "output/make_output/model_output-{subgroup_str}-midpoint6.csv"
           )
-        } else {
-          character(0)
-        }
-      )),
-      moderately_sensitive = list(
-        model_output = glue(
-          "output/make_output/model_output-{subgroup}{noday0_str}.csv"
-        ),
-        model_output_midpoint6 = glue(
-          "output/make_output/model_output-{subgroup}{noday0_str}-midpoint6.csv"
         )
       )
     )
-  )
+  }
 }
 
 # Create function for making combined table/venn outputs ------------------------
@@ -831,7 +883,8 @@ actions_list <- splice(
     needs = as.list(paste0(
       "make_model_input-",
       active_analyses[
-        grepl("main_noday0", active_analyses$analysis),
+        grepl("main_noday0", active_analyses$analysis) &
+          !grepl("_collapsed", active_analyses$analysis),
       ]$name
     )),
     moderately_sensitive = list(
@@ -839,6 +892,22 @@ actions_list <- splice(
       aer_input_midpoint6 = glue(
         "output/make_output/aer_input-main_noday0-midpoint6.csv"
       )
+    )
+  ),
+
+  ## Make event interval count -------------------------------------------------
+
+  comment("Make event interval count"),
+
+  action(
+    name = "make_event_interval_count",
+    run = "r:v2 analysis/make_output/make_event_interval_count.R",
+    needs = as.list(paste0(
+      "make_model_output-",
+      subgroups[!grepl("collapsed", subgroups)]
+    )),
+    moderately_sensitive = list(
+      event_interval_midpoint6 = "output/make_output/events_per_interval_midpoint6.csv"
     )
   )
 )

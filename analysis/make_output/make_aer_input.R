@@ -202,7 +202,15 @@ print('Perform redaction')
 input$unexposed_events_midpoint6 <- roundmid_any(input$unexposed_events)
 input$total_exposed_midpoint6 <- roundmid_any(input$total_exposed)
 input$sample_size_midpoint6 <- roundmid_any(input$sample_size)
-input[, c("unexposed_events", "total_exposed", "sample_size")] <- NULL
+input$unexposed_person_days_midpoint6 <- roundmid_any(
+  input$unexposed_person_days
+)
+input[, c(
+  "unexposed_events",
+  "total_exposed",
+  "sample_size",
+  "unexposed_person_days"
+)] <- NULL
 
 # Save rounded AER input -------------------------------------------------------
 print('Save rounded AER input')
