@@ -41,7 +41,8 @@ No clinical, policy or safety conclusions must be drawn from the contents of thi
         -   [`fn-ref.R`](./analysis/dataset_clean/fn-ref.R) is the function that sets the reference levels for factors 
     
     -   Table 1 scripts are in the [`table1`](./analysis/table1/) directory:
-        -   This directory contains a single script:  [`table1.R`](./analysis/table1/table1.R). This script works with the output of [`dataset_clean`](./analysis/dataset_clean/) to describe the patient characteristics, displaying the proportion of study population in each variable category
+        -   [`table1.R`](./analysis/table1/table1.R) works with the output of [`dataset_clean`](./analysis/dataset_clean/) to describe patient characteristics, displaying the proportion of the study population in each variable category.
+        -   [`table1_hospitalised.R`](./analysis/table1/table1_hospitalised.R) describes table1 characteristics by COVID-19 hospitalisation status. 
 
     -   Modelling scripts are in the [`model`](./analysis/model/) directory:
         -   [`make_model_input.R`](./analysis/model/make_model_input.R) works with the output of [`dataset_clean`](./analysis/dataset_clean/) to prepare suitable data subsets for Cox analysis. Combines each outcome and subgroup in one formatted .rds file
